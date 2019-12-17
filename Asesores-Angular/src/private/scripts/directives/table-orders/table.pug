@@ -1,0 +1,89 @@
+include /views/mixins/tables
+include /views/mixins/info-result
+
+div.container-table-investment(style="overflow-x: auto;" )
+    div.panel-body(ng-if="origin === 'history'")
+        .content
+            .form-row(style='margin-bottom:-1em')
+                .item.field
+                    .form-group
+                         <dates-range-picker label="Periodo de búsqueda" placeholder="dd/mm/aaaa - dd/mm/aaaa" on-change="update" ></dates-range-picker>
+    table.table-investment.orders(ng-if="origin !== 'history'")
+        thead
+            tr
+                +thCaret( 'Folio', 'order.orderReference' )
+                +thCaret( 'Descripción', 'order.movementDescription' )
+                +thCaret( 'Emisora', 'order.issuer' )
+                +thCaret( 'Títulos de la orden', 'order.amountTitles' )
+                +thCaret( 'Precio de la orden', 'order.price' )
+                +thCaret( 'Títulos asignados', 'order.titlesAssigned' )
+                +thCaret( 'Precio asignado', 'order.assignedPrice ' )
+                +thCaret( 'Importe', 'order.amount' )
+                +thCaret( 'Estatus', 'order.status' )
+                th.text-center(ng-if="type !== 'MD'")
+                    span Más info.
+                th( ng-if="!type || type == 'MC'")
+                    i( class="fa fa-trash" aria-hidden="true")
+        tbody
+            +trLoading( 108, 'loading' )( colspan='11' )
+            tr( ng-if="!loading" )
+                td( colspan="11" )
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No cuentas</strong> con órdenes para mostrar" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            table
+                                tr( ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                    td( ng-bind="order.order.orderReference" )
+                                    td( ng-bind="order.order.movementDescription" )
+                                    td( ng-bind="order.issuer" )
+                                    td( ng-bind="order.order.amountTitles" )
+                                    td( ng-bind="order.order.price| currency:'$'" )
+                                    td( ng-bind="order.order.titlesAssigned" )
+                                    td( ng-bind="order.order.assignedPrice | currency:'$'" )
+                                    td( ng-bind="order.order.amount | currency" )
+                                    td( ng-bind= "order.order.status" )
+                                    td.text-center(ng-if="type !== 'MD'" ng-click="viewMore( order )" )
+                                        img(src="img/icons/ico_mas_info.svg", alt="ver más" )
+                                    td( ng-click="delete(order)" ng-if="type !== 'MD'")
+                                        i(ng-show="order.order.status !== 'SURTIDA' && order.order.status !== 'CANCELADA' && order.order.status !=='ORDEN CANCELADA' && order.order.status !=='ORDEN ASIGNADA'" class="fa fa-trash" aria-hidden="true")
+
+    table.table-investment.orders(ng-if="origin === 'history'")
+        thead
+            tr
+                +thCaret( 'Folio', 'order.orderReference' )
+                +thCaret( 'Descripción', 'order.movementDescription' )
+                +thCaret( 'Emisora', 'order.issuer' )
+                +thCaret( 'Títulos de la orden', 'order.amountTitles' )
+                +thCaret( 'Precio de la orden', 'order.price' )
+                +thCaret( 'Títulos asignados', 'order.titlesAssigned' )
+                +thCaret( 'Precio asignado', 'order.price' )
+                +thCaret( 'Importe', 'order.amount' )
+                +thCaret( 'Estatus', 'order.status' )
+
+        tbody
+            +trLoading( 108, 'loading' )( colspan='11' )
+            tr( ng-if="!loading" )
+                td( colspan="11" )
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No cuentas</strong> con órdenes para mostrar" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            table
+                                tr( ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                    td( ng-bind="order.order.orderReference" )
+                                    td( ng-bind="order.order.movementDescription" )
+                                    td( ng-bind="order.issuer" )
+                                    td( ng-bind="order.order.amountTitles" )
+                                    td( ng-bind="order.order.price| currency:'$'" )
+                                    td( ng-bind="order.order.titlesAssigned" )
+                                    td( ng-bind="order.order.price | currency:'$'" )
+                                    td( ng-bind="order.order.amount | currency" )
+                                    td( ng-bind= "order.order.status" )
+

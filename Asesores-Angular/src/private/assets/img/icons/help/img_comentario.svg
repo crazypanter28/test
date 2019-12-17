@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="174px" height="109px" viewBox="0 0 174 109" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ayuda00-copy-4" transform="translate(-90.000000, -794.000000)">
+            <g id="HAZ-PREGUNTA" transform="translate(69.000000, 777.000000)">
+                <g id="Group-2" transform="translate(108.500000, 75.500000) rotate(-4.000000) translate(-108.500000, -75.500000) translate(24.000000, 23.000000)">
+                    <rect id="Rectangle" fill="#517CBD" x="2.84217094e-14" y="0" width="169" height="88.9830508" rx="8"></rect>
+                    <text id="-------------------" font-family="ProximaNova-Regular, Proxima Nova" font-size="12.04" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="66.7105263" y="21.0084746">- - - - - - - - - - - - - </tspan>
+                    </text>
+                    <text id="-------------------" font-family="ProximaNova-Regular, Proxima Nova" font-size="12.04" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="66.7105263" y="34.3559322">- - - - - - - - - - - - -</tspan>
+                    </text>
+                    <text id="-------------------" font-family="ProximaNova-Regular, Proxima Nova" font-size="12.04" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="66.7105263" y="47.7033898">- - - - - - - - - - - - - </tspan>
+                    </text>
+                    <text id="-------------------" font-family="ProximaNova-Regular, Proxima Nova" font-size="12.04" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="66.7105263" y="61.0508475">- - - - - - - - - - - - - </tspan>
+                    </text>
+                    <text id="-------------------" font-family="ProximaNova-Regular, Proxima Nova" font-size="12.04" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="66.7105263" y="74.3983051">- - - - - - - - - - - - - </tspan>
+                    </text>
+                    <path d="M122.722851,79.4370411 C130.061009,79.4370411 137.399166,102.572634 137.399166,102.572634 C137.399166,102.572634 111.511143,108.034207 108.046535,102.572634 C104.172985,96.4664104 128.50443,92.2185206 122.722851,79.4370411 Z" id="Triangle" fill="#517CBD" transform="translate(122.512741, 92.218521) rotate(180.000000) translate(-122.512741, -92.218521) "></path>
+                    <g id="Group" transform="translate(15.121053, 22.245763)" stroke="#FFFFFF">
+                        <ellipse id="Oval" stroke-width="2.5" cx="20.0131579" cy="20.0211864" rx="20.0131579" ry="20.0211864"></ellipse>
+                        <text id="?" stroke-width="2" font-family="ProximaNova-Regular, Proxima Nova" font-size="30.1" font-weight="normal" fill="#FFFFFF">
+                            <tspan x="13.3134126" y="32.18152">?</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

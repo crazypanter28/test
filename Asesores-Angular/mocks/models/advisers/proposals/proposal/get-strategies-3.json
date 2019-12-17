@@ -1,0 +1,122 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"c9bf3b23-de09-4037-974f-9bcc54266229",
+         "messages":[
+            {
+               "responseSystemCode":"CMPVE0000009",
+               "responseMessage":"Se pudo consultar correctamente las carteras modelo por criterio ",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1499144400000,
+      "time":69075000,
+      "clientID":"PROMOTORES",
+      "sessionID":"",
+      "responseSystem":"PRACTICAS DE VENTA",
+      "operationName":"ModelPortfolioByCriterionQuery",
+      "operationVersion":"1_0",
+      "ipaddress":"10.10.1.58"
+   },
+   "outModelPortfolioByCriterionQuery":{
+      "modelPortfolios":[
+         {
+            "key":"4",
+            "name":"Estrategia4",
+            "period":"0",
+            "portfolioFlag":false,
+            "validityFlag":false,
+            "status":{
+               "key":"2",
+               "name":"INACTIVO",
+               "description":"INACTIVO"
+            },
+            "user":{
+               "key":"1",
+               "userName":"upventas"
+            },
+            "portfolioType":{
+               "key":"2",
+               "name":"Portafolio Modelo(% de producto))",
+               "description":"Portafolio Modelo(% de producto)"
+            },
+            "profile":{
+               "key":"3",
+               "name":"Perfil 3",
+               "description":"El perfil 3 se caracteriza por una estrategia de inversión que busca obtener rendimientos superiores a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores con alto potencial de crecimiento, asumiendo un nivel de volatilidad alto y con un horizonte de inversión de largo plazo.",
+               "status":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            "globalLimit":{
+               "key":"0",
+               "percentage":50.0
+            },
+            "validity":{
+               "key":"4",
+               "name":"Indeterminada",
+               "description":"Indeterminada"
+            }
+         },
+         {
+            "key":"24",
+            "name":"Actinver Invierte",
+            "period":"0",
+            "portfolioFlag":false,
+            "validityFlag":false,
+            "status":{
+               "key":"1",
+               "name":"ACTIVO",
+               "description":"ACTIVO"
+            },
+            "user":{
+               "key":"1",
+               "userName":"upventas"
+            },
+            "portfolioType":{
+               "key":"2",
+               "name":"Portafolio Modelo(% de producto))",
+               "description":"Portafolio Modelo(% de producto)"
+            },
+            "profile":{
+               "key":"3",
+               "name":"Perfil 3",
+               "description":"El perfil 3 se caracteriza por una estrategia de inversión que busca obtener rendimientos superiores a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores con alto potencial de crecimiento, asumiendo un nivel de volatilidad alto y con un horizonte de inversión de largo plazo.",
+               "status":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            "globalLimit":{
+               "key":"0",
+               "percentage":27.0
+            },
+            "validity":{
+               "key":"4",
+               "name":"Indeterminada",
+               "description":"Indeterminada"
+            }
+         }
+      ],
+      "criteria":{
+         "profile":{
+            "key":"3",
+            "name":"",
+            "description":"",
+            "rate":0.0,
+            "visibilityFlag":false
+         }
+      }
+   }
+}

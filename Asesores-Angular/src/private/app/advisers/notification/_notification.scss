@@ -1,0 +1,66 @@
+
+.notification{
+    table{
+        border: 1px solid $blue4;
+        width: 100%;
+        thead {
+            tr {
+                background: $blue4;
+                color: white;
+    
+                th {
+                    font-size: 13px;
+                    padding: 3px 30px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+            }
+        }
+    
+        tbody {
+            tr {                
+                font-size: 12px;
+                td {
+                    vertical-align: middle;
+                    color: $tertiary-color;
+                    padding: 3px 10px;
+                    text-transform: none;
+                    a{
+                        line-height: 12px;
+                        font-size: 12px;
+                        padding-right: 23px;
+                        img{
+                            position: absolute;
+                            right: -2px;
+                            top:8px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }    
+}
+.input-icon{
+    width: 40px;
+    float:left;
+    background-image: url("../img/icons/icon-search.svg");
+    background-size: 30px 26px;
+    background-repeat: no-repeat; 
+    height: 40px;
+    background-position: center;    
+    border-bottom: 2px solid $gray3;
+}
+.search-notification-input{
+   width:calc(100% - 40px);
+   float:right;  
+}
+.search-find{
+    background-color: $secondary-color;
+}
+.status-notification-checked{
+    color:$green3;
+}
+.status-notification-unresolved{
+    color:$red;
+}

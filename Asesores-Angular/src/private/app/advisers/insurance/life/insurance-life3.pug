@@ -1,0 +1,87 @@
+div.content-panel.tranfers(ng-if="lifeCtrl.actualPage === 3")
+    form(name="form" novalidate)
+        .row
+            .col-md-4.text-left(style="padding-bottom:20px;") 
+                img(src="img/logos/mapfre.svg" style="width: 85px;height: 50px")
+        .row
+            .col-md-12(style="padding-bottom:10px;") 
+                h4.text-center.tit
+                    span Tipo de Plan y coberturas adicionales        
+        .row            
+            .from-group.col-lg-5
+                .col-md-5
+                    p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Vigencia del 
+                .col-md-7.text-left
+                    dates-range-picker(
+                        date="lifeCtrl.fechaVigencia"
+                        options='lifeCtrl.vigenciaDatePickOp'
+                        on-change="lifeCtrl.sumaanio()"
+                        is-single="true" )
+            .form-group.col-lg-6.text-left
+                .col-md-5
+                    p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") al
+                .col-md-7.text-left
+                    input(type="text" ng-model="lifeCtrl.fechaFinVigencia" name="fechaFinVigencia" DISABLED).form-control
+        br
+        .col-sm-10.col-sm-offset-1
+            table(style='width: 85%; margin: 0 auto; border-style: none;')
+                tbody
+                    tr(style='height: 20px;')
+                        td(colspan="2",style='height: 20px;') COBERTURA
+                        td(style='height: 20px;') SUMA ASEGURADA
+                        td(style='height: 20px; text-align: center;') PRIMA
+                    tr(style='height: 20px;')
+                        td(style='width: 10px; text-align: right;')
+                            input(type='radio' checked)
+                        td(style='height: 20px;') B&aacute;sica
+                        td(style='height: 20px;')                                                 
+                            div(act-dropdown
+                                ng-model="lifeCtrl.ListaSumAsegurada"
+                                selected="lifeCtrl.cmd.sumaAseguradaBasica.type"
+                                name="ListaSumAsegurada"
+                                change="lifeCtrl.onAccumulateValidation(lastValue, newValue)" )
+                            input(type='hidden'
+                                ng-model='lifeCtrl.cmd.sumaAseguradaBasica.type'
+                                required )
+                        td(style='height: 20px; text-align: right;') 
+                            .col-sm-6
+                                span
+                            .col-sm-6.text-left
+                                span {{lifeCtrl.pBasica | currency: '$' : 2}}
+                    tr(style='height: 20px;')
+                        td(style='width: 10px; text-align: right;')
+                            input(type='radio' checked)
+                        td(style='height: 20px;') Muerte accidental
+                        td(style='height: 20px;')                             
+                            div(act-dropdown
+                                ng-model="lifeCtrl.ListaSumAsegurada"
+                                selected="lifeCtrl.cmd.sumaAseguradaBasica.type"
+                                name="ListaSumAsegurada"
+                                ng-disabled="true" )
+                            input(type='hidden'
+                                ng-model='lifeCtrl.cmd.sumaAseguradaBasica.type' )
+                        td(style='height: 20px; text-align: right;') 
+                            .col-sm-6
+                                span
+                            .col-sm-6.text-left
+                                span {{lifeCtrl.pMa | currency: '$' : 2}}
+                    tr(style='height: 20px;')
+                        td(style='width: 20px;')
+                        td(style='height: 20px;')
+                        td(style='height: 20px;')
+                        td(style='height: 20px; text-align: right;') 
+                            .col-sm-6.text-right
+                                span TOTAL:
+                            .col-sm-6.text-left
+                                span {{lifeCtrl.totalSum | currency: '$' : 2}}
+        br
+        br
+        .row
+            .col-md-12
+                .form-group.col-lg-6.text-right
+                    .col-md-7
+                        strong
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;")
+        .row.col-md-12.text-center
+            button(class="btn-primary btn" style='margin-right: 10px;' ng-click="lifeCtrl.go2page(2)" ) REGRESAR
+            button(class="btn-primary btn" style='margin-right: 10px;' ng-click="lifeCtrl.go2page(4)" ng-if="lifeCtrl.btnContinuarSA && lifeCtrl.btnContinuarSAQuot" ) CONTINUAR

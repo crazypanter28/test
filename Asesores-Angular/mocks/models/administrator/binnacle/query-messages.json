@@ -1,0 +1,35 @@
+{
+    "status":1,
+    "messages": [
+        {
+            "type":null,
+            "criticality":null,
+            "code":null,
+            "description":"OPERACIÓN EXITOSA"
+        }
+    ],
+    "result": [
+        {
+            "idMessage":141,
+            "userCode":"ngarcia",
+            "message":"Msg Prueba",
+            "descriptionMessage":"Mensaje de prueba",
+            "destinations":"mjuarezz,ngarcia",
+            "fileContent":"AAAAB/9k=",
+            "contentType":"image/jpeg",
+            "creationDate":1488413564027,
+            "expirationDate":"2017-03-30"
+        },
+        {
+            "idMessage":144,
+            "userCode":"ngarcia",
+            "message":"Mensaje para reporte",
+            "descriptionMessage":"Holaholaadiosadios",
+            "destinations":"",
+            "fileContent":"/9j/4AAQSkZJRgABAgEAYABgAAD/7gAOQWRvYmUAZAAAAAAB/+ESCEV4aWYA",
+            "contentType":"image/png",
+            "creationDate":1488413539287,
+            "expirationDate":"2017-03-29"
+        }
+    ]
+}

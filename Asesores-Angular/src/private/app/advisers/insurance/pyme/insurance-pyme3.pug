@@ -1,0 +1,659 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+div(ng-if="pymeCtrl.stepForm.stepC" name="contratacion")
+    form(name="form" novalidate)
+        div.row.text-center
+            .col-sm-3
+                img(src="img/logos/mapfre.svg" style="width:170px; height:100px;")
+            .col-sm-6
+                .row        
+                    h4.col-xs-6.text-right N&uacute;mero de cotizaci&oacute;n:
+                    h4.col-xs-6.text-left {{pymeCtrl.datosCotizacion.numeroCotizacion || pymeCtrl.cotizacionSeleccionada.cotizacion}}
+                .row
+                    h4.col-xs-6.text-right Fecha de Inicio Vigencia:
+                    h4.col-xs-6.text-left {{pymeCtrl.insurancePolicyDate}}
+                .row
+                    h4.col-xs-6.text-right Fecha de Fin Vigencia:
+                    h4.col-xs-6.text-left {{pymeCtrl.policyMaturityDate}}
+            .col-sm-3
+                    h3.col-xs-6.text-right Prima Total:
+                    h3.col-xs-6.text-left {{pymeCtrl.primatotalImpresion || pymeCtrl.cotizacionSeleccionada.prima | currency}} Anual
+        div.row
+            h2.col-xs-12.text-center.tit
+                span(id="titleEmission1" lang="es" style="padding-bottom:10px;") Datos de Domicilio del Riesgo
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo Calle
+                .col-md-8
+                    select(name="listStreetType"
+                        ng-model="pymeCtrl.cmd.emission.streetType.type"
+                        ng-options="x.text for x in pymeCtrl.listStreetType"
+                        required).form-control                                    
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Calle
+                .col-md-8
+                    input(type="text" id="calle1" name="calle1" placeholder="Calle"
+                        ng-model="pymeCtrl.emission.riskStreet"
+                        ng-keypress="pymeCtrl.charrepeatTextTres($event,'calle1')"
+                        minlength="3" maxlength="80"
+                        alpha-numeric="alpha-numeric"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Exterior
+                .col-md-8
+                    input(type="text" ng-model="pymeCtrl.emission.riskNumberExt" placeholder="No. Exterior" maxlength="10" alpha-numeric="alpha-numeric" required).form-control.upperCaseInput
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Interior
+                .col-md-8
+                    input(type="text" ng-model="pymeCtrl.emission.riskInterior" placeholder="No. Interior" maxlength="10" alpha-numeric="alpha-numeric" required).form-control.upperCaseInput
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Colonia
+                .col-md-8
+                    input(type="text" id="colonia1" name="colonia1" placeholder="Colonia"
+                        ng-model="pymeCtrl.emission.riskNeighborhood"
+                        minlength="4" maxlength="40"
+                        repeated-letter="repeated-letter"
+                        alpha-numeric="alpha-numeric"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Pisos
+                .col-md-8
+                    input(type="text" id="pisos" name="pisos" placeholder="Pisos"
+                        ng-model="pymeCtrl.emission.floors"
+                        numbers-only="numbers-only"
+                        required).form-control.required
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Sótanos
+                .col-md-8
+                    input(type="text" id="sotanos" name="sotanos" placeholder="Sotanos"
+                        ng-model="pymeCtrl.emission.basements"
+                        numbers-only="numbers-only"
+                        defaultValue="0" required).form-control.required
+            .form-group.col-sm-6.col-lg-4
+                .col-xs-4.text-right
+                    input(type="checkbox" id="listSameAddress" ng-click="pymeCtrl.changeSameAddress()" 
+                        ng-model="pymeCtrl.cmd.emission.sameAddress" style="margin-top:10px")
+                .col-xs-8.text-left
+                    p(style="font-size: 13px; font-weight: bold; padding-top:8px;") Misma dirección del Contratante
+        div.row
+            h2.col-xs-12.text-center.tit
+                span(id="titleEmission2" lang="es" style="padding-bottom:10px;") Domicilio Fiscal
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Calle
+                .col-md-8
+                    input(type="text" id="calle3" name="calle3" placeholder="Calle"
+                        ng-model="pymeCtrl.emission.contract.street"
+                        minlength="3" maxlength="80"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'calle3'); pymeCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Exterior
+                .col-md-8
+                    input(type="text" ng-model="pymeCtrl.emission.contract.numberExt" placeholder="No. Exterior" maxlength="10" ng-keypress="pymeCtrl.soloTextAndNum($event,true)" required).form-control.upperCaseInput
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Interior
+                .col-md-8
+                    input(type="text" ng-model="pymeCtrl.emission.contract.numberInt" placeholder="No. Interior" maxlength="10" ng-keypress="pymeCtrl.soloTextAndNum($event,true)" required).form-control.upperCaseInput
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Colonia
+                .col-md-8
+                    input(type="text" id="colonia3" name="colonia3" placeholder="Colonia"
+                        ng-model="pymeCtrl.emission.contract.neighboarhood"
+                        minlength="3" maxlength="40"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'colonia3'); pymeCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4(ng-if="!pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado
+                .col-md-8
+                    select(name="ListEntityFiscal"
+                        ng-model="pymeCtrl.cmd.emission.contract.stateContractor.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityFederativeHouse"
+                        ng-change="pymeCtrl.getCatalogEntity(pymeCtrl.cmd.emission.contract.stateContractor.type, 'contractor')" 
+                        required).form-control
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado 
+                .col-md-8
+                    input(type="text"
+                        ng-model="pymeCtrl.cmd.emission.contract.stateContractor.type.text"
+                        minlength="3" maxlength="80"
+                        required disabled).form-control.upperCaseInput.required.disabled
+            .form-group.col-sm-6.col-lg-4(ng-if="!pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Delegación o municipio
+                .col-md-8
+                    select(name="ListEntityContractor"
+                        ng-model="pymeCtrl.cmd.emission.contract.entityContractor.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityContractor"
+                        ng-change="pymeCtrl.getCatalogCodes(pymeCtrl.cmd.emission.contract.entityContractor.type, 'contractor')"
+                        required).form-control
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Delegación o municipio 
+                .col-md-8
+                    input(type="text"
+                        ng-model="pymeCtrl.cmd.emission.contract.entityContractor.type.text"
+                        minlength="3" maxlength="80"
+                        required disabled).form-control.upperCaseInput.required.disabled
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4(ng-if="!pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código Postal
+                .col-md-8
+                    select(name="ListPCContractor"
+                        ng-model="pymeCtrl.cmd.emission.contract.pcContractor.type"
+                        ng-options="x.text for x in pymeCtrl.ListPCContractor" required).form-control
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código Postal 
+                .col-md-8
+                    input(type="text"
+                        ng-model="pymeCtrl.cmd.emission.contract.pcContractor.type.text"
+                        minlength="3" maxlength="80"
+                        required disabled).form-control.upperCaseInput.required.disabled           
+        div.row
+            h2.col-xs-12.text-center.tit
+                span(id="titleEmission3" lang="es" style="padding-bottom:10px;") Datos del Contratante                        
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emissionPersonType == 'M'")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Razón Social
+                .col-md-8
+                    input(type="text" id="nombres1M" name="nombres1" placeholder="Nombre"
+                        ng-model="pymeCtrl.emission.contract.name"
+                        minlength="3" maxlength="80"
+                        alpha-numeric="alpha-numeric"
+                        required).form-control.upperCaseInput.required
+            div(ng-if="pymeCtrl.emissionPersonType == 'F'")
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                    .col-md-8
+                        input(type="text" id="nombres1" name="nombres1" placeholder="Nombre(s)"
+                            ng-model="pymeCtrl.emission.contract.name"
+                            minlength="3" maxlength="80"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'nombres1'); pymeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                    .col-md-8
+                        input(type="text" id="apPaterno1" name="apPaterno1" placeholder="Apellido Paterno"
+                            ng-model="pymeCtrl.emission.contract.lastName"
+                            minlength="3" maxlength="80"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'apPaterno1'); pymeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                    .col-md-8
+                        input(type="text" id="apMaterno1" name="apMaterno1" placeholder="Apellido Materno"
+                            ng-model="pymeCtrl.emission.contract.secondLastName"
+                            minlength="3" maxlength="80"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'apMaterno1'); pymeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") RFC
+                .col-md-8
+                    input(type="text" id="rfcUser1" name="rfcUser1" placeholder="ABCD123456AA1" onkeyup="this.value = this.value.toUpperCase();"
+                        ng-model="pymeCtrl.emission.contract.fiscalIDNumber"
+                        maxlength="13" minlength="10"
+                        ng-disabled="pymeCtrl.isClienteObt"
+                        ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                        ng-keypress="pymeCtrl.forceKeyPressUppercase($event)" required).form-control.required.upperCaseInput
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emissionPersonType == 'M' && !pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de Constitución
+                .col-md-8.text-left
+                    dates-range-picker(
+                        date="pymeCtrl.emission.contract.birthdate"
+                        placeholder="dd/mm/aaaa"
+                        options='pymeCtrl.optionsdpxPM'
+                        ng-required="true"                        
+                        is-single="true")
+                    span.icon-calendar
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emissionPersonType == 'F' && !pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de Nacimiento
+                .col-md-8.text-left
+                    dates-range-picker(
+                        date="pymeCtrl.emission.contract.birthdate"
+                        placeholder="dd/mm/aaaa"
+                        options='pymeCtrl.optionsdpx'
+                        ng-required="true"
+                        is-single="true")
+                    span.icon-calendar
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;" ng-if="pymeCtrl.emissionPersonType == 'F'" ) Fecha de Nacimiento
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;" ng-if="pymeCtrl.emissionPersonType == 'M'") Fecha de Constitución
+                .col-md-8
+                    input(type="text" 
+                        ng-model="pymeCtrl.emission.contract.birthdate"
+                        ng-disabled="pymeCtrl.isClienteObt"
+                        required).form-control.required.upperCaseInput.disabled
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emissionPersonType == 'F'")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") G&eacute;nero
+                .col-md-8
+                    label.act-radio-custom(for="masculino" style="font-size: 13px;")
+                        input(type="radio" name="sexo" id="masculino" value="1" ng-model="pymeCtrl.emission.contract.gender")
+                        span.css-label 
+                        | Masculino
+                    label.act-radio-custom(for="femenino" style="font-size: 13px;")
+                        input(type="radio" name="sexo" id="femenino" value="2" ng-model="pymeCtrl.emission.contract.gender")
+                        span.css-label 
+                        | Femenino
+            .clearfix.visible-sm.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo electrónico
+                .col-md-8.text-left
+                    input(type="email" name="emailUser1" placeholder="correo@mail.com" required maxlength="50" ng-model="pymeCtrl.emission.contract.email" style="text-transform: uppercase;").form-control
+                    div(role='alert')
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Teléfono
+                .col-md-8
+                    input(type="tel" 
+                        name="phoneContact1" 
+                        id="phoneContact1"
+                        ng-model="pymeCtrl.emission.contract.phone"
+                        placeholder="Teléfono" 
+                        minlength="7" 
+                        maxlength="10"
+                        numbers-only="numbers-only"
+                        ng-keypress="pymeCtrl.charrepeat($event,pymeCtrl.phoneUser2);pymeCtrl.soloNumero($event);pymeCtrl.numberSecuential($event,'phoneContact2');"
+                        ng-change="onValidateDuplicateTel(pymeCtrl.phoneUser1, 'f')"
+                        required).form-control.required
+            .clearfix
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Calle
+                .col-md-8
+                    input(type="text" id="calle3" name="calle3" placeholder="Calle"
+                        ng-model="pymeCtrl.emission.contract.street"
+                        minlength="3" maxlength="80"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'calle3'); pymeCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Exterior
+                .col-md-8
+                    input(type="text" ng-model="pymeCtrl.emission.contract.numberExt" placeholder="No. Exterior" maxlength="10" ng-keypress="pymeCtrl.soloTextAndNum($event,true)" required).form-control.upperCaseInput
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Interior
+                .col-md-8
+                    input(type="text" ng-model="pymeCtrl.emission.contract.numberInt" placeholder="No. Interior" maxlength="10" ng-keypress="pymeCtrl.soloTextAndNum($event,true)" required).form-control.upperCaseInput
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Colonia
+                .col-md-8
+                    input(type="text" id="colonia3" name="colonia3" placeholder="Colonia"
+                        ng-model="pymeCtrl.emission.contract.neighboarhood"
+                        minlength="3" maxlength="40"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'colonia3'); pymeCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4(ng-if="!pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado
+                .col-md-8
+                    select(name="ListEntityFiscal"
+                        ng-model="pymeCtrl.cmd.emission.contract.stateContractor.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityFederativeHouse"
+                        ng-change="pymeCtrl.getCatalogEntity(pymeCtrl.cmd.emission.contract.stateContractor.type, 'contractor')" 
+                        required).form-control
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado 
+                .col-md-8
+                    input(type="text"
+                        ng-model="pymeCtrl.cmd.emission.contract.stateContractor.type.text"
+                        minlength="3" maxlength="80"
+                        required disabled).form-control.upperCaseInput.required.disabled
+            .form-group.col-sm-6.col-lg-4(ng-if="!pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Delegación o municipio
+                .col-md-8
+                    select(name="ListEntityContractor"
+                        ng-model="pymeCtrl.cmd.emission.contract.entityContractor.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityContractor"
+                        ng-change="pymeCtrl.getCatalogCodes(pymeCtrl.cmd.emission.contract.entityContractor.type, 'contractor')"
+                        required).form-control
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Delegación o municipio 
+                .col-md-8
+                    input(type="text"
+                        ng-model="pymeCtrl.cmd.emission.contract.entityContractor.type.text"
+                        minlength="3" maxlength="80"
+                        required disabled).form-control.upperCaseInput.required.disabled
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4(ng-if="!pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código Postal
+                .col-md-8
+                    select(name="ListPCContractor"
+                        ng-model="pymeCtrl.cmd.emission.contract.pcContractor.type"
+                        ng-options="x.text for x in pymeCtrl.ListPCContractor" required).form-control
+            .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.isClienteObt")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código Postal 
+                .col-md-8
+                    input(type="text"
+                        ng-model="pymeCtrl.cmd.emission.contract.pcContractor.type.text"
+                        minlength="3" maxlength="80"
+                        required disabled).form-control.upperCaseInput.required.disabled
+        div.row
+            h2.col-xs-12.text-center.tit
+                input(type='checkbox' ng-model="pymeCtrl.checkBeneficiary" style="padding-right:10px;padding-bottom:10px;")
+                span(id="titleEmission4" lang="es" style="padding-bottom:10px;") Beneficiario Preferente
+            div(ng-if="pymeCtrl.checkBeneficiary")
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo
+                    .col-md-8
+                        label.radio-inline(style="padding-top:6px;")
+                            input(type="radio" name="personType" value="F" ng-model="pymeCtrl.emission.beneficiary.type")
+                            p(style="font-size: 13px; font-weight: bold; padding-top:3px;") Fisica
+                        label.radio-inline(style="padding-top:6px;")
+                            input(type="radio" name="personType" value="M" ng-model="pymeCtrl.emission.beneficiary.type")
+                            p(style="font-size: 13px; font-weight: bold; padding-top:3px;") Moral
+                .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emission.beneficiary.type === 'M'")
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Razón Social
+                    .col-md-8
+                        input(type="text" id="razonSocial" name="razonSocial" placeholder="Razón Social"
+                        ng-model="pymeCtrl.emission.beneficiary.social"
+                            minlength="3" maxlength="80"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'razonSocial'); pymeCtrl.soloTextAndNum($event,true)"
+                            required).form-control.upperCaseInput.required
+                div(ng-if="pymeCtrl.emission.beneficiary.type === 'F'")
+                    .form-group.col-sm-6.col-lg-4
+                        label.col-md-4
+                            p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                        .col-md-8
+                            input(type="text" id="nombresB1" name="nombres1" placeholder="Nombre(s)"
+                                ng-model="pymeCtrl.emission.beneficiary.name"
+                                minlength="3" maxlength="80"
+                                ng-keypress="pymeCtrl.charrepeatText($event,'nombresB1'); pymeCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                    .clearfix.visible-sm.visible-md
+                    .form-group.col-sm-6.col-lg-4
+                        label.col-md-4
+                            p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                        .col-md-8
+                            input(type="text" id="apPaternoB1" name="apPaterno1" placeholder="Apellido Paterno"
+                                ng-model="pymeCtrl.emission.beneficiary.lastName"
+                                minlength="3" maxlength="80"
+                                ng-keypress="pymeCtrl.charrepeatText($event,'apPaternoB1'); pymeCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                    .clearfix.visible-lg
+                    .form-group.col-sm-6.col-lg-4
+                        label.col-md-4
+                            p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                        .col-md-8
+                            input(type="text" id="apMaternoB1" name="apMaterno1" placeholder="Apellido Materno"
+                                ng-model="pymeCtrl.emission.beneficiary.secondLastName"
+                                minlength="3" maxlength="80"
+                                ng-keypress="pymeCtrl.charrepeatText($event,'apMaternoB1'); pymeCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                .clearfix.visible-sm.visible-md(ng-if="pymeCtrl.emission.beneficiary.type === 'M'")
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") RFC
+                    .col-md-8
+                        input(type="text" id="rfcUser2" name="rfcUser2" placeholder="ABCD123456AA1" onkeyup="this.value = this.value.toUpperCase();"
+                            ng-model="pymeCtrl.emission.beneficiary.rfc"
+                            maxlength="13" minlength="10"
+                            ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                            ng-keypress="pymeCtrl.forceKeyPressUppercase($event)" required).form-control.required.upperCaseInput        
+                .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emission.beneficiary.type === 'F'")
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de Nacimiento
+                    .col-md-8
+                        dates-range-picker(
+                            date="pymeCtrl.emission.beneficiary.dateF"
+                            placeholder="dd/mm/aaaa"
+                            options='pymeCtrl.optionsdpx'
+                            ng-required="true"
+                            is-single="true")
+                        span.icon-calendar
+                .clearfix.visible-lg(ng-if="pymeCtrl.emission.beneficiary.type === 'M'")
+                .form-group.col-sm-6.col-lg-4(ng-if="pymeCtrl.emission.beneficiary.type === 'M'")
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de Constitución
+                    .col-md-8
+                        dates-range-picker(
+                            date="pymeCtrl.emission.beneficiary.dateM"
+                            placeholder="dd/mm/aaaa"
+                            options='pymeCtrl.optionsdpxPM'
+                            ng-required="true"
+                            is-single="true")
+                        span.icon-calendar                
+                .clearfix.visible-sm
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo electrónico
+                    .col-md-8.text-left
+                        input(type="email" name="pymeCtrl.emailUser2" placeholder="correo@mail.com" required maxlength="50" ng-model="pymeCtrl.emission.beneficiary.email" style="text-transform: uppercase;").form-control
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Teléfono
+                    .col-md-8
+                        input(type="tel" 
+                            name="phoneContact2" 
+                            id="phoneContact2"
+                            ng-model="pymeCtrl.emission.beneficiary.phone"
+                            placeholder="Teléfono" 
+                            minlength="7" 
+                            maxlength="10" 
+                            ng-keypress="pymeCtrl.charrepeat($event,pymeCtrl.phoneUser2);pymeCtrl.soloNumero($event);pymeCtrl.numberSecuential($event,'phoneContact2');"
+                            ng-change="onValidateDuplicateTel(pymeCtrl.phoneUser2, 'f')"
+                            required).form-control.required
+                .clearfix
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Calle
+                    .col-md-8
+                        input(type="text" id="calle4" name="calle4" placeholder="Calle"
+                            ng-model="pymeCtrl.emission.beneficiary.street"
+                            minlength="3" maxlength="80"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'calle4'); pymeCtrl.soloTextAndNum($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Exterior
+                    .col-md-8
+                        input(type="text" ng-model="pymeCtrl.emission.beneficiary.numberExt" placeholder="No. Exterior" maxlength="10" ng-keypress="pymeCtrl.soloTextAndNum($event,true)" required).form-control.upperCaseInput
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Interior
+                    .col-md-8
+                        input(type="text" ng-model="pymeCtrl.emission.beneficiary.numberInt" placeholder="No. Interior" maxlength="10" ng-keypress="pymeCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput
+                .clearfix.visible-lg
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Colonia
+                    .col-md-8
+                        input(type="text" id="colonia4" name="colonia4" placeholder="Colonia"
+                            ng-model="pymeCtrl.emission.beneficiary.neighboarhood"
+                            minlength="3" maxlength="40"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'colonia4'); pymeCtrl.soloTextAndNum($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado
+                    .col-md-8
+                        select(name="ListStateBeneficiary"
+                        ng-model="pymeCtrl.cmd.emission.beneficiary.stateBeneficiary.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityFederativeHouse"
+                        ng-change="pymeCtrl.getCatalogEntity(pymeCtrl.cmd.emission.beneficiary.stateBeneficiary.type, 'beneficiary')"
+                        required).form-control
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Delegación o municipio
+                    .col-md-8
+                        select(name="ListEntityBeneficiary"
+                        ng-model="pymeCtrl.cmd.emission.beneficiary.entityBeneficiary.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityBeneficiary"
+                        ng-change="pymeCtrl.getCatalogCodes(pymeCtrl.cmd.emission.beneficiary.entityBeneficiary.type, 'beneficiary')"
+                        required).form-control
+                .clearfix.visible-lg
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código Postal
+                    .col-md-8
+                        select(name="ListPCBeneficiary"
+                        ng-model="pymeCtrl.cmd.emission.beneficiary.pcBeneficiary.type"
+                        ng-options="x.text for x in pymeCtrl.ListPCBeneficiary" required).form-control          
+        div.row
+            h2.col-xs-12.text-center.tit
+                span(id="titleEmission5" lang="es" style="padding-bottom:10px;") Registro de Cuenta para cargo del seguro
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                .col-md-8
+                    input(type="text" id="nombres2" name="nombres2" placeholder="Nombre(s)"
+                        ng-model="pymeCtrl.emission.payment.name"
+                        minlength="3" maxlength="80"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'nombres2'); pymeCtrl.soloText($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                .col-md-8
+                    input(type="text" id="apPaterno2" name="apPaterno2" placeholder="Apellido Paterno"
+                        ng-model="pymeCtrl.emission.payment.lastName"
+                        minlength="3" maxlength="80"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'apPaterno2'); pymeCtrl.soloText($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                .col-md-8
+                    input(type="text" id="apMaterno2" name="apMaterno2" placeholder="Apellido Materno"
+                    ng-model="pymeCtrl.emission.payment.secondLastName"
+                        minlength="3" maxlength="80"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'apMaterno2'); pymeCtrl.soloText($event,true)"
+                        required).form-control.upperCaseInput.required
+            .clearfix.visible-lg
+            .form-group.col-sm-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona forma de pago
+                .col-md-8
+                    select(name="ListPaymentType"
+                        ng-model="pymeCtrl.cmd.paymentType.type"
+                        ng-options="x.text for x in pymeCtrl.ListPaymentType"
+                        required).form-control
+            .form-group.col-sm-6(ng-if="pymeCtrl.cmd.paymentType.type.id === '2'")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona una opción
+                .col-md-8
+                    select(name="ListTypeCLABE"
+                        ng-model="pymeCtrl.cmd.ListTypeCLABE.type"
+                        ng-options="x.text for x in pymeCtrl.ListTypeCLABE"
+                        required).form-control
+            div(ng-if="pymeCtrl.cmd.paymentType.type.id === '8' || pymeCtrl.cmd.paymentType.type.id === '2'")
+                .form-group.col-sm-6
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona el banco
+                    .col-md-8
+                        select(required
+                        name="listBanks"
+                        ng-model="pymeCtrl.cmd.dataBanks.type"
+                        ng-options="x.text for x in pymeCtrl.ListBanks"
+                        ng-change="pymeCtrl.selectBankId()").form-control
+                .clearfix.visible-md(ng-if="pymeCtrl.cmd.ListTypeCLABE.type.id === '2' && pymeCtrl.cmd.paymentType.type.id === '2'")
+                .form-group.col-sm-6(ng-if="pymeCtrl.cmd.paymentType.type.id === '8' || (pymeCtrl.cmd.ListTypeCLABE.type.id === '2' && pymeCtrl.cmd.paymentType.type.id === '2')")
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Número de tarjeta
+                    .col-md-8.text-left
+                        input(type="text" name="numTarjeta" maxlength="{{pymeCtrl.accLen}}" minlength="{{pymeCtrl.accLen}}" placeholder="Número de cuenta"
+                            ng-model="pymeCtrl.emission.payment.accountNumber" ng-blur="pymeCtrl.selectTypeCard()"
+                            ng-keypress="pymeCtrl.soloNumero($event)" required).form-control.required
+                        div(role='alert')
+                            span.error(ng-show='form.numTarjeta.$error.maxlength || form.numTarjeta.$error.minlength')
+                                | Se requieren {{pymeCtrl.accLen}} dígitos        
+            .clearfix.visible-md(ng-if="pymeCtrl.cmd.paymentType.type.id === '2' && pymeCtrl.cmd.ListTypeCLABE.type.id === '1'")
+            .form-group.col-sm-6(ng-if="pymeCtrl.cmd.paymentType.type.id === '2' && pymeCtrl.cmd.ListTypeCLABE.type.id === '1'")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") CLABE
+                .col-md-8.text-left
+                    input(type="text" ng-model="pymeCtrl.emission.payment.clabe" placeholder="CLABE" required maxlength="18" numbers-only="numbers-only").form-control.required
+            .form-group.col-sm-6(ng-if="pymeCtrl.cmd.paymentType.type.id === '8' || (pymeCtrl.cmd.ListTypeCLABE.type.id === '2' && pymeCtrl.cmd.paymentType.type.id === '2')")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona mes y año de vencimiento
+                .col-md-8.text-left
+                    .col-sm-5(style="padding-left:0px; padding-right:6px")
+                        select(name="monthExpirationList"
+                            ng-model="pymeCtrl.comboMonthExpiration"
+                            ng-options="x.text for x in pymeCtrl.monthExpirationList"
+                            required).form-control
+                    .col-sm-2(style="padding:12px 0px 8px 23px;")
+                        span /
+                    .col-sm-5(style="padding-left:0px; padding-right:6px")
+                        select(required
+                            name="yearExpirationList"
+                            ng-model="pymeCtrl.comboYearExpiration"
+                            ng-options="x.text for x in pymeCtrl.yearExpirationList"
+                        ).form-control
+            .form-group.col-sm-6(ng-if="pymeCtrl.cmd.paymentType.type.id === '8' || (pymeCtrl.cmd.ListTypeCLABE.type.id === '2' && pymeCtrl.cmd.paymentType.type.id === '2')")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código de seguridad
+                .col-md-8.text-left
+                    input(type="text" name="cvvField" ng-model="pymeCtrl.emission.payment.cvv" placeholder="cvv" maxlength="{{pymeCtrl.cvvLen}}" minlength="{{pymeCtrl.cvvLen}}" ng-keypress="pymeCtrl.soloNumero($event)" required).form-control.required
+                    div(role='alert')
+                        span.error(ng-show='form.cvvField.$error.maxlength || form.cvvField.$error.minlength')
+                            | Se requieren {{pymeCtrl.cvvLen}} dígitos
+            .form-group.col-sm-6(ng-if="pymeCtrl.cmd.paymentType.type.id === '8' || (pymeCtrl.cmd.ListTypeCLABE.type.id === '2' && pymeCtrl.cmd.paymentType.type.id === '2')")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de tarjeta
+                .col-md-8
+                    select(name="ListCardType"
+                        ng-model="pymeCtrl.cmd.cardType.type"
+                        ng-options="x.text for x in pymeCtrl.ListCardType"
+                        required).form-control
+            .form-group.col-sm-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo electrónico
+                .col-md-8.text-left
+                    input(type="email" name="emailPago" ng-model="pymeCtrl.emission.payment.email" placeholder="correo@mail.com" required maxlength="50"  style="text-transform: uppercase;").form-control
+                    div(role='alert')
+                        span.error(ng-show='form.emailPago.$error.email') Correo no válido
+            .form-group.col-sm-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha aproximada de pago
+                .col-md-8.text-left
+                    dates-range-picker(
+                    date="pymeCtrl.dateAprox"
+                    placeholder="dd/mm/aaaa"
+                    options='pymeCtrl.datepicker_opts'
+                    ng-required="true"
+                    is-single="true")
+                    //div(style="position:relative")
+                            +inputDate2( "pymeCtrl.emission.payment.dateAprox", 'date1' )(
+                                datepickerOptions = "pymeCtrl.datepicker_opts",
+                                ngMouseOpen = 'popup1.opened')
+        div.row.text-center                    
+            button(class="btn-primary btn" ng-click="pymeCtrl.pagina2()" ) REGRESAR
+            +btnWithIcon( 'CONTINUAR', 'btn-primary btn-space', 'form.$invalid || !pymeCtrl.cmd.emission.contract.stateContractor.type || !pymeCtrl.cmd.emission.contract.entityContractor.type || !pymeCtrl.cmd.emission.contract.pcContractor.type')(ngClick="pymeCtrl.emisionSeguroHogar()")
+

@@ -1,0 +1,60 @@
+include /views/mixins/radio-button
+
+div.disabled-modal.groups( ng-if="modal.disabledModal" )
+.title-modal Editando el grupo: {{ modal.group.name }}
+form( name="$form" )
+    .container-modal
+
+        .row
+            .form-group.col-xs-7
+                lable Buscar Centro Financiero
+                input.form-control( type="text" ng-model="modal.table1" ng-change="modal.search( 'table1' )" 
+                    placeholder="Buscar Centro Financiero"
+                    style="height:28px;padding: 0 4px;"
+                )
+                br
+                table( ng-table='modal.configTable' )
+                    thead
+                        tr
+                            th(style="width:90% !important;") Centro Financiero
+                            th Eliminar
+                    tbody
+                        tr( ng-repeat="row in $data")
+                            td {{row.financialCenter}}
+                            td( ng-click="modal.deleteFinancial( row )")
+                                i.remove
+            .form-group.col-xs-5
+                lable Seleccione un Centro Financiero
+                .container-select
+                    div( act-dropdown="" ng-model="modal.financialCenters" selected="modal.financialCenterSelected" )
+                br
+                button.btn.btn-primary( ng-disabled="!modal.financialCenterSelected" ng-click="modal.addFinancial()") Agregar
+
+        .row
+            .form-group.col-xs-7
+                label Buscar Usuario
+                input.form-control( type="text" ng-model="modal.table2" ng-change="modal.search( 'table2' )"
+                    placeholder="Buscar Usuario"
+                    style="height:28px;padding: 0 4px;"
+                )
+
+                br
+                table( ng-table='modal.configTable2' )
+                    thead
+                        tr
+                            th(style="width:90% !important;") Usuario
+                            th Eliminar
+                    tbody
+                        tr( ng-repeat="row in $data")
+                            td {{row.userCode}}
+                            td( ng-click="modal.deleteUser( row )")
+                                i.remove
+            .form-group.col-xs-5
+                lable Seleccione un Usuario
+                .container-select
+                    div( act-dropdown="" ng-model="modal.users" selected="modal.userSelected" )
+                br
+                button.btn.btn-primary( ng-disabled="!modal.userSelected" ng-click="modal.addUser()") Agregar
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="modal.close()") Cerrar

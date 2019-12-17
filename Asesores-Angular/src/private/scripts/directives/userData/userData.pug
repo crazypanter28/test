@@ -1,0 +1,21 @@
+.user-info
+    .col-xs-12
+        div(style="float:left;")
+            p {{udc.user.name}}
+        div(style="float:right; padding-top:5px;")
+            a.close-session( href="javascript:void(0);" ng-click="udc.logout()")
+                span
+                    | Cerrar sesión
+    .col-xs-12
+        div(style="float:left;width:50%; position:relative;")
+            div(style="float:left; width:60px;")
+                img(src="img/icons/user.svg", class="icon-align-header")
+                label.size-label-header A2K:
+            .container-select.group-user-header(style="float:left; width:calc(100% - 80px);position:relative;")
+                div.dropdown-search( act-dropdown name-css="act-dropdown-header" ng-model="udc.promotorA2K.list" selected="udc.promotorA2K.selected" change = "udc.changePromotorA2K(lastValue, newValue)")
+        div(style="float:right; width:50%; position:relative;")
+            div(style="float:left; width:60px; position:relative;")
+                img(src="img/icons/user.svg", class="icon-align-header")
+                label.size-label-header Fix:
+            .container-select.group-user-header(style="float:left; width:calc(100% - 80px); position:relative;")
+                div.dropdown-search( act-dropdown name-css="act-dropdown-header" ng-model="udc.usuarioFix.list" selected="udc.usuarioFix.selected" change = "udc.changeUsuarioFix(lastValue, newValue)")

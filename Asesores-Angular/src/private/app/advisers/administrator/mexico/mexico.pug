@@ -1,0 +1,31 @@
+include /views/mixins/info-result
+
+
+.mexico
+    .section-title
+        span México
+
+    .content
+        table.table.primary-table
+            thead
+                tr
+                    th(ng-repeat="column in mx.table.headers ") 
+                        span {{column.name}}
+            tbody
+                tr( ng-show="mx.loadingEE")
+                    td(colspan = "mx.table.headers.length")
+                        .content-spinner
+                            .spinner
+                tr(ng-repeat ="row in mx.table.body ")
+                    td(ng-repeat="column in mx.table.headers ") {{row[column.originalName]}}                                                    
+
+        .no-results( ng-show="!mx.loadingEE && mx.table.headers.length < 1" )
+            +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+        .csv
+            .sub-title CSV
+            textarea.textarea( placeholder="Sólo copia y pega una tabla de Excel." ng-model="mx.csv" )
+
+        .buttons
+            button.btn.btn-default( ng-click="mx.csv = '' ") Limpiar
+            button.btn.btn-primary( ng-click="mx.saveCSV()" ) Guardar

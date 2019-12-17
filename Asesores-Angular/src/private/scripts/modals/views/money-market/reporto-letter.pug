@@ -1,0 +1,29 @@
+include /views/mixins/buttons
+
+div
+    img.icon( src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="reportoLtr.close()")
+
+div(ng-if="!reportoLtr.mailConfirm")
+    img(
+        src="img/icons/ayuda.svg",
+        alt="",
+        width="45",
+        height="45"
+    )
+    p(ng-if="!reportoLtr.mailConfirm") ¿Desea descargar el documento o enviarlo por correo?
+    div.buttons(ng-if="!reportoLtr.mailConfirm")
+        +btnIcon('btn-icon btn', 'img/icons/icon_pdf_active.svg')(ngClick="reportoLtr.getPdf()")
+        +btnIcon('btn-icon btn', 'img/icons/ico_mail_on.svg')(ngClick="reportoLtr.confirmMail()")
+
+div(ng-if="reportoLtr.mailConfirm")
+    img(
+        src="img/icons/information.svg",
+        alt="",
+        width="45",
+        height="45"
+    )
+    p Se enviará el documento a la(s) siguiente(s) dirección(es) de correo electrónico registrada(s) por el cliente: 
+        p {{reportoLtr.mailTo}}
+    div.buttons
+        +btnSubmit("Aceptar", "btn btn-primary btn-separate")(ngClick="reportoLtr.sendMail()")
+        +btnSubmit("Cancelar", "btn btn-default btn-separate")(ngClick="reportoLtr.mailConfirm = false")

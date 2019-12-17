@@ -1,0 +1,213 @@
+mixin dollBinnacleBank()
+    - var submit = ( typeof attributes.submit !== 'undefined') ? attributes.submit : 'OPERAR';
+
+    // Binnacle form
+    .binnacle-form
+        div.media.row.margin-0
+            div.col-xs-6.padding-0
+                label Tipo de medio
+                    span *
+                div( act-dropdown
+                    ng-model="doll.Media"
+                    selected="doll.cmd.media.type"
+                    name="media"
+                    change = "doll.onChangeTypeMedio(lastValue, newValue)"
+                )
+                input(
+                    type='hidden',
+                    ng-model='doll.cmd.media.type'
+                    ng-required='true'
+                )
+            div.col-xs-6.padding-0
+                div.form-group.has-icon
+                    label(for="date") Fecha de instrucción
+                        span.require *
+                    div(style="position:relative")
+                        +inputDate( "doll.cmd.binnacle.date", 'binnacle-date' )(
+                            ngMouseOpen = 'popup1.opened'
+                            datepickerOptions = "{showWeeks : false, formatMonth : 'MMM',yearColumns : 3 }"
+                        )
+            div.col-xs-12(ng-if="doll.tipoMedio.showMsg")
+                 label(style="color: #ff0000; padding-top:15px;" ) * {{doll.tipoMedio.msg}}
+
+        div
+
+            hr
+            .row.margin-0
+                div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                    act-datetime( ng-model="doll.cmd.binnacle.time" title="Hora de instrucción" type="HH" required="true"  )
+
+                div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                    +input( 'Teléfono', 'phone', 'Teléfono', true )(
+                        name = 'formPhone2'
+                        ngRequire='true',
+                        onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                        model='doll.cmd.binnacle.phoneNumber',
+                        message='El campo solo acepta números',
+                        pattern='doll.pattern.numeric',
+                        maxlength= '6'
+                    )
+
+            .row.margin-0
+                div.col-xs-12.padding-0
+                    div.form-group.act-input
+                        label( for="comments") Comentarios 
+                            span.require
+                        input.form-control( type="text" id="comments" ng-model="doll.cmd.binnacle.comments" ng-maxlength="250" style="width:100%;")
+            .row.margin-0
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                    submit,
+                    'btn-primary',
+                    'form.$invalid || !doll.cmd.media.type || doll.tipoMedio.showMsg',
+                    'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                    'Limpiar',
+                    'btn-primary',
+                    null,
+                    'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")
+
+mixin dollRules( _model )
+    - var title = _model === 'buy' ? 'Comprar':'Vender';
+    - var rules = _model === 'buy' ? 'rulesBuy': 'rulesSell';
+    div.col-xs-8.padding-0.type
+        label=title + ' por'
+        span *
+        div.row.margin-0( ng-show = "doll." + rules + ".registrationType === 'AMBOS' || doll." + rules + ".registrationType === 'TITULOS'")
+            +radioButton( 'Títulos', 'doll.cmd.type' )(
+            id='titles'
+            )
+            span.float-right
+                span(
+                ng-show="doll.cmd.type === 'import'"
+                ng-bind="doll.cmd." + _model + ".typeValue"
+                )
+
+                input.form-control( type="text", placeholder="Títulos"
+                ng-required="true"
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                ng-show="doll.cmd.type === 'titles'"
+                ng-model="doll.cmd." + _model + ".typeValue"
+                ng-change = "changeSettlement( '" + _model + "')"
+                )
+        div.row.margin-0( ng-show = "!(doll." + rules + ".registrationType === 'AMBOS' || doll." + rules + ".registrationType === 'TITULOS')")
+            span
+                label.act-radio-custom Títulos
+                span(
+                ng-show="doll.cmd.type === 'import'"
+                ng-bind="doll.cmd." + _model + ".typeValue"
+                )
+        div.row.margin-0( ng-show = "!(doll." + rules + ".registrationType === 'AMBOS' || doll." + rules + ".registrationType === 'IMPORTE')")
+            label.act-radio-custom Importe
+            span.float-right
+                span(
+                ng-show="doll.cmd.type === 'titles'"
+                ng-bind="doll.cmd." + _model + ".typeValue2 |  currencyCustom "
+                )
+
+        div.row.margin-0( ng-show = "doll." + rules + ".registrationType === 'AMBOS' || doll." + rules + ".registrationType === 'IMPORTE'")
+            span
+                +radioButton( 'Importe', 'doll.cmd.type' )(
+                id='import'
+                )
+            span.float-right
+                span(
+                ng-show="doll.cmd.type === 'titles'"
+                ng-bind="doll.cmd." + _model + ".typeValue2 |  currencyCustom "
+                )
+
+                input.form-control(type="text", placeholder="Importe"
+                ng-required="true"
+                ng-show = "doll.cmd.type === 'import'"
+                ng-model ="doll.cmd." + _model + ".typeValue2"
+                ng-change = "changeSettlement2( '" + _model + "' )"
+                onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                ng-currency
+                )
+    div.col-xs-4.padding-0.date
+        label Fecha de liquidación
+            b( ng-bind="doll.cmd.dates.settlementDate | date:'dd/MM/yyyy'")
+
+
+mixin moneyBankDollConfirmation( _finish )
+    h5
+        if _finish
+            img( src="img/icons/doll/confirmation-buy.svg" )
+            br
+            | Confirmación de Orden de COMPRA
+        else
+            | Verifica tu orden de COMPRA
+
+    div.confirm-container
+        div.row.margin-0
+            div.col-xs-12(ng-if="doll.infoMessage") INFO:
+            div.col-xs-12(ng-if="doll.infoMessage") {{doll.infoMessage}}
+        hr
+        div.row.margin-0
+            div.col-xs-6 Tipo de instrumento:
+            div.col-xs-6 {{ doll.sinstrument.instrumentDesc || doll.sinstrument.bondType || doll.sinstrument.auctionID }}
+        div.row.margin-0(ng-if="type === 'directo'")
+            div.col-xs-6 Títulos:
+            div.col-xs-6 {{ doll.titles }}
+        div.row.margin-0(ng-if="type !== 'subastas'")
+            div.col-xs-6 Tasa:
+            div.col-xs-6 {{ doll.money_calc.originPrice }}
+        div.row.margin-0(ng-if="type === 'directo'")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{ doll.money_calc.dirtyPrice }}
+        div.row.margin-0(ng-if="type === 'subastas'")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{ doll.cmd.auctionPrice.type.price }}
+        div.row.margin-0(ng-if="type === 'reporto'")
+            div.col-xs-6 Plazo:
+            div.col-xs-6 {{ doll.sinstrument.period }}
+
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+        div.row.margin-0
+            div.col-xs-6 Importe:
+            div.col-xs-6 {{ doll.money_calc.amount || doll.import | currency }}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+            'Finalizar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+            'enviar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+            'Modificar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin binnacleResume()
+
+    div.col-xs-6 Medio de instrucción:
+    div.col-xs-6 {{ doll.cmd.media.type.text }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'Teléfono'" )
+        div.col-xs-5 Teléfono:
+        div.col-xs-7 {{ doll.cmd.binnacle.phone }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'Teléfono'" )
+        div.col-xs-5 Hora:
+        div.col-xs-7 {{ doll.cmd.binnacle.time }}
+    div.row.margin-0
+        div.col-xs-5 Fecha:
+        div.col-xs-7 {{ doll.cmd.binnacle.date | date: "dd/MM/yyyy" }}
+    div.row.margin-0( ng-if="doll.cmd.binnacle.comments" )
+        div.col-xs-5 Comentarios:
+        div.col-xs-7
+            div.dollScroll( scrollable always-visible="true") {{ doll.cmd.binnacle.comments }}

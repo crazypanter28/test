@@ -1,0 +1,46 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="accountName.close()"
+        )
+        h4 Clientes
+
+div(ng-if = "accountName.info.personType == '1'" style="padding-bottom: 10px;")
+    table.table(ng-table='accountName.configTable')
+        //tr( ng-if="accountName.loadingInvest")
+            td( colspan="4")
+                .content-spinner
+                    .spinner
+        <colgroup>
+            <col width="32%" />
+            <col width="68%" />
+        </colgroup>
+        tr( ng-repeat="item in $data" ng-click="accountName.nameSelected(item)")
+            td( data-title="'Numero de Cliente'" style="vertical-align: middle;" ) {{ item.clientNumber || item.uniqueClientNumber }}
+            td( data-title="'Nombre'" style="vertical-align: middle;"  ) {{ item.name+' '+ item.lastName + ' '+ item.secondLastName }}
+        tr(ng-if="accountName.showEmptyMessage")
+            td(colspan="2")
+                // Registers No Found
+                +noGeneralResults( 'No existen', ' clientes con el criterio de busqueda.' )
+
+div(ng-if = "accountName.info.personType == '2'" style="padding-bottom: 10px;")
+    table.table(ng-table='accountName.configTable')
+        <colgroup>
+            <col width="30%" />
+            <col width="70%" />
+        </colgroup>
+        tr( ng-repeat="item in $data" ng-click="accountName.nameSelected(item)")
+            td( title="'TIN'" ) {{ item.fiscalIDNumber }}
+            td( title="'Razón Social'"  ) {{ item.companyName }}
+        tr(ng-if="accountName.info.list.length === 0")
+            td(colspan="2")
+                // Registers No Found
+                +noGeneralResults( 'No existen', ' clientes con el criterio de busqueda.' )

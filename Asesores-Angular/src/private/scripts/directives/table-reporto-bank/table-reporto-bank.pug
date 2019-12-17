@@ -1,0 +1,60 @@
+include /views/mixins/icons
+include /views/mixins/tables
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div.col-xs-9()
+    table.reporto-table
+        thead
+            tr( ng-if="tab === 3" )
+                +thCaret( 'Emisora', 'auctionID' )
+                +thCaret( 'Asignación', 'allocationType' )
+                +thCaret( 'Colocador', 'placerName' )
+                +thCaret( 'Inicio', 'openDate' )
+                +thCaret( 'Cierre', 'closeDate' )
+                +thCaret( 'Liquidación', 'settlementDate' )
+                +thCaret( 'Monto Colocado', 'totalIssued' )
+            tr( ng-if="tab === 2" )
+                +thCaret( 'Instrumento', 'bondType' )
+                +thCaret( 'Monto min', 'maxRate' )
+                +thCaret( 'Monto max', 'maxTerm' )
+                +thCaret( 'Plazo', 'period' )
+                +thCaret( 'Tasa', 'effectiveRate' )
+
+            tr( ng-if="tab === 1" )
+                +thCaret( 'Instrumento', 'instrumentDesc' )
+                +thCaret( 'Plazo', 'term' )
+                +thCaret( 'Precio', 'averagePurchaseMargin' )
+                +thCaret( 'Tipo', 'originPriceType' )
+                +thCaret( 'Calificacion', 'qualifier' )
+
+
+        tbody
+            +trLoading( 150, 'loading' )( colspan='5' )
+                // No results
+                //.no-data( ng-if="bandsReporto.length === 0 && !loading" )
+                    +noResults( 'common-msg' )( msg!="<strong>No</strong> se encontraron datos" )
+            tr(ng-if="tab === 3 && bandsAuction.length !== 0 && !loading" ng-repeat="band in bandsAuction | orderBy:sortType:sortReverse" ng-click="showDoll(band)" )
+                td( ng-bind="band.auctionID")
+                td( ng-bind="band.allocationType")
+                td( ng-bind="band.placerName")
+                td( ng-bind="band.openDate | date:'dd/MM/yyyy'")
+                td( ng-bind="band.closeDate | date:'dd/MM/yyyy'")
+                td( ng-bind="band.settlementDate | date:'dd/MM/yyyy'")
+                td( ng-bind="band.totalIssued | currency")
+
+            tr(ng-if="tab === 2 && bandsReporto.length !== 0 && !loading" ng-repeat="band in bandsReporto | orderBy:sortType:sortReverse" ng-click="showDoll(band)" )
+                td( ng-bind="band.bondType")
+                td( ng-bind="band.minAmount | currency" )
+                td( ng-bind="band.maxAmount | currency" )
+                td( ng-bind="band.period " )
+                td( ng-bind="band.effectiveRate " )
+
+            tr(ng-if="tab === 1 && bandsDirect.length !== 0 && !loading" ng-repeat="band in bandsDirect | orderBy:sortType:sortReverse" ng-click="showDoll(band)" )
+                td( ng-bind="band.instrumentDesc")
+                td( ng-bind="band.term" )
+                td( ng-bind="band.averagePurchaseMargin" )
+                td( ng-bind="band.priceType")
+                td( ng-bind="band.qualifier")

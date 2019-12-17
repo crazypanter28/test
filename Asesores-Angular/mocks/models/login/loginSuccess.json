@@ -1,0 +1,9 @@
+{
+   "status": 1,
+   "description": "Login successful",
+   "user":    {
+      "name": "Nadia Aline Garcia Cazariego",
+      "mail": "ngarcia@actinver.com.mx",
+      "employeeID": "53883"
+   }
+}

@@ -1,0 +1,27 @@
+div.tranfers
+  form(name="formEntMun" novalidate)
+    div.tranfers
+      .row
+        .col-md-12
+          .form-group.col-lg-5
+            .col-md-5
+              p.text-right(style='font-size: 13px; font-weight: bold; padding-top:8px;') *Estado
+            .col-md-7.text-left
+              div(act-dropdown='act-dropdown', 
+                ng-model='medicalCtrl.ListMedicalEstados', 
+                selected='medicalCtrl.cmd.estado', 
+                name='listEntidades', 
+                change='medicalCtrl.onChangeListEntity(newValue)')
+              
+              input(type='hidden', 
+                ng-model='medicalCtrl.cmd.estado', 
+                ng-required='true')
+          .form-group.col-lg-6.text-left
+            .col-md-5
+              p.text-right(style='font-size: 13px; font-weight: bold; padding-top:8px;') *Delegación o municipio
+            .col-md-7.text-left
+              div(act-dropdown='act-dropdown', 
+                ng-model='medicalCtrl.ListMedicalLocacion',
+                selected='medicalCtrl.cmd.municipio',
+                name='listPoblaciones',
+                ng-required='true')

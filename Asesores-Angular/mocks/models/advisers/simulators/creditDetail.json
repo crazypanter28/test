@@ -1,0 +1,197 @@
+{
+    "status":1,
+    "messages":[],
+    "result":{
+        "name" : "Mauricio Beltran Ramos",
+        "product": "Crédito Prendario Tasa Variable",
+        "type": "Crédito estandarizado",
+        "quotation":{
+            "amount":500000,
+            "frequencyInt": "Mensual",
+            "frequencyCap": "Mensual",
+            "term": 36,
+            "base": "TIIE 28",
+            "spread": "35000000",
+            "commission": "0"
+        },
+        "payment": 18722.97,
+        "list":[
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            },
+            {
+                "id": 1,
+                "period": 1,
+                "date": "10-05-2017",
+                "balance": 100000,
+                "payment": 1368456,
+                "interest": 1368456,
+                "vat": 116.67,
+                "finalPayment": 1368456,
+                "insult": 98020.89
+            }
+        ]
+    }
+}

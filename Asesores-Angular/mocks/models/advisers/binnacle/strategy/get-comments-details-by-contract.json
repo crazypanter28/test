@@ -1,0 +1,69 @@
+{
+    "response" : {
+        "status" : 1,
+        "messages" : [ {
+            "type" : "N",
+            "criticality" : "INFO",
+            "code" : "AC000",
+            "description" : "OK"
+        } ],
+        "result" : [{
+            "dateTime": "2017‐06‐12",
+            "comments": "Se otorga informacion de seguimiento de mercados",
+            "selections": [{
+                "header" : "TIPO DE CONTACTO",
+                "description" : "Teléfonico"
+            },{
+                "header" : "RESULTADO DE CONTACTO",
+                "description" : "Contacto Exitoso"
+            },{
+                "header" : "MOTIVO",
+                "description" : "Seguimiento"
+            },{
+                "header" : "DETALLE",
+                "description" : "Informacion de Mercados"
+            },{
+                "header" : "DETALLE",
+                "description" : "Ecónomica"
+            }]
+        },{
+            "dateTime": "2017‐08‐12",
+            "comments": "Otro comentario Se otorga informacion de seguimiento de mercados",
+            "selections": [{
+                "header" : "TIPO DE CONTACTO",
+                "description" : "Personal"
+            },{
+                "header" : "RESULTADO DE CONTACTO",
+                "description" : "Contacto Exitoso"
+            },{
+                "header" : "MOTIVO",
+                "description" : "Seguimiento"
+            },{
+                "header" : "DETALLE",
+                "description" : "Informacion de Mercados"
+            },{
+                "header" : "DETALLE",
+                "description" : "Ecónomica"
+            }]
+        },{
+            "dateTime": "2017‐08‐14",
+            "comments": "Nuevo comentario Se otorga informacion de seguimiento de mercados",
+            "selections": [{
+                "header" : "TIPO DE CONTACTO",
+                "description" : "Correo"
+            },{
+                "header" : "RESULTADO DE CONTACTO",
+                "description" : "Contacto Exitoso"
+            },{
+                "header" : "MOTIVO",
+                "description" : "Seguimiento"
+            },{
+                "header" : "DETALLE",
+                "description" : "Informacion de Mercados"
+            },{
+                "header" : "DETALLE",
+                "description" : "Ecónomica"
+            }]
+        }]
+    }
+}

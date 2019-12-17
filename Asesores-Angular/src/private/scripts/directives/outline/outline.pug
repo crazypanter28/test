@@ -1,0 +1,30 @@
+include /views/mixins/info-result
+div
+    .spinner( ng-if="dashboard.outlineExpiredInfo.loading" )
+    div
+        .wt-header
+            h2.title REPERFILAMIENTO
+            
+        .wt-content
+
+            // Item
+            .item
+                h3.topic POR VENCER
+                .details
+                    table-list( table-set="dashboard.outlineSoonInfo" crashed="soon-crashed" type="soon" empty="soon-empty" origin="outline" )
+                    script( type="text/ng-template" id="soon-empty" )
+                        +noResults( "soon" )
+                    script( type="text/ng-template" id="soon-crashed" )
+                        +resourceCrashed()
+
+            // Item 
+            .item
+                h3.topic VENCIDOS
+                div(style='max-height: 170px; overflow-y: auto;' )
+                    .details(ng-if="dashboard.outlineSoonInfo.loading === false")
+                        table-list( table-set="dashboard.outlineExpiredInfo" crashed="expired-crashed" type="expired" empty="expired-empty" origin="outline" )
+                        script( type="text/ng-template" id="expired-empty" )
+                            +noResults( "expired" )
+                        script( type="text/ng-template" id="expired-crashed" )
+                            +resourceCrashed()
+

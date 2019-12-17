@@ -1,0 +1,3 @@
+mixin iconTable( _model )
+    div {{ #{_model} }}
+        i.fa( ng-class="{'fa-arrow-circle-up': "+ _model +" > 0, 'fa-arrow-circle-down': "+ _model +" < 0, 'fa-minus-circle': "+ _model +" === 0 }")

@@ -1,0 +1,42 @@
+{
+  "name": "angular-save-html-to-pdf",
+  "description": "Save HTML in pdf format by angularjs . Directives which are using libraries to convert html to html5canvas and save html5canvas as pdf .",
+  "main": "dist/saveHtmlToPdf.js",
+  "authors": [
+    "hearsid"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "html5canvas",
+    "pdf",
+    "html",
+    "html",
+    "to",
+    "pdf",
+    "angular"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "html2canvas": "git://github.com/niklasvh/html2canvas.git",
+    "jquery": "^1.12",
+    "jsPDF": "git://github.com/MrRio/jsPDF.git"
+  },
+  "_release": "e52506d588",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e52506d588dbbd471f47970c5f6c2a0ae40ce52f"
+  },
+  "_source": "https://grm.actinver.com.mx/rlazo/angular-PDF.git",
+  "_target": "*",
+  "_originalSource": "https://grm.actinver.com.mx/rlazo/angular-PDF.git"
+}

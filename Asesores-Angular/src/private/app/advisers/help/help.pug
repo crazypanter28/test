@@ -1,0 +1,58 @@
+include /views/mixins/info-result
+
+// Binnacle page
+.help-page
+
+    h3.primary-title Ayuda
+    div.content-panel
+        .row
+            .col-xs-9
+                .help-header
+                    i.question-big
+                    h4 PREGUNTAS FRECUENTES
+                div.help-body
+                    .content-spinner( ng-show="help.loadingQuestions" )
+                        .spinner
+                    div( ng-if="!help.questions && !help.loadingQuestions" )
+                        +noGeneralResults( 'No se cargó ', ' el contenido. Vuelve a intentar.' )
+                    div(scrollable="" always-visible="true")
+                        uib-accordion
+                            div(uib-accordion-group='' ng-repeat = 'question in help.questions')
+                                uib-accordion-heading
+                                    | {{ question.question }}
+                                    i.direction-arrow.fa(ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}")
+                                img( ng-if="question.img" ng-src="{{question.img}}")
+                                div {{ question.description}}
+
+
+                    div.comments
+                        .row.margin-0
+                            div.img-comment
+                                img(src="img/icons/help/img_comentario.svg", alt="")
+                            div.text
+                                div.small-text ¿Tienes alguna duda, comentario o pregunta?
+                                div.big-text Hazla en este momento
+
+                        .row.margin-0
+                            textarea.form-control( placeholder="Ingresa tu pregunta aquí." ng-model="help.comments")
+                        .row.margin-0
+                            span.col-xs-8.note Tu duda, comentario o pregunta se analizará para ser considerada en la base de preguntas frecuentes.
+                            span.col-xs-4.buttons
+                                button.btn.btn-primary(ng-disabled="!help.comments" ng-click="help.sendComment()")
+                                    i.icon-mail-btn
+                                    | ENVIAR
+
+            .col-xs-3.padding-left-0
+                .help-header
+                    i.icon-video
+                    h4 VIDEOS Y TUTORIALES
+                div.help-body-right
+                    div.vertical-justify( ng-if="!help.videos && !help.loadingVideos" )
+                        div.message
+                            img(src="img/icons/help/icon_construccion.svg")
+                            p Esta sección se encuentra en #[b Construcción].
+                    .container-videos
+                        div(scrollable="" always-visible="true")
+                            div.item-video( ng-repeat="video in help.videos | limitTo : 4" ng-click="help.showVideo( video )")
+                                div.img( style="background-image: url('{{video.img}}')" )
+                                div.text {{video.title}}

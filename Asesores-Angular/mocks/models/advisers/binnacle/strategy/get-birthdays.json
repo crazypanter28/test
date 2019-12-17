@@ -1,0 +1,56 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      },
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":{
+      "lastWeek":[
+         {
+            "contract":359613,
+            "name":"GUADALUPE GARCIA ORTEGA",
+            "birthDate":-175197600000
+         },
+         {
+            "contract":1010676,
+            "name":"JESSICA DORANTES VILLEGAS",
+            "birthDate":423813600000
+         },
+         {
+            "contract":977688,
+            "name":"MARGARITA NATALIA MORELEON GUIZAR",
+            "birthDate":-743536800000
+         }
+      ],
+      "currentWeek":[
+
+      ],
+      "nextWeek":[
+         {
+            "contract":914602,
+            "name":"MANUELA LUCIA CHI AZAMAR",
+            "birthDate":-743018400000
+         },
+         {
+            "contract":1061530,
+            "name":"NAYMA GARZA KALIL",
+            "birthDate":172562400000
+         },
+         {
+            "contract":1133384,
+            "name":"MARIANA SANCHE DIEZ DE BONILLA",
+            "birthDate":582703200000
+         }
+      ]
+   }
+}

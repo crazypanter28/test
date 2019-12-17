@@ -1,0 +1,55 @@
+include /views/mixins/buttons
+include /views/mixins/input
+include /views/mixins/info-result
+include /views/mixins/radio-button
+
+form.form-inline
+    .row
+            .col-md-10
+                .form-group
+                    input.form-control(type='text', ng-model='poCtrl.searchPO', placeholder='Buscar')
+            .col-md-2
+                button.btn.btn-primary(ng-if="poCtrl.primero" id="primero", ng-click="poCtrl.preview()" ng-disabled="poCtrl.pendingOp.length === 0" ) Generar Reporte
+                button.btn(ng-if="!poCtrl.primero" id="segundo", pdf-save-button='idPrintOp', pdf-name='operacionesPendientes.pdf',class='btn-primary save' ng-disabled="poCtrl.pendingOp.length === 0") Generar Reporte
+
+    br
+    div(pdf-save-content='idPrintOp')
+        table.table.result
+            thead
+                tr
+                    th( ng-repeat="column in poCtrl.columns" ) {{ column.value }}
+                    th
+            tbody
+                tr(
+                    dir-paginate-start="po in poCtrl.pendingOp | filter:poCtrl.searchPO | itemsPerPage : poCtrl.pageSize"
+                    current-page="poCtrl.currentPage"
+                )
+
+                    td {{ po.operationID }}
+                    td {{ po.statusID }}
+                    td {{ po.moduleDescription.description }}
+                    td {{ po.registrationDate.timestamp | date : 'dd-MM-yyyy HH:mm:ss' : timezone }}
+                    td( ng-click="poCtrl.showDetail(po.key)" )
+                        i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !po.show, 'fa-minus-circle': po.show}" )
+                tr(ng-if='po.show', dir-paginate-end)
+                    td(colspan='7', style='background-color: #fff;')
+                        div(style='padding-top:20px')
+                            table.table(style='background-color: #eafbff;')
+                                tr( style="font-size:11px;font-weight:900;background-color:#c4f5ff;" )
+                                    th(ng-repeat='(key,val) in po.operation') {{key}}
+                                tr
+                                    td(ng-repeat='(key,val) in po.operation', style='font-size: 11px;')
+                                        div(ng-if="key != 'Monto' && key != 'Limite Mensual' && key != 'Limite Diario'")
+                                            div(ng-if="val != ''")
+                                                span {{val}}
+                                        div(ng-if="key == 'Monto' || key == 'Limite Mensual' || key == 'Limite Diario'")
+                                            div(ng-if="val != ''")
+                                                span {{val}} | currency}}
+div(ng-if="poCtrl.data")              
+    td(colspan="7")
+        // No results
+        +noGeneralResults( 'No cuentas', ' con operaciones pendientes enviadas.' )
+div
+    .text-center
+        dir-pagination-controls(boundary-links='true', template-url='/scripts/paginator/paginator.html')
+.navbar.navbar-default.navbar-fixed-bottom(ng-if='poCtrl.po.length > 0', style='min-height: 71px !important;background-color: #051C49;padding: 20px;')

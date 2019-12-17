@@ -1,0 +1,41 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="inv.close()"
+        )
+        h4 DETALLE DE LA ORDEN
+
+    div.modal-body
+        div.content
+            div.row.margin-0
+                p.col-xs-6 Importe Operado:
+                p.col-xs-6 {{ inv.info.amount | currency:'$'}}
+                p.col-xs-6 Precio:
+                p.col-xs-6 {{ inv.info.price | currency:'$'}}
+            div.row.margin-0
+                p.col-xs-6 Fecha Captura:
+                p.col-xs-6 {{ inv.info.captureDate | date :'dd/MM/yyyy'}}
+                p.col-xs-6 Fecha Liquidación:
+                p.col-xs-6 {{ inv.info.settlementDate | date :'dd/MM/yyyy'}}
+            div.row.margin-0
+                p.col-xs-6 Fecha Operación:
+                p.col-xs-6 {{ inv.info.operationDate | date :'dd/MM/yyyy'}}
+                p.col-xs-6 Divisa:
+                p.col-xs-6 {{ inv.info.foreignExchangePaid.foreignExchangeDescription}}
+            div.row.margin-0
+                p.col-xs-6 Transacción:
+                p.col-xs-6 {{ inv.info.settlementDesc}}
+                p.col-xs-6 Comisión:
+                p.col-xs-6 {{ inv.info.commisionAmount | currency:'$'}}
+            div.row.margin-0
+                p.col-xs-6 IVA:
+                p.col-xs-6 {{ inv.info.vat}}
+                p.col-xs-6 Usuario:
+                p.col-xs-6 {{ inv.info.userID}}

@@ -1,0 +1,274 @@
+.content-panel.tranfers{
+    padding: 16px 20px;
+
+    form{
+        .col-xs-4.padding-left-0{
+            width: 270px;
+            padding-right: 30px
+        }
+
+        .col-xs-6.padding-left-0{
+            width: 510px;
+        }
+
+        .container-button{
+            padding-top: 68px;
+            float: left;
+            width: 110px;
+        }
+    }
+
+    .act-dropdown button{
+        font-size: 14px;
+        font-family: $font-family-base;
+    }
+
+    .act-nav-tabs{
+
+        li{
+            width: 25%;
+        }
+    }
+
+    .caution{
+        padding: 0 5px;
+        color: $blue11;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .nav.nav-tabs{
+        li{
+            a{
+                span {
+                    background: url("../img/icons/inner-tabs-doubt.svg") no-repeat;
+                    display: inline-block;
+                    height: 10px;
+                    margin-left: 5px;
+                    vertical-align: text-top;
+                    width: 10px;
+                }
+            }
+        }
+    }
+
+    ul.panel-tabs{
+        border-bottom: 0;
+        margin-bottom: -1px;
+        position: relative;
+        z-index: 200;
+
+        li{
+            margin-top: 3px;
+            text-transform: uppercase;
+            float: left;
+
+            a{
+                color: #d2cfcd;
+                border: 1px solid;
+                border-bottom: 0;
+                border-color: $gray;
+                display: block;
+                font-family: "Proxima Semibold";
+                border-radius: 0;
+                margin: 0;
+                height: 27px;
+                font-size: 15px;
+                line-height: 27px;
+                padding: 0 28px;
+
+                span {
+                    background: url("../img/icons/inner-tabs-doubt.svg") no-repeat;
+                    display: inline-block;
+                    height: 10px;
+                    margin-left: 5px;
+                    vertical-align: text-top;
+                    width: 10px;
+                }
+
+                &:hover {
+                    background: none;
+                }
+            }
+
+            &.active{
+                margin-top: 0;
+
+                a{
+                    color: $blue4;
+                    border-color: $blue4;
+                    border-bottom: 1px solid $white;
+                    font-weight: 600;
+                    height: 30px;
+                    line-height: 30px;
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+
+                    span {
+                        background-image: url("../img/icons/inner-tabs-doubt-active.svg");
+                    }
+                }
+            }
+        }
+    }
+
+    .act-dropdown{
+        .nano > .nano-content{
+            max-height: 165px;
+        }
+    }
+}
+
+
+.transfers{
+    border: 1px solid $blue7;
+
+    .row{
+        padding: 0 20px;
+
+        .form-group{
+            margin-bottom: 20px;
+        }
+    }
+
+    hr{
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .title,
+    .subtitle{
+        font-weight: 600;
+        font-family: 'Proxima SemiBold',$font-family-base;
+        font-size: 14px;
+        padding: 3px;
+        padding-left: 16px;
+    }
+
+    .title{
+        background: $tertiary-color;
+        color: white;
+    }
+
+    .subtitle{
+        background: $blue4;
+        color: white;
+    }
+
+    label{
+        color: $form-control-color;
+        font-size: 14px;
+        margin-top: 6px;
+    }
+
+    input.form-control{
+        font-size: 14px;
+        height: inherit;
+        padding: 4px 10px;
+    }
+
+
+    button.save-transfer{
+        background: $blue4;
+        float: right;
+        font-size: 14px;
+        font-weight: 300;
+        height: 25px;
+        margin-bottom: 15px;
+        padding: 0;
+        width: 100px;
+    }
+}
+
+.my-transactions{
+
+    .title{
+        background: $blue7;
+        color: white;
+        font-size: 12px;
+        padding: 4px 16px;
+        text-transform: uppercase;
+        width: 150px;
+    }
+
+    &.dashboard-info{
+        padding-bottom: 0;
+
+        .widget{
+            box-shadow: initial;
+            border: 0;
+            padding: 0;
+            margin-top: 40px;
+            position: relative;
+
+            .title{
+                font-family: $font-family-base;
+                position: absolute;
+                left: 0;
+                margin-top: -25px;
+            }
+
+
+            table{
+                border-color: $blue7;
+
+                thead{
+                    tr{
+                        &:first-child{
+                            height: 25px;
+                        }
+
+                        th[title]{
+                            background: $blue10;
+                            color: $tertiary-color;
+                            font-size: 12px;
+                            font-family: $font-family-base;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            vertical-align: middle;
+
+
+                            &:last-child{
+                                text-align: center;
+                                border-right: 1px solid;
+                            }
+                        }
+                    }
+                }
+
+                tr{
+                    td,
+                    th{
+                        width: 20%;
+                    }
+                }
+                tbody{
+                    tr{
+                        &.no-results{
+                            text-align: center;
+
+                            b{
+                                font-size: 18px;
+                            }
+                        }
+                        td{
+                            color: $gray2;
+                            font-family: "Proxima Semibold", $font-family-base;
+                            font-size: 10px;
+                            font-weight: 600;
+                            padding: 4px 8px;
+
+                            .nano>.nano-content{
+                                max-height: 150px;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+
+}

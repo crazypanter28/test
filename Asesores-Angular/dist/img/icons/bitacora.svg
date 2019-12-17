@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>BIRACORA_ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.000672916667 0.000191387559 14.9884497 0.000191387559 14.9884497 18.0437321 0.000672916667 18.0437321 0.000672916667 0.000191387559"></polygon>
+        <rect id="path-3" x="3" y="5.54545455" width="3.61904762" height="3.63636364"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="3.61904762" height="3.63636364" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="9.10000038" y="5.54545455" width="3.61904762" height="3.63636364"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="3.61904762" height="3.63636364" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <rect id="path-7" x="3" y="11" width="3.61904762" height="3.63636364"></rect>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="3.61904762" height="3.63636364" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+        <polygon id="path-9" points="9.10000038 11 12.719048 11 12.719048 13.3984457 12.1727846 13.9763282 11.5488633 14.6363636 9.10000038 14.6363636"></polygon>
+        <mask id="mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="3.61904762" height="3.63636364" fill="white">
+            <use xlink:href="#path-9"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BIRACORA_ICON" transform="translate(0.000000, -1.000000)">
+            <g id="Group">
+                <g id="Group-Copy" transform="translate(7.880952, 9.681818) rotate(-180.000000) translate(-7.880952, -9.681818) translate(0.380952, 0.181818)">
+                    <g id="Page-1">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M5.15905982,2.27468381 L4.66942759,2.27468381 L4.24837402,2.27468381 L4.24837402,2.95889434 L4.24837402,3.0947795 L14.1473039,3.0947795 L14.1473039,5.46861244 L14.1444199,12.9853589 L14.1444199,17.2054545 L13.0456432,17.2054545 L7.58059851,17.2054545 C7.58059851,17.2054545 7.54503006,17.2054545 7.49600327,17.2064115 C7.44889911,17.2054545 7.41525327,17.2054545 7.41525327,17.2054545 L1.92329196,17.2054545 L0.823553869,17.2054545 L0.823553869,12.9853589 L0.823553869,6.35605543 L0.000672916667,6.35605543 L0.000672916667,12.9853589 L0.000672916667,17.6245933 C0.000672916667,17.8772249 0.165056845,18.0437321 0.411152083,18.0437321 L1.92329196,18.0437321 L7.14031875,18.0437321 L7.82669375,18.0437321 L13.0456432,18.0437321 L14.5558604,18.0437321 C14.802917,18.0437321 14.9682622,17.8772249 14.9682622,17.6245933 L14.9682622,12.9853589 L14.9682622,8.25904306 L14.9682622,7.90688995 C14.9778753,7.87052632 14.9884497,7.83416268 14.9884497,7.79205742 L14.9884497,2.95889434 L14.9884497,2.68521013 C14.9884497,2.43927711 14.8211818,2.27468381 14.5673961,2.27468381 L5.15905982,2.27468381 Z" id="Fill-1" fill="#103D81" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+                <use id="Rectangle" stroke="#0F3F88" mask="url(#mask-4)" stroke-width="2" fill="#0F3F88" xlink:href="#path-3"></use>
+                <use id="Rectangle-Copy" stroke="#0F3F88" mask="url(#mask-6)" stroke-width="2" fill="#0F3F88" xlink:href="#path-5"></use>
+                <use id="Rectangle-Copy-3" stroke="#0F3F88" mask="url(#mask-8)" stroke-width="2" fill="#0F3F88" xlink:href="#path-7"></use>
+                <use id="Rectangle-Copy-2" stroke="#0F3F88" mask="url(#mask-10)" stroke-width="2" fill="#0F3F88" xlink:href="#path-9"></use>
+                <g id="Group-7-Copy-2" transform="translate(9.000000, 1.000000)" fill="#0F3F88">
+                    <ellipse id="Oval-2-Copy-6" cx="0.478991597" cy="0.640449321" rx="0.478991597" ry="0.353804496"></ellipse>
+                    <ellipse id="Oval-2-Copy-8" cx="0.478991597" cy="2.71744641" rx="0.478991597" ry="0.353804496"></ellipse>
+                    <rect id="Rectangle-6" x="0" y="0.640449321" width="0.957983193" height="2.08682341"></rect>
+                </g>
+                <g id="Group-7-Copy-4" transform="translate(11.000000, 1.000000)" fill="#0F3F88">
+                    <ellipse id="Oval-2-Copy-6" cx="0.478991597" cy="0.640449321" rx="0.478991597" ry="0.353804496"></ellipse>
+                    <ellipse id="Oval-2-Copy-8" cx="0.478991597" cy="2.71744641" rx="0.478991597" ry="0.353804496"></ellipse>
+                    <rect id="Rectangle-6" x="0" y="0.640449321" width="0.957983193" height="2.08682341"></rect>
+                </g>
+                <g id="Group-4" transform="translate(3.800000, 1.000000)" fill="#0F3F88">
+                    <g id="Group-7-Copy-5">
+                        <ellipse id="Oval-2-Copy-6" cx="0.478991597" cy="0.640449321" rx="0.478991597" ry="0.353804496"></ellipse>
+                        <ellipse id="Oval-2-Copy-8" cx="0.478991597" cy="2.71744641" rx="0.478991597" ry="0.353804496"></ellipse>
+                        <rect id="Rectangle-6" x="0" y="0.640449321" width="0.957983193" height="2.08682341"></rect>
+                    </g>
+                    <g id="Group-7-Copy-6" transform="translate(2.000000, 0.000000)">
+                        <ellipse id="Oval-2-Copy-6" cx="0.478991597" cy="0.640449321" rx="0.478991597" ry="0.353804496"></ellipse>
+                        <ellipse id="Oval-2-Copy-8" cx="0.478991597" cy="2.71744641" rx="0.478991597" ry="0.353804496"></ellipse>
+                        <rect id="Rectangle-6" x="0" y="0.640449321" width="0.957983193" height="2.08682341"></rect>
+                    </g>
+                </g>
+                <g id="+" transform="translate(11.576614, 13.483254)" stroke="#0F3F88" stroke-width="0.8" stroke-linecap="square">
+                    <path d="M3.36961451,0.880903146 L3.36961451,5.42329847" id="Line-Copy-2"></path>
+                    <path d="M0.950869237,2.99787347 L5.80512688,2.99787347" id="Line-Copy-3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

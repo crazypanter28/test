@@ -1,0 +1,127 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idUserRole": 1,
+		"idEmployee": 53883,
+		"userCode": "ngarcia",
+		"name": "Nadia Aline Garcia Cazariego",
+		"roleDescription": "ADMINISTRADOR",
+		"creationDate": "11/02/2016 17:06:30",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 2,
+		"idEmployee": 6105,
+		"userCode": "jhauswaldt",
+		"name": "Johannes Christian Hauswaldt Alvarez",
+		"roleDescription": "ADMINISTRADOR",
+		"creationDate": "11/02/2016 17:06:30",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 7,
+		"idEmployee": 62080,
+		"userCode": "ireynoso",
+		"name": "Iñigo Xavier Reynoso Malvido",
+		"roleDescription": "CONTRALORIA",
+		"creationDate": "12/02/2016 13:48:58",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 8,
+		"idEmployee": 61986,
+		"userCode": "fbolanos",
+		"name": "Fernando Federico Bolaños Gonzalez",
+		"roleDescription": "REPORTES",
+		"creationDate": "12/02/2016 13:52:04",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 9,
+		"idEmployee": 50230,
+		"userCode": "amontano",
+		"name": "Alvaro Florentino Montaño Zarate",
+		"roleDescription": "CONTRALORIA",
+		"creationDate": "16/02/2016 11:12:40",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 10,
+		"idEmployee": 53883,
+		"userCode": "ngarcia",
+		"name": "Nadia Aline Garcia Cazariego",
+		"roleDescription": "CONTRALORIA",
+		"creationDate": "16/02/2016 17:02:08",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 11,
+		"idEmployee": 53883,
+		"userCode": "ngarcia",
+		"name": "Nadia Aline Garcia Cazariego",
+		"roleDescription": "REPORTES",
+		"creationDate": "22/03/2016 12:45:40",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 12,
+		"idEmployee": 60812,
+		"userCode": "jvillalon",
+		"name": "Jose Emiliano Villalon Reyes",
+		"roleDescription": "REPORTES",
+		"creationDate": "23/08/2016 11:25:17",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 13,
+		"idEmployee": 60812,
+		"userCode": "jvillalon",
+		"name": "Jose Emiliano Villalon Reyes",
+		"roleDescription": "ASESOR",
+		"creationDate": "08/09/2016 09:28:21",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 14,
+		"idEmployee": 60812,
+		"userCode": "jvillalon",
+		"name": "Jose Emiliano Villalon Reyes",
+		"roleDescription": "CONTRALORIA",
+		"creationDate": "23/01/2017 11:08:31",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 15,
+		"idEmployee": 53883,
+		"userCode": "ngarcia",
+		"name": "Nadia Aline Garcia Cazariego",
+		"roleDescription": "GERENTE",
+		"creationDate": "18/04/2017 15:47:11",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 16,
+		"idEmployee": 53883,
+		"userCode": "ngarcia",
+		"name": "Nadia Aline Garcia Cazariego",
+		"roleDescription": "ASESOR",
+		"creationDate": "25/04/2017 08:50:35",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idUserRole": 17,
+		"idEmployee": 60812,
+		"userCode": "jvillalon",
+		"name": "Jose Emiliano Villalon Reyes",
+		"roleDescription": "ADMINISTRADOR",
+		"creationDate": "25/04/2017 08:51:47",
+		"eliminationDate": null,
+		"status": true
+	}]
+}

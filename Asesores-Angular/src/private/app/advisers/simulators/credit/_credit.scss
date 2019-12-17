@@ -1,0 +1,224 @@
+
+.page-credit{
+
+    .from-avatar{
+        .col-xs-3{
+            width: 10%;
+        }
+
+        .col-xs-4{
+            padding-left: 0;
+            padding-right: 30px;
+            width: 270px;
+        }
+
+    }
+
+    .form-control{
+        height: 32px;
+    }
+
+
+    .pane-subtitle{
+        background-color: #1750a7;
+        color: white;
+        height: 25px;
+        line-height: 25px;
+        margin: 0 -15px;
+        padding: 0 15px;
+    }
+
+    .form-quotation{
+        padding-top: 12px;
+    }
+
+    .form-inline{
+        border-right: 1px solid #d2cfcd;
+        padding-left: 40px;
+        margin-bottom: 35px;
+        width: 540px;
+        margin-right: 10px;
+
+        > div{
+            margin-bottom: 19px;
+
+            &:nth-child(7){
+                margin-bottom: 0;
+            }
+        }
+
+
+        label{
+            font-size: 14px;
+            margin-right: 44px;
+            vertical-align: bottom;
+            width: 200px;
+        }
+
+        .column-right {
+            display: inline-block;
+            width: 200px;
+            vertical-align: top;
+            color: #4a4a4a;
+
+            .percentage {
+                float: right;
+                color: #0f3f88;
+                font-weight: bold;
+            }
+        }
+
+        input {
+            height: 24px;
+            font-size: 14px;
+            width: 200px;
+            padding: 0;
+        }
+
+        .act-radio-custom {
+            margin-right: 10px;
+            width: auto;
+        }
+
+
+        .btn-calculate{
+            bottom: 0;
+            margin-bottom: -34px;
+            position: absolute;
+            width: 448px;
+        }
+    }
+
+
+    .cash-available{
+        display: table;
+        background: #e9f2ff;
+        border: 1px solid $blue4;
+        height: 282px;
+        text-align: center;
+        width: 290px;
+
+        div.cash-container{
+            display: table-cell;
+            vertical-align: middle;
+
+            p{
+                font-size: 24px;
+                margin-top: 14px;
+
+                b{
+                    display: block;
+                    font-size: 18px;
+                    margin-bottom: 24px;
+                    color: $tertiary-color;
+                }
+            }
+        }
+    }
+
+    .button-quotation{
+        margin-top: 15px;
+        text-align: right;
+
+        button{
+            width: 120px;
+        }
+    }
+
+    .adviser-data{
+        background: rgba($blue4, 0.75 );
+        color: white;
+        height: 40px;
+        margin-bottom: 10px;
+        line-height: 40px;
+    }
+
+    .title-data {
+        color: #1750a7;
+    }
+
+    .quote-detail{
+        display: table;
+        margin-bottom: 15px;
+        width: 100%;
+
+        .total{
+            background: rgba(#051c48, 0.5);
+            color: white;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: table-footer-group;
+        }
+
+        .separated{
+            background: $blue10;
+            border: 1px solid $blue4;
+            display: table-cell;
+            vertical-align: middle;
+            height: 75px;
+            width: 100%;
+
+            >div{
+                float: left;
+                color: $blue4;
+                font-family: "Proxima Light";
+                text-align: center;
+                width: calc( 100% / 7 );
+
+                p{
+                    color: #767676;
+                    font-family: "Proxima SemiBold";
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    .button-table-quotation{
+        padding-top: 15px;
+
+        button{
+            float: right;
+            width: 120px;
+            margin-right: 20px;
+
+            &:first-child{
+                margin-right: 0;
+            }
+        }
+    }
+
+    .quote-table{
+
+        table{
+
+            tr{
+                th,
+                td{
+                    text-align: right;
+
+                    &:first-child{
+                        width: auto;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .foot{
+                background: #00bebe;
+
+                tr{
+
+                    font-size: 14px;
+                    height: 30px;
+
+                    td{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,421 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+
+form(name="formEmitContractor" novalidate)
+       .panel-body
+            .row
+                .form-group.col-md-12
+                    .col-md-4.text-right
+                        img(src="img/logos/mapfre.svg" style="width: 170px;height: 100px")
+                    .col-md-4
+                        h4
+                            span(lang="es") Número de cotización: {{medicalCtrl.emission.quotationNumber}}
+                        h4
+                            span(lang="es") Fecha de Inicio Vigencia: {{medicalCtrl.emission.fechaInicioVigCotizacion}}
+                        h4
+                            span(lang="es") Fecha de Fin Vigencia: {{medicalCtrl.emission.fechaFinVigCotizacion}}
+            div
+                .row
+                    .form-group.col-md-12
+                        .col-md-4.text-right
+                        .col-md-4(ng-if="medicalCtrl.emitContratante.tipoPersona === '1'")
+                            .row
+                                .form-group.col-lg-12.pf
+                                    label.col-md-4.control-label
+                                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo persona
+                                    .col-md-8
+                                        label.act-radio-custom( for="Fisica" )
+                                            input( type="radio" name="typePeopleContract" id="Fisica" value="1" ng-model="medicalCtrl.emitContratante.tipoPersona" )
+                                            span.css-label
+                                            | Fisica
+                                        label.act-radio-custom( for="Moral" )
+                                            input( type="radio" name="typePeopleContract" id="Moral" value="2" ng-model="medicalCtrl.emitContratante.tipoPersona" )
+                                            span.css-label
+                                            | Moral
+                .row
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.emitContratante.tipoPersona === '2'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo persona
+                        .col-md-8
+                            label.act-radio-custom( for="Fisica" )
+                                input( type="radio" name="typePeopleContract" id="Fisica" value="1" ng-model="medicalCtrl.emitContratante.tipoPersona" )
+                                span.css-label
+                                | Fisica
+                            label.act-radio-custom( for="Moral" )
+                                input( type="radio" name="typePeopleContract" id="Moral" value="2" ng-model="medicalCtrl.emitContratante.tipoPersona" )
+                                span.css-label
+                                | Moral
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Sexo
+                        .col-md-8
+                            label.act-radio-custom( for="Masculino" )
+                                input( type="radio" name="sexContract" id="Masculino" value="masculino" ng-model="medicalCtrl.emitContratante.sexContract" )
+                                span.css-label
+                                | Masculino
+                            label.act-radio-custom( for="Femenino" )
+                                input( type="radio" name="sexContract" id="Femenino" value="femenino" ng-model="medicalCtrl.emitContratante.sexContract" )
+                                span.css-label
+                                | Femenino
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;" ng-if="medicalCtrl.typePeopleContract === '1'") *Fecha de nacimiento
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;" ng-if="medicalCtrl.typePeopleContract === '2'") *Fecha de Constitución
+                        .col-md-8
+                            //- dates-range-picker(
+                            //-     date="medicalCtrl.emitContratante.fechaNacimiento"
+                            //-     placeholder="dd/mm/aaaa"
+                            //-     options='medicalCtrl.optionsdpx'
+                            //-     is-single="true"
+                            //-     required)
+                            .content-dates-range-picker
+                                .field
+                                    input.form-control(date-range-picker  type="text"
+                                        ng-model="medicalCtrl.emitContratante.fechaNacimiento"
+                                        placeholder="dd/mm/aaaa"
+                                        options='medicalCtrl.optionsdpxContract'
+                                        ng-pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/"
+                                        ng-blur="medicalCtrl.onChangeNombreContrc();medicalCtrl.validaRfcContratanteAsegurados()"
+                                        required
+                                        )
+                                    span.icon-calendar
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Edad
+                        .col-md-8
+                            input(type="text" id="edad" name="edad" placeholder="Edad" ng-model="medicalCtrl.emitContratante.edad"
+                                minlength="2" maxlength="3" ng-disabled="true"
+                                required).form-control.required.disabled
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '2'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Razon Social
+                        .col-md-8
+                            input(type="text" id="Razons" name="Razons" placeholder="Razon Social" ng-model="medicalCtrl.razon"
+                                value=""
+                                ng-disabled="false"
+                                maxlength="75"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'Razons'); medicalCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                .row(ng-if="medicalCtrl.typePeopleContract === '1'")
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Nombre(s)
+                        .col-md-8
+                            input(type="text" id="nombres" name="nombres" placeholder="Nombre(s)" ng-model="medicalCtrl.emitContratante.nombres"
+                                value=""
+                                ng-disabled="false"
+                                minlength="3" maxlength="80"
+                                ng-blur="medicalCtrl.onChangeNombreContrc()"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'nombres'); medicalCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Apellido Paterno
+                        .col-md-8
+                            input(type="text" id="apePaterno" name="apePaterno" placeholder="Apellido paterno" ng-model="medicalCtrl.emitContratante.primerApellido"
+                                value=""
+                                minlength="3" maxlength="80"
+                                ng-disabled="false"
+                                ng-blur="medicalCtrl.onChangeNombreContrc()"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'apePaterno'); medicalCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Apellido Materno
+                        .col-md-8
+                            input(type="text" id="apeMaterno" name="apeMaterno" placeholder="Apellido materno" ng-model="medicalCtrl.emitContratante.segundoApellido"
+                                value=""
+                                minlength="3" maxlength="80"
+                                ng-disabled="false"
+                                ng-blur="medicalCtrl.onChangeNombreContrc()"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'apeMaterno'); medicalCtrl.soloText($event,true)"
+                                required).form-control.upperCaseInput.required
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *RFC
+                        .col-md-8
+                            input(type="text" id="rfcUser" name="rfcUser" placeholder="ABCD123456" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="medicalCtrl.emitContratante.rfc"
+                                maxlength="13" minlength="10"
+                                ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event)" required).form-control.required.upperCaseInput
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Profesión
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListMedicalProfesiones"
+                                selected="medicalCtrl.emitContratante.profesion.type"
+                                name="ListProfesionContract"
+                                
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.emitContratante.profesion.type'
+                                    ng-required='false'
+                                    name="ListProfesionContract"
+                                )
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '2'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Giro mercantil, actividad u objeto social
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListGiroMercantil"
+                                selected="medicalCtrl.emitContratante.giroEmpresa.type"
+                                name="ListGiroMercantil"
+                                change="medicalCtrl.getCatalogGiroMerc(lastValue, newValue)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.emitContratante.giroEmpresa.type'
+                                    ng-required='true'
+                                    name="ListGiroMercantil"
+                                    
+                                )
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") País de nacimiento
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListNacionalidad"
+                                selected="medicalCtrl.emitContratante.paisNacimiento.type"
+                                name="ListNacionalidad"
+                                change="medicalCtrl.getCatalogPais(lastValue, newValue)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.emitContratante.paisNacimiento.type'
+                                    ng-required='false'
+                                    name="ListNacionalidad"
+                                )
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '2'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Folio mercantil
+                        .col-md-8
+                            input(type="text" id="Foliomercantil" name="Foliomercantil" placeholder="Folio mercantil"
+                                ng-model="medicalCtrl.emitContratante.folioMercantil"
+                                value=""
+                                ng-disabled="false"
+                                maxlength="30"
+                                ng-keypress="medicalCtrl.soloTextAndNum($event,true)"
+                                required).form-control.upperCaseInput.required
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Nacionalidad
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListNacionalidad"
+                                selected="medicalCtrl.emitContratante.nacionalidad.type"
+                                name="ListNacionalidad"
+                                change="medicalCtrl.getCatalogNacionalidad(lastValue, newValue)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.emitContratante.nacionalidad.type'
+                                    ng-required='false'
+                                    name="ListNacionalidad"
+                                )
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Tipo de identificación
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListMedicalIdentificacion"
+                                selected="medicalCtrl.emitContratante.tipoIdentificacion.type"
+                                name="ListTypeIdent"
+                                change="medicalCtrl.getCatalogTypeIdentificacion(lastValue, newValue)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.emitContratante.tipoIdentificacion.type'
+                                    ng-required='true'
+                                    name="ListTypeIdent"
+                                    required
+                                )
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Número identificación
+                        .col-md-8
+                            input(type="text" id="numIdentificacion" name="numIdentificacion" placeholder="numero de identificacion" ng-model="medicalCtrl.emitContratante.numeroIdentificacion"
+                                value=""
+                                ng-disabled="false"
+                                maxlength="60"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'numIdentificacion'); medicalCtrl.soloTextAndNum($event,true)"
+                                required).form-control.upperCaseInput.required
+                .row
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") CURP
+                        .col-md-8
+                            input(type="text" id="CURP" name="CURP" placeholder="CURP" ng-model="medicalCtrl.emitContratante.curp"
+                                
+                                value=""
+                                ng-disabled="false"
+                                maxlength="18"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event);medicalCtrl.charrepeatText($event,'nombres'); medicalCtrl.soloNumAndText($event,true);"
+                                ng-pattern="/^[A-Za-z]{1}[AEIOUXaeioux]{1}[A-Za-z]{2}((([0-9]{2})([0][13578]|[1][02])(([0][1-9]|[12][0-9])|[3][01]))|(([0-9]{2})([0][469]|[1][1])(([0][1-9]|[12][0-9])|[3][0]))|(([02468][048]|[13579][26])[0][2]([0][1-9]|[12][0-9]))|(([0-9]{2})[0][2]([0][1-9]|[1][0-9]|[2][0-8])))[HMhm]{1}(AS|as|BC|bc|BS|bs|CC|cc|CS|cs|CH|ch|CL|cl|CM|cm|DF|df|DG|dg|GT|gt|GR|gr|HG|hg|JC|jc|MC|mc|MN|mn|MS|ms|NT|nt|NL|nl|OC|oc|PL|pl|QT|qt|QR|qr|SP|sp|SL|sl|SR|sr|TC|tc|TS|ts|TL|tl|VZ|vz|YN|yn|ZS|zs|NE|ne)[B-Db-dF-Hf-hJ-Nj-nP-Tp-tV-Zv-z]{3}[0-9A-Za-z]{1}[0-9]{1}$/"
+                                
+                                ).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '2'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Nombre Representante Legal
+                        .col-md-8
+                            input(type="text" id="Representante" name="Representante" placeholder="Representante Legal" ng-model="medicalCtrl.emitContratante.representante"
+                                value=""
+                                ng-disabled="false"
+                                minlength="3" maxlength="30"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'Representante'); medicalCtrl.soloTextAndNum($event,true)"
+                                required).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") F.E.A.(Firma Electrónica Avanzada)
+                        .col-md-8
+                            input(type="text" id="FEA" name="FEA" placeholder="Firma Electronica Avanzada" ng-model="medicalCtrl.emitContratante.FEA"
+                                value=""
+                                ng-disabled="false"
+                                minlength="3" maxlength="80"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'nombres');"
+                                ).form-control.upperCaseInput.required
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Documento F.E.A.
+                        .col-md-8
+                            input(type="file" id="files" name="files"
+                                ng-model="medicalCtrl.file1"
+                                ng-blur="medicalCtrl.handleFileSelect($event)"
+                                accept="image/jpeg"
+                                )
+            div
+                .row
+                    .col-md-12
+                        h2.text-center.tit
+                            span(id="titleEmission5" lang="es") Contacto
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Correo electrónico
+                        .col-md-8.text-left
+                            input(ng-pattern="/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/" type="email" name="medicalCtrl.emailUser1" placeholder="correo@mail.com"  maxlength="30" ng-model="medicalCtrl.emitContratante.email" style="text-transform: uppercase;" required).form-control
+                            div(role='alert')
+                                span.error(ng-show='form.input.$error.required')
+                                    | Se requiere
+                                span.error(ng-show='form.input.$error.email')
+                                    | Correo no válido
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Teléfono fijo
+                        .col-md-8
+                            input(type="tel" 
+                                required
+                                name="phoneContact1" 
+                                id="phoneContact1"
+                                ng-model="medicalCtrl.emitContratante.telefono"
+                                placeholder="Teléfono fijo" 
+                                minlength="7" 
+                                maxlength="10"
+                                numbers-only="numbers-only"
+                                ng-keypress="medicalCtrl.charrepeat($event,medicalCtrl.phoneUser2);medicalCtrl.soloNumero($event);medicalCtrl.numberSecuential($event,'phoneContact2');"
+                                ng-change="medicalCtrl.onValidateDuplicateTel(medicalCtrl.emitContratante.telefono, 'f')"
+                                ).form-control.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Teléfono celular
+                        .col-md-8
+                            input(type="tel" 
+                                required
+                                name="phoneContact2" 
+                                id="phoneContact2"
+                                ng-model="medicalCtrl.emitContratante.celular"
+                                placeholder="Teléfono celular" 
+                                minlength="10" 
+                                maxlength="12"
+                                numbers-only="numbers-only"
+                                ng-keypress="medicalCtrl.charrepeat($event,medicalCtrl.phoneUser2);medicalCtrl.soloNumero($event);medicalCtrl.numberSecuential($event,'phoneContact2');"
+                                ng-change="medicalCtrl.onValidateDuplicateTel(medicalCtrl.emitContratante.celular, 'c')"
+                                ).form-control.required
+            div
+                .row
+                    .col-md-12
+                        h2.text-center.tit
+                            span(id="titleEmission5" lang="es") Domicilio
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Calle
+                        .col-md-8
+                            input(type="text" id="calle1" name="calle1" placeholder="Calle"
+                                ng-model="medicalCtrl.emitContratante.calle"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'calle1')"
+                                minlength="6" maxlength="30"
+                                alpha-numeric="alpha-numeric"
+                                required).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *No. Exterior
+                        .col-md-8
+                            input(type="text" ng-model="medicalCtrl.emitContratante.numeroExterior" placeholder="No. Exterior" maxlength="10" alpha-numeric="alpha-numeric" required).form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") No. Interior
+                        .col-md-8
+                            input(type="text" ng-model="medicalCtrl.emitContratante.numeroInterior" placeholder="No. Interior" maxlength="10" alpha-numeric="alpha-numeric").form-control.upperCaseInput
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Colonia
+                        .col-md-8
+                            input(required type="text" id="colonia1" name="colonia1" placeholder="Colonia"
+                                ng-model="medicalCtrl.emitContratante.colonia"
+                                minlength="6" maxlength="30"
+                                  ng-keypress="medicalCtrl.charrepeatText($event,'colonia1')"
+                                
+                                alpha-numeric="alpha-numeric"
+                                ).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *C.P.
+                        .col-md-8
+                            input(type="text" id="CP" name="CP" placeholder="C.P."
+                                ng-model="medicalCtrl.emitContratante.codigoPostal"
+                                 maxlength="5"
+                                ng-keypress="medicalCtrl.soloNum($event)"
+                                required).form-control.upperCaseInput.required
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Estado
+                        .col-md-8
+                            div( act-dropdown
+                                 ng-model='medicalCtrl.entidadesEmision', 
+                                 selected='medicalCtrl.emitContratante.estado', 
+                                 name='listEntidades', 
+                                 change='medicalCtrl.onChangeListEntityEmission(newValue)'
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='mmedicalCtrl.emitContratante.estado'
+                                    ng-required='true'
+                                    required
+                                    name="ListEntityFiscal"
+                                )
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Delegación o municipio
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model='medicalCtrl.ListMedicalLocacionEmission',
+                                selected='medicalCtrl.emitContratante.municipio',
+                                name='listPoblaciones',
+                                change='selectPoblacion(lastValue, newValue)'
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.emitContratante.municipio'
+                                    ng-required='true'
+                                    name="ListEntityContractor"
+                                    required
+                                )

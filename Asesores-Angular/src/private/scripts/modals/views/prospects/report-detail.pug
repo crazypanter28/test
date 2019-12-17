@@ -1,0 +1,83 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+include /app/advisers/goals/page-instructions
+
+// Common page
+.common-page.goals-modal.modal-center-info
+
+        div.modal-header
+            img.icon( src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="reportDetail.close()" )
+            h4 {{ reportDetail.name }}
+
+        div.modal-body
+
+            // Spinner
+            .loader-wrapper( ng-if="adviser.get_info" )
+                .spinner
+
+            // No results
+            .no-results( ng-if="!adviser.get_info && adviser.report_empty" )
+                +noResults("no-results")( msg!="No se encontró <strong>información relacionada</strong>." )
+
+            // Results
+            div
+               table#idTablaResultadosReportDetail.table.goals-table.sm-head
+                                thead
+                                    tr.prev-headerReportDetail
+
+                                        th( ng-if-start="!modal" colspan="2" )
+                                        th( ng-if="!modal" colspan="3" style="text-align: center; color: white; background: #7C9DCD;"  ) AVANCE TOTAL PERIODO ACTUAL
+                                        th( ng-if-end="" colspan="6" style="text-align: center; color: #0f3f88; background: #B9CAE5;" ) EFECTIVIDAD ACUMULADO
+                                    tr(style="background: #1750a7; color: white;")
+                                        th #
+                                        th Estrategia 
+                                        th Psb
+                                        th Pros
+                                        th Apert / Incr
+                                        th Psb
+                                        th Pros
+                                        th % EFECT(1)
+                                        th Apert / Incr
+                                        th % EFECT(2)
+                                        th % EFECT TOTAL
+                                tbody
+                                    tr( ng-repeat="info in reportDetail.listReportDetail" )
+                                        td(style="text-align: left;") {{ info.idStrategy }}
+                                        td(style="text-align: left;") {{ info.strategy }} 
+                                        td(style="text-align: center;") {{ info.psbPA }} 
+                                        td(style="text-align: center;") {{ info.prosPA }} 
+                                        td(style="text-align: center;") {{ info.apertPA }}  
+                                        td(style="text-align: center;") {{ info.psbAC }} 
+                                        td(style="text-align: center;") {{ info.prosAC }} 
+                                        td(style="text-align: center;") {{ info.efect1 }}% 
+                                        td(style="text-align: center;") {{ info.apertAC }} 
+                                        td(style="text-align: center;") {{ info.efect2 }}%
+                                        td(style="text-align: center;") {{ info.efectTotal }}%
+                                         
+
+                                    tr.totals( ng-if="modal" )
+                                        td( colspan="4" ) TOTALES:
+                                        td {{ data['goals-positions'] | sumByColumn:'posicionInicialAcumAnual' | currency }}
+                                        td {{ data['goals-positions'] | sumByColumn:'posicionFinalAcumAnual' | currency }}
+                                        td {{ data['goals-positions'] | sumByColumn:'variacionAcumAnual' | currency }}
+
+                                    tr.totals( ng-if="!modal" ng-repeat='totals in data["sum-goals-positions"]' )
+                                        td {{ totals.concepto }}:
+                                        td {{ totals.posicionInicioMes | currency }}
+                                        td {{ totals.posicionFecha | currency }}
+                                        td( colspan="7" )
+
+                                    tr( ng-if="data['goals-positions'].length === 0 && data['sum-goals-positions'].length === 0" )
+                                        td( colspan="10" )
+
+                                            // No results
+                                            .no-results
+                                                +noResults("no-results")( msg!="<strong>No se encontraron</strong> resultados con esta<br />búsqueda. Vuelve a intentar con otro dato." )
+
+
+        div.modal-footer
+            div 
+                button(ng-click="reportDetail.reportDetail()" style="background: #0f3f88; color: white;").btn.btn-primary Exportar
+                            img( src="img/icons/excel.svg" width="16px" style="margin-left:5px;" )                 
+                +btnSubmit( 'CERRAR', 'save' )( ngClick="reportDetail.close()" ) 
+                  

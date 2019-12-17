@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_editar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="Administrador-Copy-90" transform="translate(-423.000000, -380.000000)" stroke="#FFBA3A" stroke-width="1.5">
+            <g id="actividad01-copy-17" transform="translate(215.000000, 359.000000)">
+                <g id="icon_editar" transform="translate(209.000000, 22.000000)">
+                    <path d="M8.32772952,11.1495505 L11.6642376,12.1984685 L10.7697461,8.9546897 L2.50530338,0.60268053 C2.41209126,0.513650383 2.26102331,0.513650383 2.1678112,0.60268053 L0.0770059585,2.49597743 C0.0304021982,2.53699362 0.00277046171,2.59403285 0.000197196651,2.65453106 C-0.00237606841,2.71502927 0.0203202264,2.77402372 0.063286764,2.8185197 L8.32772952,11.1495505 Z" id="Shape" stroke-linecap="round"></path>
+                    <path d="M3.82234605,1.93218403 L1.38032943,4.13753402" id="Shape" stroke-linecap="round"></path>
+                    <path d="M11.3349769,11.0184358 L10.4459731,11.820858" id="Shape" stroke-linecap="round"></path>
+                    <path d="M12.3529412,13 L2.2034811,13" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

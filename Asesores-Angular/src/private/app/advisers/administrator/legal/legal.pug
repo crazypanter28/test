@@ -1,0 +1,18 @@
+.legal
+    .section-title
+        span Aviso legal
+
+    .content
+
+        .preview
+            scrollable(always-visible="true")
+                h5.title-legal Aviso legal actual
+                div.bind-html(ng-bind-html="legal.html")
+
+
+        .editor
+            text-angular(ng-model="legal.htmlVariable" ta-toolbar="legal.taOptions")
+
+        .buttons
+            button.btn.btn-default( ng-click="legal.clearEditor()" ng-disabled="legal.htmlVariable.length === 0") Limpiar
+            button.btn.btn-primary( ng-click="legal.setTextLegal()" ng-disabled="legal.htmlVariable.length === 0") Guardar

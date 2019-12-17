@@ -1,0 +1,61 @@
+include /views/mixins/buttons
+.content-panel(ng-if = "medicalCtrl.steps.emision")
+    div                
+        .row
+            .col-xs-12
+                #accordionDatosdelContratante.accordion
+                    .card
+                        #headDatosdelContratante.card-header
+                            .row
+                                .collapsed(type='button', data-toggle='collapse', data-target='#collapseDatosdelContratante', aria-expanded='false', aria-controls='collapseDatosdelContratante')
+                                    div(class="{{medicalCtrl.colorCollapsables}}" ng-class="{colorCollapsablesSelected:medicalCtrl.colapseEmision1}" ng-click="medicalCtrl.colapseEmision1 = medicalCtrl.colapseEmision1 ? false : true")
+                                        h4  Datos del Contratante 
+                        #collapseDatosdelContratante.collapse(aria-labelledby='headDatosdelContratante', data-parent='#accordionDatosdelContratante')
+                            .card-body     
+                                include /app/advisers/insurance/medical/emission/emission-contractor-data
+    div(ng-repeat="dep in medicalCtrl.emitDependientes")          
+        .row 
+            .col-xs-12
+                .accordion(id="accordion_{{$index}}")
+                    .card
+                        .card-header(id="headDatos_{{$index}}" ng-click="medicalCtrl.validaSiDependiente($index)")
+                            .row
+                                .collapsed(type='button', data-toggle='collapse', data-target='#collapseDatos_{{$index}}', aria-expanded='false', aria-controls='collapseDatos_{{$index}}')
+                                    div(class="{{medicalCtrl.colorCollapsables}}" ng-class="{colorCollapsablesSelected:medicalCtrl.colapseEmision2[$index]}" ng-click="medicalCtrl.colapseEmision2[$index] = medicalCtrl.colapseEmision2[$index] ? false : true")
+                                        h4  Datos de {{dep.relationship}}
+                        .collapse(id="collapseDatos_{{$index}}" aria-labelledby='headDatos_{{$index}}', data-parent='#accordion_{{$index}}')
+                            .card-body     
+                                include /app/advisers/insurance/medical/emission/emission-dependent-data
+    div                
+        .row
+            .col-xs-12
+                #accordionCuestionarioMedico.accordion
+                    .card
+                        #headCuestionarioMedico.card-header(ng-click="medicalCtrl.validaSiCuestionario()")
+                            .row
+                                .collapsed(type='button', data-toggle='collapse', data-target='#collapseCuestionarioMedico', aria-expanded='false', aria-controls='collapseCuestionarioMedico')
+                                    div(class="{{medicalCtrl.colorCollapsables}}" ng-class="{colorCollapsablesSelected:medicalCtrl.colapseEmision3}" ng-click="medicalCtrl.colapseEmision3 = medicalCtrl.colapseEmision3 ? false : true")
+                                        h4  Cuestionario Médico 
+                        #collapseCuestionarioMedico.collapse(aria-labelledby='headCuestionarioMedico', data-parent='#accordionCuestionarioMedico')
+                            .card-body     
+                                include /app/advisers/insurance/medical/emission/emission-medical-survey
+    div                
+        .row
+            .col-xs-12
+                #accordionFirmaElectronica.accordion
+                    .card
+                        #headFirmaElectronica.card-header(ng-click="medicalCtrl.validaSiFirmaElectronica()")
+                            .row
+                                .collapsed(type='button', data-toggle='collapse', data-target='#collapseFirmaElectronica', aria-expanded='false', aria-controls='collapseFirmaElectronica')
+                                    div(class="{{medicalCtrl.colorCollapsables}}" ng-class="{colorCollapsablesSelected:medicalCtrl.colapseEmision4}" 
+                                    ng-click="medicalCtrl.activarVariablesFirmaTitular();medicalCtrl.activarVariablesFirmaContratante();medicalCtrl.activarVariablesFirmaAgente();medicalCtrl.colapseEmision4 = medicalCtrl.colapseEmision4 ? false : true")
+                                        h4  Firma Electrónica 
+                        #collapseFirmaElectronica.collapse(aria-labelledby='headFirmaElectronica', data-parent='#accordionFirmaElectronica'
+                            ng-class="{in: medicalCtrl.colapseEmision4}"
+                        )
+                            .card-body     
+                                include /app/advisers/insurance/medical/emission/emission-digital-signature
+    div
+        .row
+            .col-xs-12.text-center
+                +btnWithIcon( 'VOLVER', 'btn-primary btn-space')(ngClick="medicalCtrl.btnVolver()") 

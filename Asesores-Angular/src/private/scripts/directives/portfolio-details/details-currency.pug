@@ -1,0 +1,58 @@
+div
+    uib-accordion
+        .panel.panel-default( ng-init="currency.open = false" uib-accordion-group='' is-open="currency.open" )
+            uib-accordion-heading
+                span
+                    | {{title}}
+                i.direction-arrow.fa( ng-class="{'fa-angle-up': currency.open, 'fa-angle-down': !currency.open}" )
+            table.table
+                thead
+                    tr
+                        th.text-left( width="100" ng-click="details.sortBy('issuerName')" )
+                            | EMISORA
+                            i.fa( ng-class="{reverse: details.propertyName === 'issuerName' && details.reverse}" )
+
+                        th( width="135" ng-click="details.sortBy('availablePosition')" )
+                            | TÍTULOS
+                            i.fa( ng-class="{reverse: details.propertyName === 'availablePosition' && details.reverse}" )
+
+                        th( width="135" ng-click="details.sortBy('cost')" )
+                            | COSTO
+                            i.fa( ng-class="{reverse: details.propertyName === 'cost' && details.reverse}" )
+                        
+                        th( width="135" ng-click="details.sortBy('cost')" )
+                            | IMPORTE
+                            i.fa( ng-class="{reverse: details.propertyName === 'cost' && details.reverse}" )
+
+                        th( width="135" ng-click="details.sortBy('lastPrice')" )
+                            | PRECIO ACTUAL
+                            i.fa( ng-class="{reverse: details.propertyName === 'lastPrice' && details.reverse}" )
+
+                        th( width="135" ng-click="details.sortBy('valuation')" )
+                            | VALOR ACTUAL
+                            i.fa( ng-class="{reverse: details.propertyName === 'valuation' && details.reverse}" )
+
+                        th( width="135" ng-click="details.sortBy('appreciation')" )
+                            | $ PLUSVALÍA
+                            i.fa( ng-class="{reverse: details.propertyName === 'appreciation' && details.reverse}" )
+
+                        th( width="135" ng-click="details.sortBy('appreciationPercentage')" )
+                            | % PLUSVALÍA
+                            i.fa( ng-class="{reverse: details.propertyName === 'appreciationPercentage' && details.reverse}" )
+                tbody
+                    tr( ng-repeat="info in infoResume | orderBy:details.propertyName:details.reverse" )
+                        td.text-left {{ info.issuerName }} {{ info.serie }}
+                        td {{ info.availablePosition }}
+                        td {{ info.cost | currency:undefined:4 }}
+                        td {{ info.availablePosition * info.cost | currency:undefined:4 }}
+                        td {{ info.lastPrice | currency:undefined:4 }}
+                        td {{ info.valuation | currency:undefined:4 }}
+                        td {{ info.appreciation | currency:undefined:4 }}
+                        td {{ info.appreciationPercentage | number:2 }}%
+                    tr.subtotal
+                        td( colspan="5" ) SUBTOTAL:
+                        td
+                            strong {{ infoResume | sumByColumn: 'valuation' | currency:undefined:4 }}
+                        td
+                            strong {{ infoResume | sumByColumn: 'appreciation' | currency:undefined:4 }}
+                        td &nbsp;

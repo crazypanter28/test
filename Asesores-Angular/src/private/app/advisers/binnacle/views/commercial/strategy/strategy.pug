@@ -1,0 +1,111 @@
+include /views/mixins/buttons
+include /views/mixins/input
+include /views/mixins/info-result
+
+div( ui-view="" )
+div( ng-if="!$state.is('binnacle.commercial.strategy.id')" )
+    
+    // Birthdays
+    .binnacle-birthdays
+
+        uib-accordion
+            .panel-default(uib-accordion-group='' is-open="strategy.status.open" ng-click = "strategy.getBirthdays( 'today' )")
+                uib-accordion-heading
+                    | CUMPLEAÑOS
+                    i.direction-arrow.fa(ng-class="{'fa-angle-up': strategy.status.open, 'fa-angle-down': !strategy.status.open}")
+
+                div.filters
+                    .form-group
+                        img( src="img/icons/cumple.svg" alt="Cumpleaños" )
+                        label.act-radio-custom( for="prev" )
+                            input( type="radio" name="binnacle-birthday" id="prev" value="prev" ng-model="strategy.birthday_filter" ng-change='strategy.getBirthdayFilter("prev")' )
+                            span.css-label
+                            | 7 dias
+                        label.act-radio-custom( for="today" )
+                            input( type="radio" name="binnacle-birthday" id="today" value="today" ng-model="strategy.birthday_filter" ng-change='strategy.getBirthdayFilter("today")' )
+                            span.css-label
+                            | Hoy
+                        label.act-radio-custom( for="next" )
+                            input( type="radio" name="binnacle-birthday" id="next" value="next"  ng-model="strategy.birthday_filter" ng-change='strategy.getBirthdayFilter("next")' )
+                            span.css-label
+                            | 7 días después
+
+                // Spinner
+                .loader-wrapper( ng-if="!strategy.dates.finish" )
+                    
+
+                // Birthday
+                div( ng-if="strategy.dates.finish" )
+
+                    // Table results
+                    table.table
+                        thead
+                            tr
+                                th( width="145" ) Mes/día
+                                th( width="250" ) Nombre
+                                th No. Contrato
+                                //th Teléfono
+                                //th( width="180" ) Correo
+                                th Ultimo contacto
+                                th.view-more Felicitar
+                        tbody
+                        
+                            tr(ng-repeat = "reg in strategy.listDatesSelected" ng-init="row = $index" ng-class="{ highlight: ( row % 2 !== 0 ) }")
+                                td(colspan = "{{strategy.hasBirthday ? 7:1 }}" ng-if="reg.isHeader" ) 
+                                    strong {{reg.fecha | date:'MMMM'}} {{reg.fecha | date:'dd'}}   
+                                td(colspan= "6" rowspan="{{strategy.listDatesSelected.length}}" ng-if="!strategy.hasBirthday && $index === 0 ").no-data-row
+                                    .no-results
+                                        +noResults("binnacle-birthdays")
+
+                                td(ng-if="!reg.isHeader && strategy.hasBirthday")                                        
+                                td(ng-if="!reg.isHeader && strategy.hasBirthday") {{ reg.name }}
+                                td(ng-if="!reg.isHeader && strategy.hasBirthday") {{ reg.contract }}
+                                //td(ng-if="!reg.isHeader && strategy.hasBirthday") {{ reg.phoneNumber }}
+                                //td(ng-if="!reg.isHeader && strategy.hasBirthday") {{ reg.email }}
+                                td(ng-if="!reg.isHeader && strategy.hasBirthday") {{ reg.lastContact }}
+                                td.view-more(ng-if="!reg.isHeader && strategy.hasBirthday") 
+                                    a.felicitaciones( ng-click="strategy.showClientInfo( reg )" ) View more                                 
+
+                p.note( ng-if="strategy.hasBirthday" )
+                        | * Para 
+                        strong  ENVIAR FELICITACIÓN
+                        |  a un cliente, da clic en el icono
+
+
+    // Search results
+    .binnacle-search-results( ng-if="strategy.clients_search.sent" show-filter="true" )
+
+        table(ng-table="strategy.configTable" style="table-layout: fixed;")        
+    
+            tr(ng-repeat="client in $data")
+                td(style="text-align:left;" data-title="'Nombre del Cliente'" filter="strategy.filter.nombreCliente" )
+                    ng-bind-html(ng-bind-html="client.nombreCliente | remarkText:params.filter()['nombreCliente']")
+                td(header-class="'binnacle-column-estrategia'" data-title="'Promotor'" filter="strategy.filter.idSponsor" )
+                    ng-bind-html(ng-bind-html="client.idSponsor | remarkText:params.filter()['idSponsor']") 
+                td(header-class="'binnacle-column-estrategia'" data-title="'No. Contrato'" filter="strategy.filter.numContrato")
+                    ng-bind-html(ng-bind-html="client.numContrato | remarkText:params.filter()['numContrato']") 
+                td(header-class="'binnacle-column-estrategia-estatus'" data-title="'Origen'" filter="strategy.filter.typeOrigin" filter-data="strategy.listTipos")
+                    ng-bind-html(ng-bind-html="client.typeOrigin | remarkText:params.filter()['typeOrigin']")
+                td.rating(header-class="'binnacle-column-estrategia'" data-title="'Clasificación'" filter="strategy.filter.clasification" filter-data="strategy.listClasification")
+                    ng-bind-html(ng-bind-html="client.clasification | remarkText:params.filter()['clasification']")
+                td(header-class="'binnacle-column-estrategia-estatus'" data-title="'Estatus'" filter="strategy.filter.contactNameStatus" filter-data="strategy.listEstatus" )                                                
+                    .status( ng-class="{ 'success': ( client.contactStatus ), 'error': ( !client.contactStatus ) }" )
+                    span 
+                        ng-bind-html(ng-bind-html="client.contactNameStatus | remarkText:params.filter()['contactNameStatus']")
+                td(header-class="'binnacle-column-estrategia'" data-title="'Detalle'")
+                    a.view-detail2(ng-click="strategy.saveStateView(client)") View more
+            tr(ng-if="!strategy.clients_search.finish || (strategy.clients.length === 0 && strategy.clients_search.finish) ")
+                td( colspan="7" )
+                    // Spinner
+                    .loader-wrapper( ng-if="!strategy.clients_search.finish" )
+
+                    // No results
+                    .no-results( ng-if="strategy.clients.length === 0 && strategy.clients_search.finish" )
+                        +noResults("binnacle-search")
+
+        p.note( ng-if="strategy.clients.length > 0" )
+            | * Para
+            strong  VER EL DETALLE y DAR SEGUIMIENTO
+            |  de un cliente, da clic en el icono.
+
+    

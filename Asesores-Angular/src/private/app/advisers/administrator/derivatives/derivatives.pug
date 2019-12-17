@@ -1,0 +1,31 @@
+include /views/mixins/info-result
+
+
+.derivatives
+    .section-title
+        span Derivados
+
+    .content
+        table.table.primary-table
+            thead
+                tr
+                    th(ng-repeat="column in dvts.table.headers ") 
+                        span {{column.name}}
+            tbody
+                tr( ng-show="dvts.loadingDer")
+                    td(colspan = "dvts.table.headers.length")
+                        .content-spinner
+                            .spinner
+                tr(ng-repeat ="row in dvts.table.body ")
+                    td(ng-repeat="column in dvts.table.headers ") {{row[column.originalName]}}                                                    
+
+        .no-results( ng-show="!dvts.loadingDer && dvts.table.headers.length < 1" )
+            +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+        .csv
+            .sub-title CSV
+            textarea.textarea( placeholder="Sólo copia y pega una tabla de Excel." ng-model="dvts.csv" )
+
+        .buttons
+            button.btn.btn-default( ng-click="dvts.csv = '' ") Limpiar
+            button.btn.btn-primary( ng-click="dvts.saveCSV()" ) Guardar        

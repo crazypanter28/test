@@ -1,0 +1,46 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "9189a568‐aba9‐4da0‐82b2‐7331a77b51f2",
+			"messages": [{
+				"responseSystemCode": "ACCAT001",
+				"responseMessage": "Success",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1495688400000,
+		"time": 67286000,
+		"clientID": "NBURSANET",
+		"sessionID": "",
+		"responseSystem": "A2K",
+		"operationName": "CapitalBandCatalog",
+		"operationVersion": "1_0",
+		"ipaddress": "10.10.1.58"
+	},
+	"outCapitalBandCatalog": {
+		"capitalBand": [{
+				"key": "1",
+				"amount": 999999.99,
+				"feePercentage": 0.25
+			},
+			{
+				"key": "2",
+				"amount": 4999999.99,
+				"feePercentage": 0.2
+			},
+			{
+				"key": "3",
+				"amount": 9999999.99,
+				"feePercentage": 0.15
+			},
+			{
+				"key": "4",
+				"amount": 9999999999999.99,
+				"feePercentage": 0.1
+			}
+		]
+	}
+}

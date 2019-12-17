@@ -1,0 +1,438 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idTargetGroup": 1,
+		"name": "",
+		"financialCenters": [],
+		"users": []
+	}, {
+		"idTargetGroup": 2,
+		"name": "Centro-Sur",
+		"financialCenters": [{
+			"keyCenter": 9,
+			"financialCenter": "CHIS TUX GUT BEL. DOMINGUEZ"
+		}, {
+			"keyCenter": 14,
+			"financialCenter": "CD MX COAPA"
+		}, {
+			"keyCenter": 18,
+			"financialCenter": "CD MX LINDAVISTA"
+		}, {
+			"keyCenter": 20,
+			"financialCenter": "CD MX PABELLON ALTAVISTA CB"
+		}, {
+			"keyCenter": 25,
+			"financialCenter": "CD MX SANTA FE GLEZ CAMARENA"
+		}, {
+			"keyCenter": 26,
+			"financialCenter": "CD MX TERRAZA PEDREGAL"
+		}, {
+			"keyCenter": 27,
+			"financialCenter": "CD MX XOLA"
+		}, {
+			"keyCenter": 28,
+			"financialCenter": "EDO MEX GT LOMAS VERDES"
+		}, {
+			"keyCenter": 29,
+			"financialCenter": "EDO MEX METEPEC PLAZA IZAR"
+		}, {
+			"keyCenter": 32,
+			"financialCenter": "EDO MEX TOLUCA V CARRANZA"
+		}, {
+			"keyCenter": 33,
+			"financialCenter": "GTO IRAPUATO"
+		}, {
+			"keyCenter": 35,
+			"financialCenter": "GTO LEON CERRO GORDO CB"
+		}, {
+			"keyCenter": 37,
+			"financialCenter": "GTO SMA CENTRO"
+		}, {
+			"keyCenter": 38,
+			"financialCenter": "GTO SMA PLAZA LUCIERNAGA"
+		}, {
+			"keyCenter": 49,
+			"financialCenter": "JAL ZAPOPAN ANDARES CB"
+		}, {
+			"keyCenter": 55,
+			"financialCenter": "MOR CUERNAVACA DOMINGO DIEZ"
+		}, {
+			"keyCenter": 67,
+			"financialCenter": "PUE CHOLULA CITY ANGELOPOLIS BCO"
+		}, {
+			"keyCenter": 68,
+			"financialCenter": "QRO JURICA"
+		}, {
+			"keyCenter": 70,
+			"financialCenter": "QRO QUERETARO BERNARDO QUINTANA"
+		}, {
+			"keyCenter": 71,
+			"financialCenter": "QROO CANCUN PLAZA HOLLYWOOD"
+		}, {
+			"keyCenter": 84,
+			"financialCenter": "YUC MERIDA PROL. MONTEJO"
+		}, {
+			"keyCenter": 86,
+			"financialCenter": "CD MX SANTA FE CENTRO COMERCIAL"
+		}, {
+			"keyCenter": 87,
+			"financialCenter": "HGO. PACHUCA CAMINO REAL"
+		}, {
+			"keyCenter": 88,
+			"financialCenter": "GTO LEON CERRO GORDO BANCO"
+		}, {
+			"keyCenter": 89,
+			"financialCenter": "CD MX SANTA FE BANCO PB"
+		}, {
+			"keyCenter": 90,
+			"financialCenter": "CD MX PATIO UNIVERSIDAD"
+		}, {
+			"keyCenter": 91,
+			"financialCenter": "PUE CHOLULA CITY ANGELOPOLIS CB"
+		}, {
+			"keyCenter": 92,
+			"financialCenter": "EDO MEX SATELITE"
+		}, {
+			"keyCenter": 94,
+			"financialCenter": "CD MX MONTES URALES"
+		}, {
+			"keyCenter": 95,
+			"financialCenter": "CD MX JULIO VERNE POLANCO"
+		}, {
+			"keyCenter": 96,
+			"financialCenter": "EDO. MEX. VALLE DORADO"
+		}, {
+			"keyCenter": 97,
+			"financialCenter": "VER BOCA DEL RIO LAS AMERICAS"
+		}, {
+			"keyCenter": 98,
+			"financialCenter": "YUC MERIDA PLAZA LUXUS ALTABRISA"
+		}],
+		"users": []
+	}, {
+		"idTargetGroup": 3,
+		"name": "CF's",
+		"financialCenters": [{
+			"keyCenter": 1,
+			"financialCenter": "AGS AGUASCALIENTES NTE 509"
+		}, {
+			"keyCenter": 2,
+			"financialCenter": "BC MEXICALI PLAZA LIENZO"
+		}, {
+			"keyCenter": 4,
+			"financialCenter": "BC TIJUANA PASEO"
+		}, {
+			"keyCenter": 5,
+			"financialCenter": "BCS LOS CABOS P PENINSULA"
+		}, {
+			"keyCenter": 6,
+			"financialCenter": "CHIH CD JUAREZ PLAZA ODORE"
+		}, {
+			"keyCenter": 8,
+			"financialCenter": "CHIH CHIH AV DE LA JUVENTUD"
+		}, {
+			"keyCenter": 9,
+			"financialCenter": "CHIS TUX GUT BEL. DOMINGUEZ"
+		}, {
+			"keyCenter": 10,
+			"financialCenter": "COAH SALTILLO CASA GRANDE"
+		}, {
+			"keyCenter": 11,
+			"financialCenter": "COAH. TORREON B INDEPENDENCIA"
+		}, {
+			"keyCenter": 14,
+			"financialCenter": "CD MX COAPA"
+		}, {
+			"keyCenter": 18,
+			"financialCenter": "CD MX LINDAVISTA"
+		}, {
+			"keyCenter": 20,
+			"financialCenter": "CD MX PABELLON ALTAVISTA CB"
+		}, {
+			"keyCenter": 25,
+			"financialCenter": "CD MX SANTA FE GLEZ CAMARENA"
+		}, {
+			"keyCenter": 26,
+			"financialCenter": "CD MX TERRAZA PEDREGAL"
+		}, {
+			"keyCenter": 27,
+			"financialCenter": "CD MX XOLA"
+		}, {
+			"keyCenter": 28,
+			"financialCenter": "EDO MEX GT LOMAS VERDES"
+		}, {
+			"keyCenter": 29,
+			"financialCenter": "EDO MEX METEPEC PLAZA IZAR"
+		}, {
+			"keyCenter": 32,
+			"financialCenter": "EDO MEX TOLUCA V CARRANZA"
+		}, {
+			"keyCenter": 33,
+			"financialCenter": "GTO IRAPUATO"
+		}, {
+			"keyCenter": 35,
+			"financialCenter": "GTO LEON CERRO GORDO CB"
+		}, {
+			"keyCenter": 37,
+			"financialCenter": "GTO SMA CENTRO"
+		}, {
+			"keyCenter": 38,
+			"financialCenter": "GTO SMA PLAZA LUCIERNAGA"
+		}, {
+			"keyCenter": 39,
+			"financialCenter": "JAL CHAPALA AJIJIC"
+		}, {
+			"keyCenter": 42,
+			"financialCenter": "JAL GDL ARCOS VALLARTA"
+		}, {
+			"keyCenter": 43,
+			"financialCenter": "JAL GDL FORUM TLAQUEPAQUE"
+		}, {
+			"keyCenter": 44,
+			"financialCenter": "JAL GDL PLAZA MEXICO"
+		}, {
+			"keyCenter": 45,
+			"financialCenter": "JAL MARINA VALLARTA"
+		}, {
+			"keyCenter": 48,
+			"financialCenter": "JAL ZAPOPAN ANDARES BANCO"
+		}, {
+			"keyCenter": 49,
+			"financialCenter": "JAL ZAPOPAN ANDARES CB"
+		}, {
+			"keyCenter": 50,
+			"financialCenter": "JAL ZAPOPAN GALERIAS GDL"
+		}, {
+			"keyCenter": 51,
+			"financialCenter": "JAL ZAPOPAN MARIANO OTERO"
+		}, {
+			"keyCenter": 53,
+			"financialCenter": "JAL ZAPOPAN PLAZA PATRIA"
+		}, {
+			"keyCenter": 54,
+			"financialCenter": "MICH MOR AV LAZARO CARDENAS"
+		}, {
+			"keyCenter": 55,
+			"financialCenter": "MOR CUERNAVACA DOMINGO DIEZ"
+		}, {
+			"keyCenter": 60,
+			"financialCenter": "NL MTY VISTA HERMOSA"
+		}, {
+			"keyCenter": 62,
+			"financialCenter": "NL SAN PEDRO GOMEZ MORIN"
+		}, {
+			"keyCenter": 64,
+			"financialCenter": "NL SAN PEDRO VALLE"
+		}, {
+			"keyCenter": 67,
+			"financialCenter": "PUE CHOLULA CITY ANGELOPOLIS BCO"
+		}, {
+			"keyCenter": 68,
+			"financialCenter": "QRO JURICA"
+		}, {
+			"keyCenter": 70,
+			"financialCenter": "QRO QUERETARO BERNARDO QUINTANA"
+		}, {
+			"keyCenter": 71,
+			"financialCenter": "QROO CANCUN PLAZA HOLLYWOOD"
+		}, {
+			"keyCenter": 72,
+			"financialCenter": "SIN CULIACAN TORRE STA MARIA"
+		}, {
+			"keyCenter": 73,
+			"financialCenter": "SIN LOS MOCHIS PLAZA ROSALES"
+		}, {
+			"keyCenter": 74,
+			"financialCenter": "SIN MAZATLAN AV DEL MAR"
+		}, {
+			"keyCenter": 76,
+			"financialCenter": "SLP SAN LUIS POTOSI PEDREGAL"
+		}, {
+			"keyCenter": 77,
+			"financialCenter": "SON CIUDAD OBREGON MIGUEL ALEMAN"
+		}, {
+			"keyCenter": 78,
+			"financialCenter": "SON HERMOSILLO RAQUET"
+		}, {
+			"keyCenter": 79,
+			"financialCenter": "SON HERMOSILLO RIO SONORA"
+		}, {
+			"keyCenter": 80,
+			"financialCenter": "TAMPS NUEVO LAREDO AV COLON"
+		}, {
+			"keyCenter": 81,
+			"financialCenter": "TAMPS TAMPICO AV HIDALGO"
+		}, {
+			"keyCenter": 84,
+			"financialCenter": "YUC MERIDA PROL. MONTEJO"
+		}, {
+			"keyCenter": 86,
+			"financialCenter": "CD MX SANTA FE CENTRO COMERCIAL"
+		}, {
+			"keyCenter": 87,
+			"financialCenter": "HGO. PACHUCA CAMINO REAL"
+		}, {
+			"keyCenter": 88,
+			"financialCenter": "GTO LEON CERRO GORDO BANCO"
+		}, {
+			"keyCenter": 89,
+			"financialCenter": "CD MX SANTA FE BANCO PB"
+		}, {
+			"keyCenter": 90,
+			"financialCenter": "CD MX PATIO UNIVERSIDAD"
+		}, {
+			"keyCenter": 91,
+			"financialCenter": "PUE CHOLULA CITY ANGELOPOLIS CB"
+		}, {
+			"keyCenter": 92,
+			"financialCenter": "EDO MEX SATELITE"
+		}, {
+			"keyCenter": 94,
+			"financialCenter": "CD MX MONTES URALES"
+		}, {
+			"keyCenter": 95,
+			"financialCenter": "CD MX JULIO VERNE POLANCO"
+		}, {
+			"keyCenter": 96,
+			"financialCenter": "EDO. MEX. VALLE DORADO"
+		}, {
+			"keyCenter": 97,
+			"financialCenter": "VER BOCA DEL RIO LAS AMERICAS"
+		}, {
+			"keyCenter": 98,
+			"financialCenter": "YUC MERIDA PLAZA LUXUS ALTABRISA"
+		}],
+		"users": [{
+			"idEmployee": 28,
+			"userCode": "rvaldes"
+		}, {
+			"idEmployee": 337,
+			"userCode": "fperez"
+		}, {
+			"idEmployee": 10017,
+			"userCode": "acortes"
+		}, {
+			"idEmployee": 60597,
+			"userCode": "bmercado"
+		}, {
+			"idEmployee": 60812,
+			"userCode": "jvillalon"
+		}, {
+			"idEmployee": 61986,
+			"userCode": "fbolanos"
+		}, {
+			"idEmployee": 62075,
+			"userCode": "ftebar"
+		}, {
+			"idEmployee": 62210,
+			"userCode": "hretana"
+		}, {
+			"idEmployee": 62864,
+			"userCode": "btellez"
+		}]
+	}, {
+		"idTargetGroup": 5,
+		"name": "Norte-Occidente",
+		"financialCenters": [{
+			"keyCenter": 1,
+			"financialCenter": "AGS AGUASCALIENTES NTE 509"
+		}, {
+			"keyCenter": 2,
+			"financialCenter": "BC MEXICALI PLAZA LIENZO"
+		}, {
+			"keyCenter": 4,
+			"financialCenter": "BC TIJUANA PASEO"
+		}, {
+			"keyCenter": 5,
+			"financialCenter": "BCS LOS CABOS P PENINSULA"
+		}, {
+			"keyCenter": 6,
+			"financialCenter": "CHIH CD JUAREZ PLAZA ODORE"
+		}, {
+			"keyCenter": 8,
+			"financialCenter": "CHIH CHIH AV DE LA JUVENTUD"
+		}, {
+			"keyCenter": 10,
+			"financialCenter": "COAH SALTILLO CASA GRANDE"
+		}, {
+			"keyCenter": 11,
+			"financialCenter": "COAH. TORREON B INDEPENDENCIA"
+		}, {
+			"keyCenter": 39,
+			"financialCenter": "JAL CHAPALA AJIJIC"
+		}, {
+			"keyCenter": 42,
+			"financialCenter": "JAL GDL ARCOS VALLARTA"
+		}, {
+			"keyCenter": 43,
+			"financialCenter": "JAL GDL FORUM TLAQUEPAQUE"
+		}, {
+			"keyCenter": 44,
+			"financialCenter": "JAL GDL PLAZA MEXICO"
+		}, {
+			"keyCenter": 45,
+			"financialCenter": "JAL MARINA VALLARTA"
+		}, {
+			"keyCenter": 48,
+			"financialCenter": "JAL ZAPOPAN ANDARES BANCO"
+		}, {
+			"keyCenter": 49,
+			"financialCenter": "JAL ZAPOPAN ANDARES CB"
+		}, {
+			"keyCenter": 50,
+			"financialCenter": "JAL ZAPOPAN GALERIAS GDL"
+		}, {
+			"keyCenter": 51,
+			"financialCenter": "JAL ZAPOPAN MARIANO OTERO"
+		}, {
+			"keyCenter": 53,
+			"financialCenter": "JAL ZAPOPAN PLAZA PATRIA"
+		}, {
+			"keyCenter": 54,
+			"financialCenter": "MICH MOR AV LAZARO CARDENAS"
+		}, {
+			"keyCenter": 60,
+			"financialCenter": "NL MTY VISTA HERMOSA"
+		}, {
+			"keyCenter": 62,
+			"financialCenter": "NL SAN PEDRO GOMEZ MORIN"
+		}, {
+			"keyCenter": 64,
+			"financialCenter": "NL SAN PEDRO VALLE"
+		}, {
+			"keyCenter": 72,
+			"financialCenter": "SIN CULIACAN TORRE STA MARIA"
+		}, {
+			"keyCenter": 73,
+			"financialCenter": "SIN LOS MOCHIS PLAZA ROSALES"
+		}, {
+			"keyCenter": 74,
+			"financialCenter": "SIN MAZATLAN AV DEL MAR"
+		}, {
+			"keyCenter": 76,
+			"financialCenter": "SLP SAN LUIS POTOSI PEDREGAL"
+		}, {
+			"keyCenter": 78,
+			"financialCenter": "SON HERMOSILLO RAQUET"
+		}, {
+			"keyCenter": 79,
+			"financialCenter": "SON HERMOSILLO RIO SONORA"
+		}, {
+			"keyCenter": 80,
+			"financialCenter": "TAMPS NUEVO LAREDO AV COLON"
+		}, {
+			"keyCenter": 81,
+			"financialCenter": "TAMPS TAMPICO AV HIDALGO"
+		}],
+		"users": [{
+			"idEmployee": 90737,
+			"userCode": "allamas"
+		}]
+	}]
+}

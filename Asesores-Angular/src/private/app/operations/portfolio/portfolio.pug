@@ -1,0 +1,105 @@
+include /views/mixins/info-result
+
+// Tabs
+ul.nav.nav-tabs.panel-tabs
+    //li( ui-sref-active="active" )
+        a( ui-sref="portfolio.resume" )
+            | Resumen
+            span( uib-tooltip-html="'Resumen de todos los contratos asociados al cliente'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+    li( ui-sref-active="active" )
+        a( ui-sref="portfolio.detail" )
+            | Detalle
+            span( uib-tooltip-html="'Informe detallado por contrato asociado al cliente'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+// Portfolio container
+div.container-transfer.portfolio-container
+    .operation-section-help( uib-tooltip-html="'Información relacionada con los contractos activos del cliente'" tooltip-placement="left" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+        img( src="img/icons/blue-doubt.svg" alt="Acerca" )
+    div( ui-view="" )
+
+// Other info
+.portfolio-other-info( ng-show="$state.includes('portfolio.resume')" )
+    .row
+        .col-xs-12
+            .table-wrapper
+                h2.h2 Crédito
+                table.table.small-list
+                    thead
+                        tr
+                            th( width="25%" ) Tipo de crédito
+                            th( width="15%" ) Monto
+                            th( width="25%" )
+                                | Plazo
+                                br
+                                span (Fechas vencimiento)
+                            th( width="20%" ) Pagado
+                            th( width="15%" ) Fecha inicio
+                    tbody
+                        tr
+                            td( colspan="5" )
+
+                                // Spinner
+                                .loader-wrapper( ng-if="!portfolio.resume_credits" )
+                                    .spinner
+
+                                // No results
+                                .no-data( ng-if="portfolio.resume_credits === 'no-data'" )
+                                    +noResults('no-data')
+
+                                // Results
+                                div( ng-if="portfolio.resume_credits && portfolio.resume_credits !== 'no-data'" )
+                                    div( scrollable always-visible="true" )
+                                        table.table
+                                            tbody
+                                                tr( ng-repeat="credit in portfolio.resume_credits" )
+                                                    td( width="25%" ) {{ credit.loanType }}
+                                                    td( width="15%" ) {{ credit.currentBalance | currency }}
+                                                    td( width="25%" ) {{ credit.dueDate  | date }}
+                                                    td( width="20%" ) {{ credit.paidAmount | currency}}
+                                                    td( width="15%" ) {{ credit.startDate | date }}
+                        tr.totals( ng-if="portfolio.resume_credits && portfolio.resume_credits !== 'no-data'" )
+                            //td( colspan="5" )
+                                table.table
+                                    tbody
+                                        tr
+                                            td( width="85%" colspan="4" ) Total de adeudo:
+                                            td( width="15%" )
+                                                div {{ portfolio.resume_credits  | currency }}
+    //-
+        .col-xs-6
+            .table-wrapper
+                h2.h2 Seguros
+                table.table.small-list
+                    thead
+                        tr
+                            th( width="25%" ) Número de póliza
+                            th( width="20%" ) Tipo de seguro
+                            th( width="20%" ) Monto
+                            th( width="20%" )
+                                | Fechas de
+                                br
+                                | Vencimiento
+                            th( width="15%" ) Deuda
+                    tbody
+                        tr
+                            td( colspan="5" )
+
+                                // Spinner
+                                .loader-wrapper( ng-if="!portfolio.resume_insurances" )
+                                    .spinner
+
+                                // No results
+                                .no-data( ng-if="portfolio.resume_insurances === 'no-data'" )
+                                    +noResults('no-data')
+
+                                // Results
+                                div( ng-if="portfolio.resume_insurances && portfolio.resume_insurances !== 'no-data'"  )
+                                    div( scrollable always-visible="true" )
+                                        table.table
+                                            tbody
+                                                tr( ng-repeat="insurance in portfolio.resume_insurances" )
+                                                    td( width="25%" ) {{ insurance.policy }}
+                                                    td( width="20%" ) {{ insurance.type }}
+                                                    td( width="20%" ) {{ insurance.amount | currency }}
+                                                    td( width="20%" ) {{ insurance.term }}
+                                                    td( width="15%" ) {{ insurance.debt | currency }}

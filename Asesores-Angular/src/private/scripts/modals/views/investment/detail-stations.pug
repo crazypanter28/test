@@ -1,0 +1,47 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-detail-stations
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="inv.close()"
+        )
+
+        h4(ng-if="!inv.info.instrumentIDDescription") {{ inv.info.station.issuerName}} {{ inv.info.station.serie}}
+        h4(ng-if="inv.info.instrumentIDDescription") {{ inv.info.slateKey }} {{ inv.info.serie }}
+
+    div.modal-body
+        table.detail-stations
+            thead
+                tr
+                    th(ng-if="!inv.info.instrumentIDDescription") Movimiento
+                    th Tipo
+                    th Ejecución
+                    th Liquidación
+                    th Forma de operación
+                    th Horario
+            tbody
+                tr( ng-if="!inv.info.instrumentIDDescription" ng-repeat ="operation in inv.info.outFundOperationDataQuery.fundOperationData")
+                    td {{ operation.movementType }}
+                    td {{ operation.operationType }}
+                    td {{ operation.days }}
+                    td {{ operation.settlementType }}
+                    td {{ operation.registrationType }}
+                    td {{ operation.startTime | date : "HH:mm:ss" }} - {{ operation.endTime | date : "HH:mm:ss" }}
+                tr( ng-if="inv.info.instrumentIDDescription")
+                    td(ng-if="inv.info.salesCalendar === 1") CON CALENDARIO
+                    td(ng-if="inv.info.salesCalendar === 0") SIN CALENDARIO
+                    td 0
+                    td(ng-if="inv.info.buyLiquidity === '0'") DIARIA
+                    td(ng-if="inv.info.buyLiquidity === '1'") 24 Hrs
+                    td(ng-if="inv.info.buyLiquidity === '2'") 48 Hrs
+                    td(ng-if="inv.info.buyLiquidity === '3'") 72 Hrs
+                    td(ng-if="inv.info.buyLiquidity === '4'") 96 Hrs
+                    td(ng-if="inv.info.buyLiquidity === '5'") 120 Hrs
+                    td(ng-if="inv.info.sellingByImportOrTitles.typeID === '1'") TITULOS
+                    td(ng-if="inv.info.sellingByImportOrTitles.typeID !== '1'") IMPORTE
+                    td {{ inv.info.saleSchedule.startTime  | date : "HH:mm:ss" }} - {{inv.info.saleSchedule.endTime | date: "HH:mm:ss" }}

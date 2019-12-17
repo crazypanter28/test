@@ -1,0 +1,346 @@
+include /views/mixins/info-result
+include /views/mixins/selected-client-info
+
+// Portfolio detail wrapper
+.portfolio-detail-wrapper
+    // Account main info
+    .account-main-info.portfolio-detail
+            +sClientTopInfo(30)
+    //Contracts details
+    .contracts-details(ng-if="pdetailCtrl.detail.length > 0")
+        .panel.panel-default
+            .panel-heading
+                .panel-title
+                    span Detalle de contratos CASA
+            .panel-body
+                div
+                    // Contract info
+                    .contract-info( ng-repeat="c in pdetailCtrl.detail")
+                        uib-accordion
+                            .panel.panel-default( uib-accordion-group='' is-open="status.open" )
+                                uib-accordion-heading
+                                    span
+                                        strong No. contrato:
+                                        |  {{ c.contractNumber }}
+                                    i.direction-arrow.fa( ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}" )
+                                .panel-body
+                                    .empty-balance.display-as-table( ng-if="c.detail.length === 0" )
+                                        +noResults('no-balance-singular')
+                                    div(ng-repeat="topic in c.detail")
+                                        table.table.table-responsive
+                                            tr
+                                                th(colspan="6" style="width: 652px;") {{topic.title}}
+                                                th(ng-click="pdetailCtrl.showDetail(topic)")
+                                                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': topic.show, 'fa-minus-circle': !topic.show}" )
+                                            tr(ng-if="!topic.show")
+                                                td(colspan="8", style='background-color: #fff;')
+                                                    div(style='padding-top:20px')
+                                                        table.table
+                                                            thead(style="background-color: #009688")
+                                                                tr(ng-if=" topic.marketType === '3' || topic.marketType === '2' ")
+                                                                    th.text-left( ng-click="details.sortBy('issuerName')" )
+                                                                        | EMISORA
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'issuerName' && details.reverse}" )
+
+                                                                    th( ng-click="details.sortBy('titlesQty')" )
+                                                                        | TITULOS
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'titlesQty' && details.reverse}" )
+
+                                                                    th( ng-click="details.sortBy('cost')" )
+                                                                        | COSTO
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'cost' && details.reverse}" )
+
+                                                                    th( ng-click="details.sortBy('lastPrice')" )
+                                                                        | VALOR ACTUAL
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'lastPrice' && details.reverse}" )
+
+                                                                    th( ng-click="details.sortBy('titlesQty')" )
+                                                                        | POSICIÓN
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'titlesQty' && details.reverse}" )
+
+                                                                    th( ng-click="details.sortBy('titlesQty')" )
+                                                                        | COSTO TOTAL
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'titlesQty' && details.reverse}" )
+
+                                                                    th( ng-click="details.sortBy('appreciation')" )
+                                                                        | $ PLUS/MINUSVALÍA
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'appreciation' && details.reverse}" )
+                                                                    th( ng-click="details.sortBy('appreciationPercentage')" )
+                                                                        | % PLUS/MINUSVALÍA
+                                                                        i.fa( ng-class="{reverse: details.propertyName === 'appreciationPercentage' && details.reverse}" )
+
+                                                            tbody(ng-if=" topic.marketType === '1' " ng-repeat="row in pdetailCtrl.typeFundsFilter")                                                                   
+                                                                tr( ng-repeat="info in topic.fundsTypeDesk  | filter :{ title: row } | limitTo:1" ) 
+                                                                    td.text-center( ng-if="$index === 0 " colspan='8' style='background-color:#DDD; color:#000;')
+                                                                        b {{row}}
+                                                                tr( ng-repeat="info in topic.fundsTypeDesk  | filter :{ title: row } | limitTo:1 " style="background-color: #009688" )         
+                                                                    td.text-left( ng-if="$index === 0 " )
+                                                                        b EMISORA
+                                                                    td.text-left( ng-if="$index === 0 " )
+                                                                            b TITULOS   
+                                                                    td(ng-if="$index === 0 " )
+                                                                            b COSTO 
+                                                                    td(ng-if="$index === 0 " )
+                                                                            b VALOR ACTUAL 
+                                                                    td(ng-if="$index === 0 " )
+                                                                            b POSICIÓN 
+                                                                    td(ng-if="$index === 0 " )
+                                                                            b COSTO TOTAL 
+                                                                    td(ng-if="$index === 0 " )
+                                                                            b $ PLUS/MINUSVALÍA
+                                                                    td(ng-if="$index === 0 " )
+                                                                            b % PLUS/MINUSVALÍA 
+                                                                tr( ng-repeat="info in topic.fundsTypeDesk  | filter :{ title: row }" )                                                                             
+                                                                    td( ng-bind="info.emisora.issuerName +' '+ info.emisora.serie" )
+                                                                    td( ng-bind="info.emisora.finalPositionTitles | number" )
+                                                                    td( ng-bind="info.emisora.cost | currency " )
+                                                                    td( ng-bind="info.emisora.lastPrice" )
+                                                                    td( ng-bind="info.emisora.finalPositionTitles * info.emisora.lastPrice * info.emisora.foreingExchangeRate| currency" )
+                                                                    td( ng-bind="info.emisora.finalPositionTitles * info.emisora.cost | currency" )
+                                                                    td( ng-bind="info.emisora.appreciation | currency" )
+                                                                    td {{info.emisora.appreciationPercentage | limitTo:4}}%
+                                                                            i.fa( ng-class="{'fa-arrow-circle-up': info.emisora.appreciationPercentage > 0, 'fa-arrow-circle-down': info.emisora.appreciationPercentage  < 0, 'fa-minus-circle':  info.emisora.appreciationPercentage  === 0 }" )
+                                                            tbody(ng-if=" topic.marketType === '3' || topic.marketType === '2' ")
+                                                                tr( ng-repeat="info in topic.ordersValue" ng-class="{'portfolio-emisora-suspendida':info.suspendedIndicator === '1'}" ) 
+                                                                    td( ng-bind="info.issuerName +' '+ info.serie" )
+                                                                    td( ng-bind="info.finalPositionTitles | number" )
+                                                                    td( ng-bind="info.cost | currency" )
+                                                                    td( ng-bind="info.lastPrice" )
+                                                                    td( ng-bind="info.finalPositionTitles * info.lastPrice | currency" )
+                                                                    td( ng-bind="info.finalPositionTitles * info.cost | currency" )
+                                                                    td( ng-bind="info.appreciation | currency" )
+                                                                    td {{info.appreciationPercentage | limitTo:4}}%
+                                                                        i.fa( ng-class="{'fa-arrow-circle-up': info.appreciationPercentage > 0, 'fa-arrow-circle-down': info.appreciationPercentage  < 0, 'fa-minus-circle':  info.appreciationPercentage  === 0 }" )                                                                              
+
+
+                                                                //tr.subtotal
+                                                                    td( colspan="3" ) SUBTOTAL:
+                                                                    td
+                                                                        //strong {{ infoResume | sumByColumnProp : 'valuationMXN' | currency }}
+                                                                    td &nbsp;
+                                                                                                                                        //
+                                                                                                                                            table.table(style='background-color: #eafbff;')
+                                                                                                                                                tr( style="font-size:11px;font-weight:900;background-color:#c4f5ff;" )
+                                                                                                                                                    th(ng-repeat='(key,val) in po.operation') {{key}}
+                                                                                                                                                tr
+                                                                                                                                                    td(ng-repeat='(key,val) in po.operation', style='font-size: 11px;')
+                                                                                                                                                        div(ng-if="key != 'Monto' && key != 'Limite Mensual' && key != 'Limite Diario'")
+                                                                                                                                                            div(ng-if="val != ''")
+                                                                                                                                                                span {{val}}
+                                                                                                                                                        div(ng-if="key == 'Monto' || key == 'Limite Mensual' || key == 'Limite Diario'")
+                                                                                                                                                            div(ng-if="val != ''")
+
+                            //
+                                .panel-body
+
+                                    // Empty balance
+                                    .empty-balance.display-as-table( ng-if="c.detail.length === 0" )
+                                        +noResults('no-balance-singular')
+
+                                    // Contract topics
+                                    .contract-topics( ng-if="c.detail.length > 0" ng-repeat="topic in c.detail" )
+                                        ul( uib-accordion )
+                                            li(  )
+                                                uib-accordion-heading
+                                                    .topic-resume.display-as-table
+                                                        .type
+                                                            .bullet
+                                                        .name {{ topic.title }}
+                                                        .arrow
+                                                            i.direction-arrow.fa( ng-class="{'fa-angle-up': innerstatus.open, 'fa-angle-down': !innerstatus.open}" )
+                                                .panel-body
+                                                    .info-by-currency
+
+
+
+                                        // Contract totals
+                                            .contract-totals(ng-if="!pdetail.contract_info[index][0][undefined]")
+                                                .display-as-table
+                                                    .item TOTAL:
+                                                    .current-value {{ pdetail.contract_totals[index][0] | currency }}
+                                                    .plus {{ pdetail.contract_totals[index][1] | currency }}
+                                                    div
+                                            .contract-totals(ng-if="pdetail.contract_info[index][0][undefined]")
+                                                .display-as-table
+                                                    .item TOTAL:
+                                                    //.current-value {{ pdetail.contract_info[index][0][undefined]| sumByColumnProp : 'valuationMXN' | currency }}
+                                                    div
+
+                    // Contracts totals
+                        .contracts-totals( ng-if="contractInfo && showTotals" )
+                            .display-as-table
+                                .item TOTAL DE CUENTAS
+                                .current-value {{ pdetail.contracts_totals.valuation | currency }}
+                                .plus {{ pdetail.contracts_totals.appreciation | currency }}
+                                .value
+    // Contracts details Bank
+    .contracts-details
+        .panel.panel-default
+            .panel-heading
+                .panel-title
+                    span Detalle de contratos BANCO
+            .panel-body
+                div
+                    // Contract info
+                    .contract-info( ng-repeat="c in pdetailCtrl.detailBank")
+                        uib-accordion
+                            .panel.panel-default( uib-accordion-group='' is-open="status.open" )
+                                uib-accordion-heading
+                                    span
+                                        strong No. contrato:
+                                        |  {{ c.contractNumber }}
+                                    i.direction-arrow.fa( ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}" )
+                                .panel-body
+                                    .empty-balance.display-as-table( ng-if="c.detail.length === 0" )
+                                        +noResults('no-balance-singular')
+                                    div(ng-repeat="topic in c.detail")
+                                        table.table.table-responsive
+                                            tr
+                                                th(colspan="6" style="width: 652px;") {{topic.title}} 
+                                                th(ng-click="pdetailCtrl.showDetail(topic)")
+                                                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': topic.show, 'fa-minus-circle': !topic.show}" )
+                                            tr(ng-if="!topic.show")
+                                                td(colspan="7", style='background-color: #fff;')
+                                                    div(style='padding-top:20px')
+                                                        table.table
+                                                            tbody
+                                                                tr( ng-if="info.instrumentDesc !== '0' " ng-repeat="info in topic.ordersValue | limitTo:1" )
+                                                                    td.text-center(ng-if="$index === 0 " colspan='6' style='background-color:#DDD; color:#000;') 
+                                                                        b(ng-if="topic.typeOp !== '3'") {{info.instrumentDesc}}
+                                                                tr( ng-repeat="info in topic.ordersValue | limitTo:1 " style="background-color: #009688")
+                                                                    td.text-left(ng-if="$index === 0 && topic.typeOp === '2' " )
+                                                                        b FONDO
+                                                                    td.text-left(ng-if="$index === 0 && topic.typeOp === '1' " )
+                                                                        b EMISION
+                                                                    td.text-left(ng-if="$index === 0 && topic.typeOp === '3' " )
+                                                                        b EMISORA
+                                                                    td(ng-if="$index === 0 " ) 
+                                                                        b TITULOS 
+                                                                    td(ng-if="$index === 0" )
+                                                                        b COSTO TOTAL
+                                                                    td(ng-if="$index === 0 && topic.typeOp !== '3'" )
+                                                                        b IMPORTE TOTAL  
+                                                                    td(ng-if="$index === 0 " )
+                                                                        b PRECIO ACTUAL
+                                                                    td(ng-if="$index === 0 && topic.typeOp === '1'" )
+                                                                        b TASA CUPON
+                                                                    td(ng-if="$index === 0 && topic.typeOp === '3'" )
+                                                                        b VALOR ACTUAL
+                                                                    td(ng-if="$index === 0 && topic.typeOp !== '1'" )
+                                                                        b PLUS-MINUSVALÍA                                                                       
+
+                                                                tr( ng-repeat="info in topic.ordersValue" )
+                                                                    td.text-left {{ info.emissionID + ' ' + info.operationSource + ' ' + info.instrumentID + ' ' + info.instrumentDesc.operationType }}
+                                                                    td(ng-if="topic.typeOp !== '3'") {{ info.titlesQty | number }}
+                                                                    td(ng-if="topic.typeOp === '3'") {{ info.titlesQty.titlesQty | number }}
+                                                                    td(ng-if="topic.typeOp !== '3'") {{ info.cost | currency}}
+                                                                    td(ng-if="topic.typeOp === '3'") {{ info.unitCost.price | currency}}
+                                                                    td(ng-if="topic.typeOp !== '3'") {{ info.amount || info.unitCostValuation || info.currentPrice | currency }}
+                                                                    td(ng-if="topic.typeOp === '2'") {{ info.currentPrice || info.closingPrice | currency}}
+                                                                    td(ng-if="topic.typeOp === '3'") {{ info.closingPrice.price | currency}}
+                                                                    td(ng-if="topic.typeOp === '3'") {{ info.valuation.valuation | currency}}
+                                                                    td(ng-if="topic.typeOp !== '1'") {{ info.appreciation || info.capitalGain.price | currency}}
+                                                                        i.fa( ng-if="topic.typeOp === '2'" ng-class="{'fa-arrow-circle-up': info.appreciation  > 0, 'fa-arrow-circle-down': info.appreciation  < 0, 'fa-minus-circle': info.appreciation  === 0 }" )
+                                                                        i.fa( ng-if="topic.typeOp === '3'" ng-class="{'fa-arrow-circle-up': info.capitalGain.price  > 0, 'fa-arrow-circle-down': info.capitalGain.price  < 0, 'fa-minus-circle': info.capitalGain.price  === 0 }" )
+                                                                    td(ng-if="topic.typeOp === '1'") {{ info.couponRate.rate }}
+                                                                //tr.subtotal
+                                                                    td( colspan="3" ) SUBTOTAL:
+                                                                    td
+                                                                        //strong {{ infoResume | sumByColumnProp : 'valuationMXN' | currency }}
+                                                                    td &nbsp;
+                                                                                                                                        //
+                                                                                                                                            table.table(style='background-color: #eafbff;')
+                                                                                                                                                tr( style="font-size:11px;font-weight:900;background-color:#c4f5ff;" )
+                                                                                                                                                    th(ng-repeat='(key,val) in po.operation') {{key}}
+                                                                                                                                                tr
+                                                                                                                                                    td(ng-repeat='(key,val) in po.operation', style='font-size: 11px;')
+                                                                                                                                                        div(ng-if="key != 'Monto' && key != 'Limite Mensual' && key != 'Limite Diario'")
+                                                                                                                                                            div(ng-if="val != ''")
+                                                                                                                                                                span {{val}}
+                                                                                                                                                        div(ng-if="key == 'Monto' || key == 'Limite Mensual' || key == 'Limite Diario'")
+                                                                                                                                                            div(ng-if="val != ''")
+
+                            //
+                                .panel-body
+
+                                    // Empty balance
+                                    .empty-balance.display-as-table( ng-if="c.detail.length === 0" )
+                                        +noResults('no-balance-singular')
+
+                                    // Contract topics
+                                    .contract-topics( ng-if="c.detail.length > 0" ng-repeat="topic in c.detail" )
+                                        ul( uib-accordion )
+                                            li(  )
+                                                uib-accordion-heading
+                                                    .topic-resume.display-as-table
+                                                        .type
+                                                            .bullet
+                                                        .name {{ topic.title }}
+                                                        .arrow
+                                                            i.direction-arrow.fa( ng-class="{'fa-angle-up': innerstatus.open, 'fa-angle-down': !innerstatus.open}" )
+                                                .panel-body
+                                                    .info-by-currency
+
+
+
+                                        // Contract totals
+                                            .contract-totals(ng-if="!pdetail.contract_info[index][0][undefined]")
+                                                .display-as-table
+                                                    .item TOTAL:
+                                                    .current-value {{ pdetail.contract_totals[index][0] | currency }}
+                                                    .plus {{ pdetail.contract_totals[index][1] | currency }}
+                                                    div
+                                            .contract-totals(ng-if="pdetail.contract_info[index][0][undefined]")
+                                                .display-as-table
+                                                    .item TOTAL:
+                                                    //.current-value {{ pdetail.contract_info[index][0][undefined]| sumByColumnProp : 'valuationMXN' | currency }}
+                                                    div
+
+                    // Contracts totals
+                        .contracts-totals( ng-if="contractInfo && showTotals" )
+                            .display-as-table
+                                .item TOTAL DE CUENTAS
+                                .current-value {{ pdetail.contracts_totals.valuation | currency }}
+                                .plus {{ pdetail.contracts_totals.appreciation | currency }}
+                                .value
+
+    //Credits
+    .portfolio-other-info
+        .table-wrapper
+            h2.h2 Crédito
+            table.table.small-list
+                thead
+                    tr
+                        th( width="14%" ) Tipo de crédito
+                        th( width="14%" ) Línea de crédito
+                        th( width="14%" ) Monto pagado
+                        th( width="14%" ) Total adeudo
+                        th( width="14%" ) Tasa
+                        th( width="14%" ) Fecha inicio
+                        th( width="14%" ) Fecha fin
+                tbody
+                    tr
+                        td( colspan="7" )
+
+                            // Spinner
+                            .loader-wrapper( ng-if="!portfolio.resume_credits" )
+                                .spinner
+
+                            // No results
+                            .no-data( ng-if="portfolio.resume_credits === 'no-data'" )
+                                +noResults('no-data')
+
+                            // Results
+                            div( ng-if="portfolio.resume_credits && portfolio.resume_credits !== 'no-data'" )
+                                div( scrollable always-visible="true" )
+                                    table.table
+                                        tbody
+                                            tr( ng-repeat="credit in portfolio.resume_credits" )
+                                                td( width="14%" ) {{ credit.loanType }}
+                                                td( width="14%" ) {{ credit.initialAmount | currency }}
+                                                td( width="14%" ) {{ credit.paidAmount | currency  }}
+                                                td( width="14%" ) {{ credit.currentBalance | currency}}
+                                                td( width="14%" ) {{ credit.rate }}
+                                                td( width="14%" ) {{ credit.startDate | date }}
+                                                td( width="14%" ) {{ credit.dueDate | date}}
+                    tr.totals( ng-if="portfolio.resume_credits && portfolio.resume_credits !== 'no-data'" )

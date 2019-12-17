@@ -1,0 +1,297 @@
+@mixin backgroundIcons( $_url ) {
+    display: inline-block;
+    margin-left: 0;
+    background: url( $_url ) no-repeat;
+}
+
+i{
+    &.help{
+        @include backgroundIcons( 'img/icons/inner-tabs-doubt-active.svg' );
+        height: 10px;
+        width: 10px;
+        margin-left: 5px;
+    }
+
+
+    &.reload{
+        background: url( '../img/icons/icon_recargar.svg' ) no-repeat;
+        display: inline-block;
+        height: 10px;
+        width: 12px;
+    }
+
+    &.reactivate{
+        margin: 0 auto;
+        height: 19px;
+        width: 16px;
+
+        @include backgroundIcons( '../img/icons/prospects/icon_reactivar.svg' );
+
+        &:hover{
+            @include backgroundIcons( '../img/icons/prospects/icon_reactivarActive.svg' );
+        }
+    }
+
+    &.edit-prospect{
+        width: 23px;
+        height: 26px;
+        @include backgroundIcons( '../img/icons/prospects/icon_editar_Actividad.svg' );
+    }
+
+    &.complete-prospect{
+        width: 28px;
+        height: 22px;
+        @include backgroundIcons( '../img/icons/prospects/icon_completarActividad.svg' );
+    }
+
+    &.contacted{
+        width: 26px;
+        height: 21px;
+        @include backgroundIcons( '../img/icons/prospects/icon_contacted.svg' );
+    }
+
+    &.close-prospect{
+        width: 18px;
+        height: 18px;
+        @include backgroundIcons( '../img/icons/prospects/icon_cerrar_actividad.svg' );
+    }
+
+
+
+    &.eye{
+        width: 22px;
+        display: block;
+        height: 11px;
+        background: url(../img/icons/view-more-disabled.svg) no-repeat;
+
+        &:hover{
+            background-image: url(../img/icons/view-more.svg);
+        }
+    }
+
+
+    &.add-white {
+        width: 22px;
+        height: 22px;
+        @include backgroundIcons( '../img/icons/icon_agregar_white.svg' );
+    }
+
+
+    &.arrenda-active {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_arrenda_active.svg' );
+        background-position: center;
+    }
+
+
+    &.arrenda-disable {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_arrenda_disable.svg' );
+        background-position: center;
+    }
+
+
+    &.credito-active {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_credito_active.svg' );
+        background-position: center;
+    }
+
+
+    &.credito-disable {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_credito_disable.svg' );
+        background-position: center;
+    }
+
+
+    &.fiduciario-active {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_fiduciario_active.svg' );
+        background-position: center;
+    }
+
+
+    &.fiduciario-disable {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_fiduciario_disable.svg' );
+        background-position: center;
+    }
+
+
+    &.prevision-active {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_prevision_active.svg' );
+        background-position: center;
+    }
+
+
+    &.prevision-disable {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_prevision_disable.svg' );
+        background-position: center;
+    }
+
+    &.fact-icon-1{
+      width: 40px;
+      height: 40px;
+      @include backgroundIcons( '../img/icons/icon_credito_disable.svg' );
+      background-position: center;
+
+      &.active{
+        background:  url('../img/icons/icon_credito_active.svg') no-repeat center;
+      }
+    }
+    &.fact-icon-2{
+      width: 40px;
+      height: 40px;
+      @include backgroundIcons( '../img/icons/icon_seguros_disable.svg' );
+      background-position: center;
+
+      &.active{
+        background:  url('../img/icons/icon_seguros_active.svg') no-repeat center;
+      }
+    }
+    &.fact-icon-3{
+      width: 40px;
+      height: 40px;
+      @include backgroundIcons( '../img/icons/icon_fiduciario_disable.svg' );
+      background-position: center;
+
+      &.active{
+        background:  url('../img/icons/icon_fiduciario_active.svg') no-repeat center;
+      }
+    }
+    &.fact-icon-4{
+      width: 40px;
+      height: 40px;
+      @include backgroundIcons( '../img/icons/icon_arrenda_disable.svg' );
+      background-position: center;
+
+      &.active{
+        background:  url('../img/icons/icon_arrenda_active.svg') no-repeat center;
+      }
+    }
+    &.fact-icon-5{
+      width: 40px;
+      height: 40px;
+      @include backgroundIcons( '../img/icons/icon_prevision_disable.svg' );
+      background-position: center;
+
+      &.active{
+        background:  url('../img/icons/icon_prevision_active.svg') no-repeat center;
+      }
+    }
+
+
+    &.seguros-active {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_seguros_active.svg' );
+        background-position: center;
+    }
+
+
+    &.seguros-disable {
+        width: 40px;
+        height: 40px;
+        @include backgroundIcons( '../img/icons/icon_seguros_disable.svg' );
+        background-position: center;
+    }
+
+    &.edit {
+        width: 22px;
+        height: 22px;
+        @include backgroundIcons( '../img/icons/icon_editar.svg' );
+        background-position: center;
+    }
+
+
+    &.remove {
+        width: 22px;
+        height: 22px;
+        @include backgroundIcons( '../img/icons/icon_eliminar.svg' );
+        background-position: center;
+    }
+
+
+    &.question {
+        width: 22px;
+        height: 22px;
+        @include backgroundIcons( '../img/icons/inner-tabs-doubt.svg' );
+        background-position: center;
+    }
+
+
+    &.calendar-on {
+        width: 25px;
+        height: 24px;
+        @include backgroundIcons( '../img/icons/icon_calendar_on.svg' );
+        background-position: center;
+    }
+
+
+    &.search {
+        width: 25px;
+        height: 24px;
+        @include backgroundIcons( '../img/icons/icon_search_input.svg' );
+        background-position: center;
+    }
+
+
+    &.question-big{
+        width: 20px;
+        height: 20px;
+        @include backgroundIcons( '../img/icons/help/icon_preguntas.svg' );
+    }
+
+
+    &.icon-video{
+        width: 28px;
+        height: 17px;
+        @include backgroundIcons( '../img/icons/help/icon_videos.svg' );
+    }
+
+
+    &.icon-mail-btn{
+        width: 27px;
+        height: 19px;
+        @include backgroundIcons( '../img/icons/help/icon_mail_btn.svg' );
+    }
+
+    // &.icon-video-play{
+    //     width: 56px;
+    //     height: 56px;
+    //     @include backgroundIcons( '../img/icons/help/icon_play.svg' );
+    // }
+
+    &.icon-avatar-credit{
+        width: 53px;
+        height: 53px;
+        @include backgroundIcons( '../img/icons/simulators/icon_avatarCredito.svg' );
+    }
+}
+.numero-notificacion{
+    position: relative;
+    &::after{
+        content: attr(data-count-notificacion);
+        position: absolute;
+        top: 0px;
+        right: 45px;
+        background-color: #0F3F88;
+        padding: 3px;
+        font-size: 10px;
+        color: white;
+        border-radius: 50%;
+        width: 23px;
+    }
+}
+

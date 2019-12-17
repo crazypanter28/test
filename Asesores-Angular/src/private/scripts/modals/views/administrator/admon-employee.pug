@@ -1,0 +1,17 @@
+include /views/mixins/radio-button
+
+.title-modal {{ctrl.title}}
+form( name="$form" )
+    .container-modal
+
+        .row
+            .form-group.col-xs-6
+                label Número de empleado anterior #[span.require *]
+                input.form-control( placeholder='---' ng-model="ctrl.employee.old" required="true")
+            .form-group.col-xs-6
+                label Número de empleado nuevo #[span.require *]
+                input.form-control( placeholder='---' ng-model="ctrl.employee.new" required="true")
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+        button.btn.btn-primary( title="GENERAR" ng-disabled="$form.$invalid" ng-click="ctrl.done()") GUARDAR

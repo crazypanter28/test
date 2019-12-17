@@ -1,0 +1,51 @@
+include /views/mixins/info-result
+include /app/advisers/goals/page-instructions
+
+// Report
+.common-page.goals-report-page
+
+    form( name="form" novalidate )
+
+        // Data
+        .panel.panel-default.panel-static
+            .panel-heading
+                .panel-title
+                    span Reporte del empleado: {{ goals.sadviser.name }}
+            .panel-body
+                .content
+
+                    // Form row
+                    .form-row
+                        .item.field
+                            .form-group
+                                dates-range-picker(
+                                    date="goals.datepicker_opts.initDate"
+                                    label="Datos del reporte a la fecha de:"
+                                    placeholder="dd/mm/aaaa"
+                                    options='goals.datepicker_opts'
+                                    ng-required="true"
+                                    on-change="report.updateReport"
+                                )
+
+                    // Search results
+                    .search-results
+
+                        // Spinner
+                        .loader-wrapper( ng-if="report.search_form_sent" )
+
+                        // No results
+                        .no-results( ng-if="!report.search_form_sent && report.report_empty" )
+                            +noResults("no-results")( msg!="El usuario <strong>no tiene Metas registradas</strong>." )
+
+                        // Results
+                        div( ng-if="!report.search_form_sent && !report.report_empty")
+
+                            // Goals totals
+                            goals-totals( data="report.report_info" )
+
+                            // Goals products
+                            goals-products( data="report.report_info" )
+
+        // Page instructions
+        .page-instructions( ng-if="!report.search_form_sent && !report.report_empty" )
+            +page_instructions()

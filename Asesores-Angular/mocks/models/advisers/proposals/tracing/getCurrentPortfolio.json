@@ -1,0 +1,93 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"portfolio": [{
+			"contrato": null,
+			"inversion": "DEUDA",
+			"instrumento": "SOCIEDADES DE DEUDA",
+			"producto": "ACTIMED B-1",
+			"precio": 4.233668,
+			"posicion": 13498,
+			"monto": 57146.05,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": 2651.21
+		}, {
+			"contrato": null,
+			"inversion": "DEUDA",
+			"instrumento": "SOCIEDADES DE DEUDA",
+			"producto": "ACTIREN B-1",
+			"precio": 7.361034,
+			"posicion": 6611,
+			"monto": 48663.79,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": 1002.95
+		}, {
+			"contrato": null,
+			"inversion": "DEUDA",
+			"instrumento": "SOCIEDADES DE DEUDA",
+			"producto": "ORION B-2",
+			"precio": 3.510086,
+			"posicion": 52349,
+			"monto": 183749.49,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": 8739.04
+		}, {
+			"contrato": null,
+			"inversion": "CAPITALES",
+			"instrumento": "SOCIEDADES DE RENTA VARIABLE",
+			"producto": "ABSLUTO B-2",
+			"precio": 1.040419,
+			"posicion": 233965,
+			"monto": 243421.63,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": 7522.44
+		}, {
+			"contrato": null,
+			"inversion": "CAPITALES",
+			"instrumento": "SOCIEDADES DE RENTA VARIABLE",
+			"producto": "ACTINMO B",
+			"precio": 40.421459,
+			"posicion": 829,
+			"monto": 33509.38,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": -442.23
+		}, {
+			"contrato": null,
+			"inversion": "CAPITALES",
+			"instrumento": "SOCIEDADES DE RENTA VARIABLE",
+			"producto": "ACTI500 B1",
+			"precio": 3.226575,
+			"posicion": 3306,
+			"monto": 10667.05,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": 742.83
+		}, {
+			"contrato": null,
+			"inversion": "CAPITALES",
+			"instrumento": "SOCIEDADES DE RENTA VARIABLE",
+			"producto": "DINAMO B",
+			"precio": 2.562782,
+			"posicion": 18509,
+			"monto": 47434.53,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": -2359.82
+		}, {
+			"contrato": null,
+			"inversion": "CAPITALES",
+			"instrumento": "SOCIEDADES DE RENTA VARIABLE",
+			"producto": "QUETZAL B",
+			"precio": 11.200866,
+			"posicion": 4884,
+			"monto": 54705.02,
+			"porcentajeInversion": null,
+			"plusMinusvaliaPortafolio": 4732.28
+		}],
+		"portfolioValue": 679296.94
+	}
+}

@@ -1,0 +1,33 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"534f94a2-5852-4bc4-b51d-9884ef41cd3e",
+         "messages":[
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1493874000000,
+      "time":58683000,
+      "clientID":"NBURSANET",
+      "sessionID":null,
+      "responseSystem":"A2K",
+      "operationName":"BondMarketOrderQuotation",
+      "operationVersion":"1_0",
+      "ipaddress":"192.168.4.51"
+   },
+   "outBondMarketOrderQuotation":{
+      "bondOrderQuotation":{
+         "cashAmount":45754.54,
+         "issuerName":"GUBER",
+         "maxRate":2.3,
+         "success":"2.3"
+      }
+   }
+}

@@ -1,0 +1,30 @@
+include /views/mixins/buttons
+include /views/mixins/selected-client-info
+
+// Reporto
+.reporto
+    div.my-movements
+        uib-tabset( active="activeTab" )
+            uib-tab( index="0" heading='INSTRUMENTOS' ng-click="money.updateInstruments()" )
+                div( table-portfolio-inv="" contract="{{ investment.contract.contractNumber }}" type="MD" update="money.updateInstruments" nodata="Este contrato <strong>no cuenta</strong> con posición en este instrumento." )
+            uib-tab( index='1' heading='ÓRDENES' ng-click="money.updateOrders()" )
+                div( act-table-orders="" contract="{{ investment.contract.contractNumber }}" type="MD" update="money.updateOrders" )
+            uib-tab( index='2' heading='Historico' ng-click="money.clean()" )
+                div( act-table-orders="" contract="{{ investment.contract.contractNumber }}" type="MD"  clean="money.clean"   origin="history" )                
+
+
+    .panel-wrapper( ng-init="money.type = 'reporto'; money.tabSelect = 2")
+        div.sub-menu-buttons.row.margin-0
+            ul.nav.nav-tabs
+                li.uib-tab.nav-item( ng-click="money.selected(2)" ng-class="{'active': money.tabSelect === 2}")
+                    a.nav-link( href="" ng-click="select($event)" ) REPORTO
+                li.uib-tab.nav-item( ng-click="money.selected(1)" ng-class="{'active': money.tabSelect === 1}")
+                    a.nav-link( href="" ng-click="select($event)" ) DIRECTO
+
+        div.row.margin-0.reporto-wrapper(ng-if="money.type === 'reporto'")
+            div.col-md-8( act-table-reporto contract="{{ investment.contract.contractNumber }}" instrument="money.selectedInstrument" tab="money.tabSelect")
+            div.col-md-4( act-money-doll contract="investment.contract" instrument="money.selectedInstrument")
+        div.row.margin-0.reporto-wrapper(ng-if="money.type === 'directo'")
+            div.col-md-8( act-table-direct contract="{{ investment.contract.contractNumber }}" instrument="money.selectedInstrument" tab="money.tabSelect" totalTitles="investment.totalTitles")
+            div.col-md-4( act-money-direct-doll contract="investment.contract" totalTitles="investment.totalTitles")
+

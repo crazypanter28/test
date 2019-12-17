@@ -1,0 +1,59 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "0e25a6e0-8900-4c3c-ac34-ac2680b9b0be",
+			"messages": [{
+				"responseSystemCode": "MCBUS001",
+				"responseMessage": "EXITO",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}, {
+				"responseSystemCode": "ACACBCWS0096",
+				"responseMessage": "NO HAY NINGUN ERROR",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}, {
+				"responseSystemCode": "MCBUS001",
+				"responseMessage": "EXITO",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1500872400000,
+		"time": 58094000,
+		"clientID": "PROMOTORES",
+		"sessionID": "",
+		"responseSystem": "BUS CENTRAL",
+		"operationName": "ClientIssuersMarketInfoQuery",
+		"operationVersion": "1_0",
+		"ipaddress": "10.10.1.58"
+	},
+	"outClientIssuersMarketInfoQuery": {
+		"marketDataTuple": [{
+			"issuer": {
+				"issuerName": "NAFTRAC",
+				"serie": "ISHRS",
+				"issuerSerie": "NAFTRAC ISHRS"
+			},
+			"closingPrice": 51.76,
+			"lastPrice": 51.47,
+			"priceVar": -0.56027496,
+			"tradeBuy": 140000,
+			"tradeBuyPrice": 51.5,
+			"tradeSell": 10000,
+			"tradeSellPrice": 51.54,
+			"tradeDateTime": 1500908880000,
+			"quantityBuySell": 84455427.72000001,
+			"quantityOpeCounting": 328,
+			"exchangeBuySell": 5159302.0,
+			"exchangeOpeCounting": 3,
+			"maxPrice": 51.71,
+			"maxPriceDateTime": 1500899571585,
+			"minPrice": 51.43,
+			"minPriceDateTime": 1500902326025,
+			"averagePrice": 51.534824
+		}]
+	}
+}

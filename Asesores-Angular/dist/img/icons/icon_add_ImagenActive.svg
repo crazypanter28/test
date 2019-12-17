@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="31px" viewBox="0 0 50 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>datos asesor</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,3.37631243 C0,1.71562765 1.34297237,0.369376643 2.9936666,0.369376643 L40.712218,0.369376643 L50,9.3524587 L50,27.0206925 C50,28.6809969 48.6626208,30.0269395 47.0034676,30.0269395 L2.99653242,30.0269395 C1.34159326,30.0269395 0,28.67555 0,27.0200037 L0,3.37631243 Z" id="path-1"></path>
+        <path d="M39.1958481,1.8687381 C38.3776601,1.1315378 38.6006656,0.533918873 39.7146528,0.533918873 L47.5056103,0.533918873 C48.6103262,0.533918873 49.5058755,1.42146827 49.5058755,2.53227139 L49.5058755,9.15988205 C49.5058755,10.2635417 48.838129,10.5565845 48.0244149,9.82341533 L39.1958481,1.8687381 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Administrador-Copy-92" transform="translate(-308.000000, -253.000000)">
+            <g id="POPOP-Copy" transform="translate(267.000000, 80.000000)">
+                <g id="DATOS-PROSPECTO" transform="translate(40.000000, 76.000000)">
+                    <g transform="translate(0.000000, 68.000000)" id="pestaña00-copy-2">
+                        <g>
+                            <g id="datos-asesor">
+                                <g id="pestaña00-copy-2">
+                                    <g id="datos-asesor">
+                                        <g id="Group-10-Copy-2">
+                                            <g id="datos-asesor" transform="translate(1.000000, 29.000000)">
+                                                <g id="adjuntar">
+                                                    <g>
+                                                        <g id="Rectangle-4-Copy">
+                                                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                                            <path stroke="#00BEBE" stroke-width="1" d="M40.5099786,0.869376643 L49.5,9.5644666 L49.5,27.0206925 C49.5,28.406786 48.3845508,29.5269395 47.0034676,29.5269395 L2.99653242,29.5269395 C1.62002342,29.5269395 0.5,28.4017009 0.5,27.0200037 L0.5,3.37631243 C0.5,1.99226759 1.61862249,0.869376643 2.9936666,0.869376643 L40.5099786,0.869376643 Z"></path>
+                                                        </g>
+                                                        <g id="Rectangle-4-Copy" transform="translate(44.104996, 5.380308) rotate(-180.000000) translate(-44.104996, -5.380308) ">
+                                                            <use fill="#00BEBE" fill-rule="evenodd" xlink:href="#path-2"></use>
+                                                            <path stroke="#00BEBE" stroke-width="1" d="M39.5305389,1.49727869 C39.0502673,1.06454642 39.0620244,1.03391887 39.7146528,1.03391887 L47.5056103,1.03391887 C48.3370426,1.03391887 49.0058755,1.70046233 49.0058755,2.53227139 L49.0058755,9.15988205 C49.0058755,9.82845784 48.8526566,9.89665302 48.3591057,9.45195592 L39.5305389,1.49727869 L39.5305389,1.49727869 Z"></path>
+                                                        </g>
+                                                        <g id="noun_600412_cc" transform="translate(3.000000, 4.000000)" fill-rule="nonzero" fill="#00BEBE">
+                                                            <g id="Group">
+                                                                <polygon id="Shape" points="28.6 7.00526316 20.3210526 15.2263158 14.7631579 10.8263158 0.521052632 22 43.6526316 22"></polygon>
+                                                                <circle id="Oval" cx="8.04736842" cy="3.3" r="3.06842105"></circle>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

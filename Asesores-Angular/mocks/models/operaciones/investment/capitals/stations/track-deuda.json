@@ -1,0 +1,169 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "18d3b917-0a2e-4779-9947-ff2a843627e9",
+			"messages": [{
+				"responseSystemCode": "MCBUS001",
+				"responseMessage": "EXITO",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}, {
+				"responseSystemCode": "MCBUS001",
+				"responseMessage": "EXITO",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1495429200000,
+		"time": 79935000,
+		"clientID": "NBURSANET",
+		"sessionID": "",
+		"responseSystem": "BUS CENTRAL",
+		"operationName": "ClientIssuersMarketInfoQuery",
+		"operationVersion": "1_0",
+		"ipaddress": "192.168.14.51"
+	},
+	"outClientIssuersMarketInfoQuery": {
+		"marketDataTuple": [{
+			"issuer": {
+				"issuerName": "DLRTRAC",
+				"serie": "15",
+				"issuerSerie": "DLRTRAC 15"
+			},
+			"closingPrice": 18.47,
+			"lastPrice": 18.47,
+			"priceVar": -0.000003717626,
+			"tradeBuy": 4800,
+			"tradeBuyPrice": 18.47,
+			"tradeSell": 250,
+			"tradeSellPrice": 18.6,
+			"tradeDateTime": 1495479540000,
+			"quantityBuySell": 6985119.527,
+			"quantityOpeCounting": 21,
+			"exchangeBuySell": 0.0,
+			"exchangeOpeCounting": 0,
+			"maxPrice": 18.51,
+			"maxPriceDateTime": 1495465977749,
+			"minPrice": 18.4,
+			"minPriceDateTime": 1495456201000,
+			"averagePrice": 18.485924
+		}, {
+			"issuer": {
+				"issuerName": "CORPTRC",
+				"serie": "ISHRS",
+				"issuerSerie": "CORPTRC ISHRS"
+			},
+			"closingPrice": 8.8,
+			"lastPrice": 8.8,
+			"priceVar": 0.0000021674416,
+			"tradeBuy": 119632,
+			"tradeBuyPrice": 8.77,
+			"tradeSell": 20100,
+			"tradeSellPrice": 8.8,
+			"tradeDateTime": 1495475400000,
+			"quantityBuySell": 1684877.75,
+			"quantityOpeCounting": 9,
+			"exchangeBuySell": 0.0,
+			"exchangeOpeCounting": 0,
+			"maxPrice": 8.8,
+			"maxPriceDateTime": 1495470677807,
+			"minPrice": 8.75,
+			"minPriceDateTime": 1495456683100,
+			"averagePrice": 8.79373
+		}, {
+			"issuer": {
+				"issuerName": "CETETRC",
+				"serie": "ISHRS",
+				"issuerSerie": "CETETRC ISHRS"
+			},
+			"closingPrice": 103.24,
+			"lastPrice": 0.0,
+			"priceVar": 0.0,
+			"tradeBuy": 70000,
+			"tradeBuyPrice": 103.15,
+			"tradeSell": 70110,
+			"tradeSellPrice": 103.24,
+			"tradeDateTime": 1495474860000,
+			"quantityBuySell": 0.0,
+			"quantityOpeCounting": 0,
+			"exchangeBuySell": 0.0,
+			"exchangeOpeCounting": 0,
+			"maxPrice": 0.0,
+			"maxPriceDateTime": -5333191200000,
+			"minPrice": 0.0,
+			"minPriceDateTime": -5333191200000,
+			"averagePrice": 0.0
+		}, {
+			"issuer": {
+				"issuerName": "M10TRAC",
+				"serie": "ISHRS",
+				"issuerSerie": "M10TRAC ISHRS"
+			},
+			"closingPrice": 97.55,
+			"lastPrice": 0.0,
+			"priceVar": 0.0,
+			"tradeBuy": 47375,
+			"tradeBuyPrice": 97.19,
+			"tradeSell": 69999,
+			"tradeSellPrice": 97.37,
+			"tradeDateTime": 1495479360000,
+			"quantityBuySell": 0.0,
+			"quantityOpeCounting": 0,
+			"exchangeBuySell": 0.0,
+			"exchangeOpeCounting": 0,
+			"maxPrice": 0.0,
+			"maxPriceDateTime": -5333191200000,
+			"minPrice": 0.0,
+			"minPriceDateTime": -5333191200000,
+			"averagePrice": 0.0
+		}, {
+			"issuer": {
+				"issuerName": "M5TRAC",
+				"serie": "ISHRS",
+				"issuerSerie": "M5TRAC ISHRS"
+			},
+			"closingPrice": 88.54,
+			"lastPrice": 0.0,
+			"priceVar": 0.0,
+			"tradeBuy": 70000,
+			"tradeBuyPrice": 88.32,
+			"tradeSell": 70000,
+			"tradeSellPrice": 88.49,
+			"tradeDateTime": 1495477680000,
+			"quantityBuySell": 0.0,
+			"quantityOpeCounting": 0,
+			"exchangeBuySell": 0.0,
+			"exchangeOpeCounting": 0,
+			"maxPrice": 0.0,
+			"maxPriceDateTime": -5333191200000,
+			"minPrice": 0.0,
+			"minPriceDateTime": -5333191200000,
+			"averagePrice": 0.0
+		}, {
+			"issuer": {
+				"issuerName": "UDITRAC",
+				"serie": "ISHRS",
+				"issuerSerie": "UDITRAC ISHRS"
+			},
+			"closingPrice": 120.53,
+			"lastPrice": 120.53,
+			"priceVar": -0.0000010127795,
+			"tradeBuy": 67852,
+			"tradeBuyPrice": 120.53,
+			"tradeSell": 69775,
+			"tradeSellPrice": 120.9,
+			"tradeDateTime": 1495471440000,
+			"quantityBuySell": 283078.44,
+			"quantityOpeCounting": 2,
+			"exchangeBuySell": 0.0,
+			"exchangeOpeCounting": 0,
+			"maxPrice": 120.9,
+			"maxPriceDateTime": 1495467839710,
+			"minPrice": 120.53,
+			"minPriceDateTime": 1495467842312,
+			"averagePrice": 120.56161
+		}]
+	}
+}

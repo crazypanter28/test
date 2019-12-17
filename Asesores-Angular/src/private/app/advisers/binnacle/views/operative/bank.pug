@@ -1,0 +1,50 @@
+.operative-binnacle-bank
+    .row.date-range
+        .col-sm-4
+            <dates-range-picker label="Periodo de búsqueda" placeholder="dd/mm/aaaa - dd/mm/aaaa" on-change="ctrl.changeDate" options='ctrl.datepicker_opts'></dates-range-picker>
+
+    .row
+        .col-md-12
+            div
+            #printableArea
+                tab-table( set-data="ctrl.setData" number-cols-by-tab="4" label-button-next-tab="Más info" )
+                    table
+                        thead
+                            tr
+                                th Región
+                                th Centro Financiero
+                                th Contrato
+                                th Nombre Cliente
+                                th.text-center( width="250" ) Nombre Asesor
+                                th Tipo Operación
+                                th Emisora
+                                th Fecha Operación
+                                th.text-center Títulos
+                                th Precio
+                                th Importe
+                                th Medio Instrucción
+                                th.text-center Extensión Telefónica
+                                th Hora Creación
+                                th Comentario
+                                th Id Usuario
+                        tbody
+                            tr
+                                td {{ item.region }}
+                                td {{ item.centroFinanciero }}
+                                td {{ item.contrato }}
+                                td {{ item.nombreCliente }}
+                                td.text-center {{ item.nombreAsesor }}
+                                td {{ item.tipoOperacion }}
+                                td {{ item.emisora }}
+                                td {{ item.fechaOperacion | date:'dd/MM/yyyy'}}
+                                td.text-center {{ item.titulos | number }}
+                                td {{ item.precio }}
+                                td {{ item.importe | number }}
+                                td {{ item.medioInstruccion }}
+                                td.text-center {{ item.extensionTelefonica }}
+                                td {{ item.horaCreacion }}
+                                td {{ item.comentario }}
+                                td {{ item.idUsuario }}
+
+    .to-print( ng-show=" ctrl.dataOperativeBinnacle.length > 0" )
+        a.btn.btn-primary( ng-click="ctrl.downloadPDF('printableArea')" title="IMPRIMIR" ) IMPRIMIR

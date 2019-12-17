@@ -1,0 +1,58 @@
+include /views/mixins/icons
+include /views/mixins/tables
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div.padding-left-0.investment-table-container
+    table.investment-table.bands-table-direct
+        thead
+            tr
+                +thCaret( 'Tipo de Instrumento', 'issuer' )
+                +thCaret( 'Serie', 'serie' )
+                +thCaret( 'DXV', 'maturityDays' )
+
+        tbody
+            +trLoading( 150, 'loading' )( colspan='5' )
+            div( scrollable always-visible="true" )
+            tr( ng-repeat="band in $root.bands | orderBy:sortType:sortReverse" ng-click="$root.getInstrument(band)" )
+                td( ng-bind="band.issuer" )
+                td( ng-bind="band.serie" )
+                td( ng-bind="band.maturityDays" )
+            tr
+                td( colspan='5')
+                    .no-data( ng-if="!$root.bands" )
+                        strong(style="margin-left: 150px; color: black;") Instrumentos disponibles de acuerdo al plazo                    
+
+    table.investment-table(ng-if="$root.distOrder")
+        thead
+            tr
+                +thCaret( 'Contrato', '' )
+                +thCaret( 'Titulos', '' )
+                th
+                    input.form-control( type="text" placeholder="Contrato"
+                        ng-required="true"
+                        ng-model = "doll.contractNumber"
+                        required="required"
+                        typeahead-on-select= ''
+                        uib-typeahead="st as ( st.contractNumber ) for st in $root.adviserContracts | filter:$viewValue"
+                        autocomplete="off"
+                    )
+
+        tbody
+            +trLoading( 150, 'loading' )( colspan='5' )
+            tr
+                td( colspan="5" style="background-color:#DCD9D8" )
+
+                    // No results
+                    .no-data( ng-if="$root.adviserContracts.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No</strong> se encontraron datos" )
+
+                    div( ng-if="$root.adviserContracts" )
+                        div.dollScrollTable( scrollable always-visible="true" )
+                            table
+                                tr( ng-repeat="adviserContract in $root.adviserContracts | orderBy:sortType:sortReverse | filter: doll.contractNumber" ng-click="$root.getInstrument(band)" )
+                                    td(style="width: 180px;") {{adviserContract.contractNumber}}
+                                    td(style="width: 500px; padding-right: 10px;")
+                                        input.form-control(  type="text", placeholder="Número de Titulos", ng-model="$root.totalTitles[adviserContract.contractNumber]" ng-change="$root.getValue()" onkeypress='return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46);')

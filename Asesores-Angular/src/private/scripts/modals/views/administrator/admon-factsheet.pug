@@ -1,0 +1,35 @@
+include /views/mixins/buttons
+
+.title-modal {{ctrl.title}}
+form.form-modal( name="$form" novalidate )
+
+    // Spinner
+    .loader-wrapper( ng-if="ctrl.loading" )
+        .spinner
+
+    // Form
+    div( ng-if="!ctrl.loading" )
+        .container-modal
+            .row
+                .form-group.col-xs-6
+                    label Nombre del producto#[span.require *]
+                    input.form-control(type='text', placeholder='- - -' ng-model="ctrl.factsheet.name" required="true")
+                .form-group.col-xs-6( ng-show="!ctrl.factsheet.idProduct" )
+                    label Clasificación#[span.require *]
+                    div.form-control( act-dropdown="" ng-model="ctrl.products" selected="ctrl.factsheet.clasification" )
+            .row
+                .form-group.col-xs-6
+                    label Seleccionar archivo #[span.require *]
+                    file-uploader( filter="ctrl.uploaderOptions" on-success-set-file="ctrl.previewFile" on-error-set-file="ctrl.errorFile" )
+                    p.help-block Sólamente ( .jpg .png ) Máximo 2MB
+                .form-group.col-xs-6
+                    div( ng-if="ctrl.imgPreview || ctrl.factsheet.idProduct" )
+                        label Vista previa
+                        div
+                            img.preview-file( ng-show="ctrl.product_factsheet_img_url && !ctrl.imgPreview" ng-src="data:image/PNG;base64,{{ ctrl.product_factsheet_img_url }}")
+                            img.preview-file( ng-show="ctrl.imgPreview" ng-src="{{ctrl.imgPreview}}")
+
+        .buttons
+            button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+            button.btn.btn-primary( ng-show="ctrl.factsheet.idProduct" title="EDITAR" ng-disabled="!ctrl.factsheet.name" ng-click="ctrl.done()") EDITAR
+            button.btn.btn-primary( ng-show="!ctrl.factsheet.idProduct" title="GUARDAR" ng-disabled="!ctrl.factsheet.clasification || !ctrl.factsheet.file || $form.$invalid" ng-click="ctrl.done()") GUARDAR

@@ -1,0 +1,691 @@
+hostDev: http://localhost:8080
+hostProd: http://localhost:8080
+#hostProd: http://vsdlapafro01.actinver.com.mx
+#hostProd:http://esb-qa.actinver.com.mx
+
+urls:
+    #session
+    #getTimeSession: '{{host}}/asesoria-restful/api/asesoria/user/session/time'
+    #updateSession: '{{host}}/asesoria/security/authentication/token'
+    userInfo : '{{host}}/asesoria-restful/api/asesoria/user'
+    csrfRest : '{{host}}/asesoria-restful/api/asesoria/validate'
+    validateUserTokens: '{{host}}/asesoria-restful/api/asr/orchestrate/validateUserTokens'
+
+    saveAdviserNumber: '{{host}}/asesoria-restful/api/asr/orchestrate/saveAdviserNumber'
+
+    login: "{{host}}/asesoria/login"
+    logout: "{{host}}/asesoria/logout"
+    getPermiso: "{{host}}/asesoria-restful/api/all/Asesores/UserRole/getRoleAllow"
+    getBalance: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_1/cashByDate/'
+    getTransfers: '{{host}}/asesoria-restful/api/asr/movements/v1_0/contractMovementsQuery/'
+    getBankContractSPEIMovementsQuery: '{{host}}/asesoria-restful/api/asr/movements/v1_0/bankContractSPEIMovementsQuery/'
+    getOtherAccounts: '{{host}}/asesoria-restful/api/asr/orchestrate/destinationAccountQuery/'
+    getMedia: '{{host}}/asesoria-restful/api/asr/catalogs/v1_0/contactMeansCatalog?language=SPA'
+    webSocketUrl: 'http://vsdlapafro01.actinver.com.mx/Asesores/ws/stock/'
+    makeTransfer: '{{host}}/asesoria-restful/api/asr/financialOps/v1_0/transferExecution?language=SPA'
+    makeTransferOtherAccount: '{{host}}/asesoria-restful/api/asr/financialOps/v1_0/brokerSPEITransfer?language=SPA'
+
+    # Dashboard
+    getIPC: '{{host}}/asesoria-restful/api/asr/Asesores/GraphicsInfo/getIPC'
+    dashboardWebSocket: '{{host}}/asesoria-restful/api/asr/ws'
+    #getIssuers: '{{host}}/issuers'
+    getIssuers2: '{{host}}/issuers2'
+    dashboardNews: '{{host}}/asesoria-restful/api/asr/orchestrate/getLastNews'
+    dashboardMonthGoal: ''
+    dashboardIncomes: ''
+    dashboardSchedule: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getUncontactedCustomers/'
+    dashboardSocial: ''
+
+    #dashboardMonthGoal: 'https://reqres.in/api/users'
+    #dashboardIncomes: 'https://reqres.in/api/users'
+    #dashboardSocial: 'https://reqres.in/api/users?per_page=1'
+
+
+    #calendar
+    getAppointments: '{{host}}/asesoria-restful/api/asr/Asesores/Mail/getAppointments/'
+    getCurrentMessages : '{{host}}/asesoria-restful/api/asr/Asesores/Message/getCurrentMessages/'
+    addNewActivity: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityDay/addActivityDay/'
+    #calendar
+
+    # Goals
+    getGoalsPositions: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/metaPosiciones/'
+    getSumGoalsPositions: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/sumMetaPosiciones/'
+    getGoalsContracts: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/metaContratos/'
+    getSupervisorInfo: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/reporteSupervisor/'
+    getCenterInfo: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/metaPosicionesCFSuper/'
+    getCenterProducts: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/metaContratosCFSuper/'
+    getGroupsByEmployee: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/getGroupsByEmployee/'
+    getInfoByGroup: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/reporteSupervisorPorGrupo/'
+    getCustomCenterInfo: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/metaPosicionesCF/'
+    getCustomCenterProducts: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/metaContratosCF/'
+    getSharedReport: '{{host}}/asesoria-restful/api/asr/Asesores/SharedReport/getSharedReport/'
+
+    getGroupsByEmployeeRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/getGroupsByEmployee/'
+    getInfoByGroupRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/reporteSupervisorPorGrupo/'
+    getGoalsPositionsRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/metaPosiciones/'
+    getSumGoalsPositionsRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/sumMetaPosiciones/'
+    getGoalsContractsRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/metaContratos/'
+
+    getCustomCenterInfoRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/metaPosicionesCF/'
+    getCustomCenterProductsRpt: '{{host}}/asesoria-restful/api/rpt/Asesores/Meta/metaContratosCF/'
+
+
+
+
+    # Binnacle
+    getBinnacleClients: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/getSponsorList/'
+    getBirthDays: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getBirthDays/'
+
+
+    getClientDetails: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/getDetailsOfContract/'
+    getCommentsDetailsByContract: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/getDetailsOfContract/'
+    sendMessangeBirthday: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/sendCongratulations'
+    getDetailGraph: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getReportMetas'
+    getAdvisersDetails: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getReportMetasDetail/'
+
+
+    getClientType: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/validateUser/'
+    getClientProfile: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/getProfile/'
+    getBinnacleAdvGoal: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getReport/'
+    getBinnacleCatalog: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getActivityCatalogRoot/TPC/'
+    getBinnacleCatalogChild: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/getActivityCatalogChild/'
+    doBinnacleComment: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/saveComment/'
+    getOutlineInfo: '{{host}}/asesoria-restful/api/asr/Asesores/PracticasVenta/'
+    getSellsPracticeUrl: '{{host}}/asesoria-restful/api/asr/Asesores/PracticasVenta/getUrlVentas'
+
+
+    # Proposals
+    getIssuersInfo: '{{host}}/asesoria-restful/api/asr/Asesores/Fund/getFunds/'
+    getProducts: '{{host}}/asesoria-restful/api/asr/Asesores/Product/getClassifications/'
+    getSubProducts: '{{host}}/asesoria-restful/api/asr/Asesores/Product/getProductsByClassification/'
+    getProfiles: '{{host}}/asesoria-restful/api/asr/Asesores/Catalogs/getClientProfileCatalog/'
+    getStrategies: '{{host}}/asesoria-restful/api/asr/Asesores/Portfolio/getModelPortfolioByCriterionQuery/'
+    getStrategyDetail: '{{host}}/asesoria-restful/api/asr/Asesores/Portfolio/getModelPortfolioDetailQuery/'
+    getInvIssuersCatalog: '{{host}}/asesoria-restful/api/asr/Asesores/InvestmentSociety/getIssuersCatalog/'
+    getBandsCatalog: '{{host}}/asesoria-restful/api/asr/Asesores/BondMarket/getBandsCatalog/'
+    getIssuersCatalog: '{{host}}/asesoria-restful/api/asr/Asesores/BondMarket/getIssuersCatalog/'
+    getAllIssuers: '{{host}}/asesoria-restful/api/asr/Asesores/MarketInfo/getIssuersCatalog/'
+    doProposal: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityLog/saveComment/'
+    getContractInfo: '{{host}}/asesoria-restful/api/asr/orchestrate/validateContractUserOrchestrate/'
+    doTracing: '{{host}}/Asesores/ActivityLog/saveComment/'
+    getCustomerTrackingAndProposal: '{{host}}/asesoria-restful/api/asr/Asesores/Report/getCustomerTrackingAndProposal'
+    getCustomerTracking : '{{host}}/asesoria-restful/api/asr/Asesores/Report/getCustomerTracking/'
+    getAdviserContract: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/validateUser/'
+    getContractIdClient: '{{host}}/eActinver_Admin/jaxrs/AdministrativeManagerEnrollmentRest/getIdClient/'
+    getContractSummary: '{{host}}/asesoria-restful/api/asr/Asesores/Portfolio/getSummary/'
+    getinsuranceAccumulatedRisksValidation: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceAccumulatedRisksValidation'
+    getDetailedSummary: '{{host}}/asesoria-restful/api/asr/Asesores/Portfolio/getDetailedSummary'
+    getDetailedSummaryGral: '{{host}}/asesoria-restful/api/asr/Asesores/Portfolio/getDetailedSummary'
+    getBrokerHousePositionList: '{{host}}/api/asr/Asesores/Contract/getBrokerHousePositionList/'
+    getBankPositionList: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/getBankPositionList/'
+    getBankWarrantyPositionList: '{{host}}/asesoria-restful/api/asr/Asesores/Contract/getBankWarrantyPositionList/'
+
+    getInsuranceInsuredSumQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceInsuredSumQuery'
+
+    getCurrentPortfolio: '{{host}}/Asesores/Portfolio/getCurrentPortfolio/'
+    getCustomerProposal: '{{host}}/asesoria-restful/api/asr/Asesores/Report/getCustomerProposal'
+    getFavoritesAsr: '{{host}}/asesoria-restful/api/asr/Asesores/Issuer/getFavorites/'
+    #getCustomerProposal: '{{host}}/Asesores/Report/getCustomerProposal'
+
+    # Account
+    getClientInfo: '{{host}}/asesoria-restful/api/asr/client/v1_0/clientOrContractClientInfoQuery/'
+    getContractByAdviser: '{{host}}/asesoria-restful/api/asr/orchestrate/contractByClientID/'
+    getContracts: '{{host}}/asesoria-restful/api/asr/balance/v1_0/contractsBalancesByPortfolioQuery'
+    getContractHistorical: '{{host}}/asesoria-restful/api/asr/balance/v1_0/brokerMonthlyBalanceQuery'
+    getClientName: '{{host}}/asesoria-restful/api/asr/clientInfo/v1_0/clientInfoQuery'
+    getBrokerHistoricalBalanceQuery: '{{host}}/asesoria-restful/api/asr/balance/v1_0/brokerHistoricalBalanceQuery'
+
+    # Portfolio
+    getPortfolioResume: '/asesoria-restful/api/asr/orchestrate/summaryPortfolio/'
+    getCreditsList: '{{host}}/asesoria-restful/api/asr/orchestrate/loans/'
+    getInsurancesList: '{{host}}/portfolio-insurances/'
+    getContractDetail: '{{host}}/asesoria-restful/api/asr/portfolio/v1_0/portfolioDetailQuery/'
+    getContractDetailBank: '/asesoria-restful/api/asr/portfolio/v1_0/fIXISSecuritiesPortfolioQuery/'
+
+    #investment
+    #fondos de inversion
+    #doll
+    getInitDoll: '{{host}}/asesoria-restful/api/asr/balance/v1_0/a2KContractBalance/'
+    getInitDoll2: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_0/fundQuery/'
+    confirmDoll: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_2/fundOrderQuotation?language=SPA'
+    capture: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_2/fundOrderRegistration?language=SPA'
+    getDetailStations: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_2/fundOperationDataQuery/'
+    getDollAccounts: '{{host}}/asesoria-restful/api/asr/orchestrate/destinationAccountQuery/'
+    #doll
+    #getOrderDetail: '{{host}}/asesoria-restful/api/asr/orders/v1_0/depositWithdrawalOrderDetailQuery'
+    getOrderDetail: '{{host}}/asesoria-restful/api/asr/movements/v1_0/contractMovementsQuery'
+
+    getOrders: '{{host}}/asesoria-restful/api/asr/orders/v1_2/ordersByDateQuery/'
+    getPortfolio: '{{host}}/asesoria-restful/api/asr/portfolio/v1_0/portfolioDetailQuery/'
+    getInvestmentSocietyRest: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_2/investmentIssuersQuery/'
+    getMoreInfo: '{{host}}/asesoria-restful/api/asr/orders/v1_0/fundsOrderDetailQuey/'
+    getMoreInfoCapital: '{{host}}/asesoria-restful/api/asr/orders/v1_0/capitalMarketOrderDetailQuery/'
+    cancellation: '{{host}}/asesoria-restful/api/asr/investmentSociety/v1_2/fundOrderCancelation'
+    cancellationMarket: '/asesoria-restful/api/asr/capitalMarket/v1_1/stockMarketOrderCancelation'
+    cancellationStopLoss: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_1/stopLossTrailingStopCancelation/'
+    #fondos de inversion
+
+    #Investment
+    getReporto: '{{host}}/asesoria-restful/api/asr/bondMarket/v1_1/bondMarketBands/'
+    getCurrentCash: '{{host}}/asesoria-restful/api/asr/balance/v1_0/a2KContractBalance/'
+    confirmMoneyDoll: '{{host}}/asesoria-restful/api/asr/bondMarket/v1_1/bondMarketOrderQuotation?language=SPA'
+    doMoneyTransaction: '{{host}}/asesoria-restful/api/asr/bondMarket/v1_1/bondMarketOrderRegistration?language=SPA'
+    #investment
+
+
+    #capitals
+    getCapitalsStation: '{{host}}/asesoria-restful/api/asr/marketinfo/v1_1/clientIssuersMarketInfoQuery/'
+    getNewCapitalsStation: '{{host}}/asesoria-restful/api/asr/marketinfo/v1_1/contractIssuersMarketInfoQuery/'
+    CapitalsWebSocket: '{{host}}/asesoria-restful/api/asr/ws'
+    getLastIPC: '/asesoria-restful/api/asr/marketinfo/v1_0/stockMarketIndexQuery'
+    getCommission: '{{host}}/asesoria-restful/api/asr/contractInfo/v1_0/contractCommissionAndValuationQuery/'
+    getCommission34: '{{host}}/asesoria-restful/api/asr/catalogs/v1_0/capitalBandCatalog/'
+    getCapitalStop: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_0/securitiesForStopLossQuery/'
+    getAcciones: '{{host}}/asesoria-restful/api/asr/portfolio/v1_1/securitiesPortfolioQuery/'
+    confirmStopLoss: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_1/stopLossTrailingStopRegistration?language=SPA'
+    getOrderValidity: '{{host}}/asesoria-restful/api/asr/orders/v1_0/orderValidityQuery/'
+    getOptionsTypeOperation: '{{host}}/asesoria-restful/api/asr/catalogs/v1_1/getOptionsTypeOperation'
+
+    #lumina
+    getAccionesLumina : '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_0/capitalMarketPositionQuery'
+    getOrdersLumina: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_0/capitalMarketOrderQuery'
+    cancellationLumina: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_0/cMEquityOrderCancelation'
+    #cancellationLumina: 'http://localhost:8080/asesoria-restful/api/asr/capitalMarket/v1_0/cMEquityOrderCancelation?language=SPA&orderTypeDesc=MUTUAL_FUND_ORDER&orderID=100345&externalOrderID=100345-ext&orderType=B&executionDateTime=2014-12-01T00:00:00&tradingChannel=INTERNET'
+    confirmCapitalDollLumina: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_0/cMEquityOrderRegistration'
+    getOrdertypeCatalog: '{{host}}/asesoria-restful/api/asr/orchestrate/orderTypeCatalog/'
+    getClientElegible: '/asesoria-restful/api/asr/contractInfo/v1_0/bankContractQuery/'
+    geturlpracticasventa: '/asesoria-restful/api/asr/orchestrate/generateUrlSelling/'
+    LuminaWebSocket: '{{host}}/asesoria-restful/api/asr/ws'
+    updateStatusLumina: '{{host}}/asesoria-restful/api/asr/adviser/v1_0/adviserNotificationStsModification'
+    getNotificationLumina: '{{host}}/asesoria-restful/api/asr/orchestrate/notificationQuery'
+
+
+
+    #doll
+    getOrderCatalog: '{{host}}/asesoria-restful/api/asr/orders/v1_0/ordersTypeQuery'
+    confirmCapitalDoll: '{{host}}/asesoria-restful/api/asr/capitalMarket/v1_0/cMOrderManagement?language=SPA'
+    #doll
+
+    #capitals
+
+
+    #binnacle
+    getBinnacleOperativeBank: '{{host}}/asesoria-restful/api/asr/Asesores/OperativeLogBook/getBankLog'
+    getBinnacleOperativeStockExchange: '{{host}}/asesoria-restful/api/asr/Asesores/OperativeLogBook/getCBLog'
+    #getBinnacleOperativeBank: '{{host}}/asesoria/img/operative-bank.json'
+    #getBinnacleOperativeStockExchange: '{{host}}/asesoria/img/operative-stock-exchange.json'
+
+
+    #simulators
+    getInvestmentIssuersQuery: '{{host}}/asesoria-restful/api/asr/Asesores/InvestmentSociety/getInvestmentIssuersQuery/'
+    clientIssuersMarketInfoQuery: '{{host}}/asesoria-restful/api/asr/Asesores/MarketInfo/clientIssuersMarketInfoQuery/'
+    SimulatorRest: '{{host}}/ficha-valor-restful/SimulatorRest/'
+    getCreditDetail: '{{host}}/getCreditDetail/'
+    getSimPayment: '{{host}}/getSimPayment/'
+    clientIssuersMarketInfoQueryV1 : '{{host}}/asesoria-restful/api/asr/marketinfo/v1_0/clientIssuersMarketInfoQuery/'
+    #simulators
+
+
+    #prospects
+    getTableProspects : '{{host}}/tableAdmin/'
+
+    #generic
+    getProsGraphics: '{{host}}/asesoria-restful/api/asr/Asesores/getProsGraphics/'
+    getProsReports: '{{host}}/getProsReports/'
+    #generic
+
+    #combos
+    getCatalogSearch: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/catalogSearch/'
+    getListByEmployee: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/getListByEmployee/'
+    getStages: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/getStagesCatalog'
+    prospecsPT: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/prospect/PT/'
+    #combos
+
+    #detail
+    getDetailProspect: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/getDetail/'
+    #detail
+    getProspectTPC: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/TPC/'
+    getProspectProfile: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/Prospect/profile/'
+
+    #save
+    saveProspect: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/save/'
+    updateProspect: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/update/'
+    saveActivity: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/saveActivity/'
+    deleteActivity: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/deleteActivity/'
+    closeActivity: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/closeActivity/'
+    updateActivity: '{{host}}/asesoria-restful/api/asr/Asesores/Prospect/updateActivity/'
+
+    #prospects
+
+    # proposals
+
+    #___activity
+    #getActivityRecord: http://canaldigital.actinver.com.mx/Asesores/ActivityRecord
+    getActivityRecord: '{{host}}/asesoria-restful/api/asr/Asesores/ActivityRecord'
+    getActivityRecordAdm: '{{host}}/asesoria-restful/api/adm/Asesores/ActivityRecord'
+    getActivityOffices: '{{host}}/asesoria-restful/api/asr/Asesores/Meta/getFinancialCenters/?language=SPA'
+    #___tracing client
+    #getTracingClient: http://canaldigital.actinver.com.mx/Asesores
+    getTracingClient: '{{host}}/asesoria-restful/api/asr/Asesores'
+    getListByEmployee: '{{host}}/getListByEmployee/'
+    getDetailedCustomerTrackingReport: '{{host}}/asesoria-restful/api/asr/Asesores/Report/getDetailedCustomerTrackingReport'
+    getCustomerTrackingReport: '{{host}}/asesoria-restful/api/asr/Asesores/Report/getCustomerTrackingReport'
+
+
+    #presentations
+    getPresentations: '{{host}}/asesoria-restful/api/asr/Asesores/Presentation/getPresentationsByType/'
+    #presentations
+
+    #administrator
+    getIssuersProposal: '{{host}}/asesoria-restful/api/adm/Asesores/Fund/getFunds/'
+
+    #factsheets
+    getClassifications: '{{host}}/asesoria-restful/api/adm/Asesores/Product/getClassifications/'
+    getProductsByClassification: '{{host}}/asesoria-restful/api/adm/Asesores/Product/getProductsByClassification/'
+    deleteProduct: '{{host}}/asesoria-restful/api/adm/Asesores/Product/delete/'
+    saveProduct: '{{host}}/asesoria-restful/api/adm/Asesores/Product/save/'
+    updateProduct: '{{host}}/asesoria-restful/api/adm/Asesores/Product/updateName/'
+
+    #factsheets
+    doFactsheet: '{{host}}/asesoria-restful/api/adm/Asesores/Product/save/'
+    updateFactsheetImg: '{{host}}/asesoria-restful/api/asr/Asesores/Product/updateProduct/'
+    getProductFactsheetImg: '{{host}}/asesoria-restful/api/adm/Asesores/Product/getImage/'
+    updateFactsheetProduct: '{{host}}/asesoria-restful/api/adm/Asesores/Product/updateName/'
+    deleteFactsheetProduct: '{{host}}/asesoria-restful/api/adm/Asesores/Product/delete/'
+
+    #groups
+    getGroups: '{{host}}/asesoria-restful/api/adm/Asesores/Meta/getGroups/'
+    saveGroup: '{{host}}/asesoria-restful/api/adm/Asesores/Meta/saveGroup/'
+    updateNameGroup: '{{host}}/asesoria-restful/api/adm/Asesores/Meta/updateNameGroup/'
+    deleteGroup: '{{host}}/asesoria-restful/api/adm/Asesores/Meta/deleteGroup/'
+    ServiceGroups: '{{host}}/asesoria-restful/api/adm/Asesores/Meta/'
+    #groups
+
+    #presentations
+    getTypesAsr: '{{host}}/asesoria-restful/api/asr/Asesores/Presentation/getTypes/'
+    getTypes: '{{host}}/asesoria-restful/api/adm/Asesores/Presentation/getTypes/'
+    getPresentationsByType: '{{host}}/asesoria-restful/api/adm/Asesores/Presentation/getPresentationsByType/'
+    getPresentationSubTypes: '{{host}}/asesoria-restful/api/asr/Asesores/PresentationSubType/getPresentationSubTypes/'
+    getPresentationSubTypesByClassification: '{{host}}/asesoria-restful/api/adm/Asesores/PresentationSubType/getPresentationSubTypesByClassification/'
+    savePresentation: '{{host}}/asesoria-restful/api/adm/Asesores/Presentation/save/'
+    updatePresentationImg: '{{host}}/asesoria-restful/api/asr/Asesores/Presentation/update/'
+    getPresentationFile: '{{host}}/asesoria-restful/api/asr/Asesores/Presentation/getFile/'
+    getPresentationFileAdm: '{{host}}/asesoria-restful/api/adm/Asesores/Presentation/getFile/'
+    deletePresentation: '{{host}}/asesoria-restful/api/adm/Asesores/Presentation/delete/'
+    updateNamePresentation: '{{host}}/asesoria-restful/api/adm/Asesores/Presentation/updateName/'
+    saveClasification: '{{host}}/asesoria-restful/api/adm/Asesores/PresentationType/saveClassification/'
+    saveSubClasification: '{{host}}/asesoria-restful/api/asr/Asesores/PresentationSubType/save/'
+    #presentations
+
+    #EEUU
+    getGlobalForecasts: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/getGlobalForecasts/'
+    updateGlobalForecasts: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/updateGlobalForecasts/'
+    #EEUU
+
+    #MEXICO
+    getLocalForecasts: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/getLocalForecasts/'
+    updateLocalForecasts: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/updateLocalForecasts/'
+    #MEXICO
+
+    #Economic enviroment
+    getEconomicEnvironment: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/getEconomicEnvironment/'
+    updateEconomicEnvironment: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/updateEconomicEnvironment/'
+    #Economic enviroment
+
+    #Annoucement
+    getAnnoucement: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/getAnnoucement/'
+    updateAnnouncement: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/updateAnnouncement/'
+    #Annoucement
+
+    getDerivatives: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/getDerivatives/'
+    updateDerivatives: '{{host}}/asesoria-restful/api/adm/Asesores/Parameters/updateDerivatives/'
+    getDerivativesAsr: '{{host}}/asesoria-restful/api/asr/Asesores/Parameters/getDerivatives/'
+
+    #investment
+    getFundTypes: '{{host}}/asesoria-restful/api/adm/Asesores/Fund/getFundTypes/'
+    saveFund: '{{host}}/asesoria-restful/api/adm/Asesores/Fund/saveFund/'
+    deleteFund: '{{host}}/asesoria-restful/api/adm/Asesores/Fund/deleteFund/'
+    updateFund: '{{host}}/asesoria-restful/api/adm/Asesores/Fund/updateFund/'
+    #investment
+
+    #Favorite
+    saveFavorite: '{{host}}/asesoria-restful/api/adm/Asesores/Issuer/saveFavorite/'
+    deleteFavorite: '{{host}}/asesoria-restful/api/adm/Asesores/Issuer/deleteFavorite/'
+    updateFavorite: '{{host}}/asesoria-restful/api/adm/Asesores/Issuer/updateFavorite/'
+    getFavorites: '{{host}}/asesoria-restful/api/adm/Asesores/Issuer/getFavorites/'
+    #Favorite
+
+    #ClassificationFav
+    getClassificationFav: '{{host}}/asesoria-restful/api/asr/Asesores/ClassificationFav/getClassificationFav/' 
+    getClassificationFavAdm: '{{host}}/asesoria-restful/api/adm/Asesores/ClassificationFav/getClassificationFav/' 
+    saveClassificationFav : '{{host}}/asesoria-restful/api/adm/Asesores/ClassificationFav/saveClassificationFav/' 
+    deleteClassificationFav : '{{host}}/asesoria-restful/api/adm/Asesores/ClassificationFav/deleteClassificationFav/' 
+    #ClassificationFav
+
+
+    #employee
+    getEmployeeMap: '{{host}}/asesoria-restful/api/adm/Asesores/employeeMap/getEmployeeMap/'
+    deleteEmployeMap: '{{host}}/asesoria-restful/api/adm/Asesores/employeeMap/deleteEmployeMap/'
+    saveEmployeeMap: '{{host}}/asesoria-restful/api/adm/Asesores/employeeMap/saveEmployeeMap/'
+    #employee
+
+    #profiles
+    getRoles: '{{host}}/asesoria-restful/api/adm/Asesores/UserRole/getRoles/'
+    getUserRoles: '{{host}}/asesoria-restful/api/adm/Asesores/UserRole/getUserRoles/'
+    saveUserRole: '{{host}}/asesoria-restful/api/adm/Asesores/UserRole/saveUserRole/'
+    deleteUserRole: '{{host}}/asesoria-restful/api/adm/Asesores/UserRole/deleteUserRole/'
+    #profiles
+
+    #messages
+    getMessages: '{{host}}/asesoria-restful/api/adm/Asesores/Message/getAllMessages/'
+    messageRegistration: '{{host}}/asesoria-restful/api/adm/Asesores/Message/messageRegistration/'
+    getMessageDetail: '{{host}}/asesoria-restful/api/asr/Asesores/Message/getMessageDetail/'
+    getAllMessagesByRange: '{{host}}/asesoria-restful/api/adm/Asesores/Message/getAllMessagesByRangeDate/'
+    #messages
+
+    #Binnacle
+    #getAdvisersBinnacleMessages: '{{host}}/asesoria-restful/api/adm/Asesores/Message/getAllMessages/'
+    getAdvisersBinnacleMessage: '{{host}}/asesoria-restful/api/adm/Asesores/Message/getMessage/'
+    getAdvisersBinnacleBinnacle: '{{host}}/asesoria-restful/api/adm/Asesores/ActivityLog/getReportCommentsXls/'
+    #Binnacle
+
+    #administrator
+
+    #bank
+    getMediaBank: '/asesoria-restful/api/asr/orchestrate/contactMeansCatalog'
+    getOrdersBank: '/asesoria-restful/api/asr/funds/v1_0/bankFundsAndMoneyMarketMvmntsQuery'
+    getOrdersMoneyMarketBank: '/asesoria-restful/api/asr/movements/v1_0/bankContractInvstMovementsQuery'
+    deleteReportoBuy: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketReportoBuyCancellation'
+    deleteDirectBuy: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketDirectBuyCancellation/'
+    deleteDirectSell : '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketDirectSellCancellation'
+    getReportoBands: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketBandsReportoQuery'
+    getDirectBands: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketBandsDirectQuery/'
+    getAuctionBands: '/asesoria-restful/api/asr/moneyMarket/v1_0/mMAuctionsQuery'
+    getMoneyMarketCalculation: '/asesoria-restful/api/asr/moneyMarket/v1_0/mMBondPriceCalculationQuery/'
+    getMoneyMarketRate: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketCalculationByRateQuery/'
+    getMoneyMarketPrice: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketCalculationByDPriceQuery'
+    #getPortfolioBank : 'http://localhost:8080/asesoria/img/founds.json/'
+    #getPortfolioBank : '/asesoria-restful/api/asr/portfolio/v1_0/bankInvstFundsAndMMPositionsQuery/'
+    getPortfolioBank: '/asesoria-restful/api/asr/portfolio/v1_0/bankInvstFundsAndMMPositionsQuery/'
+    getPortfolioReporto: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketIntradayPositionQuery/'
+    getAuctionsPrice: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketAuctionsPriceQuery/'
+    getMaturityDateQuery: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketMaturityDateQuery/'
+    getReportoConfirmLtr: '/asesoria-restful/api/asr/orchestrate/getReportoConfirmLetterQuery/'
+    sendEmailReportoLtr: '/asesoria-restful/api/asr/orchestrate/sendEmailReportoConfirmLetter'
+    
+    #fund
+    getFundBank: '/asesoria-restful/api/asr/funds/v1_0/bankInvstFundsByContractQuery/'
+    getCalendarBank: '{{host}}/asesoria-restful/api/asr/funds/v1_0/bankInvstCalendarByFundsQuery/'
+    bankFundBuyRequest: '{{host}}/asesoria-restful/api/asr/investment/v1_0/bankFundBuyRequest'
+    captureDirectBank: '/asesoria-restful/api/asr/moneyMarket/v1_0/mMDirectBondOrdersRegistration/'
+    captureReportoBank: '/asesoria-restful/api/asr/moneyMarket/v1_0/mMReportoBondOrdersRegistration/'
+    bankContractBalance: '/asesoria-restful/api/asr/balance/v1_0/bankContractBalance/'
+    bankReportoBuyingPowerQuery: '/asesoria-restful/api/asr/portfolio/v1_0/bankReportoBuyingPowerQuery/'
+    bankPortfolioQuery: '/asesoria-restful/api/asr/portfolio/v1_1/bankPortfolioQuery/'
+    getPortfolioGlobalDetailQuery: '/asesoria-restful/api/asr/portfolio/v1_0/portfolioGlobalDetailQuery/'
+    bankInvstUserInfoQuery : '/asesoria-restful/api/asr/funds/v1_0/bankInvstUserInfoQuery/'
+    bankFundSellRequest: '{{host}}/asesoria-restful/api/asr/investment/v1_0/bankFundSellRequest'
+    bankFundBuyCancelationRequest: '{{host}}/asesoria-restful/api/asr/investment/v1_0/bankFundBuyCancelation'
+    bankFundSellCancelationRequest: '{{host}}/asesoria-restful/api/asr/investment/v1_0/bankInvstFundOperationCancelation'
+
+    #distributedOrder
+    getMoneyMarketIssuersSeriesQuery: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketIssuersSeriesQuery'
+    getMoneyMarketAdviserContractsQuery: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketAdviserContractsQuery'
+    getMoneyMarketContactMeansCatalogs: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketContactMeansCatalogs/'
+    getMoneyMarketOrderQuotation: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketOrderQuotation'
+    getMoneyMarketOrderRegistration: '/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketOrderRegistration'
+
+    #help
+    getQuestions: '{{host}}/getQuestions'
+    getVideos: '{{host}}/getVideos'
+
+    #PendingOperations
+    getPendingOperations : '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/eBPendingOpQuery/'
+    
+    PendingOperationsApprove: '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/eBPendingOpExecution/'
+    PendingOperationsReject: '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/eBPendingOpModification/'
+    #Se comenta debido a que se esta esprando cambios de Banca
+    PendingOperationsApproveNotification: '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/adviserPendingOpsExecution/'
+    PendingOperationsRejectNotification: '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/adviserPendingOpsModification/'
+    
+    getPendingOperationsCat : '{{host}}/asesoria-restful/api/cat/contractManagemen/v1_0/eBPendingOpQuery/'
+
+    PendingOperationsApproveCat: '{{host}}/asesoria-restful/api/cat/contractManagemen/v1_0/eBPendingOpExecution/'
+    PendingOperationsRejectCat: '{{host}}/asesoria-restful/api/cat/contractManagemen/v1_0/eBPendingOpModification/'
+
+    #Se comenta debido a que se esta esprando cambios de Banca
+    PendingOperationsApproveCatNotification: '{{host}}/asesoria-restful/api/cat/contractManagemen/v1_0/adviserPendingOpsExecution/'
+    PendingOperationsRejectCatNotification: '{{host}}/asesoria-restful/api/cat/contractManagemen/v1_0/adviserPendingOpsModification/'
+
+    PendingOperationsHistoric    : '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/eBHistoricalPendingOpQuery/'
+    PendingOperationsHistoricCat : '{{host}}/asesoria-restful/api/cat/contractManagemen/v1_0/eBHistoricalPendingOpQuery/'
+
+    getPendingOperationsSent : '{{host}}/asesoria-restful/api/asr/contractManagemen/v1_0/eBSentPendingOpQuery'
+    getBankContractsByClientQuery : '{{host}}/asesoria-restful/api/asr/contractInfo/v1_0/bankContractsByClientQuery/'
+
+    #PendingOperationsAdvisers
+    rejectAdviser: '{{host}}/api/operations/rejectAuth'
+    approveAdviser: '{{host}}/api/operations/requestAuth'
+
+    #MD top 10
+    orderTypeA2K: '{{host}}/asesoria-restful/api/asr/orchestrate/orderTypeA2K/'
+    #PendingOperations
+
+    #temporal
+    getTemporal: '{{host}}/asesoria/img/temp.json'
+    getShortAndLargeReport: '{{host}}/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketCashByAdviserQuery'
+    getEmpleadoReport: '{{host}}/asesoria-restful/api/asr/moneyMarket/v1_0/moneyMarketCashByAdviserQuery'
+    getContractInfoDetail: '{{host}}/asesoria-restful/api/asr/contractInfo/v1_0/simplifiedBankContractQuery/'
+    getContractSelection: '{{host}}/asesoria-restful/api/asr/orchestrate/contractSelection/'
+    getMarketValidation:   '{{host}}/asesoria-restful/api/asr/clientConfigurations/v1_0/contractMarketValidation/'
+
+    #Dinn
+    getDCInvestmentProspectQueryById: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCInvestmentProspectQueryById/'
+    getDCInvestmentProspectQuery: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCInvestmentProspectQuery/'
+    getDCScheduleQueryByDate: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCScheduleQueryByDate/'
+    getDCScheduleQueryByDateDetails: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCScheduleQueryByDateDetails/'
+    getDCDocumentQuery: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCDocumentQuery/'
+    getDCDocumentQueryByClient: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCDocumentQueryByClient/'
+    getDCScheduleQuery: '{{host}}/asesoria-restful/api/dinnAsesoria/digitalChannelsManagment/v1_0/dCScheduleQuery/'
+    #Dinn
+
+    #Opportunity
+    getStrategy: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getStrategy/'
+    getSegment: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getSegment/'
+    saveOpportunity: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/saveOpportunity/'
+    getListOpportunity: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getOpportunity/'
+    getOpportunityById: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getOpportunityById/' 
+    updateContacted: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/updateContacted/'
+    nextStage: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/nextStage/'
+    updateOpportunity: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/updateOpportunity/'
+    getOpportunityReport: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getOpportunityReport/'
+    getReportOpportunityDetail: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getReportOpportunityDetail/'  
+    getReportOpportunityDetailFC: '{{host}}/asesoria-restful/api/asr/Asesores/Opportunity/getReportOpportunityDetailFC/'                      
+
+    #Operation
+    outOfProfileContractQuery: '{{host}}/asesoria-restful/api/asr/contractInfo/v1_0/outOfProfileContractQuery/'
+
+    #insurance
+    getCatalogEntityFederal: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/federalEntityQuery/'
+    getCatalogMarksCars: '{{host}}/asesoria-restful/api/asr/insurance/v1_1/carBrandQuery/'
+    getCatalogModelsCars: '{{host}}/asesoria-restful/api/asr/insurance/v1_1/carModelQuery/'
+    getCatalogMunicipalityCars: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/municipalityQuery/'
+    getCatalogBanksCars: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceBanksQuery/'
+    getCatalogBanks: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceBanksQuery/'
+    getServiceEmision: '{{host}}/asesoria-restful/api/asr/insurance/v1_1/carInsurancePolicyRegistration/'
+    getServiceCotizacion: '{{host}}/asesoria-restful/api/asr/insurance/v1_1/carInsuranceQuotation/'
+    getBankType: '{{host}}/asesoria-restful/api/asr/insurance/v1_1/bankType/'
+
+
+    sendCustomizedEmailNotificationSending: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingLifeInsurance/'
+    
+    #insuranceNotificationEmail
+    sendEmailNotificationCotization: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCotizar/'
+    sendEmailNotificationCompraSeguro: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCompraSeguro/'
+
+    #Constancias Fiscales.
+    getStatementFiscal: '{{host}}/asesoria-restful/api/asr/statement/v1_0/accountStatementAvailabilityQuery/'
+    getStatementFiscalPormenorizadas: '{{host}}/asesoria-restful/api/asr/statement/v1_0/fiscalCertificateAvailableQuery/'
+    #Orquestacion para obtener los archivos y enviar correo eléctronico.
+    sendEmailNotificationStatementFiscalQuery: '{{host}}/asesoria-restful/api/asr/orchestrate/sendEmailNotificationStatementFiscalQuery/'
+
+    #Orquestacion para consultar estados de cuenta del asesor(ROL ASESOR)
+    getAccountState: '{{host}}/asesoria-restful/api/asr/orchestrate/getAccountState/'
+    #Orquestacion para consultar estados de cuenta del asesor(ROL RRHH)
+    getAccountStateRh: '{{host}}/asesoria-restful/api/rh/orchestrate/getAccountState/'
+    
+    #insuranceHouse
+    getCatalogPostalCodeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/postalCodeQuery/'
+    getCatalogInsuranceRiskTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceRiskTypeQuery/'
+    getCatalogWallTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/wallTypeQuery/'
+    getCatalogRoofTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/roofTypeQuery/'
+    getCatalogStreetTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/streetTypeQuery/'
+    getCatalogCardTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceCardTypeQuery/'
+    getCatalogPaymentTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/PaymentTypeQuery/'
+    getCatalogInsuranceCardTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/streetTypeQuery/'
+    getServiceCotizacionHome: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/homeInsuranceQuotation/'
+    getServiceEmisionHomegetServiceEmisionHome: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/homeInsurancePolicyRegistration/'
+
+    #insurancePyme
+    getServiceEmisionPyme: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/homeInsurancePolicyRegistration/' #cambiar URL cuando el servicio de Pyme esté listo
+    getCatalogEntityFederalPyme: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/federalEntityQuery/' #cambiar URL cuando el servicio de Pyme esté listo
+    getCatalogMunicipalityPyme: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/municipalityQuery/' #cambiar URL cuando el servicio de Pyme esté listo
+    getCatalogBanksPyme: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceBanksQuery/' #cambiar URL cuando el servicio de Pyme esté listo
+    getServiceCotizacionPyme: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/homeInsuranceQuotation/' #cambiar URL cuando el servicio de Pyme esté listo
+    getCatalogClasificationQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/streetTypeQuery/' #cambiar URL cuando el servicio de Pyme esté listo
+
+    #insuranceCotizaciones
+    getCoverage: '{{host}}/asesoria-restful/api/asr/insuranceCoverageService/v1_0/insuranceCoverageQuery/'
+    getCotizationAdd: '{{host}}/asesoria-restful/api/asr/insuranceQuotationService/v1_0/insuranceQuotationAdd/'
+    getCotizationSearch: '{{host}}/asesoria-restful/api/asr/insuranceQuotationService/v1_0/insuranceQuotationQuery/'
+    getCotizationUpdate: '{{host}}/asesoria-restful/api/asr/insuranceQuotationService/v1_0/insuranceQuotationUpdateJson/'
+    getCotizationProcedure: '{{host}}/asesoria-restful/api/asr/insuranceQuotationService/v1_0/insuranceQuotationProcedureJson/'
+    getCotizationCancel: '{{host}}/asesoria-restful/api/asr/insuranceQuotationService/v1_0/insuranceQuotationCancelJson/'
+
+    #insurance JPA
+    getAgentQuery: '{{host}}/asesoria-restful/api/asr/insuranceJpaService/v1_0/insuranceAgentQuery/'
+    getAgent: '{{host}}/asesoria-restful/api/asr/insuranceJpaService/v1_0/insuranceAgent/'
+
+    #Agent Add
+    getAgentAddQuery: '{{host}}/asesoria-restful/api/asr/insuranceJpaService/v1_0/insuranceAgentAdd/'
+
+    #Agent Update
+    getAgentUpdateQuery: '{{host}}/asesoria-restful/api/asr/insuranceJpaService/v1_0/insuranceAgentUpdate/'
+
+    #Agent Delete
+    getAgentDeleteQuery: '{{host}}/asesoria-restful/api/asr/insuranceJpaService/v1_0/insuranceAgentDelete/'
+
+
+
+    #Email Seguros Hogar
+    sendEmailNotificationCotizationHome: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCotizarHogar'
+    sendEmailNotificationEmisionHome: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCompraSeguroHogar'
+    
+    
+    #Email Seguros Pyme
+    sendEmailNotificationCotizationPyme: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCotizarHogar' #cambiar URL cuando el servicio de Pyme esté listo
+    sendEmailNotificationEmisionPyme: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCompraSeguroHogar' #cambiar URL cuando el servicio de Pyme esté listo
+
+    #Insurance medical
+
+    #Cotizacion
+    getMedicalExpenseInsuranceQuotation: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseInsuranceQuotation'
+    getMedExpInsuranceDetailQuotationQuery: '{{host}}/asesoria-restful//api/asr/insurance/v1_0/medExpInsuranceDetailQuotationQuery'
+
+    #Ocupacion
+    getMedicalExpenseJobQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseJobQuery'
+    
+    #Numero de asegurados
+    getMedicalExpensePolicyHolderNumQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpensePolicyHolderNumQuery'
+
+    #Estados 
+    getMedicalExpenseStateQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseStateQuery'
+
+    #Locaciones
+    getMedicalExpenseLocationQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseLocationQuery'
+    
+     #Locaciones
+   
+
+    getMedicalExpenseRelationshipQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseRelationshipQuery'
+    getMedicalExpenseRelationshipQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseRelationshipQuery'
+    sendEmailNotificationCotizationPMM: '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceCotizarPMM'
+    sendEmailNotificationEmisionPMM : '{{host}}/asesoria-restful/api/asr/notificationsAndAlertsWS/1_2/customizedEmailNotificationSendingInsuranceEmisionPMM'
+    #Deportes
+    getMedicalExpenseSportsQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseSportsQuery'
+    
+    #Profesiones
+    getMedicalExpenseProfessionsQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseProfessionsQuery'
+
+    #Rfc(CASCARON)
+    getMedicalInsuranceFiscalIDNumberQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceFiscalIDNumberQuery'
+
+    #Deducible
+    getMedicalExpenseDeductibleQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseDeductibleQuery'
+    #Coaseguro
+    getMedicalExpenseCoinsuranceQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseCoinsuranceQuery'
+    #Tope coaseguro
+    getMedicalExpenseDeductibleRedQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseDeductibleRedQuery'
+    #Dedudicle red
+    getMedicalExpenseMaxCoinsuranceQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseMaxCoinsuranceQuery'
+    
+    #Recotización
+    getMedicalExpenseInsuranceRequotationQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseInsuranceRequotation'
+
+    #emission
+    setMedicalExpenseDocsRegistration: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseDocsRegistration'
+    getMedExpInsurancePolicyRegistration: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medExpInsurancePolicyRegistration'
+    #catalogos emision
+    getInsuranceCountryQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceCountryQuery'
+    getInsuranceBusinessActivityQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceBusinessActivityQuery'
+    getInsuranceIdentificationTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceIdentificationTypeQuery'
+
+    #cuestionario Emision
+    getMedExpInsuranceQuestRegistration: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medExpInsuranceQuestRegistration'
+    getMedExpInsuranceQuestionnaireQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medExpInsuranceQuestionnaireQuery'
+    getMedicalExpenseQuestValidation: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseQuestValidation'
+    
+    #Insurance Life
+    getInsuranceMaritalStatusQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceMaritalStatusQuery'
+    getInsuranceCountryQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceCountryQuery'
+    #insurancelife
+   
+    getInsuranceSumQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceInsuredSumQuery'
+    
+    getCatalogCardTypeQueryLife: '{https://negociosuat.mapfre.com.mx/Zonaliados.Negocio/Api/_AYESalud/Identificacion?ramo=100'
+    
+    getLifeinsuranceNationalityQuery: 'https://negociosuat.mapfre.com.mx/Zonaliados.Negocio/Api/_AYESalud/Pais?ramo=100'
+ 
+    getLifeInsuranceQuotation: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/lifeInsuranceQuotation'
+    
+    getLifeInsuranceQuestionnaireQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/lifeInsuranceQuestionnaireQuery'
+
+    getinsuranceLifeHighRiskJobValidation: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceLifeHighRiskJobValidation'
+    
+    getLifeInsurancePolicyRegistration: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/lifeInsurancePolicyRegistration'
+    
+    getPoliza: 'https://10.184.62.77/impresionSeGA/TWImpPolizaMarco.aspx'
+    
+    getSolicitud: 'https://10.184.62.77/impresionSeGA/TWImpSolicitudMarco.aspx'
+
+    getCondiciones: 'https://zonaliados.mapfre.com.mx/zonaaliadosextra/vida/pdf/Plan%20de%20Vida%20Individual.pdf'
+
+    getInsuranceBeneficiaryTypeQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/insuranceBeneficiaryTypeQuery'
+    
+
+    #PolizaVidaService
+    getPolizasVida: '{{host}}/asesoria-restful/api/asr/polizaVidaServiceController/v1_0/polizaVidaQueryOp'
+    PolizaVidaUp: '{{host}}/asesoria-restful/api/asr/polizaVidaServiceController/v1_0/polizaVidaUpOp'
+    PolizaVidaAdd: '{{host}}/asesoria-restful/api/asr/polizaVidaServiceController/v1_0/polizaVidaAddOp'
+    PolizaVidaFindId: '{{host}}/asesoria-restful/api/asr/polizaVidaServiceController/v1_0/polizaVidaFindIdOp'
+    setMedicalExpenseProcessingRequest: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseProcessingRequest'
+
+    #Firmas
+    getMedicalExpenseSignRegistration: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpenseSignRegistration'
+
+    #Registro de paquetes
+    getMedicalExpensePackageRegistration: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpensePackageRegistration'
+    #Actualización de paquetes 
+    getMedicalExpensePackageUpdate: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/medicalExpensePackageUpdate'
+    getLifeInsuranceExpenseJobQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/lifeInsuranceJobQuery'
+    getLifeInsuranceRelationshipQuery: '{{host}}/asesoria-restful/api/asr/insurance/v1_0/lifeInsuranceRelationshipQuery'

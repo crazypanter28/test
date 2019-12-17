@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="173px" height="173px" viewBox="0 0 173 173" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>no carga 03</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="2.62900812e-13" y="5.16031662e-13" width="149.891446" height="113.120122" rx="4.8"></rect>
+        <polygon id="path-2" points="0.000154821223 34.4477222 34.1171402 34.4477222 34.1171402 0.330775544 0.000154821223 0.330775544 0.000154821223 34.4477222"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DASHBOARD_02" transform="translate(-582.000000, -681.000000)">
+            <g id="MENSAJE-NO-CARGA-CONTENIDO" transform="translate(573.000000, 591.000000)">
+                <g id="no-carga-03" transform="translate(0.000000, 86.000000)">
+                    <g id="Group-12" opacity="0.498641304" transform="translate(175.000000, 27.500000) rotate(10.000000) translate(-175.000000, -27.500000) translate(168.000000, 21.000000)" stroke="#517CBD" stroke-width="1.5" stroke-linecap="round">
+                        <path d="M7.16666667,0.0663274682 L7.16666667,5.24157042" id="Line"></path>
+                        <path d="M13.2340277,6.52951474 L7.67761165,6.52951474" id="Line-Copy-5"></path>
+                        <path d="M6.0505143,6.52951474 L0.494098274,6.52951474" id="Line-Copy-9"></path>
+                        <path d="M7.16666667,7.40422066 L7.16666667,12.5794636" id="Line-Copy-4"></path>
+                    </g>
+                    <g id="Group-12-Copy" opacity="0.5" transform="translate(15.500000, 10.500000) rotate(-40.000000) translate(-15.500000, -10.500000) translate(8.000000, 4.000000)" stroke="#517CBD" stroke-width="1.05" stroke-linecap="round">
+                        <path d="M7.67857143,0.0663274682 L7.67857143,5.24157042" id="Line"></path>
+                        <path d="M14.1793154,6.52951474 L8.22601248,6.52951474" id="Line-Copy-5"></path>
+                        <path d="M6.48269389,6.52951474 L0.529391008,6.52951474" id="Line-Copy-9"></path>
+                        <path d="M7.67857143,7.40422066 L7.67857143,12.5794636" id="Line-Copy-4"></path>
+                    </g>
+                    <g id="Group-12-Copy-2" transform="translate(21.000000, 30.500000) rotate(-20.000000) translate(-21.000000, -30.500000) translate(17.000000, 27.000000)" stroke="#517CBD" stroke-width="0.525" stroke-linecap="round">
+                        <path d="M4.0952381,0.0357147906 L4.0952381,2.82238407" id="Line"></path>
+                        <path d="M7.56230153,3.51589255 L4.38720666,3.51589255" id="Line-Copy-5"></path>
+                        <path d="M3.45743674,3.51589255 L0.282341871,3.51589255" id="Line-Copy-9"></path>
+                        <path d="M4.0952381,3.98688805 L4.0952381,6.77355733" id="Line-Copy-4" opacity="0.5"></path>
+                    </g>
+                    <circle id="Oval" stroke="#517CBD" stroke-width="1.5" opacity="0.5" cx="125" cy="23" r="3"></circle>
+                    <circle id="Oval-Copy" stroke="#517CBD" stroke-width="1.5" opacity="0.5" cx="17.5" cy="173.5" r="2.5"></circle>
+                    <g id="mac-copy" opacity="0.499207428" transform="translate(95.000000, 99.500000) rotate(-10.000000) translate(-95.000000, -99.500000) translate(11.000000, 30.000000)">
+                        <g id="mac" transform="translate(83.924124, 69.428020) rotate(10.000000) translate(-83.924124, -69.428020) translate(8.924124, 12.428020)">
+                            <g id="Rectangle-2">
+                                <use fill="#517CBD" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                <rect stroke="#59617E" stroke-width="1" x="0.5" y="0.5" width="148.891446" height="112.120122" rx="4.8"></rect>
+                            </g>
+                            <rect id="Rectangle-2-Copy-2" fill="#F8F8F8" x="15" y="13" width="121.117642" height="91.0479034" rx="4.8"></rect>
+                        </g>
+                        <g id="LOAD" transform="translate(77.000000, 100.500000) rotate(10.000000) translate(-77.000000, -100.500000) translate(33.000000, 97.000000)" fill="#517CBD">
+                            <rect id="Rectangle-3" x="0" y="-3.41060513e-13" width="17" height="7"></rect>
+                            <rect id="Rectangle-3-Copy" opacity="0.513756793" x="21" y="-3.41060513e-13" width="25" height="7"></rect>
+                            <rect id="Rectangle-3-Copy-2" opacity="0.235054348" x="49" y="4.54747351e-13" width="39" height="7"></rect>
+                        </g>
+                        <g id="Icon" transform="translate(87.552844, 65.265824) rotate(20.000000) translate(-87.552844, -65.265824) translate(61.052844, 38.765824)">
+                            <g id="Group-3" transform="translate(-0.000000, 17.966616)">
+                                <mask id="mask-3" fill="white">
+                                    <use xlink:href="#path-2"></use>
+                                </mask>
+                                <g id="Clip-2"></g>
+                                <path d="M26.5477371,19.3948804 L33.6637075,12.2789099 C34.2682844,11.6743331 34.2682844,10.6939277 33.6637075,10.0893508 C33.0591307,9.48477391 32.0787253,9.48477391 31.4741484,10.0893508 L24.3581779,17.2053213 L17.2422074,10.0893508 L24.3581779,2.97376735 C24.9627548,2.36919048 24.9627548,1.38878508 24.3581779,0.784208202 C23.753601,0.179631324 22.7731956,0.179631324 22.1686188,0.784208202 L15.0530353,7.90017868 L12.5898297,5.43697302 L8.21071135,9.81570427 C4.23838581,13.7880298 3.74644138,19.9220467 6.73332983,24.4300537 L0.000154821223,31.1636157 L3.28430002,34.4477609 L10.017475,27.7145859 C14.5258691,30.7014744 20.6594989,30.2095299 24.6318244,26.2372044 L29.0109427,21.8580861 L26.5477371,19.3948804" id="Fill-1" fill="#517CBD" mask="url(#mask-3)"></path>
+                            </g>
+                            <path d="M39.8246633,29.0109427 L44.2037816,24.6318244 C48.1761071,20.6594989 48.6680516,14.5258691 45.6811631,10.017475 L52.4143381,3.28430002 L49.1301929,0.000154821224 L42.3966309,6.73332983 C37.8886239,3.74644138 31.754607,4.23838581 27.7822815,8.21071135 L23.4035502,12.5898297 C39.4670263,28.6533057 23.5312778,12.7175572 39.8246633,29.0109427" id="Fill-4" fill="#517CBD"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

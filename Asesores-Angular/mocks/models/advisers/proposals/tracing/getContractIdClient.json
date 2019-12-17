@@ -1,0 +1,15 @@
+{
+   "clientId":90202979,
+   "nombre":"ALFREDO ",
+   "aPaterno":"PALOMARES",
+   "aMaterno":"TORRES",
+   "status":1,
+   "messages":[
+      {
+         "type":"N",
+         "criticality":"INFO",
+         "code":"BEBO000",
+         "description":"EXITO"
+      }
+   ]
+}

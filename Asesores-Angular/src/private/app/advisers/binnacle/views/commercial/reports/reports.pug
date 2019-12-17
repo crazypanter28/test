@@ -1,0 +1,94 @@
+include /views/mixins/input
+include /views/mixins/info-result
+include /views/mixins/radio-button
+
+div( ui-view="")
+    div.reports-filter
+        label Consulta la información deseada
+        .form-group
+            +radioButton( 'Mi perfil','reports.filters.advisers')(
+                ngChange="reports.getType('profile')"                
+                id='profile'
+            )      
+            +radioButton( 'Asesores','reports.filters.advisers' )(
+                ngChange="reports.getType('advisers')"               
+                id='advisers'
+            )
+              
+    .panel.panel-default.goals-report#goals-report( ng-if="reports.selected_type" )
+        .panel-heading
+            .panel-title
+                span Reporte de metas
+        .panel-body
+
+            // Spinner
+            .content-spinner( ng-if="!reports.finish" )                                
+                .spinner
+
+            // No results
+            .no-results( ng-if="!reports.reports_info && reports.finish" )
+                +noResults("no-data")
+
+            // ------------------------ Por Perfil--------------------------
+            div( ng-if="reports.reports_info && reports.typeSelect === 'profile' " )
+                .adviser-info
+                    strong ASESOR:
+                    |  {{ reports.nombreAsesor}} 
+                .chart-wrapper
+                    .spinner
+                    line-chart( model="reports.reports_info" )
+                ul.legend
+                    li
+                        .bullet
+                        strong % DE ALCANCE
+                        | Resultado preliminar de avance de contactos. El resultado definitivo es calculado a fin de mes por las áreas involucradas.
+                    li.current
+                        .bullet
+                        strong % DE ALCANCE DEL MES EN CURSO
+                        | El cálculo del % no está al 100, debido a que el mes no ha concluido.
+
+                p.note( ng-if="reports.advisers_range" )
+                    | * Para
+                    strong  VER EL DETALLE
+                    |  de cada mes, posicionate en la gráfica. 
+
+            // ------------------------ Por Asesores ----------------------------------------
+            div( ng-if="reports.reports_info && reports.typeSelect==='advisers'" )
+                .chart-wrapper
+                    .spinner
+                    line-chart( model="reports.reports_info" )
+                ul.legend
+                    li
+                        .bullet
+                        strong % DE ALCANCE 
+                        | Resultado preliminar de avance de contactos. El resultado definitivo es calculado a fin de mes por las áreas involucradas.
+                    li.current
+                        .bullet
+                        strong % DE ALCANCE DEL MES EN CURSO
+                        | El cálculo del % no está al 100, debido a que el mes no ha concluido.
+
+                    p.note( ng-if="reports.advisers_range" )
+                        | * Para
+                        strong  VER EL DETALLE
+                        |  de cada mes, posicionate en la gráfica.
+                .details-wrapper
+                    .panel.panel-default.advisors-details( ng-if="reports.advisers_range" )
+                        .panel-heading
+                            .panel-title
+                                span Detalle
+                        .panel-body
+                                // Spinner
+                                .loader-wrapper( ng-if="!reports.advisers" )
+
+                                // No results
+                                .no-results( ng-if="reports.advisers.length === 0" )
+                                    +noResults("no-data")
+
+                                // Search list
+                                search-list( ng-if="reports.advisers.length > 0" info="reports.advisers" tmpl="binnacle-reports.html" estado="0" invocacion='"reportesMetasAsesoresDetalle"' ctrl="reports" )
+
+
+    p.note( ng-if="reports.selected_type && !reports.advisers_range" )
+        | * Para
+        strong  VER EL DETALLE
+        |  de cada mes, posicionate en la gráfica.

@@ -1,0 +1,249 @@
+.act-dropdown{
+    background: white;
+    border-bottom: 2px solid $tertiary-color;
+    width: 100%;
+
+    &.empty{
+        border-color: $gray3;
+
+        .glyphicon.glyphicon-menu-down{
+            color: $gray3;
+        }
+    }
+
+    &.open{
+        border-color: $blue2;
+    }
+
+    .glyphicon.glyphicon-menu-down{
+        color: $tertiary-color;
+        position: absolute;
+        right: 0;
+        top: calc( 50% - 8px );
+        margin-right: 4px;
+    }
+
+    button{
+        text-align: left !important;
+        background: transparent;
+        height: 26px;
+        padding-bottom: 3px;
+        padding-left: 2px;
+        padding-top: 3px;
+        position: relative;
+        width: 100%;
+
+
+        &.btn:active:focus{
+            box-shadow: none;
+            outline: none;
+        }
+
+        span{
+            color: $form-control-color;
+            text-transform: capitalize;
+        }
+
+        .placeholder,
+        .caret{
+            color: $gray4;
+        }
+
+        .placeholder{
+            letter-spacing: 0px;
+        }
+
+        .caret{
+            position: absolute;
+            right: 5px;
+            top: calc( 50% - 2px );
+        }
+
+    }
+
+
+    input{
+        border: 0;
+        width: calc(100% - 15px);
+    }
+
+    select{
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background: 0 0;
+        border: 0;
+        color: transparent;
+        display: block;
+        height: 100%;
+        left: 0;
+        padding-left: 12px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        option{
+            color: $blue;
+        }
+
+    }
+
+
+    ul.dropdown-menu{
+        border-radius: 0;
+        padding: 0;
+        width: 100%;
+        z-index: 800;
+
+        li{
+            color: $form-control-color;
+            border-bottom: 1px solid $gray;
+            padding: 7px 14px;
+
+            &:last-child{
+                border-bottom: 0;
+            }
+
+            &:hover{
+                background: rgba(245, 240, 71, 0.5);
+                color: $form-control-color;
+            }
+
+        }
+
+    }
+
+    .nano > .nano-content{
+        max-height: 180px;
+    }
+}
+
+.act-dropdown-header{
+    background: transparent;
+    //border-bottom: 2px solid $secondary-color;
+    width: 100%;
+
+    &.empty{
+        border-color: $yellow2;
+
+        .glyphicon.glyphicon-menu-down{
+            color: $yellow2;
+            font-size: 14px;
+        }
+    }
+
+    &.open{
+        border-color: $blue2;
+    }
+
+    .glyphicon.glyphicon-menu-down{
+        color: $yellow2;
+        position: absolute;
+        right: 0;
+        top: calc( 50% - 8px );
+        margin-right: 4px;
+    }
+
+    button{
+        text-align: left !important;
+        background: transparent;
+        height: 20px;
+        padding-bottom: 3px;
+        padding-left: 2px;
+        padding-top: 3px;
+        position: relative;
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+
+
+        &.btn:active:focus{
+            box-shadow: none;
+            outline: none;
+            background: $blue2;
+            color:$yellow2;
+        }
+
+        span{
+            color: $yellow2;;
+            text-transform: capitalize;
+        }
+
+        .placeholder,
+        .caret{
+            color: $gray4;
+        }
+
+        .placeholder{
+            letter-spacing: 0px;
+        }
+
+        .caret{
+            position: absolute;
+            right: 5px;
+            top: calc( 50% - 2px );
+        }
+
+    }
+
+
+    input{
+        border: 0;
+        width: calc(100% - 15px);
+        background: transparent;
+        color:$yellow2;
+        font-size: 14px;
+
+    }
+
+    select{
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background: 0 0;
+        border: 0;
+        color: transparent;
+        display: block;
+        height: 100%;
+        left: 0;
+        padding-left: 12px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        option{
+            color: $blue;
+        }
+
+    }
+
+
+    ul.dropdown-menu{
+        border-radius: 0;
+        padding: 0;
+        width: 100%;
+        z-index: 800;
+        position: absolute;
+
+        li{
+            color: $form-control-color;
+            border-bottom: 1px solid $gray;
+            padding: 7px 14px;
+
+            &:last-child{
+                border-bottom: 0;
+            }
+
+            &:hover{
+                background: rgba(245, 240, 71, 0.5);
+                color: $form-control-color;
+            }
+
+        }
+
+    }
+
+    .nano > .nano-content{
+        max-height: 180px;
+    }
+}

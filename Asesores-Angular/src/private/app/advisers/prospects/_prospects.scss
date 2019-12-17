@@ -1,0 +1,651 @@
+@mixin getActiveStage( $_color, $_rectangle ) {
+
+    @if $_rectangle{
+        border-color: $_color;
+        &:before{
+            background: $_color;
+        }
+    }
+    @else{
+        &:after{
+            background: $_color
+        }
+        .number{
+            background: rgba( $_color, 0.2);
+            color: #767676;
+            border-color: $_color;
+        }
+
+        .text{
+            color: #767676;
+        }
+    }
+}
+
+.pane-wrapper{
+
+    &.margin-0{
+        margin-bottom: 0;
+    }
+
+    button.btn.btn-add{
+        background: $tertiary-color;
+        height: 30px;
+        width: 195px;
+
+        i{
+            font-size: 14px;
+        }
+    }
+
+    .personal-information{
+        div.col-xs-3{
+            margin-bottom: 25px;
+        }
+
+        button.modify{
+            font-size: 14px;
+            line-height: 14px;
+            height: 25px;
+            width: 100px;
+        }
+
+        .row:last-child{
+            > div{
+                margin-bottom: 0;
+            }
+        }
+
+        label{
+            margin-bottom: 2px;
+        }
+
+        p{
+            color: $form-control-color;
+            font-family: 'Proxima Light';
+            margin-bottom: 0;
+        }
+    }
+
+    &.secondary{
+        border-bottom: 0;
+        margin-bottom: 0;
+
+        &:last-of-type{
+            border-bottom: 1px solid rgba($blue7, 0.5);
+        }
+
+        .pane-subtitle{
+            background: rgba($primary-color,0.75);
+            color: white;
+            height: 25px;
+            line-height: 25px;
+            padding-left: 15px;
+        }
+    }
+
+    &.prospects-myProfile{
+
+        .pane-body{
+
+            label.point{
+                color: $blue7;
+            }
+
+            .title-graphics{
+                margin-bottom: 20px;
+
+                h4{
+                    color:$tertiary-color;
+                    font-size: 18px;
+                    font-family: 'Proxima Regular';
+                    margin: 0;
+
+                    b{
+                        font-family: 'Proxima Bold';
+                        font-size: 28px;
+                    }
+                }
+            }
+
+            .graphics{
+                > div{
+                    color: $tertiary-color;
+                    font-size: 16px;
+                    position: relative;
+                    text-align: center;
+                    margin-bottom: 20px;
+
+                    .container-graphic{
+                        margin: 0 auto;
+                        margin-bottom: 10px;
+                        max-height: 110px;
+                        max-width: 110px;
+                        overflow: hidden;
+
+                        .donut-chart-wrapper{
+                            // margin-top: -50px;
+
+                            span{
+                                color: $blue8;
+                                font-size: 30px;
+                            }
+                        }
+                    }
+
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: calc( 50% - 31px );
+                        height: 62px;
+                        border-right: 1px solid rgba(210, 207, 205, 0.5);
+
+                    }
+
+                    &:last-child{
+                        &:after{
+                            border-right: 0;
+                        }
+                    }
+
+                    .view-details{
+                        border-bottom: 2px solid;
+                        color: #3c86f6;
+                        padding: 1px 11px;
+                        width: 120px;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.pane-wrapper{
+
+
+    .container-stages{
+        padding: 0 20px;
+
+        .search{
+            padding-top: 10px;
+            margin-bottom: 20px;
+
+            .col-xs-3{
+                padding: 0;
+                margin-right: 15px;
+                width: 240px;
+            }
+
+            label{
+                margin-bottom: 3px;
+            }
+
+            .form-group{
+                margin-bottom: 0;
+
+                input{
+                    height: 28px;
+                }
+            }
+        }
+    }
+}
+
+
+.stages{
+
+    .stages-header{
+
+        .stage{
+            border: solid 1px;
+            // border-color: #dbd8d8;
+            float: left;
+            font-family: 'Proxima SemiBold';
+            font-size: 14px;
+            padding: 0 4px;
+            position: relative;
+            height: 105px;
+            margin-right: 7px;
+            text-align: center;
+            width: 128px;
+
+            &:before{
+                bottom: 0;
+                content: "";
+                display: none;
+                height: 5px;
+                left: 0;
+                margin-bottom: -6px;
+                position: absolute;
+                width: 100%;
+            }
+
+            &:first-child{
+                margin-right: 8px;
+                @include getActiveStage( #caf69d , true);
+            }
+
+            &:nth-child(2){
+                @include getActiveStage( #adf169 , true);
+            }
+            &:nth-child(3){
+                @include getActiveStage( #29d787 , true);
+            }
+            &:nth-child(4){
+                @include getActiveStage( #12c874 , true);
+            }
+            &:nth-child(5){
+                @include getActiveStage( #00be66 , true);
+            }
+            &:nth-child(6){
+                @include getActiveStage( #08a25a , true);
+            }
+
+            &:last-child{
+                @include getActiveStage( #fa596d , true);
+                margin-right: 0;
+            }
+
+            &.active:before{
+                display: block;
+            }
+
+            .title{
+                color: #4990e2;
+                height: 32px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                overflow: hidden;
+            }
+
+            .counter{
+                font-size: 16px;
+                color: $blue7;
+                margin-bottom: 12px;
+            }
+
+            .price{
+                color: $tertiary-color;
+            }
+        }
+    }
+
+    .stages-body{
+        border: 2px solid;
+        border-color: #caf69d;
+        margin-top: 5px;
+        padding: 10px 15px;
+
+        .type-status{
+            margin-bottom: 10px;
+        }
+
+        &.stage2{
+            border-color: #adf169;
+        }
+        &.stage3{
+            border-color: #29d787;
+        }
+        &.stage4{
+            border-color: #00be66;
+        }
+        &.stage5{
+            border-color: #08a25a;
+        }
+        &.stage7{
+            border-color: #caf69d;
+        }
+        &.stage8{
+            border-color: #adf169;
+        }
+        &.stage9{
+            border-color: #29d787;
+        }
+        &.stage10{
+            border-color: #fa596d;
+        }
+
+
+    }
+
+    .stages-footer{
+        margin: 15px 0;
+    }
+}
+
+
+
+.prospects-table-reports{
+    padding: 20px;
+
+
+    .prospects-table-reports-header{
+        .date{
+            border: 1px solid $gray;
+            border-bottom: 3px solid $gray;
+            float: left;
+            height: 23px;
+            line-height: 23px;
+            margin-right: 2px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 70px;
+
+            &:nth-child(2),
+            &:nth-child(6),
+            &:nth-child(3){
+                margin-right: 3px
+            }
+
+            &.active{
+                border-color: $blue4;
+            }
+
+            &:last-child{
+                margin-left: 1px;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .prospects-table-reports-body{
+        border: 1px solid rgba( $blue4, .5);
+        padding: 20px;
+
+        .descriptions{
+            padding-left: 0;
+            padding-right: 12px;
+            position: relative;
+
+            &:before{
+                background: $yellow;
+                content: '';
+                display: block;
+                height: 100%;
+                position: absolute;
+                right: 0;
+                width: 1px;
+            }
+
+            p{
+                color: $primary-color;
+                font-family: 'Proxima SemiBold';
+                font-size: 10px;
+                height: 30px;
+                line-height: 30px;
+                margin-bottom: 0;
+                text-align: right;
+                text-transform: uppercase;
+
+
+
+                &:first-child{
+                    color: $tertiary-color;
+                }
+
+                &:nth-child(4){
+                    font-size: 11px;
+                }
+
+                &.total{
+                    font-family: 'Proxima Bold';
+                    font-size: 14px;
+                    line-height: 14px;
+                }
+            }
+
+            hr{
+                border-color: $yellow;
+                margin-bottom: 2px;
+                margin-right: -12px;
+                margin-top: 0;
+                width: 145px;
+            }
+        }
+
+        .values{
+            padding-right: 0;
+        }
+    }
+}
+
+
+div[uib-tooltip-template-popup].stageTooltip{
+    // margin-left: 120px !important;
+    position: absolute;
+    width: 158px;
+
+    .tooltip-inner {
+        background: #fee07e;
+        color: $tertiary-color;
+        font-family: 'Proxima SemiBold';
+        font-size: 12px;
+
+
+        .descriptions{
+            font-size: 10px;
+        }
+    }
+
+    .tooltip-arrow{
+        border-right-color: #fee07e !important;
+        // display: none;
+    }
+
+    &:after{
+        width: 0;
+    }
+}
+
+
+.stages-prospect-circle{
+    padding: 25px;
+
+    + .row .note{
+        color: $blue11;
+    }
+
+
+    > div{
+        position: relative;
+        cursor: pointer;
+        margin-right: 95px;
+        font-family: 'Proxima SemiBold';
+        float: left;
+        width: 70px;
+
+        &.stage-one.active{
+            background: white ;
+            @include getActiveStage( #caf69d, null );
+            
+        }
+        &.stage-two.active{
+            @include getActiveStage( #adf169, null );
+        }
+        &.stage-three.active{
+            @include getActiveStage( #29d787, null );
+        }
+        &.stage-four.active{
+            @include getActiveStage( #00be66, null );
+        }
+        &.stage-five.active{
+            @include getActiveStage( #08a25a, null );
+        }
+        &.stage-six.active{
+            @include getActiveStage( #08a25a, null );
+        }
+
+        &:before{
+            background: white ;
+            border: 2px solid #d2cfcd;
+            border-radius: 50%;
+            display: none;
+            position: absolute;
+            content: '';
+            width: 80px;
+            height: 80px;
+            margin-left: -5px;
+            margin-top: -5px;
+        }
+
+        &.active{
+
+            &.right-none{
+                &:after{
+                    background: #d2cfcd;
+                }
+            }
+
+            &:before{
+                display: none !important;
+            }
+        }
+        &:hover{
+            &:before{
+                display: block;
+            }
+        }
+
+        .number{
+            border: 6px solid #dbd8d8;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #b4b4b4;
+            height: 70px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            line-height: 64px;
+        }
+
+        .text{
+            color: #b4b4b4;
+            width: 110px;
+            margin-left: -20px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        &:last-child{
+            margin-right: 0;
+
+            &:after{
+                display: none;
+            }
+        }
+
+        &:after{
+            left: 100%;
+            background: #dbd8d8;
+            top: calc( 0% + 36px);
+            content: "";
+            display: block;
+            width: 95px;
+            height: 2px;
+            position: absolute;
+        }
+    }
+}
+
+
+.button-back{
+    margin-top: 10px;
+    text-align: right;
+
+    button{
+        margin-right: 10px;
+        width: 120px;
+
+
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
+
+.no-results-prospects{
+    border: 1px solid #979797;
+    margin-bottom: 10px;
+}
+
+
+.prospects-filters{
+    .combos{
+        .form-group.has-icon{
+            margin-bottom: 0;
+            width: 240px;
+        }
+    }
+}
+
+
+.adviser-user{
+    background: rgba($blue4,0.11);
+    display: table;
+    color: $tertiary-color;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+
+    > div{
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    strong{
+        font-family: 'Proxima Bold';
+    }
+    span{
+        display: inline-block;
+        margin-left: 6px;
+        max-width: 280px;
+        overflow: hidden;
+        height: 18px;
+        vertical-align: middle;
+
+    }
+}
+
+
+div.buttons-admin{
+    text-align: right;
+
+    button{
+        margin-left: 10px;
+
+    }
+}
+
+
+.administrador-menu{
+    .form-group{
+        margin-bottom: 10px;
+    }
+}
+
+.panel-body-collapsed{
+    padding: 15px;
+}
+.separatorButton{
+    padding: 15px 15px 15px 0px;    
+}
+.btnAddActivity{
+    background: $tertiary-color;
+    height: 30px;
+    width: 195px;
+
+    i{
+        font-size: 14px;
+    }
+}
+
+.color-head-panel > div:first-child{
+    background: rgba($primary-color,0.75) !important;    
+    h4{
+        font-size: 14px;
+        font-family: inherit !important;
+    }               
+}

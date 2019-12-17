@@ -1,0 +1,70 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+        src="img/icons/calendar/ico_cerrar.svg",
+        alt="",
+        align="right"
+        ng-click="inv.close()"
+        )
+        h4 DETALLE DE LA ORDEN
+
+    div.modal-body
+        div.table-title
+            div.col-xs-4
+                p Fecha de registro
+                p {{ inv.info.operationInfo.operationDate | date :'dd/MM/yyyy'}}
+            div.col-xs-4
+                p Hora de registro
+                p {{ inv.info.operationInfo.registryTime | date :'hh:mm:ss'}}
+
+        div.content
+            div.row.margin-0
+                p.col-xs-6 Estado:
+                p.col-xs-6 {{inv.info.operationInfo.description }}
+            div.row.margin-0
+                p.col-xs-6 Movimiento:
+                p.col-xs-6 {{ inv.info.movementInfo.movementDescription}}
+            div.row.margin-0
+                p.col-xs-6 Emisora:
+                p.col-xs-6 {{ inv.info.movementInfo.issuerName}}
+            div.row.margin-0
+                p.col-xs-6 Serie:
+                p.col-xs-6 {{ inv.info.movementInfo.serie }}
+            div.row.margin-0
+                p.col-xs-6 Cupon:
+                p.col-xs-6 {{ inv.info.movementInfo.coupon }}
+            div.row.margin-0
+                p.col-xs-6 Fecha de vigencia:
+                p.col-xs-6 {{ inv.info.movementInfo.validityOrderDate | date: "dd/MM/yyyy" }}
+            div.row.margin-0
+                p.col-xs-6 Hora de vigencia:
+                p.col-xs-6 {{ inv.info.movementInfo.validityOrderTime | date: "HH:mm:ss"}}
+            div.row.margin-0
+                p.col-xs-6 Titulos solicitados:
+                p.col-xs-6 {{ inv.info.movementInfo.titlesQty }}
+            div.row.margin-0
+                p.col-xs-6 Titulos asignados:
+                p.col-xs-6 {{ inv.info.movementInfo.titlesAssigned}}
+            div.row.margin-0
+                p.col-xs-6 Volumen Oculto:
+                p.col-xs-6 {{ inv.info.volumeInfo.hiddenVolume}}
+            div.row.margin-0
+                p.col-xs-6 % Volumen oculto:
+                p.col-xs-6 {{ inv.info.volumeInfo.percentageHiddenVolume }}
+            div.row.margin-0
+                p.col-xs-6 Precio:
+                p.col-xs-6 {{ inv.info.volumeInfo.price }}
+            div.row.margin-0
+                p.col-xs-6 Precio Límite:
+                p.col-xs-6 {{ inv.info.order.referencePriceOrder}}
+            div.row.margin-0
+                p.col-xs-6 Tip. Ord:
+                p.col-xs-6 {{ inv.info.volumeInfo.description }}
+            div.row.margin-0
+                p.col-xs-6 Volumen cancelado:
+                p.col-xs-6 {{ inv.info.volumeInfo.canceledVolume }}
+

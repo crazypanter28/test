@@ -1,0 +1,154 @@
+include /views/mixins/buttons
+
+div(ng-if="lifeCtrl.actualPage === 5")
+    form(name="form" novalidate)
+        .row
+            .col-md-4.text-left(style="padding-bottom:20px;") 
+                img(src="img/logos/mapfre.svg" style="width: 85px;height: 50px")
+        .row
+            .col-md-12 
+                h2.text-center.tit
+                    span Registro de Cuenta para cargo del seguro
+                br
+        .row
+            .col-md-12
+                .form-group.col-lg-4.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                    .col-md-8
+                        input(type="text" id="nombreCard" placeholder="Nombre(s)" 
+                                        ng-model="lifeCtrl.nombreCard"
+                                        required maxlength="60" minlength="3" autocomplete="off"
+                                        ng-keypress="lifeCtrl.charrepeatText($event,'nombreCard');lifeCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+                .form-group.col-lg-4.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                    .col-md-8
+                        input(type="text" id="apellidoPCard" name="apellidoPCard" placeholder="Apellido Paterno"
+                                        ng-model="lifeCtrl.apellidoPCard"  autocomplete="off"
+                                        required maxlength="80" minlength="3"
+                                        ng-keypress="lifeCtrl.charrepeatText($event,'apellidoPCard');lifeCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+                .form-group.col-lg-4.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                    .col-md-8
+                        input(type="text" id="apellidoMCard" name="apellidoMCard" placeholder="Apellido Materno"
+                                        ng-model="lifeCtrl.apellidoMCard" autocomplete="off"
+                                        required maxlength="80" minlength="3"
+                                        ng-keypress="lifeCtrl.charrepeatText($event,'apellidoMCard');lifeCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+        .row
+            .col-md-12
+                .form-group.col-md-6.col-sm-12
+                    .col-md-6
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Seleccione Tipo de Cuenta
+                    .col-md-6
+                        div(act-dropdown
+                            ng-model="lifeCtrl.ListPaymentType"
+                            name="ListPaymentType"
+                            selected="lifeCtrl.cmd.paymentType.type" )
+                            input(required
+                                type='hidden'
+                                name="ListPaymentType"
+                                ng-model='lifeCtrl.cmd.paymentType.type' )
+                .form-group.col-md-6.col-sm-12(ng-if="lifeCtrl.cmd.paymentType.type.id === '2'")
+                    .col-md-6
+                       p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Seleccione una opción
+                    .col-md-6
+                        div(act-dropdown
+                            ng-model="lifeCtrl.ListTypeCLABE"
+                            selected="lifeCtrl.cmd.ListTypeCLABE.type"
+                            name="ListTypeCLABE" 
+                            change="lifeCtrl.vaciaTarjeta(lastValue, newValue);" )
+                            input(required
+                                type='hidden'
+                                ng-model='lifeCtrl.cmd.ListTypeCLABE.type' )
+        .row(ng-if="lifeCtrl.cmd.paymentType.type.id === '8' || lifeCtrl.cmd.paymentType.type.id === '2'")
+            .col-md-12
+                .form-group.col-md-6.col-sm-12
+                    .col-md-6
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Seleccione el Banco
+                    .col-md-6.text-left
+                        select(required
+                            name="listBanks"
+                            ng-model="lifeCtrl.cmd.dataCarsAccountIdBanks"
+                            ng-options="x.text for x in lifeCtrl.ListBanks"
+                            ng-change="lifeCtrl.selectBankId()").form-control
+                .form-group.col-md-6.col-sm-12(ng-if="lifeCtrl.cmd.paymentType.type.id === '8' || (lifeCtrl.cmd.ListTypeCLABE.type.id === '2' && lifeCtrl.cmd.paymentType.type.id === '2')")
+                    .col-md-6
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;")  Número de tarjeta
+                    .col-md-6.text-left
+                        input(type="text" name="numTarjeta"  ng-model="lifeCtrl.account" ng-blur="lifeCtrl.selectTypeCard()" placeholder="cuenta" autocomplete="off"
+                            maxlength="{{lifeCtrl.accLen}}" minlength="{{lifeCtrl.accLen}}" ng-keypress="lifeCtrl.soloNumero($event)" required ).form-control
+                        div(role='alert')
+                            span.error(ng-show='form.numTarjeta.$error.maxlength || form.numTarjeta.$error.minlength')
+                                | Se requieren {{lifeCtrl.accLen}} dígitos
+                .form-group.col-md-6.col-sm-12(ng-if="lifeCtrl.cmd.paymentType.type.id === '2' && lifeCtrl.cmd.ListTypeCLABE.type.id === '1'")
+                    .col-md-6 
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Clabe
+                    .col-md-6 
+                        input(type="text" ng-model="lifeCtrl.clabeInter"  placeholder="CLABE"  autocomplete="off" required  maxlength="18" numbers-only="numbers-only").form-control.required                                 
+        .row
+            .col-md-12
+                .form-group.col-md-6.col-sm-12(ng-if="lifeCtrl.cmd.paymentType.type.id === '8' || (lifeCtrl.cmd.ListTypeCLABE.type.id === '2' && lifeCtrl.cmd.paymentType.type.id === '2')")
+                    .col-md-6
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Seleccione mes y año de vencimiento
+                    .col-md-6.text-left
+                        .col-sm-5
+                            select(required
+                                name="monthExpirationList"
+                                ng-model="lifeCtrl.comboMonthExpiration"
+                                ng-options="x.text for x in lifeCtrl.monthExpirationList"
+                            ).form-control
+                        .col-sm-2(style="padding:12px 12px 8px 4px;")
+                            span /
+                        .col-sm-5(style="padding-left:0px; padding-right:6px")
+                            select(required
+                                name="yearExpirationList"
+                                ng-model="lifeCtrl.comboYearExpiration"
+                                ng-options="x.text for x in lifeCtrl.yearExpirationList"
+                            ).form-control
+                .form-group.col-md-6.col-sm-12(ng-if="lifeCtrl.cmd.paymentType.type.id === '8' || (lifeCtrl.cmd.ListTypeCLABE.type.id === '2' && lifeCtrl.cmd.paymentType.type.id === '2')")
+                        .col-md-6
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Código de seguridad
+                        .col-md-6.text-left
+                            input(type="text" name="cvvField" ng-model="lifeCtrl.cvv" autocomplete="off" required placeholder="cvv" maxlength="{{lifeCtrl.cvvLen}}" minlength="{{lifeCtrl.cvvLen}}" ng-keypress="lifeCtrl.soloNumero($event)" ).form-control.required
+                            div(role='alert')
+                                span.error(ng-show='form.cvvField.$error.maxlength || form.cvvField.$error.minlength')
+                                    | Se requieren {{lifeCtrl.cvvLen}} dígitos
+        .row
+            .col-md-12
+                .form-group.col-md-6.col-sm-12(ng-if="lifeCtrl.cmd.paymentType.type.id === '8' || (lifeCtrl.cmd.ListTypeCLABE.type.id === '2' && lifeCtrl.cmd.paymentType.type.id === '2')")
+                    .col-md-6
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona tipo de tarjeta
+                    .col-md-6.text-left
+                        select(required
+                                name="ListCardType"
+                                ng-model="lifeCtrl.cmd.cardType"
+                                ng-options="x.text for x in lifeCtrl.ListCardType"
+                                DISABLED
+                            ).form-control
+                .form-group.col-md-6.col-sm-12
+                    .col-md-6.text-right
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;")  Correo electrónico
+                    .col-md-6.text-left
+                        input(type="email" ng-model="lifeCtrl.email1" ng-change="lifeCtrl.validateActinverEmail(lifeCtrl.email1)" maxlength="50"
+                            ng-pattern="lifeCtrl.mailRegex" autocomplete="off" placeholder="correo@mail.com" required).form-control.upperCaseInput.required
+        //- .row
+        //-     .col-md-12
+        //-         .form-group.col-md-6.col-sm-12
+        //-             .col-md-6.text-right
+        //-                 p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;")  Fecha aprox de pago
+        //-             .col-md-6.text-left
+        //-                 div.form-group.has-icon
+        //-                     div(style="position:relative")
+        //-                         dates-range-picker(
+        //-                             date="lifeCtrl.fechaAprox"
+        //-                             placeholder="dd/mm/aaaa"
+        //-                             options='lifeCtrl.payDatePickOp'
+        //-                             ng-required="true"
+        //-                             is-single="true" )
+        .row
+            div.row.text-center
+                .col-md-12
+                    button(class="btn-primary btn" ng-click="lifeCtrl.go2page(4)" ) REGRESAR
+                    +btnWithIcon( 'EMITIR', 'btn-primary btn-space btn','form.$invalid')(ngClick="lifeCtrl.ServiceLifeInsurancePolicyRegistration()")

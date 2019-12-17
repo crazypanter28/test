@@ -1,0 +1,64 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+div.content-panel.tranfers(ng-if="housesCtrl.stepForm.stepA")
+    div.row
+        .col-xs-1
+        .col-xs-3
+            img( src="img/bg/seguros-hogar.jpg" )
+        .col-xs-6
+            div
+                h4 Seguros de Hogar
+                p( style="font-size: 13px; font-weight: bold;") Cotizaciones vigentes por usuario
+    .row
+        .col-md-3
+        .col-md-6
+            input(type="text" 
+            id="palabra" 
+            name="palabra" placeholder="Buscar"  
+            ng-model="palabra").form-control.upperCaseInput.required
+        .col-md-3
+    div.content-panel.tranfers
+        div.row
+            .col-xs-2
+                h4 Cotización
+            .col-xs-4
+                h4 Nombre de cliente
+            .col-xs-2
+                h4 Fecha de cotización
+            .col-xs-2
+                h4 Vigencia
+            .col-xs-1
+                h4 Prima
+            .col-xs-1
+                h4 
+        div.row(
+            dir-paginate="option in housesCtrl.ListCotizaciones | filter: palabra | itemsPerPage : housesCtrl.pageSize"
+            current-page="housesCtrl.currentPage"
+        )
+            .col-xs-2
+                h5 {{option.cotizacion}}
+            .col-xs-4
+                h5 {{option.nombreCompleto}}
+            .col-xs-2
+                h5 {{option.fecha}}
+            .col-xs-2
+                h5 {{option.vigencia}}
+            .col-xs-1
+                h5 {{option.prima | currency}}
+            .col-xs-1
+                label(class="input-checkbox")
+                    input(type="checkbox" ng-model="option.checked" 
+                    ng-click="updateSelection($index, option, housesCtrl.ListCotizaciones, $event)" 
+                    class="ng-pristine ng-untouched ng-valid ng-empty" style="margin-left: 20px; margin-top: 10px; margin-bottom: 0px;")
+                    span(class="css")
+        div
+            .text-center
+                dir-pagination-controls(boundary-links='true', template-url='/scripts/paginator/paginator.html')
+    div.row
+        .col-xs-3
+        .col-xs-1
+        .col-xs-7
+            button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="housesCtrl.regresarMain()") Regresar
+            button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="housesCtrl.cotizarContratar()") {{housesCtrl.botonContratar}}

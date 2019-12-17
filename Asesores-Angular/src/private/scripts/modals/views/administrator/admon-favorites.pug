@@ -1,0 +1,49 @@
+include /views/mixins/radio-button
+
+
+.title-modal {{ctrl.title}}
+form( name="$form")
+    .container-modal
+        .row
+            .form-group.col-xs-12(ng-if="ctrl.type === 'newFav' || ctrl.type === 'favorite' || ctrl.type === 'classification'" )
+                label Selecciona lo que deseas agregar
+                div  
+                    label.act-radio-custom( for="favorite-{{ idx }}" )
+                        input(  type="radio" id="favorite-{{ idx }}" value="favorite" ng-model="ctrl.fav.idSelected" ng-change="ctrl.setType('favorite')" )
+                        span.css-label
+                        | Favorito
+                    label.act-radio-custom( for="clasification-{{ idx }}" )
+                        input(  type="radio" id="clasification-{{ idx }}" value="clasification" ng-model="ctrl.fav.idSelected" ng-change="ctrl.setType('classification')" )
+                        span.css-label
+                        | Clasificación
+        div.form-investment( ng-if="ctrl.type === 'favorite' || ctrl.type === 'updateFav'" )
+            .row
+                .form-group.col-xs-6
+                    label Nombre de emisora #[span.require *]
+                    input.form-control(type="text" ng-model="ctrl.fav.issuerName" ng-value="ctrl.issuerName" required="true",)
+                
+                .form-group.col-xs-6
+                    label Serie #[span.require *]
+                    input.form-control( placeholder='---' ng-model="ctrl.fav.serie"  ng-value="ctrl.serie" required="true")
+                
+            .row
+                .form-group.col-xs-6
+                    label Clasificación
+                    div.form-control( act-dropdown="" ng-model="ctrl.classification" selected="ctrl.fav.classification" required="true"  )
+                
+        div( ng-if="ctrl.type === 'classification'" )
+            .row
+                .form-group.col-xs-12
+                    label Nombre de clasificación #[span.require *]
+                    input.form-control( placeholder='---' ng-model="ctrl.fav.name" required="true")
+
+        div.form-investment( ng-if="ctrl.type === 'deleteClassification'" )
+            .row
+                .form-group.col-xs-6
+                    label Clasificación a eliminar
+                    div.form-control( act-dropdown="" ng-model="ctrl.classification" selected="ctrl.fav.classification" required="true"  )                        
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+        button.btn.btn-primary( ng-if="ctrl.type !== 'deleteClassification'" title="GENERAR" ng-disabled="$form.$invalid" ng-click="ctrl.done()") GUARDAR
+        button.btn.btn-primary( ng-if="ctrl.type === 'deleteClassification'" title="ELIMINAR" ng-disabled="$form.$invalid" ng-click="ctrl.done()") ELIMINAR

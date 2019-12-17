@@ -1,0 +1,138 @@
+mixin resourceCrashed(opts)
+    - var opts = (typeof opts === 'undefined') ? {} : opts;
+    - var type = (typeof opts.type !== 'undefined') ? opts.type : '';
+    - var img_size = (typeof opts.imgSize !== 'undefined') ? opts.imgSize : 'sm';
+
+    .wt-resource-crashed( class=type )
+        h3.h3 ¡Lo sentimos!
+        p El contenido no se puede mostrar por el momento
+        img( src="img/bg/loading-error-" + img_size + ".svg" )
+
+mixin noGeneralResults( msgStrong, msg )
+    - var img = attributes.img ? attributes.img : "img/icons/empty_state_nocontenido.svg";
+
+    div.general-no-results
+        div.container-no-results
+            img( src=img )
+            p
+                strong!=msgStrong
+                | #{msg}
+
+
+mixin noResults(type)
+    - var msg = ( typeof attributes.msg !== 'undefined') ? attributes.msg : '';
+
+    case type
+
+        when "schedule"
+            .wt-empty.schedule
+                h3.h3 ¡Increíble!
+                p No tienes clientes con más de 3 meses sin contactar
+                img( src="img/bg/empty.svg" )
+
+        when "expired"
+            .wt-empty.sm.expired
+                p No tiene clientes<br />para reperfilar
+                img( src="img/bg/empty-sq.svg" )
+
+        when "soon"
+            .wt-empty.sm.soon
+                p No tiene clientes<br />para reperfilar
+                img( src="img/bg/empty-sq.svg" )
+
+        when "binnacle"
+            img( src="img/bg/empty.svg" )
+            p
+                strong Tu cliente No cuenta
+                |  con un registro de bítácora
+
+        when "binnacle-search"
+            img( src="img/icons/empty_state_nocontenido.svg" )
+            p
+                strong No se encontraron
+                |  resultados con esta
+                br
+                |  búsqueda. Vuelve a intentar otro dato.
+
+        when "binnacle-search-2"
+            img( src="img/bg/binnacle-empty-state.svg" )
+            p
+                strong No se encontraron
+                |  resultados con esta
+                br
+                |  búsqueda. Vuelve a intentar otro dato.
+
+        when "binnacle-birthdays"
+            p Ups! hoy no hay cumpleaños por festejar.
+            img( src="img/icons/no_cumple.svg" )
+
+        when "no-balance"
+            .icon
+                img( src="img/icons/empty-balance.svg" )
+            .info
+                p
+                    | Los contratos del cliente
+                    span no están disponibles
+        when "no-historical"
+            .icon
+                img( src="img/icons/empty-balance.svg" )
+            .info
+                p
+                    | No cuenta con
+                    span Histórico de saldos
+
+        when "no-balance-singular"
+            .icon
+                img( src="img/icons/empty-balance.svg" )
+            .info
+                p
+                    | El contrato del cliente
+                    span no está disponible
+
+        when "no-portfolio-detail"
+            .icon
+                img( src="img/icons/empty-balance.svg" )
+            .info
+                p
+                    | No hay información
+                    span disponible
+
+        when "no-products-proposals"
+            .pointer
+                img( src="img/icons/point-arrow.svg" )
+            .icon
+                img( src="img/icons/empty_state_nocontenido.svg" )
+            .info
+                if attributes.msg
+                    p !{ attributes.msg }
+                else
+                    p( ng-bind-html!=attributes.ngBindHTML )
+
+        when "no-results"
+            .icon
+                img( src="img/icons/empty_state_nocontenido.svg" )
+            .info
+                if attributes.msg
+                    p !{ attributes.msg }
+                else
+                    p( ng-bind-html!=attributes.ngBindHTML )
+
+        when "common-msg"
+            img( src="img/icons/empty-balance.svg" )
+            if attributes.msg
+                p !{ attributes.msg }
+            else
+                p( ng-bind-html!=attributes.ngBindHTML )
+
+        when "no-data"
+            img( src="img/icons/no-data-sm.svg" )
+            p
+                strong No
+                |  se encontraron datos
+
+        default
+            .wt-empty
+                p No se encontraron resultados
+
+mixin loaderMini()
+    | Obteniendo información ...

@@ -1,0 +1,31 @@
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+
+.notification
+    div(style="padding-bottom:10px; font-weight:bold;") Seleccione un plazo a operar:
+    div.scroll(style="overflow-x:auto;")
+        table.table.is-scrollable(style="margin-bottom:2px;")            
+            thead
+                tr 
+                    th 
+                    th Instrumento
+                    th Plazo
+                    th Precio
+                    th Tipo
+            tbody
+                tr(ng-repeat="band in directsBandsMdlCtrl.data" ng-click="directsBandsMdlCtrl.changeSelected(band)" style="cursor:pointer;")
+                    td.auto-margin-checkbox 
+                        +checkbox( '', 'band.selected', '{{band.term}}', 'false')()
+                    td {{band.instrumentDesc}}
+                    td {{band.term}}
+                    td {{band.averagePurchaseMargin}}
+                    td {{band.priceType}}
+
+        
+
+
+div.buttons(style="margin:15px;")
+    +btnSubmit( 'Aceptar', 'success btn-separate', 'directsBandsMdlCtrl.selected === null')(ngClick="directsBandsMdlCtrl.calculate()")
+    +btnSubmit( 'Cancelar', 'success btn-separate' )(ngClick="directsBandsMdlCtrl.close()")
+    

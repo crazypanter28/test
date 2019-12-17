@@ -1,0 +1,78 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+
+div.pane-wrapper.margin-0
+    div.pane-title Datos personales
+    div.pane-body.personal-information
+        .row.margin-0
+            div.col-xs-3
+                label Nombre prospecto
+                p {{ detail.detailOpportunity.nameOpportunity }}
+            div.col-xs-3
+                label Estrategia
+                p {{ detail.detailOpportunity.asrStrategy.strategy }}
+            div.col-xs-3(ng-if='detail.detailOpportunity.segment != null')
+                label Segmento
+                p {{ detail.detailOpportunity.segment }}
+        .row.margin-0
+            div.col-xs-3(ng-if='detail.detailOpportunity.clientNumber != 0')
+                label No. Cliente
+                p {{ detail.detailOpportunity.clientNumber }}
+            div.col-xs-3
+                label Télefono
+                p {{ detail.detailOpportunity.phone }}
+            div.col-xs-3
+                label Correo
+                p {{ detail.detailOpportunity.mail }}
+            div.col-xs-2
+                +btnSubmit(
+                    'Modificar',
+                    'btn-primary btn-primary modify'
+                )(ngClick="detail.modify()")
+
+
+script( type="text/ng-template" id="stageTooltip.html")
+    p
+        div.row.margin-0.descriptions Fecha de contacto
+        div.row.margin-0 {{ detail.prospectDetail.stage.date }}
+
+    p
+        div.row.margin-0.descriptions Monto aprox. de inversión
+        div.row.margin-0 {{ detail.prospectDetail.stage.total | currency:'$' }}
+
+
+
+div.pane-wrapper.secondary(style="border-bottom: 1px solid rgba(25,93,196,0.5)")
+    div.pane-subtitle Etapa del prospecto
+    div.pane-body
+        div.row.margin-0.stages-prospect-circle
+            div.stage-one( ng-class="{ 'right-none': 7 === detail.detailOpportunity.asrStage.idStage ,'active' :  (7 <= detail.detailOpportunity.asrStage.idStage) && (detail.detailOpportunity.asrStrategy.strategy != 'REACTIVACIÓN')  }" 
+                           ng-click="7 <= detail.detailOpportunity.asrStage.idStage ? '' : detail.updateStage( 7)")
+                div.number 1
+                div.text Posibilidad
+            div.stage-two( ng-class="{ 'right-none': 8 === detail.detailOpportunity.asrStage.idStage ,'active' :  8 <= detail.detailOpportunity.asrStage.idStage }" 
+                           ng-click="8 <= detail.detailOpportunity.asrStage.idStage ? '' : detail.updateStage( 8)")
+                div.number 2
+                div.text Prostecto
+            div.stage-three( ng-class="{ 'right-none': 9 === detail.detailOpportunity.asrStage.idStage ,'active' : 9 <= detail.detailOpportunity.asrStage.idStage }" 
+                             ng-click="9 <= detail.detailOpportunity.asrStage.idStage ? '' : detail.updateStage( 9)" )
+                div.number 3
+                div.text Apertura
+
+
+        div.row.margin-0
+            span.note 
+                | * Para mover manualmente la 
+                b ETAPA 
+                |   de tu prospecto no debe tener actividades pendientes.
+           
+     
+
+p.button-back
+    +btnSubmit(
+        'Regresar',
+        'btn-primary btn-primary'
+    )(
+        uiSref="prospects.myProfile"
+    )

@@ -1,0 +1,96 @@
+include /views/mixins/radio-button
+
+.title-modal {{ctrl.title}}
+form.form-modal( name="$form" novalidate )
+
+    // Spinner
+    .loader-wrapper( ng-if="ctrl.loading" )
+        .spinner
+
+    // Form
+    div( ng-if="!ctrl.loading" )
+
+        .container-modal
+            .row( ng-if="!ctrl.pres.idPresentation" )
+                .form-group.col-xs-12
+                    label Selecciona lo que deseas agregar
+                    div
+                        +radioButton( 'Presentación', 'ctrl.pres.type' )(
+                            id="presentation"
+                            ngChange="ctrl.changeOptions()"
+                        )
+
+                        +radioButton( 'Clasificación', 'ctrl.pres.type' )(
+                            id="clasification"
+                            ngChange="ctrl.changeOptions()"
+
+                        )
+
+                        +radioButton( 'Subclasificación', 'ctrl.pres.type' )(
+                            id="subClasification"
+                            ngChange="ctrl.changeOptions()"
+
+                        )
+
+            div.form-investment( ng-if="ctrl.pres.type || ctrl.pres.idPresentation" )
+                .row
+                    .form-group.col-xs-4( ng-if="ctrl.pres.type === 'presentation' || ctrl.pres.idPresentation")
+                        label Nombre de la presentación #[span.require *]
+                        input.form-control( placeholder='---' ng-model="ctrl.pres.name" required="true")
+
+                    .form-group.col-xs-4( ng-if="ctrl.pres.type === 'clasification'")
+                        label Nombre de la clasificación #[span.require *]
+                        input.form-control( placeholder='---' ng-model="ctrl.clas.name" required="true")
+
+                    .form-group.col-xs-4( ng-if="ctrl.pres.type === 'subClasification'")
+                        label Nombre de la subclasificación #[span.require *]
+                        input.form-control( placeholder='---' ng-model="ctrl.subclas.name" required="true")
+
+                    .form-group.col-xs-4( ng-if="ctrl.pres.type === 'presentation' && !ctrl.pres.idPresentation" )
+                        label Clasificación #[span.require *]
+                        div( ng-if=" ctrl.pres.type !== 'clasification' ")
+                            div.form-control( act-dropdown="" ng-model="ctrl.products" selected="ctrl.pres.clasification" on-change="ctrl.getSubclasification" )
+                        div( ng-if=" ctrl.pres.type === 'clasification' ")
+                            input.form-control( placeholder='---' ng-model="ctrl.pres.clasification" required="true" )
+                    .form-group.col-xs-4( ng-show="( ctrl.pres.type === 'presentation' && ctrl.pres.clasification ) && !ctrl.pres.idPresentation")
+                            label Subclasificación  #[span.require *]
+                            div( ng-if="ctrl.pres.type !== 'subClasification'")
+                                div.form-control( act-dropdown="" ng-model="ctrl.subProducts" selected="ctrl.pres.subClasification" )
+                            div( ng-if="ctrl.pres.type === 'subClasification'")
+                                input.form-control( placeholder='---' ng-model="ctrl.pres.subClasification" required="true")
+                    .form-group.col-xs-4( ng-show="( ctrl.pres.type === 'subClasification')")
+                        label Clasificación #[span.require *]
+                        div( ng-if=" ctrl.pres.type !== 'clasification' ")
+                            div.form-control( act-dropdown="" ng-model="ctrl.products" selected="ctrl.pres.clasification" on-change="ctrl.getSubclasification" )
+                        div( ng-if=" ctrl.pres.type === 'clasification' ")
+                            input.form-control( placeholder='---' ng-model="ctrl.pres.clasification" required="true" )
+
+                    // File
+                    .form-group.col-xs-4( ng-if="ctrl.pres.idPresentation" )
+                        label Seleccionar archivo #[span.require *]
+                        file-uploader( filter="ctrl.uploaderOptions" on-success-set-file="ctrl.previewFile" on-error-set-file="ctrl.errorFile" )
+                        p.help-block Solamente ( .pdf ) Máximo 10MB
+                    .form-group.col-xs-4( ng-if="ctrl.pres.idPresentation" )
+                        div
+                            label Vista previa
+                            div
+                                a.btn.btn-primary( ng-show="ctrl.pres.idPresentation" target="_blank" ng-click="ctrl.getPDF(ctrl.pres.idPresentation)") Ver archivo actual
+
+                // File
+                .row( ng-if="ctrl.pres.type === 'presentation' && !ctrl.pres.idPresentation")
+                    .form-group.col-xs-4
+                        label Seleccionar archivo #[span.require *]
+                        file-uploader( filter="ctrl.uploaderOptions" on-success-set-file="ctrl.previewFile" on-error-set-file="ctrl.errorFile" )
+                        p.help-block Solamente ( .pdf ) Máximo 10MB
+                    .form-group.col-xs-4( ng-if="ctrl.pres.idPresentation" )
+                        div
+                            label Vista previa
+                            div
+                                a.btn.btn-primary( ng-show="ctrl.presentation_file_url" href="{{ ctrl.presentation_file_url }}" target="_blank" ) Ver archivo actual
+
+        .buttons
+            button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+            button.btn.btn-primary( ng-show="ctrl.pres.idPresentation" title="EDITAR" ng-disabled="!ctrl.pres.name" ng-click="ctrl.done( 'presentation' )") EDITAR
+            button.btn.btn-primary( ng-show="!ctrl.pres.idPresentation && ctrl.pres.type === 'presentation'" title="GENERAR" ng-disabled="$form.$invalid || !ctrl.pres.clasification || !ctrl.pres.subClasification || !ctrl.pres.file" ng-click="ctrl.done( 'presentation' )") GUARDAR
+            button.btn.btn-primary( ng-show="ctrl.pres.type === 'clasification'" title="GENERAR" ng-disabled="!ctrl.clas.name" ng-click="ctrl.done( 'clasification' )") GUARDAR
+            button.btn.btn-primary( ng-show="ctrl.pres.type === 'subClasification'" title="GENERAR" ng-disabled="!ctrl.subclas.name || !ctrl.pres.clasification " ng-click="ctrl.done( 'subClasification' )") GUARDAR

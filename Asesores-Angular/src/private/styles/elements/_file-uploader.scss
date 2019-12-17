@@ -1,0 +1,52 @@
+.file-uploader {
+    overflow: hidden;
+
+    #file-uploader {
+        display: none;
+    }
+
+    .icon-file {
+        background-image: url("../img/icons/icon_addImagen_disable.svg");
+        background-repeat: no-repeat;
+        float: left;
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 52px;
+
+        &.active {
+            background-image: url("../img/icons/icon_add_ImagenActive.svg");
+        }
+
+
+        &.pdf {
+            background-image: url("../img/icons/icon_pdf_active.svg");
+        }
+    }
+
+
+    .info-file {
+        float: left;
+        width: calc( 100% - 62px );
+        margin-left: 10px;
+
+        .name-file {
+            color: gray;
+        }
+
+        .change-file {
+            color: rgba( blue, 0.8 );
+            background: none;
+            border: none;
+            text-decoration: underline;
+            text-transform: uppercase;
+            padding: 0
+        }
+    }
+
+
+
+
+
+}

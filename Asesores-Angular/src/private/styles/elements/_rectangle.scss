@@ -1,0 +1,113 @@
+.report-rectangle{
+    border: 1px solid #d2cfcd;
+    color: $tertiary-color;
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    height: 153px;
+    margin-right: 15px;
+    text-align: center;
+    width: 170px;
+
+    &:last-child{
+        margin-right: 0;
+    }
+
+
+    > div{
+        height: 30px;
+    }
+
+    .report-rectangle-title{
+        background: rgba(#00bebe, 0.3);
+        font-family: 'Proxima SemiBold';
+        text-transform: uppercase;
+    }
+
+    .report-rectangle-number{
+        margin: 1px 0;
+        background: rgba(#00bebe, 0.3);
+    }
+
+    .report-rectangle-price{
+        background: rgba(#00bebe, 0.3);
+    }
+
+    .report-rectangle-close{
+        font-family: 'Proxima SemiBold';
+        font-size: 16px;
+    }
+
+    .report-rectangle-total{
+        background: $blue4;
+        color: white;
+        font-family: 'Proxima Bold';
+        font-size: 18px;
+    }
+}
+
+
+.activity-rectangle{
+    border-top: 7px solid $tertiary-color;
+    border: 1px solid $tertiary-color;
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 20px;
+    min-height: 130px;
+    padding: 10px 20px;
+    width: 300px;
+
+    &:nth-child( n + 1 ){
+        margin-right: 15px;
+    }
+
+    > div{
+        color: $form-control-color;
+        font-size: 12px;
+        line-height: 12px;
+        margin-bottom: 10px;
+
+        label{
+            font-size: 12px;
+            line-height: 12px;
+            margin-bottom: 0px;
+            width: 28%;
+            vertical-align: top;
+        }
+        span{
+            font-weight: 300;
+            display: inline-block;
+            width: 72%;
+
+            &.note{
+                height: 36px;
+                overflow: hidden;
+            }
+        }
+    }
+
+    div.buttons{
+        display: table;
+        margin-top: 20px;
+        margin-bottom: 0;
+        width: 100%;
+
+        > div{
+            border-right: 1px solid rgba( #d2cfcd, 0.7);
+            display: table-cell;
+            height: 30px;
+            min-width: 70px;
+            text-align: center;
+            vertical-align: middle;
+
+            &:last-child{
+                border-right: 0;
+            }
+
+
+            // i{
+            //     margin: 0 auto;
+            // }
+        }
+    }
+}

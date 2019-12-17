@@ -1,0 +1,53 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+//- tr.hand(onclick="expandGroup(this,'GCH');", style='background-color: #edebeb;border-bottom: 2px solid #fff;')
+//-    td.left.bnf5(style='color: #999999;', colspan='6')
+//-        ul.opciones
+//-            li.opciones
+//-                i.fa.fa-sort-desc
+//-        strong Tú recuperación
+table
+    tbody
+        tr(
+            ng-repeat="cob in medicalCtrl.grupos[6].coberturas"
+        )
+            td.col-md-3.bordersMedical.formatoLetrasTituloTabla(
+                ng-class="{colorFondoMedical: $index % 2 === 1}"
+            )
+                p {{cob.nom_cob}}
+            td.col-md-3.bordersMedical(
+                ng-class="{colorFondoMedical: $index % 2 === 1}"
+            )
+                form(name="form" novalidate style="margin:15px 0px")
+                    .row.margenes5px(
+                        ng-repeat="(key, val) in cob.intervalos" ng-if="val"
+                    )
+                        .form-group.col-mid-12.pf(id="{{key}}")
+                            label.col-md-4.control-label
+                                p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") {{val.name}}
+                            .col-md-8
+                                div( act-dropdown
+                                    ng-model="val.listIntervalo"
+                                    selected="val.intervaloSelected"
+                                    name="intervalo"
+                                    change="medicalCtrl.onChangeList(lastValue, newValue, 6, cob.cod_cob, key, val)"
+                                )
+                                input(
+                                    type='hidden',
+                                    ng-model='val.intervaloSelected'
+                                    ng-required='true'
+                                )
+            td.col-md-2.bordersMedical.text-center(
+                ng-repeat="paq in cob.paquetes"
+                ng-class="{colorFondoMedical: $parent.$index % 2 === 1}"
+            )
+                label.checkedMedical(ng-if="paq.mca_opc === 'S'")
+                    input.checkboxMedical(type ="checkbox"
+                    ng-model = "paq.mod_chk"
+                    ng-true-value = "'1'"
+                    ng-false-value = "'0'"
+                    ng-click="medicalCtrl.clickCheckBox();"
+                    ng-checked="paq.mod_chk === '1'"
+                    ng-disabled="medicalCtrl.indexPaquete !== $index")
+                    .boxMedical(ng-class="{colorCheckboxDisabled: medicalCtrl.indexPaquete !== $index}")

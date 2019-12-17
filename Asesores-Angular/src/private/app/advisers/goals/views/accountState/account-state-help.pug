@@ -1,0 +1,13 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+.binnacle-modal.modal-outline-client
+    form( name="form" novalidate )        
+        div.modal-header(style="border: none;")    
+            img.icon( src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="help.close()" )
+            
+
+        div.modal-body(style="border: none;")            
+            form(ng-disabled="login.spinner", name="form", id="form", novalidate class="css-form" ng-submit="login.sendType(credentials)" autocomplete="none" )
+                .text-center
+                    img( src="img/bg/accountState.JPG" alt="Actinver")

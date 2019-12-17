@@ -1,0 +1,55 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"group": "Today",
+		"subject": "Revisión de Portafolio",
+		"start": "12:30:00",
+		"end": "13:30:00",
+		"location": "Oficinas José Meljem",
+		"body": "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<meta name=\"Generator\" content=\"Microsoft Exchange Server\">\r\n<!-- converted from rtf -->\r\n<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style>\r\n</head>\r\n<body>\r\n<font face=\"Calibri\" size=\"2\"><span style=\"font-size:11pt;\">\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n</span></font>\r\n</body>\r\n</html>\r\n",
+		"date": 1499707800000,
+		"attendees": ["Johannes Christian Hauswaldt Alvarez", "christianhaus@hotmail.com", "Estefanny Zamora Becerril", "Nadia Aline Garcia Cazariego", "jose.meljem@salud.gob.mx"]
+	}, {
+		"group": "Week",
+		"subject": "Seguimiento Enrique confirmarle que es a alas 11 30",
+		"start": "11:30:00",
+		"end": "14:00:00",
+		"location": "Su casa",
+		"body": "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<meta name=\"Generator\" content=\"Microsoft Exchange Server\">\r\n<!-- converted from rtf -->\r\n<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style>\r\n</head>\r\n<body>\r\n<font face=\"Calibri\" size=\"2\"><span style=\"font-size:11pt;\">\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n</span></font>\r\n</body>\r\n</html>\r\n",
+		"date": 1499963400000,
+		"attendees": ["Johannes Christian Hauswaldt Alvarez", "christianhaus@hotmail.com", "Nadia Aline Garcia Cazariego", "Estefanny Zamora Becerril"]
+	}, {
+		"group": "Week",
+		"subject": "COMIDA PORFIRIOS",
+		"start": "15:00:00",
+		"end": "16:30:00",
+		"location": "PORFIRIOS",
+		"body": "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<meta name=\"Generator\" content=\"Microsoft Exchange Server\">\r\n<!-- converted from rtf -->\r\n<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style>\r\n</head>\r\n<body>\r\n<font face=\"Calibri\" size=\"2\"><span style=\"font-size:11pt;\">\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n</span></font>\r\n</body>\r\n</html>\r\n",
+		"date": 1499976000000,
+		"attendees": ["Johannes Christian Hauswaldt Alvarez", "felix.leon@osram.com", "christianhaus@hotmail.com", "Estefanny Zamora Becerril", "Nadia Aline Garcia Cazariego"]
+	}, {
+		"group": "Month",
+		"subject": "Presentación Cursos",
+		"start": "16:30:00",
+		"end": "17:30:00",
+		"location": "Lockton",
+		"body": "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<meta name=\"Generator\" content=\"Microsoft Exchange Server\">\r\n<!-- converted from rtf -->\r\n<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style>\r\n</head>\r\n<body>\r\n<font face=\"Calibri\" size=\"2\"><span style=\"font-size:11pt;\">\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n</span></font>\r\n</body>\r\n</html>\r\n",
+		"date": 1500327000000,
+		"attendees": ["Johannes Christian Hauswaldt Alvarez", "CNunez@mx.lockton.com", "AMontes@mx.lockton.com", "Nadia Aline Garcia Cazariego", "christianhaus@hotmail.com"]
+	}, {
+		"group": "Month",
+		"subject": "Desayuno Casa Portuguesa",
+		"start": "08:00:00",
+		"end": "10:00:00",
+		"location": "Casa Portuguesa",
+		"body": "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<meta name=\"Generator\" content=\"Microsoft Exchange Server\">\r\n<!-- converted from rtf -->\r\n<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style>\r\n</head>\r\n<body>\r\n<font face=\"Calibri\" size=\"2\"><span style=\"font-size:11pt;\">\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n</span></font>\r\n</body>\r\n</html>\r\n",
+		"date": 1500382800000,
+		"attendees": ["Johannes Christian Hauswaldt Alvarez", "christianhaus@hotmail.com", "Estefanny Zamora Becerril", "RAUL PEREZ RIOS (rperezriosaguilar@gmail.com)", "Nadia Aline Garcia Cazariego"]
+	}]
+}

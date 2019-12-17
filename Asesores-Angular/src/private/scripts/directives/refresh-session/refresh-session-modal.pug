@@ -1,0 +1,16 @@
+
+include /views/mixins/buttons
+
+
+
+h4 El tiempo restante de tu sesión es de: 
+
+
+.donut-session
+    div {{ session.time | remainingTime }} min
+
+
++btnSubmit(
+    'RESTABLECER SESIÓN',
+    'btn-primary save'
+)(ngClick="session.refreshSession()")

@@ -1,0 +1,85 @@
+include /views/mixins/buttons
+
+.page-details-performance(pdf-save-content='idPrint' style="width:900px; margin-left: 45px; margin-top: 15px;")
+
+    div.pane-wrapper.simulators
+        div.pane-title Rendimiento de tu estrategia
+        div.pane-body
+
+            div.note
+                h5 Invertir siguiendo una estrategia, marcará tu línea hacia el éxito.
+
+                p La siguiente gráfica te muestra cuales hubieran sido tus ganancias de haber invertido en años anteriores. Pero no te preocupes aún estas a tiempo de hacer crecer tu dinero, guarda o imprime tu estrategia, nunca es tarde para empezar.
+
+            div.title Rendimiento de tu estrategia
+
+            .row.margin-bottom-10
+                .col-xs-4.gray #[strong Saldo inicial: {{ detail.amounts.start | currency }}]
+                .col-xs-8.green #[strong Saldo final: {{ detail.amounts.end | currency }}]
+            .row.margin-bottom-10
+                .col-xs-4.blue $ Plusvalía: {{ detail.amounts.pesos | currency }}
+                .col-xs-8.blue % Plusvalía: {{ detail.amounts.services  | currency}}%
+            div.schedule( ng-if="detail.chartLine")
+                .row
+                    .col-xs-1
+                    .col-xs-11
+                        line-chart-simulator( model="detail.chartLine" )
+                    .col-xs-1
+    div.pane-wrapper.simulators.margin-0( style="border-bottom: 1px solid rgba(25, 93, 196, 0.5);")
+        div.pane-title Tu estrategia
+        div.pane-body
+
+            div.row.margin-0.you-strategy
+                div.col-xs-3 #[span.text Monto asignado:] #[span.value {{detail.amounts.start | currency }}]
+                div.col-xs-3 #[span.text Importe final:] #[span.value {{ detail.amounts.end | currency }}]
+                div.col-xs-3 #[span.text % Plusvalía en pesos:] #[span.value {{ detail.amounts.pesos | currency }}]
+                div.col-xs-3 #[span.text % Plusvalía por servicio:] #[span.value {{ detail.amounts.services  | currency}}]%
+
+            div.row.margin-0.wrapper-chart
+                div.col-xs-6#donut-chart
+                    .row
+                        .col-xs-1
+                        .col-xs-8
+                            #chartjs-tooltip2
+                            donut-chart( model="detail.chartDonut" custom="true")
+                            div.view-details( ng-click="detail.viewDetail()" ng-if="detail.chartLine") VER DETALLE
+                        .col-xs-1
+                div.col-xs-6.chart-description
+                    div.container-point( ng-repeat="it in detail.smt01")
+                        div.bullet( style="background:{{ detail.chartDonut.chart.colors[$index] }}" )
+                        span {{ it.issuer }} {{ it.serie }}
+    br   
+    br                 
+    div.pane-wrapper.secondary( ng-if="detail.viewMore")
+        div.pane-subtitle Desglose de estrategia
+        div.pane-body
+            div.row.margin-0
+                div.col-xs-4.padding-0( ng-repeat = 'chart in detail.newCharts')
+                    div.resume
+                        div.col-xs-6
+                            label Monto asignado:
+                            | {{ chart.investment | currency:'$' }}
+                        div.col-xs-6
+                            label Importe final:
+                            | {{ chart.investmentFinal | currency:'$' }}
+
+                    div.col-xs-6
+                        donut-chart( model="chart.chart" custom="true" )
+                        div.category-name {{ chart.name }}
+                    div.col-xs-6
+                        div.container-point( ng-repeat="it in chart.chart.chart.labels")
+                            div.bullet( style="background:{{ chart.chart.chart.colors[$index]  }}"   )
+                            span {{ it.issuer }} {{ it.serie }}
+div.button-back
+    +btnSubmit(
+        'Regresar',
+        'btn-primary cancel'
+    )(
+        uiSref="simulators.performance"
+    )
+    //+btnSubmit( 
+        'Imprimir',
+        'btn-primary save'
+        )(ngClick="detail.downloadPDF()")
+    button.btn(pdf-save-button='idPrint', pdf-name='simulador.pdf',class='btn-primary save',ng-click="detail.downloadPDF()" ) Reporte
+

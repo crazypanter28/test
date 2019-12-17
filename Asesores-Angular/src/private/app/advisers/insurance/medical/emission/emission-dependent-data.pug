@@ -1,0 +1,325 @@
+
+form(name="formEmitDependent_{{$index}}" novalidate)
+       .panel-body
+            div
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Nombre(s)
+                        .col-md-8
+                            input(type="text" id="nombres" name="nombres" placeholder="Nombre(s)" ng-model="dep.name"
+                                value=""
+                                ng-disabled="medicalCtrl.validatePerson && dep.relationshipID === '1'"
+                                minlength="3" maxlength="80"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'nombres'); medicalCtrl.soloText($event,true)"
+                                required
+                                ).form-control.upperCaseInput.required   
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Apellido Paterno
+                        .col-md-8
+                            input(type="text" id="apePaterno" name="apePaterno" placeholder="Apellido paterno" ng-model="dep.lastName"
+                                value=""
+                                minlength="3" maxlength="80"
+                                ng-disabled="medicalCtrl.validatePerson && dep.relationshipID === '1'"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'apePaterno'); medicalCtrl.soloText($event,true)"
+                                required
+                                ).form-control.upperCaseInput.required     
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Apellido Materno
+                        .col-md-8
+                            input(type="text" id="apeMaterno" name="apeMaterno" placeholder="Apellido materno" ng-model="dep.secondLastName"
+                                value=""
+                                minlength="3" maxlength="80"
+                                ng-disabled="medicalCtrl.validatePerson && dep.relationshipID === '1'"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'apeMaterno'); medicalCtrl.soloText($event,true)"
+                                required
+                                ).form-control.upperCaseInput.required
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Fecha de Nacimiento
+                        label.col-md-8.control-label
+                            p.text-left( style="font-size: 13px; font-weight: bold; padding-top:8px;") {{dep.birthDate}}
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Edad
+                        label.col-md-8.control-label
+                            p.text-left( style="font-size: 13px; font-weight: bold; padding-top:8px;") {{dep.age}}
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *RFC
+                        .col-md-8
+                            input(type="text" id="rfcUser" name="rfcUser"
+                                placeholder="ABCD123456" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="dep.fiscalIDNumber"
+                                ng-disabled="medicalCtrl.disabledRFC && dep.relationshipID === '1'"
+                                maxlength="13" minlength="10"
+                                ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event)" required).form-control.required.upperCaseInput
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") CURP
+                        .col-md-8
+                            input(type="text" id="curp" name="curp" placeholder="CURP" onkeyup="this.value = this.value.toUpperCase();"
+                                
+                                ng-model="dep.curp"
+                                minlength="18" maxlength="18" 
+                                ng-pattern="/^[A-Za-z]{1}[AEIOUXaeioux]{1}[A-Za-z]{2}((([0-9]{2})([0][13578]|[1][02])(([0][1-9]|[12][0-9])|[3][01]))|(([0-9]{2})([0][469]|[1][1])(([0][1-9]|[12][0-9])|[3][0]))|(([02468][048]|[13579][26])[0][2]([0][1-9]|[12][0-9]))|(([0-9]{2})[0][2]([0][1-9]|[1][0-9]|[2][0-8])))[HMhm]{1}(AS|as|BC|bc|BS|bs|CC|cc|CS|cs|CH|ch|CL|cl|CM|cm|DF|df|DG|dg|GT|gt|GR|gr|HG|hg|JC|jc|MC|mc|MN|mn|MS|ms|NT|nt|NL|nl|OC|oc|PL|pl|QT|qt|QR|qr|SP|sp|SL|sl|SR|sr|TC|tc|TS|ts|TL|tl|VZ|vz|YN|yn|ZS|zs|NE|ne)[B-Db-dF-Hf-hJ-Nj-nP-Tp-tV-Zv-z]{3}[0-9A-Za-z]{1}[0-9]{1}$/"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event)").form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Sexo
+                        label.col-md-8.control-label
+                            p.text-left( style="font-size: 13px; font-weight: bold; padding-top:8px;") {{dep.genderDesc}}
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Peso (kg)
+                        .col-md-8
+                            input.ng-valid-pattern(type="text" id="peso" name="peso" placeholder="" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="dep.weight"
+                                maxlength="6" minlength="1"
+                                ng-blur = "medicalCtrl.calcularImc($index)"
+                                ng-pattern="/^[3-9]{1}[0-9]{0,1}$|^[3-9]{1}[0-9]{0,1}\.[0-9]{0,3}$|^[1-2]{1}[0-9]{0,2}$|^[1-2]{1}[0-9]{0,2}\.[0-9]{0,3}$|^0\.[1-9]{1}[0-9]{0,2}$/"
+                                ng-keypress="medicalCtrl.soloNumAndPunto($event,true)" required).form-control.required.upperCaseInput
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Estatura (m)
+                        .col-md-8
+                            input.ng-valid-pattern(type="text" id="estatura" name="estatura" placeholder="" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="dep.height"
+                                maxlength="4" minlength="1"
+                                ng-blur = "medicalCtrl.calcularImc($index)"
+                                ng-pattern="/^0\.[1-9]{1}[0-9]{0,1}$|^1\.[0-9]{1,2}$|^2\.([0-4]{1}[0-9]{1}|[0-5]0?)$|^[1-2]$/"
+                                ng-keypress="medicalCtrl.soloNumAndPunto($event,true)" required).form-control.required.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") País de nacimiento
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListNacionalidad"
+                                selected="medicalCtrl.comboDependientes[$index].pais"
+                                name="ListNacionalidad"
+                                change="medicalCtrl.getValoresEmision(newValue,'pais',$index)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.comboDependientes[$index].pais'
+                                    ng-required='false'
+                                    name="ListNacionalidad"
+                                )
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Nacionalidad
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListNacionalidad"
+                                selected="medicalCtrl.comboDependientes[$index].nacionalidad"
+                                name="ListNacionalidad"
+                                change="medicalCtrl.getValoresEmision(newValue,'nacionalidad',$index)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.comboDependientes[$index].nacionalidad'
+                                    ng-required='false'
+                                    name="ListNacionalidad"
+                                )
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") {{dep.asteriscoRequerido}}Profesión
+                        .col-md-8
+                            div( act-dropdown
+                                
+                                ng-model="medicalCtrl.ListMedicalProfesiones"
+                                selected="medicalCtrl.comboDependientes[$index].profesion"
+                                name="ListProfesionContract"
+                                change="medicalCtrl.getValoresEmision(newValue,'profesion',$index)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.comboDependientes[$index].profesion'
+                                    ng-required='false'
+                                    name="ListProfesionContract"
+                                )
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre del puesto
+                        .col-md-8
+                            input(type="text" id="puesto" name="puesto" placeholder="Nombre puesto" onkeyup="this.value = this.value.toUpperCase();"
+                                
+                                ng-model="dep.puesto"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'puesto');medicalCtrl.soloText($event,true)").form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Giro de la Empresa
+                        .col-md-8
+                            div( act-dropdown
+                                ng-model="medicalCtrl.ListGiroMercantil"
+                                selected="medicalCtrl.comboDependientes[$index].giro"
+                                name="ListGiroMercantil"
+                                change="medicalCtrl.getValoresEmision(newValue,'giro',$index)"
+                            )
+                                input(
+                                    type='hidden',
+                                    ng-model='medicalCtrl.comboDependientes[$index].giro'
+                                    ng-required='true'
+                                    name="ListGiroMercantil"
+                                )
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Herramientas, sustancias o vehículos que ocupa
+                        .col-md-8
+                            input(type="text" id="puesto" name="puesto" placeholder="Herramienta" onkeyup="this.value = this.value.toUpperCase();"
+                                
+                                ng-model="dep.herramientas"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)").form-control.upperCaseInput
+                    .form-group.col-lg-4.pf(ng-if="medicalCtrl.typePeopleContract === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") ¿Ocupa maquinaria pesada?
+                        .col-md-8
+                            label.act-radio-custom( for="noMaq_{{$index}}" )
+                                input( type="radio" name="noMaq_{{$index}}" id="noMaq_{{$index}}" value="0" ng-model="dep.handlesMachineryFlag" )
+                                span.css-label
+                                | No
+                            label.act-radio-custom( for="siMaq_{{$index}}" )
+                                input( type="radio" name="siMaq_{{$index}}" id="siMaq_{{$index}}" value="1" ng-model="dep.handlesMachineryFlag" )
+                                span.css-label
+                                | Si
+                    .form-group.col-lg-4.pf(ng-if="dep.handlesMachineryFlag === '1'")
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Tipo de Maquinaria
+                        .col-md-8
+                            input(type="text" id="maquinaria" name="maquinaria" placeholder="Nombre maquinaria" onkeyup="this.value = this.value.toUpperCase();"
+                                required
+                                ng-model="dep.tipoMaquinaria"
+                                maxlength="13" minlength="10"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event) " ).form-control.upperCaseInput
+            div(ng-if="dep.beneficiarios.length > 0")
+                .row
+                    .form-group.col-lg-12.pf
+                        h3 Beneficiarios por muerte accidental o gastos de sepelio
+            div(ng-repeat="ben in dep.beneficiarios")
+                .row
+                    .form-group.col-lg-12.pf
+                        h4 {{ben.orden}} Beneficiario
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Nombre(s)
+                        .col-md-8
+                            input(type="text" id="benNombre_{{$parent.$index}}_{{$index}}" name="nombres"
+                                placeholder="Nombre" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.name"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Apellido paterno
+                        .col-md-8
+                            input(type="text" id="benApePaterno_{{$parent.$index}}_{{$index}}" name="apePaterno"
+                                placeholder="Apellido Paterno" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.lastName"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Apellido materno
+                        .col-md-8
+                            input(type="text" id="benApeMaterno_{{$parent.$index}}_{{$index}}" name="apeMaterno"
+                                placeholder="Apellido Materno" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.secondLastName"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Fecha de nacimiento
+                        .col-md-8
+                            input(type="text" id="benFechaNac_{{$parent.$index}}_{{$index}}" name="fechaNacimiento"
+                                placeholder="Fecha" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.birthDate"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Edad
+                        .col-md-8
+                            input(type="text" id="benEdad_{{$parent.$index}}_{{$index}}" name="edad"
+                                placeholder="" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.age"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *RFC
+                        .col-md-8
+                            input(type="text" id="benRFC_{{$parent.$index}}_{{$index}}" name="rfc"
+                                placeholder="ABCD123456" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.fiscalIDNumber"
+                                maxlength="13" minlength="10"
+                                ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event)" required).form-control.required.upperCaseInput
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Parentesco
+                        .col-md-8
+                            input(type="text" id="benParentesco_{{$parent.$index}}_{{$index}}" name="parentesco"
+                                placeholder="Parentesco" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.relationship"
+                                maxlength="80" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Porcentaje Participación
+                        .col-md-8
+                            input(type="text" id="benPorcentaje_{{$parent.$index}}_{{$index}}" name="porcentaje"
+                                placeholder="" onkeyup="this.value = this.value.toUpperCase();"
+                                ng-model="ben.percentage"
+                                maxlength="5" minlength="3"
+                                ng-keypress="medicalCtrl.forceKeyPressUppercase($event); medicalCtrl.soloNumero($event)"
+                                ).form-control.upperCaseInput
+                .row
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Correo Electrónico
+                        .col-md-8
+                            input(ng-pattern="/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/" type="email"  id="benCorreo_{{$parent.$index}}_{{$index}}" 
+                                name="medicalCtrl.emailUser1" placeholder="correo@mail.com"
+                                required maxlength="30" ng-model="medicalCtrl.emitContratante.email"
+                                style="text-transform: uppercase;").form-control.upperCaseInput
+                            div(role='alert')
+                                span.error(ng-show='form.input.$error.required')
+                                    | Se requiere
+                                span.error(ng-show='form.input.$error.email')
+                                    | Correo no válido
+                    .form-group.col-lg-4.pf
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") *Teléfono
+                        .col-md-8
+                            input(type="tel" 
+                                name="phoneContact1" 
+                                id="benTelefono_{{$parent.$index}}_{{$index}}"
+                                ng-model="medicalCtrl.emitContratante.telefono"
+                                placeholder="Teléfono fijo" 
+                                minlength="7" 
+                                maxlength="10"
+                                numbers-only="numbers-only"
+                                ng-keypress="medicalCtrl.charrepeat($event,medicalCtrl.phoneUser2);medicalCtrl.soloNumero($event);medicalCtrl.numberSecuential($event,'phoneContact2');"
+                                ng-change="onValidateDuplicateTel(medicalCtrl.phoneUser1, 'f')"
+                                required).form-control.required
+                
+                    

@@ -1,0 +1,148 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": 1,
+		"criticality": 1,
+		"code": 1,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idPresentationSubType": 1,
+		"presentations": [{
+			"idPresentation": 9,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Arrendamiento Puro"
+		}, {
+			"idPresentation": 10,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Fondos Alternativos"
+		}, {
+			"idPresentation": 11,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Fondos de Acciones"
+		}, {
+			"idPresentation": 12,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Fondos Dinámicos"
+		}, {
+			"idPresentation": 13,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Fondos de Deuda"
+		}, {
+			"idPresentation": 14,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Mercado de Dinero"
+		}, {
+			"idPresentation": 15,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Mercado de Capitales"
+		}, {
+			"idPresentation": 16,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Mercado de Cambios"
+		}, {
+			"idPresentation": 17,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "e_Actinver"
+		}, {
+			"idPresentation": 18,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Blindaje Patrimonial"
+		}, {
+			"idPresentation": 19,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Seguro Hogar"
+		}, {
+			"idPresentation": 20,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Seguro Auto Actinver"
+		}, {
+			"idPresentation": 21,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Vida Inversión"
+		}, {
+			"idPresentation": 22,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Seguro Gastos Médicos Mayores (BUPA)"
+		}, {
+			"idPresentation": 23,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Fondo de Ahorro"
+		}, {
+			"idPresentation": 24,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Caja de Ahorro"
+		}, {
+			"idPresentation": 25,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Plan de Pensiones"
+		}, {
+			"idPresentation": 26,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "PPR"
+		}, {
+			"idPresentation": 27,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "CPEA"
+		}, {
+			"idPresentation": 28,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Linea de Protección por sobregiro"
+		}, {
+			"idPresentation": 30,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Crédito Prendario Actinver"
+		}, {
+			"idPresentation": 32,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Pagaré Platinum"
+		}, {
+			"idPresentation": 33,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "CD Platinum"
+		}, {
+			"idPresentation": 34,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Soluciones Alpha"
+		}, {
+			"idPresentation": 35,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Formato Perfilamiento de Cliente"
+		}, {
+			"idPresentation": 36,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Inversión x Objetivos"
+		}, {
+			"idPresentation": 42,
+			"idPresentationSubType": 1,
+			"descriptionSubType": "",
+			"name": "Crédito Valor"
+		}]
+	}]
+}

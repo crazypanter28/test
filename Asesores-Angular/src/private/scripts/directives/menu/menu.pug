@@ -1,0 +1,82 @@
+div.menu-header
+    div.left-button
+        img( src="img/icons/left-direction.svg" width="20px" ng-if="menuCtrl.menu.showButtonLeft" style="padding-top:25px;" ng-mouseover="menuCtrl.mouseOver(1)" ng-mouseleave="menuCtrl.mouseLeave()" )
+    div.left-button(ng-if="menuCtrl.validatePermiso(['asesores.InicioMenu.'])")
+        a.text-center( ui-sref='app.dashboard' ui-sref-active="active" permission="['asesores.InicioMenu.']" )
+            .row(style="margin-top: 16px; border-right: 1.5px solid #195dc4;margin-right: 5px; line-height:26px;")                
+                img( src="img/icons/home.svg" style="height:35px; padding-right:10px;" )                
+
+    div#idMenuDiv(on-size-changed="menuCtrl.resize()" ng-class="{'center-menu-withHome': menuCtrl.validatePermiso(['asesores.InicioMenu.']), 'center-menu-withOutHome':!(menuCtrl.validatePermiso(['asesores.InicioMenu.']))}")
+        div#idContentMenu
+            ul.nav.navbar-nav#idMenuUl
+                li.text-center( permission="['asesores.BitacorasMenu.']"  )
+                    a( ui-sref='binnacle' ui-sref-active="active" )
+                        .icon
+                        img( src="img/icons/bitacora.svg" )
+                        p Bitácora
+
+                li.text-center( permission="['asesores.CumplimientoMetaMenu.']"  )
+                    a( ui-sref='goals' ui-sref-active="active" )
+                        .icon
+                        img( src="img/icons/meta.svg" width='16px' )
+                        p Cumplimiento Meta
+
+                li.text-center( permission="['asesores.ProspectosMenu.']" )
+                    a( ui-sref='prospects' ui-sref-active="active" )
+                        .icon
+                        img( src="img/icons/prospectos.svg" )
+                        p Prospectos
+                li.text-center( permission="['asesores.ReportesMenu.']" )
+                    a( ui-sref='proposals' ui-sref-active="active" )
+                        .icon
+                        img( src="img/icons/propuestas.svg" )
+                        p Propuestas
+                li.text-center( permission="['asesores.SiuladoresMenu.']" )
+                    a( ui-sref-active="active" ui-sref='simulators' )
+                        .icon
+                        img( src="img/icons/simuladores.svg" )
+                        p Simuladores
+                li.text-center( permission="['asesores.PresentacionesMenu.']" )
+                    a(  ui-sref-active="active" ui-sref='presentations' )
+                        .icon
+                        img( src="img/icons/presentaciones.svg" )
+                        p Presentaciones
+                li.text-center(permission="['asesores.OperacionesMenu.']" )
+                    a( ui-sref-active="active" ui-sref="operations" )
+                        .icon
+                        img( src="img/icons/operaciones.svg" )
+                        p Operaciones
+                li.text-center(permission="['asesores.OperacionesPendientesMenu.']")
+                    a( ui-sref-active="active" ui-sref="pending-operations" )
+                        .icon
+                        img( src="img/icons/admin.svg" )
+                        p Pendientes
+                li.text-center( permission="['asesores.OperacionesDinnMenu.']" )
+                    a( ui-sref-active="active" ui-sref="dinn" )
+                        .icon
+                        img( src="img/icons/icon_calendar_on.svg" )
+                        p DINN
+                li.text-center( permission="['asesores.AdministradorMenu.']" )
+                    a( ui-sref-active="active" ui-sref='administrator' )
+                        .icon
+                        img(  src="img/icons/admin.svg"  )
+                        p Administrador
+                li.text-center( permission="['asesores.NotificacionesMenu.']")
+                    a( ui-sref-active="active" ui-sref='notification' data-count-notificacion="{{menuCtrl.numeroNotificacionesLumina}}" ng-class="menuCtrl.numeroNotificacionesLumina < 1 ? '' : 'numero-notificacion'" )
+                        .icon
+                        img( src="img/icons/mensaje_info.svg" width='20px' )
+                        p Notificaciones
+                li.text-center(permission="['asesores.SegurosMenu.']") 
+                    a( ui-sref-active="active" ui-sref='insurance')
+                        .icon
+                        img( src="img/icons/icon_seguros_active.svg" width='15px' )
+                        p Seguros
+                
+                li.text-center(permission="['asesores.AgenteMenu.']" style="display:inline-block !important;") 
+                    a( ui-sref-active="active" ui-sref='agent')
+                        .icon
+                        img( src="img/icons/user-avatar.svg" width='15px' )
+                        p Agentes
+    div.right-button
+        img( src="img/icons/right-direction.svg" width="20px" ng-if="menuCtrl.menu.showButtonRight" style="padding-top:25px;" ng-mouseover="menuCtrl.mouseOver(2)" ng-mouseleave="menuCtrl.mouseLeave()"  )               
+        

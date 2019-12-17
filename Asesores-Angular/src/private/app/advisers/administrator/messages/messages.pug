@@ -1,0 +1,104 @@
+include /views/mixins/input
+include /views/mixins/info-result
+
+.messages
+    .section-title {{msgs.title}}
+
+    .content
+        form.form-message( name="$form" novalidate)
+            .row
+                .form-group.col-xs-8
+                    label Asunto#[span.require *]
+                    input.form-control(type='text', placeholder='Escribe el título del mensaje' ng-model="msgs.model.message" required="true")
+            .row
+                .form-group.col-xs-8
+                    label Mensaje #[span.require *]
+                    textarea.form-control( rows="4" placeholder='Mensaje' ng-model="msgs.model.descriptionMessage" required="true")
+            .row
+                .form-group.has-icon.col-xs-4
+                    label Fecha de expiracion #[span.require *]
+                    .relative
+                        +inputDate( "msgs.model.expirationDate", 'binnacle-date' )(
+                            ngMouseOpen = 'popup1.opened'
+                            datepickerOptions = "{showWeeks : false, formatMonth : 'MMM',yearColumns : 3 }"
+                            required="true" )
+                .form-group.col-xs-4
+                    label Agregar Destinatarios
+                    input.form-control( placeholder='Destinatarios' ng-model="msgs.model.destinations")
+                .form-group.col-xs-4(ng-show="false")
+                    label Perfil #[span.require *]
+                    div.form-control( act-dropdown="" ng-model="msgs.options" selected="msgs.model.optionSelected" )
+            .row.relative
+                .form-group.col-xs-4
+                    label Seleccionar archivo
+                    file-uploader( filter="msgs.uploaderOptions" on-success-set-file="msgs.previewFile" on-error-set-file="msgs.errorFile" on-reset="msgs.resetFile" )
+                    p.help-block Formatos .jpg .png - Máximo 2MB
+                    p.help-block Formato PDF - Máximo 10MB
+                .form-group.col-xs-4
+                    div( ng-if="msgs.imgPreview " )
+                        label Vista previa
+                        div
+                            img.preview-file( ng-show="msgs.imgPreview" ng-src="{{msgs.imgPreview}}")
+
+                .form-group.col-xs-4.static
+                    .buttons
+                        button.btn.btn-primary.outline( type="button" title="CANCELAR" ng-disabled="false" ng-click="msgs.cleanFields()") CANCELAR
+                        button.btn.btn-primary( title="GENERAR" ng-disabled=" $form.$invalid" ng-click="msgs.done()") GENERAR
+
+    .section-title Mensajes creados
+    div
+        scrollable(always-visible="true")
+        div.row(style="padding: 10px 0px 5px 20px;")
+            div.col-xs-5
+                dates-range-picker(
+                        date="msgs.startDate"
+                        options="options"
+                        label="Fecha Inicial"
+                        placeholder="dd/mm/aaaa"
+                        ng-required="true"
+                        is-single="true"
+                    )
+            div.col-xs-5
+                dates-range-picker(
+                        date="msgs.endDate"
+                        options="options"
+                        label="Fecha Final"
+                        placeholder="dd/mm/aaaa"
+                        ng-required="true"
+                        is-single="true"
+                    )
+            div.col-xs-2(style="padding-top:13px; text-align:'center'")
+                button.btn.btn-primary.outline( type="button" title="Buscar" ng-disabled="false" ng-click="msgs.getDatedMessages()") Filtrar
+
+        div(style="padding: 10px 18px 0px 18px;")
+            div.search-cortos-Largo-left(style="width:100%;")
+                div.icon-left
+                div.input-right                     
+                    input(type="text" placeholder="Buscar en contenido" ng-model="msgs.fieldSearch").form-control
+                                                                    
+            table.table.primary-table
+                thead
+                    tr
+                        th(style="width: 120px;") Usuario
+                        th Titulo
+                        th(style="width: 150px; text-align:center;") Creado
+                        th(style="width: 100px; text-align:center;") Expiración
+                tbody
+                    tr( ng-if = "msgs.modal")
+                        td(colspan="4")
+                            .content-spinner
+                                .spinner
+                    tr( ng-repeat = "reg in filtered = (msgs.messages | filter:msgs.filter(msgs.fieldSearch) | orderBy :'-creationDate') track by $index" style="text-align:left; cursor:pointer;" ng-click="msgs.messageInfo(reg)" )
+                        td(ng-bind-html="reg.userCode | remarkText:msgs.fieldSearch" style="width: 120px;")
+                        td(ng-bind-html="reg.message | remarkText:msgs.fieldSearch" )
+                        td(ng-bind-html="reg.creationDate | date:'yyyy-MM-dd HH:mm' | remarkText:msgs.fieldSearch" style="width: 100px; text-align:center;")
+                        td(ng-bind-html="reg.expirationDate | remarkText:msgs.fieldSearch" style="width: 100px; text-align:center;")
+                tfoot                    
+                    tr(ng-if="filtered.length < 1 && msgs.messages.length > 0 ? true : false ")
+                        td(colspan="4")
+                            // Registers No Found
+                            +noGeneralResults( 'No existen', ' registros con el criterio de busqueda.' )  
+                    tr(ng-if="(msgs.messages.length > 0 ? false : true) && !msgs.modal"  )                            
+                        td(colspan="4")
+                            // No results
+                            +noGeneralResults( 'No Existen', ' Registros.' )

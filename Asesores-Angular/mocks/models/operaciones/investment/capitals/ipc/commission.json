@@ -1,0 +1,32 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"42166a1b‐089e‐48e5‐af0d‐b9012f4b44e8",
+            "messages":[
+                {
+                    "responseSystemCode":"SIABC001",
+                    "responseMessage":"No se recuperaron datos con la cuenta ingresado",
+                    "responseType":"N",
+                    "responseCategory":"WARN"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1495688400000,
+        "time":66434000,
+        "clientID":"NBURSANET",
+        "sessionID":"",
+        "responseSystem":"A2K",
+        "operationName":"ClientVolumeOperationQuery",
+        "operationVersion":"1_0",
+        "ipaddress":"172.16.11.93"
+    },
+    "outClientVolumeOperationQuery":{
+        "clientVolumeOperation":[
+            {
+                "valuation": 10
+            }
+        ]
+    }
+}

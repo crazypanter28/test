@@ -1,0 +1,100 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+.binnacle-page
+    h3.primary-title Administración de Agentes
+    div.content-panel
+        uib-accordion
+            .margenesAgentePanelBuscar.panel-default(uib-accordion-group='' is-open="agent.openSearch")
+                uib-accordion-heading
+                    | BUSCAR
+                    i.direction-arrow.fa(ng-class="{'fa-angle-up': agent.openSearch, 'fa-angle-down': !agent.openSearch}")
+                div.form-group
+                    form(name="form" valid)
+                        .row
+                            .col-md-6
+                                input(class="form-control" ng-required='true' placeholder="ID Asesor" ng-keypress="agent.soloNumero($event)" ng-model="agent.idEmpleado" )
+                            .col-md-6
+                                input(class="form-control" ng-required='true' placeholder="ID Mapfre" ng-keypress="agent.soloNumero($event)" ng-model="agent.claveMapfre" )
+                        br    
+                        .row
+                            .col-md-6
+                                input(class="form-control" ng-required='true' placeholder="Nombre Asesor" ng-model="agent.asesor" style="text-transform:uppercase")
+                            .col-md-6
+                                input(class="form-control" ng-required='true' placeholder="Puesto" ng-model="agent.puesto" style="text-transform:uppercase")
+                        .row
+                            .col-md-12.centradoAgente.margenesAgenteNegocio.paddingAgenteNegocio
+                                .form-group.col-lg-5.pf.paddingAgente
+                                    label.col-md-4.control-label
+                                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Negocio
+                                    .col-md-8
+                                        div( act-dropdown
+                                                ng-model="agent.listBussines"
+                                                selected="agent.negocio"
+                                                name=""
+                                                change=""
+                                                ng-required='true'
+                                                required
+                                        )
+                                        input(
+                                            required
+                                            type='hidden',
+                                            ng-model='agent.listBussines'
+                                            ng-required='true'
+                                        )
+                    .row
+                        .col-md-12.text-center.margenesBotonesTopBot
+                            +btnWithIcon('{{agent.buttonTextToggle}}', 'btn-default btn-icon margenesBotonesRight', 'form.$invalid'  )(ngClick = "agent.addAgents();")
+                            +btnWithIcon('Buscar', 'btn-default btn-icon margenesBotonesRight',false,'img/icons/icon_search_input.svg')(ngClick = "agent.buscarAgente();")
+                            +btnWithIcon('Limpiar', 'btn-default btn-icon colorBotonesAgenteLimpiar', false  )(ngClick = "agent.limpiarAgentes();")
+
+        div.form-group.text-center
+            div(ng-click="agent.prevPage()" class="displayInlineBlockAgente")
+                img(src="img/icons/left-direction.svg" class="tamañosFlechaAgente")
+            span Pag {{agent.currentPage}} de {{agent.totalPages}}
+            div(ng-click="agent.nextPage()" class="displayInlineBlockAgente")
+                img(src="img/icons/right-direction.svg" class="tamañosFlechaAgente")
+        table.table
+            thead
+                tr
+                    th(ng-repeat="col in agent.columns") {{col.value}}
+                    th Editar
+                    th Borrar
+            tbody
+                tr(ng-repeat="ag in agent.responseAgente | limitTo: agent.posicionPaginado | limitTo: -10")   
+                    td {{ag.asesor | uppercase}}
+                    td {{ag.claveMapfre | uppercase}}
+                    td {{ag.idEmpleado | uppercase}}
+                    td {{ag.puesto | uppercase}}
+                    td {{ag.idNegocio | uppercase}}
+                    td 
+                        img.icon(
+                            src="img/icons/edit.svg",
+                            alt="Editar",
+                            align="center"
+                            width="20"
+                            height="20"
+                            ng-click="agent.modifyAgents(ag.idEmpleado,ag.claveMapfre,ag.idNegocio,ag.asesor,ag.puesto)"
+                        )
+                    td
+                        img.icon(
+                            src="img/icons/error.svg",
+                            alt="Eliminar",
+                            align="center"
+                            width="20"
+                            height="20"
+                            ng-click="agent.deleteAgents(ag.idEmpleado, ag.idNegocio)"
+                        )
+                
+            tr(ng-if="agent.agents.length == 0")
+                td( colspan="8" )
+                    Spinner
+                    .loader-wrapper( ng-if=true )
+
+                    .no-results
+                        +noResults("binnacle-search")
+        
+        //- div.form-group
+        //-     +btnWithIcon('Modificar', 'btn-default btn-icon', false, 'img/icons/edit.svg')
+        //-     +btnWithIcon('Eliminar', 'btn-default btn-icon', false, 'img/icons/delete.svg')
+        //-     +btnWithIcon('Agregar', 'btn-default btn-icon', false, 'img/icons/edit.svg')

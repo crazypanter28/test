@@ -1,0 +1,46 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"beginDate": "250716",
+		"endDate": "240717",
+		"issuers": [{
+			"issuer": "ABSLUTO",
+			"serie": "B-1",
+			"virtualAmount": 200000
+		}, {
+			"issuer": "ACTCOMM",
+			"serie": "B",
+			"virtualAmount": 100000
+		}, {
+			"issuer": "ACTI500",
+			"serie": "B1",
+			"virtualAmount": 100000
+		}, {
+			"issuer": "ACTICRE",
+			"serie": "B",
+			"virtualAmount": 200000
+		}, {
+			"issuer": "ACTIGOB",
+			"serie": "B-1",
+			"virtualAmount": 100000
+		}, {
+			"issuer": "ACTIMED",
+			"serie": "B-2",
+			"virtualAmount": 100000
+		}, {
+			"issuer": "ACTINEM",
+			"serie": "B",
+			"virtualAmount": 100000
+		}, {
+			"issuer": "ACTINMO",
+			"serie": "B",
+			"virtualAmount": 100000
+		}]
+	}
+}

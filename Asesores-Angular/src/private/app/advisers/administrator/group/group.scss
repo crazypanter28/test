@@ -1,0 +1,37 @@
+.group {
+
+    .ng-table {
+        margin-top: 10px;
+
+        tbody {
+            tr {
+                td {
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+
+    .no-results {
+        padding: 10px;
+        margin-top: 40px;
+        text-align: center;
+
+
+        p {
+            color: #b4b4b4;
+            font-size: 25px;
+            width: 400px;
+            margin: 20px auto 0 auto;
+        }
+
+        .link {
+            text-decoration: underline;
+            font-size: 24px;
+            margin-top: 15px;
+            color: #3d89f7;
+        }
+    }
+}

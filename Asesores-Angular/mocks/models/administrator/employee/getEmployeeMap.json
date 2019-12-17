@@ -1,0 +1,146 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idEmployeeMap": 1,
+		"prevIdEmployee": 380,
+		"idEmployee": 50380,
+		"idEmployeeRegister": 60812,
+		"creationDate": "18/01/2016 17:24:51",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 2,
+		"prevIdEmployee": 284,
+		"idEmployee": 20277,
+		"idEmployeeRegister": 60812,
+		"creationDate": "18/01/2016 17:29:26",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 3,
+		"prevIdEmployee": 342,
+		"idEmployee": 10342,
+		"idEmployeeRegister": 60812,
+		"creationDate": "18/01/2016 17:29:41",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 4,
+		"prevIdEmployee": 146,
+		"idEmployee": 10146,
+		"idEmployeeRegister": 60812,
+		"creationDate": "18/01/2016 17:29:56",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 5,
+		"prevIdEmployee": 64,
+		"idEmployee": 10064,
+		"idEmployeeRegister": 60812,
+		"creationDate": "19/01/2016 14:22:11",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 7,
+		"prevIdEmployee": 5966,
+		"idEmployee": 55966,
+		"idEmployeeRegister": 60812,
+		"creationDate": "20/01/2016 12:54:50",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 8,
+		"prevIdEmployee": 5500,
+		"idEmployee": 21522,
+		"idEmployeeRegister": 60812,
+		"creationDate": "20/01/2016 13:05:33",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 9,
+		"prevIdEmployee": 5464,
+		"idEmployee": 21523,
+		"idEmployeeRegister": 60812,
+		"creationDate": "20/01/2016 17:23:58",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 10,
+		"prevIdEmployee": 5506,
+		"idEmployee": 21455,
+		"idEmployeeRegister": 60812,
+		"creationDate": "22/01/2016 11:49:39",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 11,
+		"prevIdEmployee": 299,
+		"idEmployee": 10299,
+		"idEmployeeRegister": 60812,
+		"creationDate": "05/02/2016 13:07:17",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 14,
+		"prevIdEmployee": 367,
+		"idEmployee": 50367,
+		"idEmployeeRegister": 53883,
+		"creationDate": "17/02/2016 16:57:04",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 16,
+		"prevIdEmployee": 43,
+		"idEmployee": 10043,
+		"idEmployeeRegister": 50230,
+		"creationDate": "03/03/2016 09:31:32",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 17,
+		"prevIdEmployee": 44,
+		"idEmployee": 10044,
+		"idEmployeeRegister": 50230,
+		"creationDate": "03/03/2016 09:32:08",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 18,
+		"prevIdEmployee": 294,
+		"idEmployee": 20784,
+		"idEmployeeRegister": 50230,
+		"creationDate": "03/03/2016 09:32:42",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 19,
+		"prevIdEmployee": 5005,
+		"idEmployee": 15005,
+		"idEmployeeRegister": 50230,
+		"creationDate": "08/04/2016 11:55:29",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 20,
+		"prevIdEmployee": 38,
+		"idEmployee": 10038,
+		"idEmployeeRegister": 50230,
+		"creationDate": "12/04/2016 17:35:29",
+		"eliminationDate": null,
+		"status": true
+	}, {
+		"idEmployeeMap": 21,
+		"prevIdEmployee": 53883,
+		"idEmployee": 90020,
+		"idEmployeeRegister": 53883,
+		"creationDate": "24/04/2017 13:51:36",
+		"eliminationDate": null,
+		"status": true
+	}]
+}

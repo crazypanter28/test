@@ -1,0 +1,49 @@
+include /views/mixins/icons
+include /views/mixins/tables
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+
+div.investment-table-container
+    div( scrollable always-visible="true" )
+        table.investment-table
+            thead
+                tr
+                    +thCaret( 'FONDO', 'stations.slateKey' )
+                    +thCaret( 'SERIE', 'stations.serie' )
+                    +thCaret( 'PRECIO', 'stations.price' )
+                    th.hidden-xs(colspan='5') RENDIMIENTO
+                    th(rowspan='2') MÁS INFO.
+                    //th( width="25" ng-click='columnsExpand = !columnsExpand;' )
+                        i.fa.fa-lg( ng-class="{'fa-caret-left': columnsExpand, 'fa-caret-right': !columnsExpand}")
+
+                tr
+                    th.hidden-xs 3 MESES
+                    th.hidden-xs 6 MESES
+                    th.hidden-xs 1 AÑO
+                    th.hidden-xs.hidden-ms 3 AÑOS
+                    th.hidden-xs.hidden-ms 5 AÑOS
+
+            tbody
+                +trLoading( 150, 'loading')( colspan='11' )
+                tr( ng-hide="loading" ng-repeat = "station in stations | orderBy:sortType:sortReverse" )
+                    td( ng-click="ChangeDoll(station)" ng-bind=" station.slateKey" class="text-center")
+                    td( ng-click="ChangeDoll(station)" ng-bind=" station.serie" class="text-center")
+                    td( ng-click="ChangeDoll(station)" ng-bind=" station.price | currency :'$':6 " class="text-center")
+                    td.hidden-xs.text-right {{ station.yield3Month.yield90Days }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.yield3Month.yield90Days > 0, 'fa-arrow-circle-down': station.yield3Month.yield90Days  < 0, 'fa-minus-circle': station.yield3Month.yield90Days  === 0 }" )
+                    td.hidden-xs.text-right {{ station.yield6Months.yield180Days }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.yield6Months.yield180Days > 0, 'fa-arrow-circle-down': station.yield6Months.yield180Days  < 0, 'fa-minus-circle': station.yield6Months.yield180Days  === 0 }" )
+                    td.hidden-xs.text-right {{ station.anualYield.yieldYear }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.anualYield.yieldYear > 0, 'fa-arrow-circle-down': station.anualYield.yieldYear  < 0, 'fa-minus-circle': station.anualYield.yieldYear  === 0 }" )
+                    td.hidden-xs.hidden-ms.text-right {{ station.anual3Yield.yield3Year }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.anual3Yield.yield3Year > 0, 'fa-arrow-circle-down': station.anual3Yield.yield3Year  < 0, 'fa-minus-circle': station.anual3Yield.yield3Year  === 0 }" )
+                    td.hidden-xs.hidden-ms.text-right {{ station.anual5Yield.yield5Year }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.anual5Yield.yield5Year > 0, 'fa-arrow-circle-down': station.anual5Yield.yield5Year  < 0, 'fa-minus-circle': station.anual5Yield.yield5Year  === 0 }" )
+                    td.text-right.text-center.view-more( ng-click="viewMore( station )")
+                        i.fa.fa-plus-circle
+                    //td.text-center.view-more( ng-click="viewMore( station )")
+                        i.fa.fa-plus-circle
+                    td

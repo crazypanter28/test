@@ -1,0 +1,13 @@
+include /views/mixins/info-result
+div
+    .spinner( ng-if="dashboard.scheduleInfo.loading" )
+    div( ng-show="!dashboard.scheduleInfo.loading" )
+        .wt-header
+            h2.title MÁS DE 3 MESES
+            h3.subtitle (CLIENTES SIN CONTACTAR)
+        .wt-content
+            table-list( table-set="dashboard.scheduleInfo" crashed="schedule-crashed" empty="schedule-empty" origin="schedule" )
+            script( type="text/ng-template" id="schedule-empty" )
+                +noResults( "schedule" )
+            script( type="text/ng-template" id="schedule-crashed" )
+                +resourceCrashed()

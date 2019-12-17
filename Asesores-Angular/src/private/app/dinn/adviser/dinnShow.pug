@@ -1,0 +1,48 @@
+include /views/mixins/buttons
+include /views/mixins/checkbox
+include /views/mixins/info-result
+include /views/mixins/input
+
+
+div.pane-wrapper( permission="['asesores.OperacionesDinnMenu.ConsultaCitas.']" )
+    div.pane-title Listado de Citas
+    div.pane-body
+
+        div
+            form(name="dinnForm")
+                div.modal-body.row.margin-0
+                    .content.propects-add-activities
+
+                        .row.margin-0
+                            .widget.calendar
+                                div.act-calendar
+                                    div.calendar.hidden-sm.hidden-xs(   uib-datepicker
+                                                                        ng-model = "show.dateCalendar"
+                                                                        datepicker-options = "{showWeeks : false,formatMonth : 'MMM', yearColumns : 3}"
+                                                                        ng-change = "show.getDCScheduleQueryByDate()")
+                                    
+                                    div.dimm
+                                        span
+                                            div.section.activities
+                                                h4.title CITAS DEL DÍA
+                                                div.empty(ng-if="show.informationData.length === 0") 
+                                                    p No tienes ninguna cita para el día de hoy
+                                                div( ng-if="show.informationData.length !== 0")
+                                                    div.col-xs-2.padding-left-0.padding-right-0.time
+                                                        b Hora
+                                                    div.col-xs-4.padding-left-0.padding-right-0.description
+                                                        b Nombre
+                                                    div.col-xs-3.padding-left-0.padding-right-0.description
+                                                        b Telefono
+                                                    div.col-xs-3.padding-left-0.padding-right-0.description
+                                                        b Tipo
+                                                    div(scrollable always-visible="true")
+                                                        div.item-activity(ng-repeat = "it in show.informationData")
+                                                            div.col-xs-2.padding-left-0.padding-right-0.time
+                                                                a( ng-click = "show.getDetail(it)" ) {{ it.interviewTime | date : 'HH:mm' : 'local' }} Hrs.
+                                                            div.col-xs-4.padding-left-0.padding-right-0.description 
+                                                                a( ng-click = "show.getDetail(it)" ) {{ it.fullName }}
+                                                            div.col-xs-3.padding-left-0.padding-right-0.description
+                                                                a( ng-click = "show.getDetail(it)" ) {{ it.phoneNumber }}
+                                                            div.col-xs-3.padding-left-0.padding-right-0.description
+                                                                a( ng-click = "show.getDetail(it)" ) {{ show.getType(it) }}

@@ -1,0 +1,146 @@
+include /views/mixins/info-result
+include /views/mixins/radio-button
+include /views/mixins/buttons
+
+div( ng-init="strategy.getClientDetails( binnacle.sadviser.employeeID, $state.params.sponsor, $state.params.id )" )
+
+    // Spinner
+    .loader-wrapper( ng-if="!strategy.client_data && strategy.client_data !== null" )
+        
+
+    // No results
+    .no-results( ng-if="strategy.client_data === null" )
+        +noResults("no-data")
+
+    // Info
+    .panel-default( ng-if="strategy.client_data" )
+        .panel-heading
+            .panel-title
+                span Datos del cliente
+        .panel-body
+            // Detailed info
+            .detailed-info
+                .row
+                    .col-xs-3
+                        label Nombre
+                        | {{ strategy.client_data.details.nombreCliente }}
+                    .col-xs-2( ng-if="strategy.client_data.details.fecNacimientoCliente" )
+                        label Fecha de nacimiento
+                        | {{ strategy.client_data.details.fecNacimientoCliente | showAsDate }}
+                    .col-xs-2
+                        label Teléfono 1
+                        | {{ strategy.client_data.details.tel1Cliente }}
+                    .col-xs-2
+                        label Teléfono 2
+                        | {{ strategy.client_data.details.tel2Cliente }}
+                    .col-xs-3
+                        label Email
+                        | {{ strategy.client_data.details.emailCliente }}
+                .row
+                    .col-xs-3
+                        label No. Contrato
+                        | {{ strategy.client_data.details.numContrato }}
+                    .col-xs-2
+                        label Tipo Contrato
+                        | {{ ( ( strategy.client_data.type.origen === 'BANCO' ) ? 'Banco' : 'Casa de Bolsa' ) }}
+                    .col-xs-2
+                        label Perfil
+                        | {{ strategy.client_data.profile.profile.name }}
+                    .col-xs-2
+                        label Clasificación
+                        | {{ strategy.client_data.clasificacion }}
+
+            .panel-default
+                .panel-heading
+                    .panel-title
+                        span Bitácora del cliente
+                .panel-body
+                    // Comments
+                    .carousel-comments( ng-if="strategy.CommentsByContract.commentSection && strategy.CommentsByContract.commentSection.length > 0" )
+                        div( uib-carousel='',
+                            active='active',
+                            no-wrap="false"
+                        )
+                            div( uib-slide='', ng-repeat='registro in strategy.CommentsByContract.commentSection' index='$index' )
+                                div 
+                                    b Fecha de Contacto: 
+                                    |  {{registro.date}}                       
+                                div( ng-repeat='registroInt in registro.selection')
+                                    b {{registroInt.title}}:
+                                    |  {{registroInt.value}} 
+                                div.carousel-message
+                                    p {{registro.comment}}                    
+                        
+
+                    // No results
+                    .no-results.no-binnacle( ng-if="(strategyrategy.CommentsByContract.commentSection && strategy.CommentsByContract.commentSection.length === 0) || ( strategy.CommentsByContract.length === 0)" )
+                        +noResults("binnacle")
+                 
+                    .div-principal(on-size-changed="strategy.resize()")
+                        div.div-left
+                            img( src="img/icons/left-direction.svg" ng-show="strategy.menu.showButtonLeft" height="40px" width="20px" ng-mouseover="strategy.mouseOver(1)" ng-mouseleave="strategy.mouseLeave()")                        
+                        div#contentPrin.div-content
+                            div#contentMonth.div-content-menu 
+                                div(ng-repeat="item in strategy.listMonths" class= "div-secundario" ng-click="strategy.getComment(item)" ng-class="{'div-select-month': item.select }" )
+                                    div {{item.monthDesc}}                                
+                                    div {{item.year}}
+                        div.div-right
+                            img( src="img/icons/right-direction.svg" ng-show="strategy.menu.showButtonRight" height="40px" width="20px" ng-mouseover="strategy.mouseOver(2)" ng-mouseleave="strategy.mouseLeave()")             
+                        
+
+    .panel-default.trace-client( ng-if="strategy.binnacleCatalog.length > 0" )
+        .panel-heading
+            .panel-title
+                span Seguimiento del cliente
+
+        .panel-body
+
+            // Spinner
+            .loader-wrapper( ng-if="strategy.sent_binnacle" )
+                .spinner
+
+            form( ng-if="!strategy.sent_binnacle" name="form" novalidate )
+                label Tipo de contrato
+                div.binnacle-tracing
+                    div
+                        ul
+                            li( ng-repeat="catalog in strategy.binnacleCatalog" ng-click="strategy.addChild( catalog , true, 0 );"
+                                ng-class="{ 'active': strategy.catalogOption == catalog.idActivity }"
+                            )
+                                i( class="icon-catalog-{{catalog.idActivity}}" )
+                                p {{ catalog.description }}
+                    div( ng-repeat="(index, catalog) in strategy.binnacleCatalogChild" )
+                        .options
+                            label {{ catalog.text }}
+                            div
+                                label.act-radio-custom( ng-repeat="option in catalog.options")
+                                    input(
+                                        type="radio"
+                                        value="{{ option }}"
+                                        ng-model="strategy.selectedOptions[ catalog.model ]"
+                                        ng-click="strategy.addChild( option, false, index )"
+                                        ng-required="true"
+                                    )
+                                    span.css-label
+                                    | {{ option.description }} {{ strategy.level }}
+
+                    // Comments
+                    .comments
+                        .row
+                            .col-xs-6
+                                label
+                                    | Comentarios
+                                    span.required *
+                                textarea.form-control(
+                                    ng-model="strategy.catalogComments"
+                                    ng-required="true"
+                                    placeholder="Ingresa comentarios"
+                                )
+
+                    .buttons
+                        a.btn.btn-primary.cancel( ng-click="strategy.comeBack()" ) REGRESAR
+                        +btnSubmit(
+                            'GUARDAR',
+                            'btn-primary',
+                            null
+                        )( ngClick="strategy.saveCatalog( form )" )

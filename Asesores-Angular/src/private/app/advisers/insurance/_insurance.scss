@@ -1,0 +1,505 @@
+.insurance{
+
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-mnge{background-color:#cb0000;color:#ffffff;border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-852y{font-weight:bold;color:#cb0000;border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-9cx6{background-color:#656565;color:#ffffff;border-color:#000000;text-align:left;vertical-align:top}
+    .tg .tg-brb1{font-weight:bold;font-size:18px;background-color:#9b9b9b;border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-zham{font-size:18px;background-color:#9b9b9b;border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-xldj{border-color:inherit;text-align:left}
+    .tg .tg-6ia2{font-size:18px;background-color:#cb0000;color:#ffffff;border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-mqa1{font-weight:bold;border-color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
+    .tg .tg-s268{text-align:left}
+
+
+    table{
+        border: 1px solid $blue4;
+        width: 100%;
+        thead {
+            tr {
+                background: $blue4;
+                color: white;
+
+                th {
+                    font-size: 13px;
+                    padding: 3px 30px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        tbody {
+            tr {                
+                font-size: 12px;
+                td {
+                    vertical-align: middle;
+                    color: $tertiary-color;
+                    padding: 3px 10px;
+                    text-transform: none;
+                    a{
+                        line-height: 12px;
+                        font-size: 12px;
+                        padding-right: 23px;
+                        img{
+                            position: absolute;
+                            right: -2px;
+                            top:8px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }    
+}
+.input-icon{
+    width: 40px;
+    float:left;
+    background-image: url("../img/icons/icon-search.svg");
+    background-size: 30px 26px;
+    background-repeat: no-repeat; 
+    height: 40px;
+    background-position: center;    
+    border-bottom: 2px solid $gray3;
+}
+.search-insurance-input{
+    width:calc(100% - 40px);
+    float:right;  
+}
+.search-find{
+    background-color: $secondary-color;
+}
+.status-insurance-checked{
+    color:$green3;
+}
+.status-insurance-unresolved{
+    color:$red;
+}
+.upperCaseInput{
+    text-transform: uppercase !important;
+}
+.btn-space{
+    margin: 10px 30px;
+}
+.uib-datepicker{
+    table {
+        thead {
+            tr {
+                th {
+                    font-size: 13px;
+                    text-align: center;
+                    padding: 0px 0px;
+                    vertical-align: middle;
+                    background: white;
+                }
+                
+            }
+        }
+    }
+}
+ul.uib-datepicker-popup.dropdown-menu {
+    display: table;
+    float: none;
+    margin: 0;
+}
+
+.outOfRange {
+    border-bottom: 2px solid red !important;
+}
+
+
+
+// -----------------------------------ESTILOS MEDICAL-----------------------------
+.bgColorEntrega{
+   background-color:#EAE9E9;
+}
+.margenes{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.margenes10px{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.margenes20px{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.margenes5px{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.margenMedicalInferior{
+    margin-bottom: 15px;
+}
+.margenMedicalSuperior{
+    margin-top: 15px;
+}
+.margenMedicalDerecha{
+margin-right:15px;
+}
+.padding{
+    padding-top:15px !important; 
+    padding-bottom:15px !important; 
+}
+.paddingLeftRight{
+    padding-right:15px !important; 
+    padding-left:15px !important; 
+}
+.padding20px{
+    padding-top:20px !important; 
+    padding-bottom:20px !important; 
+}
+.paddingRight180px{
+padding-right: 180px;
+}
+.negritas{
+    font-weight: bold;
+}
+.colorCheckboxDisabled {
+    background-color: #c1c1c16b !important;
+    border: 2px solid rgba(187, 187, 187, 0.31) !important;
+}
+.bordersBoxes{
+    border: 1px solid rgba(161, 181, 197, .2);
+}
+.cursorPointer{
+    cursor: pointer;
+}
+.borderTrash{
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+
+    &:hover{
+        border-bottom: 2px solid red;
+    }
+}
+.borderEdit{
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+
+    &:hover{
+        border-bottom: 2px solid #144591;
+    }
+}
+.display-inline-block{
+    display:inline-block;
+}
+.displaySpaceBetween{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.formatoLetrasTituloTabla{
+    font-size: 18px !important;
+    font-weight: 200px !important;
+}
+.formatoLetrasContenidoTabla{
+    font-size: 14px !important;
+    font-weight: 200px !important;
+}
+
+.colorTableDetail{
+    background-color:rgba(230, 238, 245,.5);
+}
+.colorFondoMedical{
+    background-color:#cddbe7;
+}
+
+.colorFondoMedical1{
+    background-color:#517CBD; 
+}
+.colorCollapsables{
+    background-color:#EDEBEB;
+    padding: 10px 5px;
+    margin: 3px 15px 0px 15px;
+    cursor: pointer;
+}
+.colorTableSelected{
+    background-color:#144591; 
+    color: white !important;
+}
+.colorCollapsablesSelected{
+    background-color:#144591; 
+    color:white;
+    padding: 10px 5px;
+    margin: 3px 15px 0px 15px;
+    cursor: pointer;
+}
+.bordersMedical{
+    border-top: 1px solid rgba(161, 181, 197, .2);
+    border-bottom: 1px solid rgba(161, 181, 197, .2);
+    border-right: 1px solid rgba(161, 181, 197, .2);
+}
+.bordersMedicalEntregaTable{
+    border-top: 1px solid rgba(161, 181, 197, .2);
+    border-right: 1px solid rgba(161, 181, 197, .2);
+}
+.bordersMedicalEntrega{
+    border-top: 1px solid rgba(161, 181, 197, .2);
+}
+.borderMedicalSelectedRight{
+    border-right: 1px solid #144591 !important;
+}
+.borderMedicalSelectedLeft{
+    border-left: 1px solid #144591 !important;
+}
+.textLeftMedical{
+    text-align: right;
+}
+
+.bordersMedicalNoBottom{
+    border-top: 1px solid rgba(161, 181, 197, .2);
+    border-right: 1px solid rgba(161, 181, 197, .2);
+}
+
+.colorTableSelected1{
+    background-color:#517CBD; 
+    color: white !important;
+    }
+.tamañosFlechaAgente{
+    width: 15px;
+}
+.displayInlineBlockAgente{
+    display: inline-block;
+    margin: 0 15px;
+}
+.buscarAgente{
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid #b7b3b3;
+    padding: 8px 10px;
+    font-size: 1.5rem;
+    box-shadow: 0 3px 3px rgba(0,0,0,.2);
+}
+.buscarAgente:focus{
+border: 2px solid #0F3F88;
+}
+.imgLupaAgente{
+    position: absolute;
+    top: 20%;
+    right: 7%;
+}
+.positionsAgente{
+    position: relative;
+}
+.paddingAgente{
+    padding: 0px !important;
+}
+.margenesAgenteBuscador{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.margenesAgentePanelBuscar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.margenesAgenteNegocio{
+    margin-top: 25px;
+}
+.paddingAgenteNegocio{
+    padding-right:80px; 
+}
+.margenesAgente8px{
+margin-top: 8px;
+}
+.margenesBotonesRight{
+ margin-right: 40px;
+}
+.margenesBotonesTopBot{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.colorBotonesAgenteLimpiar{
+    color: white !important;
+    background: rgb(245, 42, 42)!important;
+    border-color: rgb(245, 42, 42)!important;
+}
+.colorBotonesAgenteLimpiar:link{
+    color: white !important;
+    background: rgb(245, 42, 42)!important;
+    border-color: rgb(245, 42, 42)!important;
+}
+.colorBotonesAgenteLimpiar:hover{
+    color: white !important;
+    background: rgb(245, 42, 42)!important;
+    border-color: rgb(245, 42, 42)!important;
+}
+.colorBotonesAgenteLimpiar:active{
+    color: white !important;
+    background: rgb(245, 42, 42) !important;
+    border-color: rgb(245, 42, 42) !important;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
+}
+
+.checkedMedical {
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+    border: none;
+    margin:15px 0; 
+}
+    .checkboxMedical {
+      display: none;
+      &:checked + .boxMedical {
+        border-color: rgb(114, 166, 245);
+        
+        &:after {
+          top: 0;
+        }
+      }
+    }
+
+    .boxMedical {
+      width: 100%;
+      height: 100%;
+      transition: all .8s cubic-bezier(.19,1,.22,1);
+      border: 2px solid rgb(114, 166, 245);
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      &:after {
+        width: 50%;
+        height: 20%;
+        content: '';
+        position: absolute;
+        border-left: 3px solid;
+        border-bottom: 3px solid;
+        border-color: rgb(64, 94, 139);
+        transform: rotate(-45deg) translate3d(0,0,0);
+        transform-origin: center center;
+        transition: all 1.1s cubic-bezier(.19,1,.22,1);
+        left: 0;
+        right: 0;
+        top: 200%;
+        bottom: 5%;
+        margin: auto;
+      }
+    }
+.centradoAgente{
+    display: flex;
+    justify-content: center;
+    }
+
+    // -------------LOADER----------------
+    #pasosLoader{
+        width: 100%;
+        margin-bottom: 35px;
+        border: 1px solid #e0dddd;
+        background: #fff;
+        padding: 0px;
+    }
+    #pasosLoader li {
+        list-style: none;
+        float: left;
+        width: 33%;
+        padding: 15px 0px;
+        color: #4c4c4c;
+        font-size: 17px;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+    }
+    #pasosLoader li.active {
+        background: #0F3F88;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .triangulo {
+        z-index: 1;
+        width: 0;
+        height: 0;
+        border-left: 30px solid #0F3F88;
+        border-top: 24px solid transparent;
+        border-bottom: 24px solid transparent;
+        position: absolute;
+        right: -30px;
+        top: 0px;
+    }
+    .trianguloBlanco {
+        z-index: 1;
+        width: 0;
+        height: 0;
+        border-left: 30px solid white;
+        border-top: 24px solid transparent;
+        border-bottom: 24px solid transparent;
+        position: absolute;
+        right: -30px;
+        top: 0px;
+    }
+    .trianguloBorde {
+        z-index: 1;
+        width: 30px;
+        height: 30px;
+        transform: rotate(45deg);
+        border-top: 1px solid rgba(161,181,197,0.2);
+        border-right: 1px solid rgba(161,181,197,0.2);
+        position: absolute;
+        right: -37px;
+        top: 8px;
+    }
+
+// ---------------------------Estilos Firma-----------------
+#canvasFirmaTitular,
+#canvasFirmaContratante,
+#canvasFirmaAgente
+{
+    width: 500px;
+    height: 200px;
+    border:1px solid #0D0909;
+    cursor:crosshair;
+   
+}
+#canvasFirmaTodos{
+    width: 764px;
+    height: 2000px;
+    border:1px solid #0D0909;
+    display: none;
+}
+#canvasFirmaPrint{
+    border:1px solid #0D0909;
+    width: 1200px;
+    height: 2000px;
+}
+#firmasJuntas{
+    // display: none;
+    background:#fff;
+    margin:0 auto !important;
+    background-repeat: no-repeat;
+    background-position: top, center, bottom;
+    width:764px;
+    height: 819px;
+}
+.centradoMedical{
+    display: flex;
+    justify-content: center;
+}
+.centradoMedicalVertical{
+    display: flex;
+    align-items: center;
+}
+.fa.fa-sort-desc{
+    font-size:2.5em;
+}
+.fa.fa-sort-up{
+    font-size:2.5em;
+}
+.botonEmision{
+    width: 100%;
+    height: 80px;
+}
+
+
+
+// --------------------------- Nuevos estilos para el paso 5 -----------------
+
+
+

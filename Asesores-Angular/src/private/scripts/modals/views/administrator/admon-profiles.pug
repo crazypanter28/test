@@ -1,0 +1,18 @@
+include /views/mixins/radio-button
+
+.title-modal {{ctrl.title}}
+
+form( name="$form" novalidate)
+    .container-modal
+
+        .row
+            .form-group.col-xs-6
+                label Clave de Usuario (LDAP) #[span.require *]
+                input.form-control( placeholder='---' ng-model="ctrl.profile.userCodeRegister" required="true")
+            .form-group.col-xs-6
+                label Perfil #[span.require *]  
+                input.form-control( act-dropdown="" ng-model="ctrl.products" on-change="ctrl.changeOptionSelectedDropdowm" required="true" )
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+        button.btn.btn-primary( title="GENERAR" ng-disabled="$form.$invalid" ng-click="ctrl.done()") GUARDAR

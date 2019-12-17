@@ -1,0 +1,122 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"d9210da6-093b-4be5-be69-7e563b5d8a0d",
+         "messages":[
+            {
+               "responseSystemCode":"CMPVE0000009",
+               "responseMessage":"Se pudo consultar correctamente las carteras modelo por criterio ",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1499144400000,
+      "time":69038000,
+      "clientID":"PROMOTORES",
+      "sessionID":"",
+      "responseSystem":"PRACTICAS DE VENTA",
+      "operationName":"ModelPortfolioByCriterionQuery",
+      "operationVersion":"1_0",
+      "ipaddress":"10.10.1.58"
+   },
+   "outModelPortfolioByCriterionQuery":{
+      "modelPortfolios":[
+         {
+            "key":"1",
+            "name":"Estrategia1",
+            "period":"0",
+            "portfolioFlag":false,
+            "validityFlag":false,
+            "status":{
+               "key":"2",
+               "name":"INACTIVO",
+               "description":"INACTIVO"
+            },
+            "user":{
+               "key":"2",
+               "userName":"uriesgos"
+            },
+            "portfolioType":{
+               "key":"2",
+               "name":"Portafolio Modelo(% de producto))",
+               "description":"Portafolio Modelo(% de producto)"
+            },
+            "profile":{
+               "key":"1",
+               "name":"Perfil 1",
+               "description":"El perfil 1 se caracteriza por una estrategia de inversión que busca obtener rendimientos arriba a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores, asumiendo un nivel de volatilidad bajo y con un horizonte de inversión de mediano a largo plazo.",
+               "status":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            "globalLimit":{
+               "key":"0",
+               "percentage":8.0
+            },
+            "validity":{
+               "key":"4",
+               "name":"Indeterminada",
+               "description":"Indeterminada"
+            }
+         },
+         {
+            "key":"21",
+            "name":"Actinver Protege",
+            "period":"0",
+            "portfolioFlag":false,
+            "validityFlag":false,
+            "status":{
+               "key":"1",
+               "name":"ACTIVO",
+               "description":"ACTIVO"
+            },
+            "user":{
+               "key":"1",
+               "userName":"upventas"
+            },
+            "portfolioType":{
+               "key":"2",
+               "name":"Portafolio Modelo(% de producto))",
+               "description":"Portafolio Modelo(% de producto)"
+            },
+            "profile":{
+               "key":"1",
+               "name":"Perfil 1",
+               "description":"El perfil 1 se caracteriza por una estrategia de inversión que busca obtener rendimientos arriba a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores, asumiendo un nivel de volatilidad bajo y con un horizonte de inversión de mediano a largo plazo.",
+               "status":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            "globalLimit":{
+               "key":"0",
+               "percentage":7.0
+            },
+            "validity":{
+               "key":"4",
+               "name":"Indeterminada",
+               "description":"Indeterminada"
+            }
+         }
+      ],
+      "criteria":{
+         "profile":{
+            "key":"1",
+            "name":"",
+            "description":"",
+            "rate":0.0,
+            "visibilityFlag":false
+         }
+      }
+   }
+}

@@ -1,0 +1,28 @@
+include /views/mixins/radio-button
+
+// Binnacle page
+.administrator-page
+
+    h3.primary-title Administrador
+
+    div.content-panel
+
+        .container-administrator
+            .administrator-list-tabs
+                ul.list-tabs
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.factsheets' permission="['asesores.AdministradorMenu.Factsheets.']") #[span Factsheets]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.group' permission="['asesores.AdministradorMenu.Grupos.']" ) #[span Grupos ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.presentations' permission="['asesores.AdministradorMenu.Presentations.']") #[span Presentaciones ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.eeuu' permission="['asesores.AdministradorMenu.EstadosUnidos.']") #[span EEUU ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.mexico' permission="['asesores.AdministradorMenu.Mexico.']") #[span México ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.economic' permission="['asesores.AdministradorMenu.EntornoEconomico.']") #[span Entorno económico ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.legal' permission="['asesores.AdministradorMenu.AvisoLegal.']") #[span Aviso legal ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.investment' permission="['asesores.AdministradorMenu.FondosInversion.']") #[span Fondos de inversión ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.favorites' permission="['asesores.AdministradorMenu.Favoritos.']") #[span Favoritos ]
+                    //li.item-tabs(ui-sref-active="active" ui-sref='administrator.employee' ) #[span Mapeo de números de empleado ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.profiles' permission="['asesores.AdministradorMenu.Perfiles.']") #[span Asignación de perfiles ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.advisers_binnable' permission="['asesores.AdministradorMenu.BitacoraAsesores.']" ) #[span Bitácora de asesores ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.messages' permission="['asesores.AdministradorMenu.Mensajes.']") #[span Mensajes ]
+                    li.item-tabs(ui-sref-active="active" ui-sref='administrator.derivatives' permission="['asesores.AdministradorMenu.Derivatives.']") #[span Derivados ]
+            .administrator-content-tabs
+                div( ui-view="" )

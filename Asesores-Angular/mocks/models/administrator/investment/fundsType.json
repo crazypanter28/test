@@ -1,0 +1,28 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idFundType": 1,
+		"description": "SI en Instrumentos de Deuda"
+	}, {
+		"idFundType": 2,
+		"description": "SI en Instrumentos de Deuda y Cobertura"
+	}, {
+		"idFundType": 3,
+		"description": "SI en Instrumentos de deuda en Dólares- Cobertura"
+	}, {
+		"idFundType": 4,
+		"description": "SI de Renta Variable en Acciones"
+	}, {
+		"idFundType": 5,
+		"description": "SI de Renta Variable- Alternativos"
+	}, {
+		"idFundType": 6,
+		"description": "Fondos Multi Activos Actinver"
+	}]
+}

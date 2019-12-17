@@ -1,0 +1,600 @@
+{
+      "code": "OK",
+      "data": [
+        {
+          "postingDateTime": "2017-10-09T04:41:42-05:00",
+          "paymentDate": "2017-10-07T00:00:00-05:00",
+          "reference": "201710074013300000000000692418",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "50.000000",
+          "description": "50 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710074013300000000000692418, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-16T10:00:41-05:00",
+          "paymentDate": "2017-10-16T00:00:00-05:00",
+          "reference": "201710164013300000000000703767",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180012639121832",
+          "amount": "2000.000000",
+          "description": "Pago John - Receptor: BBVA BANCOMER, Beneficiario: JONA BALDERAS*, Cuenta Ref: 012180012639121832, Clave Rastreo: 201710164013300000000000703767, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-16T12:48:37-05:00",
+          "paymentDate": "2017-10-14T00:00:00-05:00",
+          "reference": "201710144013300000000000703117",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "5900.000000",
+          "description": "Mensuidad - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710144013300000000000703117, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-18T03:30:59-05:00",
+          "paymentDate": "2017-10-18T00:00:00-05:00",
+          "reference": "201710184013300000000000708814",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "5000.000000",
+          "description": "Mensualidad sonic - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710184013300000000000708814, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-18T08:32:24-05:00",
+          "paymentDate": "2017-10-18T00:00:00-05:00",
+          "reference": "201710184013300000000000707656",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "29.360000",
+          "description": "VENTA FONDO - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALOMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710184013300000000000707656, Ref: 4834071,"
+        },
+        {
+          "postingDateTime": "2017-10-26T08:20:20-05:00",
+          "paymentDate": "2017-10-26T00:00:00-05:00",
+          "reference": "201710264013300000000000719839",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.000000",
+          "description": "test medios - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710264013300000000000719839, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-30T01:34:56-06:00",
+          "paymentDate": "2017-10-30T00:00:00-06:00",
+          "reference": "201710304013300000000000724251",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.000000",
+          "description": "SPEI externo 177.233.13.190 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710304013300000000000724251, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-30T01:51:21-06:00",
+          "paymentDate": "2017-10-30T00:00:00-06:00",
+          "reference": "201710304013300000000000724321",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.300000",
+          "description": "SPEI interno 10.14.6.3 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201710304013300000000000724321, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-30T09:36:08-06:00",
+          "paymentDate": "2017-10-29T00:00:00-05:00",
+          "reference": "201710294013300000000000722479",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "SANTANDER",
+            "id": "40014"
+          },
+          "clabe": "014180566260412642",
+          "amount": "1000.000000",
+          "description": "Muelas - Receptor: SANTANDER, Beneficiario: ARIANNA*, Cuenta Ref: 014180566260412642, Clave Rastreo: 201710294013300000000000722479, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-10-30T10:32:18-06:00",
+          "paymentDate": "2017-10-30T00:00:00-06:00",
+          "reference": "201710304013300000000000723348",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180012639121832",
+          "amount": "1500.000000",
+          "description": "Comidas - Receptor: BBVA BANCOMER, Beneficiario: JONA BALDERAS*, Cuenta Ref: 012180012639121832, Clave Rastreo: 201710304013300000000000723348, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-03T03:31:07-06:00",
+          "paymentDate": "2017-11-02T00:00:00-06:00",
+          "reference": "201711024013300000000000730471",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "400.000000",
+          "description": "402 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711024013300000000000730471, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-03T12:40:45-06:00",
+          "paymentDate": "2017-11-02T00:00:00-06:00",
+          "reference": "201711024013300000000000730284",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.230000",
+          "description": "1.23 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711024013300000000000730284, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-03T12:52:20-06:00",
+          "paymentDate": "2017-11-02T00:00:00-06:00",
+          "reference": "201711024013300000000000730286",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.230000",
+          "description": "1.23 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711024013300000000000730286, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-06T02:22:51-06:00",
+          "paymentDate": "2017-11-06T00:00:00-06:00",
+          "reference": "201711064013300000000000736467",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "5300.000000",
+          "description": "5300 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711064013300000000000736467, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-06T10:24:23-06:00",
+          "paymentDate": "2017-11-04T00:00:00-06:00",
+          "reference": "201711044013300000000000734464",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "5000.000000",
+          "description": "5000 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711044013300000000000734464, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-06T12:06:25-06:00",
+          "paymentDate": "2017-11-06T00:00:00-06:00",
+          "reference": "201711064013300000000000735868",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180012639121832",
+          "amount": "60.000000",
+          "description": "limite dia - Receptor: BBVA BANCOMER, Beneficiario: JONA BALDERAS*, Cuenta Ref: 012180012639121832, Clave Rastreo: 201711064013300000000000735868, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-07T12:23:25-06:00",
+          "paymentDate": "2017-11-07T00:00:00-06:00",
+          "reference": "201711074013300000000000738366",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180012639121832",
+          "amount": "60.000000",
+          "description": "monto valido - Receptor: BBVA BANCOMER, Beneficiario: JONA BALDERAS*, Cuenta Ref: 012180012639121832, Clave Rastreo: 201711074013300000000000738366, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-10T07:36:12-06:00",
+          "paymentDate": "2017-11-10T00:00:00-06:00",
+          "reference": "201711104013300000000000749137",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1000.000000",
+          "description": "1000 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711104013300000000000749137, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-13T05:50:58-06:00",
+          "paymentDate": "2017-11-13T00:00:00-06:00",
+          "reference": "201711134013300000000000751123",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.230000",
+          "description": "1.23 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711134013300000000000751123, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-14T06:22:01-06:00",
+          "paymentDate": "2017-11-14T00:00:00-06:00",
+          "reference": "201711144013300000000000754568",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180012639121832",
+          "amount": "1270.000000",
+          "description": "update ondemand - Receptor: BBVA BANCOMER, Beneficiario: JONA BALDERAS*, Cuenta Ref: 012180012639121832, Clave Rastreo: 201711144013300000000000754568, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-16T08:05:48-06:00",
+          "paymentDate": "2017-11-16T00:00:00-06:00",
+          "reference": "201711164013300000000000759507",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "6000.000000",
+          "description": "Rent - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711164013300000000000759507, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-17T06:37:02-06:00",
+          "paymentDate": "2017-11-17T00:00:00-06:00",
+          "reference": "201711174013300000000000763789",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "800.000000",
+          "description": "800 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711174013300000000000763789, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-21T03:35:48-06:00",
+          "paymentDate": "2017-11-21T00:00:00-06:00",
+          "reference": "201711214013300000000000765835",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "5000.000000",
+          "description": "5000 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711214013300000000000765835, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-21T05:09:04-06:00",
+          "paymentDate": "2017-11-20T00:00:00-06:00",
+          "reference": "201711204013300000000000764108",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "200.000000",
+          "description": "200 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711204013300000000000764108, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-21T05:17:18-06:00",
+          "paymentDate": "2017-11-20T00:00:00-06:00",
+          "reference": "201711204013300000000000764110",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "250.000000",
+          "description": "Esencia de hazar - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711204013300000000000764110, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-22T12:27:38-06:00",
+          "paymentDate": "2017-11-22T00:00:00-06:00",
+          "reference": "201711224013300000000000767301",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.000000",
+          "description": "Spei - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711224013300000000000767301, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-23T08:52:24-06:00",
+          "paymentDate": "2017-11-23T00:00:00-06:00",
+          "reference": "201711234013300000000000768642",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "500.000000",
+          "description": "500 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711234013300000000000768642, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-27T05:02:38-06:00",
+          "paymentDate": "2017-11-25T00:00:00-06:00",
+          "reference": "201711254013300000000000772526",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "102.000000",
+          "description": "102 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711254013300000000000772526, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-27T12:26:09-06:00",
+          "paymentDate": "2017-11-25T00:00:00-06:00",
+          "reference": "201711254013300000000000772484",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "1.230000",
+          "description": "1.23 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711254013300000000000772484, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-29T01:04:19-06:00",
+          "paymentDate": "2017-11-29T00:00:00-06:00",
+          "reference": "201711294013300000000000776995",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "SANTANDER",
+            "id": "40014"
+          },
+          "clabe": "014180566260412642",
+          "amount": "2500.000000",
+          "description": "Transferencia plan - Receptor: SANTANDER, Beneficiario: ARIANNA*, Cuenta Ref: 014180566260412642, Clave Rastreo: 201711294013300000000000776995, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-29T03:25:35-06:00",
+          "paymentDate": "2017-11-29T00:00:00-06:00",
+          "reference": "201711294013300000000000779158",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180012639121832",
+          "amount": "1000.000000",
+          "description": "Mil con comisiones - Receptor: BBVA BANCOMER, Beneficiario: JONA BALDERAS*, Cuenta Ref: 012180012639121832, Clave Rastreo: 201711294013300000000000779158, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-30T08:08:36-06:00",
+          "paymentDate": "2017-11-30T00:00:00-06:00",
+          "reference": "201711304013300000000000783580",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "600.000000",
+          "description": "600 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201711304013300000000000783580, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-11-30T11:19:14-06:00",
+          "paymentDate": "2017-11-30T00:00:00-06:00",
+          "reference": "201711304013300000000000780687",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BBVA BANCOMER",
+            "id": "40012"
+          },
+          "clabe": "012180011906113286",
+          "amount": "5.000000",
+          "description": "Cinco - Receptor: BBVA BANCOMER, Beneficiario: ANA LAURA DIAZ*, Cuenta Ref: 012180011906113286, Clave Rastreo: 201711304013300000000000780687, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-12-01T04:44:37-06:00",
+          "paymentDate": "2017-12-01T00:00:00-06:00",
+          "reference": "201712014013300000000000787944",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "SANTANDER",
+            "id": "40014"
+          },
+          "clabe": "014438565926236006",
+          "amount": "200.000000",
+          "description": "200 dani - Receptor: SANTANDER, Beneficiario: MARKO, ESA MADRE*, Cuenta Ref: 014438565926236006, Clave Rastreo: 201712014013300000000000787944, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-12-04T01:04:09-06:00",
+          "paymentDate": "2017-12-04T00:00:00-06:00",
+          "reference": "201712044013300000000000790910",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "20.000000",
+          "description": "20 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201712044013300000000000790910, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-12-04T01:08:45-06:00",
+          "paymentDate": "2017-12-04T00:00:00-06:00",
+          "reference": "201712044013300000000000790931",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "10.000000",
+          "description": "20 - 20 - 40 - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201712044013300000000000790931, Ref: 0000001,"
+        },
+        {
+          "postingDateTime": "2017-12-04T10:29:57-06:00",
+          "paymentDate": "2017-12-01T00:00:00-06:00",
+          "reference": "201712014013300000000000788136",
+          "source": {
+            "name": "ACTINVER",
+            "id": "40133"
+          },
+          "destination": {
+            "name": "BANAMEX",
+            "id": "40002"
+          },
+          "clabe": "002180700607256064",
+          "amount": "2.000000",
+          "description": "Teat SPEI - Receptor: BANAMEX, Beneficiario: ALBERTO ISAAC CERDA SALAMON*, Cuenta Ref: 002180700607256064, Clave Rastreo: 201712014013300000000000788136, Ref: 0000001,"
+        }
+      ],
+      "success": true,
+      "type": "INFO",
+      "message": "La operacion se realizo satisfactoriamente"
+    }

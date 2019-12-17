@@ -1,0 +1,272 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+div.content-panel.tranfers(ng-if="pymeCtrl.stepForm.stepB")
+    form(name="form" novalidate)
+        .row
+            div(ng-if="pymeCtrl.personType === '1'")
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                    .col-md-8
+                        input(type="text" id="nombres" name="nombres" placeholder="Nombre(s)" minlength="3" maxlength="80" value=""
+                            ng-model="pymeCtrl.nombres"
+                            ng-disabled="pymeCtrl.validatePerson"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'nombres'); pymeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                    .col-md-8
+                        input(type="text" id="apePaterno" name="apePaterno" placeholder="Apellido paterno" minlength="3" maxlength="80" value=""
+                            ng-model="pymeCtrl.apePaterno"
+                            ng-disabled="pymeCtrl.validatePerson"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'apePaterno'); pymeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required        
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                    .col-md-8
+                        input(type="text" id="apeMaterno" name="apeMaterno" placeholder="Apellido materno" minlength="3" maxlength="80" value=""
+                            ng-model="pymeCtrl.apeMaterno"
+                            ng-disabled="pymeCtrl.validatePerson"
+                            ng-keypress="pymeCtrl.charrepeatText($event,'apeMaterno'); pymeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-6(ng-if="pymeCtrl.personType === '2'")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Razón Social
+                .col-md-8
+                    input(type="text" id="companyName" name="companyName" placeholder="Nombre" minlength="3" maxlength="80" value=""
+                        ng-model="pymeCtrl.nombreCliente"
+                        ng-disabled="pymeCtrl.validatePerson"
+                        ng-keypress="pymeCtrl.charrepeatText($event,'companyName'); pymeCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            //averiguar si es necesaria la condición "&& !pymeCtrl.validatePerson" dentro de la if
+            .form-group.col-sm-6.col-lg-6(ng-if="pymeCtrl.personType === '2' && !pymeCtrl.validatePerson")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Email
+                .col-md-8
+                    input(type="email" name="emailUser" placeholder="correo@email.com" ng-model="pymeCtrl.emailUser"
+                        maxlength="50" style="text-transform: uppercase;" required).form-control
+        .row
+            .form-group.col-sm-4.col-lg-4(ng-if="pymeCtrl.personType === '1'")
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Email
+                .col-md-8
+                    input(type="email" name="emailUser" placeholder="correo@email.com" ng-model="pymeCtrl.emailUser"
+                        maxlength="50" style="text-transform: uppercase;" required).form-control
+        .row.text-left(style="padding-bottom:15px; padding-top:20px; padding-left:20px;")
+            h4.tit I. Datos generales del Inmueble
+        .row
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado
+                .col-md-8
+                    select(name="listEntityFederativeHouse"
+                        ng-model="pymeCtrl.cmd.dataHouseEntityRisk.type"
+                        ng-options="x.text for x in pymeCtrl.ListEntityFederativeHouse"
+                        ng-change="pymeCtrl.onChangeListEntity()" required).form-control
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Población
+                .col-md-8
+                    select(name="listMunicipalityHouse"
+                        ng-model="pymeCtrl.cmd.dataHouseMunicipalityRisk.type"
+                        ng-options="x.text for x in pymeCtrl.ListMunicipalityHouse"
+                        ng-change="pymeCtrl.onChangeListMunicipality()" required).form-control
+            .clearfix.visible-lg
+        .row    
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código postal
+                .col-md-8
+                    select(name="listPostalCodeHouse"
+                        ng-model="pymeCtrl.cmd.dataHousePostalCodeRisk.type"
+                        ng-options="x.text for x in pymeCtrl.ListPostalCodeHouse"
+                        required).form-control
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p.text.left(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona Forma de pago
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.ListPaymentMethods"
+                        selected="pymeCtrl.cmd.kindPaid.type"
+                        name="ListPaymentMethods")
+                    input(type='hidden'
+                        ng-model='pymeCtrl.cmd.kindPaid.type'
+                        ng-required='true')
+        .row                
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Moneda
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.ListCurrency"
+                        selected="pymeCtrl.cmd.currency.type"
+                        name="ListCurrency"
+                        change="pymeCtrl.getJsonCoberturasService(newValue)")
+                    input(type='hidden'
+                        ng-model='pymeCtrl.cmd.currency.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Calle
+                .col-md-8
+                    input(type="text" id="calle" name="calle" placeholder="calle"
+                        ng-model="pymeCtrl.calle"
+                        value=""
+                        minlength="3" maxlength="80"
+                        ng-keypress="pymeCtrl.charrepeatTextTres($event,'calle'); pymeCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+        .row.text-left(style="padding-bottom:15px; padding-top:20px; padding-left:20px;")
+            h4.tit II. Condiciones del asegurado
+        .row
+            //modificado funciones para sacar el catalogo de Clasificación y Tipo de Riesgo
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Clasificación
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.listClasification"
+                        selected="pymeCtrl.cmd.kindClasification.type"
+                        name="listClasification"
+                        change="pymeCtrl.onChangeTipoDeRiesgo(newValue)")
+                    input(                        type='hidden',
+                        ng-model='pymeCtrl.cmd.kindClasification.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de riesgo
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.listRiskType"
+                        selected="pymeCtrl.cmd.kindRisk.type"
+                        name="listRiskType")
+                    input(                        type='hidden',
+                        ng-model='pymeCtrl.cmd.kindRisk.type'
+                        ng-required='true')
+        .row
+            //para revisar
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de Muros
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.listStructure"
+                        selected="pymeCtrl.cmd.kindStructure.type"
+                        name="listStructure"
+                        change="pymeCtrl.getCatalogRoof(lastValue, newValue)")
+                    input(type='hidden'
+                        ng-model='pymeCtrl.cmd.kindStructure.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de techos
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.listRoof"
+                        selected="pymeCtrl.cmd.kindRoof.type"
+                        name="listRoof")
+                    input(type='hidden'
+                        ng-model='pymeCtrl.cmd.kindRoof.type'
+                        ng-required='true')
+            .clearfix.visible-lg
+        .row
+            .form-group.col-md-6
+                label.col-md-4
+                    p(ng-class="pymeCtrl.txtClass" style="font-size: 12px; font-weight: bold; padding-top:8px;") Medidas Contra Incendios
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="pymeCtrl.ListSecurityMeasurements"
+                        selected="pymeCtrl.cmd.securityActions.type"
+                        name="ListSecurityMeasurements")
+                    input(type='hidden'
+                        ng-model='pymeCtrl.cmd.securityActions.type'
+                        ng-required='true')
+        .row
+            label.col-md-4
+                p.text.left(style="font-size: 13px; font-weight: bold; padding-top:20px;") Medidas de Seguridad contra Robo
+            .col-md-8
+        .row
+            .form-group.col-md-12
+                .col-sm-2.form-group.text.center
+                    label.radio-inline
+                        input(type="checkbox" name="typeSeguroRobos")
+                        span(lang="es" style="color: black !important") Alarma
+                .col-sm-2.form-group.text.center
+                    label.radio-inline
+                        input(type="checkbox" name="typeSeguroRobos")
+                        span(lang="es" style="color: black !important") Caja fuerte
+                .col-sm-2.form-group.text.center
+                    label.radio-inline
+                        input(type="checkbox" name="typeSeguroRobos")
+                        span(lang="es" style="color: black !important") Circuito Cerrado
+                .col-sm-3.form-group.text.center
+                    label.radio-inline
+                        input(type="checkbox" name="typeSeguroRobos")
+                        span(lang="es" style="color: black !important") Servicio Reclección
+                .col-sm-3.form-group.text.center
+                    label.radio-inline
+                        input(type="checkbox" name="typeSeguroRobos")
+                        span(lang="es" style="color: black !important") Vigente las 24 Horas
+
+
+    .row.text-left(style= "padding-left:20px;")
+        h4.tit III. Coberturas|
+    .row
+        div.content-panel
+            .row
+                .col-lg-2.col-sm-1.col-xs-1.text-center
+                .col-lg-4.col-sm-5.col-xs-11
+                    h4.text-left.tit Cobertura
+                .col-sm-2
+                    h4.text-left.tit Mínimo
+                .col-sm-2
+                    h4.text-left.tit Suma Asegurada
+                .col-sm-2
+                    h4.text-left.tit Máximo
+           
+        div.text-center
+            +btnWithIcon('Cotizar', 'btn-primary btn-space', 'form.$invalid || pymeCtrl.validarTabla() || pymeCtrl.cargandoCotizacion')(ngClick="pymeCtrl.validarDatosACotizar()")                
+            div.content-panel                    
+                .row
+                    h5.tit Cantidad a pagar
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;") Prima neta:
+                    .col-xs-6
+                        p.text-left {{pymeCtrl.datosCotizacion.primaNeta | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Derechos de póliza:
+                    .col-xs-6
+                        p.text-left {{pymeCtrl.datosCotizacion.derechosPoliza | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Recargos:
+                    .col-xs-6
+                        p.text-left {{pymeCtrl.datosCotizacion.recargos | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  I.V.A:
+                    .col-xs-6
+                        p.text-left {{pymeCtrl.datosCotizacion.iva | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Prima total:
+                    .col-xs-6
+                        p.text-left {{pymeCtrl.datosCotizacion.primaTotal | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Número de cotización:
+                    .col-xs-6
+                        p.text-left {{pymeCtrl.datosCotizacion.numeroCotizacion}}
+            div
+                .col-sm-3
+                    button(style="margin: 10px 10px;" class="btn-primary btn" ng-click="pymeCtrl.regresarPaginaCotizacion()") REGRESAR
+                .col-sm-6
+                    button(style="margin: 10px 10px;" class="btn-primary btn" ng-click="onClicSendEmailNotificationCotizationHogar()" ng-disabled="!pymeCtrl.datosCotizacion.numeroCotizacion") ENVIAR POR CORREO A CLIENTE
+                .col-sm-3
+                    button(style="margin: 10px 10px;" class="btn-primary btn" ng-click="pymeCtrl.pagina3()" ng-disabled="!pymeCtrl.datosCotizacion.numeroCotizacion") CONTRATAR

@@ -1,0 +1,128 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"identifyingAmount": 14800000.00,
+		"contactAmount": 1500000.00,
+		"interviewAmount": 1895000.00,
+		"closeAmount": 1000000.00,
+		"fundingAmount": 0,
+		"removeAmount": 0,
+		"prospects": [{
+			"idProspect": 2,
+			"name": "Maria Sangri",
+			"idStage": 6,
+			"stage": "Identificación de Prospecto",
+			"investmentAmount": 500000.00,
+			"status": "AP",
+			"closeDate": "2016-08-30",
+			"creationDate": 1469039416310,
+			"expired": false
+		}, {
+			"idProspect": 17,
+			"name": "Juan Laguna",
+			"idStage": 1,
+			"stage": "Identificación de Prospecto",
+			"investmentAmount": 2000000.00,
+			"status": "AV",
+			"closeDate": "2016-08-25",
+			"creationDate": 1470785818230,
+			"expired": true
+		}, {
+			"idProspect": 18,
+			"name": "Pedro Perez",
+			"idStage": 1,
+			"stage": "Identificación de Prospecto",
+			"investmentAmount": 8500000.00,
+			"status": "AV",
+			"closeDate": "2016-09-02",
+			"creationDate": 1470785855307,
+			"expired": true
+		}, {
+			"idProspect": 19,
+			"name": "Mariana Ramirez",
+			"idStage": 1,
+			"stage": "Identificación de Prospecto",
+			"investmentAmount": 800000.00,
+			"status": "AV",
+			"closeDate": "2016-09-30",
+			"creationDate": 1470785905100,
+			"expired": true
+		}, {
+			"idProspect": 14,
+			"name": "emiliano",
+			"idStage": 4,
+			"stage": "Cierre",
+			"investmentAmount": 1000000.00,
+			"status": "SAP",
+			"closeDate": "2016-08-18",
+			"creationDate": 1470785969600,
+			"expired": true
+		}, {
+			"idProspect": 48,
+			"name": "Nadia Garcia",
+			"idStage": 1,
+			"stage": "Identificación de Prospecto",
+			"investmentAmount": 1000000.00,
+			"status": "AV",
+			"closeDate": "2016-08-24",
+			"creationDate": 1471978301887,
+			"expired": true
+		}, {
+			"idProspect": 10202,
+			"name": "Pablo Test",
+			"idStage": 2,
+			"stage": "Contacto establecido",
+			"investmentAmount": 1500000.00,
+			"status": "SAP",
+			"closeDate": "2017-02-17",
+			"creationDate": 1483983357010,
+			"expired": true
+		}, {
+			"idProspect": 23,
+			"name": "Ximena Zárate",
+			"idStage": 3,
+			"stage": "Entrevista",
+			"investmentAmount": 1800000.00,
+			"status": "SAP",
+			"closeDate": "2016-09-07",
+			"creationDate": 1484163514297,
+			"expired": true
+		}, {
+			"idProspect": 10209,
+			"name": "Pablo Garcia",
+			"idStage": 3,
+			"stage": "Entrevista",
+			"investmentAmount": 45000.00,
+			"status": "SAP",
+			"closeDate": "2017-01-19",
+			"creationDate": 1484601997203,
+			"expired": true
+		}, {
+			"idProspect": 10210,
+			"name": "Juan Pablo Suarez Cruz",
+			"idStage": 3,
+			"stage": "Entrevista",
+			"investmentAmount": 50000.00,
+			"status": "SAP",
+			"closeDate": "2017-01-18",
+			"creationDate": 1484605548967,
+			"expired": true
+		}, {
+			"idProspect": 10264,
+			"name": "Enrique Luis Guillermo",
+			"idStage": 1,
+			"stage": "Identificación de Prospecto",
+			"investmentAmount": 2000000.00,
+			"status": "AV",
+			"closeDate": "2017-03-20",
+			"creationDate": 1488568008493,
+			"expired": true
+		}]
+	}
+}

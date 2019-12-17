@@ -1,0 +1,51 @@
+include /views/mixins/tables
+include /views/mixins/info-result
+
+div.container-table-investment
+    table.table-investment.orders
+        thead
+            tr
+                +thCaret( 'Folio', 'order.orderReference' )
+                +thCaret( 'Fecha', 'order.operationDate' )
+                +thCaret( 'Descripción', 'order.movementDescription' )
+                +thCaret( 'Emisora', 'order.issuer' )
+                +thCaret( 'Títulos de la orden', 'order.amountTitles' )
+                +thCaret( 'Precio de la orden', 'order.price' )
+                +thCaret( 'Títulos asignados', 'order.titlesAssigned' )
+                +thCaret( 'Precio asignado', 'order.assignedPrice' )
+                +thCaret( 'Importe', 'order.amount' )
+                +thCaret( 'Estatus', 'order.status' )
+                th 
+                th( ng-if="false")
+                    i( class="fa fa-pencil" aria-hidden="true")
+                th
+                    i( class="fa fa-trash" aria-hidden="true")
+        tbody
+            +trLoading( 108, 'loading' )( colspan='12' )
+            tr( ng-if="!loading" )
+                td( colspan="12" )
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No cuentas</strong> con órdenes para mostrar" )
+
+                    div( ng-if="orders" )
+                        div( scrollable always-visible="true" )
+                            table
+                                tr( ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                    td( ng-bind="order.orderReference")
+                                    td( ng-bind="order.operationDate | date:'dd/MM/yyyy'" )
+                                    td( ng-bind="order.movementDescription" )
+                                    td( ng-bind="order.issuer" )
+                                    td( ng-bind="order.amountTitles" )
+                                    td( ng-bind="order.price| currency:'$'" )
+                                    td( ng-bind="order.titlesAssigned" )
+                                    td( ng-bind="order.assignedPrice | currency:'$'" )
+                                    td( ng-bind="order.price | currency" )
+                                    td( ng-bind= "order.status" )
+                                    td
+                                        i(ng-if="order.status ==='Cancelado'" class="fa fa-plus-square-o" aria-hidden="true" ng-click="showinfostatus(order.statusDesc)")
+                                    td
+                                        i(ng-if="(false)"  class="fa fa-pencil" aria-hidden="true" ng-click="modificar(order)")
+                                    td
+                                        i(ng-if="order.secancela"  class="fa fa-trash" aria-hidden="true" ng-click="delete(order)")                    

@@ -1,0 +1,52 @@
+include /views/mixins/icons
+include /views/mixins/tables
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+
+
+div.investment-table-container
+    div( scrollable always-visible="true" )
+        table.investment-table
+            thead
+                tr
+                    +thCaret( 'Emisora', 'issuerName')
+                    +thCaret( 'ÚLTIMO PRECIO', 'lastPrice')
+                    +thCaret( 'DESCRIPCIÓN', 'familyFundDescription')
+                    th.hidden-xs(colspan='5') RENDIMIENTO
+                    th(rowspan='2') MÁS INFO.
+                    //th( width="25" ng-click='columnsExpand = !columnsExpand;' )
+                        i.fa.fa-lg( ng-class="{'fa-caret-left': columnsExpand, 'fa-caret-right': !columnsExpand}")
+                tr
+                    th.hidden-xs 3 MESES
+                    th.hidden-xs 6 MESES
+                    th.hidden-xs 1 AÑO
+                    th.hidden-xs.hidden-ms 3 AÑOS
+                    th.hidden-xs.hidden-ms 5 AÑOS
+            tbody        
+                +trLoading( 150, 'loading')( colspan='11' )
+                tr( ng-hide="loading" ng-repeat = "station in stations | orderBy:sortType:sortReverse" )
+                    td.text-left( ng-click="ChangeDoll(station)" ng-bind="station.issuerName + ' ' + station.serie")
+                    td.text-left( ng-click="ChangeDoll(station)" ng-bind="station.lastPrice | currency :'$':6")
+                    td.text-left( ng-click="ChangeDoll(station)" ng-bind="station.familyFundDescription")
+                    //td( ng-click="ChangeDoll(station)" ng-show='columnsExpand')
+                    //td( ng-class="{'no-expand' : !columnsExpand, 'expand': columnsExpand }")
+                        +iconTable( 'station.return90')
+                        +iconTable( 'station.return180')
+                        +iconTable( 'station.return365')
+                        +iconTable( 'station.return3Years')
+                        +iconTable( 'station.return5Years')
+                    td.text-right.hidden-xs {{station.return90 }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.return90 > 0, 'fa-arrow-circle-down': station.return90  < 0, 'fa-minus-circle': station.return90  === 0 }" )
+                    td.text-right.hidden-xs {{station.return180 }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.return180 > 0, 'fa-arrow-circle-down': station.return180  < 0, 'fa-minus-circle': station.return180  === 0 }" )
+                    td.text-right.hidden-xs {{station.return365 }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.return365 > 0, 'fa-arrow-circle-down': station.return365  < 0, 'fa-minus-circle': station.return365  === 0 }" )
+                    td.text-right.hidden-xs.hidden-ms {{station.return3Years }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.return3Years > 0, 'fa-arrow-circle-down': station.return3Years  < 0, 'fa-minus-circle': station.return3Years  === 0 }" )
+                    td.text-right.hidden-xs.hidden-ms {{station.return5Years }}
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.return5Years > 0, 'fa-arrow-circle-down': station.return5Years  < 0, 'fa-minus-circle': station.return5Years  === 0 }" )
+                    td.text-right.text-center.view-more( ng-click="viewMore( station )")
+                        i.fa.fa-plus-circle
+                    td
+                        

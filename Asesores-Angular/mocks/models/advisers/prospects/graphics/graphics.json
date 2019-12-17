@@ -1,0 +1,24 @@
+{
+	"status": 1,
+	"payload": {
+		"name": "Edgar Ramirez Sanchez",
+		"ammount": 500000000000,
+		"customersContacted": 50,
+		"money": {
+			"value": "1.2",
+			"quantity": "m"
+		},
+		"funds": {
+			"value": "1.6",
+			"quantity": "m"
+		},
+		"credit":{
+			"prospects":12,
+			"clients": 3
+		},
+		"seguros": {
+			"prospects":12,
+			"clients": 8
+		}
+	}
+}

@@ -1,0 +1,49 @@
+//
+// config.scss
+//
+// Collect all rules for entire project
+//
+
+// Utilities
+@import 'utilities/_vars';
+@import 'mixins/_mixins';
+@import 'utilities/_general';
+
+// Elements
+@import 'elements/_typography';
+@import 'elements/_typeahead';
+@import "elements/_breadcrumbs";
+@import "elements/_tabs";
+@import "elements/_tab-table";
+@import 'elements/_buttons';
+@import 'elements/_calendar';
+@import 'elements/_datepicker';
+@import 'elements/_datesrange-picker';
+@import 'elements/_datetime-picker';
+@import 'elements/_file-uploader';
+@import 'elements/_dropdown';
+@import 'elements/_footer';
+@import 'elements/_header';
+@import 'elements/_forms';
+@import 'elements/_panel';
+@import 'elements/_spinner';
+@import 'elements/_tooltips';
+@import 'elements/_widgets';
+@import 'elements/_reports';
+@import 'elements/_radio-button';
+@import 'elements/_checkboxes';
+@import 'elements/_tables';
+@import 'elements/_modals';
+@import 'elements/_reports';
+@import 'elements/_titles';
+@import 'elements/_doll';
+@import 'elements/_my-movements';
+@import "elements/_blink";
+@import "elements/_carousel";
+@import "elements/_point";
+@import "elements/_rectangle";
+@import "elements/_icons";
+@import "elements/_inputs";
+@import "elements/_section-add-activity";
+@import "elements/_no-results";
+@import "elements/_refresh-session";

@@ -1,0 +1,29 @@
+div.content-panel.tranfers.text-center(ng-if="carsCtrl.stepForm.stepG")
+    .row(style="padding-bottom:30px;")
+        h2.tit Cotiza tu Seguro de auto
+    .row(style="padding-bottom:30px;") 
+        p(style="font-size: 16px; font-weight: bold;") Contrata la mejor aseguradora que se ajuste a ti
+    .row.form-group
+        .col-md-4
+            img(src="img/logos/mapfre.svg" style="width: 170px; height: 100px")
+        .col-md-8(style="padding-top:14px;")
+            .row
+                p.col-sm-3(ng-class="carsCtrl.txtClass" style="font-size: 14px;") Auto a Asegurar:
+                p.col-sm-9.text-left(style="font-size: 14px; font-weight: bold;") {{carsCtrl.marcaVehiculo}} {{carsCtrl.modeloVehiculo}}
+            .row
+                p.col-sm-3(ng-class="carsCtrl.txtClass" style="font-size: 14px;") Cobertura:
+                p.col-sm-9.text-left(style="font-size: 14px; font-weight: bold;") {{carsCtrl.typeCobertura}}
+            .row    
+                p.col-sm-3(ng-class="carsCtrl.txtClass" style="font-size: 20px;") Prima Total:
+                p.col-sm-9.text-left(style="font-size: 20px; font-weight: bold;") {{carsCtrl.datosCotizacion.insurancePaymentData.totalPayments | currency}} Anual
+    .row(style="padding-top:30px;padding-bottom:15px;")
+        p(style="font-size: 28px; font-weight: bold;") Paga tu autoseguro
+    .row(style="padding-bottom:15px;")
+        p(style="font-size: 16px; font-weight: bold;") Haz elegido la mejor póliza para ti
+    .row(style="padding-bottom:30px; font-size: 25px; font-weight: bold;") 
+        p(ng-if="carsCtrl.formaPagoUser === 'domCredito'") Pagar con Tarjeta de Crédito
+        p(ng-if="carsCtrl.formaPagoUser === 'domDebito'") Pagar con Tarjeta de Débito
+        p(ng-if="carsCtrl.formaPagoUser === 'sinDom'") Pagar sin Domiciliar
+    .row(style="padding-left:35px;")
+        button(class="btn-primary btn" ng-click="carsCtrl.cotizarTresB()" ) REGRESAR
+        button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="carsCtrl.emisionPoliza()" ) CONTINUAR

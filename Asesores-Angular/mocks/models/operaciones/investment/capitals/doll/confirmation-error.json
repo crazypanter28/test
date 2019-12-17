@@ -1,0 +1,31 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 2,
+			"transactionID": "bda7a0b5-3258-4885-b9d4-603518185f4e",
+			"messages": [{
+				"responseSystemCode": "CACWC0051",
+				"responseMessage": "La operación debe de capturarse como lote o pico",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}, {
+				"responseSystemCode": "CAPRR0016",
+				"responseMessage": "1 pages produced in report number 8",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1493960400000,
+		"time": 65104000,
+		"clientID": "NBURSANET",
+		"sessionID": "",
+		"responseSystem": "A2K",
+		"operationName": "StockMarketOrderQuotation",
+		"operationVersion": "1_0",
+		"ipaddress": ""
+	},
+	"outStockMarketOrderQuotation": {
+		"stockMarketOrderQuotation": null
+	}
+}

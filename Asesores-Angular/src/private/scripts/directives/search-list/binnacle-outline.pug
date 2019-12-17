@@ -1,0 +1,46 @@
+include /views/mixins/info-result
+
+div.search-list-block
+
+    // Search
+    .common-block-search
+        .form-group.has-icon.search-field
+            label( for="search-client" ) Búsqueda del cliente
+            .input-wrapper
+                input.form-control( type="text" placeholder="Nombre" id="search-client" name="search-client"
+                    ng-model="search_list.filter"
+                    ng-change="search_list.filterInfo( info )"
+                )
+                i.fa.fa-search
+
+    // Table results
+    table.table( ng-table='search_list.table' )
+        thead
+            tr
+                th Contrato
+                th Nombre
+                th Tipo
+                th(ng-if="typeoperation !== 'all'") Vencimiento
+                th(ng-if="typeoperation !== 'all'") Perfil
+                th Reperfilar
+        tbody
+            tr( ng-if="$data.length > 0" ng-repeat='item in $data' )
+                td {{ item.numSolContrato }} 
+                td {{ item.cliente.value.nombre }}
+                td {{ item.tipoOrigenTO.nombre }}
+                td(ng-if="typeoperation !== 'all'") {{ item.sfechaActualizacion }}
+                td(ng-if="typeoperation !== 'all'") {{ item.perfil.value.nombre }}
+                td
+                    a.view-details( ng-click="cb( employee, item.numSolContrato,item.tipoOrigenTO.id,item.tipoServicioTO.value.idTipoServicio,item.cliente.value.tipoPersonaTO.id,typeoperation )" )
+            tr( ng-if="$data.length === 0" )
+                td( colspan="6" )
+
+                    // No results
+                    .no-results
+                        +noResults("binnacle-search")
+
+    // Note
+    p.note( ng-class="{ 'no-pager': ( search_list.filtered_info.length < 6 ) }" ng-if="search_list.filtered_info.length > 0" )
+        | * Para
+        strong  REPERFILAR
+        |  a un cliente, da clic en el ícono.

@@ -1,0 +1,12 @@
+{
+   "code":"INFRASTRUCTURE",
+   "success":false,
+   "type":"ERROR",
+   "message":"Existieron problemas para realizar la operación indicada, el código de transacción es 7af26eb7-ec8a-4b5a-aabf-f43a67bf97ff",
+   "error":{
+      "responseSystemCode":"ACSAP0000004",
+      "responseMessage":"No existe interlocutor comercial 947735245",
+      "responseType":"T",
+      "responseCategory":"ERROR"
+   }
+}

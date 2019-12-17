@@ -1,0 +1,85 @@
+include /views/mixins/info-result
+
+div
+
+    .form-row        
+        div.item.field.field-inptut        
+            label Ingresa el Tipo de Contrato
+            div(act-dropdown ng-model="tracingForm.search_form.optionTypeContract" selected="tracingForm.search_form.typeContractSelected" )
+        .item.field
+            .form-group
+                label Ingresa número de contrato
+                input.form-control( type="text" placeholder="Número de contrato" ng-model="tracingForm.search_form.contract" ng-required="true" 
+                                    maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" 
+                                    ng-keyup="$event.keyCode == 13 && tracingForm.search_form.contract && tracingForm.submitSearch()" ng-pattern="/^[0-9]+$/")
+        .item.action
+            a.btn.btn-primary.btn-search(   href="javascript:void(0);" 
+                                            ng-class="{ 'disabled': !tracingForm.search_form.contract }" 
+                                            ng-click="tracingForm.submitSearch()") BUSCAR
+
+    .search-results
+
+        .loader-wrapper( ng-if="tracingForm.search_form.sent && !tracingForm.search_form.finish" )
+
+        .no-results.tracing( ng-if="model.form.scontract === ''" )
+            +noResults("no-results")( msg!="<strong>No se encontraron</strong> resultados con esta<br />búsqueda. Vuelve a intentar con otro dato." )
+
+        .results( ng-if="model.form.scontract" )
+            .client-contract-info
+                div
+                    strong Nombre:
+                    |  {{ model.form.scontract.nombreCliente }}
+                div
+                    strong Número de contrato:
+                    |  {{ model.form.scontract.numContrato }}
+                div
+                    strong Edad:
+                    |  {{ model.form.scontract.edad  }} años 
+
+            .form-row
+                .item.fields-list
+                    .field-name Opciones a mostrar en el reporte
+                    .form-group
+                        label.act-checkbox-custom( for="confidential" )
+                            input( type="checkbox" id="confidential" ng-model="model.form.confidential" )
+                            span.css-label
+                            | Marcar nombre del cliente como confidencial
+                        label.act-checkbox-custom( for="person-type" )
+                            input( type="checkbox" id="person-type" ng-model="model.form.person_type" )
+                            span.css-label
+                            | Mostrar tipo de persona en el reporte
+                        label.act-checkbox-custom( for="service-type" )
+                            input( type="checkbox" id="service-type" ng-model="model.form.service_type" )
+                            span.css-label
+                            | Mostrar tipo de servicio en el reporte
+
+            .form-row(ng-if="tracingForm.search_form.typeContractSelected.id==='998'")
+                .item.field
+                    dates-range-picker( label="Periodo para calculo de TIR" placeholder="dd/mm/aaaa - dd/mm/aaaa" 
+                                        date="model.form.tir" options="tracingForm.datepicker_opts" )
+                .item(ng-if="tracingForm.search_form.typeContractSelected.id==='998' && formType==='seguimiento' ")
+                    .form-group.single-item
+                        label.act-checkbox-custom( for="other-calculus" )
+                            input(  type="checkbox" id="other-calculus" ng-model="model.form.other_calculus" 
+                                    ng-change="tracingForm.resetChilds( 'other_calculus', 'tir2' )" )
+                            span.css-label
+                            | Agregar otro cálculo de TIR: 
+                .item.field( ng-if="model.form.other_calculus" )
+                    dates-range-picker( label="Periodo para calculo de TIR" placeholder="dd/mm/aaaa - dd/mm/aaaa" 
+                                        date="model.form.tir2" options="tracingForm.datepicker_opts" )
+
+            .form-row
+                .item.fields-list
+                    .form-group
+                        label.act-checkbox-custom( for="capital-gain")
+                            input( type="checkbox" id="capital-gain" ng-model="model.form.capital_gain" )
+                            span.css-label
+                            | Mostrar plusvalía
+                .item
+                    .form-group.comment-group
+                        label.act-checkbox-custom( for="add-comment-tracing" )
+                            input(  type="checkbox" id="add-comment-tracing" ng-model="model.form.add_comment_tracing" ng-change="tracingForm.resetChilds( 'add_comment_tracing', 'comment_tracing' )")
+                            span.css-label
+                            | Agregar comentario al portafolio actual
+                        textarea.form-control(  ng-if="model.form.add_comment_tracing" ng-model="model.form.comment_tracing" placeholder="Comentario")
+                

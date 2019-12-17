@@ -1,0 +1,403 @@
+@mixin beforeCalendar( $color ) {
+
+    &:before{
+        background: $color;
+
+        content: '';
+        display: block;
+        height: 100%;
+        left:0;
+        margin-left: -5px;
+        position: absolute;
+        top: 0;
+        width: 5px;
+    }
+
+}
+
+.widget.calendar{
+    padding-right: 0 !important;
+}
+
+.act-calendar{
+    background-color: #ffffff;
+    margin-top: -10px;
+    width: 100%;
+    @include clear();
+    // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+    // border: solid 0.5px #d2cfcd;
+
+    .viewMore{
+        text-align: right;
+    }
+
+    .calendar,
+    .information{
+        float: left;
+    }
+    
+    .dimm{
+        float: left;
+    }
+
+    .calendar{
+        padding: 9px 9px 0 0;
+        width: 40%;
+    }
+
+    .information{
+        padding: 1px 0;
+        width: 60%;
+
+        span{
+
+            .section{
+                position: relative;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 5px;
+                border-bottom: 1px solid #ddd;
+
+                .empty{
+                    margin-top: 15px;
+                    padding: 0 2px;
+                    text-align: center;
+
+                    p{
+                        color: $gray2;
+                        font-size: 14px !important;
+                        margin-bottom: 0;
+                        line-height: 14px;
+                    }
+
+                    img{
+                        margin-top: 10px;
+                    }
+                }
+
+
+                &:last-child{
+                    border-bottom: 0;
+                }
+
+
+                &.notices{
+                    height: 107px;
+                    @include beforeCalendar( #517cbd );
+
+                    .nano-content{
+                        max-height: 75px;
+                        height: 75px;
+                    }
+
+                    div.item{
+                        background-color: $blue5;
+                        color: #0f3f88;
+                        font-family: "Proxima Regular";
+                        font-size: 10px;
+                        height: 35px;
+                        line-height: 1.3;
+                        margin-bottom: 4px;
+                        padding: 5px 10px;
+
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                    }
+
+                }
+
+                &.activities{
+                    font-size: 10px;
+                    height: 130px;
+                    @include beforeCalendar( rgba(80, 123, 189, 0.8) );
+                    color: $tertiary-color;
+
+                    h4{
+                        margin-bottom: 0;
+                    }
+
+                    .nano-content{
+                        height: 88px;
+                        max-height: 88px;
+                    }
+
+                    .description{
+                        overflow: hidden;
+                        color: $blue4;
+                    }
+
+                    .buttons{
+                        padding-top: 5px;
+                    }
+
+                    .icon{
+                        height: 10px;
+                        width: 10px;
+
+                        &:last-child{
+                            margin-left: 10px;
+                        }
+                    }
+                }
+
+                &.birthday{
+                    height: 127px;
+                    @include beforeCalendar( #96b9ee );
+
+                    h4{
+                        margin-bottom: 4px;
+                    }
+
+                    .nano-content{
+                        max-height: 75px;
+                        height: 75px;
+
+
+                        .item-birthday{
+                            color: $tertiary-color;
+                            height: 37px;
+                            max-height: 37px;
+                            overflow: hidden;
+                            padding-right: 10px;
+
+                            h5{
+                                color: $blue4;
+                            }
+                        }
+                    }
+
+                    .tooltip.left{
+                        left: -105px !important;
+                        top: -68px !important;
+                    }
+
+                    button{
+                        text-transform:uppercase;
+                        text-align: center;
+                        width: 100%;
+
+                        &:hover{
+                            text-decoration: none;
+                        }
+
+                        a{
+                            color: $blue4;
+                            padding: 0 5px;
+                            border-bottom: 1px solid $blue4;
+                            text-decoration: none;
+                            font-size: 10px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .dimm{
+        padding: 1px 0;
+        width: 60%;
+
+        span{
+
+            .section{
+                position: relative;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 5px;
+                border-bottom: 1px solid #ddd;
+
+                .empty{
+                    margin-top: 15px;
+                    padding: 0 2px;
+                    text-align: center;
+
+                    p{
+                        color: $gray2;
+                        font-size: 14px !important;
+                        margin-bottom: 0;
+                        line-height: 14px;
+                    }
+                }
+
+                &.activities{
+                    font-size: 15px;
+                    height: 340px;
+                    @include beforeCalendar( rgba(80, 123, 189, 0.8) );
+                    color: $tertiary-color;
+
+                    h4{
+                        margin-bottom: 0;
+                    }
+
+                    .nano-content{
+                        height: 300px;
+                        max-height: 300px;
+                    }
+
+                    .description{
+                        max-height: 20px;
+                        overflow: hidden;
+                        color: $blue4;
+                    }
+                }
+            }
+        }
+    }
+
+    .title{
+        border-bottom: 1px solid $blue4;
+        color: $blue4;
+        font-size: 13px;
+        margin: 0;
+        margin-bottom: 3px;
+        padding-top: 6px;
+    }
+
+    .more-birthdays{
+
+        .header{
+            border-bottom: 1px solid #7b9bcc;
+            padding: 4px 0;
+            position: relative;
+            text-align: right;
+
+            @include beforeCalendar( #517cbd );
+        }
+
+        .content-birthdays{
+            padding: 0 10px;
+            position: relative;
+            height: 322px;
+            @include beforeCalendar( #96b9ee );
+
+            .item-birthday{
+                color: $tertiary-color;
+
+                h5{
+                    color: $blue4;
+                }
+
+                &:last-child{
+                    border-bottom: 0;
+                }
+
+                .indice{
+                    font-size: 14px;
+                    font-weight: bold;
+                    padding-top: 3px;
+                }
+
+            }
+
+            .nano-content{
+                max-height: 300px;
+            }
+        }
+
+    }
+
+    div.container-items{
+        overflow: auto;
+    }
+}
+
+.item-activity{
+    padding: 5px 0;
+    border-bottom: 1px solid #d2cfcd;
+    @include clear();
+}
+
+.item-birthday{
+    border-bottom: 1px solid #d2cfcd;
+    font-size: 10px;
+    padding: 3px 0;
+    @include clear();
+
+    h5{
+        font-size: 11px;
+        margin: 0;
+    }
+}
+
+
+.tooltip-birthday{
+    filter: alpha(opacity=100) !important;
+    opacity: 1 !important;
+    padding: 0;
+    height: 108px;
+    width: 262px;
+    top: 17px !important;
+    left: -25px !important;
+
+
+    &.left .popover-arrow{
+        border-color: white;
+        border-width: 0;
+        height: 20px;
+        width: 20px;
+        z-index: -1;
+
+        &:before{
+            background: white;
+            box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 1);
+            content: '';
+            display:block;
+            height: 100%;
+            margin-left: -4px;
+            right: 0;
+            transform: rotate(45deg);
+            -ms-transform: rotate(7deg); /* IE 9 */
+            -webkit-transform: rotate(7deg);
+            width: 100%;
+        }
+    }
+
+
+    .popover-inner{
+        background: white;
+        border-radius: 0;
+        color: black;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        font-family: $font-family-base;
+        height: 100%;
+        max-width: 100%;
+        padding: 8px 0;
+        overflow: hidden;
+        width: 100%;
+
+
+        .popover-content{
+            padding: 0;
+        }
+
+        .title-tooltip{
+            font-family: $font-family-base;
+            font-size: 12px;
+            font-weight: 600;
+            background: $blue8;
+            color: white;
+            padding: 2px;
+            margin: 0 auto;
+            margin-bottom: 5px;
+            width: 233px;
+            text-align:center;
+        }
+
+        .description{
+            color: $blue9;
+            font-size: 10px;
+            text-align: left;
+        }
+
+        .button-tooltip{
+            background: $blue4;
+            color: white;
+            font-size: 12px;
+            width: 100%;
+            text-transform: uppercase;
+        }
+    }
+}

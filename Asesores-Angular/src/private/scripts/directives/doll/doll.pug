@@ -1,0 +1,212 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/doll
+
+
+div.doll
+    div.row.margin-0.header
+        button.btn.col-xs-6.buy(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('buy')"
+            ng-class = "{'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('sell')"
+            ng-class = "{'active' : doll.tab === 'sell'}"
+        )
+            span vender
+
+    div.row.margin-0.body.empty.init( ng-show="!doll.newState && !doll.tab")
+            div.empty-container
+                div.empty-center
+                    img(src="img/icons/doll/icon_money.svg" )
+                    p.station-description Selecciona la operación que deseas realizar
+                    p.label Puedes dar clic directamente sobre la
+                        b  EMISORA
+                        |   para agilizar tu compra o venta
+    // Spinner
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    //div.row.margin-0.body.empty( ng-show="doll.newState")
+        div.empty-container
+            div.empty-center
+                img(src="img/icons/doll/icon_money01.svg" )
+                p.station-title Emisora
+                p.station-description {{ station.issuerName || station.issuer }} {{ station.serie}}
+
+                p.label Selecciona la operación que deseas realizar.
+    div.row.margin-0.body.confirm( ng-if="doll.confirmationModel && !doll.captureModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +dollConfirmation( 'confirmationModel' )
+    div.row.margin-0.body.confirm( ng-if="doll.captureModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +dollConfirmation( 'captureModel', true )
+    div.row.margin-0.body.sell( ng-if="doll.tab === 'sell' && !doll.confirmationModel" )
+        form(name="form" )
+            div.row.margin-0.informacion-doll
+                div.search.col-xs-7
+                    div.form-group.has-icon.act-input
+                        label( for="station" ) Emisora
+                        div.input-wrapper
+                            input.form-control( type="text" placeholder="Emisora" id="station" name="station"
+                                ng-required="true"
+                                ng-model="doll.cmd.station"
+                                required="required"
+                                uib-typeahead="st as ( ( st.issuerName || st.issuer ) +' '+ st.serie) for st in doll.stations | filter:$viewValue"
+                                typeahead-on-select= 'doll.AddStation($item)'
+                                autocomplete="off",
+                                typeahead-editable="false"
+                            )
+                            i.fa.fa-search(style="right:2px")
+
+                div.price.col-xs-5
+                    label Precio:
+                        b {{ doll.priceSelected |  currency: '$' : 4}}
+                        div.purchasing-label
+                            p Mis Títulos
+                                b  {{ doll.dollDescription.fund.titlesQty | currency:'':0 }}
+
+            div.purchasing-rules.row
+                +dollRules( 'sell' )
+
+                div.row.margin-0.accounts-bank
+                    label Forma de liquidación:
+                        span *
+                    div
+                        +radioButton( 'Efectivo', 'doll.cmd.typeBank' )(
+                            id='efectivo'
+                        )
+                        // +radioButton( 'Cuenta Bancaria', 'doll.cmd.typeBank' )(
+                                id='bank' )
+                    div( ng-if="doll.cmd.typeBank === 'bank'"  )
+                        div( act-dropdown
+                            ng-model="doll.bankModel"
+                            selected="doll.cmd.BankSelected"
+                            name="media"
+                        )
+                        div.account-data 
+                            p Clabe: {{ doll.cmd.BankSelected.bankAccounts.clabe }}
+                            p Nombre: {{ doll.cmd.BankSelected.bankAccounts.beneficiaryName }}
+
+                div.col-xs-12.padding-0.text-center
+                    label(ng-if="(doll.dollDescription.fund.titlesQty - doll.cmd.sell.typeValue ) < 0" style="color: #ff0000;" ) No existe posición para vender
+            div.row.margin-0.order-execute
+                div.row.margin-0
+                    div.col-xs-6.padding-0
+
+                        div.form-group.has-icon
+                            label(for="date") Ejecución de la orden
+                        div(style="position:relative")
+                            +inputDate( "doll.orderDate", 'date1' )(
+                                ngChange="doll.findDate();",
+                                datepickerOptions = "datepickerOptions"
+                                ngMouseOpen = 'popup2.opened',
+                                disabled= '!doll.dollDescription'
+                            )
+                    div.col-xs-6.anticiped-sell( ng-if="doll.dollDescription.fund.anticipatedSell != 0" )
+                        input(
+                            type="checkbox" id="anticipada"
+                            ng-model = 'doll.anticipedSell'
+                            ng-change = 'doll.changeAnticipedSell()'
+                        )
+                        label(for="anticipada")  Venta anticipada
+                div.row.margin-0.dates
+                    div.col-xs-6.padding-0
+                            label Solicitud de la orden
+                            p {{ doll.currentDate }}
+                    div.col-xs-6.padding-0
+                        label Liquidación de la orden
+                        p {{ doll.cmd.dates.settlementDate | date:'dd/MM/yyyy'}}
+
+            hr
+            div(ng-if="!doll.contractType")
+                +dollBinnacle()
+
+            .row.margin-0(ng-if="doll.contractType")
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                    submit,
+                    'btn-primary',
+                    'form.$invalid',
+                    'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                    'Limpiar',
+                    'btn-primary',
+                    null,
+                    'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")
+
+    div.row.margin-0.body( ng-if="doll.tab === 'buy' && !doll.confirmationModel")
+        form(name="form" novalidate)
+            div.row.margin-0.informacion-doll
+                div.search.col-xs-7
+                    div.form-group.has-icon.act-input
+                        label( for="station" ) Emisora
+                        div.input-wrapper
+                            input.form-control( type="text" placeholder="Emisora" id="station" name="station"
+                                ng-required="true"
+                                ng-model="doll.cmd.station"
+                                required="required"
+                                uib-typeahead="st as ( ( st.issuerName || st.issuer ) +' '+ st.serie) for st in doll.stations | filter:$viewValue"
+                                typeahead-on-select= 'doll.AddStation($item)'
+                                autocomplete="off",
+                                typeahead-editable="false"
+                            )
+                            i.fa.fa-search(style="right:2px")
+                div.price.col-xs-5
+                    label Precio:
+                    div
+                        b {{ doll.priceSelected |  currency: '$' : 4}}
+
+            div.purchasing-label(ng-if="doll.cmd.station.issuerName !== 'ACTIREN'")
+                p Poder de Compra:
+                    b  {{ $root.currentCash.balance.buyingPowerData.cash48 | currency:'$' }}
+                    |  a 48 hrs.
+            div.purchasing-label(ng-if="doll.cmd.station.issuerName === 'ACTIREN'")
+                p Efectivo de hoy:
+                    b  {{ $root.currentCash.balance.buyingPowerData.currentCash | currency:'$' }}
+
+            div.purchasing-rules.row
+                +dollRules('buy')
+
+            div.row.margin-0.order-execute
+                div.col-xs-6.padding-0
+
+                    div.form-group.has-icon
+                        label(for="date") Ejecución de la orden
+                        div(style="position:relative")
+                            +inputDate( "doll.orderDate", 'date1' )(
+                                ngChange="doll.findDate();",
+                                datepickerOptions = "datepickerOptions"
+                                ngMouseOpen = 'popup2.opened',
+                                disabled= '!doll.dollDescription'
+                            )
+
+                div.col-xs-3
+                        label Solicitud de la orden
+                        p {{ doll.currentDate }}
+                div.col-xs-3
+                    label Liquidación de la orden
+                    p {{ doll.cmd.dates.settlementDate | date:'dd/MM/yyyy'}}
+
+            hr
+            div(ng-if="!doll.contractType")
+                +dollBinnacle()
+
+            .row.margin-0(ng-if="doll.contractType")
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                    'OPERAR',
+                    'btn-primary',
+                    'form.$invalid',
+                    'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                    'Limpiar',
+                    'btn-primary',
+                    null,
+                    'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")

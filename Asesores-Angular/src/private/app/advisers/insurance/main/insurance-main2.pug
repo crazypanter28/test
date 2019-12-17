@@ -1,0 +1,102 @@
+div.content-panel.tranfers(ng-if="insMainCtrl.stepForm.stepB")
+    div.row(ng-if="insMainCtrl.mostrarDatos")
+        .col-xs-1
+            div
+                p( style="font-size: 13px; font-weight: bold;") {{insMainCtrl.contract}}
+        .col-xs-4
+                div
+                    p( style="font-size: 13px; font-weight: bold;") Nombre del Cliente:&nbsp;&nbsp;&nbsp;
+                        span( style="font-size: 13px;") {{insMainCtrl.nombreCliente}}
+        .col-xs-4
+                div
+
+                    p( style="font-size: 13px; font-weight: bold;") Número de cliente único:&nbsp;&nbsp;&nbsp;
+                        span( style="font-size: 13px;") {{insMainCtrl.datosCliente.clientNumber}}
+    div.content-panel.tranfers
+        div.row
+            .col-xs-1
+            .col-xs-3                          
+                img( src="img/bg/seguros.jpg" )
+            .col-xs-6 
+                h4 Seguros de Autos
+                p( style="font-size: 13px; font-weight: bold;") Contrata la mejor protección de auto de forma rápida y segura
+                ul
+                    li( style="font-size: 13px; font-weight: bold;") Seguros mas completos y al mejor precio
+                    li( style="font-size: 13px; font-weight: bold;") Mayor variedad dependiendo de tus necesidades
+                    li( style="font-size: 13px; font-weight: bold;") Cotiza tu seguro de auto de manera sencilla
+                div.row
+                    .col-xs-2
+                    .col-xs-10
+                        button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="insMainCtrl.valCotizar()") Cotizar
+                        //li( style="font-size: 13px; font-weight: bold; color: #ff0000") Para cotizar por valor factura comunícate al área de Seguros
+    div.content-panel.tranfers
+        div.row
+            .col-xs-1
+            .col-xs-3                          
+                img( src="img/bg/seguros-hogar.jpg" )
+            .col-xs-6 
+                h4 Seguros de Hogar
+                p( style="font-size: 13px; font-weight: bold;") Contrata la mejor protección para tu casa de forma rápida y segura
+                ul
+                    li( style="font-size: 13px; font-weight: bold;") Seguros más completos y al mejor precio
+                    li( style="font-size: 13px; font-weight: bold;") Mayor variedad dependiendo de tus necesidades
+                    li( style="font-size: 13px; font-weight: bold;") Cotiza tu seguro de hogar de manera sencilla
+                    li( style="font-size: 13px; font-weight: bold; color :red;") Para cotizar y emitir pólizas para ubicaciones que se encuentren a menos de 250m de un cuerpo de agua, será necesario enviar la solicitud de cotización directamente al correo <span style="color: #1750a7"><u>jcruzl@actinver.com.mx</u></span>
+                    li( style="font-size: 13px; font-weight: bold; color :red;") En caso de que la ubicación se encuentre a menos de 250m de un cuerpo de agua y se emita la póliza por este medio, la cobertura de Fenómenos Hidrometeorológicos no será amparada.
+                div.row
+                    .col-xs-2
+                    .col-xs-10
+                        button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="insMainCtrl.valCotizarCasas()") Cotizar
+                        //li( style="font-size: 13px; font-weight: bold; color: #ff0000") Para cotizar por valor factura comunícate al área de Seguros
+    div.content-panel.tranfers
+        div.row
+            .col-xs-1
+            .col-xs-3                          
+                img( src="img/bg/seguros-medicos.jpg" )
+            .col-xs-6
+                h4 Seguro de Gastos Médicos. Protección Médica A Tu Medida
+                p( style="font-size: 13px; font-weight: bold;") Contrata la mejor protección para tu salud de forma rápida y segura
+                 ul
+                    li( style="font-size: 13px; font-weight: bold;") Seguros más completos y al mejor precio
+                    li( style="font-size: 13px; font-weight: bold;") Mayor variedad dependiendo de tus necesidades
+                    li( style="font-size: 13px; font-weight: bold;") Cotiza tu seguro de gastos médicos mayores de manera sencilla
+                div.row
+                    .col-xs-2
+                    .col-xs-10
+                        button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="insMainCtrl.valCotizarProteccionMedica()") Cotizar
+    div.content-panel.tranfers
+        div.row
+            .col-xs-1
+            .col-xs-3
+                img( src="img/bg/Seguro-de-vida.jpg")
+            .col-xs-6
+                h4 Seguro de Vida.
+                p( style="font-size: 13px; font-weight: bold;") Contrata la mejor protección para tu salud de forma rápida y segura
+                 ul
+                    li( style="font-size: 13px; font-weight: bold;") Seguros más completos y al mejor precio
+                    li( style="font-size: 13px; font-weight: bold;") Mayor variedad dependiendo de tus necesidades
+                    li( style="font-size: 13px; font-weight: bold;") Cotiza tu seguro de Vida de manera sencilla
+                div.row
+                    .col-xs-2
+                    .col.xs-10(style="padding: 0px 0px 0px 105px")
+                        button(style="margin-left:45px;" class="btn-primary btn" ng-click="insMainCtrl.valCotizarVida()") Cotizar
+    div.content-panel.tranfers
+        div.row
+            .col-xs-1
+            .col-xs-3
+                img( src="img/bg/Seguros-pyme.jpeg")
+            .col-xs-6
+                h4 Seguro para PYMES.
+                p( style="font-size: 13px; font-weight: bold;") Contrata la mejor protección de forma rápida y segura
+                 ul
+                    li( style="font-size: 13px; font-weight: bold;") Seguros más completos y al mejor precio
+                    li( style="font-size: 13px; font-weight: bold;") Mayor variedad dependiendo de tus necesidades
+                    li( style="font-size: 13px; font-weight: bold;") Cotiza tu seguPYME de manera sencilla
+                div.row
+                    .col-xs-2
+                    .col.xs-10(style="padding: 0px 0px 0px 105px")
+                        button(style="margin-left:45px;" class="btn-primary btn" ng-click="insMainCtrl.ValCotizarPyme()") Cotizar
+    div.row
+        .col-xs-5
+        .col-xs-7
+            button(style="margin-left:33px;" class="btn-primary btn" ng-click="insMainCtrl.pagina1(); insMainCtrl.reinicia();") Regresar

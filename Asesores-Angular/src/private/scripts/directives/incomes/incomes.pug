@@ -1,0 +1,26 @@
+include /views/mixins/info-result
+div
+    .spinner( ng-if="!incomesWidget.details.finish" )
+    div( ng-if="incomesWidget.details.success" )
+        .wt-header
+            h2.title ENTRADAS Y SALIDAS
+        .wt-content
+
+            // Item
+            .item
+                h3.topic BANCO
+                .details
+                    ul
+                        li {{incomesWidget.details.data.bank[0] | currency}}
+                        li {{incomesWidget.details.data.bank[1] | currency}}
+
+            // Item
+            .item
+                h3.topic CASA DE BOLSA
+                .details
+                    ul
+                        li {{incomesWidget.details.data.brokerage[0] | currency}}
+                        li {{incomesWidget.details.data.brokerage[1] | currency}}
+
+    div( ng-if="incomesWidget.details.finish && !incomesWidget.details.success" )
+        +resourceCrashed()

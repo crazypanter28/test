@@ -1,0 +1,884 @@
+//
+// _modals.scss
+//
+// It reflects modals styles for entire project
+//
+
+/**
+ * -------------------------
+ * @section Generals
+ * -------------------------
+*/
+.modal {z-index: 3000 !important;}
+.modal-backdrop {z-index: 2500 !important;}
+
+/**
+ * -------------------------
+ * @section Modal
+ * -------------------------
+*/
+.modal-open .container-fluid, .modal-open  .container {@include blur();}
+
+/**
+ * -------------------------
+ * @section Modal dialog
+ * -------------------------
+*/
+.modal-dialog {position: relative; display: table; overflow-y: auto; overflow-x: auto;  min-width: 300px;}
+
+/**
+ * -------------------------
+ * @section Close modal
+ * -------------------------
+*/
+.close-modal {display: block; position: absolute; top: 10px; right: 25px; width: 20px; height: 20px; background: url("img/icons/cerrar-modal.svg") no-repeat; cursor: pointer;}
+
+/**
+ * -------------------------
+ * @section Modal title
+ * -------------------------
+*/
+.modal-title {border-bottom: 2px solid #195dc4; font-family: "Proxima Bold"; font-size: 18px; text-transform: uppercase; color: #0f3f88;}
+
+/**
+ * -------------------------
+ * @section Modal content
+ * -------------------------
+*/
+.modal-content {@include rounded(0); @include box-shadow(none); border: 0;}
+
+/**
+ * -------------------------
+ * @section Modal footer
+ * -------------------------
+*/
+.modal-footer {padding: 15px 0;}
+
+/**
+ * -------------------------
+ * @section Month goal modal
+ * -------------------------
+*/
+#month-goal-details {
+    padding: 35px 25px;
+
+	table {
+		margin-bottom: 0;
+		> tbody > tr > td {padding: 0 12px; border: 0; vertical-align: middle; text-align: center; color: #0f3f88;}
+		td > div {
+			padding: 8px 15px; border: 1px solid #d2cfcd; border-top: 0; border-bottom: 1px solid $white;
+
+			// Types
+			&.money {background-color: #7ed321;}
+			&.funds {background-color: #f5f047;}
+			&.insurance {background-color: #00bebe;}
+			&.credit {background-color: #12c874;}
+		}
+		td:first-child {width: 130px; border-right: 1px solid #f5f047; font-family: "Proxima Semibold"; font-size: 10px; line-height: 12px; text-align: right; text-transform: uppercase; color: #0f3f88;}
+		tr:first-child td:not(:first-child) {
+			font-family: "Proxima Semibold"; font-size: 13px; line-height: 15px;
+			> div {width: 150px; border-top: 1px solid #d2cfcd;}
+		}
+		tr:nth-child(3) td:not(:first-child) {font-family: "Proxima Semibold"; font-size: 15px; line-height: 17px;}
+		tr:last-child td > div {margin-top: -1px; background: #517cbd; border-bottom-color: #d2cfcd; font-family: "Proxima Bold"; font-size: 16px; line-height: 18px; color: $white;}
+	}
+	.info-wrapper {padding: 15px 25px; border: 1px solid #d2cfcd; border-top: 0;}
+}
+
+/**
+ * -------------------------
+ * @section Form modal
+ * -------------------------
+*/
+.form-modal {
+    .loader-wrapper {
+        position: relative; height: 180px; margin-bottom: 5px;
+        .spinner {font-size: 15px;}
+    }
+}
+
+/**
+ * -------------------------
+ * @section Binnacle modal
+ * -------------------------
+*/
+.binnacle-modal {
+
+    // Body
+    .modal-body {
+        padding: 18px 20px 20px 20px; border-left: 1px solid #d2cfcd; border-right: 1px solid #d2cfcd;
+        .loader-wrapper {
+            position: relative; height: 130px; margin-bottom: 5px;
+            .spinner {font-size: 16px;}
+        }
+    }
+
+    // Footer
+    .modal-footer {overflow: hidden;}
+}
+
+/**
+ * -------------------------
+ * @section Binnacle client info modal
+ * -------------------------
+*/
+.modal-client-info {
+    width: 860px;
+    .note {
+        @include in-block; margin-top: 0px; margin-bottom: 0; float: left; font-size: 12px; text-align: left; color: #0072bc;
+        img {width: 18px; margin-right: 5px; vertical-align: text-bottom;}
+    }
+
+    // Body
+    .modal-body {
+
+        // Detailed info
+        .detailed-info {
+            font-family: "Proxima Light"; font-size: 14px; color: #767676;
+            label {display: block; margin: 0; font-family: "Proxima Regular";  color: #4a4a4a;}
+            .row {margin-bottom: 18px;}
+
+            // Remove margin
+             @include remove-child-margin-bottom;
+        }
+
+        // Reminder
+        .birthday-reminder {
+            margin-top: 20px;
+            label {display: block; margin-bottom: 3px;}
+            .form-group {margin-bottom: 15px; font-size: 0;}
+            .form-control {height: 30px; padding: 0; font-size: 14px;}
+            textarea.form-control {height: 60px; padding: 8px; resize: none;}
+
+            // Remove margin
+             @include remove-child-margin-bottom;
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @section Binnacle outline client modal
+ * -------------------------
+*/
+.outline-client-lb .modal-dialog  {width: 500px;}
+.modal-outline-client {
+    .form-group {margin-bottom: 0;}
+
+    // Radio button
+    .act-radio-custom {
+        display: block; margin-top: 14px; padding-left: 28px; font-weight: 300;
+        .css-label {margin-left: 0;}
+
+        // Childs
+        &:first-child {margin-top: 0;}
+    }
+
+    // Note
+    .note {
+        position: relative; margin-top: 25px; margin-bottom: 10px; padding: 10px 20px 10px 55px; background: #ffba3a; font-size: 14px; line-height: 16px; color: $white;
+        span {display: block; font-family: "Proxima Bold";}
+        .icon {position: absolute; @include vertical-middle; left: 4px; width: 51px; font-family: "Proxima Bold"; font-size: 30px; line-height: 30px; text-align: center;}
+    }
+}
+
+/**
+ * -------------------------
+ * @section Goals modal
+ * -------------------------
+*/
+.goals-modal {
+    min-width: 500px;
+
+    // Body
+    .modal-body {
+        padding: 18px 20px 20px 20px; border-left: 1px solid #d2cfcd; border-right: 1px solid #d2cfcd;
+        > div > div:last-child {@include remove-child-margin-bottom;}
+
+        // Loader wrapper
+        .loader-wrapper {
+            position: relative; height: 130px; margin-bottom: 5px;
+            .spinner {font-size: 16px;}
+        }
+
+        // Center details results
+        .center-details-results > div:first-child table {
+
+            // Prev header
+            .prev-header {
+                th {text-align: center !important;}
+
+                //
+                th:nth-child(1) {background: rgba(#517cbd, .75) !important;}
+                th:nth-child(2) {background: rgba(#517cbd, .4) !important; color: #0f3f88 !important;}
+            }
+        }
+
+        // Page instructions
+        .page-instructions .panel {margin-top: 20px; margin-bottom: 0;}
+    }
+}
+
+div.modal-header{
+    border-bottom: 2px solid $blue7;
+    padding: 0;
+
+
+    .icon{
+        height: 20px;
+        width: 20px;
+    }
+
+    h4{
+        color: $tertiary-color;
+        margin: 0;
+        margin-top: 22px;
+        text-transform: uppercase;
+    }
+}
+
+.modal-content{
+    border-radius: 0;
+    padding: 0 20px;
+    padding-top: 23px;
+}
+
+div.modal-body{
+    padding: 0;
+
+    .content{
+        border: 1px solid #d2cfcd;
+        border-top: 0;
+        padding: 15px;
+
+        &.propects-add-activities{
+            .col-xs-4{
+                height: 52px;
+                margin-bottom: 20px;
+                padding-right: 35px;
+
+
+                .form-control{
+                    height: 28px;
+                    padding: 0 4px;
+                }
+
+                label{
+                    margin-bottom: 5px;
+                }
+
+                .checkboxDinn{
+                    margin: 0px;
+                    width: 20px;
+                }
+            }
+
+             + .pane-wrapper-accordion{
+                 .panel-collapse{
+                     border: 1px solid #d2cfcd;
+                 }
+             }
+        }
+
+
+    }
+}
+
+div.modal-footer{
+    button.btn{
+        background: white;
+        border: 1px solid $tertiary-color !important;
+        color: $tertiary-color;
+        width: 120px;
+        height: 30px;
+
+        &.save{
+            background: $tertiary-color;
+            color: white;
+        }
+    }
+
+    // Disabled
+    .btn.disabled, .btn[disabled], fieldset[disabled] .btn {opacity: .5;}
+}
+
+.modal.table-detail{
+    .modal-detail-stations{
+        padding-bottom: 20px;
+    }
+
+    .detail-stations{
+        margin-top: 5px;
+    }
+}
+
+.modal.confirm-transfer{
+
+    .modal-dialog{
+        height: 440px;
+        width: 490px;
+    }
+
+    .modal-confirm-transfer{
+        padding: 0 20px;
+
+        p{
+            color: $form-control-color;
+            font-size: 14px;
+            margin-bottom: 8px;
+
+        }
+
+        .bold-msg{
+            p{
+                font-weight: 700;
+            }
+        }
+    }
+
+    .warning-msg{
+        background: $yellow2;
+        color: white;
+        max-height: 50px;
+        overflow: hidden;
+        padding: 10px 3px;
+
+        span{
+            display: inline-block;
+            padding: 6px 22px;
+            float: left;
+            font-size: 30px;
+        }
+
+        p{
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0;
+            line-height: 14px;
+        }
+    }
+}
+
+.iframe-ficha-valor {
+    width: 100%;
+    height: 500px;
+}
+
+.modal-ficha-valor{
+    padding: 0 20px;
+    height: 600px;
+    width: 800px;
+
+    p{
+        color: $form-control-color;
+        font-size: 14px;
+        margin-bottom: 8px;
+
+    }
+
+    .bold-msg{
+        p{
+            font-weight: 700;
+        }
+    }
+}
+
+
+.modal-show-activity{
+    padding: 0 24px;
+
+    .modal-body{
+
+        .container-date{
+
+            &:first-child{
+                margin-top: 10px;
+            }
+
+            p{
+                display: inline-block;
+
+                &.description{
+                    color: $blue9;
+                    font-family: 'Proxima SemiBold';
+                    font-size: 14px;
+                    width: 145px;
+                }
+            }
+        }
+
+        .btn{
+            background: $blue4;
+            color: white;
+            display: inherit;
+            font-size: 14px;
+            margin: 0 auto;
+            margin-top: 15px;
+            padding: 4px;
+            text-transform: uppercase;
+            width: 185px;
+        }
+    }
+}
+
+.modal-add-activity{
+    padding: 0 24px;
+
+    div.modal-body{
+
+        textarea{
+            border: 1px solid #d2cfcd;
+            border-bottom: 2px solid #AFAFAF;
+        }
+    }
+
+}
+
+.transfer-detail{
+    .table-title{
+        background: $blue4;
+        color: white;
+        height: 50px;
+        line-height: 12px;
+        margin-top: 5px;
+        overflow: hidden;
+        padding: 10px 5px;
+
+        p{
+            font-size: 12px;
+            margin-bottom: 0;
+
+            &:first-child{
+                font-family: 'Proxima Regular';
+            }
+            &:last-child{
+                font-family: 'Proxima SemiBold';
+            }
+        }
+    }
+    .modal-dialog{
+        width: 465px;
+    }
+
+    .modal-content{
+        padding-bottom: 24px;
+
+        .content{
+            p{
+                color: $tertiary-color;
+                font-size: 12px;
+                margin-bottom: 0;
+
+                &:first-child{
+                    font-family: 'Proxima Regular';
+                    text-align: right;
+                }
+                &:last-child{
+                    font-family: 'Proxima SemiBold';
+                }
+            }
+        }
+    }
+}
+
+
+.modal{
+    &.errorSystem{
+        top: calc( 50% - 95px );
+        .modal-content{
+            padding: 0;
+            border: 1px solid $blue4 !important;
+            color: $gray2;
+            height: 250px;
+            width: 400px;
+
+            h2{
+                font-size: 40px;
+                margin-bottom: 30px;
+            }
+
+            p{
+                font-size: 20px !important;
+                margin-bottom: 37px !important;
+                margin-top: 16px !important;
+            }
+            button{
+                background-color: $blue4;
+                color: white;
+                font-size: 14px;
+                padding: 3px 15px;
+            }
+        }
+    }
+
+    &.done{
+        top: calc( 50% - 95px );
+        .modal-content{
+            border-color: $green2 !important;
+
+
+            button{
+                background: $green2;
+            }
+        }
+    }
+
+    &.info{
+        top: calc( 50% - 95px );
+        .modal-content{
+            border-color: #337ab7 !important;
+
+
+            button{
+                background: #337ab7;
+                &:hover{
+                    background: #85b1d8;
+                }
+
+                &.info{
+                    background: #337ab7;
+                    color: white;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    &.error{
+        top: calc( 50% - 95px );
+        .modal-content{
+            border-color: $redError !important;
+
+
+            button{
+                background: $redError;
+            }
+        }
+    }
+
+    &.warning{
+        top: calc( 50% - 95px );
+        .modal-content{
+            border-color: $yellow2 !important;
+
+            div.buttons{
+
+                button{
+                    border-color: $yellow2;
+                    color: $yellow2;
+
+                    &:hover{
+                        background: transparent;
+                    }
+
+                    &.success{
+                        background: $yellow2;
+                        color: white;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.commons{
+        z-index: 9999 !important;
+
+        .modal-dialog{
+            width: 350px;
+        }
+
+        .modal-content{
+            border: 2px solid;
+            text-align: center;
+
+            img{
+                margin-bottom: 15px;
+            }
+
+            p{
+                font-family: 'Proxima Regular';
+                color: $tertiary-color;
+                font-size: 14px;
+                line-height: 14px;
+                margin-bottom: 20px;
+            }
+
+
+            div.buttons{
+                margin-bottom: 34px;
+
+                button{
+                    font-size: 12px;
+                    padding: 4px 10px;
+
+                    // &:focus,
+                    // &:active,
+                    // &:hover{
+                    //     background: inherit;
+                    // }
+
+                    &.success{
+                        color: white;
+                    }
+                }
+
+            }
+        }
+    }
+
+    &.administrator {
+
+        &.investment {
+
+
+            .modal-dialog {
+                min-width: 300px;
+                width: auto;
+
+
+                .form-investment {
+                    width: 600px;
+                }
+            }
+        }
+
+
+        .modal-dialog {
+            background: white;
+
+
+            .modal-content {
+                padding: 20px;
+
+
+                .title-modal {
+                    color: #0f3f88;
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+
+
+                .container-modal {
+                    border-bottom: 1px solid #d2cfcd;
+                    border-left: 1px solid #d2cfcd;
+                    border-right: 1px solid #d2cfcd;
+                    border-top: 3px solid #0f3f88;
+                    margin-bottom: 15px;
+                    padding: 10px;
+
+
+                    textarea {
+                        resize: none;
+                    }
+
+
+                    .form-group {
+                        margin-bottom: 10px;
+                    }
+
+
+                    .act-radio-custom {
+                        padding-left: 30px;
+                    }
+                }
+
+
+                .buttons {
+                    text-align: right;
+
+
+                    button {
+                        margin: 0 7px;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.lumina{
+        z-index: 9999 !important;
+
+        .modal-dialog{
+            width: 100%;
+        }
+
+        .modal-content{
+            border: 2px solid;
+            text-align: center;
+            min-width: 350px;
+            max-width: 500px;
+            max-height: 500px;
+            left: calc(50% - 250px);
+
+            img{
+                margin-bottom: 15px;
+            }
+
+            p{
+                font-family: 'Proxima Regular';
+                color: $tertiary-color;
+                font-size: 14px;
+                line-height: 14px;
+                margin-bottom: 20px;
+            }
+
+
+            div.buttons{
+                margin-bottom: 34px;
+
+                button{
+                    font-size: 12px;
+                    padding: 4px 10px;
+
+                    // &:focus,
+                    // &:active,
+                    // &:hover{
+                    //     background: inherit;
+                    // }
+
+                    &.success{
+                        color: white;
+                    }
+                }
+
+            }
+        }
+    }
+    &.center-modal{
+        z-index: 11000 !important;
+        top:none;
+        position: absolute;
+
+        .modal-dialog{
+            width: 100%;
+        }
+
+        .modal-content{
+            border: 2px solid;
+            text-align: center;
+            min-width: 350px;
+            max-width: 500px;
+            //max-height: 500px;
+            //left: calc(50% - 250px);
+
+            img{
+                margin-bottom: 15px;
+            }
+
+            p{
+                font-family: 'Proxima Regular';
+                color: $tertiary-color;
+                font-size: 14px;
+                line-height: 14px;
+                margin-bottom: 20px;
+            }
+
+
+            div.buttons{
+                margin-bottom: 34px;
+
+                button{
+                    font-size: 12px;
+                    padding: 4px 10px;
+
+                    // &:focus,
+                    // &:active,
+                    // &:hover{
+                    //     background: inherit;
+                    // }
+
+                    &.success{
+                        color: white;
+                    }
+                }
+
+            }
+        }
+    }
+    &.center-modal-bands-direct{
+        z-index: 11000 !important;
+        top:none;
+        position: absolute;
+
+        .modal-dialog{
+            width: 100%;
+        }
+
+        .modal-content{
+            border: 2px solid;
+            text-align: center;
+            min-width: 350px;
+            max-width: 600px;
+            //max-height: 500px;
+            //left: calc(50% - 250px);
+
+            img{
+                margin-bottom: 15px;
+            }
+
+            p{
+                font-family: 'Proxima Regular';
+                color: $tertiary-color;
+                font-size: 14px;
+                line-height: 14px;
+                margin-bottom: 20px;
+            }
+
+
+            div.buttons{
+                margin-bottom: 34px;
+
+                button{
+                    font-size: 12px;
+                    padding: 4px 10px;
+
+                    // &:focus,
+                    // &:active,
+                    // &:hover{
+                    //     background: inherit;
+                    // }
+
+                    &.success{
+                        color: white;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+.disabled-modal{
+    background: rgba( 0, 0, 0,0.5 );
+    height: 100%;
+    margin: -23px  0 0 -20px ;
+    position: absolute;
+    width: 100%;
+    z-index: 55;
+
+    &.groups{
+        height: calc( 100% + 3px );
+    }
+}
+
+.modal-center-lumina{
+    top:calc(50% - 250px) !important;
+}
+.modal-div-lumina{
+    text-align: justify;
+    margin-bottom: 19px;
+    max-height: 335px;
+    margin-right: -8px;
+    overflow-y: auto;
+    .negritas{
+        font-weight: bold;
+    }
+    >div{
+        padding-bottom: 5px;
+        margin-right: 0px;
+    }
+}

@@ -1,0 +1,16 @@
+.display-as-table
+    .wrapper
+        .container-info
+            div( ng-if="!ipc.finish" )
+                | Cargando...
+            div( ng-if="ipc.objIPCFact.index || Object.keys(ipc.objIPC).length > 0" )
+                .text-center
+                    ul
+                        li
+                            span IPC {{ ipc.objIPCFact.index | number: 2 }}
+                            em(ng-class="{down: !ipc.objIPCFact.class, up: ipc.objIPCFact.class}") {{ipc.objIPCFact.percentage + '%'}}
+                #ipc-ticker.marquee-wrapper
+                    ul
+                        li(ng-repeat="item in ipc.objIPC" on-finish-render="ipc.ngRepeatFinished")
+                            span {{item.issuerSerie + ' ' + item.lastPrice}}
+                            em(ng-class="{down: !item.class, up: item.class}") {{ item.priceVar | number: 2 }}%

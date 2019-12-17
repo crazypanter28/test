@@ -1,0 +1,29 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="accountContract.close()"
+        )
+        h4 Contrato
+
+div(style="padding-bottom: 10px;")
+    table.table(ng-table='accountName.configTable')
+        <colgroup>
+        <col width="32%" />
+        <col width="40%" />
+        <col width="68%" />
+        </colgroup>
+        tr( ng-repeat="item in accountContract.info" ng-click="accountContract.contractSelected(item)")
+            td( data-title="'Contrato'" style="vertical-align: middle;" ) {{ accountContract.contract }}
+            td( data-title="'Nombre'" style="vertical-align: middle;"  ) {{ item.name }}  {{ item.lastName }} {{item.secondLastName}}
+            td( data-title="'Tipo'" style="vertical-align: middle;"  ) {{ item.areaType }}
+
+
+

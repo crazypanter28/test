@@ -1,0 +1,13 @@
+{
+   "code":"OK",
+   "data":[
+      {
+         "clienteUnico":94773520,
+         "nombre":"ACTINVER CASA DE BOLSA SA DE CV GRUPO FI NANCIERO ACTINVER (BURSANET PROMOCION)",
+         "rfc":"ACB7609076M2"
+      }
+   ],
+   "success":true,
+   "type":"INFO",
+   "message":"La operacion se realizo satisfatoriamente"
+}

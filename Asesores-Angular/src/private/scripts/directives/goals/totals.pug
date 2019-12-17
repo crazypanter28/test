@@ -1,0 +1,82 @@
+include /views/mixins/info-result
+
+div
+
+    // Table results
+    table.table.goals-table.sm-head
+        thead
+            tr.prev-header
+
+                th( ng-if-start="modal" colspan="4" ) Mensual con filtros de meta
+                th( ng-if-end="" colspan="3" ) Anual sin filtros de meta
+
+                th( ng-if-start="!modal" colspan="1" )
+                th( ng-if="!modal" colspan="6" ) Mensual con filtros de meta
+                th( ng-if-end="" colspan="3" ) Anual sin filtros de meta
+            tr
+                th Concepto
+                th Pos. Inicio Mes
+                th Pos. Final Mes
+                th Var. al Mes
+                th( ng-if-start="!modal" ) Meta Mensual
+                th % Cumplimiento
+                th( ng-if-end="" ) Remanente activos mes
+                th Pos. Inicial
+                th Pos. Fin a la fecha
+                th Var. Acum. a la fecha
+        tbody
+            tr( ng-repeat="info in data['goals-positions']" )
+                td( ng-if="info.concepto" ng-bind-html="info.concepto" )
+                td( ng-if="!info.concepto" )
+
+                td( ng-if="info.posicionInicioMes || info.posicionInicioMes === 0" ) {{ info.posicionInicioMes | currency }}
+                td( ng-if="info.posicionInicioMes === null" )
+
+                td( ng-if="info.posicionFecha || info.posicionFecha === 0" ) {{ info.posicionFecha | currency }}
+                td( ng-if="info.posicionFecha === null" )
+
+                td( ng-if="info.variacionFecha || info.variacionFecha === 0" ) {{ info.variacionFecha | currency }}
+                td( ng-if="info.variacionFecha === null" )
+
+                td( ng-if="info.metaPosicion || info.metaPosicion === 0" ) {{ info.metaPosicion | currency }}
+                td( ng-if="info.metaPosicion === null" ng-class="{ 'no-data': !info.metaPosicion }" )
+
+                td( ng-if="info.porcentajeCumplimiento || info.porcentajeCumplimiento === 0" ) {{ info.porcentajeCumplimiento | number:2 }}%
+                td( ng-if="info.porcentajeCumplimiento === null" ng-class="{ 'no-data': !info.porcentajeCumplimiento }" )
+
+                td( ng-if="info.remanenteMes || info.remanenteMes === 0" ) {{ info.remanenteMes | currency }}
+                td( ng-if="info.remanenteMes === null" ng-class="{ 'no-data': !info.remanenteMes }" )
+
+                td( ng-if="info.posicionInicialAcumAnual || info.posicionInicialAcumAnual === 0" ) {{ info.posicionInicialAcumAnual | currency }}
+                td( ng-if="info.posicionInicialAcumAnual === null" )
+
+                td( ng-if="info.posicionFinalAcumAnual || info.posicionFinalAcumAnual === 0" ) {{ info.posicionFinalAcumAnual | currency }}
+                td( ng-if="info.posicionFinalAcumAnual === null" )
+
+                td( ng-if="info.variacionAcumAnual || info.variacionAcumAnual === 0" ) {{ info.variacionAcumAnual | currency }}
+                td( ng-if="info.variacionAcumAnual === null" )
+
+            tr.totals( ng-if="modal" )
+                td( colspan="4" ) TOTALES:
+                td {{ data['goals-positions'] | sumByColumn:'posicionInicialAcumAnual' | currency }}
+                td {{ data['goals-positions'] | sumByColumn:'posicionFinalAcumAnual' | currency }}
+                td {{ data['goals-positions'] | sumByColumn:'variacionAcumAnual' | currency }}
+
+            tr.totals( ng-if="!modal" ng-repeat='totals in data["sum-goals-positions"]' )
+                td {{ totals.concepto }}:
+                td {{ totals.posicionInicioMes | currency }}
+                td {{ totals.posicionFecha | currency }}
+                td( colspan="7" )
+
+            tr( ng-if="data['goals-positions'].length === 0 && data['sum-goals-positions'].length === 0" )
+                td( colspan="10" )
+
+                    // No results
+                    .no-results
+                        +noResults("no-results")( msg!="<strong>No se encontraron</strong> resultados con esta<br />búsqueda. Vuelve a intentar con otro dato." )
+
+    // Note
+    p.note
+        | * Cifras en
+        strong  pesos
+        | .

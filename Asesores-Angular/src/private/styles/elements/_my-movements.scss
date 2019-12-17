@@ -1,0 +1,49 @@
+.my-movements{
+    ul.nav-tabs{
+        border-bottom: 0;
+        margin-top: 10px;
+
+        li{
+            background:rgba(81, 124, 189, .5);
+            font-family: 'Proxima SemiBold';
+            height: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-right: 1px;
+            vertical-align: top;
+            width: 150px;
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            &.active{
+                background: $blue4;
+                a{
+                    color: white;
+                }
+            }
+
+            a{
+                background: rgba(81, 124, 189, .5);
+                border: 0;
+                color: white;
+                outline: 0;
+                padding: 8px 0 5px 0;
+
+                &:focus,
+                &:hover
+                {
+                    background: transparent;
+                    color: white;
+                    border: 0;
+                }
+            }
+        }
+    }
+
+    .tab-content{
+        border: 1px solid $blue7;
+        padding: 0;
+    }
+}

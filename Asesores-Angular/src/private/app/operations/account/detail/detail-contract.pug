@@ -1,0 +1,145 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="detailContract.close()"
+        )
+        h4 CONTRATO No. {{ detailContract.contractNumber}}
+
+    div.modal-body
+        div.content
+            div.row.margin-0
+                    p.col-xs-3 
+                        b Titular:
+                    p.col-xs-6(ng-if="detailContract.titular.personType.personTypeID === '1'")
+                        | {{detailContract.titular.name + ' ' +  detailContract.titular.lastName + ' ' + detailContract.titular.secondLastName;}}
+                    p.col-xs-6(ng-if="detailContract.titular.personType.personTypeID === '2'")
+                        | {{detailContract.titular.businessName}}
+            div.row.margin-0
+                    p.col-xs-3 
+                        b Asesor:
+                    p.col-xs-6
+                        | {{detailContract.adviserName}}  
+            div.row.margin-0
+                    p.col-xs-3 
+                        b Centro Financiero:
+                    p.col-xs-6
+                        | {{detailContract.financialCenter}}                                                  
+            div.row.margin-0(ng-if="detailContract.investmentProfile")
+                    p.col-xs-3 
+                        b Perfil:
+                    p.col-xs-6
+                        | {{detailContract.investmentProfile}}
+            div.row.margin-0(ng-repeat='t in detailContract.phoneNumberList' )
+                    p.col-xs-3 
+                        b(ng-if="$index == 0") Teléfono(s):
+                    p.col-xs-6
+                        | {{t.phoneNumber}}
+            div.row.margin-0(ng-repeat='t in detailContract.emailList' )
+                    p.col-xs-3 
+                        b(ng-if="$index == 0") Correo(s):
+                    p.col-xs-6
+                        | {{t}}
+            div.row.margin-0
+                p.col-xs-12.text-center
+                    b(style="color: #337ab7;") TIPO DE CUENTA
+            div.row.margin-0
+                p.col-xs-4(ng-if="detailContract.discretionaryContractFlag")
+                    i( class="fa fa-check-circle" aria-hidden="true" style="color: #7ed321;")
+                    | &nbsp Discrecional
+                p.col-xs-4(ng-if="!detailContract.discretionaryContractFlag")
+                    i(class="fa fa-check-circle" aria-hidden="true" style="color: #7ed321;")
+                    | &nbsp No Discrecional
+                p.col-xs-4(ng-if="detailContract.eligibleClientFlag")
+                    i( class="fa fa-check-circle" aria-hidden="true" style="color: #7ed321;")
+                    | &nbsp Elegible
+                p.col-xs-4(ng-if="!detailContract.eligibleClientFlag")
+                    i( class="fa fa-check-circle" aria-hidden="true" style="color: #7ed321;")
+                    | &nbsp No Elegible
+                p.col-xs-4(ng-if="detailContract.ownPositionFlag")
+                    i( class="fa fa-check-circle" aria-hidden="true" style="color: #7ed321;")
+                    | &nbsp Propia
+                p.col-xs-4(ng-if="!detailContract.ownPositionFlag")
+                    i( class="fa fa-check-circle" aria-hidden="true" style="color: #7ed321;")
+                    | &nbsp Cliente
+
+            div.row.margin-0(ng-repeat='t in detailContract.cotitulares' )
+                div.dollScrollDetail.col-xs-12(scrollable always-visible="true")
+                    div(ng-if="$index == 0")
+                        hr
+                        div.col-xs-12.text-center
+                            b(style="color: #337ab7;") COTITULARES
+                        hr    
+                    div
+                        br 
+                        b Nombre:&nbsp
+                        | {{t.name + ' ' + t.lastName + ' ' + t.secondLastName}}
+                    div(ng-repeat='correo in t.emailList.email')
+                        b Correo:&nbsp
+                        | {{correo}} 
+                    div(ng-repeat='tel in t.phonesList.phone')
+                        b Teléfono:&nbsp
+                        | {{tel.phoneNumber}}
+                    div
+            div.row.margin-0(ng-repeat='t in detailContract.beneficiarios')
+                div.dollScrollDetail.col-xs-12(scrollable always-visible="true") 
+                    div(ng-if="$index == 0")
+                        div.col-xs-12.text-center
+                            b(style="color: #337ab7;") BENEFICIARIOS
+                        hr    
+                    div 
+                        br
+                        b Nombre:&nbsp
+                        | {{t.name + ' ' + t.lastName + ' ' + t.secondLastName}}
+                    div(ng-repeat='correo in t.emailList.email')
+                        b Correo:&nbsp
+                        | {{correo}} 
+                    div(ng-repeat='tel in t.phonesList.phone')
+                        b Teléfono:&nbsp
+                        | {{tel.phoneNumber}}
+                    div
+            div.row.margin-0(ng-repeat='t in detailContract.attorneyList')
+                div.dollScrollDetail.col-xs-12(scrollable always-visible="true")
+                    div(ng-if="$index == 0")
+                        div.col-xs-12.text-center
+                            b(style="color: #337ab7;") APODERADOS
+                        hr
+                    div
+                        br
+                        b Nombre:&nbsp
+                        | {{t.name + ' ' + t.lastName + ' ' + t.secondLastName}}
+                    div(ng-repeat='correo in t.emailList.email')
+                        b Correo:&nbsp
+                        | {{correo}}
+                    div(ng-repeat='tel in t.phonesList.phone')
+                        b Teléfono:&nbsp
+                        | {{tel.phoneNumber}}
+                    div
+            div.row.margin-0(ng-repeat='t in detailContract.personAuthorizedList')
+                div.dollScrollDetail.col-xs-12(scrollable always-visible="true")
+                    div(ng-if="$index == 0")
+                        div.col-xs-12.text-center
+                            b(style="color: #337ab7;") PERSONAS AUTORIZADAS
+                        hr
+                    div
+                        br
+                        b Nombre:&nbsp
+                        | {{t.name + ' ' + t.lastName + ' ' + t.secondLastName}}
+                    div(ng-repeat='correo in t.emailList.email')
+                        b Correo:&nbsp
+                        | {{correo}}
+                    div(ng-repeat='tel in t.phonesList.phone')
+                        b Teléfono:&nbsp
+                        | {{tel.phoneNumber}}
+                    div
+br
+br
+
+
+

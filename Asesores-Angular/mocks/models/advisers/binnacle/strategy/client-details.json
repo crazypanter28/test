@@ -1,0 +1,34 @@
+{
+   "response":{
+      "status":1,
+      "messages":[
+         {
+            "type":"N",
+            "criticality":"INFO",
+            "code":"AC000",
+            "description":"OK"
+         }
+      ],
+      "result":{
+         "numNominaAsesor":53883,
+         "idPromotor":732,
+         "numContrato":334025,
+         "numCliente":334025,
+         "nombreCliente":"MARIA DEL SOCORRO FRANCO ESPINOSA",
+         "rfcCliente":"FAES510929                                          ",
+         "direccionCliente":"CERRADA DE ALBATROCES #5 LOMAS DE LAS AGUILAS ALVARO OBREGON DISTRITO FEDERAL ALVARO OBREGON 1730 DISTRITO FEDERAL",
+         "tel1Cliente":"56355413",
+         "tel2Cliente":"56351134",
+         "celularCliente":null,
+         "emailCliente":"coquisfranco@hotmail.com",
+         "fecNacimientoCliente":"19510929",
+         "capital":225378.02,
+         "comments": [
+             "Telefónico => Contacto Exitoso => Captura/Confirmacion de ordenes: 2017-05-18 orden de venta por retiro",
+             "Telefónico => Contacto Exitoso => Captura/Confirmacion de ordenes: 2017-04-20 venta activo",
+             "Telefónico => Contacto Exitoso => Captura/Confirmacion de ordenes: 2017-04-04 confirmacion retiro",
+             "Telefónico => Contacto Exitoso => Captura/Confirmacion de ordenes: 2017-03-17 confirmacion retiro"
+         ]
+      }
+   }
+}

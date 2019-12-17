@@ -1,0 +1,55 @@
+include /views/mixins/buttons
+include /views/mixins/selected-client-info
+
+
+div.row.margin-0.search-account
+    div.col-md-5.padding-0
+        label Número de contrato a operar
+        br
+        div
+            select.form-control(
+                ng-model="investment.contractS"
+                ng-options="item.contractNumber for item in investment.contracts"
+                ng-change="investment.changeContract(investment.contractS)")
+
+    div( ng-if="investment.contract")
+        .col-md-7.co-titular.padding-right-0
+            p
+                span Titular del contrato: {{ operations.sclient.data.name + ' ' + operations.sclient.data.lastName + ' ' + operations.sclient.data.secondLastName}}
+        .row
+            .col-md-3
+                p(style="text-align: right; cursor:pointer; text-decoration: underline;")
+                    label(ng-if="investment.iscuentapropia")  Cuenta Propia   
+            .col-md-3(ng-if="investment.url")
+                a( ng-if="investment.paramsPracticaVneta === null" ng-href='{{investment.urlPracticaVenta}}'  target="_blank") Prácticas de Venta
+                form(ng-if="investment.paramsPracticaVneta !== null",method='post', name='LANSA', action='',target="_blank")
+                    input(name='_PROCESS', value='{{investment.paramsPracticaVneta._PROCESS}}', type='hidden')
+                    input(name='_FUNCTION', value='{{investment.paramsPracticaVneta._FUNCTION}}', type='hidden')
+                    input(name='AREENTRADA', value='{{investment.paramsPracticaVneta.AREENTRADA}}', type='hidden')
+                    input(name='AWCODOPERA', value='{{investment.paramsPracticaVneta.AWCODOPERA}}', type='hidden')
+                    input(name='PCUENTA', value='{{investment.paramsPracticaVneta.PCUENTA}}', type='hidden')
+                    input(name='ATIPVAR', value='{{investment.paramsPracticaVneta.ATIPVAR}}', type='hidden')
+                    a(ng-click = 'goPV()') Prácticas de Venta
+
+div.investment
+    ul.nav.nav-tabs.panel-tabs
+        li( role="presentation" ng-click="investment.selectedTab(i)"  ng-repeat="i in investment.navInvestment | filter:filterfn" ng-class="{'active': $state.is(i.state) && investment.contract}" ng-disabled="!investment.contract")
+             a( ng-disabled="!investment.contract" ui-sref="{{i.state}}") {{i.name}} 
+        li( role="presentation" ng-class="{'active': $state.is('investment.statementFiscal') && investment.contract}" ng-disabled="!investment.contract")
+             a( ng-disabled="!investment.contract" ui-sref="investment.statementFiscal") Constancias Fiscales y Edos de Cuenta
+    div.container-transfer.row.margin-0( ng-class="{'empty': !investment.contract }")
+        .operation-section-help( uib-tooltip-html="'Monitor de títulos referenciados a instrumentos de deuda que  replican el comportamiento del portafolio al que está referido.'" tooltip-placement="left" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            img( src="img/icons/blue-doubt.svg" alt="Acerca" )
+        div.empty-state.text-center(ng-show="!(investment.contract && investment.tabSelect)")
+            img(src="img/icons/empty_state_nocontenido.svg" )
+            p(style="color: #b4b4b4; font-size: 25px;")
+                b No
+                |  hay un contrato a operar
+        div.empty-state.text-center(ng-show="!investment.markets && investment.contract !== null")
+            img(src="img/icons/empty_state_nocontenido.svg" )
+            p(style="color: #b4b4b4; font-size: 25px;")
+                b No
+                |  hay mercados para operar
+        div(ng-if="investment.tabSelect && investment.markets")
+            div( ui-view=""  )
+

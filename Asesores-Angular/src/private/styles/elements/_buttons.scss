@@ -1,0 +1,110 @@
+//
+// _buttons.scss
+//
+// It reflects the styles for the buttons
+//
+
+/**
+ * -------------------------
+ * @info Buttons
+ * -------------------------
+*/
+.btn {
+    @include in-block(); position: relative; margin: 0; z-index: 1; overflow: hidden; outline: 0 !important; background-image: none; border: 1px solid transparent; @include rounded(2px); vertical-align: middle; cursor: pointer; font-family: $btn-font-family; font-weight: 400; text-transform: uppercase; text-align: center; text-overflow: ellipsis; text-decoration: none; white-space: nowrap; @include user-select(none); @include transition(all 0s); @include button-size($btn-padding, $btn-font-size);
+    img {vertical-align: top; margin-right: 10px;}
+    i {
+        padding: 0 5px; font-size: $font-size-base + 4; line-height: $font-size-base;
+
+        // Types
+        &.first {padding-left: 0;}
+        &.last {padding-right: 0;}
+    }
+
+    // Hover
+    &:hover, &:focus {text-decoration: none;}
+
+    img{
+        margin-top: -4px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    &.cancel{
+        background:transparent;
+        border:1px solid $tertiary-color;
+        color:$tertiary-color;
+
+        &:hover,
+        &:active,
+        &:focus{
+            background: transparent !important;
+            color:$tertiary-color !important;
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @info Buttons variants
+ * -------------------------
+*/
+.btn-default {
+    @include button-variant($btn-default); border: 1px solid;
+
+    // Disabled
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        @include opacity(.5);
+
+        &, &:hover, &:active, &.active  {
+            @include opacity(.5);
+        }
+    }
+}
+.btn-primary {@include button-variant($btn-primary);}
+
+/**
+ * -------------------------
+ * @info Button Sizes
+ * -------------------------
+*/
+.btn-lg {@include button-size($btn-large-padding, $btn-large-font-size);}
+.btn-sm {@include button-size($btn-small-padding, $btn-small-font-size); height: 40px; line-height: 20px;}
+.btn-xs {@include button-size($btn-xsmall-padding, $btn-xsmall-font-size);}
+
+/**
+ * -------------------------
+ * @info Block button
+ * -------------------------
+*/
+.btn-block {display: block; width: 100%; text-align: center;}
+.btn-block + .btn-block {margin-top: 5px;}
+input[type="submit"], input[type="reset"], input[type="button"] {
+    &.btn-block {width: 100%;}
+}
+
+/**
+ * -------------------------
+ * @info Icon button
+ * -------------------------
+*/
+.btn-icon {
+    padding-left: 25px; 
+    padding-right: 25px;
+    height: 100%; 
+    top: 5px; 
+    text-align: center; 
+    background: white;
+}
+
+
+.act-button-fill2{
+    background: $blue;
+    border-radius: 2px;
+    color: $white;
+}
+
+.btn-separate{
+    margin-right:15px !important
+}

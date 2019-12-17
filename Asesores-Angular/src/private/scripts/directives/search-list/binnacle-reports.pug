@@ -1,0 +1,48 @@
+include /views/mixins/info-result
+
+div.search-list-block
+
+    // Search
+    .common-block-search
+        .form-group.has-icon.search-field
+            label( for="search-client" ) Búsqueda del asesor  
+            .input-wrapper
+                input.form-control( type="text" placeholder="Nombre" id="search-client" name="search-client"
+                    ng-model="search_list.filter"
+                    ng-change="search_list.filterInfo( info )"
+                )
+                i.fa.fa-search
+ 
+
+    // Table results
+    table.table( ng-table='search_list.table' )
+        thead
+            tr
+                th Nombre del asesor
+                th Clientes a contactar
+                th Meta por día
+                th Clientes contactados
+                th Alcancel total
+                th Detalle
+        tbody
+            tr( ng-if="$data.length > 0" ng-repeat='info in $data' )
+                td(style="text-align: left;") {{ info.employeeID + " " + info.name }}
+                td {{ info.clientsToReach}}                
+                td {{ info.targetPerDay }}
+                td {{ info.clientsContacted }}                
+                td(style="text-align: right;") {{ (info.totalPercentage / 100) | percentage }}
+                td
+                    a.view-details(ng-if="invocacion != 'reportesMetasAsesoresDetalle'"  ui-sref="binnacle.commercial.reports.id( { id: info.employeeID ,estado: estado ? estado:0, action:2 ,employee: info.name } )" )
+                    a.view-details(ng-if="invocacion == 'reportesMetasAsesoresDetalle'" ng-click = "ctrl.changeAdviser(info)"   )
+            tr( ng-if="$data.length === 0" )
+                td( colspan="6" )
+
+                    // No results
+                    .no-results
+                        +noResults("binnacle-search")
+
+    // Note
+    p.note( ng-class="{ 'no-pager': ( search_list.filtered_info.length < 11 ) }" ng-if="search_list.filtered_info.length > 0" )
+        | * Para
+        strong  VER EL DETALLE
+        |  de un asesor, da clic en el ícono.

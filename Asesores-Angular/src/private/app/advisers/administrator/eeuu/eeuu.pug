@@ -1,0 +1,31 @@
+include /views/mixins/info-result
+
+.eeuu
+    .section-title
+        span Estados Unidos
+
+    .content
+        table.table.primary-table
+            thead
+                tr
+                    th(ng-repeat="column in eeuu.table.headers ") 
+                        span {{column.name}}
+            tbody
+                tr( ng-show="eeuu.loadingEE")
+                    td(colspan = "eeuu.table.headers.length")
+                        .content-spinner
+                            .spinner         
+                tr(ng-repeat ="row in eeuu.table.body ")
+                    td(ng-repeat="column in eeuu.table.headers ") {{row[column.originalName]}}                                    
+
+            .no-results( ng-show="!eeuu.loadingEE && eeuu.table.headers.length < 1"  )
+                +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+
+        .csv
+            .sub-title CSV
+            textarea.textarea( placeholder="Sólo copia y pega una tabla de Excel." ng-model="eeuu.csv" )
+
+        .buttons
+            button.btn.btn-default( ng-click="eeuu.csv = ''") Limpiar
+            button.btn.btn-primary( ng-click="eeuu.saveCSV()") Guardar

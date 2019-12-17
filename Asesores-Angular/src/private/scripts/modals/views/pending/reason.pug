@@ -1,0 +1,30 @@
+
+include /views/mixins/buttons
+//- include /views/mixins/addActivity
+
+div.modal-header
+    h4 {{ pending.title}}
+form( name="$form" )
+    div.modal-body
+    div.row.margin-0        
+        div.col-xs-8
+            div
+                br
+                label Motivo
+                    span
+            .container-select
+                div(  act-dropdown ng-model="pending.items" selected="pending.reason")
+                br 
+                textarea.form-control(ng-if="pending.reason.description === 'Otro'" rows="4" placeholder='Ingresa una razón' ng-model="pending.reasontext" required="true")
+    br
+    br
+    div.modal-footer
+        +btnSubmit(
+            'Cancelar',
+            'btn-primary cancel'
+        )(ngClick="pending.cancel()")
+        +btnSubmit(
+            'Rechazar',
+            'btn-primary save',
+            '($form.$invalid || pending.reason == null)'
+        )(ngClick="pending.done()")

@@ -1,0 +1,19 @@
+include /views/mixins/info-result
+div
+    .spinner( ng-if="!binnacleWidget.details.finish" )
+    div( ng-if="binnacleWidget.details.finish" )
+        .wt-header
+            h2.title BITÁCORA
+        .wt-content
+
+            div( ng-if="binnacleWidget.details.success" )
+                .chart
+                    donut-chart( model="binnacleWidget.details" tooltip="{ tmpl: 'binnacle-tooltip', placement: 'top', tpclass: 'binnacle-tp'}" )
+                .details
+
+                    ul
+                        li Clientes a<br />contactar <span>{{ binnacleWidget.details.chart.clientsToReach }}</span>
+                        li Meta<br />por día <span>{{ binnacleWidget.details.chart.targetPerDay }}</span>
+
+            div( ng-if="!binnacleWidget.details.success" )
+                +resourceCrashed()

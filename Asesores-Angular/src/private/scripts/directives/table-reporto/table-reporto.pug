@@ -1,0 +1,39 @@
+include /views/mixins/icons
+include /views/mixins/tables
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div.padding-left-0.investment-table-container(style="overflow-x: auto;" )
+    table.investment-table.bands-table( ng-if="tab === 2" )
+        thead
+            tr
+                +thCaret( 'Tipo de Instrumento', 'description' )
+                +thCaret( 'Tasa min', 'mixRate' )
+                +thCaret( 'Tasa max', 'maxRate' )
+                +thCaret( 'Plazo', 'maxTerm' )
+                +thCaret( 'Importe min', 'minNetAmount' )
+                +thCaret( 'Importe max', 'maxNetAmount' )
+        tbody
+            +trLoading( 150, 'loading' )( colspan='5' )
+            tr
+                td( colspan="6" )
+
+                    // No results
+                    .no-data( ng-if="bands.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No</strong> se encontraron datos" )
+
+                    div( ng-if="bands" )
+                        div( scrollable always-visible="true" )
+                            table
+                                tr( ng-repeat="band in bands | orderBy:sortType:sortReverse" ng-click="showDoll(band)" )
+                                    td( ng-bind="band.description | split:' ':1" )
+                                    td.text-center( ng-bind="band.minRate + '%'" )
+                                    td.text-center( ng-bind="band.maxRate + '%'" )
+                                    td
+                                        | {{ band.maxTerm }}
+                                        ng-pluralize( count="band.maxTerm" when="{'1': ' día', 'other': ' días'}" )
+                                    td( ng-bind="band.minNetAmount | currency" )
+                                    td( ng-bind="band.maxNetAmount | currency" )
+

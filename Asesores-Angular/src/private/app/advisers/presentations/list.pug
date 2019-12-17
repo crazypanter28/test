@@ -1,0 +1,7 @@
+//.content-spinner( ng-show ="presentations.loadingPres")
+    .spinner
+div.col-xs-6( ng-show="!presentations.loadingPres" ng-repeat = "it in presentations.presentationsList" )
+    h5.list-title {{it.name}}
+    ul.list-presentations
+        li(ng-repeat="item in it.list")
+            a( ng-click="presentations.done(item.idPresentation)") {{item.name}}

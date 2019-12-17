@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo Compilando proyecto
+gulp dist
+echo Borrando scripts del server
+rm -rvf /c/wildfly-10.1.0.Final/standalone/deployments/asesoria.war/WEB-INF/site/scripts/
+echo Borrando estilos del server
+rm -rvf /c/wildfly-10.1.0.Final/standalone/deployments/asesoria.war/WEB-INF/site/styles/
+echo Copia de scripts al server
+cp -r /c/Asesores/Asesores-Angular/dist/scripts/ /c/wildfly-10.1.0.Final/standalone/deployments/asesoria.war/WEB-INF/site/
+echo Copia de styles al server
+cp -r /c/Asesores/Asesores-Angular/dist/styles/ /c/wildfly-10.1.0.Final/standalone/deployments/asesoria.war/WEB-INF/site/
+echo Borrando login del server
+rm -rvf /c/wildfly-10.1.0.Final/standalone/deployments/asesoria.war/WEB-INF/site/login.html
+echo Copia de login al server
+cp -r /c/Asesores/Asesores-Angular/dist/login.html /c/wildfly-10.1.0.Final/standalone/deployments/asesoria.war/WEB-INF/site/

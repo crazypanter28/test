@@ -1,0 +1,41 @@
+include /views/mixins/info-result
+
+div
+
+    // Form block
+    .form-block
+        h2.block-title Datos de asesor
+
+        // Form row
+        .form-row
+            .item.field
+                .form-group
+                    label
+                        | Extensión
+                        span.require *
+                    input.form-control( type="text" name="ext" placeholder="Extensión" ng-model="model.form.adviser_ext" ng-required="true" maxlength= "6"
+                                        onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) ) " ng-pattern="/^([0-9]|[a-z]|[A-Z])+$/")
+            .item.field
+                .form-group
+                    label Teléfono celular
+                    input.form-control( type="text" name="mobile" placeholder="(10) dígitos" ng-model="model.form.adviser_mobile" minlength="10"  maxlength="10"
+                                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" ng-pattern="/^[0-9]+$/")
+            .item.field
+                .form-group
+                    label Teléfono directo
+                    input.form-control( type="text" name="phone" placeholder="(8) dígitos" ng-model="model.form.adviser_phone" minlength="8" maxlength="8" 
+                                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" ng-pattern="/^[0-9]+$/")
+
+        // Form row
+        .form-row(ng-show="false")
+            .item
+                .form-group
+                    label.act-checkbox-custom( for="change-location" )
+                        input(  type="checkbox" id="change-location" ng-model="model.form.change_location" 
+                                ng-change="resetChilds( 'change_location', 'office' )" )
+                        span.css-label
+                        | Cambiar ubicación
+            .item.field( ng-if="model.form.change_location" )
+                label Selecciona una oficina
+                div.offices( act-dropdown ng-model="offices" selected="model.form.office" )
+                input( type="hidden" ng-model="model.form.office" )

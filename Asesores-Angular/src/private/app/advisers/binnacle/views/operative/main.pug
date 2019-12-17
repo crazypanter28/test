@@ -1,0 +1,13 @@
+// Tabs wrapper
+.tabs-wrapper
+
+    // Navigation tabs
+    ul.nav-tabs.main-tabs
+        li(  permission="['asesores.BitacorasMenu.Bitacoraoperativa.Banco.']" ui-sref="binnacle.operative.bank" ui-sref-active="active")
+            a( href="javascript:void(0);" title="Banco") Banco
+        li(  permission="['asesores.BitacorasMenu.Bitacoraoperativa.CasaBolsa.']" ui-sref="binnacle.operative.stock_exchange" ui-sref-active="active")
+            a( href="javascript:void(0);" title="Casa de Bolsa" ) Casa de Bolsa
+
+    // Tab content
+    .tab-content
+        div( ui-view="" )

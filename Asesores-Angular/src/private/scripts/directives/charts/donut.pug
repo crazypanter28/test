@@ -1,0 +1,14 @@
+div.donut-chart-wrapper
+    .content-spinner( ng-if="!showGraphic" )
+        
+    div( ng-if="model" ng-init="setChart()" )
+        canvas.chart-doughnut( chart-data="chartInfo.data" chart-labels="chartInfo.labels" chart-colors="chartInfo.colors" chart-options="chartSettings" )
+        chart-tooltip( ng-if="!custom && chartSettings.tooltips.custom" tooltip-data="chartSettings.tooltips" )
+
+        // Chart middle info
+        span( ng-if="tooltipSettings && showGraphic" class="chart-number {{ tooltipSettings.numberClass }}" tooltip-placement="{{ tooltipSettings.placement }}" uib-tooltip-template="tooltipSettings.tmpl" tooltip-class="dashboard-tooltip {{ tooltipSettings.tpclass }}" ) {{ chartInfo.percentage }}
+        span( ng-if="!tooltipSettings && showGraphic" class="chart-number" ) {{ chartInfo.percentage }}
+
+        // Chart tooltip template
+    script( ng-if="tooltipSettings" type="text/ng-template" id="binnacle-tooltip" )
+        div #[span {{ chartInfo.clientsContacted }}] Clientes contactados

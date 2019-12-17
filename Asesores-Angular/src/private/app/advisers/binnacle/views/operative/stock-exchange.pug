@@ -1,0 +1,45 @@
+
+.operative-binnacle-stock-exchange
+    .row.date-range
+        .col-sm-4
+            <dates-range-picker label="Periodo de búsqueda" placeholder="dd/mm/aaaa - dd/mm/aaaa" on-change="ctrl.changeDate" options='ctrl.datepicker_opts'></dates-range-picker>
+
+    .row
+        .col-md-12
+            tab-table( set-data="ctrl.setData" number-cols-by-tab="7" label-button-next-tab="Más info" )
+                table
+                    thead
+                        tr
+                            th Contrato
+                            th Fecha Operación
+                            th Cliente
+                            th Movimiento
+                            th Emisora
+                            th Serie
+                            th( width="130" ) Títulos
+                            th.text-right( width="100" ) Importe
+                            th Asesor
+                            th Centro Financiero
+                            th Hora Creación
+                            th Extensión
+                            th Capturado
+                            th Solicitud
+                    tbody
+                        tr
+                            td {{ item.contrato }}
+                            td {{ item.fechaOperacion }}
+                            td {{ item.cliente }}
+                            td {{ item.movimiento }}
+                            td {{ item.emisora }}
+                            td {{ item.serie }}
+                            td {{ item.titulos }}
+                            td.text-right {{ item.importe }}
+                            td {{ item.asesor }}
+                            td {{ item.centroFinanciero }}
+                            td {{ item.horaCreacion }}
+                            td {{ item.extension }}
+                            td {{ item.capturado }}
+                            td {{ item.solicitud }}
+
+    .to-print( ng-show=" ctrl.dataOperativeBinnacle.length > 0" )
+        a.btn.btn-primary( ng-click="ctrl.downloadPDF()" title="IMPRIMIR" ) IMPRIMIR

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="133px" height="69px" viewBox="0 0 133 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>EMPTY STATE</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="7.63833441e-13" y="9.91207116e-13" width="90.1313608" height="67.97893" rx="3.36"></rect>
+    </defs>
+    <g id="06_TRANSFERENCIAS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="OPERACIONES_00-Copy-20" transform="translate(-495.000000, -833.000000)">
+            <g id="transferencias" transform="translate(91.000000, 472.000000)">
+                <g id="TABLA-MIS-TRANSACCIONES" transform="translate(1.000000, 295.000000)">
+                    <g id="EMPTY-STATE" transform="translate(397.000000, 37.000000)">
+                        <g>
+                            <g id="Group-12" transform="translate(126.372471, 58.925234)" stroke="#517CBD" stroke-width="1.05" stroke-linecap="round">
+                                <path d="M6.4640922,0.05825566 L6.4640922,4.60369063" id="Line"></path>
+                                <path d="M11.9366477,5.73489688 L6.92494738,5.73489688" id="Line-Copy-5"></path>
+                                <path d="M5.45736032,5.73489688 L0.445660019,5.73489688" id="Line-Copy-9"></path>
+                                <path d="M6.4640922,6.50315431 L6.4640922,11.0485893" id="Line-Copy-4"></path>
+                            </g>
+                            <g id="Group-12-Copy" transform="translate(6.146734, 38.649884)" stroke="#517CBD" stroke-width="0.735" stroke-linecap="round">
+                                <path d="M4.61720871,0.0398591358 L4.61720871,3.14989359" id="Line"></path>
+                                <path d="M8.52617692,3.92387681 L4.94639099,3.92387681" id="Line-Copy-5"></path>
+                                <path d="M3.89811451,3.92387681 L0.318328585,3.92387681" id="Line-Copy-9"></path>
+                                <path d="M4.61720871,4.44952664 L4.61720871,7.55956109" id="Line-Copy-4"></path>
+                            </g>
+                            <g id="mac-copy" transform="translate(69.148542, 64.756743) rotate(-20.000000) translate(-69.148542, -64.756743) translate(13.648542, 16.256743)">
+                                <g id="mac" transform="translate(55.362447, 48.478073) rotate(20.000000) translate(-55.362447, -48.478073) translate(9.862447, 13.478073)">
+                                    <g id="Rectangle-2">
+                                        <use fill="#517CBD" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                        <rect stroke="#59617E" stroke-width="0.7" x="0.35" y="0.35" width="89.4313608" height="67.27893" rx="3.36"></rect>
+                                    </g>
+                                    <rect id="Rectangle-2-Copy-2" fill="#F8F8F8" x="9.01966354" y="7.81228017" width="72.8293585" height="54.7147485" rx="3.36"></rect>
+                                    <g id="sad-face2" transform="translate(49.324503, 36.407039) rotate(-20.000000) translate(-49.324503, -36.407039) translate(26.623498, 9.498437)">
+                                        <path d="M17.6247583,41.8145082 C25.4289871,41.8145082 32.6575309,50.5154001 32.6575309,42.7159251 C32.6575309,34.9164501 26.3309534,28.5937263 18.5267247,28.5937263 C10.7224959,28.5937263 4.39591847,34.9164501 4.39591847,42.7159251 C4.39591847,50.5154001 9.82052955,41.8145082 17.6247583,41.8145082 Z" id="Oval-12" fill="#517CBD" transform="translate(18.526725, 37.278442) rotate(42.000000) translate(-18.526725, -37.278442) "></path>
+                                        <ellipse id="Oval-9-Copy-5" stroke="#517CBD" stroke-width="0.7" fill="#FFFFFF" cx="36.0061272" cy="18.4394092" rx="9.01966354" ry="9.01416943"></ellipse>
+                                        <ellipse id="Oval-9-Copy-4" fill="#517CBD" cx="35.7054717" cy="18.1389369" rx="2.70589906" ry="2.70425083"></ellipse>
+                                        <ellipse id="Oval-9-Copy-7" stroke="#517CBD" stroke-width="0.7" fill="#FFFFFF" cx="9.0921905" cy="9.20404372" rx="9.01966354" ry="9.01416943"></ellipse>
+                                        <ellipse id="Oval-9-Copy-6" fill="#517CBD" cx="8.79153505" cy="8.90357141" rx="2.70589906" ry="2.70425083"></ellipse>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

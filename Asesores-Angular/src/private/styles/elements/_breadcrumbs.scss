@@ -1,0 +1,39 @@
+//
+// _breadcrumbs.scss
+//
+// It reflects the styles for the breadcrumbs
+//
+
+/**
+ * -------------------------
+ * @info Breadcrumbs
+ * -------------------------
+*/
+.breadcrumb {
+	background-color: transparent;
+    border-radius: 0;
+    font-size: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+    padding: 10px 0;
+
+	> li {
+        padding: 0;
+        margin: 0;
+		@include in-block(); vertical-align: middle; font-size: 14px; line-height: 16px;
+
+		& + li:before {
+			color: $gray4;
+			content: "\f105";
+			font-family: "FontAwesome";
+			font-size: 15px;
+			padding: 0 5px;
+			vertical-align: top;
+		}
+		&.active {font-family: "Proxima Semibold"; color: $tertiary-color;}
+		a {text-decoration: none; color: $gray4;}
+	}
+
+	// Primary title
+	+ .primary-title {margin-top: 0;}
+}

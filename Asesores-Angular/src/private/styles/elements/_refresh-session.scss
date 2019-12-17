@@ -1,0 +1,80 @@
+
+refresh-session{
+    display: block;
+    text-align: right;
+    padding: 10px 0;
+
+    div{
+        span{
+            font-size: 12px;
+
+            &.date{
+                color: $tertiary-color;
+            }
+
+            &.session{
+                color: #898989;
+                display: inline-block;
+
+                b{
+                    width: 60px;
+                    display: inline-block;
+                    // letter-spacing: 1px;
+                    color: $secondary-color;
+                }
+
+            }
+
+        }
+    }
+}
+
+
+.donut-session{
+    width: 125px;
+    height: 125px;
+    display: table;
+    margin: 0 auto;
+    background: url('../img/bg/circulo.png') no-repeat;
+    background-size: 125px;
+
+    div{
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 26px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        font-family: 'Proxima SemiBold';
+        color: $redError;
+    }
+}
+
+
+.modal.session{
+    .modal-dialog{
+        border: 2px solid $blue4;
+        width: 350px;
+    }
+
+    .modal-content{
+        padding-bottom: 25px;
+        text-align: center;
+    }
+
+    h4{
+        font-size: 14px;
+        margin-top: 0;
+        color: $tertiary-color;
+        margin-bottom: 20px;
+    }
+
+    .donut-session{
+        margin-bottom: 25px;
+    }
+
+    button{
+        font-size: 12px;
+        width: 140px !important;
+    }
+}

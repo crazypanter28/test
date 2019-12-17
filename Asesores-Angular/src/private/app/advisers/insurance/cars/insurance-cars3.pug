@@ -1,0 +1,178 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+div.content-panel.tranfers(ng-if="carsCtrl.stepForm.stepC")
+    form(name="form" novalidate style="position: relative; left: -15px;")
+        .col-xs-12(style="padding-bottom:20px;")
+            img(src="img/logos/mapfre.svg" style="float:left; position: relative; left: 15px; width: 95px; height: 60px")
+            h4.text-center.tit(style="position: relative; left: -45px; padding-bottom:20px; padding-top:20px;") Ingresa los datos del Contratante
+        .col-xs-12(ng-if="carsCtrl.personType == '1'")
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                .col-sm-7.text-left
+                    input(type="text" id="nombreCliente" name="nombreCliente" ng-disabled="carsCtrl.validatePerson" placeholder="Nombre(s)" required maxlength="50" ng-model="carsCtrl.nombres" ng-keypress="carsCtrl.charrepeatText($event,'nombreCliente');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                .col-sm-7.text-left
+                    input(type="text" id="apePaterno" name="apePaterno" ng-disabled="carsCtrl.validatePerson" placeholder="Apellido Paterno" required maxlength="50" ng-model="carsCtrl.apePaterno" ng-keypress="carsCtrl.charrepeatText($event,'apePaterno');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+        .col-xs-12
+            .form-group.col-md-6(ng-if="carsCtrl.personType == '1'")
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                .col-sm-7.text-left
+                    input(type="text" id="apeMaterno" name="apeMaterno" ng-disabled="carsCtrl.validatePerson" placeholder="Apellido Materno" required maxlength="50" ng-model="carsCtrl.apeMaterno" ng-keypress="carsCtrl.charrepeatText($event,'apeMaterno');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+            .form-group.col-md-6(ng-if="carsCtrl.personType == '2'")
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre
+                .col-sm-7.text-left
+                    input(type="text" id="companyName" name="companyName" ng-disabled="carsCtrl.validatePerson" placeholder="Nombre" required maxlength="50" ng-model="carsCtrl.nombreCliente" ng-keypress="carsCtrl.charrepeatText($event,'companyName');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Email
+                .col-sm-7.text-left
+                    input(type="email" name="carsCtrl.emailUser" placeholder="correo@mail.com" required maxlength="50" ng-model="carsCtrl.emailUser" style="text-transform: lowercase;").form-control                    
+        .col-xs-12(style="padding-bottom:20px;padding-top:20px;") 
+            h4.text-center.tit Ingresa los datos del automóvil
+        .col-xs-12
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de Vehículo
+                .col-sm-7.text-left
+                    select(id="typeCars" name="typeCars" ng-model="carsCtrl.tipoVehiculo" ng-required="true").form-control
+                        option(value="AUTO") AUTO
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Año de vehículo
+                .col-sm-7.text-left
+                    div(act-dropdown
+                        ng-model="ListYears"
+                        selected="carsCtrl.cmd.dataCarsYears.type"
+                        name="listYears"
+                        change="onChangeListMarks(lastValue, newValue)")
+                    input(
+                        type='hidden',
+                        ng-model='carsCtrl.cmd.dataCarsYears.type'
+                        ng-required='true')
+        .col-xs-12
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Marca de vehículo
+                .col-sm-7.text-left
+                    select(
+                        name="listMarks"
+                        ng-model="carsCtrl.cmd.dataCarsMarks"
+                        ng-options="x.text for x in ListMarks"
+                        ng-change="onChangeModels()" required).form-control
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Modelo de Vehículo
+                .col-sm-7.text-left
+                    div(act-dropdown
+                        ng-model="ListModels"
+                        selected="carsCtrl.cmd.dataCarsModels"
+                        name="listModels"
+                        change="selectModelsCar(lastValue, newValue)" )
+                    input(type='hidden'
+                        ng-model='carsCtrl.cmd.dataCarsModels'
+                        ng-required='true' )
+        .col-xs-12    
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado
+                .col-sm-7.text-left
+                    select(
+                        name="listEntidades"
+                        ng-model="carsCtrl.cmd.dataCarsEntity"
+                        ng-options="x.text for x in ListEntidades"
+                        ng-change="onChangeListEntity()" required).form-control
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Población
+                .col-sm-7.text-left
+                    select(
+                        name="listPoblaciones"
+                        ng-model="carsCtrl.cmd.dataCarsMunicipality"
+                        ng-options="x.text for x in ListPoblaciones"
+                        ng-change="selectPoblacion()" required).form-control
+        .col-xs-12    
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código Postal
+                .col-sm-7.text-left
+                    input(type="test" maxlength="5" placeholder="Código Postal" ng-model="carsCtrl.codigoPostal" required ng-keypress="carsCtrl.soloNumero($event)").form-control.required
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Uso
+                .col-sm-7.text-left
+                    select(id="usoCars" name="usoCars" ng-required="true" ng-model="carsCtrl.uso").form-control
+                                option(value="001" ng-if="carsCtrl.personType === '1'") PARTICULAR
+                                option(value="001" ng-if="carsCtrl.personType === '2'") COMERCIAL
+        .col-xs-12(ng-if="carsCtrl.mostrarFactura")
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Forma de cotización
+                .col-sm-7.text-left
+                    select(id="typeCars" name="typeCars" ng-model="carsCtrl.cotizacionFactura" required
+                            ng-click="carsCtrl.validaFormaCotizacion()"
+                            ng-required="true").form-control
+                        option(value="true") VALOR FACTURA
+                        option(value="false") VALOR COMERCIAL + 10%
+            .form-group.col-md-6(ng-if="carsCtrl.mostrarFacturaDos")
+                .col-sm-5.text-left
+                    //label(for="date" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de la Factura
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de la Factura
+                .col-sm-7
+                    div.form-group.has-icon
+                        div(style="position:relative")
+                            +inputDate2( "carsCtrl.fechaFactura", 'date1' )(
+                                datepickerOptions = "carsCtrl.optionsFechaFactura",
+                                ngMouseOpen = 'popup1.opened')
+        .col-xs-12(ng-if="carsCtrl.mostrarFacturaDos")    
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Número de Factura
+                .col-sm-7.text-left
+                    input(type="text" placeholder="Número de Factura" required 
+                            ng-model="carsCtrl.numeroFactura" style="text-transform: uppercase;").form-control
+                    div(role='alert')
+                        span.error(ng-show='form.input.$error.required')
+                            | Se requiere
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Importe total de la Factura
+                .col-sm-7.text-left
+                    input(ng-currency type="text" placeholder="Importe Factura" required
+                            ng-pattern="^[0-9]{1,3}([\\,][0-9]{3})*[\\.][0-9]{2}$"
+                            ng-model="carsCtrl.importeFactura" style="text-transform: uppercase;").form-control
+                    div(role='alert')
+                        span.error(ng-show='form.input.$error.required')
+                            | Se requiere
+        .col-xs-12(style="padding-bottom:20px;padding-top:20px;") 
+            h4.text-center.tit Selecciona tipo de Pago y Coberturas
+        .col-xs-12
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Seleccionar Tipo de Cobertura
+                .col-sm-7.text-left
+                    select(ng-model="carsCtrl.typeCobertura" required).form-control
+                        option(value="" selected="" disabled="") Selecciona una opción
+                        option(value="AMPLIO PLUS") AMPLIO PLUS
+                        option(value="AMPLIO") AMPLIO
+                        option(value="LIMITADO") LIMITADO
+                        option(value="RC") RESPONSABILIDAD CIVIL
+            .form-group.col-md-6
+                .col-sm-5
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona Forma de Pago
+                .col-sm-7.text-left
+                    select(ng-model="carsCtrl.formaPago" required).form-control
+                        option(value="" selected="" disabled="") Selecciona una opción
+                        option(value=1) CONTADO
+                        option(value=2) SEMESTRAL
+                        option(value=3) TRIMESTRAL
+                        option(value=4) MENSUAL
+        div.row.text-center
+            .col-xs-12(style="position: relative; left: 15px;")
+                button(class="btn-primary btn" ng-click="carsCtrl.pagina2()" ) REGRESAR
+                +btnWithIcon( 'CONTINUAR', 'btn-primary btn-space', 'form.$invalid')(ngClick="carsCtrl.cotizarDosB()")

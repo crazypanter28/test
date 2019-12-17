@@ -1,0 +1,37 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":"",
+         "criticality":"",
+         "code":"E00A",
+         "description":"Obtencion de contratos correcto."
+      }
+   ],
+   "contracts":[
+      {
+         "idContrato":3000228,
+         "status":"1",
+         "aliasContrato":"Pruebas",
+         "coTitular":"Allan Steffler Landeros",
+         "empresa":"Casa",
+         "cuentaEje":"-1026.0",
+         "cuentaInversiones":"76013.65000000001",
+         "tipoServicio":"NO ASESORADO",
+         "total":"74987.65",
+         "numCteAnt":0
+      },
+      {
+         "idContrato":4000228,
+         "status":"1",
+         "aliasContrato":"Pruebas",
+         "coTitular":"Mario Olvera García",
+         "empresa":"Casa",
+         "cuentaEje":"-1026.0",
+         "cuentaInversiones":"76013.65000000001",
+         "tipoServicio":"NO ASESORADO",
+         "total":"54987.65",
+         "numCteAnt":0
+      }
+   ]
+}

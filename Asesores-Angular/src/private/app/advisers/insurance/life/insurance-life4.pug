@@ -1,0 +1,143 @@
+div.content-panel.tranfers(ng-if="lifeCtrl.actualPage === 4")
+    form(name="form" novalidate)
+        .row
+            .col-md-4.text-left(style="padding-bottom:20px;") 
+                img(src="img/logos/mapfre.svg" style="width: 85px;height: 50px")
+        .row
+            .col-md-12(style="padding-bottom:10px;") 
+                h4.text-center.tit
+                    span Designación de Beneficiarios.
+        .row
+            .col-md-12
+                .form-group.col-lg-5(permission="['asesores.AgenteMenu.']")
+                    .col-md-5
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de beneficiario
+                    .col-md-7.text-left
+                        select(name="listBeneficiary"
+                            ng-model="lifeCtrl.tipoBeneficiario"
+                            ng-options="x.text for x in lifeCtrl.ListBeneficiary"
+                            required).form-control
+                .form-group.col-lg-5(permission="['asesores.ReportesMenu.Propuesta.']")
+                    .col-md-5
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de beneficiario
+                    .col-md-7.text-left
+                        select(name="listBeneficiary"
+                            ng-model="lifeCtrl.tipoBeneficiario"
+                            ng-options="x.text for x in lifeCtrl.ListBeneficiary | filter:'PRINCIPAL'"
+                            required).form-control
+                .form-group.col-lg-6.text-left
+                    .col-md-5
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Parentesco
+                    .col-md-7.text-left
+                        select(name="parentescoB"
+                            ng-model="lifeCtrl.parentescoB"
+                            ng-options="x.text for x in lifeCtrl.ListParentesco"
+                            required).form-control.required
+        .row
+            .col-md-12
+                .form-group.col-lg-5
+                    .col-md-5
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                    .col-md-7.text-left
+                        input(type="text" id="nombreB" name="nombreB" placeholder="Nombre(s)" 
+                            ng-model="lifeCtrl.nombreB"
+                            minlength="3" maxlength="80"
+                            ng-keypress="lifeCtrl.charrepeatText($event,'nombreB');lifeCtrl.soloText($event,true);"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-lg-6.text-left
+                    .col-md-5
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                    .col-md-7.text-left
+                        input(type="text" id="apePaternoB" name="apePaterB" placeholder="Apellido Paterno"
+                            ng-model="lifeCtrl.apePaternoB"
+                            minlength="3" maxlength="50"
+                            ng-keypress="lifeCtrl.charrepeatText($event,'apePaternoB');lifeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+        .row
+            .col-md-12
+                .form-group.col-md-5
+                    .col-md-5
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                    .col-md-7.text-left
+                        input(type="text" id="apeMaternoB" name="apeMaternoB" placeholder="Apellido Materno"
+                            ng-model="lifeCtrl.apeMaternoB"
+                            minlength="3" maxlength="50"
+                            ng-keypress="lifeCtrl.charrepeatText($event,'apeMaternoB');lifeCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-lg-6.text-left
+                    .col-md-5
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") G&eacute;nero
+                    .col-md-7.text-left
+                    label.act-radio-custom
+                        input( type="radio" name="sexoB" value="1" ng-model="lifeCtrl.sexoB")
+                        span.css-label
+                        | Masculino
+                    label.act-radio-custom
+                        input( type="radio" name="sexoB" value="0" ng-model="lifeCtrl.sexoB")
+                        span.css-label
+                        | Femenino        
+        .row
+            .col-md-12
+                .from-group.col-md-5
+                    .col-md-5
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") %
+                    .col-md-7.text-left
+                        input(type="number" id="porcentajeB" name="porcentajeB" maxlength="3" placeholder="%"
+                            ng-model="lifeCtrl.porcentajeB" 
+                            ng-keypress="lifeCtrl.soloNumero($event,'porcentajeB')" 
+                            required).form-control.upperCaseInput.required
+                .form-group.col-lg-6.text-left
+                    .col-md-5
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de Nacimiento
+                    .col-md-7.text-left
+                        dates-range-picker(
+                            date="lifeCtrl.fechaNacB"
+                            placeholder="dd/mm/aaaa"
+                            options='lifeCtrl.beneficiaryDatePickOp'
+                            ng-required="true"
+                            is-single="true" )
+        .row
+            .col-md-12
+                .form-group.col-lg-5
+                    .col-lg-5
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Teléfono
+                    .col-md-7.text-left
+                        input(type="tel" name="telefonoB" id="telefonoB" placeholder="Teléfono"
+                            ng-model="lifeCtrl.telefonoB" 
+                            minlength="10" maxlength="10" 
+                            ng-keypress="lifeCtrl.charrepeat($event,lifeCtrl.telefonoB);lifeCtrl.soloNumero($event);lifeCtrl.numberSecuential($event,'telefonoB');" 
+                            required).form-control.required
+                .form-group.col-lg-6.text-left
+                    .col-md-5
+                        p.text-right(style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo Electrónico
+                    .col-md-7.text-left
+                        input(type="email" name="emailB" placeholder="correo@mail.com" maxlength="50"
+                            ng-model="lifeCtrl.emailB" style="text-transform: uppercase;" ng-pattern="lifeCtrl.mailRegex"
+                            ng-change="lifeCtrl.validateActinverEmail(lifeCtrl.emailB)" required).form-control.required                       
+            .row.text-center(ng-if="!lifeCtrl.updateFlag")
+                button(class="btn-primary btn" ng-click="lifeCtrl.saveBeneficiario();" ng-disabled='form.$invalid') AGREGAR BENEFICIARIO
+            .row.text-center(ng-if="lifeCtrl.updateFlag")
+                button(class="btn-primary btn" ng-click="lifeCtrl.updateBeneficiario();" ng-disabled='form.$invalid') ACTUALIZAR BENEFICIARIO
+        div.tranfers.margenes                    
+            div.stages-table
+                table
+                    thead
+                        tr
+                            th Parentesco
+                            th Nombre
+                            th %
+                            th Tipo Beneficiario
+                            th Edición
+                    tbody
+                        tr( ng-repeat="row in lifeCtrl.ListaBeneficiarios")
+                            td.text-center {{row.parentescoB.text | uppercase}}
+                            td.text-center {{row.nombreB | uppercase}} {{row.apePaternoB | uppercase}} {{row.apeMaternoB | uppercase}}
+                            td.text-center {{row.porcentajeB}}
+                            td.text-center {{row.tipoBeneficiario.text | uppercase}} 
+                            td.margenes20px.displaySpaceBetween 
+                                img.cursorPointer.borderTrash(src="img/icons/basura.png" ng-click="lifeCtrl.deleteBeneficiario($index)")
+                                img.cursorPointer.borderEdit(src="img/icons/lapiz.png" ng-click="lifeCtrl.editBeneficiario($index)")
+        .row
+                div.col-md-12.text-center
+                        button(class="btn-primary btn" style='margin-right: 10px;' ng-click="lifeCtrl.go2page(3)" ) REGRESAR
+                        button(class="btn-primary btn" style='margin-right: 10px;' ng-click="lifeCtrl.go2page(5)") CONTINUAR

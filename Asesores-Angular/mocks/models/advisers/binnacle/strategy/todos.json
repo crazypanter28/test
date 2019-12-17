@@ -1,0 +1,1179 @@
+{
+   "response":{
+      "status":1,
+      "messages":[
+         {
+            "type":"N",
+            "criticality":"INFO",
+            "code":"AC000",
+            "description":"OK"
+         }
+      ],
+      "result":{
+         "sponsorList":[
+            {
+               "idSponsor":7978,
+               "contractsList":[
+                  {
+                     "numContrato":7632680,
+                     "capital":5452.4,
+                     "origen":"BANCO",
+                     "nombreCliente":"JOHEN PALOMARES LOBATO",
+                     "clasification":"R",
+                     "contactStatus":true
+                  }
+               ]
+            },
+            {
+               "idSponsor":732,
+               "contractsList":[
+                  {
+                     "numContrato":338147,
+                     "capital":441394.71,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALEJANDRA ESCALANTE TOVAR",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":362084,
+                     "capital":10037.896784,
+                     "origen":"CB   ",
+                     "nombreCliente":"JUAN RIVERO LEGARRETA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":309133,
+                     "capital":80443.34,
+                     "origen":"CB   ",
+                     "nombreCliente":"BERTA ALMAZAN ABARCA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":334025,
+                     "capital":225378.02,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA DEL SOCORRO FRANCO ESPINOSA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1007546,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALBERTO DOMINGUEZ MARTINEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":355877,
+                     "capital":230102.041904,
+                     "origen":"CB   ",
+                     "nombreCliente":"REGINA WEBER BUCH",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":328826,
+                     "capital":8.951424,
+                     "origen":"CB   ",
+                     "nombreCliente":"FERNANDO SAIZ BECKMANN",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":285827,
+                     "capital":1978269.14,
+                     "origen":"CB   ",
+                     "nombreCliente":"LUZ ELENA AREVALO MONCAYO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":360941,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"SUSANA FERNANDEZ MARTINEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":345610,
+                     "capital":132090.13,
+                     "origen":"CB   ",
+                     "nombreCliente":"EDUARDO JOSE DANIELEWICZ MATA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":286416,
+                     "capital":100240.13,
+                     "origen":"CB   ",
+                     "nombreCliente":"JUAN CARLOS MERCENARI URIBE",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":259197,
+                     "capital":797435.39,
+                     "origen":"CB   ",
+                     "nombreCliente":"OFELIA PEREZ VILLANUEVA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":339299,
+                     "capital":87.6,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOSE ALBERTO PEREZ DE ACHA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":307545,
+                     "capital":672578.83,
+                     "origen":"CB   ",
+                     "nombreCliente":"GRISELDA MORALES HERNANDEZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":267927,
+                     "capital":1417940.73,
+                     "origen":"CB   ",
+                     "nombreCliente":"ENRIQUE GOMEZ DELGADO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1012629,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOSE LUIS ARZANI DOMINGUEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":311647,
+                     "capital":800940.85,
+                     "origen":"CB   ",
+                     "nombreCliente":"GERARDO DÁVALOS BUTZE",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":327060,
+                     "capital":111886.1,
+                     "origen":"CB   ",
+                     "nombreCliente":"DANIELA SANCHEZ-ALDANA AMOR",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":327088,
+                     "capital":111886.27,
+                     "origen":"CB   ",
+                     "nombreCliente":"LORETTA SANCHEZ-ALDANA AMOR",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":297404,
+                     "capital":307081.56,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUADALUPE ARACELI VIDAL Y SANCHEZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5037417,
+                     "capital":427338.23,
+                     "origen":"CB   ",
+                     "nombreCliente":"TONY HARPREET CENTURION PAREDES",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":300524,
+                     "capital":40408.45984,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARGARITA ESQUIVEL NIETO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":276551,
+                     "capital":621868.53,
+                     "origen":"CB   ",
+                     "nombreCliente":"FRANCISCO HUBER OLEA REYNOSO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":327079,
+                     "capital":111874.64,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA CONSTANZA SANCHEZ-ALDANA AMOR",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":359613,
+                     "capital":11259.62,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUADALUPE GARCIA ORTEGA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":306396,
+                     "capital":48613.39,
+                     "origen":"CB   ",
+                     "nombreCliente":"RODRIGO ANGULO GARFIAS",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":298733,
+                     "capital":81018.68,
+                     "origen":"CB   ",
+                     "nombreCliente":"LIDERMAQ, SA DE CV",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":276542,
+                     "capital":7672.56,
+                     "origen":"CB   ",
+                     "nombreCliente":"JEAN PAUL HUBER OLEA CONTRO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":342392,
+                     "capital":157353.79856,
+                     "origen":"CB   ",
+                     "nombreCliente":"GENARO MEZA LOPEZ",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":244596,
+                     "capital":2467158.08,
+                     "origen":"CB   ",
+                     "nombreCliente":"CAMILO MAURICIO SADA GOMEZ",
+                     "clasification":"A",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":1033571,
+                     "capital":704525.96,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALLAN STIERLE CORDOVA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":982565,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOSE CARLOS LOMBANA TORRAS",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1018071,
+                     "capital":184225.39,
+                     "origen":"CB   ",
+                     "nombreCliente":"JESUS ESTRADA TRUJILLO",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":878553,
+                     "capital":96411.17,
+                     "origen":"CB   ",
+                     "nombreCliente":"PR ESCUELA SECUNDARIA DR EMILIO CARDENAS SC",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":901288,
+                     "capital":-8.71,
+                     "origen":"CB   ",
+                     "nombreCliente":"MEXCREDIT SA DE CV",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":387343,
+                     "capital":257539.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUADALUPE GONZALEZ ROBLES",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":367695,
+                     "capital":-502.439704,
+                     "origen":"CB   ",
+                     "nombreCliente":"BRUNO DE NIGRIS BERLANGA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1011318,
+                     "capital":350044.38,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOSHUA MARTINEZ RODRIGUEZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":998139,
+                     "capital":925475.32,
+                     "origen":"CB   ",
+                     "nombreCliente":"DELIA ISABEL DIAZ MERITO BOU",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":866405,
+                     "capital":757177.935472,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOAQUIN SALVADOR MARTINEZ LOYOLA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1093293,
+                     "capital":56346.4,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUADALUPE CALDERON .",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1117614,
+                     "capital":692945.68,
+                     "origen":"CB   ",
+                     "nombreCliente":"BLANCA VENEGAS BRIZUELA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":903687,
+                     "capital":80462.52,
+                     "origen":"CB   ",
+                     "nombreCliente":"ANDREA YOLANDA DEL RIO PADILLA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3054642,
+                     "capital":691982.283552,
+                     "origen":"CB   ",
+                     "nombreCliente":"MIGUEL ANGEL VAZQUEZ CISNEROS",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":996444,
+                     "capital":37312.79196,
+                     "origen":"CB   ",
+                     "nombreCliente":"JESUS ANTONIO PROCEL AGUILAR",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193078,
+                     "capital":82448.78,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA DELIA SILVA TORRES",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":914602,
+                     "capital":333031.46,
+                     "origen":"CB   ",
+                     "nombreCliente":"MANUELA LUCIA CHI AZAMAR",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":915362,
+                     "capital":456865.7,
+                     "origen":"CB   ",
+                     "nombreCliente":"ESTEBAN LOPEZ SALINAS",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":395165,
+                     "capital":4.102736,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA DE LOS ANGELES GARCIA BARRENA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3006311,
+                     "capital":41098.16,
+                     "origen":"CB   ",
+                     "nombreCliente":"NAZARIO ULLOA CRUZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":954523,
+                     "capital":248978.44,
+                     "origen":"CB   ",
+                     "nombreCliente":"ELITE ADMINISTRADORA DE NEGOCIOS S.A. DE C.V.",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":300515,
+                     "capital":48885.811296,
+                     "origen":"CB   ",
+                     "nombreCliente":"ERNESTO ALVAREZ CERVANTES",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":233063,
+                     "capital":206714.33,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALEJANDRO FONSECA BEDOYA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":872960,
+                     "capital":579703.57,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALFONSO BERNARDO MALPICA CARDENAS",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":352950,
+                     "capital":15723.73,
+                     "origen":"CB   ",
+                     "nombreCliente":"VERONICA DOMINGUEZ HERNANDEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":382838,
+                     "capital":74678.327688,
+                     "origen":"CB   ",
+                     "nombreCliente":"LUIS HUMBERTO PERALTA NAVARRETE",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1032359,
+                     "capital":4635460.4,
+                     "origen":"CB   ",
+                     "nombreCliente":"DISTRIBUIDORA DE EQUIPO AUDIOLOGICO SA DE CV",
+                     "clasification":"A",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":992652,
+                     "capital":410298.50192,
+                     "origen":"CB   ",
+                     "nombreCliente":"LEOPOLDO BEST GUZMAN",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1159267,
+                     "capital":2539808.12,
+                     "origen":"CB   ",
+                     "nombreCliente":"ROSALBA VICTORIA QUIROZ ESPEJEL",
+                     "clasification":"A",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":231396,
+                     "capital":765752.49,
+                     "origen":"CB   ",
+                     "nombreCliente":"LICIA LEANN BROOKS GALLO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":922684,
+                     "capital":1326.86212,
+                     "origen":"CB   ",
+                     "nombreCliente":"LAURA ELENA VILLA QUIJADA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":874423,
+                     "capital":503273.75,
+                     "origen":"CB   ",
+                     "nombreCliente":"RENATA DE LA VIRGEN MARIA BRAUN SALCIDO",
+                     "clasification":"B",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":5012700,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"NATALIA LUCIA PICHON HERNANDEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":903071,
+                     "capital":124345.61,
+                     "origen":"CB   ",
+                     "nombreCliente":"RICARDO AUGUSTO MENDEZ PLAZA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":385700,
+                     "capital":7.28,
+                     "origen":"CB   ",
+                     "nombreCliente":"TERESA HERRERA HERRERA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":954514,
+                     "capital":50918.91,
+                     "origen":"CB   ",
+                     "nombreCliente":"ADEMDUM CORPORATIVO SA DE CV",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":919689,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"SARA MARIA DE LEON CRESPO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":866156,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"TELIGENTIA SA DE CV",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193372,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"HUMBERTO NUÑEZ HERNANDEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":225492,
+                     "capital":5016315.094768,
+                     "origen":"CB   ",
+                     "nombreCliente":"JORGE ALBERTO GUEMEZ TREVIÑO",
+                     "clasification":"AA",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":963158,
+                     "capital":1100961.975952,
+                     "origen":"CB   ",
+                     "nombreCliente":"ESTEBAN VALADEZ JIMENEZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3072070,
+                     "capital":3.53,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUTBERTO RAMIRO VAZQUEZ ZETINA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1010676,
+                     "capital":1108070.66196,
+                     "origen":"CB   ",
+                     "nombreCliente":"JESSICA DORANTES VILLEGAS",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":873692,
+                     "capital":88249.65,
+                     "origen":"CB   ",
+                     "nombreCliente":"PR CENTRO UNIVERSITARIO DR EMILIO CARDENAS SC",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1075240,
+                     "capital":200822.68,
+                     "origen":"CB   ",
+                     "nombreCliente":"ADOLFO CUPUL CHABLE",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1061530,
+                     "capital":58.03,
+                     "origen":"CB   ",
+                     "nombreCliente":"NAYMA GARZA KALIL",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":379487,
+                     "capital":412386.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALICIA ZARZOSA PEREZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1032144,
+                     "capital":608995.91,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOHEN PALOMARES LOBATO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3035405,
+                     "capital":11901.57696,
+                     "origen":"CB   ",
+                     "nombreCliente":"GEORGINA ALVAREZ BARCENAS",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1112959,
+                     "capital":122224.009904,
+                     "origen":"CB   ",
+                     "nombreCliente":"RICARDO VENEGAS BRIZUELA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":886152,
+                     "capital":1432929.695952,
+                     "origen":"CB   ",
+                     "nombreCliente":"MIGUEL MAURICIO KOLTENIUK KRAUZE",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":904169,
+                     "capital":402565.61,
+                     "origen":"CB   ",
+                     "nombreCliente":"SANTIAGO MARTI ASCENCIO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":137202,
+                     "capital":617535.73,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUILLERMO GARGOLLO RIVAS",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3029939,
+                     "capital":-120.30032,
+                     "origen":"CB   ",
+                     "nombreCliente":"JORGE ERICK JIMENEZ RAMOS",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":977688,
+                     "capital":500304.878488,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARGARITA NATALIA MORELEON GUIZAR",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":949889,
+                     "capital":100370.19,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOSE CARLOS GONZALEZ ARAIZA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1014896,
+                     "capital":41061.15,
+                     "origen":"CB   ",
+                     "nombreCliente":"MANUEL ACUÑA SAFONT",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":245942,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARGARITA ESTHER CHAGOYA ORTEGA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193069,
+                     "capital":182543.78,
+                     "origen":"CB   ",
+                     "nombreCliente":"DIEGO FERNANDEZ MARTINEZ",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1001249,
+                     "capital":39385.21,
+                     "origen":"CB   ",
+                     "nombreCliente":"PEDRO GUILLERMO PLATA FERNANDEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":989602,
+                     "capital":1136261.398632,
+                     "origen":"CB   ",
+                     "nombreCliente":"ANA MARIA PEDROSA MEZA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":223573,
+                     "capital":154.117824,
+                     "origen":"CB   ",
+                     "nombreCliente":"ARTURO GALINDO MARTINEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":383962,
+                     "capital":16989.9,
+                     "origen":"CB   ",
+                     "nombreCliente":"AIDA MIRANDA ALVAREZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":862551,
+                     "capital":565790.82,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA DE JESUS OSTERROTH LEDESMA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":861455,
+                     "capital":2349654.69,
+                     "origen":"CB   ",
+                     "nombreCliente":"RENE FERNANDEZ MENDEZ",
+                     "clasification":"A",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":383365,
+                     "capital":1752147.36,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA ELISA DEL MORAL RAMIREZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3028690,
+                     "capital":92497.618993,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIO JOAQUIN ALLENDELAGUA MONROY",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":976224,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUILLERMO GARZA GOMEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":967430,
+                     "capital":67776.18,
+                     "origen":"CB   ",
+                     "nombreCliente":"ANTONIA MARCELA RIVERA RODRIGUEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":955452,
+                     "capital":186717.22,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIO MORENO ROBLES",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5018615,
+                     "capital":1011799.28,
+                     "origen":"CB   ",
+                     "nombreCliente":"ADOLFO BONFIL CHAGOYA ORTEGA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3054651,
+                     "capital":873278.819288,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA DE LOURDES CISNEROS RENTERIA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1093346,
+                     "capital":41991.33,
+                     "origen":"CB   ",
+                     "nombreCliente":"GUADALUPE CALDERON .",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193363,
+                     "capital":4968.15,
+                     "origen":"CB   ",
+                     "nombreCliente":"DANIEL PULIDO CHAVEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1175953,
+                     "capital":242710.18,
+                     "origen":"CB   ",
+                     "nombreCliente":"MONICA PEDROZA MENABRITO",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1085836,
+                     "capital":270241.33,
+                     "origen":"CB   ",
+                     "nombreCliente":"JOSE GUSTAVO TORRES MARTINEZ",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1164484,
+                     "capital":1866129.97,
+                     "origen":"CB   ",
+                     "nombreCliente":"MIREYA MARROQUIN BITAR",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193381,
+                     "capital":154045.74,
+                     "origen":"CB   ",
+                     "nombreCliente":"GERARDO DEL ANGEL BLANCO",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193354,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"PABLO GOMEZ PINAL",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1187815,
+                     "capital":165738.928406,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA JANNETTE AMEZCUA FERRER",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1132768,
+                     "capital":150621.08,
+                     "origen":"CB   ",
+                     "nombreCliente":"ANDRES SANCHE DIEZ DE BONILLA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3093182,
+                     "capital":6288914.57924,
+                     "origen":"CB   ",
+                     "nombreCliente":"MONICA BARRAGAN DE LA VEGA",
+                     "clasification":"AA",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":5052836,
+                     "capital":1005776.425952,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA DEL CARMEN CORONA ORTIZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5022897,
+                     "capital":378907.8,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA AUXILIO PROCEL AGUILAR",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3103260,
+                     "capital":84515.91,
+                     "origen":"CB   ",
+                     "nombreCliente":"ARTURO MIJANGOS RAMIREZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1130742,
+                     "capital":693868.18,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALFONSO DAVILA DE ICAZA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1094336,
+                     "capital":1384881.41,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA EUGENIA DE MIGUEL LONGEGA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3068245,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"JUAN ANTONIO LAGUNA GUERRERO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5024118,
+                     "capital":81238.73,
+                     "origen":"CB   ",
+                     "nombreCliente":"ROCIO PROCEL SANCHEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1046264,
+                     "capital":214137.1,
+                     "origen":"CB   ",
+                     "nombreCliente":"SERGIO GONZALEZ EGUIARTE",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1067204,
+                     "capital":73444.53576,
+                     "origen":"CB   ",
+                     "nombreCliente":"GAMA EDUCACION INTERNACIONAL, S.C.",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5062415,
+                     "capital":1358186.62,
+                     "origen":"CB   ",
+                     "nombreCliente":"CARLOS GARCIA HUERTA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1005959,
+                     "capital":126903.51,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARISA POLIN DE PALACIO",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5036711,
+                     "capital":159441.38,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALLAN STIERLE CORDOVA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193283,
+                     "capital":72888.08,
+                     "origen":"CB   ",
+                     "nombreCliente":"EDUARDO GARCIA MORENO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1133384,
+                     "capital":134840.46,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIANA SANCHE DIEZ DE BONILLA",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1093033,
+                     "capital":125509.97,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALMA DEL CARMEN OROZCO FRANCO",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1012512,
+                     "capital":546543.94,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARICELA CORTES CARRERA",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193087,
+                     "capital":1235.69,
+                     "origen":"CB   ",
+                     "nombreCliente":"JORGE ERICK ESQUIVEL LUGARDO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1131019,
+                     "capital":366363.68,
+                     "origen":"CB   ",
+                     "nombreCliente":"ADRIAN REGNIER CHAVEZ",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1123554,
+                     "capital":1.0322115749432E7,
+                     "origen":"CB   ",
+                     "nombreCliente":"DIEGO FERNANDO DOMINGUEZ CASTAÑEDA",
+                     "clasification":"AA",
+                     "contactStatus":true
+                  },
+                  {
+                     "numContrato":1192863,
+                     "capital":61188.51,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIANA MEDINA AHUMADA",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3114873,
+                     "capital":14881.96,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARCIA ELOISA RIVERA BERNARDINO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3088232,
+                     "capital":28876.48,
+                     "origen":"CB   ",
+                     "nombreCliente":"GABRIELA ROLON DIAZ MERITO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":3106150,
+                     "capital":104568.18,
+                     "origen":"CB   ",
+                     "nombreCliente":"FRANCISCO JAVIER OZUNA ESQUIVEL",
+                     "clasification":"C",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1164448,
+                     "capital":1983470.53,
+                     "origen":"CB   ",
+                     "nombreCliente":"FERNANDO GONZALEZ SANGRI",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":5041509,
+                     "capital":29901.86,
+                     "origen":"CB   ",
+                     "nombreCliente":"LIZETH ARELI AGUILETA ROJAS",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1132606,
+                     "capital":413827.9,
+                     "origen":"CB   ",
+                     "nombreCliente":"PAOLA ONTIVEROS ESCOBEDO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1192792,
+                     "capital":0.0,
+                     "origen":"CB   ",
+                     "nombreCliente":"ALBERTO CASTREJON HERNANDEZ",
+                     "clasification":"R",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1200863,
+                     "capital":671662.45,
+                     "origen":"CB   ",
+                     "nombreCliente":"ERIC SILBERSTEIN LERNER",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1145558,
+                     "capital":325606.14,
+                     "origen":"CB   ",
+                     "nombreCliente":"TOMAS ANTONIO BAYO CANALIZO",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":989700,
+                     "capital":911226.580349,
+                     "origen":"CB   ",
+                     "nombreCliente":"MARIA ALMA MORALES ARAGON",
+                     "clasification":"B",
+                     "contactStatus":false
+                  },
+                  {
+                     "numContrato":1193452,
+                     "capital":75851.03,
+                     "origen":"CB   ",
+                     "nombreCliente":"YAMILET OJEDA CARBALLO",
+                     "clasification":"R",
+                     "contactStatus":false
+                  }
+               ]
+            }
+         ]
+      }
+   }
+}

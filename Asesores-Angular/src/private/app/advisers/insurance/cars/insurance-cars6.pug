@@ -1,0 +1,113 @@
+include /views/mixins/buttons
+div.content-panel.tranfers(ng-if="carsCtrl.stepForm.stepF")
+    form(name="form" novalidate)
+        .row(style="padding-bottom:20px;") 
+            h2.text-center.tit Registro de Cuenta para cargo del seguro
+        .row
+            .form-group.col-md-4.col-sm-6
+                label.col-sm-4
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                .col-sm-8
+                    input(type="text" id="nombreCard" placeholder="Nombre(s)" 
+                                    ng-model="carsCtrl.nombreCard"
+                                    required maxlength="60" minlength="3"
+                                    ng-keypress="carsCtrl.charrepeatText($event,'nombreCard');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+            .form-group.col-md-4.col-sm-6
+                label.col-sm-4
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                .col-sm-8
+                    input(type="text" id="apellidoPCard" name="apellidoPCard" placeholder="Apellido Paterno"
+                                    ng-model="carsCtrl.apellidoPCard"
+                                    required maxlength="80" minlength="3"
+                                    ng-keypress="carsCtrl.charrepeatText($event,'apellidoPCard');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+            .form-group.col-md-4.col-sm-6
+                label.col-sm-4
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                .col-sm-8
+                    input(type="text" id="apellidoMCard" name="apellidoMCard" placeholder="Apellido Materno"
+                                    ng-model="carsCtrl.apellidoMCard"
+                                    required maxlength="80" minlength="3"
+                                    ng-keypress="carsCtrl.charrepeatText($event,'apellidoMCard');carsCtrl.soloTextAndNum($event,true)").form-control.upperCaseInput.required
+        .row
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona el banco
+                .col-sm-6.text-left
+                    select(required
+                        name="listBanks"
+                        ng-model="carsCtrl.cmd.dataCarsAccountIdBanks"
+                        ng-options="x.text for x in ListBanks"
+                        ng-change="selectBankId()").form-control
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de cuenta
+                .col-sm-6.text-left
+                    p.text-left(ng-if="carsCtrl.formaPagoUser==='domDebito'" style="font-size: 13px; font-weight: bold; padding-top:8px;") TARJETA DE DÉBITO
+                    p.text-left(ng-if="carsCtrl.formaPagoUser==='domCredito'" style="font-size: 13px; font-weight: bold; padding-top:8px;") TARJETA DE CRÉDITO
+        .row
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;")  Número de tarjeta
+                .col-sm-6.text-left
+                    input(type="text" name="numTarjeta" ng-model="carsCtrl.acount" placeholder="cuenta"
+                        maxlength="{{carsCtrl.accLen}}" minlength="{{carsCtrl.accLen}}" ng-keypress="carsCtrl.soloNumero($event)" 
+                        ng-blur="carsCtrl.selectTypeCard()" required).form-control.required
+                    div(role='alert')
+                        span.error(ng-show='form.numTarjeta.$error.maxlength || form.numTarjeta.$error.minlength')
+                            | Se requieren {{carsCtrl.accLen}} dígitos
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona mes y año de vencimiento
+                .col-sm-6.text-center
+                    .col-sm-5(style="padding-left:0px; padding-right:6px")
+                        select(required
+                            name="monthExpirationList"
+                            ng-model="carsCtrl.comboMonthExpiration"
+                            ng-options="x.text for x in carsCtrl.monthExpirationList"
+                        ).form-control
+                    .col-sm-2(style="padding:12px 12px 8px 4px;")
+                        span /
+                    .col-sm-5(style="padding-left:0px; padding-right:6px")
+                        select(required
+                            name="yearExpirationList"
+                            ng-model="carsCtrl.comboYearExpiration"
+                            ng-options="x.text for x in carsCtrl.yearExpirationList"
+                        ).form-control
+        .row
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código de seguridad
+                .col-sm-6.text-left
+                    input(type="text" name="cvvField" ng-model="carsCtrl.cvv" placeholder="cvv" maxlength="{{carsCtrl.cvvLen}}" minlength="{{carsCtrl.cvvLen}}" ng-keypress="carsCtrl.soloNumero($event)" required).form-control.required
+                    div(role='alert')
+                        span.error(ng-show='form.cvvField.$error.maxlength || form.cvvField.$error.minlength')
+                            | Se requieren {{carsCtrl.cvvLen}} dígitos
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona tipo de tarjeta
+                .col-sm-6.text-left
+                    select(ng-model="carsCtrl.typeCard" required).form-control
+                        option(value="") Selecciona una opcion
+                        option(value="1") VISA
+                        option(value="2") MASTER CARD
+                        option(value="3") AMERICAN EXPRESS
+        .row
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;")  Fecha aprox de pago
+                .col-sm-6.text-left
+                    dates-range-picker(
+                        date="carsCtrl.fechaAprox"
+                        placeholder="dd/mm/aaaa"
+                        options='carsCtrl.datepicker_opts'
+                        ng-required="true"
+                        is-single="true")
+            .form-group.col-md-6.col-sm-12
+                label.col-sm-6
+                    p(ng-class="carsCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;")  Correo electrónico
+                .col-sm-6.text-left
+                    input(type="email" ng-model="carsCtrl.email1" placeholder="email" required maxlength="50").form-control.upperCaseInput.required
+        .row.text-center
+            .col-sm-12(style="position: relative; left: 25px;")
+                button(class="btn-primary btn" ng-click="carsCtrl.cotizarTres()" ) REGRESAR
+                +btnWithIcon( 'CONTINUAR', 'btn-primary btn-space btn', 'form.$invalid')(ngClick="carsCtrl.cotizarCinco()")

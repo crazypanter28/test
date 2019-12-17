@@ -1,0 +1,64 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+.binnacle-modal.modal-client-info
+    form( name="form" novalidate )
+        div.modal-header
+            img.icon( src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="client.close()" )
+            h4 INFORMACIÓN DEL CLIENTE
+
+        div.modal-body
+
+            // Spinner
+            .loader-wrapper( ng-if="client.sent_reminder" )
+                .spinner
+
+            // Reminder
+            div( ng-if="!client.sent_reminder" )
+
+                // Detailed ino
+                .detailed-info
+                    .row
+                        .col-xs-4
+                            label Nombre
+                            | {{ client.info.name }}
+                        .col-xs-4
+                            label Número de contrato
+                            | {{ client.info.contract }}
+                        .col-xs-4
+                            label Teléfono
+                            |  {{ client.info.phoneNumber }}
+                    .row
+                        .col-xs-4
+                            label Correo
+                            |  {{ client.info.email }}
+                            
+                        .col-xs-4
+                            label Última fecha de contacto
+                            | {{client.info.lastContact}}
+                    .row
+                        label.act-checkbox-custom( for="congratulation" )
+                            input( type="checkbox" id="congratulation" ng-model="client.reminder.congratulation"  )
+                            span.css-label
+                            | Enviar una felicitación
+                    .row( ng-if="client.reminder.congratulation" )
+                        .col-xs-4
+                            +input( 'Asunto', 'subject', null, true )(
+                                ngRequire="true",
+                                model="client.reminder.subject"
+                            )
+                    .row( ng-if="client.reminder.congratulation" )
+                        .col-md-12
+                            label( for="message" ) Mensaje:
+                                span.require *
+                            .economic
+                                .editor
+                                    text-angular( ta-toolbar="[ ['bold', 'italics', 'ol', 'ul'] ]" id="message" ng-required="true" ng-model="client.reminder.message" style="height: 250px;" )
+                           
+        div.modal-footer
+            div( ng-if="!client.sent_reminder" )
+                p.note
+                    img( src="img/icons/cumple.svg" alt="Cumpleaños" )
+                    | * Puedes enviar una felicitación a tu cliente, activando el campo
+                    strong  ENVIAR UNA FELICITACIÓN.
+                +btnSubmit( "ENVIAR", "save", "(!form.$valid || !client.reminder.congratulation || !(client.info.email !== null && client.info.email.trim() !=='') )" )( ngClick="client.sendReminder()" )

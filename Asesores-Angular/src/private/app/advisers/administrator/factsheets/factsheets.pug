@@ -1,0 +1,39 @@
+include /views/mixins/info-result
+
+.factcheets
+    .section-title
+        span Factsheets
+        i.add-white( ng-click="fact.showModalCreateFactsheet()" )
+
+    .content
+        .content-spinner( ng-show="fact.loadingProducts" )
+            .spinner
+        div( ng-if ="fact.errorLoadingProducts" )
+            +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+        div( ng-show="!fact.loadingProducts && fact.products" )
+            ul.list-tabs-cube
+                li.item-tabs( ng-repeat="it in fact.products" ng-click="fact.changeTab( it.idClassification );" ng-class="{'active': fact.selectedTab === it.idClassification}")
+                    i( class="fact-icon-{{it.idClassification}}" ng-class="{ 'active': fact.selectedTab === it.idClassification}" )
+                    span {{ it.description }}
+
+            .content-spinner( ng-show="fact.loadingSubProducts" )
+                .spinner
+            div( ng-if="!fact.loadingSubProducts" )
+                table.ng-table(ng-if="fact.subProducts.length > 0")
+                    thead
+                        tr
+                            th.text-center Producto
+                            th.text-center Editar
+                            th.text-center Eliminar
+                    tbody
+                        tr( ng-repeat=" i in fact.subProducts" )
+                            td.text-center {{ i.name}}
+                            td.text-center #[i.edit( ng-click="fact.showModalEditFactsheet( i )" )]
+                            td.text-center #[i.remove( ng-click="fact.showModalRemoveFactsheet( i.idProduct )" )]
+
+
+                .no-results( ng-if="fact.subProducts.length === 0" )
+                    img( src="img/bg/binnacle-empty-state.svg" )
+                    p Actualmente #[b NO] hay factsheets en esta categoría.
+                    .link( ng-click="fact.showModalCreateFactsheet()" ) Puedes agregar uno

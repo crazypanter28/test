@@ -1,0 +1,272 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/doll
+
+
+div.doll.capitals( ng-mouseover="doll.validateHour()")
+    div.row.margin-0.header
+        button.btn.col-xs-6.buy(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('buy')"
+            ng-class = "{'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('sell')"
+            ng-class = "{'active' : doll.tab === 'sell'}"
+        )
+            span vender
+
+    div.row.margin-0.body.empty.init( ng-show="!doll.newState && !doll.tab && !doll.loading"  )
+        div.empty-container
+            div.empty-center
+                img(src="img/icons/doll/icon_money.svg" )
+                p.station-description Selecciona la operación que deseas realizar
+                p.label Puedes dar clic directamente sobre la
+                    b  EMISORA
+                    |   para agilizar tu compra o venta
+
+    div.row.margin-0.body.confirm( ng-if="doll.confirmationModel && !doll.captureModel && !doll.loading" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +confirmCapitalDoll( 'confirmationModel' )
+
+    div.row.margin-0.body.confirm( ng-if="doll.captureModel && !doll.loading" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +confirmCapitalDoll( 'captureModel', true )
+
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    div.row.margin-0.body(ng-class="{'sell': doll.tab === 'sell','buy': doll.tab === 'buy'} " ng-if="doll.newState && !doll.loading  || !doll.confirmationModel && !doll.captureModel && doll.tab && !doll.loading")
+        div
+            form(name="form" novalidate)
+                div.row.margin-0.informacion-doll
+                    div.search.col-xs-7
+                        div.form-group.has-icon.act-input
+                            label( for="station" ) Emisora
+                            div.input-wrapper
+                                input.form-control( type="text" placeholder="Emisora" id="station" name="station"
+                                    ng-required="true"
+                                    ng-model="doll.cmd.station"
+                                    required="required"
+                                    uib-typeahead="st as ( st.issuer.issuerName + ' ' + st.issuer.serie +' (' + st.feed +') '  ) for st in $root.statiosnTable | filter:$viewValue"
+                                    typeahead-on-select= 'doll.AddStation($item)'
+                                    autocomplete="off",
+                                    typeahead-editable="false"
+                                )
+                                i.fa.fa-search(style="right:2px")
+                    div.col-xs-5( ng-if="doll.tab !== 'buy'")
+                        div.purchasing-label
+                            p Mis títulos:
+                                b {{ doll.titlesForSell.titlesQty || 0 }}
+                div.purchasing-label( ng-if="doll.tab === 'buy'")
+                    p Poder de Compra:
+                        b  {{ $root.currentCash | currency:'$' }}
+                        |  a 48 hrs.
+                        img(src="img/icons/inner-tabs-doubt-active.svg", alt="")
+
+                div.purchasing-rules.row(ng-class = "{'sell': doll.tab === 'sell' }")
+                    label Tipo de orden :
+                    br
+                    select.form-control(
+                        ng-model="doll.cmd.order.value"
+                        ng-options="it.description for it in doll.dataListTipoOrdenesFilter" ng-disabled="!doll.dataListTipoOrdenesFilter"
+                        ng-required="true"
+                        ng-change="doll.changeOperationType(doll.cmd.order.value)"
+                        ng-if="doll.tab !== 'sell'"
+                    )
+                    select.form-control(
+                        ng-model="doll.cmd.order.value"
+                        ng-options="it.description for it in doll.dataListTipoOrdenesFilterSell" ng-disabled="!doll.dataListTipoOrdenesFilterSell"
+                        ng-required="true"
+                        ng-change="doll.changeOperationType(doll.cmd.order.value)"
+                        ng-if="doll.tab === 'sell'"
+                    )
+                    div.row.margin-0.model-doll
+                        .col-xs-4
+                            +input( 'Títulos', 'titles', 'Títulos', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                model='doll.cmd.order.model.titles',
+                                pattern='doll.regex',
+                                maxlength='8'
+                            )
+                        .col-xs-4(ng-if='doll.showPrice' )
+                            +input( 'Precio', 'titles', 'Precio', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                model='doll.cmd.priceStation',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+                        .col-xs-4(ng-if="doll.showLimitPrice")
+                            +input( 'Precio límite', 'titles', 'Precio límite', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                model='doll.cmd.order.model.maxPrice',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+                        .col-xs-4(ng-if = "doll.cmd.order.value.shortKey.trim() !== 'SL' && doll.cmd.order.value.shortKey.trim() !== 'TS'")
+                            +input( 'Plazo (días)', 'titles', 'Plazo (días)', true, 'number' )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                onkeypress='return (event.charCode >= 48 && event.charCode <= 57 ) || event.charCode === 0',
+                                model='doll.cmd.order.model.term',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric',
+                                maxlength = '2',
+                                max = 30,
+                                min = 1
+                            )
+                        .col-xs-4(ng-if="doll.showVolume")
+                            +input( 'Volumen visible', 'titles', 'Volumen visible', true, 'number' )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                                model='doll.cmd.order.model.volOculto',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+                        .col-xs-4(ng-if="doll.showVolMin || doll.cmd.orderValidity.text === 'MINFI'")
+                            +input( 'Volumen min', 'titles', 'Volumen min', true, 'number' )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                                model='doll.cmd.order.model.volMin',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+
+                        div
+                        .col-xs-4(ng-if="doll.cmd.order.value.shortKey.trim() === 'SL'")
+                            +input( 'Precio piso', 'titles', 'Precio piso', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                model='doll.cmd.order.model.floorPrice',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+                        .col-xs-4(ng-if="doll.cmd.order.value.shortKey.trim() === 'SL'")
+                            +input( 'Precio techo', 'titles', 'Precio techo', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                model='doll.cmd.order.model.ceilingPrice',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+                        .col-xs-4(ng-if="doll.cmd.order.value.shortKey.trim() === 'TS'")
+                            +input( '% Salida piso', 'titles', '% Salida piso', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                                model='doll.cmd.order.model.floorPricePercentage',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+                        .col-xs-4(ng-if="doll.cmd.order.value.shortKey.trim() === 'TS'")
+                            +input( '% Salida techo', 'titles', '% Salida techo', true )(
+                                name = 'formPhone2'
+                                ngRequire='true',
+                                onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                                model='doll.cmd.order.model.ceilingPricePercentage',
+                                message='El campo solo acepta números',
+                                pattern='doll.pattern.numeric'
+                            )
+
+                //.row.margin-0.order-options
+                    +radioButton( 'Ninguna', 'doll.cmd.order.options.type' )(
+                    id='any'
+                    )
+                //.row.margin-0.order-options( ng-if= "doll.cmd.orderValidity.text === 'GTT'")
+                    +radioButton( 'Tiempo específico', 'doll.cmd.order.options.type' )(
+                        id='tEspecifico'
+                    )
+
+                .row.margin-0
+                    div.col-md-6.padding-0(ng-if="doll.cmd.typeStock && (doll.cmd.order.value.shortKey.trim() !== 'SL' && doll.cmd.order.value.shortKey.trim() !== 'TS')")
+                        label Tipo de vigencia
+                            span *
+                        div( act-dropdown
+                            ng-model="doll.orderValidity"
+                            selected="doll.cmd.orderValidity"
+                            name="orderValidity"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='doll.cmd.orderValidity'
+                            ng-required='true'
+                        )
+                    div.col-xs-6( ng-if="doll.cmd.orderValidity.text === 'GTT'" )
+                        act-datetime(ng-if="doll.cmd.orderValidity.text === 'GTT'" ng-model="doll.cmd.order.options.time" title="Tiempo específico:" type="HH" required="true" )
+
+                hr
+                div.col-md-12(ng-if="doll.cmd.order.value.shortKey.trim() !== 'SL' && doll.cmd.order.value.shortKey.trim() !== 'TS'")
+                    label Tipo de Bolsa a operar:
+                .row(ng-if="doll.cmd.order.value && doll.cmd.order.value.stockMarketValueType !== '99'")
+                    .col-md-6(ng-show="doll.cmd.order.value.stockMarketValueType === '1'")
+                        +radioButton( 'BMV', 'doll.cmd.typeStock' )(
+                            id='1'
+                        )
+                    .col-md-6(ng-if="doll.cmd.order.value.stockMarketValueType === '2'")
+                        +radioButton( 'BIVA', 'doll.cmd.typeStock' )(
+                            id='2'
+                        )
+                    .col-md-6(ng-if="doll.cmd.order.value.stockMarketValueType === '0'")
+                        +radioButton( 'SOR', 'doll.cmd.typeStock' )(
+                            id='0'
+                        )      
+
+                .row.col-md-4(ng-if="doll.cmd.order.value && doll.cmd.order.value.stockMarketValueType === '99'" ng-repeat="stockMarket in doll.statusRouting")                        
+                        .col-xs-6(ng-if="stockMarket.stockMarketType === 1")
+                            +radioButton( 'BMV', 'doll.cmd.typeStock' )(
+                                id='1'
+                                ngChange="doll.getOrderValidity('1')",
+                            )
+                        .col-xs-6(ng-if="stockMarket.stockMarketType === 2")
+                            +radioButton( 'BIVA', 'doll.cmd.typeStock' )(
+                                id='2'
+                                ngChange="doll.getOrderValidity('2')"
+                            )
+                        .col-xs-6(ng-if="stockMarket.stockMarketType === 0")
+                            +radioButton( 'SOR', 'doll.cmd.typeStock' )(
+                                id='0'
+                                ngChange="doll.getOrderValidity('0')"
+                            )    
+
+                div
+                    label
+                div.col-md-12(ng-if="doll.cmd.operatorTypeRO && doll.cmd.operatorTypeRL && (doll.isPropia || doll.isEligible || ids.text === 'SIC')")
+                        .row
+                            .col-md-12
+                                label Ruteo de la instrucción:
+
+                            .col-md-3
+                                +radioButton('Libro', 'doll.cmd.operatorType')(
+                                    id = 'RL'
+                                )
+                            .col-md-3
+                                +radioButton('Mesa', 'doll.cmd.operatorType')(
+                                    id = 'RO'
+                                )
+                hr
+
+                div(ng-if="!doll.contractType")
+                    +dollBinnacle()
+
+                .row.margin-0(ng-if="doll.contractType")
+                    div.col-xs-12.padding-0.buttons
+                        +btnWithIcon(
+                            'OPERAR',
+                            'btn-primary',
+                            'form.$invalid',
+                            'img/icons/doll/ico_aceptar_on.svg'
+                        )(ngClick="doll.confirm()")
+                        +btnWithIcon(
+                            'Limpiar',
+                            'btn-primary',
+                            null,
+                            'img/icons/doll/ico_limpiar_on.svg'
+                        )(ngClick="doll.cleanModels()")
+
+

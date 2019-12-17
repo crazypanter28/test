@@ -1,0 +1,27 @@
+div( uib-dropdown is-open="status.isopen" on-toggle="filtro=''" ng-class="[{'empty': !selected && !status.isopen }, css]" )
+    button.defaultF.btn.text-left( uib-dropdown-toggle ng-disabled="ngDisabled")
+        span(ng-show="selected && !status.isopen") {{selected.text}}
+        span.placeholder( ng-if="!selected" ng-hide="status.isopen " ) {{placeholder}}
+        input.input-drop(
+            ng-show="status.isopen" placeholder="{{ placeholder }}" ng-model="filtro"
+            name="{{name}}"
+            autocomplete="off"
+        )
+        span.glyphicon.glyphicon-menu-down
+
+    ul.dropdown-menu( role="menu" aria-labelledby="single-button" scrollable, uib-dropdown-menu)
+        li( ng-repeat="option in ngModel | filter:{text:filtro}" ng-click="select( option, selected )" ) {{option.text}}
+//- div
+//-     //- div(ng-show="type === 'default'")
+//-
+//-     div(ng-if="type !== 'default'")
+//-
+//-         div.act-dropdown
+//-             button.btn.text-left
+//-                 span.placeholder( ng-if="!selected" ) {{placeholder}}
+//-                 span(ng-show="selected && !status.isopen") {{selected.name}}
+//-                 select(
+//-                     ng-model="selected"
+//-                     ng-options="option as option.text for option in ngModel"
+//-                 )
+//-                 span.glyphicon.glyphicon-menu-down

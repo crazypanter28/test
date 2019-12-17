@@ -1,0 +1,25 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":[
+      {
+         "idProduct":11,
+         "name":"Crédito Revolvente"
+      },
+      {
+         "idProduct":12,
+         "name":"Crédito Auto"
+      },
+      {
+         "idProduct":13,
+         "name":"Crédito Valor"
+      }
+   ]
+}

@@ -1,0 +1,15 @@
+// Tabs wrapper
+.tabs-wrapper
+
+    // Navigation tabs
+    ul.nav-tabs.main-tabs
+        li( ui-sref="binnacle.commercial.strategy" ui-sref-active="active")
+            a( href="javascript:void(0);" ) Estrategia comercial
+        li( ui-sref="binnacle.commercial.reports" ui-sref-active="active")
+            a( permission="['asesores.BitacorasMenu.Bitacora.ReporteMetas.']" href="javascript:void(0);"  ) Reporte de metas
+        li( ui-sref="binnacle.commercial.outline" ui-sref-active="active")
+            a( href="javascript:void(0);" ) Reperfilamiento
+
+    // Tab content
+    .tab-content
+        div( ui-view="" )

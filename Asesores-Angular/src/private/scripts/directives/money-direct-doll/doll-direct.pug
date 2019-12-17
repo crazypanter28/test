@@ -1,0 +1,225 @@
+mixin moneyDirectDollConfirmation( _finish )
+    h5
+        if _finish
+            img( ng-if="doll.tab === 'buy'" src="img/icons/doll/confirmation-buy.svg")
+            img( ng-if="doll.tab !== 'buy'" src="img/icons/doll/confirmation-sell.svg")
+            br
+            | Confirmación de Orden de {{ doll.tab === 'buy' ? 'Compra': 'Venta' }}
+
+        else
+            | Verifica tu orden de {{ doll.tab === 'buy' ? 'Compra': 'Venta' }}
+
+    div.confirm-container(ng-if="doll.confirmModel ")
+        div.row.margin-0
+            div.col-xs-6 Emisora:
+            div.col-xs-6 {{ doll.confirmModel.issuer }}
+        div.row.margin-0        
+            div.col-xs-6 Serie
+            div.col-xs-6 {{ doll.confirmModel.serie }}
+        div.row.margin-0
+            div.col-xs-6 Tipo de Operacion:
+            div.col-xs-6 {{doll.confirmModel.operationType}}
+        div.row.margin-0
+            div.col-xs-6 Tipo de instrumento:
+            div.col-xs-6 {{ doll.confirmModel.instrumentType }}
+        div.row.margin-0
+            div.col-xs-6 Liquidación:
+            div.col-xs-6 {{doll.confirmModel.settlementType }}
+        div.row.margin-0
+            div.col-xs-6 Plazo:
+            div.col-xs-6 {{doll.confirmModel.term }}
+        div.row.margin-0
+            div.col-xs-6 Hora:
+            div.col-xs-6 {{doll.confirmModel.operationTimeNumber }}
+        div.row.margin-0
+            div.col-xs-6 Moneda:
+            div.col-xs-6 {{ doll.confirmModel.currencyTypeDesc }}
+        div.row.margin-0
+            hr
+            div.col-xs-12.text-center 
+                b Cliente
+        div.row.margin-0(ng-if="doll.confirmModel.rate")
+            div.col-xs-6 Rendimiento:
+            div.col-xs-6 {{doll.confirmModel.rate}}
+        div.row.margin-0(ng-if="doll.confirmModel.discountRate")
+            div.col-xs-6 Tasa de Desc:
+            div.col-xs-6 {{doll.confirmModel.discountRate}}
+        div.row.margin-0(ng-if="doll.confirmModel.price")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{doll.confirmModel.price}}
+        div.row.margin-0(ng-if="doll.confirmModel.surtaxRate")
+            div.col-xs-6 Sobretasa:
+            div.col-xs-6 {{doll.confirmModel.surtaxRate}}
+        div.row.margin-0
+            hr
+            div.col-xs-12.text-center  
+                b Asesor
+        div.row.margin-0(ng-if="doll.confirmModel.adviserInfo.adviserRate")
+            div.col-xs-6 Rendimiento:
+            div.col-xs-6 {{doll.confirmModel.adviserInfo.adviserRate}}
+        div.row.margin-0(ng-if="doll.confirmModel.adviserInfo.adviserDiscountRate")
+            div.col-xs-6 Tasa de Desc:
+            div.col-xs-6 {{doll.confirmModel.adviserInfo.adviserDiscountRate}}
+        div.row.margin-0(ng-if="doll.confirmModel.adviserInfo.adviserPrice")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{doll.confirmModel.adviserInfo.adviserPrice}}
+        div.row.margin-0(ng-if="doll.confirmModel.adviserInfo.adviserSurtaxRate")
+            div.col-xs-6 Sobretasa:
+            div.col-xs-6 {{doll.confirmModel.adviserInfo.adviserSurtaxRate}}
+
+        hr
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+
+        div.row.margin-0
+            div.col-xs-6( ng-if="doll.confirmModel.amount" ) Importe
+            div.col-xs-6( ng-if="doll.confirmModel.amount" ) {{ doll.confirmModel.amount | currency}}
+            div.col-xs-6( ng-if="doll.confirmModel.titlesQty" ) Títulos
+            div.col-xs-6( ng-if="doll.confirmModel.titlesQty" ) {{ doll.confirmModel.titlesQty }}
+        div.row.margin-0( ng-if="doll.isDistribuida" )
+            div.col-xs-6 Títulos Distibuidos
+            div.col-xs-6 {{ doll.totalTitles }}    
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+            'Finalizar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+            'enviar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+            'Modificar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin moneyDirectDollCapture( _finish )
+    h5
+        if _finish
+            img( ng-if="doll.tab === 'buy'" src="img/icons/doll/confirmation-buy.svg")
+            img( ng-if="doll.tab !== 'buy'" src="img/icons/doll/confirmation-sell.svg")
+            br
+            | Confirmación de Orden de {{ doll.tab === 'buy' ? 'Compra': 'Venta' }}
+
+        else
+            | Verifica tu orden de {{ doll.tab === 'buy' ? 'Compra': 'Venta' }}
+
+    div.confirm-container(ng-if="doll.captureModel ")
+        div.row.margin-0(ng-if="doll.captureModel.issuer")
+            div.col-xs-6 Emisora:
+            div.col-xs-6 {{ doll.captureModel.issuer }}
+        div.row.margin-0(ng-if="doll.captureModel.serie")
+            div.col-xs-6 Serie
+            div.col-xs-6 {{ doll.captureModel.serie }}
+        div.row.margin-0
+            div.col-xs-6 Tipo de Operacion:
+            div.col-xs-6 {{doll.captureModel.operationType}}
+        div.row.margin-0
+            div.col-xs-6 Tipo de instrumento:
+            div.col-xs-6 {{ doll.captureModel.instrumentType }}
+        div.row.margin-0
+            div.col-xs-6 Liquidación:
+            div.col-xs-6 {{doll.captureModel.settlementType }}
+        div.row.margin-0
+            div.col-xs-6 Plazo:
+            div.col-xs-6 {{doll.captureModel.term }}
+        div.row.margin-0
+            div.col-xs-6 Hora:
+            div.col-xs-6 {{doll.captureModel.operationTimeNumber }}
+        div.row.margin-0
+            div.col-xs-6 Moneda:
+            div.col-xs-6 {{ doll.captureModel.currencyTypeDesc }}
+        div.row.margin-0
+            hr
+            div.col-xs-12.text-center
+                b Cliente
+        div.row.margin-0(ng-if="doll.captureModel.rate")
+            div.col-xs-6 Rendimiento:
+            div.col-xs-6 {{doll.captureModel.rate}}
+        div.row.margin-0(ng-if="doll.captureModel.discountRate")
+            div.col-xs-6 Tasa de Desc:
+            div.col-xs-6 {{doll.captureModel.discountRate}}
+        div.row.margin-0(ng-if="doll.captureModel.price")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{doll.captureModel.price}}
+        div.row.margin-0(ng-if="doll.captureModel.surtaxRate")
+            div.col-xs-6 Sobretasa:
+            div.col-xs-6 {{doll.captureModel.surtaxRate}}
+        div.row.margin-0
+            hr
+            div.col-xs-12.text-center
+                b Asesor
+        div.row.margin-0(ng-if="doll.captureModel.adviserInfo.adviserRate")
+            div.col-xs-6 Rendimiento:
+            div.col-xs-6 {{doll.captureModel.adviserInfo.adviserRate}}
+        div.row.margin-0(ng-if="doll.captureModel.adviserInfo.adviserDiscountRate")
+            div.col-xs-6 Tasa de Desc:
+            div.col-xs-6 {{doll.captureModel.adviserInfo.adviserDiscountRate}}
+        div.row.margin-0(ng-if="doll.captureModel.adviserInfo.adviserPrice")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{doll.captureModel.adviserInfo.adviserPrice}}
+        div.row.margin-0(ng-if="doll.captureModel.adviserInfo.adviserSurtaxRate")
+            div.col-xs-6 Sobretasa:
+            div.col-xs-6 {{doll.captureModel.adviserInfo.adviserSurtaxRate}}
+
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+        div.row.margin-0( ng-if="doll.titlesQty" )
+            div.col-xs-6 Títulos Operados
+            div.col-xs-6 {{ doll.titlesQty }}
+        div.row.margin-0( ng-if="doll.isDistribuida" )
+            div.col-xs-6 Títulos Distibuidos
+            div.col-xs-6 {{ doll.totalTitles }}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+            'Finalizar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+            'enviar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+            'Modificar',
+            'btn-primary',
+            null,
+            'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin binnacleResume()
+
+    div.col-xs-6 Medio de instrucción:
+    div.col-xs-6 {{ doll.cmd.media.type.text }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'Teléfono'" )
+        div.col-xs-5 Teléfono:
+        div.col-xs-7 {{ doll.cmd.binnacle.phone }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'Teléfono'" )
+        div.col-xs-5 Hora:
+        div.col-xs-7 {{ doll.cmd.binnacle.time }}
+    div.row.margin-0
+        div.col-xs-5 Fecha:
+        div.col-xs-7 {{ doll.cmd.binnacle.date | date: "dd/MM/yyyy" }}
+    div.row.margin-0( ng-if="doll.cmd.binnacle.comments" )
+        div.col-xs-5 Comentarios:
+        div.col-xs-7 
+            div.dollScroll( scrollable always-visible="true") {{ doll.cmd.binnacle.comments }}

@@ -1,0 +1,78 @@
+include /views/mixins/info-result
+include /app/advisers/goals/page-instructions
+include /views/mixins/radio-button
+
+// Proposals page
+.proposals-page
+    .content-panel(style='width:102em; margin-left: -145px;') 
+
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs
+                li(ui-sref-active="active" )
+                    a( ui-sref="insurance" ) EMITIR POLIZAS 
+            br
+        p(style='font-size: 13px; font-weight: bold;') Filtros de busqueda;
+                    .search-mis-reportes-left
+                    .container.icon-left
+                      .col-md-12
+                        .col-md-3(permission="['asesores.AgenteMenu.']")
+                          input.form-control(type='text', placeholder='Filtrar por Asesor', ng-model='fieldSearch').form-control        
+                        .col-md-3
+                          input.form-control(type='text', placeholder='Filtrar por núm. de póliza', ng-model='fieldSearchPoliza').form-control   
+                        .col-md-3
+                          input.form-control(type='text', placeholder='Filtrar por Nombre', ng-model='fieldSearchNombre').form-control   
+                        .col-md-3
+                          input.form-control(type='text', placeholder='Filtrar por Ramo', ng-model='fieldSearchRamo').form-control
+                        br
+                    button(ng-click="misreportes.exportData()", style="right:-80.3em").btn.btn-primary Exportar
+                        img( src="img/icons/excel.svg" width="16px" style="margin-left:5px;" )
+                    .container.icon-left(style='margin-left: -34px;')   
+                        table#idTablaResultados.table.is-scrollable
+                            thead
+                                tr 
+                                    th(style="padding:inherit;" permission="['asesores.AgenteMenu.']") NOMBRE ASESOR
+                                    th(style="padding:inherit;" permission="['asesores.ReportesMenu.Propuesta.']" ui-sref-active="active" ) ID DE ASESOR
+                                    th RAMO
+                                    th NÚM. POLIZA
+                                    th NOMBRE DEL ASEGURADO
+                                    th ASEGURADORA
+                                    th DESCRIPCIÓN
+                                    th MODELO
+                                    th NO DE SERIE
+                                    th VIGENCIA DE INICIO
+                                    th VIGENCIA DE FIN
+                                    th FECHA DE EMISION
+                                    th PRIMA TOTAL
+                                    th ESTATUS 
+                                    th PRIMA NETA
+                            tbody
+                                tr( ng-if = "misreportes.modal")
+                                    td( colspan="14")
+                                        .content-spinner
+                                            .spinner
+                                tr( ng-repeat = "reg in filtered = (misreportes.listRegister | filter:fieldSearchPoliza | filter:fieldSearch | filter:fieldSearchRamo | filter:fieldSearchNombre) track by $index" )
+                                    td(ng-bind-html="reg.ramo | remarkText:fieldSearch" style="text-align:left;")
+                                    td(ng-bind-html="reg.contractNumber | remarkText:fieldSearchRamo"  filter:fieldSearch style="text-align:left;")
+                                    td(ng-bind-html="reg.contractNumber | remarkText:fieldSearchPoliza" filter:fieldSearch style="text-align:left;")
+                                    td(ng-bind-html="reg.clientName | remarkText:fieldSearchNombre" filter:fieldSearch style="text-align:left;")
+                                    td(ng-bind-html="reg.clientName | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.descripcion | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.contractNumber | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.contractNumber | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.vigenciainicio | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.vigenciafin | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.fechaemision | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.cashToday | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.estatus | remarkText:fieldSearcha" style="text-align:left;")
+                                    td(ng-bind-html="reg.cashToday | remarkText:fieldSearcha" style="text-align:left;")
+                                tr(ng-if="filtered.length < 1 && misreportes.listRegister.length > 0 ? true : false ")
+                                    td(colspan="14")
+                                        //Registers No Found
+                                        +noGeneralResults( 'No existen', ' registros con el criterio de busqueda.' )  
+                                tr(ng-if="(misreportes.listRegister.length > 0 ? false : true) && !misreportes.modal"  )                            
+                                    td(colspan="14")
+                                        // No results
+                                        +noGeneralResults( 'No Existen', ' Registros.' )

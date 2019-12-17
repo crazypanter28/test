@@ -1,0 +1,185 @@
+include /views/mixins/buttons
+include /views/mixins/checkbox
+include /views/mixins/info-result
+include /views/mixins/input
+
+
+div.pane-wrapper( permission="['asesores.OperacionesDinnMenu.ConsultaCitas.']" )
+    div.pane-title Datos del contacto
+    div.pane-body
+
+        div
+            form(name="dinnForm")
+                div.modal-body.row.margin-0
+                    .content.propects-add-activities
+
+                        .row.margin-0
+                            .col-xs-4.padding-left-0
+                                label
+                                    | Nombre del Cliente
+                                input.form-control( 
+                                    type="text" 
+                                    name="clientName" 
+                                    placeholder="Nombre del Cliente" 
+                                    ng-model="book.informationDate.fullName" 
+                                    maxlength= "50"
+                                    ng-pattern="/^[a-zA-Z\\s\\.ñÑáéíóúÁÉÍÓÚ]+$/"
+                                    readonly)
+                                    
+                            .col-xs-4.padding-left-0
+                                label Tipo de contacto
+                                input.form-control( 
+                                    type="text" 
+                                    name="contactType" 
+                                    placeholder="Tipo de contacto" 
+                                    ng-model="book.informationDate.contactType" 
+                                    maxlength= "50"
+                                    ng-pattern="/^[a-zA-Z\\s\\.ñÑáéíóúÁÉÍÓÚ]+$/"
+                                    readonly)
+
+                            div.col-xs-4.padding-left-0
+                                div.form-group.has-icon
+                                    div(style="position:relative")
+                                        dates-range-picker(
+                                            date="book.informationDate.interviewDate"
+                                            options="options"
+                                            label="Fecha de cita"
+                                            placeholder="dd/mm/aaaa"
+                                            is-single="true")
+                        .row.margin-0
+                            .col-xs-4.padding-left-0
+                                    label Correo Electronico
+                                    input.form-control( 
+                                        type="text" 
+                                        name="emailAccount" 
+                                        placeholder="Correo Electronico" 
+                                        ng-model="book.informationDate.email"
+                                        readonly)
+                        
+                            .col-xs-4.padding-left-0(ng-if="book.informationDate.contactType == 'Visita a CF' ")
+                                label Sucursal
+                                input.form-control( 
+                                    type="text" 
+                                    name="storageType" 
+                                    placeholder="Sucursal" 
+                                    ng-model="book.informationDate.brancheName" 
+                                    maxlength= "50"
+                                    readonly)
+
+                            .col-xs-4.padding-left-0(ng-if="book.informationDate.contactType == 'Llamada' ")
+                                label Teléfono
+                                input.form-control( 
+                                    type="text" 
+                                    name="telefono1" 
+                                    placeholder="(10) dígitos" 
+                                    ng-model="book.informationDate.phoneNumber" 
+                                    maxlength= "10"
+                                    onkeypress="return (event.charCode > 48 && event.charCode < 57)" 
+                                    ng-pattern="/^[0-9]+$/"
+                                    readonly)
+
+                            .col-xs-4.padding-left-0
+                                    label Hora de cita
+                                    input.form-control( 
+                                        type="text" 
+                                        name="dateHour" 
+                                        placeholder="Hora de cita" 
+                                        ng-model="book.informationDate.dateHour"
+                                        readonly)
+
+                        //.row.margin-0
+                            .col-xs-4.padding-left-0
+                                label
+                                    |Agregar otro telefono
+                                input.form-control.checkboxDinn(
+                                    type="checkbox" 
+                                    ng-model="book.informationDate.addOtherPhone" )
+
+                        .row.margin-0(ng-if="book.informationDate.contactType == 'Llamada' ")
+                            .col-xs-4.padding-left-0
+                                label Estatus de Registro
+                                input.form-control( 
+                                    type="text" 
+                                    name="rowStatus" 
+                                    placeholder="Estatus de Registro" 
+                                    ng-model="book.informationDate.statusType" 
+                                    maxlength= "50"
+                                    readonly)
+
+                            .col-xs-4.padding-left-0
+                                label Otro teléfono
+                                input.form-control( 
+                                    type="text" 
+                                    name="telefono2" 
+                                    placeholder="(10) dígitos" 
+                                    ng-model="book.informationDate.otherPhoneNumber" 
+                                    maxlength= "10"
+                                    onkeypress="return (event.charCode > 48 && event.charCode < 57)" 
+                                    ng-pattern="/^[0-9]+$/"
+                                    readonly)
+                            
+                            div.col-xs-4.padding-left-0
+                                div.form-group.has-icon
+                                    div(style="position:relative")
+                                        dates-range-picker(
+                                            date="book.informationDate.registryDateTime"
+                                            options="options"
+                                            label="Fecha de Registro"
+                                            placeholder="dd/mm/aaaa"
+                                            is-single="true")
+
+                        .row.margin-0(ng-if="book.informationDate.contactType == 'Visita a CF' ")
+                            .col-xs-4.padding-left-0
+                                label Teléfono
+                                input.form-control( 
+                                    type="text" 
+                                    name="telefono1" 
+                                    placeholder="(10) dígitos" 
+                                    ng-model="book.informationDate.phoneNumber" 
+                                    maxlength= "10"
+                                    onkeypress="return (event.charCode > 48 && event.charCode < 57)" 
+                                    ng-pattern="/^[0-9]+$/"
+                                    readonly)
+
+                            .col-xs-4.padding-left-0
+                                label Otro teléfono
+                                input.form-control( 
+                                    type="text" 
+                                    name="telefono2" 
+                                    placeholder="(10) dígitos" 
+                                    ng-model="book.informationDate.otherPhoneNumber" 
+                                    maxlength= "10"
+                                    onkeypress="return (event.charCode > 48 && event.charCode < 57)" 
+                                    ng-pattern="/^[0-9]+$/"
+                                    readonly)
+                            
+                            .col-xs-4.padding-left-0
+                                div.form-group.has-icon
+                                    div(style="position:relative")
+                                        dates-range-picker(
+                                            date="book.informationDate.registryDateTime"
+                                            options="options"
+                                            label="Fecha de Registro"
+                                            placeholder="dd/mm/aaaa"
+                                            is-single="true")
+
+                        .row.margin-0(ng-if="book.informationDate.contactType == 'Visita a CF' ")
+                            .col-xs-4.padding-left-0
+                                label Estatus de Registro
+                                input.form-control( 
+                                    type="text" 
+                                    name="rowStatus" 
+                                    placeholder="Estatus de Registro" 
+                                    ng-model="book.informationDate.statusType" 
+                                    maxlength= "50"
+                                    readonly)
+
+    div.pane-title(ng-if="book.documentInfo") Documentos adjuntos
+    div.pane-body(ng-if="book.documentInfo")
+        div.modal-body.row.margin-0
+            .content.propects-add-activities
+                .row.margin-0
+                    div.col-xs-3( ng-repeat = "it in book.documentInfo" )
+                        a( ng-click="book.dCDocumentQuery(it)") {{it.documentTypeDesc}}
+                        a#dwnldLnk(download = '{{it.documentTypeDesc}}')
+    

@@ -1,0 +1,18 @@
+mixin radioButton( label, model  )
+    label.act-radio-custom( for!=attributes.id 
+        ng-click!=attributes.ngClick
+    )
+        input(
+            type="radio"
+            name!=attributes.id
+            id!=attributes.id
+            value!=attributes.id
+            ng-checked!=attributes.ngChecked
+            ng-model=model
+            ng-change!=attributes.ngChange
+            ng-disabled!=attributes.ngDisabled
+            ng-if!=attributes.ngIf
+            ng-show!=attributes.ngShow
+        )
+        span.css-label
+        | #{label}

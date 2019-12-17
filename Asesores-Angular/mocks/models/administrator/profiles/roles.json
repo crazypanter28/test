@@ -1,0 +1,28 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idRole": 1,
+		"description": "ADMINISTRADOR"
+	}, {
+		"idRole": 2,
+		"description": "ASESOR"
+	}, {
+		"idRole": 3,
+		"description": "CONTRALORIA"
+	}, {
+		"idRole": 4,
+		"description": "REPORTES"
+	}, {
+		"idRole": 5,
+		"description": "DIRECTOR"
+	}, {
+		"idRole": 6,
+		"description": "GERENTE"
+	}]
+}

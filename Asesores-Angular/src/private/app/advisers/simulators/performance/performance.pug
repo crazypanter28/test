@@ -1,0 +1,141 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/checkbox
+
+.page-performance
+
+    div.pane-wrapper.simulators
+        div.pane-title Datos para el simulador
+        div.pane-body
+            h4 Rendimiento Histórico
+            div.note
+                h3 ¿Buscas una estrategia que se adapte a tu objetivos?
+                p Utiliza el simulador de estrategias de inversión con precios históricos de Burs@net, una herramienta muy útil que te servirá para evaluar la evolución de tu dinero en el tiempo. Tan sólo tienes que elegir los productos que más te interesen para invertir y el simulador proyectará lo que tu inversión hubiese crecido de haberla adquirido en años a pasados. Una vez que selecciones tu estrategia podrás realizarla en Burs@net y comprar todo lo que necesitas para lograr tus objetivos. 
+
+            .row.margin-0
+                div.col-xs-6.padding-left-0
+                    div.header-input
+                        span.number 1
+                        span.text Saldo inicial #[b *]
+
+                    +input( 'Ingresa el saldo', 'phone', 'Ingresa el saldo', true )(
+                        name = 'prospectNumberContract'
+                        ngRequire='true',
+                        model='per.amount',
+                        message='El campo solo acepta números'
+                    )
+
+                div.col-xs-6.padding-left-0
+                    div.header-input
+                        span.number 2
+                        span.text Selecciona el plazo de tu inversión #[b *]
+                    label Ingresa la fecha inicial y final de inversión o mueve la barra
+                    .row(ng-show="false")
+                        .col-xs-8
+                            dates-range-picker(
+                                placeholder="dd/mm/aaaa - dd/mm/aaaa"
+                                date="per.date"
+                            )
+                    .row
+                        .col-xs-8.container-range
+                            rzslider( rz-slider-model="per.slider.value" rz-slider-options="per.slider.options" )
+
+            .row.margin-0
+            .row.margin-0.table-simulator
+                .col-xs-7.table-left
+                    ul.nav.nav-tabs
+                        li( ng-class="{'active': per.selectedTab === 'funds'}" ng-click="per.selectTabTable('funds')") FONDOS DE INVERSIÓN
+                        li( ng-class="{'active': per.selectedTab === 'capitals'}" ng-click="per.selectTabTable('capitals')") MERCADO DE CAPITALES
+
+                    div.table-stations
+                        div.header.row.margin-0(ng-if="per.selectedTab === 'funds'")
+                            div( ng-repeat="it in per.optionsTab1" ng-class="{ 'active' : per.selectedSubTab.id === it.id }" ng-click="per.selectTabTable( null, it)" )  {{it.text}}
+
+                        div.header.row.margin-0(ng-if="per.selectedTab === 'capitals'")
+                            div( ng-repeat="it in per.optionsTab2" ng-class="{ 'active' : per.selectedSubTab.id === it.id }" ng-click="per.selectTabTableMarket(it)" ) {{ it.text }}
+
+                        table.ng-table
+                            thead
+                                tr(ng-if="per.selectedTab === 'funds'")
+                                    th
+                                    th(width="150") Emisora
+                                    th(width="150") Clasificación
+                                    th.center Rendimiento
+                                        .row.margin-0.subtitles
+                                            div.col-xs-4 1 AÑO
+                                            div.col-xs-4 3 AÑOS
+                                            div.col-xs-4 5 AÑOS
+                                tr(ng-if="per.selectedTab === 'capitals'")
+                                    th
+                                    th(width="100") Emisora
+                                    th.center Precio
+                                        .row.margin-0.subtitles
+                                            div.col-xs-4 PPP
+                                            div.col-xs-4 CIERRE
+                                            div.col-xs-4 ULTÍMO
+                            tbody(ng-if="per.selectedTab === 'funds'")
+                                tr
+                                    td(colspan ="4")
+                                        div(scrollable="" always-visible="true" )
+                                            table
+                                                tbody
+                                                    tr( ng-repeat=" it in per.resultTable")
+                                                        td
+                                                            +checkbox( '', 'it.selected')(ngClick="")
+                                                        td(width="150") {{it.issuerName}} {{it.serie}} 
+                                                        td(width="150") {{it.clasificacion}}
+                                                        td.center
+                                                            .row.margin-0
+                                                                div.col-xs-4 {{it.return365 | percentage}}
+                                                                    i.fa( ng-class="{'fa-arrow-circle-up': it.return365 > 0, 'fa-arrow-circle-down': it.return365 < 0, 'fa-minus-circle': it.return365 === 0 }")
+                                                                div.col-xs-4 {{ it.return3Years | percentage }}
+                                                                    i.fa( ng-class="{'fa-arrow-circle-up': it.return3Years > 0, 'fa-arrow-circle-down': it.return3Years < 0, 'fa-minus-circle': it.return3Years === 0 }")
+                                                                div.col-xs-4 {{ it.return5Years | percentage}}
+                                                                    i.fa( ng-class="{'fa-arrow-circle-up': it.return5Years > 0, 'fa-arrow-circle-down': it.return5Years < 0, 'fa-minus-circle': it.return5Years === 0 }")
+                            tbody(ng-if="per.selectedTab === 'capitals'")
+                                tr
+                                    td(colspan ="5")
+                                        div(scrollable="" always-visible="true" )
+                                            table
+                                                tbody
+                                                    tr( ng-repeat=" it in per.resultTable")
+                                                        td
+                                                            +checkbox( '', 'it.selected')(ngClick="")
+                                                        td(width="150") {{it.issuerName}} {{it.serie}}
+                                                        td.center
+                                                            .row.margin-0
+                                                                div.col-xs-4 {{it.averagePrice | currency}}
+                                                                div.col-xs-4 {{it.closingPrice | currency}}
+                                                                div.col-xs-4 {{it.lastPrice | currency}}
+                                                                    i.fa( ng-class="{'fa-arrow-circle-up': it.lastPrice > it.closingPrice, 'fa-arrow-circle-down': it.lastPrice < it.closingPrice, 'fa-minus-circle': it.lastPrice === it.closingPrice }")
+                .col-xs-5.strategy
+                    div.header TU ESTRATEGIA
+                    div.table
+                        table.ng-table
+                            thead
+                                tr
+                                    th Emisora
+                                    th $ #[br] asignado
+                                    th % #[br] asignado
+                            tbody
+                                tr
+                                    td(colspan ="3")
+                                        div(scrollable="" always-visible="true" )
+                                            table
+                                                tbody
+                                                    tr( ng-repeat=" it in per.allMarkets | filter: {selected:true}")
+                                                        td {{it.issuerName}} {{it.issuer.issuerName}} {{it.serie}} {{it.issuer.serie}}
+                                                        td {{ ((per.amount * it.value / 100) || 0) | currency }}
+                                                        td
+                                                            input( type="text" ng-model="it.value" ng-change="per.updateTotal()")
+            .row.margin-0.total-markets
+                .col-xs-7.text-total Total
+                .col-xs-5.value-total
+                    span( ng-class="{'incorrect': per.totalValueMarket > 100}" ) {{per.totalValueMarket || 0}}%
+                    span( ng-class="{'incorrect': per.totalValueMarket > 100}" ) ${{ per.amount * per.totalValueMarket / 100 }}
+
+            span.text-footer * Para poder generar el #[strong REPORTE DE INVERSIÓN], es necesario tener el 100% en el #[strong PORCENTAJE ASIGNADO].
+
+            button.btn.btn-primary.button-footer(
+                ng-click = "per.goState();" 
+                ng-disabled = '!(per.amount > 0 && per.slider.value > 0 && per.totalValueMarket === 100)' ) Generar

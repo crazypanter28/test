@@ -1,0 +1,22 @@
+
+include /views/mixins/buttons
+//- include /views/mixins/addActivity
+
+div.modal-header
+    h4 {{ activity.title}}
+form( name="$form" )
+    div.modal-body
+        //- +addActivity()
+        section-activity( ng-model ="activity.varsActivity" ng-configdate = "activity.configdate" )
+
+
+    div.modal-footer
+        +btnSubmit(
+            'Cancelar',
+            'btn-primary cancel'
+        )(ngClick="activity.cancel()")
+        +btnSubmit(
+            'Guardar',
+            'btn-primary save',
+            "$form.$invalid"
+        )(ngClick="activity.saveActivity()")

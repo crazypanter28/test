@@ -1,0 +1,80 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"dc1c7559-c6a8-4a11-93b7-3b2dab55b9d9",
+            "messages":[
+                {
+                    "responseSystemCode":"ACTIB001",
+                    "responseMessage":"EXITO",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"ACTIB001",
+                    "responseMessage":"TRUE",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"BEADM0001",
+                    "responseMessage":"No se encontraron Resultados  (limite por cuenta)",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"BEADM0000",
+                    "responseMessage":"Exito  No existen limites del dia del cliente registrados",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"BEADM0000",
+                    "responseMessage":"Exito  Validacion general de limites correcta. ( persist = false )",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"ACACBCWS0096",
+                    "responseMessage":"NO HAY NINGUN ERROR",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"BEADM0001",
+                    "responseMessage":"No se encontraron Resultados  (limite por cuenta)",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"BEADM0000",
+                    "responseMessage":"Exito  No existen limites del dia del cliente registrados",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"BEADM0000",
+                    "responseMessage":"Exito  Validacion general de limites correcta. ( persist = true )",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1461819600000,
+        "time":63355000,
+        "clientID":"NBURSANET",
+        "sessionID":null,
+        "responseSystem":"BUS CENTRAL",
+        "operationName":"TransferRequest",
+        "operationVersion":"2_0",
+        "ipaddress":"172.16.6.86"
+    },
+    "outTransferRequest":{
+        "transferResult":{
+            "operationReference":"750195544",
+            "operationDateTime":1461861353000,
+            "trackingCode":null
+        }
+    }
+}

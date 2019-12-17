@@ -1,0 +1,43 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}, {
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"lastWeek": [{
+			"contract": 919689,
+			"name": "SARA MARIA DE LEON CRESPO",
+			"birthDate": -78688800000
+		}, {
+			"contract": 992652,
+			"name": "LEOPOLDO BEST GUZMAN",
+			"birthDate": -551815200000
+		}, {
+			"contract": 1011318,
+			"name": "JOSHUA MARTINEZ RODRIGUEZ",
+			"birthDate": 647503200000
+		}],
+		"currentWeek": [{
+			"contract": 996444,
+			"name": "JESUS ANTONIO PROCEL AGUILAR",
+			"birthDate": -772480800000
+		}],
+		"nextWeek": [{
+			"contract": 903687,
+			"name": "ANDREA YOLANDA DEL RIO PADILLA",
+			"birthDate": 585208800000
+		}, {
+			"contract": 955452,
+			"name": "MARIO MORENO ROBLES",
+			"birthDate": -1087754400000
+		}]
+	}
+}

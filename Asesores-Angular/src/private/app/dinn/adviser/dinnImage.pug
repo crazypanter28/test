@@ -1,0 +1,22 @@
+include /views/mixins/buttons
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/checkbox
+
+div.disabled-modal( ng-if="image.disabledModal")
+div.modal-detail-stations
+    form
+        div.modal-header
+            img.icon(
+                src="img/icons/calendar/ico_cerrar.svg",
+                alt="",
+                align="right"
+                ng-click="image.close()"
+            )
+            h4 {{image.title}}
+
+        div.modal-body.row.margin-0
+            .content.propects-add-activities
+                    .row.margin-0
+                        .col-xs-12
+                            img(style="height:500px;padding-left:150px;" data-ng-src="{{ image.image }}")

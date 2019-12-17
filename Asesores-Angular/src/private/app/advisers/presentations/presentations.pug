@@ -1,0 +1,39 @@
+include /views/mixins/radio-button
+
+// Binnacle page
+.presentations-page
+
+    h3.primary-title Presentaciones
+    div.content-panel
+
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs( ng-if="presentations.products")
+                li( ng-click="presentations.beforeTab()" ng-if="presentations.groupSelectedTab !== 0" )
+                    .presentations   
+                        .content    
+                            div.controls-tabs    
+                                div.item-before 
+                                    span Menos
+                li( ng-repeat="it in presentations.products | limitTo: 6 : (presentations.groupSelectedTab * 6)" ui-sref-active="active" ng-class="{ 'with-controls': (presentations.products.length > 6), 'two-controls': (presentations.groupSelectedTab !== 0 && (((presentations.groupSelectedTab + 1) * 6) < presentations.products.length))}"  )
+                    .presentations
+                        .content 
+                            div.controls-tabs
+                                    div.item-tabs
+                                        a( ui-sref="presentations.id({id: it.idPresentationType})" ng-click="presentations.getPresentationsByType(it.idPresentationType)" )  {{ it.description }}
+                li( ng-click="presentations.nextTab()" ng-if="(((presentations.groupSelectedTab + 1) * 6) < presentations.products.length)" )
+                    .presentations   
+                        .content    
+                            div.controls-tabs    
+                                div.item-next 
+                                    span Mas info
+            // Tab content
+            .tab-content
+                div( ui-view="")
+            .tab-content.text-center    
+                .no-results( ng-if="presentations.subProducts.length === 0" )
+                    img( src="img/bg/binnacle-empty-state.svg" )
+                    p Actualmente #[b NO] hay presentaciones en esta categoría.
+                

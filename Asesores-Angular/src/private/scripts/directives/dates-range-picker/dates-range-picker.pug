@@ -1,0 +1,10 @@
+.content-dates-range-picker
+    label(ng-if="label") {{label}}
+        span(ng-if="ngRequired") *
+    div.field(ng-if="options2")
+        input.form-control(date-range-picker
+            type="text"
+            ng-model="auxDate.newDate" ng-init="auxDate.newDate = date"
+            placeholder="{{placeholder}}" options="options2" readonly ng-required="ngRequired"
+        )
+        span.icon-calendar

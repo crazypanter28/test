@@ -1,0 +1,9 @@
+mixin sClientTopInfo( limit )    
+    div
+        .col-md-6
+            strong Nombre del cliente:&nbsp
+            a {{ operations.sclient.data.name + ' ' + operations.sclient.data.lastName + ' ' + operations.sclient.data.secondLastName  }}
+
+        .col-md-6
+            strong Número de cliente único:&nbsp
+            a {{ operations.sclient.data.clientNumber }}

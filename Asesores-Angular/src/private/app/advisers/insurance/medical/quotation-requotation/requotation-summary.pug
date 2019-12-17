@@ -1,0 +1,25 @@
+div.tranfers
+    h3 Resumen
+    form(name="form" novalidate)        
+        div.tranfers                    
+            div.stages-table
+                table( ng-table='medicalCtrl.configTable' )
+                    thead
+                        tr
+                            th Parentesco
+                            th Edad
+                            th Sexo
+                            th Ocupaci&oacuten
+                            th Paquete
+                            th Forma de pago
+                            th Prima Neta
+                    tbody
+                        tr( ng-repeat=" row in medicalCtrl.asegurados" class="text-center")
+                            td {{row.parentesco}}
+                            td {{row.edad}}
+                            td {{row.sexo}}
+                            td {{row.ocupacion}}
+                            td {{row.paquete}}
+                            td {{row.formaPago}}
+                            td {{row.prima}}
+                    

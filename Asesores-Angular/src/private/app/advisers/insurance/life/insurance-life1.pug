@@ -1,0 +1,79 @@
+div.content-panel.tranfers(ng-if="lifeCtrl.actualPage === 1" name="cuestionario")
+    form(name="form" novalidate)
+        .row(style="padding-bottom:10px;")
+            img(src="img/logos/mapfre.svg" style="float:left; position: relative; left: 15px; width: 95px; height: 60px")
+            h4.text-center.tit(style="position: relative; left: -45px; padding-bottom:20px; padding-top:20px;") Preguntas de selección
+            //- button(class="btn-primary btn" style='margin-right: 20px;' ng-click="lifeCtrl.go2page(4, true)") CONTINUAR
+        div(style='width: 90%; margin-left: auto; margin-right: auto;')
+            .row.text-center
+                .form-group.col-sm-6.col-lg-8
+                    h4 Plan temporal un año. Venta masiva
+                .form-group.col-sm-6.col-lg-3
+                    h4 Forma de pago: Contado
+            .row
+                .col-lg-8
+                    .form-group.col-lg-12
+                        .col-lg-4.col-sm-5
+                            p(ng-class="lifeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") ¿Cuál es su ocupación?
+                        .col-lg-8.col-sm-7.text-left
+                            select(name="ListOcupacionA"
+                                ng-model="lifeCtrl.cmd.dataOcupacion"
+                                ng-options="x.text for x in lifeCtrl.ListOcupacionA"
+                                required).form-control
+                .from-group.col-lg-3
+                    label.col-sm-5.col-lg-4
+                        p(ng-class="lifeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fuma
+                    .col-sm-7.col-lg-8
+                        label.act-radio-custom
+                            input(type="radio" name="smoke" value="true" ng-model="lifeCtrl.fuma" ng-required="lifeCtrl.fuma === null")
+                            span.css-label
+                            | Si
+                        label.act-radio-custom
+                            input(type="radio" name="smoke" value="false" ng-model="lifeCtrl.fuma" ng-required="lifeCtrl.fuma === null")
+                            span.css-label
+                            | No
+            .row
+                .col-lg-8
+                    .from-group.col-lg-6
+                        .col-sm-5
+                            p(ng-class="lifeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Peso (Kg)
+                        .col-sm-7.text-left
+                            input(type="number" ng-model="lifeCtrl.kgs" placeholder="00 Kg" id="kgs" name="kgs" required).form-control.required
+                    .form-group.col-lg-6
+                        .col-sm-5
+                            p(ng-class="lifeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estatura (m)
+                        .col-sm-7.text-left
+                            input(type="number" ng-model="lifeCtrl.mts" placeholder="0.00 m" id="mts" name="mts" required).form-control.required
+                .form-group.col-lg-3
+                    .col-sm-5.col-lg-4
+                        p(ng-class="lifeCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Edad
+                    .col-sm-7.col-lg-8.text-left
+                        input(type="number" ng-model="lifeCtrl.edadAseguradoFake" name="edad" id="edad" ng-max="64" ng-min="18" required).form-control.required            
+                        div(role='alert')
+                            span.error(ng-show='form.edad.$error.min')
+                                | La edad mínima permitida son 18 años
+                        div(role='alert')
+                            span.error(ng-show='form.edad.$error.max')
+                                | La edad máxima permitida son 64 años 11 meses
+        .row(style="padding-top:15px; padding-bottom:10px;")
+            h4.text-center Cuestionario médico
+        .row(style='width: 80%; margin-left: auto; margin-right: auto;')
+            table(style='font-size:90%; border-style:none;')
+                tbody
+                    tr(style='height: 22px;')
+                        td(style='width: 78%; height: 22px;', colspan='2') 
+                            h4 ¿PADECE O HA PADECIDO ALGUNA DE LAS SIGUIENTES ENFERMEDADES?
+                        td(style='width: 10%; height: 22px; text-align: center;') 
+                            h5 SI
+                        td(style='width: 10%; height: 22px; text-align: center;') 
+                            h5 NO
+                    tr(style='height: 22px;' ng-repeat="row in lifeCtrl.cuestionario")
+                        td(style='width: 10%; height: 22px;')  {{$index + 1}}.
+                        td(style='width: 70%; height: 22px;') {{row.question | uppercase}}
+                        td(style='width: 10%; height: 22px; text-align: center;') 
+                            input(type="radio" name="{{row.question}}" value="si"  ng-click="lifeCtrl.estatusCuestionario[$index] = false;")
+                        td(style='width: 10%; height: 22px; text-align: center;')
+                            input(type="radio" name="{{row.question}}" ng-checked="$index + 1" value="no" ng-click="lifeCtrl.estatusCuestionario[$index] = true;")
+        div.col-xs-12.text-center(style="padding-top:30px; padding-bottom:20px;")
+            button(class="btn-primary btn" style='margin-right: 20px;' ng-click="lifeCtrl.regresoMain()" ) REGRESAR
+            button(class="btn-primary btn" style='margin-right: 20px;' ng-click="lifeCtrl.go2page(2)" ng-disabled="form.$invalid") CONTINUAR

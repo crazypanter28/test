@@ -1,0 +1,203 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+
+.page-credit
+    section.quotation( ng-if="credit.showNewQuotation" )
+        div.pane-wrapper.margin-0
+            div.pane-title Cotizador de credito
+            div.pane-body
+                div.row.margin-0.adviser-data
+                    .col-xs-3 {{ credit.quotationDetail.name }}
+                    .col-xs-6 Producto: {{ credit.quotationDetail.product }}
+                    .col-xs-3 Tipo: {{ credit.quotationDetail.type }}
+                h5.title-data Datos de la cotización
+                div.quote-detail
+                    div.row.margin-0.separated
+                        div
+                            p Monto solicitado
+                            | {{ credit.quotationDetail.quotation.amount | currency : '$' }}
+                        div
+                            p Frecuencia intéres
+                            | {{ credit.quotationDetail.quotation.frequencyInt }}
+                        div
+                            p Frecuencia capital
+                            | {{ credit.quotationDetail.quotation.frequencyCap }}
+                        div
+                            p Plazo
+                            | {{ credit.quotationDetail.quotation.term }}
+                        div
+                            p Tasa base
+                            | {{ credit.quotationDetail.quotation.base }}
+                        div
+                            p Spread
+                            | {{ credit.quotationDetail.quotation.spread }}
+                        div
+                            p Comisión por apertura
+                            | {{ credit.quotationDetail.quotation.commission }}
+                    div.total Pago periódico     {{ credit.quotationDetail.payment }}
+
+                div.quote-table
+                    table.ng-table
+                        thead
+                            tr
+                                th Periodo
+                                th Fecha
+                                th Saldo inicial
+                                th Abono de capital
+                                th Interes
+                                th IVA int.*
+                                th Pago mensual final
+                                th Saldo insoluto
+                        tbody
+                            tr( ng-repeat = "it in credit.quotationDetail.list")
+                                td {{ it.period }}
+                                td {{ it.date}}
+                                td {{ it.balance | currency : "$" }}
+                                td {{ it.payment | currency : "$" }}
+                                td {{ it.interest | currency : "$" }}
+                                td {{ it.vat | currency : "$" }}
+                                td {{ it.finalPayment | currency : "$" }}
+                                td {{ it.insult | currency : "$" }}
+                        tbody.foot
+                            tr
+                                td(colspan="3") TOTALES:
+                                td {{  credit.quotationDetail.list | sumByColumn: 'payment' | currency:"$" }}
+                                td {{  credit.quotationDetail.list | sumByColumn: 'interest' | currency:"$" }}
+                                td {{  credit.quotationDetail.list | sumByColumn: 'vat' | currency:"$" }}
+                                td {{  credit.quotationDetail.list | sumByColumn: 'finalPayment' | currency:"$" }}
+                                td
+        div.row.margin-0.button-table-quotation
+            button.btn.btn-primary( type="button" ng-click="credit.print()") IMPRIMIR
+            button.btn.btn-primary.cancel( type="button" ng-click="credit.back()") REGRESAR
+
+
+    form( ng-show="!credit.showNewQuotation")
+        div.pane-wrapper.margin-0
+            div.pane-title Datos del cliente
+            div.pane-body
+                .row.margin-0.from-avatar
+                    div.col-xs-3.padding-left-0
+                        i.icon-avatar-credit
+                    div.col-xs-4
+                        +input( 'Nombre del cliente', null ,'Nombre del cliente', true)(
+                            ngRequire=true,
+                            model='credit.quote.user'
+                            )
+                    div.col-xs-4
+                        label Tipo de crédito
+                            span *
+
+                        div( act-dropdown="" ng-model="credit.optionsDropdowm" on-change="credit.changeOptionSelectedDropdowm" )
+
+                    div.col-xs-4
+                        label Tipo de crédito
+                        p Crédito estandarizado
+
+                div( ng-if="credit.quote.optionsSelectedDropdowm" )
+                    div.pane-subtitle Datos de la cotización
+                    .row.margin-0.form-quotation( ng-if="credit.quote.optionsSelectedDropdowm.id === 1" )
+                        div.col-xs-1.padding-left-0.padding-right-0.form-img
+                            img(src="img/icons/simulators/image_dinero.svg", alt="")
+                        div.col-xs-7.form-inline
+                            .row.margin-0
+                                +input( 'Monto solicitado', null ,'Nombre del cliente', true)(
+                                    ngRequire=true,
+                                    model='credit.quote.amount'
+                                )
+
+
+                            .row.margin-0
+                                label Frecuencia capital
+                                .column-right Mensual
+
+                            .row.margin-0
+                                label Tipo de persona
+                                .column-right
+                                    +radioButton( 'Fisica', 'credit.quote.type')(
+                                        id="fisica"
+                                    )
+                                    +radioButton( 'Moral', 'credit.quote.type')(
+                                        id="moral"
+                                    )
+
+                            .row.margin-0
+                                label Plazo
+                                .column-right
+                                    div( act-dropdown="" ng-model="credit.optionsDropdowm" selected="credit.quote.term" )
+
+                            .row.margin-0
+                                label Tasa de interés anual
+                                .column-right 12.5000000 #[span.percentage %]
+
+                            .row.margin-0
+                                label Comisión por apertura
+                                .column-right 1.0
+
+                            button.btn.btn-primary.btn-block.btn-calculate( ng-click="credit.getPayment();" )
+                                i( class="fa fa-calculator" aria-hidden="true")
+                                | Calcular pago
+
+
+
+                        div.col-xs-4
+                            div.cash-available
+                                div.cash-container
+                                    img(src="img/icons/simulators/image_dinero.svg", alt="")
+                                    p
+                                        b Pago periódico
+                                        |  {{ credit.payment | currency : "$" }}
+
+                    .row.margin-0.form-quotation( ng-if="credit.quote.optionsSelectedDropdowm.id === 2" )
+                        div.col-xs-1.padding-left-0.padding-right-0.form-img
+                            img(src="img/icons/simulators/image_dinero.svg", alt="")
+                        div.col-xs-7.form-inline
+                            .row.margin-0
+                                +input( 'Monto solicitado', null ,'Nombre del cliente', true)(
+                                    ngRequire=true,
+                                    model='credit.quote.amount'
+                                )
+
+                            .row.margin-0
+                                .row.margin-0
+                                    label Frecuencia intéres
+                                    .column-right Mensual
+
+                            .row.margin-0
+                                label Frecuencia capital
+                                .column-right
+                                    div( act-dropdown="" ng-model="credit.optionsDropdowm" selected="credit.quote.frequency" )
+
+                            .row.margin-0
+                                label Plazo
+                                .column-right
+                                    div( act-dropdown="" ng-model="credit.optionsDropdowm" selected="credit.quote.term" )
+
+                            .row.margin-0
+                                label Tasa base
+                                .column-right TIIE 28
+
+                            .row.margin-0
+                                +input( 'Spread', null ,'- - -', true)(
+                                    ngRequire=true,
+                                    model='credit.quote.spread'
+                                )
+                            .row.margin-0
+                                label 'Comisión por apertura'
+                                .column-right $0.00
+
+
+                            button.btn.btn-primary.btn-block.btn-calculate( ng-click="credit.getPayment();" )
+                                i( class="fa fa-calculator" aria-hidden="true" )
+                                | Calcular pago
+
+
+
+                        div.col-xs-4
+                            div.cash-available
+                                div.cash-container
+                                    img(src="img/icons/simulators/image_dinero.svg", alt="")
+                                    p
+                                        b Pago periódico
+                                        |  {{ credit.payment | currency : "$" }}
+        div.button-quotation
+            button.btn.btn-primary( type="button" ng-click="credit.quotation()") COTIZAR

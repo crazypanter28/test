@@ -1,0 +1,42 @@
+include /views/mixins/info-result
+
+
+.profiles
+    .section-title
+        span Asignación de perfiles
+        i.add-white( ng-click="profiles.showModalCreateProfiles()" )
+
+    .content
+        div.controls-tabs
+            div.item-before( ng-click="profiles.beforeTab()" ng-if="profiles.groupSelectedTab !== 0" )
+                span Menos
+            ul.list-tabs( ng-class="{ 'with-controls': (profiles.listTabs.length > 6), 'two-controls': (profiles.groupSelectedTab !== 0 && (((profiles.groupSelectedTab + 1) * 6) < profiles.listTabs.length))}" )
+                li.item-tabs( ng-repeat="tab in profiles.listTabs | limitTo: 6 : (profiles.groupSelectedTab * 6)" ng-click="profiles.changeTab( tab )" ng-class="{'active': profiles.selectedTab === tab.idRole}")
+                    span {{tab.description}}
+            div.item-next( ng-click="profiles.nextTab()" ng-if="(((profiles.groupSelectedTab + 1) * 6) < profiles.listTabs.length)" )
+                span Mas info
+
+
+        table( ng-table = "profiles.configTable")
+            thead
+                tr
+                    th.text-center Nombre
+                    th.text-center Usuario
+                    th.text-center Número de usuario
+                    th.text-center Perfil
+                    th.text-center Eliminar
+            tbody
+                tr( ng-show="profiles.loadingRoles")
+                    td( colspan="5")
+                tr( ng-repeat=" row in $data " )
+                    td.text-center {{ row.name }}
+                    td.text-center {{ row.userCode }}
+                    td.text-center {{ row.idEmployee }}
+                    td.text-center {{ row.roleDescription }}
+                    td.text-center #[i.remove( ng-click="profiles.showModalRemoveProfiles( row.idUserRole )" )]
+
+
+        .no-results( ng-show="profiles.listLength === 0" )
+            img( src="img/bg/binnacle-empty-state.svg" )
+            p Actualmente #[b NO] hay perfiles en esta categoría.
+            .link( ng-click="profiles.showModalCreateProfiles()" ) Puedes agregar uno

@@ -1,0 +1,25 @@
+include /views/mixins/radio-button
+
+// Binnacle page
+.binnacle-page( ng-init="binnacle.currentState()" )
+
+    //- // Breadcrumb
+    //- ncy-breadcrumb
+
+    h3.primary-title Bitácora
+    div.content-panel
+
+        .block-title Tipo Bitácora
+        .form-group
+            +radioButton( 'Comercial', 'binnacle.type' )(
+                ngChecked="binnacle.type === 'binnacle.commercial'"
+                ngChange='binnacle.getType("commercial")'
+                id='binnacle.commercial'
+            )
+            +radioButton( 'Operativa', 'binnacle.type' )(
+                ngChecked="binnacle.type === 'binnacle.operative'"
+                ngChange='binnacle.getType("operative")'
+                id='binnacle.operative'
+            )
+
+        div( ui-view="" )

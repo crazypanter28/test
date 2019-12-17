@@ -1,0 +1,40 @@
+{
+    "result":[
+        {
+            "region":"CORPORATIVO",
+            "centroFinanciero":"CORPORATIVO",
+            "contrato":6047435,
+            "nombreCliente":"(POSICION PROPIA) PRUDENTIAL BANK, S.A. INSTITUCION DE BANCA MULTIPLE, PRUDENTIAL GRUPO FINANCIERO",
+            "nombreAsesor":"BANCA PATRIMONIAL  ACTIVOS EN TRANSITO",
+            "tipoOperacion":"DEPOSITO",
+            "emisora":"EFECTIV B1",
+            "fechaOperacion":1446703200000,
+            "titulos":0,
+            "precio":0.0,
+            "importe":4165000.0,
+            "medioInstruccion":null,
+            "extensionTelefonica":0,
+            "horaCreacion":"::",
+            "comentario":"",
+            "idUsuario":"CBFIX1"
+        },
+        {
+            "region":"CORPORATIVO",
+            "centroFinanciero":"CORPORATIVO",
+            "contrato":6047435,
+            "nombreCliente":"(POSICION PROPIA) PRUDENTIAL BANK, S.A. INSTITUCION DE BANCA MULTIPLE, PRUDENTIAL GRUPO FINANCIERO",
+            "nombreAsesor":"BANCA PATRIMONIAL  ACTIVOS EN TRANSITO",
+            "tipoOperacion":"DEPOSITO",
+            "emisora":"EFECTIV B1",
+            "fechaOperacion":1446789600000,
+            "titulos":0,
+            "precio":0.0,
+            "importe":1.0E8,
+            "medioInstruccion":null,
+            "extensionTelefonica":0,
+            "horaCreacion":"::",
+            "comentario":"",
+            "idUsuario":"CBFIX1"
+        }
+    ]
+}

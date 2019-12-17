@@ -1,0 +1,210 @@
+include /views/mixins/buttons
+include /views/mixins/checkbox
+include /views/mixins/info-result
+
+div
+    div( ng-if="idx === 0" )
+
+        .form-row
+            .item.field( ng-if="!edit" )
+                .form-group
+                    label
+                        | Nombre del cliente
+                        span.require *
+                    input.form-control( type="text" name="name" maxlength="50" ng-model="model.form.client_name" ng-required="true" ng-pattern="/^[a-zA-Z\\s\\.ñÑáéíóúÁÉÍÓÚ]+$/" )
+            .item
+                label 
+                    | Tipo de portafolio
+                .form-group
+                    label.act-radio-custom( for="model-{{ idx }}" )
+                        input(  type="radio" id="model-{{ idx }}" value="model" ng-model="model.form.portfolio[ idx ].type" ng-change="propForm.resetPortfolioChilds( idx )" )
+                        span.css-label
+                        | Cartera Modelo
+                    label.act-radio-custom( for="manual-{{ idx }}" )
+                        input(  type="radio" id="manual-{{ idx }}" value="manual" ng-model="model.form.portfolio[ idx ].type" ng-change="propForm.resetPortfolioChilds( idx )" )
+                        span.css-label
+                        | Configuración Manual
+
+        .form-row( ng-show="model.form.portfolio[ idx ].type === 'model'" )
+            .item.field
+                label Tipo de perfil
+                div( act-dropdown ng-model="propForm.fields.profiles_types" selected="model.form.portfolio[ idx ].profile_type" on-change="propForm.checkPortfolio" idx="{{ idx }}" )
+                input( type="hidden" ng-model="model.form.portfolio[ idx ].profile_type" )
+            .item.field( ng-show="model.form.portfolio[ idx ].profile_type" )
+                .form-group
+                    label
+                        | Valor del portafolio propuesto
+                        span.require *
+                    input.form-control( ng-currency type="text" ng-model="model.form.portfolio[ idx ].value" ng-required="true" )
+            .item.field( ng-show="model.form.portfolio[ idx ].profile_type" )
+                label Estrategia
+                div(    act-dropdown ng-model="propForm.fields.strategies[ idx ]" selected="model.form.portfolio[ idx ].strategy" 
+                        on-change="propForm.getStrategyDetails" idx="{{ idx }}" )
+                input( type="hidden" ng-model="model.form.portfolio[ idx ].strategy" )
+
+        .form-row( ng-show="model.form.portfolio[ idx ].type === 'manual'" )
+            .item.field
+                label Tipo de persona
+                div(act-dropdown ng-model="propForm.fields.client_types" selected="model.form.portfolio[ idx ].client_type" on-change="propForm.checkPortfolio" idx="{{ idx }}" )
+                input(type="hidden" ng-model="model.form.portfolio[ idx ].client_type")
+            .item.field(ng-show="model.form.portfolio[ idx ].client_type")
+                .form-group
+                    label
+                        | Valor del portafolio propuesto
+                        span.require *
+                    input.form-control( ng-currency type="text" ng-model="model.form.portfolio[ idx ].value" ng-required="true" )
+            
+                    
+    div( ng-if="idx === 1" )
+        .form-row
+            .item
+                label PORTAFOLIO 2
+                label Tipo de portafolio
+                .form-group
+                    label.act-radio-custom( for="model-{{ idx }}" )
+                        input(  type="radio" id="model-{{ idx }}" value="model" ng-model="model.form.portfolio[ idx ].type" ng-change="propForm.resetPortfolioChilds( idx )" )
+                        span.css-label
+                        | Cartera Modelo
+                    label.act-radio-custom( for="manual-{{ idx }}" )
+                        input(  type="radio" id="manual-{{ idx }}" value="manual" ng-model="model.form.portfolio[ idx ].type" ng-change="propForm.resetPortfolioChilds( idx )" )
+                        span.css-label
+                        | Configuración Manual
+
+        .form-row( ng-show="model.form.portfolio[ idx ].type === 'model'" )
+            .item.field
+                label Tipo de perfil
+                div( act-dropdown ng-model="propForm.fields.profiles_types" selected="model.form.portfolio[ idx ].profile_type" on-change="propForm.checkPortfolio" idx="{{ idx }}" )
+                input( type="hidden" ng-model="model.form.portfolio[ idx ].profile_type" )
+            .item.field( ng-show="model.form.portfolio[ idx ].profile_type" )
+                .form-group
+                    label
+                        | Valor del portafolio propuesto
+                        span.require *
+                    input.form-control( ng-currency type="text" ng-model="model.form.portfolio[ idx ].value" ng-required="true" )
+            .item.field( ng-show="model.form.portfolio[ idx ].profile_type" )
+                label Estrategia
+                div(    act-dropdown ng-model="propForm.fields.strategies[ idx ]" selected="model.form.portfolio[ idx ].strategy" 
+                        on-change="propForm.getStrategyDetails" idx="{{ idx }}" )
+                input( type="hidden" ng-model="model.form.portfolio[ idx ].strategy" )
+
+        .form-row( ng-show="model.form.portfolio[ idx ].type === 'manual'" )
+            .item.field
+                label Tipo de persona
+                div(act-dropdown ng-model="propForm.fields.client_types" selected="model.form.portfolio[ idx ].client_type" on-change="propForm.checkPortfolio" idx="{{ idx }}" )
+                input(type="hidden" ng-model="model.form.portfolio[ idx ].client_type")   
+            .item.field(ng-show="model.form.portfolio[ idx ].client_type")
+                .form-group
+                    label
+                        | Valor del portafolio propuesto
+                        span.require *
+                    input.form-control( ng-currency type="text" ng-model="model.form.portfolio[ idx ].value" ng-required="true" ) 
+    
+    // Manual config
+    .manual-config( ng-if="model.form.portfolio[ idx ].client_type.key" )
+
+        div( ng-if="edit" style="margin-bottom:30px;")
+            +checkbox( 'Cargar portafolio actual', 'propForm.changePortfolio' )(
+                change="chargerPortfolio()"
+            )
+
+        // Spinner
+        .loader-wrapper( ng-if="!propForm.manual_info" )
+        
+        div( ng-if="propForm.manual_info" ng-init="model.form.portfolio[ idx ].invest = {}" )
+
+            // Invest
+            instruments(
+                idx='idx'
+                type="invest"
+                title="Sociedades de Inversión"
+                portfolio-value="model.form.portfolio[ idx ].value"
+                products-list="propForm.manual_info.invIssuersCatalog"
+                issuers="propForm.issuers"
+                invest="model.form.portfolio[ idx ].invest",
+                totals="model.form.portfolio[ idx ].totals"
+                is-open="propForm.openIinvest"
+            )
+
+            // Reportos
+            instruments(
+                idx='idx'
+                type="reportos"
+                title="Reportos"
+                portfolio-value="model.form.portfolio[ idx ].value"
+                products-list="propForm.manual_info.bandsCatalog"
+                invest="model.form.portfolio[ idx ].invest",
+                totals="model.form.portfolio[ idx ].totals"
+            )
+
+            // Money market
+            instruments(
+                idx='idx'
+                type="money"
+                title="Mercado de Dinero"
+                portfolio-value="model.form.portfolio[ idx ].value"
+                products-list="propForm.manual_info.issuersCatalog"
+                invest="model.form.portfolio[ idx ].invest",
+                totals="model.form.portfolio[ idx ].totals"
+            )
+
+            // Actions
+            instruments(
+                idx='idx'
+                type="actions"
+                title="Acciones"
+                portfolio-value="model.form.portfolio[ idx ].value"
+                products-list="propForm.manual_info.favorites"
+                invest="model.form.portfolio[ idx ].invest",
+                totals="model.form.portfolio[ idx ].totals"
+            )
+
+            // Derivatives
+            instruments(
+                idx='idx'
+                type="derivatives"
+                title="Derivados"
+                portfolio-value="model.form.portfolio[ idx ].value"
+                products-list="propForm.manual_info.derivatives"
+                invest="model.form.portfolio[ idx ].invest",
+                totals="model.form.portfolio[ idx ].totamanualConfigls"
+            )
+
+    // Proposals tabs
+    .proposals-tabs( ng-if="model.form.portfolio[ idx ].strategyItems" )
+
+        // Spinner
+        .loader-wrapper( ng-if="model.form.portfolio[ idx ].strategyItems && obj( model.form.portfolio[ idx ].strategyItems ).length === 0" )
+
+        strategies(
+            ng-if="obj( model.form.portfolio[ idx ].strategyItems ).length > 0"
+            index="idx"
+            amount="model.form.portfolio[ idx ].value"
+            model="model.form.portfolio[ idx ].strategyItems"
+            issuers="propForm.issuers"
+        )
+
+    // Totals
+    div(ng-show="model.form.portfolio[ idx ].client_type")    
+        .proposal-totals
+            .wrapper
+                .topic-name TOTALES:
+                .topic
+                    | Saldo en Inversión:
+                    strong  {{ model.form.portfolio[ idx ].totals | currency }}
+                .topic
+                    | Saldo por Invertir:
+                    strong  {{ model.form.portfolio[ idx ].value - model.form.portfolio[ idx ].totals | currency }}
+
+    div(ng-show="model.form.portfolio[ idx ].profile_type || model.form.portfolio[ idx ].client_type")
+        .form-row
+            .item
+                .form-group.comment-group
+                    label.act-checkbox-custom( for="portfolio-comment-{{ idx }}" )
+                        input( type="checkbox" id="portfolio-comment-{{ idx }}" ng-model="model.form.portfolio[ idx ].portfolio_comment" ng-change="model.form.portfolio[ idx ].comment = '';" )
+                        span.css-label
+                        | Agregar comentario al portafolio propuesto
+                    textarea.form-control(
+                        ng-if="model.form.portfolio[ idx ].portfolio_comment"
+                        ng-model="model.form.portfolio[ idx ].comment"
+                        placeholder="Comentario"
+                    )

@@ -1,0 +1,59 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"4f2dda6b-6691-4960-b464-7d0416fbd766",
+         "messages":[
+            {
+               "responseSystemCode":"CMPVE0000007",
+               "responseMessage":"Se pudo consultar correctamente el perfil del contrato ",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1496379600000,
+      "time":80331000,
+      "clientID":"PROMOTORES",
+      "sessionID":"",
+      "responseSystem":"PRACTICAS DE VENTA",
+      "operationName":"ProfileByContractQuery",
+      "operationVersion":"1_0",
+      "ipaddress":"172.16.11.93"
+   },
+   "outProfileByContractQuery":{
+      "contractResult":{
+         "client":{
+            "contractNumber":"244596",
+            "name":"CAMILO MAURICIO SADA GOMEZ                                                                                                                            ",
+            "lastName":null,
+            "surname":null,
+            "taxNumber":null,
+            "curp":null,
+            "titularFlag":true,
+            "orgName":"",
+            "clientType":{
+               "key":"",
+               "name":null
+            }
+         },
+         "businessType":{
+            "key":null
+         },
+         "registryType":{
+            "key":null
+         },
+         "totalPosition":null,
+         "adviserName":null,
+         "profileFlag":null,
+         "profile":{
+            "key":"2",
+            "name":"Perfil 2",
+            "description":null,
+            "rate":0.0,
+            "visibilityFlag":false
+         }
+      }
+   }
+}

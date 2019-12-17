@@ -1,0 +1,47 @@
+include /views/mixins/info-result
+
+
+.favorites
+    .section-title
+        span Favoritos
+        i.add-white( ng-click="fav.showModalCreateFavorites()" )
+
+    .content
+        .row
+            .col-xs-4.container-search
+                .form-group
+                    label Busca por emisora
+                    input.form-control(type='text', placeholder='---' ng-model="fav.name" ng-change="fav.updateSearch()")
+                    i.search
+
+        table( ng-table="fav.tableParams" )
+            thead
+                tr
+                    th.text-center Emisora
+                    th.text-center Serie
+                    th.text-center Clasificación
+                    th.text-center Editar
+                    th.text-center Eliminar
+            tbody
+                tr( ng-show="fav.loadingFav")
+                    td( colspan="5")
+                        .content-spinner
+                            .spinner
+                tr( ng-show="!fav.loadingFav" ng-repeat="row in $data" )
+                    td.text-center {{row.issuerName}}
+                    td.text-center {{row.serie}}
+                    td.text-center {{row.classification.description}}
+                    td.text-center #[i.edit( ng-click="fav.showModalEditFavorites(row)" )]
+                    td.text-center #[i.remove( ng-click="fav.showModalRemoveFavorites( row.idIssuer )" )]
+
+        div( ng-if="fav.errorLoadingFav" )
+            +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+        .no-results( ng-show="fav.tableParams.data.length === 0 && !fav.errorLoadingFav" )
+            img( src="img/bg/binnacle-empty-state.svg" )
+            p Actualmente #[b NO] hay grupos.
+            .link( ng-click="fav.showModalCreateFavorites()" ) Puedes agregar uno
+
+        div
+            .buttons
+                 button.btn.btn-primary(style="position: relative;float: right;top: 41px;" ng-click="fav.deleteClassification()" ) Eliminar Clasificación       

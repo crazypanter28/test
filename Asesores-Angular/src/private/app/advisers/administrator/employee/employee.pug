@@ -1,0 +1,38 @@
+include /views/mixins/info-result
+
+
+.employee
+    .section-title
+        span Mapeo de números de empleado
+        i.add-white( ng-click="empl.showModalCreateEmployee()" )
+
+    .content
+        .row
+            .form-group.col-xs-4.container-search
+                label Busca por número de empleado
+                input.form-control(type='text', placeholder='---' ng-model="empl.name" ng-change="empl.updateSearch()" )
+                i.search
+
+        table( ng-table="empl.tableParams" )
+            thead
+                tr
+                    th.text-center Número anterior
+                    th.text-center Número actual
+                    th.text-center Eliminar
+            tbody
+                tr( ng-show="empl.loadingEmpl" )
+                    td( colspan="5")
+                        .content-spinner
+                            .spinner
+                tr( ng-show="!empl.loadingEmpl" ng-repeat="row in $data" )
+                    td.text-center {{ row.prevIdEmployee }}
+                    td.text-center {{ row.idEmployee }}
+                    td.text-center #[i.remove( ng-click="empl.showModalRemoveEmployee( row.idEmployeeMap )" )]
+
+        div( ng-if="empl.errorLoadingEmpl" )
+            +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+        .no-results( ng-show="empl.tableParams.data.length === 0 && !empl.errorLoadingEmpl && !empl.loadingEmpl" )
+            img( src="img/bg/binnacle-empty-state.svg" )
+            p Actualmente #[b NO] hay grupos.
+            .link( ng-click="empl.showModalCreateFavorites()" ) Puedes agregar uno

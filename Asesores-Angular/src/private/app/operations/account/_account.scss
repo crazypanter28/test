@@ -1,0 +1,264 @@
+//
+// _account.scss
+//
+// It reflects styles for operations/account page
+//
+
+/**
+ * -------------------------
+ * @section Account main info
+ * -------------------------
+*/
+.account-main-info {
+    padding: 13px 20px 30px 20px; background: rgba(#e9f2ff, .5); border: none; font-size: 0; color: #0f3f88;
+    strong {font-size: 15px; line-height: 17px;}
+    > div {
+         margin-left: 100px; vertical-align: top; font-size: 18px; line-height: 20px; background: #E0F2F1;
+        // Childs
+        &:first-child {margin-left: 0;}
+    }
+
+    // Types
+    &.portfolio-detail {
+        text-align: center;
+        > .wrapper {
+            display: block; margin-left: 0; margin-top: 10px;
+            > div {
+                vertical-align: top; font-size: 18px; line-height: 20px; padding-bottom: 32px;
+                background: #E0F2F1;
+                // Childs
+                &:first-child {margin-left: 0;}
+            }
+
+            // Childs
+            &:first-child {margin-top: 0;}
+        }
+        .contracts-list {
+            strong, ul { vertical-align: top;}
+            strong {margin-right: 60px;}
+            ul, li {@include remove-list-style;}
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @section Common block search, Contract search
+ * -------------------------
+*/
+.common-block-search, .contract-search {
+    font-size: 0;
+    label {margin-bottom: 2px;}
+    > div {@include in-block; margin-right: 30px; vertical-align: top;}
+    .form-control, .defaultF {padding: 0;}
+    .act-dropdown, .form-control {width: 240px;}
+    .form-group {float: left; margin-bottom: 0;}
+    .defaultF {
+        height: 23px; font-family: "Proxima Regular"; text-transform: inherit;
+
+        // States
+        &:active, &.active {@include box-shadow(none);}
+    }
+    .act-dropdown button, .form-control {
+        font-family: "Proxima Regular"; font-size: 14px;
+        span {text-transform: initial;}
+    }
+    .form-control {height: 25px; margin-bottom: 0;}
+    .btn-contract {
+        position: relative; height: 25px; margin-top: 22px; margin-left: 15px; padding: 0 10px 0 30px;
+
+        // Content
+        &:after {content: "\f002"; display: block; position: absolute; top: 1px; left: 5px; width: 20px; height: 20px; font-family: "FontAwesome"; font-size: 16px; line-height: 18px;}
+    }
+}
+
+/**
+ * -------------------------
+ * @section Contract search results
+ * -------------------------
+*/
+.contract-search-results {
+    position: relative; min-height: 200px; padding-top: 25px;
+    ul, li {@include remove-list-style;}
+    .spinner {font-size: 22px;}
+
+    // Results
+    .results {
+        h3 {margin: 0; font-size: 16px; line-height: 18px; text-transform: uppercase; color: #0f3f88;}
+        > .panel-wrapper {
+            margin-top: 0; border-color: rgba(#195dc4, .5);
+            .panel, .panel-heading {@include rounded(0);}
+            .panel {@include box-shadow(none); border: 1px solid rgba(#979797, .25);}
+            .panel-body {position: relative; padding: 0px 20px; overflow: hidden;
+                table {
+                    border: 1px solid #ccc;
+                    border-collapse: collapse;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    table-layout: fixed;
+                }
+                table caption {
+                    font-size: 1.5em;
+                    margin: .5em 0 .75em;
+                }
+                table tr {
+                    background: #f8f8f8;
+                    border: 1px solid #ddd;
+                    padding: .35em;
+                }
+                table th,
+                table td {
+                    padding: .625em;
+                    text-align: center;
+                }
+                table th {
+                    font-size: .85em;
+                    letter-spacing: .1em;
+                    text-transform: uppercase;
+                }
+                @media screen and (max-width: 770px) {
+                    table {
+                        border: 0;
+                    }
+                    table caption {
+                        font-size: 1.3em;
+                    }
+                    table thead {
+                        border: none;
+                        clip: rect(0 0 0 0);
+                        height: 1px;
+                        margin: -1px;
+                        overflow: hidden;
+                        padding: 0;
+                        position: absolute;
+                        width: 1px;
+                    }
+                    table tr {
+                        border-bottom: 3px solid #ddd;
+                        display: block;
+                        margin-bottom: .625em;
+                    }
+                    table td {
+                        border-bottom: 1px solid #ddd;
+                        display: block;
+                        font-size: .8em;
+                        text-align: right;
+                    }
+                    table td:before {
+                        content: attr(data-label);
+                        float: left;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                    table td:last-child {
+                        border-bottom: 0;
+                    }
+                }
+
+            }
+        }
+
+        // Contracts list
+        .contracts-list {
+            width: 190px; padding-right: 15px; float: left; color: #0e2d75;
+            h3 {margin-bottom: 5px;}
+            ul {margin-top: -5px;}
+            li {position: relative; margin-top: 10px; padding-left: 20px;}
+            span {display: block; font-family: "Proxima Semibold"; font-size: 18px; line-height: 22px; color: #636363;}
+            .bullet {position: absolute; width: 8px; height: 8px; top: 4px; left: 0; @include rounded(50%);}
+        }
+
+        // Chart
+        .chart-wrapper {
+            height: 300px;  width: 400px; float: left; padding: 20px; border: 1px solid rgba(#195dc4, .5); text-align: center;
+            h3 {margin-top: 5px; margin-bottom: 7px; font-size: 18px; line-height: 20px; text-transform: inherit;}
+            .google-visualization-tooltip {background: rgba(#29d787, .38) !important; @include box-shadow(0 2px 4px 0 rgba($black, 0.4)); border: none !important; @include rounded(0 !important);}
+            .wrapper {
+                position: relative;
+                // height: 300px;
+            }
+        }
+
+    }
+}
+
+/**
+ * -------------------------
+ * @section Empty balance
+ * -------------------------
+*/
+.empty-balance {
+    position: relative; width: auto; min-height: 164px; margin: 0 auto; padding: 40px 0; font-family: "Proxima Semibold"; font-size: 16px; line-height: 20px; color: #767676;
+    img {width: 180px; margin-right: 70px;}
+    span {display: block; font-size: 22px; line-height: 24px; color: #517cbd}
+
+}
+
+/**
+ * -------------------------
+ * @section No data
+ * -------------------------
+*/
+.no-data {
+    padding: 15px 0 11px 0; font-size: 16px; line-height: 20px; text-align: center; color: #b4b4b4; @include remove-child-margin-bottom;
+    img {width: 100px; margin-bottom: 7px;}
+    strong {font-family: "Proxima Bold";}
+
+}
+
+/**
+ * -------------------------
+ * @section Page instructions
+ * -------------------------
+*/
+.page-instructions {
+    margin-top: 15px; margin-bottom: 0; color: #39393a;
+    h2, h3 {margin: 0;}
+
+    // Panel
+    .panel{
+        margin-bottom: 0;
+    }
+    .panel, .panel-heading {@include rounded(0);}
+    .panel {@include box-shadow(none); border: 1px solid rgba(#979797, .25);}
+    .panel-heading {padding: 6px 20px; background: #517cbd; border: none; font-size: 16px; color: $white;}
+    .panel-body {
+        position: relative; padding: 20px;
+
+        // Content
+        &:after {content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: .1; background: url("../img/bg/operations-instructions.jpg") no-repeat center center; background-size: cover; @include blur(2px);}
+    }
+
+    // Steps
+    .steps {
+        margin-bottom: 25px; padding-bottom: 10px; border-bottom: 1px solid #0f3f88;
+        strong {color: #0f3f88;}
+        .row {padding-bottom: 15px;}
+        .row p {margin: 0; padding-left: 20px; font-size: 12px;}
+    }
+
+    // Process
+    .process {
+        @include remove-child-margin-bottom;
+        h2 {margin-bottom: 20px; font-size: 18px; color: #0f3f88;}
+        p {color: #0f3f88;}
+        .row {
+            position: relative; margin-bottom: 25px;
+
+            // Content
+            &:before {content: ""; display: block; position: absolute; width: 2px; height: 100%; @include centered; background: #a0a5b5;}
+        }
+        .details {
+            padding: 0 40px; @include remove-child-margin-bottom;
+            h3 {
+                padding-bottom: 3px; border-bottom: 3px solid #00be66; font-size: 14px; color: #071438;
+
+                // States
+                &.forbidden {border-bottom-color: #fa596d;}
+            }
+            ul {margin-left: 20px; padding: 10px; font-size: 11px; line-height: 13px;}
+            ul ul {padding: 5px;}
+        }
+    }
+}

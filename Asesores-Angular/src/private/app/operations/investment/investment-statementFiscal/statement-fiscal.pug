@@ -1,0 +1,132 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+div.content-panel.statementfiscal
+    form(name="form" novalidate)
+        .row
+            .col-md-12(style="padding-bottom:20px;") 
+                h4.text-center.tit
+                    span CONSTANCIAS FISCALES Y ESTADOS DE CUENTA | CONTRATO: {{statementFiscal.contract}}
+        .row
+            .col-md-12
+                .form-group.col-lg-4
+                    label Selecciona una Opción
+                    span *
+                        div( act-dropdown
+                            ng-model="statementFiscal.ListConstancias",
+                            selected="statementFiscal.cmd.dataStatementFiscal.type",
+                            name="listConstancias",
+                            change = "statementFiscal.onChangeStatementFiscal(lastValue, newValue)"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='statementFiscal.cmd.dataStatementFiscal.type',
+                            ng-required='true'
+                        )
+                .form-group.col-lg-4.text-left(ng-if="statementFiscal.ListConstanciasPormenorizadas.length !== 0 || statementFiscal.ListConstanciasFiscales.length !== 0")
+                    label Email
+                    span *
+                        div( act-dropdown
+                            ng-model="statementFiscal.EmailConstancias",
+                            selected="statementFiscal.cmd.dataEmailConstancias.type",
+                            name="listEmailConstancias"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='statementFiscal.cmd.dataEmailConstancias.type',
+                            ng-required='true'
+                        )
+                .form-group.col-lg-4(ng-if="(statementFiscal.ListConstanciasPormenorizadas.length !== 0 || statementFiscal.ListConstanciasFiscales.length !== 0) && statementFiscal.cmd.dataStatementFiscal.type != 3")
+                    label Formato:
+                    span *
+                        div( act-dropdown
+                            ng-model="statementFiscal.ListFormats",
+                            selected="statementFiscal.cmd.dataListFormats.type",
+                            name="listFormats"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='statementFiscal.cmd.dataListFormats.type',
+                            ng-required='true'
+                        )
+                    
+        .row
+            .col-md-12
+                .form-group.col-lg-4(ng-if="statementFiscal.ListConstanciasFiscales.length !== 0")
+                    label Año/Periodo:
+                    span *
+                        div( act-dropdown
+                            ng-model="statementFiscal.ListConstanciasFiscales",
+                            selected="statementFiscal.cmd.dataListConstanciasFiscales.type",
+                            name="listConstanciasFiscales"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='statementFiscal.cmd.dataListConstanciasFiscales.type',
+                            ng-required='true'
+                        )
+                .form-group.col-lg-4(ng-if="statementFiscal.ListConstanciasPormenorizadas.length !== 0")
+                    label Año:
+                    span *
+                        div( act-dropdown
+                            ng-model="statementFiscal.ListConstanciasPormenorizadas",
+                            selected="statementFiscal.cmd.dataListConstanciasPormenorizadas.type",
+                            name="listConstanciasPormenorizadas"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='statementFiscal.cmd.dataListConstanciasPormenorizadas.type',
+                            ng-required='true'
+                        )
+
+
+        //.row(ng-if="statementFiscal.ListConstanciasPormenorizadas.length !== 0")
+            .col-md-12
+                .form-group.col-lg-5
+                    .col-md-5
+                        label Año:
+                        span *
+                            div( act-dropdown
+                                ng-model="statementFiscal.ListConstanciasPormenorizadas",
+                                selected="statementFiscal.cmd.dataListConstanciasPormenorizadas.type",
+                                name="listConstanciasPormenorizadas"
+                            )
+                            input(
+                                type='hidden',
+                                ng-model='statementFiscal.cmd.dataListConstanciasPormenorizadas.type',
+                                ng-required='true'
+                            )
+                .form-group.col-lg-6.text-left
+                    .col-md-6
+                        label Formato:
+                        span *
+                            div( act-dropdown
+                                ng-model="statementFiscal.ListFormats",
+                                selected="statementFiscal.cmd.dataListFormats.type",
+                                name="listFormats"
+                            )
+                            input(
+                                type='hidden',
+                                ng-model='statementFiscal.cmd.dataListFormats.type',
+                                ng-required='true'
+                            )
+                        
+        .row(ng-if="statementFiscal.ListConstanciasFiscales.length === 0 && statementFiscal.cmd.dataStatementFiscal.type.id === 4" )
+            .col-md-12(style="padding-bottom:20px;") 
+                h4.text-center.tit
+                    img(src="img/icons/empty_state_nocontenido.svg" )
+                    p(style="color: #b4b4b4; font-size: 25px;")
+                        b EL CONTRATO NO TIENE CONSTANCIAS FISCALES
+        .row(ng-if="statementFiscal.ListConstanciasFiscales.length === 0 && statementFiscal.cmd.dataStatementFiscal.type.id === 9" )
+            .col-md-12(style="padding-bottom:20px;") 
+                h4.text-center.tit
+                    img(src="img/icons/empty_state_nocontenido.svg" )
+                    p(style="color: #b4b4b4; font-size: 25px;")
+                        b  EL CONTRATO NO TIENE CONSTANCIAS FISCALES PORMENORIZADA
+        
+        .row
+            div.row.text-center
+                .col-md-12
+                     button(class="btn btn-primary"  ui-sref='app.dashboard' ui-sref-active="active" permission="['asesores.InicioMenu.']" ) Cancelar
+                     +btnWithIcon( 'ENVIAR EMAIL', 'btn-primary btn-space', 'form.$invalid')(ngClick="statementFiscal.sendMail()")
+                     //+btnWithIcon( 'ENVIAR EMAIL', 'btn-primary btn-space', validate())(ngClick="enviarEmail()")

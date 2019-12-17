@@ -1,0 +1,77 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+include /views/mixins/radio-button
+
+form(name="formEmitSurvey" novalidate)
+       .panel-body
+            div(ng-repeat=" ($indexPreg, row) in medicalCtrl.jsonCuestionario")
+                label.col-md-12.control-label
+                    p.text-left( style="font-size: 16px; font-weight: bold; padding-top:8px;") {{$indexPreg + 1}}.- {{row.question}}
+                div(ng-if="row.answerDataList")
+                    .col-md-4(ng-repeat="($indexAsegurado, asesorado) in medicalCtrl.asegurados" class="ml-5")
+                        .col-md-12
+                            p.text-left(ng-if="row.answerDataList.answerData.length > 0" style="font-size: 16px; font-weight: bold; padding-top:8px;") {{asesorado.parentesco}}
+                        .col-md-12(ng-if="row.answerDataList.answerData.length > 2")
+                            div( act-dropdown
+                                ng-model="row.answerDataList.answerList"
+                                selected="row.answerDataList.answerSelected[$indexAsegurado]"
+
+                                name="answer"
+                            )
+                            input(
+                                type='hidden',
+                                ng-model='row.answerDataList.answerSelected[$indexAsegurado]'
+                            )
+                        .col-md-12(ng-if="row.answerDataList.answerData.length === 2")
+                            label.act-radio-custom( for="{{asesorado.parentesco}}{{$indexR}}{{row.questionID}}" ng-repeat="($indexR, answerList) in row.answerDataList.answerList")
+                                input( type="radio" name="{{asesorado.parentesco}}{{$indexR}}{{row.questionID}}" 
+                                id="{{asesorado.parentesco}}{{$indexR}}{{row.questionID}}" 
+                                ng-value="{{'answerList.id'}}"
+                                ng-model="row.answerDataList.answerSelected[$indexAsegurado].id" 
+                                change="medicalCtrl.selectRadio(lastValue, newValue, $indexAsegurado, $indexSubPreg, $indexPreg, $index)")
+                                span.css-label
+                                | {{answerList.text}}
+                        .col-md-12(ng-if="row.freeTextFlag && row.answerDataList.answerSelected[$indexAsegurado].id === '2'")
+                            input(type="text" 
+                                name="respuestaAbierta" 
+                                ng-model="row.answerDataList.answerInput[$indexAsegurado]"
+                                placeholder="Complemente su respuesta" 
+                                minlength="1" 
+                                maxlength="50"
+                                required).form-control.required
+                div(ng-if="row.subquestionDataList")
+                    div(ng-repeat=" ($indexSubPreg, sub) in row.subquestionDataList.subquestionData" class="ml-5")
+                        label.col-md-12.control-label
+                            p.text-left( style="font-size: 16px; font-weight: bold; padding-top:8px;") {{$indexPreg + 1}}.{{$indexSubPreg+1}}.- {{sub.question}}
+                        div
+                            .col-md-4(ng-repeat="($indexAsegurado, asesorado) in medicalCtrl.asegurados"  class="ml-5")
+                                .col-md-12
+                                    p.text-left( style="font-size: 16px; font-weight: bold; padding-top:8px;") {{asesorado.parentesco}}
+                                .col-md-12(ng-if="sub.answerDataList.answerData.length > 2"  )
+                                    div( act-dropdown
+                                    ng-model="sub.answerDataList.answerList"
+                                    selected="sub.answerDataList.answerSelected[$indexAsegurado]"
+                                    ng-disabled="medicalCtrl.esFumador($indexAsegurado) && $indexPreg < 1"
+                                    name="answer"
+                                )
+                                //- .col-md-12(ng-if="sub.answerDataList.answerData.length > 2 && !medicalCtrl.esFumador($indexAsegurado)")
+                                //-     div( act-dropdown
+                                //-     ng-model="sub.answerDataList.answerList"
+                                //-     selected="sub.answerDataList.answerSelected[$indexAsegurado]"
+                                //-     name="answer"
+                                //-     )    
+                                //-     input(
+                                //-         type='hidden',
+                                //-         ng-model='sub.answerDataList.answerSelected[$indexAsegurado]'
+                                //-     )
+                                .col-md-12(ng-if="sub.answerDataList.answerData.length === 2")
+                                    label.act-radio-custom( for="{{asesorado.parentesco}}{{$index}}{{sub.questionID}}{{$indexAsegurado}}" ng-repeat="answerList in sub.answerDataList.answerList")
+                                        input( type="radio" name="{{asesorado.parentesco}}{{$index}}{{sub.questionID}}{{$indexAsegurado}}" 
+                                                id="{{asesorado.parentesco}}{{$index}}{{sub.questionID}}{{$indexAsegurado}}"  
+                                                ng-value="{{'answerList.id'}}"
+                                                ng-model="sub.answerDataList.answerSelected[$indexAsegurado].id" 
+                                                change="medicalCtrl.selectRadio($indexAsegurado, $indexSubPreg, $indexPreg, $index)")
+                                        span.css-label
+                                        | {{answerList.text}}
+                                    

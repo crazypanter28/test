@@ -1,0 +1,22 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":{
+      "name":"Nadia Aline Garcia Cazariego",
+      "clientsToReach":68,
+      "clientsContacted":61,
+      "targetPerDay":4,
+      "totalPercentage":89.70,
+      "level":1,
+      "childs":[
+
+      ]
+   }
+}

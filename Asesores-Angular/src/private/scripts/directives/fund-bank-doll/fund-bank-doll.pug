@@ -1,0 +1,322 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/doll
+
+
+div.doll
+    div.row.margin-0.header
+        button.btn.col-xs-6.buy(
+            ng-disabled="doll.cmd.evtentType === 'sell' || contract.isDinn"
+            ng-click="doll.changeTab('buy')"
+            ng-class = "{'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-disabled="doll.cmd.evtentType === 'buy' || contract.isDinn"
+            ng-click="doll.changeTab('sell')"
+            ng-class = "{'active' : doll.tab === 'sell'}"
+        )
+            span vender
+    //DINN contract
+    div.row.margin-0.body.empty.init( ng-if="contract.isDinn && doll.newStateInit && !doll.confirmationModel && !doll.captureModel" )
+            div.empty-container
+                div.empty-center
+                    img(src="img/icons/doll/icon_money01.svg" )
+                    p.station-description No es posible operar un contrato DINN
+    //primer tab
+    div.row.margin-0.body.empty.init( ng-if="!contract.isDinn && doll.newStateInit && !doll.confirmationModel && !doll.captureModel" )
+            div.empty-container
+                div.empty-center
+                    img(src="img/icons/doll/icon_money.svg" )
+                    p.station-description Selecciona el fondo que deseas comprar o vender
+                    p.label Para comprar dar clic directamente sobre el monitor de lado izquierdo y para realizar la venta seleccionar del monitor inferior
+                        b  para agilizar tu compra o venta
+    // Spinner
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    div.row.margin-0.body.confirm( ng-if="doll.confirmationModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +dollConfirmationFundBank( 'confirmationModel' )
+    div.row.margin-0.body.confirm( ng-if="doll.captureModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +dollConfirmationFundBank( 'captureModel', true )
+    div.row.margin-0.body.sell( ng-if="doll.tab == 'sell' && !doll.confirmationModel && !doll.captureModel && !doll.loading && !doll.newStateInit"  )
+        form(name="form" )
+            div.row.margin-0.informacion-doll
+                div.search.col-xs-7
+                    div.form-group.has-icon.act-input
+                        label( for="station" ) Emisora
+                        div.input-wrapper
+                            input.form-control( type="text" placeholder="Emisora" id="station" name="station"
+                                ng-required="true"
+                                ng-model="doll.stationName"
+                                required="required"
+                                uib-typeahead="st as ( st.emissionID + ' ' + st.serie ) for st in orders | filter:$viewValue"
+                                typeahead-on-select= 'doll.AddStationOrders($item)'
+                                autocomplete="off",
+                                 typeahead-editable="false"
+                            )
+                            i.fa.fa-search(style="right:2px")
+
+                div.price.col-xs-5
+                    label Precio: 
+                        b {{ doll.fund.sell.currentPrice |  currency: '$' : 6}}
+                        div.purchasing-label
+                            p(style='font-size:x-small;') Mis Títulos
+                                b  {{ doll.fund.sell.titlesQty | currency:'':0 }}
+            div.purchasing-label(ng-show="doll.tab === 'buy'")
+                p Posición Real:
+                        b {{doll.fund.sell.position}}
+            .other-info(ng-show="doll.tab === 'buy'")
+                ul(style='font-size:x-small;list-style:none;')
+                    li
+                      div.row
+                        div.col-xs-4
+                          label Disponible:
+                        div.col-xs-8 
+                          strong {{ doll.balance.availableBalance |  currency: '$' : 2 }} 
+                    li
+                      div.row
+                        div.col-xs-4
+                          label Bloqueado:
+                        div.col-xs-8 
+                          strong {{ doll.balance.blockedBalance |  currency: '$' : 2 }}  
+                    li
+                      div.row
+                        div.col-xs-4
+                          label Total:
+                        div.col-xs-8 
+                          strong {{ doll.balance.totalBalance |  currency: '$' : 2 }}         
+
+
+            div.purchasing-rules.row
+                - var _model = 'sell'; 
+                - var rules = 'rulesSell';
+                div.col-xs-8.padding-0.type
+                    label Vender por
+                        span *
+
+                    div.row.margin-0( ng-show = "doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'TITULOS'")
+                        +radioButton( 'Títulos', 'doll.cmd.type' )(
+                            id='titles', ngClick = "doll.cleanImport('"+_model+"')"
+                        )
+                        span.float-right
+
+                            input.form-control( type="text", placeholder="Titulos"
+                                ng-required="doll.cmd.type === 'titles'"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                ng-show="doll.cmd.type === 'titles'"
+                                ng-model="doll.cmd."+ _model +".typeValue"
+                                ng-change = "changeSettlement( '" + _model +"')"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                    div.row.margin-0( ng-show = "doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'IMPORTE'")
+                        span
+                            +radioButton( 'Importe', 'doll.cmd.type' )(
+                                id='import', ngClick = "doll.cleanImport('"+_model+"')"
+                            )
+                        span.float-right
+                            input.form-control(type="text", placeholder="Importe"
+                                ng-required="doll.cmd.type === 'import'"
+                                ng-show = "doll.cmd.type === 'import'"
+                                ng-model ="doll.cmd."+ _model +".typeValue2"
+                                ng-change = "changeSettlement2( '" + _model +"' )"
+                                onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                                ng-currency
+                            )   
+
+                    div.row.margin-0
+                        div.col-xs-12
+                            label Importe Operado
+                        div.col-xs-3
+                            label ${{ doll.cmd.importRules }}
+                    div.col-xs-12.anticiped-sell(ng-if="anticipedS")
+                        .col-xs-3
+                            input(
+                                type="checkbox" id="anticipada"
+                                ng-model='doll.anticipedSellCheck'
+                                ng-change="doll.getCalendar(anticipedS = !anticipedS)"
+                            )
+                        .col-xs-9
+                            label(for="anticipada")  Venta anticipada
+            hr                
+            div.row.margin-0.order-execute(ng-if="sellLiquidity")
+                div.col-xs-6.padding-0    
+                    div.form-group.has-icon
+                        label Fecha de Operación
+                            span *
+                        div( act-dropdown
+                            ng-model="doll.operationDate"
+                            selected="doll.cmd.operationDate"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='doll.cmd.operationDate'
+                            ng-required='true'
+                        )
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Fecha de Liquidación:
+                        p {{ fechaLiquidacion | date : 'dd/MM/yyyy' }}
+
+            div.row.margin-0.order-execute(ng-if="!sellLiquidity")
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Ejecución de la orden
+                        div(style="position:relative")
+                            +inputDate( "doll.orderDate", 'date1' )(
+                                ngChange="doll.findDate();",
+                                datepickerOptions = "{showWeeks : false,formatMonth : 'MMM',yearColumns : 3 , minDate: $root.getTodayDate}"
+                                ngMouseOpen = 'popup2.opened',
+                            )
+
+
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Fecha de Liquidación:
+                        p {{ fechaLiquidacion | date : 'dd/MM/yyyy' }}
+
+            hr
+            div(ng-if="!doll.contractType")
+                +dollBinnacleFunBank()
+
+            .row.margin-0(ng-if="doll.contractType")
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                    'OPERAR',
+                    'btn-primary',
+                    'form.$invalid',
+                    'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                    'Limpiar',
+                    'btn-primary',
+                    null,
+                    'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")
+
+    div.row.margin-0.body( ng-if="doll.tab == 'buy' && !doll.confirmationModel && !doll.captureModel && !doll.loading && !doll.newStateInit")
+        form(name="form" novalidate)
+            div.row.margin-0.informacion-doll
+                div.search.col-xs-7
+                    div.form-group.has-icon.act-input
+                        label( for="station" ) Emisora
+                        div.input-wrapper
+                            input.form-control( type="text" placeholder="Emisora" id="station" name="station"
+                                ng-required="true"
+                                ng-model="doll.stationName"
+                                required="required"
+                                uib-typeahead="st as ( st.slateKey +' '+ st.serie) for st in stations | filter:$viewValue"
+                                typeahead-on-select= 'doll.AddStation($item)'
+                                autocomplete="off",
+                                 typeahead-editable="false"
+                            )
+                            i.fa.fa-search(style="right:2px")
+                div.price.col-xs-5
+                    label Precio:
+                    div
+                        b {{ doll.currentCash |  currency: '$' : 6}}
+            div.purchasing-label(ng-if="doll.tab === 'buy'")
+                p Poder de Compra: 
+                    a {{ doll.balance.availableBalance |  currency: '$' : 2 }}
+                    p {{doll.buyLiquidity*24}} hrs.
+                    img(src="img/icons/inner-tabs-doubt-active.svg", alt="")
+            .other-info(ng-if="doll.tab === 'buy'")
+                ul(style='font-size:x-small; list-style:none;')
+                    li
+                      div.row
+                        div.col-xs-4
+                          label Bloqueado:
+                        div.col-xs-8 
+                          strong {{ doll.balance.blockedBalance |  currency: '$' : 2 }}  
+                    li
+                      div.row
+                        div.col-xs-4
+                          label Total:
+                        div.col-xs-8 
+                          strong {{ doll.balance.totalBalance |  currency: '$' : 2 }}
+                    li
+                        div.row
+                            div.col-xs-6
+                                label Plazo liquidación:
+                            div.col-xs-3
+                                strong
+                                    ng-pluralize( count=" doll.buyLiquidity * 24" when="{'0': ' Hoy', 'other': '{{doll.buyLiquidity * 24}} hrs.'}" )
+            div.purchasing-rules.row
+                - var _model = 'buy'; 
+                - var rules = 'rulesBuy';
+                div.col-xs-8.padding-0.type
+                    label Comprar por
+                        span *
+
+                    div.row.margin-0( ng-show = "doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'TITULOS'")
+                        +radioButton( 'Títulos', 'doll.cmd.type' )(
+                            id='titles', ngClick = "doll.cleanImport('"+_model+"')"
+                        )
+                        span.float-right
+
+                            input.form-control( type="text", placeholder="Titulos"
+                                ng-required="doll.cmd.type === 'titles'"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                ng-show="doll.cmd.type === 'titles'"
+                                ng-model="doll.cmd."+ _model +".typeValue"
+                                ng-change = "changeSettlement( '" + _model +"')"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                    div.row.margin-0( ng-show = "doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'IMPORTE'")
+                        span
+                            +radioButton( 'Importe', 'doll.cmd.type' )(
+                                id='import', ngClick = "doll.cleanImport('"+_model+"')"
+                            )
+                        span.float-right
+                            input.form-control(type="text", placeholder="Importe"
+                                ng-required="doll.cmd.type === 'import'"
+                                ng-show = "doll.cmd.type === 'import'"
+                                ng-model ="doll.cmd."+ _model +".typeValue2"
+                                ng-change = "changeSettlement2( '" + _model +"' )"
+                                onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                                ng-currency
+                                )   
+
+                    div.row.margin-0
+                        div.col-xs-12
+                            label Importe Operado:
+                        div.col-xs-3
+                            label {{ doll.cmd.importRules | currency:'$'  }}
+
+            hr                
+            div.row.margin-0.order-execute  
+                div.col-xs-6.padding-0    
+                    div.form-group.has-icon
+                        label(for="date") Ejecución de la orden
+                        div(style="position:relative")
+                                +inputDate( "doll.orderDate", 'date1' )(
+                                    ngChange="doll.findDate();",
+                                    datepickerOptions = "{showWeeks : false,formatMonth : 'MMM',yearColumns : 3 , minDate: $root.getTodayDate}"
+                                    ngMouseOpen = 'popup2.opened',
+                                )
+
+
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Fecha de Liquidación:
+                        p {{ fechaLiquidacion | date : 'dd/MM/yyyy' }}
+
+            hr
+            div(ng-if="!doll.contractType")
+                +dollBinnacleFunBank()
+
+            .row.margin-0(ng-if="doll.contractType")
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                    'OPERAR',
+                    'btn-primary',
+                    'form.$invalid',
+                    'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                    'Limpiar',
+                    'btn-primary',
+                    null,
+                    'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")

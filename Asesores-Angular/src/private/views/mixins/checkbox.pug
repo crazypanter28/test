@@ -1,0 +1,17 @@
+mixin checkbox( _label, _model, _name, _value )
+    label.input-checkbox(
+        for=_name
+    )
+        input(
+            id=_name
+            name=_name
+            type="checkbox"
+            value=_value
+            ng-model=_model,
+            ng-change != attributes.change
+            ng-click=attributes.ngClick
+        )
+        span.css
+        | #{_label}
+        if attributes.tooltip
+            i.help( uib-tooltip-html="'"+ attributes.tooltip + "'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )

@@ -1,0 +1,42 @@
+{
+    "status":1,
+    "messages": [
+        {
+            "type":null,
+            "criticality":null,
+            "code":null,
+            "description":"OPERACIÓN EXITOSA"
+        }
+    ],
+    "result": {
+        "idMessage":144,
+        "userCode":"ngarcia",
+        "message":"Mensaje para reporte",
+        "descriptionMessage":"Holahola adiosadios",
+        "destinations":"",
+        "fileContent":"/9j/4AAQSkZJRgABAgEAYABgAAD/7gAOQWRv",
+        "contentType":"image/jpeg",
+        "creationDate":1488497034337,
+        "expirationDate":"2017-03-31",
+        "readers":[
+            {
+                "name":"Nadia Aline Garcia Cazariego",
+                "userCode":"ngarcia",
+                "mail":"ngarcia@actinver.com.mx",
+                "idEmployee":53883
+            },
+            {
+                "name":"Jose Emiliano Villalon Reyes",
+                "userCode":"jvillalon",
+                "mail":"jvillalon@actinver.com.mx",
+                "idEmployee":60812
+            },
+            {
+                "name":"Fernando Federico Bolaños Gonzalez",
+                "userCode":"fbolanos",
+                "mail":"fbolanos@actinver.com.mx",
+                "idEmployee": 61986
+            }
+        ]
+    }
+}

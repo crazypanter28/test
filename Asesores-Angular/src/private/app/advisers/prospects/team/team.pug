@@ -1,0 +1,115 @@
+include /views/mixins/input
+include /views/mixins/point
+include /views/mixins/radio-button
+include /views/mixins/checkbox
+include /views/mixins/info-result
+
+
+
+div( ng-if="!$state.is('prospects.team')" )
+    div( ui-view="")
+
+
+
+div( ng-if="$state.is('prospects.team')" )
+    div.administrador-menu
+        label Consulta la información deseada
+        .form-group
+            label.act-checkbox-custom( for="advisers" )
+                input( type="checkbox" id="advisers" ng-model="admin.user.type" ng-change='admin.typeUserF()' )
+                span.css-label
+                | Asesores
+            label.act-checkbox-custom( for="profile" )
+                input( type="checkbox" id="profile" ng-model="admin.user.type2" ng-change='admin.typeUserF()' )
+                span.css-label
+                | Mi perfil
+
+    .content-spinner( ng-show="admin.loadingTeamGraph" )
+        .spinner
+    div.pane-wrapper.prospects-myProfile.margin-0( ng-if="(admin.user.type || admin.user.type2 ) && !admin.loadingTeamGraph")
+        div.pane-title Resumen a la fecha
+        div.pane-body( ng-class="{'padding-0': !admin.showGraphics }" )
+            div( ng-if = "!admin.noResults" )
+                +noGeneralResults( 'No se cargó ', ' el contenido. Vuelve a intentar.' )
+            div(ng-if="admin.noResults")
+                div.row.margin-0.title-graphics
+                    h4.col-xs-8 TOTAL DE PROSPECTOS CONTACTADOS AL DÍA DE HOY:
+                        b  {{ admin.customersContacted }}
+                    div.col-xs-2
+                        +point( "PROSPECTOS", "{{ admin.totalProspects }}" )(class="blue")
+                    div.col-xs-2
+                        +point( "CLIENTES", " {{ admin.remainingProspects }}" )(class="yellow")
+                div.row.margin-0.graphics( ng-if="admin.details4" )
+                    div.col-xs-3
+                        div.row.margin-0
+                            div.container-graphic
+                                donut-chart( model="admin.details1" )
+                        p.row Dinero
+                        .view-details(ng-click="admin.detailStage( 'money' )") VER DETALLE
+                    div.col-xs-3
+                        div.row.margin-0
+                            div.container-graphic
+                                donut-chart( model="admin.details2" )
+                        p.row Fondos
+                        .view-details(ng-click="admin.detailStage( 'founds' )") VER DETALLE
+                    div.col-xs-3
+                        div.row.margin-0
+                            div.container-graphic
+                                donut-chart( model="admin.details3" )
+                        p.row Crédito
+                        .view-details(ng-click="admin.detailStage( 'credit' )") VER DETALLE
+                    div.col-xs-3
+                        div.row.margin-0
+                            div.container-graphic
+                                donut-chart( model="admin.details4" )
+                        p.row Seguros
+                        .view-details(ng-click="admin.detailStage( 'insurance' )") VER DETALLE
+
+
+    div.pane-wrapper.secondary( ng-if="admin.spinnerDetail")
+        .content-spinner
+            .spinner
+    div.pane-wrapper.secondary( ng-if="admin.viewDetail && !admin.spinnerDetail")
+        div.pane-subtitle Detalle
+        div.pane-body
+            div.row.search.margin-0
+                div.col-xs-3.padding-left-0
+                    +inputWithIcon(
+                        name= 'formUser',
+                        label= 'Búsqueda del asesor',
+                        placeholder= 'Nombre',
+                        autocomplete="off"
+                        require= 'true',
+                        model= 'admin.fieldSearch',
+                        type= false,
+                        tooltip= null,
+                        pattern= '/^[a-zA-Z]+$/',
+                        message='El campo no acepta números'
+                        ngChange= 'admin.applySearch()'
+                        faIcon="fa fa-search"
+                    )
+
+            div.row.margin-0
+                table( ng-table='admin.configTable' )
+                    thead
+                        tr
+                            th Nombre
+                            th Número de prospectos
+                            th $ prospectado #[br](Dinero)
+                            th $ prospectado #[br] (Fondos)
+                            th $ prospectado #[br] (Crédito)
+                            th $ prospectado #[br] (Seguros)
+                            th.text-center Detalle
+                    tbody
+                        tr( ng-repeat="row in $data")
+                            td {{row.name}}
+                            td {{row.prospects}}
+                            td {{row.money}}
+                            td {{row.founds}}
+                            td {{row.credit}}
+                            td {{row.save}}
+                            td.text-center(ng-click="admin.setUser(row)")
+                                i.eye
+
+            div.row.margin-0.buttons-admin
+                button.btn.btn-primary( ng-click="admin.downloadPDF()") Generar PDF

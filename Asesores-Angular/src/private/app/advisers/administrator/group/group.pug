@@ -1,0 +1,27 @@
+.group
+    .section-title
+        span Grupo
+        i.add-white( ng-click="group.showModalCreateGroup()" )
+
+    .content
+        table.ng-table
+            thead
+                tr
+                    th.text-center Grupo
+                    th.text-center Editar
+                    th.text-center Eliminar
+            tbody
+                tr( ng-show="group.loadingGroups" )
+                    td(colspan="3")
+                        .content-spinner
+                            .spinner
+                tr( ng-show="!group.loadingGroups" ng-repeat=" i in group.groups " )
+                    td.text-center( ng-click="group.editName( i )" ) {{i.name}}
+                    td.text-center #[i.edit( ng-click="group.showModalEditGroup(i)" )]
+                    td.text-center #[i.remove( ng-click="group.showModalRemoveGroup(i.idTargetGroup)" )]
+
+
+        .no-results( ng-show="!group.groups" )
+            img( src="img/bg/binnacle-empty-state.svg" )
+            p Actualmente #[b NO] hay grupos.
+            .link( ng-click="group.showModalCreateGroup()" ) Puedes agregar uno

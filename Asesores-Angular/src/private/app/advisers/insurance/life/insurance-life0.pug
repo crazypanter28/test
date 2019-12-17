@@ -1,0 +1,24 @@
+div.content-panel.tranfers(ng-if="lifeCtrl.actualPage === 0")
+    form(name="form" novalidate)
+        .row
+            .col-md-4.text-left(style="padding-bottom:20px;") 
+                img(src="img/logos/mapfre.svg" style="width: 85px;height: 50px")
+            .col-md-8(style="padding-bottom:20px;" ng-hide="lifeCtrl.pageNotFound")
+                h4.text-left.tit
+                    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            .col-md-4(style="padding-bottom:20px;" ng-show="lifeCtrl.pageNotFound")
+                h3.text-center.tit PAGINA NO ENCONTRADA
+        .row.text-center(style="padding-top:10px;" ng-show="lifeCtrl.pageNotFound")
+            button(class="btn-primary btn" ng-click="lifeCtrl.regresoMain()" ) REGRESAR
+        .row.text-center(ng-hide="lifeCtrl.pageNotFound")
+            p(style="padding-bottom:20px;") Selecciona tipo de Personalidad
+                .col-sm-3.form-group
+                .col-sm-3.form-group
+                    label.radio-inline
+                        input(type="radio" name="typeClient" ng-click="lifeCtrl.seleccionaPersonalidad('1')").personas
+                        span(lang="es" style="color: black !important") Persona Física
+                .col-sm-3.form-group
+                    label.radio-inline
+                        input(type="radio" name="typeClient" ng-click="lifeCtrl.seleccionaPersonalidad('2')").personas
+                        span(lang="es" style="color: black !important") Persona Moral
+                .col-sm-3.form-group

@@ -1,0 +1,12 @@
+include /views/mixins/buttons
+
+.title-modal {{ctrl.title}}
+.container-modal
+    .row
+        .form-group.col-xs-12
+            label Nombre del producto#[span.require *]
+            input.form-control(type='text', placeholder='Escribe el título del mensaje' ng-model="ctrl.group.name")
+
+.buttons
+    button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+    button.btn.btn-primary( title="GENERAR" ng-disabled="!ctrl.group.name" ng-click="ctrl.done()") GENERAR

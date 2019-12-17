@@ -1,0 +1,154 @@
+//
+// _variables:;
+//
+// It reflects all variables used in entire site
+//
+
+//
+// -------------------------
+// @section Colors
+// @info    All about colors
+// -------------------------
+//
+// Common
+$white:             #FFF !default;
+$white2:            #DFDFDF !default;
+$whitheSpinner:     rgba(255,255,255, 0.8);;
+$black:             black !default;
+
+$gray:              #d2cfcd;
+$gray2:             #767676;
+$gray3:             #b4b4b4;
+$gray4:             #898989;
+
+$green:             #dbf7bf;
+$green2:            #00be66;
+$green3:            #08a25a;
+
+
+$yellow:            #f5f047;
+$yellow2:           #ffba3a;
+
+$blue:              blue !default;
+$blue2:             #00006f;
+$blue3:             rgba(80, 123, 189, 0.8);
+$blue4:             #517cbd;
+$blue5:             rgba(80, 123, 189, 0.3);
+$blue6:             rgb(61,134,246);
+$blue7:             #195dc4 !default;
+$blue8:             #00bebe;
+$blue9:             #0e2d75;
+$blue10:            #e9f2ff;
+$blue11:            #0072bc;
+
+$red:               #F00 !default;
+$redError:          #FA596D !default;
+$green:             #090 !default;
+$orange:            #EF7D00 !default;
+// $gray:              #CFCFCF !default;
+
+// Project colors
+$primary-color:             #1750a7 !default; // Blue
+$secondary-color:           #f9be00 !default; // Yellow
+$tertiary-color:           #0f3f88 !default; // Yellow
+$main-color:                #9b9b9b !default; // Gray
+
+// Header
+$header-bg:         #051c48 !default;
+
+// Buttons
+// Default
+$btn-default: (
+    color:                $primary-color,
+    bg:                   $white,
+    border:               $primary-color,
+    hover-color:          $primary-color,
+    hover-bg:             $white,
+    hover-border:         $primary-color,
+    active-color:         $primary-color,
+    active-bg:            $white,
+    active-border:        $primary-color,
+    disabled-color:       $primary-color,
+    disabled-bg:          $white,
+    disabled-border:      $primary-color
+) !default;
+
+// Primary
+$btn-primary: (
+    color:                $white,
+    bg:                   $primary-color,
+    border:               $primary-color,
+    hover-color:          $white,
+    hover-bg:             darken($primary-color, 5%),
+    hover-border:         darken($primary-color, 5%),
+    active-color:         $white,
+    active-bg:            darken($primary-color, 10%),
+    active-border:        darken($primary-color, 10%),
+    disabled-color:       lighten($white, 0%),
+    disabled-bg:          #8aa7d3,
+    disabled-border:      #8aa7d3
+) !default;
+
+// Form control
+$form-control-bg:                           transparent !default;
+$form-control-border:                       $primary-color !default;
+$form-control-color:                        #4A4A4A !default;
+$form-control-icon:                         $main-color !default;
+$form-control-placeholder-color:            #9b9b9b !default;
+$form-control-shadow-color:                 $main-color !default;
+$form-control-border-focus:                 $main-color !default;
+$form-control-disabled-color:               #F6F6F6 !default;
+$form-control-icon-bg:                      $white !default;
+
+// Form control status
+$form-error-color:                      $red !default;
+$form-control-error-color:              $red !default;
+$form-control-error-border:             $red !default;
+$form-control-success-color:            $primary-color !default;
+
+// Tooltip
+$form-tooltip-bg:               rgba(#fee07e, .8) !default;
+$form-tooltip-border:           $form-tooltip-bg !default;
+$form-tooltip-color:            $primary-color !default;
+
+/* Font */
+$font-size-base:            16px !default;
+$font-size-small:           12px !default;
+$line-height-base:          1.264 !default;
+$font18:                    18px;
+
+//
+// -------------------------
+// @section Typography
+// @info    All about typography
+// -------------------------
+//
+// Scafolding
+$font-family-websafe:           "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-base:              "Proxima Regular", sans-serif !default;
+
+// Headings
+$headings-line-height:          1.1 !default;
+$headings-font-family:          "Proxima Bold", sans-serif !default;
+
+// Buttons
+$btn-font-family:               "Proxima Light", sans-serif !default;
+$btn-large-font-size:           ($font-size-base + 4) !default;
+$btn-font-size:                 16px !default;
+$btn-small-font-size:           $font-size-small !default;
+$btn-xsmall-font-size:          $font-size-small !default;
+
+// Forms
+$input-font-family:             $font-family-base !default;
+
+//
+// -------------------------
+// @section Sizes
+// @info    All about sizes
+// -------------------------
+//
+// Buttons
+$btn-large-padding:             20px 30px !default;
+$btn-padding:                   7px 6px 5px 6px !default;
+$btn-small-padding:             8px 15px !default;
+$btn-xsmall-padding:            1px 20px !default;

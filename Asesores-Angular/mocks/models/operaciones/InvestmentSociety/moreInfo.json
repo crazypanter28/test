@@ -1,0 +1,62 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"2d117d97-4449-4561-951e-c66ac146088b",
+            "messages":[
+                {
+                    "responseSystemCode":"ACACBCWS0096",
+                    "responseMessage":"NO HAY NINGUN ERROR",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1493787600000,
+        "time":61825000,
+        "clientID":"NBURSANET",
+        "sessionID":null,
+        "responseSystem":"A2K",
+        "operationName":"FundsOrderDetailQuery",
+        "operationVersion":"1_0",
+        "ipaddress":"10.10.1.58"
+    },
+    "outFundsOrderDetailQuery":{
+        "orderInfo":{
+            "orderTime":56873000,
+            "issuerName":"ACTIGOB",
+            "serie":"E",
+            "coupon":0,
+            "orderTypeDesc":"NORMAL",
+            "orderStatusDesc":"CANCELADA",
+            "orderFormDesc":"TITULOS",
+            "amount":1.0
+        },
+        "movementInfo":{
+            "movementKey":2,
+            "movementDescription":"VENTA",
+            "reasonSellDesc":"NINGUNO",
+            "titlesQty":1,
+            "price":4.686935,
+            "commissionPercentage":0.0,
+            "commission":0.0,
+            "vat":0.0
+        },
+        "authorizationInfo":{
+            "netAmount":4.69,
+            "userID":"BUSCTRAL",
+            "cancellator":"",
+            "authorizationTypeKey":" NO PROCEDE",
+            "authorizer":"",
+            "date":1493787600000,
+            "operationDate":1493787600000,
+            "settlementDate":1493787600000
+        },
+        "generalInfo":{
+            "changeType":1.0,
+            "originalAmount":4.69,
+            "currencyTypeDesc":"MONEDA NACIONAL"
+        }
+    }
+}

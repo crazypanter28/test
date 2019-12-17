@@ -1,0 +1,34 @@
+{
+    "status":1,
+    "result":{
+        "amount": 1500000,
+        "grow": 1291611.24,
+        "infoModal":{
+            "cash":{
+                "goal": 2565670,
+                "percentage": 35,
+                "accumulated": 1146900,
+                "description": "DINERO"
+            },
+            "funds":{
+                "goal": 2565670,
+                "percentage": 35,
+                "accumulated": 1146900,
+                "description": "META"
+            },
+            "insurance":{
+                "goal": 2565670,
+                "percentage": 35,
+                "accumulated": 1146900,
+                "description": "SEGUROS"
+            },
+            "credit":{
+                "goal": 2565670,
+                "percentage": 35,
+                "accumulated": 1146900,
+                "description": "CRÉDITO"
+            }
+        }
+    },
+    "messages":[]
+}

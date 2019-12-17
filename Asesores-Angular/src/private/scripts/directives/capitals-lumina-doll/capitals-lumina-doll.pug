@@ -1,0 +1,179 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/doll
+
+
+div.doll.capitals
+    div.row.margin-0.header
+        button.btn.col-xs-6.buy(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('buy')"
+            ng-class = "{'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('sell')"
+            ng-class = "{'active' : doll.tab === 'sell'}"
+        )
+            span vender
+
+    div.row.margin-0.body.empty.init( ng-show="!doll.newState && !doll.tab && !doll.loading && doll.stepA"  )
+        div.empty-container
+            div.empty-center
+                img(src="img/icons/doll/icon_money.svg" )
+                p.station-description Selecciona la operación que deseas realizar
+                p.label Puedes dar clic directamente sobre la
+                    b  EMISORA
+                    |   para agilizar tu compra o venta
+
+    //div.row.margin-0.body.empty( ng-show="doll.newState && !doll.loading")
+        div.empty-container
+            div.empty-center
+                img(src="img/icons/doll/icon_money01.svg" )
+                p.station-title Emisora
+                p.station-description {{ doll.cmd.station.issuer.issuerName }} {{ doll.cmd.station.issuer.serie }}
+
+                p.label Selecciona la operación que deseas realizar.
+
+    div.row.margin-0.body.confirm( ng-if="doll.confirmationModel && !doll.captureModel && !doll.loading && doll.tab" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +confirmCapitalLuminaDoll( 'confirmationModel' )
+
+    div.row.margin-0.body.confirm( ng-if="doll.captureModel && !doll.loading" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +confirmCapitalLuminaDoll( 'captureModel', true )
+
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    div.row.margin-0.body(ng-class="{'sell': doll.tab === 'sell','buy': doll.tab === 'buy'} " ng-if="!doll.stepA && !doll.confirmationModel && !doll.captureModel && !doll.loading && !doll.newState" )
+        form(name="form" novalidate)
+            div.row.margin-0.informacion-doll
+                div.search.col-xs-7
+                    div.form-group.has-icon.act-input
+                        label( for="station" ) Emisora
+                        div.input-wrapper
+                            input.form-control( type="text" placeholder="Emisora" id="station" name="station"
+                                ng-required="true"
+                                ng-model="doll.cmd.station"
+                                required="required"
+                                uib-typeahead="st as ( st.issuer.issuerName + ' ' + st.issuer.serie + ' ('+st.feed +')' ) for st in $root.statiosnTableBank | filter:$viewValue"
+                                typeahead-on-select= 'doll.AddStationfromdoll($item)'
+                                autocomplete="off",
+                                typeahead-editable="false"
+
+                            )
+                            i.fa.fa-search(style="right:2px")
+                div.col-xs-5( ng-if="doll.tab !== 'buy'")
+                    div.purchasing-label
+                        p Mis títulos:
+                            |    {{ doll.titlesForSell.titlesQty.titlesQty || 0 }}
+                        .col-xs-12
+                        input(type="text" ng-model="doll.fp" ng-show='false' ng-required='(doll.titlesForSell.titlesQty.titlesQty === undefined || doll.titlesForSell.titlesQty.titlesQty === 0) && !iscuentapropia' )
+            div.purchasing-label( ng-if="doll.tab === 'buy' ")
+                p Poder de Compra:
+                    b {{ doll.balance.availableBalance |  currency: '$' : 2 }}
+                    img(src="img/icons/inner-tabs-doubt-active.svg", alt="")
+
+            div.purchasing-rules.row(ng-class = "{'sell': doll.tab === 'sell' }")
+                div(style="padding-top:15px;" )
+                    label Tipo de Bolsa a operar: *
+                .col-xs-12( style="padding-bottom:15px;")
+                    .col-xs-4
+                        +radioButton( 'SOR', 'doll.cmd.typeStock' )(
+                                id='0'
+                                ngChange="doll.cambioBolsaOperar('SOR')"
+                            ) 
+                          
+
+
+                div
+                    label Tipo de orden *
+                //+radioButton( 'Básico', 'doll.cmd.order.type' )(
+                        id='basic'
+                        ngClick = 'doll.changeSelect()')
+
+                select.form-control(
+                    ng-change="doll.changeOrdeType()"
+                    ng-model="doll.cmd.order.value"
+                    ng-options="it.description for it in doll.dataListTipoOrdenesFilter" ng-disabled="!doll.dataListTipoOrdenesFilter || doll.cmd.typeStock === null"
+                    ng-required="true"
+                )
+
+                div(ng-if=" doll.cmd.order && doll.cmd.order.value && doll.cmd.order.value.key === '3' && doll.cmd.libroomesa !== 'Desk'" style="padding-top:15px;")
+                    label Tipo de operación *
+                select.form-control(
+                    ng-if=" doll.cmd.order && doll.cmd.order.value && doll.cmd.order.value.key === '3' && doll.cmd.libroomesa !== 'Desk'"
+                    ng-model="doll.cmd.order.orderTypeOperation"
+                    ng-options="it.description for it in doll.listTypeOperation"
+                    ng-required="true"
+                )
+
+
+                div.row.margin-0.model-doll
+                    .col-xs-4
+                        +input( 'Títulos', 'titles', 'Títulos', true )(
+                            name = 'formPhone2'
+                            ngRequire='true',
+                            onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                            model='doll.cmd.order.model.titles',
+                            message='El campo solo acepta números',
+                            pattern='doll.pattern.numeric',
+                            maxlength='12',
+                            ngChange = 'doll.recalcularMontoAprox()'
+                        )
+                    .col-xs-4(ng-if="doll.cmd.order.value.shortKey.trim() === 'LP'")
+                        +input( 'Precio ', 'precio', 'Precio', true )(
+                            name = 'precio'
+                            ngRequire='true',
+                            model='doll.cmd.priceStation',
+                            pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            ngChange = 'doll.recalcularMontoAprox()'
+                        )
+                    .col-xs-4
+                        +input( 'Vigencia', 'vigencia', 'Vigencia (días)', true )(
+                            name = 'vigencia'
+                            model='doll.cmd.order.model.term',
+                            pattern='doll.pattern.numeric'
+                            maxlength='2'
+                            ngDisabled = 'true'
+                        )
+                    .col-xs-12(ng-if="doll.cmd.order.value.shortKey.trim() === 'MC' && doll.tab === 'buy'" class="labellumina")
+                        br
+                        p Precio de referencia:
+                            b  {{ doll.cmd.priceStation |  currency: '$' : 2 }}
+                    .col-xs-12(ng-if='doll.montoaprox' class="labellumina")
+                        br
+                        p Monto aproximado:
+                            b  {{ doll.montoaprox |  currency: '$' : 2 }}
+                    .col-xs-12(ng-if="(doll.balance.availableBalance < doll.montoaprox) && doll.tab === 'buy' && !iscuentapropia")
+                        label(style='color:red' )
+                            b No debe exceder el monto del poder de compra
+                    .col-xs-12
+                        input(type="text" ng-model="doll.montoaproxoculto" ng-show='false' ng-required="(doll.balance.availableBalance < doll.montoaprox) && !iscuentapropia && doll.tab === 'buy'" )
+
+
+                    .col-xs-12(ng-if="(doll.titlesForSell.titlesQty.titlesQty < doll.cmd.order.model.titles) && doll.tab === 'sell' && !iscuentapropia")
+                        label(style='color:red' )
+                            b Excede la cantidad de títulos disponibles
+                    .col-xs-12
+                        input(type="text" ng-model="doll.maxTitles" ng-show='false' ng-required="(doll.titlesForSell.titlesQty.titlesQty < doll.cmd.order.model.titles) && doll.tab === 'sell' && !iscuentapropia" )
+
+
+
+            .row.margin-0
+                div.col-xs-6.padding-0( ng-if="doll.cmd.order.options.type === 'tEspecifico' && time" )
+                    act-datetime( ng-model="doll.cmd.order.options.time" title="Válido hasta las" type="HH" required="true" )
+            .row.margin-0( ng-if="doll.elegible && !iscuentapropia")
+                +radioButton( 'Libro', 'doll.cmd.libroomesa' )(
+                        id='Book',
+                        ngChange="doll.changeOrdeType()"
+                )
+                +radioButton( 'Mesa', 'doll.cmd.libroomesa' )(
+                        id='Desk'
+                        ngDisabled='!doll.elegible',
+                        ngChange="doll.changeOrdeType()"
+                )
+                br
+            hr
+            +dollBinnacleLumina()

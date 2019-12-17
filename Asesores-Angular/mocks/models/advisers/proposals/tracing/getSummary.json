@@ -1,0 +1,109 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":{
+      "totalValue":4185399.22,
+      "brokerHouseValue":4180632.59,
+      "bankValue":4766.63,
+      "contractsList":{
+         "outCommonHeader":{
+            "result":{
+               "result":1,
+               "transactionID":"d782db0f-fc62-4937-930e-b8042950d71e",
+               "messages":[
+                  {
+                     "responseSystemCode":"BEADM0000",
+                     "responseMessage":"Exito",
+                     "responseType":"N",
+                     "responseCategory":"INFO"
+                  },
+                  {
+                     "responseSystemCode":"ACABC0000000",
+                     "responseMessage":"Consultation carried out successfully",
+                     "responseType":"N",
+                     "responseCategory":"INFO"
+                  },
+                  {
+                     "responseSystemCode":"BCSAP0000011",
+                     "responseMessage":"La cuenta saving no existe.",
+                     "responseType":"N",
+                     "responseCategory":"WARN"
+                  },
+                  {
+                     "responseSystemCode":"BCSAP0000008",
+                     "responseMessage":"Consulta de saldos por contrato finalizada.",
+                     "responseType":"N",
+                     "responseCategory":"INFO"
+                  },
+                  {
+                     "responseSystemCode":"BCSAP0000003",
+                     "responseMessage":"El contrato no tiene inversiones asociadas.",
+                     "responseType":"N",
+                     "responseCategory":"WARN"
+                  },
+                  {
+                     "responseSystemCode":"BCSAP0000008",
+                     "responseMessage":"Consulta de saldos de inversiones finalizada.",
+                     "responseType":"N",
+                     "responseCategory":"INFO"
+                  }
+               ],
+               "nativeErrorCode":null
+            },
+            "date":1502859600000,
+            "time":62757000,
+            "clientID":"PROMOTORES",
+            "sessionID":null,
+            "responseSystem":"BUS CENTRAL",
+            "operationName":"ContractsBalancesByPortfolioQuery",
+            "operationVersion":"1_0",
+            "ipaddress":"10.10.1.58"
+         },
+         "outContractsBalancesByPortfolioQuery":{
+            "contractInformation":[
+               {
+                  "contractNumber":"990217",
+                  "status":"1",
+                  "alias":"Sin Alias",
+                  "companyName":"Casa",
+                  "mainAccount":{
+                     "amount":587.5
+                  },
+                  "investmentsAccount":{
+                     "amount":4180030.66
+                  },
+                  "serviceType":"ASESORADO",
+                  "totalBalance":4180632.59,
+                  "previousContract":{
+                     "contractNumber":"0"
+                  }
+               },
+               {
+                  "contractNumber":"7458243",
+                  "status":"1",
+                  "alias":"Sin Alias",
+                  "companyName":"Banco",
+                  "mainAccount":{
+                     "amount":4766.63
+                  },
+                  "investmentsAccount":{
+                     "amount":0.0
+                  },
+                  "serviceType":"ASESORADO",
+                  "totalBalance":4766.63,
+                  "previousContract":{
+                     "contractNumber":"0"
+                  }
+               }
+            ]
+         }
+      }
+   }
+}

@@ -1,0 +1,94 @@
+{
+	"result": {
+		"returnStatus": 1,
+		"returnStatusMsg": [{
+			"systemCode": "ACACBCWS0096",
+			"message": "NO HAY NINGUN ERROR",
+			"type": "N",
+			"category": "INFO"
+		}],
+		"dateTime": "04/05/2017 10:50:58"
+	},
+	"ordersList": [{
+		"issuer": {
+			"issuerName": "AMX",
+			"serie": "L",
+			"detail": null
+		},
+		"order": {
+			"orderReference": "477982",
+			"netAmount": 0.0,
+			"status": "ORDEN VIGENTE",
+			"description": "Aceptada"
+		},
+		"subOrders": {
+			"movementDescription": "VENTA",
+			"routing": "RL",
+			"orderType": "MC",
+			"registryTime": "10:50:45",
+			"validityOrderDate": "04/05/2017",
+			"percentageHiddenVol": 0,
+			"price": "14.49",
+			"lowerPrice": 0.0,
+			"referencePriceOrder": 0.0,
+			"titlesAssigned": 0,
+			"orderClasification": "ORD",
+			"outputPercentage": 0.0,
+			"higherPercentage": 0.0,
+			"registryDate": "04/05/2017",
+			"amountTitles": 1,
+			"mktStatusQueryDate": "04/05/2017",
+			"outputPrice": 0.0,
+			"currencyTypeShortKey": "                              ",
+			"assignedPrice": 0.0,
+			"hiddenVolume": 0,
+			"validityOrderTime": "15:00:00",
+			"weightedAmount": 0.0,
+			"fee": 0.0,
+			"vat": 0.0,
+			"operationDate": "04/05/2017"
+		}
+	}],
+	"currentOrdersList": [{
+		"issuer": {
+			"issuerName": "AMX",
+			"serie": "L",
+			"detail": null
+		},
+		"order": {
+			"orderReference": "477982",
+			"netAmount": 0.0,
+			"status": "ORDEN VIGENTE",
+			"description": "Aceptada"
+		},
+		"subOrders": {
+			"movementDescription": "VENTA",
+			"routing": "RL",
+			"orderType": "MC",
+			"registryTime": "10:50:45",
+			"validityOrderDate": "04/05/2017",
+			"percentageHiddenVol": 0,
+			"price": "14.49",
+			"lowerPrice": 0.0,
+			"referencePriceOrder": 0.0,
+			"titlesAssigned": 0,
+			"orderClasification": "ORD",
+			"outputPercentage": 0.0,
+			"higherPercentage": 0.0,
+			"registryDate": "04/05/2017",
+			"amountTitles": 1,
+			"mktStatusQueryDate": "04/05/2017",
+			"outputPrice": 0.0,
+			"currencyTypeShortKey": "                              ",
+			"assignedPrice": 0.0,
+			"hiddenVolume": 0,
+			"validityOrderTime": "15:00:00",
+			"weightedAmount": 0.0,
+			"fee": 0.0,
+			"vat": 0.0,
+			"operationDate": "04/05/2017"
+		}
+	}],
+	"assignedOrdersList": [],
+	"pendingSettlement": []
+}

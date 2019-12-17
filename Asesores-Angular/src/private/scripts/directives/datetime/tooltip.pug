@@ -1,0 +1,7 @@
+
+div.container-picker
+    div.col-xs-6 {{ type == 'HH' ?  'Hora' : 'Inicio'}}
+        select( ng-model="models.modl1" ng-options="hr.text for hr in timeForSelect" ng-change="loadEndTime()" )
+    
+    div.col-xs-6 {{ type == 'HH' ?  'Minuto' : 'Fin'}}
+        select( ng-model="models.modl2" ng-options="hr.text for hr in timeForSelect2" ng-disabled="models.modl1==null")

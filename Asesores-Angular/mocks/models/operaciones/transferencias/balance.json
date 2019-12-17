@@ -1,0 +1,31 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"6a6ec343-0b64-4f43-997e-ffa982026a11",
+            "messages":[{
+                "responseSystemCode":"ACACBCWS0096",
+                "responseMessage":"NO HAY NINGUN ERROR",
+                "responseType":"N",
+                "responseCategory":"INFO"
+            }],
+            "nativeErrorCode":null
+        },
+        "date":1491541200000,
+        "time":77550000,
+        "clientID":"NBURSANET",
+        "sessionID":null,
+        "responseSystem":"A2K",
+        "operationName":"CashByDate",
+        "operationVersion":"1_1",
+        "ipaddress":null
+    },
+    "outCashByDate":{
+        "cashSettlement":[{
+            "settlementKey":0,
+            "currencyTypeKey":"1",
+            "cashAmount":985534.38,
+            "exchangeRate":1.0
+        }]
+    }
+}

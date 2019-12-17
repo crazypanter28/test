@@ -1,0 +1,198 @@
+include /views/mixins/info-result
+
+div
+
+    .form-row        
+        div.item.field.field-inptut        
+            label Mes de Pago
+            div(act-dropdown ng-model="resume.listMonth.optionMonth" selected="resume.monthSelected" )
+        .item.field.field-inptut        
+            label Año
+            div(act-dropdown ng-model="resume.listYear.optionYear" selected="resume.yearSelected" ) 
+        .item.field
+            .form-group
+                label Número de empleado
+                input.form-control( type="text" ng-model="resume.employeeId" ng-required="true" 
+                                    maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" 
+                                    ng-keyup="$event.keyCode == 13 && resume.sendLogin()" ng-pattern="/^[0-9]+$/")
+        .item.action
+            a.btn.btn-primary.btn-search(   href="javascript:void(0);" 
+                                            ng-class="{ 'disabled': !resume.employeeId }" 
+                                            ng-click="resume.sendLogin()") BUSCAR
+        .item.action
+            a.btn.btn-primary.btn-search(   href="javascript:void(0);" 
+                                            ng-click="resume.reset()") Limpiar                                    
+
+                                     
+    .contracts-details(ng-if="resume.detail") 
+        .panel.panel-default
+            .panel-heading
+                .panel-title
+                    span Detalle Estado de Cuenta
+            .panel-body
+               div
+                    .col-md-4
+                        strong Nombre:&nbsp
+                        a {{ resume.detailAccountState.result.user.name  }}
+
+                    .col-md-4
+                        strong No. Nómina:&nbsp
+                        a {{ resume.detailAccountState.result.user.employeeId }}
+                    .col-md-4
+                        strong Puesto:&nbsp
+                        a {{ resume.detailAccountState.result.user.employment }}        
+               div(style="padding-top: 35px;")
+                    .col-md-4
+                        strong CF:&nbsp
+                        a {{ resume.detailAccountState.result.user.financialCenter  }}
+
+                    .col-md-4
+                        strong Segmento:&nbsp
+                        a {{ resume.detailAccountState.result.user.segment }}
+                    .col-md-4
+                        strong OH:&nbsp
+                        a {{ resume.detailAccountState.result.user.oh }}
+               div(style="padding-top: 35px;")
+                    .col-md-4
+                        strong Antigüedad (Años):&nbsp
+                        a {{ resume.detailAccountState.result.user.antiquityDate  }}                       
+               div(style="padding-top: 20px;")
+                 table.table.table-responsive
+                                            tr
+                                                th(colspan="6" style="width: 652px; font-size: 18px;") {{'GENERACIÓN DEL MES'}}
+                                                th(ng-click="resume.getInfoGeneration()")
+                                                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !resume.banderaGeneration, 'fa-minus-circle': resume.banderaGeneration}" )  
+                                            tr(ng-if="resume.banderaGeneration")
+                                               td(colspan="7", style='background-color: #fff;')
+                                                    div(style="float: left;")
+                                                        table(style="height: 60px; width: 479px; border:none;")
+                                                            tbody
+                                                                tr
+                                                                    td.text-center(style="text-align: left; color: #1750a7; height: 15px; background-color: #fff; font-size: 20px; width: 291px;border-bottom: black 2px solid;") BANCO
+                                                                    td.text-center(style="text-align: right;color: black; background-color: #fff; font-size: 15px; border-bottom: black 2px solid;") {{ resume.detailAccountState.result.generation.generationBank.bank | currency }}  
+                                                                tr( ng-repeat="item in resume.detailAccountState.result.generation.generationBank.listDetailBank | orderBy : 'nameDetail'" )
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.nameDetail }} 
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.valueDetail | currency }}
+                                                        table(style="height: 44px; width: 479px; border:none;")
+                                                            tbody
+                                                                tr
+                                                                    td.text-center(style="text-align: left; color: #1750a7; height: 15px; background-color: #fff; font-size: 20px; width: 291px; border-bottom: black 2px solid;") CASA DE BOLSA
+                                                                    td.text-center(style="text-align: right;color: black; background-color: #fff; font-size: 15px; border-bottom: black 2px solid;") {{ resume.detailAccountState.result.generation.generationBrokerageHouse.brokerageHouse | currency }}  
+                                                                tr( ng-repeat="item in resume.detailAccountState.result.generation.generationBrokerageHouse.listDetailBrokerageHouse | orderBy : 'nameDetail'" )
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.nameDetail }} 
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.valueDetail | currency }}                 
+                                                        table(style="height: 60px; width: 479px; border:none;")
+                                                            tbody
+                                                                tr
+                                                                    td.text-center(style="text-align: left; color: #1750a7; height: 15px; background-color: #fff; font-size: 20px; width: 291px; border-bottom: black 2px solid;") CAMBIOS
+                                                                    td.text-center(style="text-align: right;color: black; background-color: #fff; font-size: 15px; border-bottom: black 2px solid;") {{ resume.detailAccountState.result.generation.generationChanges.changes | currency }}  
+                                                                tr( ng-repeat="item in resume.detailAccountState.result.generation.generationChanges.listDetailChanges | orderBy : 'nameDetail'" )
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.nameDetail }} 
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.valueDetail | currency }}
+                                                        table(style="height: 40px; width: 479px; border:none;")
+                                                            tbody
+                                                                tr
+                                                                    td.text-center(style="text-align: left; color: #1750a7; height: 15px; background-color: #fff; font-size: 20px; width: 291px; border-bottom: black 2px solid;") SEGUROS
+                                                                    td.text-center(style="text-align: right;color: black; background-color: #fff; font-size: 15px; border-bottom: black 2px solid;") {{ resume.detailAccountState.result.generation.generationInsurance.insurance | currency }}  
+                                                                tr( ng-repeat="item in resume.detailAccountState.result.generation.generationInsurance.listDetailInsurance | orderBy : 'nameDetail'" )
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.nameDetail }} 
+                                                                    td(style="text-align: right; background-color: #fff;") {{ item.valueDetail | currency }}            
+                                                                    
+                                                        table(style="height: 120px; width: 479px; border:none;")
+                                                            tbody            
+                                                                tr(style="height: 15px;")
+                                                                    td.text-center(style="text-align: right; background-color: #1750a7; color: #ffffff;") TOTAL GENERACIÓN
+                                                                    td.text-center(style="text-align: right; color: black; background-color: #fff; font-size: 15px; border: black 2px solid;") {{ resume.detailAccountState.result.generation.totalGeneration | currency }} 
+                                                                tr(style="height: 15px;")
+                                                                    td.text-center(style="text-align: right; background-color: #fff; color: red;") O.H.
+                                                                    td.text-center(style="text-align: right; background-color: #fff; color: red;") {{'- '}} {{ resume.detailAccountState.result.generation.oh | currency }}
+                                                                tr(style="height: 15px;")
+                                                                    td.text-center(style="text-align: right; background-color: #fff; color: red;") ASISTENTE
+                                                                    td.text-center(style="text-align: right; background-color: #fff; color: red;") {{'- '}} {{ resume.detailAccountState.result.generation.assistant | currency }}      
+                                                                tr(style="height: 15px;")
+                                                                    td.text-center(style="text-align: right; background-color: #1750a7; color: #ffffff;") BASE COMISIONABLE
+                                                                    td.text-center(style="text-align: right; color: black; background-color: #fff; font-size: 15px; border: black 2px solid;") {{ resume.detailAccountState.result.generation.commissionableBase | currency }} 
+                                                                tr(style="height: 15px;")
+                                                                    td.text-center(style="text-align: right; background-color: #fff; font-size: 15px;") % Comisión (Meta)
+                                                                    td.text-center(style="text-align: right; background-color: #fff; font-size: 15px;") {{ (resume.detailAccountState.result.generation.commissionPercentage) }}% 
+                                                                tr(style="height: 20px;")
+                                                                    td.text-center(style="text-align: right; background-color: #1750a7; color: #ffffff;") COMISIONES DEL MES
+                                                                    td.text-center(style="text-align: right; color: black; background-color: #fff; font-size: 15px; border-bottom: black 3px solid;") {{ resume.detailAccountState.result.generation.commission | currency }}
+                                                    div(style="float: right; height: 270px; width: 530px") {{'Desglose de Generación'}}                                                                         
+                                                         canvas(id="pie", class="chart chart-pie", chart-data="chartDataBank", chart-labels="chartLabelsBank", legend="true",  chart-colors="colours")
+                                                        
+                                                                                                                    
+
+                                                               
+               div
+                 table.table.table-responsive
+                                            tr
+                                                th(colspan="6" style="width: 652px; font-size: 18px;") {{'INTEGRACIÓN DE PORCENTAJE DE COMISIÓN'}}
+                                                th(ng-click="resume.getInfoIntegration()")
+                                                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !resume.banderaIntegration, 'fa-minus-circle': resume.banderaIntegration}" )                
+                                            tr(ng-if="resume.banderaIntegration")
+                                               td(colspan="7", style='background-color: #fff;')
+                                                    div(style="position: relative;float: left;top: 28px;")
+                                                        table(style="height: 247px; width: 395px; border:none;")
+                                                                tbody
+                                                                    tr
+                                                                        td.text-center(style="text-align: left; color: #1750a7; height: 15px; background-color: #fff; font-size: 20px; width: 316px;")
+                                                                        td.text-center(style="text-align: center; color: black; height: 15px; background-color: #fff; font-size: 15px; width: 316px;") PORCENTAJE
+                                                                        td.text-center(style="text-align: right; color: black; background-color: #fff; font-size: 15px") CRECIMIENTO
+                                                                    tr(style="height: 25px;")
+                                                                        td.text-center(style="text-align: left; color: #1750a7; font-size: 16px; height: 15px; width: 316px; background-color: #fff;") Porcentaje Base
+                                                                        td.text-center(style="text-align: center; color: #1750a7; font-size: 16px; height: 15px; background-color: #fff; width: 316px; border-bottom: black 2px solid;") {{ (resume.detailAccountState.result.integration.percentageBase) }}%
+                                                                        td.text-center(style="text-align: right;color: black; font-size: 15px; background-color: #fff")     
+                                                                    tr( ng-repeat="item in resume.detailAccountState.result.integration.listDetailIntegration | orderBy : 'name'", ng-class-odd="'stripedEx'" )
+                                                                        td(style="text-align: right; color: black;") {{ item.name }}
+                                                                        td(style="text-align: center; color: black;") {{ item.percentage }}%  
+                                                                        td(style="text-align: center; color: black;") {{ item.value  }}
+                                                                    tr
+                                                                        td.text-center(style="text-align: right; color: black; height: 15px; font-size: 16px; background-color: #fff; width: 316px;") % Comisión
+                                                                        td.text-center(style="text-align: center; color: black; height: 15px; font-size: 16px; background-color: #fff; width: 316px;") {{ (resume.detailAccountState.result.generation.commissionPercentage) }}%
+                                                                        td.text-center(style="text-align: right;color: black; background-color: #fff; font-size: 15px")                                                                             
+                                                    div(style="float: left; transform : rotate(-90deg); position: relative;width: 100px; height: 30px; left: 48px; top: 120px") {{'Porcentaje %'}} 
+                                                    div(style="float: left; position: relative; left: 330px; top:-12px;")
+                                                            a.btn.btn-primary.btn-search(   href="javascript:void(0);" 
+                                                                                            style="float: right;"
+                                                                                            ng-click="resume.help()") Consulta Esquema
+                                                    div(style="float: right;") {{'Desglose de Compensación Variable'}}
+                                                        canvas(class="chart chart-bar ng-isolate-scope chartjs-render-monitor", width= "560", height =  "240", id="polar-area", chart-data="resume.dataHouseFinal", chart-labels="labelsHouse", chart-series="seriesHouse")                                               
+                                                              
+               div 
+                 table.table.table-responsive
+                                            tr
+                                                th(colspan="6" style="width: 652px; font-size: 18px;") {{'TOTAL DE COMISIONES A PAGAR DEL MES'}}
+                                                th(ng-click="resume.getInfoPayments()")
+                                                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !resume.banderaPayments, 'fa-minus-circle': resume.banderaPayments}" )
+                                            tr(ng-if="resume.banderaPayments")
+                                               td(colspan="7", style='background-color: #fff;')
+                                                    div(style="float: left;")
+                                                        table(style="height: 180px; width: 479px; border:none;")
+                                                                tbody
+                                                                    tr
+                                                                        td.text-center(style="text-align: right; color: #1750a7; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") Comisiones del Mes
+                                                                        td.text-center(style="text-align: right; color: #1750a7; height: 15px; background-color: #fff; font-size: 15px; width: 316px;") {{ resume.detailAccountState.result.generation.commission | currency }}
+                                                                    tr
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") Referenciados
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 15px; width: 316px;") {{resume.detailAccountState.result.payments.referenced | currency }}
+                                                                    tr
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") Seguros
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 15px; width: 316px;") {{resume.detailAccountState.result.payments.insurance | currency }}
+                                                                    tr
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") Arrendamiento
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 15px; width: 316px;") {{resume.detailAccountState.result.payments.leases | currency }}
+                                                                    tr
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") Crédito
+                                                                        td.text-center(style="text-align: right; color: deepskyblue; height: 15px; background-color: #fff; font-size: 15px; width: 316px;") {{resume.detailAccountState.result.payments.credit | currency }}
+                                                                    tr
+                                                                        td.text-center(style="text-align: left; color: black; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") TOTAL DE COMISIONES                    
+                                                                    tr
+                                                                        td.text-center(style="text-align: left; color: black; height: 15px; background-color: #fff; font-size: 20px; width: 316px;") A PAGAR ANTES DE I.S.R.
+                                                                        td.text-center(style="text-align: right; color: black; height: 15px; background-color: #fff; font-size: 18px; width: 316px; border-bottom: black 3px solid;") {{ resume.detailAccountState.result.payments.total | currency }}                          
+                                                    div(style="float: right; height: 270px; width: 530px") {{'Integración Pago Mensual'}}                                                                         
+                                                         canvas(id="doughnut", class="chart chart-doughnut", chart-data="dataPayments", chart-labels="labelsPayments", chart-colors="colours")                    
+               div.item.action
+                    a.btn.btn-primary.btn-search(   href="javascript:void(0);" 
+                                                    style="float: right;"
+                                                    ng-click="resume.reset()") Limpiar

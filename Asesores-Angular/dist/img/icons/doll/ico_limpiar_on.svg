@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="03_FONDOS-DE-INVERSION" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OPERACIONES_00-Copy-57" transform="translate(-864.000000, -933.000000)" stroke-width="0.5" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="OPERATIVA" transform="translate(37.000000, 384.000000)">
+                <g id="OPERACION" transform="translate(705.000000, 74.000000)">
+                    <g id="BOTONES" transform="translate(113.000000, 471.000000)">
+                        <g id="limpiar">
+                            <path d="M19.9847793,6.15151515 L19.6803653,6.15151515 L19.6803653,8.13636364 C18.934551,6.3030303 17.1232877,5 15.0228311,5 C12.2526636,5 10,7.24242424 10,10 C10,12.7575758 12.2526636,15 15.0228311,15 C16.8949772,15 18.5235921,13.969697 19.391172,12.4545455 L19.0410959,12.4545455 C18.2039574,13.8030303 16.7123288,14.6969697 15.0228311,14.6969697 C12.4200913,14.6969697 10.304414,12.5909091 10.304414,10 C10.304414,7.40909091 12.4200913,5.3030303 15.0228311,5.3030303 C17.0776256,5.3030303 18.8280061,6.62121212 19.4672755,8.45454545 L17.3820396,8.45454545 L17.3820396,8.75757576 L19.5738204,8.75757576 L19.5738204,8.75757576 L19.8934551,8.75757576 L19.8934551,8.75757576 L20,8.75757576 L20,6.15151515 L19.9847793,6.15151515 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

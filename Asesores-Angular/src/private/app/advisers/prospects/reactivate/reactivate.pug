@@ -1,0 +1,75 @@
+include /views/mixins/input
+include /views/mixins/buttons
+//- include /views/mixins/addActivity
+
+div.pane-wrapper.margin-0
+    div.pane-title Reactivar prospectos
+    div.pane-body.personal-information
+        .row.margin-0
+            div.col-xs-3
+                label Nombre prospecto
+                p {{ reactivate.profile.name }}
+            div.col-xs-4
+                label Tipo de prospecto
+                p {{ reactivate.profile.status }}
+            div.col-xs-3
+                label Origen del prospecto
+                p {{ reactivate.profile.stage }}
+        .row.margin-0
+            div.col-xs-3
+                label Teléfono
+                p {{ reactivate.profile.phone }}
+            div.col-xs-4
+                label Correo
+                p {{ reactivate.profile.mail }}
+            div.col-xs-3
+                label Empresa dónde labora
+                p {{ reactivate.profile.job }}
+        .row.margin-0
+            div.col-xs-3
+                label Monto aproximado de inversión
+                p {{ reactivate.profile.investmentAmount | currency:'$' }}
+            div.col-xs-4
+                label Motivo de separación
+                p {{ reactivate.profile.description }}
+            div.col-xs-3
+                div
+                    label Etapa
+                        span *
+                .container-select
+                    //- | {{ reactivate.profile.state }}
+                    div( act-dropdown="" ng-model="reactivate.stages" selected="reactivate.profile.state" )
+        .row.margin-0
+            .col-xs-3
+                div.form-group.has-icon
+                    div(style="position:relative")
+                        dates-range-picker(
+                            date="reactivate.profile.closeDate"
+                            label="Fecha de cierre"
+                            placeholder="dd/mm/aaaa"
+                            options='dateConfiguration'
+                            ng-required="true"
+                            is-single="true"
+                        )
+
+
+uib-accordion.pane-wrapper-accordion.panel-add-activity
+    div(uib-accordion-group='' is-open="status.open")
+        uib-accordion-heading
+            | Añadir Actividad
+            i.direction-arrow.fa(ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}")
+
+        //- +addActivity()
+        section-activity( ng-model ="reactivate.varsActivity" )
+
+p.button-back
+    +btnSubmit(
+        'Regresar',
+        'btn-primary cancel'
+    )(
+        uiSref="prospects.myProfile"
+    )
+    +btnSubmit(
+        'Reactivar',
+        'btn-primary save'
+    )(ngClick="reactivate.reactivate()")

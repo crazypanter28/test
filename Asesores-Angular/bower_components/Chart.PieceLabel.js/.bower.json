@@ -1,0 +1,24 @@
+{
+  "name": "Chart.PieceLabel.js",
+  "version": "0.6.0",
+  "main": [
+    "src/Chart.PieceLabel.js"
+  ],
+  "ignore": [
+    "samples",
+    "tests"
+  ],
+  "dependencies": {
+    "chart.js": ">= 2.1.5"
+  },
+  "homepage": "https://github.com/emn178/Chart.PieceLabel.js",
+  "_release": "0.6.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.6.0",
+    "commit": "daa9e9d9e763891f1f27e8cd45f2eccf8afc16fb"
+  },
+  "_source": "https://github.com/emn178/Chart.PieceLabel.js.git",
+  "_target": "^0.6.0",
+  "_originalSource": "Chart.PieceLabel.js"
+}

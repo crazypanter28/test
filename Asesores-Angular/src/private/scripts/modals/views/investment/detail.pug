@@ -1,0 +1,66 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="inv.close()"
+        )
+        h4 DETALLE DE LA ORDEN
+
+    div.modal-body
+        div.table-title
+            div.col-xs-4
+                p Fecha de registro
+                p {{ inv.info.authorizationInfo.operationDate | date :'dd/MM/yyyy'}}
+            div.col-xs-4
+                p Hora de registro
+                p {{ inv.info.orderInfo.orderTime | date :'hh:mm:ss'}}
+
+        div.content
+            div.row.margin-0
+                p.col-xs-6 Importe:
+                p.col-xs-6 {{ inv.info.authorizationInfo.netAmount | currency}}
+            div.row.margin-0
+                p.col-xs-6 Fecha de liquidación:
+                p.col-xs-6 {{ inv.info.authorizationInfo.settlementDate |  date :'dd/MM/yyyy'}}
+            div.row.margin-0
+                p.col-xs-6 Tipo de cambio:
+                p.col-xs-6 {{ inv.info.generalInfo.changeType }}
+            div.row.margin-0
+                p.col-xs-6 Moneda:
+                p.col-xs-6 {{ inv.info.generalInfo.currencyTypeDesc }}
+            div.row.margin-0
+                p.col-xs-6 Comisión:
+                p.col-xs-6 {{ inv.info.movementInfo.commission }}
+            div.row.margin-0
+                p.col-xs-6 Porc. Comisión:
+                p.col-xs-6 {{ inv.info.movementInfo.commissionPercentage }}
+            div.row.margin-0
+                p.col-xs-6 Movimiento:
+                p.col-xs-6 {{ inv.info.movementInfo.movementDescription}}
+            div.row.margin-0
+                p.col-xs-6 Precio:
+                p.col-xs-6 {{ inv.info.movementInfo.price }}
+            div.row.margin-0
+                p.col-xs-6 Títulos:
+                p.col-xs-6 {{ inv.info.movementInfo.titlesQty }}
+            div.row.margin-0
+                p.col-xs-6 I.V.A:
+                p.col-xs-6 {{ inv.info.movementInfo.vat }}
+            div.row.margin-0
+                p.col-xs-6 Emisora:
+                p.col-xs-6 {{ inv.info.orderInfo.issuerName }}
+            div.row.margin-0
+                p.col-xs-6 Capturado por:
+                p.col-xs-6 {{ inv.info.orderInfo.orderFormDesc }}
+            div.row.margin-0
+                p.col-xs-6 Tip. Ord:
+                p.col-xs-6 {{ inv.info.orderInfo.orderTypeDesc }}
+            div.row.margin-0
+                p.col-xs-6 Serie:
+                p.col-xs-6 {{ inv.info.orderInfo.serie }}

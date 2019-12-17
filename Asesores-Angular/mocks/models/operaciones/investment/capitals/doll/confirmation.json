@@ -1,0 +1,43 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "9097a7c8-79a5-473b-bf55-840754eec98b",
+			"messages": [{
+				"responseSystemCode": "CAPRR0016",
+				"responseMessage": "1 pages produced in report number 8",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1493960400000,
+		"time": 65190000,
+		"clientID": "NBURSANET",
+		"sessionID": "",
+		"responseSystem": "A2K",
+		"operationName": "StockMarketOrderQuotation",
+		"operationVersion": "1_0",
+		"ipaddress": ""
+	},
+	"outStockMarketOrderQuotation": {
+		"stockMarketOrderQuotation": {
+			"client": {
+				"contractNumber": "3000228"
+			},
+			"issuer": {
+				"issuerName": "ALSEA     "
+			},
+			"movement": "1",
+			"titlesQty": 10,
+			"price": 68.31,
+			"orderQuotation": {
+				"operationFeePercentage": 0.0146,
+				"operationAmount": 683.1,
+				"operationFeeAmount": 0.0,
+				"vat": 0.0,
+				"netAmount": 683.1
+			}
+		}
+	}
+}

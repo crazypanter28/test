@@ -1,0 +1,14 @@
+.row 
+    h3.primary-title.col-sm-4(id="seguros-actinver") Seguros
+    .form-group.col-sm-8
+        .col-xs-6
+            p.text-right(style="margin-top: 5px; font-size: 15px; color: #051c48;") Agente Mapfre:
+        .col-xs-6
+            span(act-dropdown
+                    name="listAgentID"
+                    ng-model="insCtrl.agentList"
+                    ng-disabled="agentDisabled"
+                    selected="agentSelected"
+                )
+.insurance
+    div( id="busqueda-cliente-s" ui-view="" )

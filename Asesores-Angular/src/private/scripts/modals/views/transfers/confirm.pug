@@ -1,0 +1,58 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="transfer.close()"
+        )
+        h4 Datos de la Transacción
+
+    div.modal-body
+        div.content-spinner( ng-show="loadingMakeTransfer")
+            .spinner
+        div.content(ng-hide="loadingMakeTransfer")
+            .row.margin-0
+                div.col-xs-6.padding-left-0
+                    p( ng-if="transfer.info.contract.contractNumber" ) Contrato:
+                    p( ng-if="transfer.info.transfer.account.accountNumber" ) Beneficiario:
+                    p( ng-if="transfer.info.transfer.account.contractNumber && !transfer.info.transfer.account.companyName && !transfer.info.transfer.account.destinationAccountType" ) Beneficiario:
+                    p( ng-if="transfer.info.transfer.account.contractNumber && transfer.info.transfer.account.companyName" ) Beneficiario:
+                    p( ng-if="transfer.info.transfer.account.beneficiaryName") A nombre de:
+                    p Movimiento:
+                    p( ng-if="transfer.info.transfer.import" ) Importe:
+                    p Fecha de orden:
+                    p( ng-if="transfer.info.transfer.concepto" ) Concepto:
+                    p( ng-if="transfer.info.transfer.media.text" ) Medio:
+                    p( ng-if="transfer.info.transfer.phone") {{transfer.info.transfer.media.text}}:
+                    p( ng-if="transfer.info.transfer.binnacle.name") Nombre
+                    p( ng-if="transfer.info.transfer.binnacle.phone") Teléfono
+                    p( ng-if="transfer.info.transfer.binnacle.observation") Observaciones
+                div.col-xs-6.padding-left-0.bold-msg
+                    p( ng-bind="transfer.info.contract.contractNumber" )
+                    p( ng-if="transfer.info.transfer.account.accountNumber" ng-bind="transfer.info.transfer.account.accountNumber")
+                    p( ng-if="transfer.info.transfer.account.contractNumber && !transfer.info.transfer.account.companyName && !transfer.info.transfer.account.destinationAccountType" ng-bind="transfer.info.transfer.account.contractNumber")
+                    p( ng-if="transfer.info.transfer.account.contractNumber && transfer.info.transfer.account.companyName" ng-bind="transfer.info.transfer.account.contractNumber")
+                    p( ng-bind="transfer.info.transfer.account.beneficiaryName")
+                    p Retiro
+                    p( ng-bind="transfer.info.transfer.import | currency : $ : 2" )
+                    p {{ transfer.date | date: 'dd/MM/yyyy' }}
+                    p( ng-bind="transfer.info.transfer.concepto" )
+                    p( ng-bind="transfer.info.transfer.media.text" )
+                    p( ng-bind="transfer.info.transfer.phone" )
+                    p( ng-bind="transfer.info.transfer.binnacle.name")
+                    p( ng-bind="transfer.info.transfer.binnacle.phone")
+                    p( ng-bind="transfer.info.transfer.binnacle.observation")
+
+
+            div.warning-msg.row.margin-0
+                span !
+                p Valida que los datos de la TRANSACCIÓN sean los correctos
+
+    div.modal-footer
+        +btnSubmit( 'Modificar','','loadingMakeTransfer')(ngClick="transfer.close()")
+        +btnSubmit( 'confirmar', 'save', 'loadingMakeTransfer')(ngClick="transfer.done()")

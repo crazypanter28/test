@@ -1,0 +1,43 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"97fbe324-c895-42b0-ba8e-237f8f1a1b3f",
+         "messages":[
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1494219600000,
+      "time":71278000,
+      "clientID":"NBURSANET",
+      "sessionID":null,
+      "responseSystem":"A2K",
+      "operationName":"BrokerageHousePortfolioQuery",
+      "operationVersion":"1_1",
+      "ipaddress":null
+   },
+   "outInsurancePortfolioQuery":{
+      "insurances": [
+         {
+            "policy": "1522403",
+            "type": "Seguro de riesgo",
+            "amount": 1000008.00,
+            "term": "Garantías",
+            "debt": 0.00
+         },
+         {
+            "policy": "8055504",
+            "type": "Seguro de riesgo",
+            "amount": 400000.00,
+            "term": "Garantías",
+            "debt": 0.00
+         }
+      ]
+   }
+}

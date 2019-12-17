@@ -1,0 +1,123 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div
+    uib-accordion
+        .panel.panel-default( uib-accordion-group="" is-open="isOpen" )
+            uib-accordion-heading
+                .num( ng-if="invest[ type ].length > 0" ) {{ invest[ type ].length }}
+                span {{ title }}
+                i.direction-arrow.fa( ng-class="{ 'fa-angle-up': instrument, 'fa-angle-down': !instrument }" )
+            .content
+
+                // Form row
+                .form-row( ng-if="type === 'actions'" )
+                    .item( ng-init="ins.issuers = 'favorites'" )
+                        label Emisoras
+                        .form-group
+                            label.act-radio-custom( for="favorites-{{ idx }}" )
+                                input( type="radio" id="favorites-{{ idx }}" value="favorites" ng-model="ins.issuers" ng-change="ins.getIssuersInfo()" )
+                                span.css-label
+                                | Favoritas
+                            label.act-radio-custom( for="all-{{ idx }}" )
+                                input( type="radio" id="all-{{ idx }}" value="all" ng-model="ins.issuers" ng-change="ins.getIssuersInfo()" )
+                                span.css-label
+                                | Todos
+
+                // Spinner
+                .loader-wrapper( ng-if="ins.issuers_list.length === 0 && ins.issuers === 'all'" )
+                    .spinner
+
+                // Form block
+                .form-block( ng-if="( ins.issuers_list.length > 0 ) || ins.issuers === 'favorites' || type !== 'actions' " )
+                    h2.block-title.sm Agregar nuevo producto
+
+                    // Form row
+                    .form-row
+                        .item.field( ng-show="type !== 'actions'" )
+                                label Productos
+                                div( act-dropdown ng-model="ins.products" selected="ins.form.issuer" )
+                                input( type="hidden" ng-model="ins.form.issuer" ng-required="true" )
+
+                        .item.field( ng-show="type === 'actions'" style="width: 429px;")
+
+                            div( ng-if="ins.issuers === 'favorites'" style="float: left; width: 200px;")
+                                label Clasificación
+                                div(act-dropdown ng-model="ins.listClassFav.optionClas" selected="ins.form.classFav" on-change="ins.classificationFav" )
+                                //input(type="hidden" ng-model="ins.valueCF")
+
+                            div( ng-if="ins.issuers === 'favorites'" style="float: right; width: 200px;")
+                                label Emisora
+                                div( act-dropdown ng-model="ins.pruebaFilterFav" selected="ins.form.issuer" )
+                                input( type="hidden" ng-model="ins.form.issuer" ng-required="true" )
+
+                            .form-group.has-typeahead( ng-if="ins.issuers === 'all' && ins.issuers_list.length > 0" )
+                                label Emisora
+                                input.form-control( type="text" placeholder="Escribe la emisora" ng-model="ins.form.issuer" ng-required="true" uib-typeahead='issuer for issuer in ins.issuers_list | filter:$viewValue | limitTo:8' )
+
+                        .item.field(style="width: 205px")
+                            .form-group
+                                label Monto
+                                input.form-control( ng-currency type="text" placeholder="Añade un monto" ng-model="ins.form.amount" ng-required="true" onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)" ng-keypress="($event.which === 13) ? ins.addProduct() : 0" ng-change="ins.calcPercent( ins.form )" )
+                        .item.field(style="width: 205px")
+                            .form-group
+                                label Inversión
+                                input.form-control( ng-percent type="text" placeholder="% de inversión" ng-model="ins.form.percentage" ng-required="true" onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)" ng-keypress="($event.which === 13) ? ins.addProduct() : 0" ng-change="ins.calcAmount( ins.form )" )
+                        .item.action
+                            a.btn.btn-primary( href="javascript:void(0);" ng-class="{ 'disabled': !( ( ins.form.product || ins.form.issuer ) && ins.form.amount && ins.form.percentage ) }" ng-click="ins.addProduct()" ) AGREGAR
+
+                // Results
+                .results
+
+                    // No results
+                    .no-results.products( ng-if="invest[ type ].length === 0" )
+                        +noResults("no-products-proposals")( msg!="<strong>No cuentas</strong> con productos<br />¡Agrega uno!" )
+
+                    // Totals invest
+                    .totals-invest( ng-if="invest[ type ].length > 0" )
+                        | Te quedan (
+                        strong {{ portfolioValue - totals | currency }}
+                        | ) por invertir (
+                        strong {{  ( (portfolioValue - totals) / ( portfolioValue ==0 ? 1 : portfolioValue )) | percentage  }} ).
+
+                    // List
+                    .list( ng-if="invest[ type ].length > 0" )
+                        table.table.is-scrollable( ng-class="{ 'has-description': (type === 'invest' || type === 'derivatives' ) }" )
+                            thead
+                                tr
+                                    th Producto
+                                    th Monto
+                                    th Inversion
+                                    th( ng-if="type === 'invest' || type === 'derivatives'" ) Descripción
+                                    th Editar
+                                    th Eliminar
+                            tbody
+                                tr
+                                    td( colspan="6" )
+                                        div( scrollable always-visible="true" )
+                                            table.table
+                                                tbody
+                                                    tr( ng-class="{ 'active': item.issuer === ins.sissuer.issuer }" ng-repeat="item in invest[ type ]" )
+
+                                                        td {{ item.issuer }}
+                                                        td
+                                                            div( ng-hide="ins.editing[ item.id ]" ) {{ item.amount | currency }}
+                                                            div( ng-show="ins.editing[ item.id ]" )
+                                                                input.form-control( ng-currency type="text" ng-model="item.amount" ng-required="true" onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)" ng-change="ins.calcPercent( item )" )
+
+                                                        td
+                                                            div( ng-hide="ins.editing[ item.id ]" ) {{ item.percentage * 100 | currency:''}}%
+                                                            div( ng-show="ins.editing[ item.id ]" )
+                                                                input.form-control(  ng-percent type="text" ng-model="item.percentage" ng-required="true" onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)" ng-change="ins.calcAmount( item )" )
+
+                                                        td( ng-if="type === 'invest' || type === 'derivatives'" ) {{ item.description }}
+
+                                                        td
+                                                            a( href="javascript:void(0)" ng-hide="ins.editing[ item.id ]" )
+                                                                img( src="img/icons/edit.svg" alt="Editar" ng-click="ins.edit( item )" )
+                                                            a.opt( href="javascript:void(0);" ng-show="ins.editing[ item.id ]" ng-click="ins.reset( item.id )" ) CANCELAR
+
+                                                        td
+                                                            a( href="javascript:void(0)" ng-hide="ins.editing[ item.id ]" )
+                                                                img( src="img/icons/delete.svg" alt="Eliminar" ng-click="ins.delete( item.id )" )
+                                                            a.btn.btn-primary.opt( href="javascript:void(0);" ng-class="{ 'disabled': !( item.amount && item.percentage ) }" ng-show="ins.editing[ item.id ]" ng-click="ins.save(item.id)" ) GUARDAR CAMBIOS

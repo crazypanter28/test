@@ -1,0 +1,36 @@
+include /views/mixins/info-result
+
+div
+
+    // Table results
+    table.table.goals-table
+        thead
+            tr.prev-header
+                th( colspan="1" )
+                th( ng-if-start="!type" colspan="3" ) Mensual con filtros de meta
+                th( ng-if-end="" colspan="3" ) Anual sin filtros de meta
+                th( ng-if-start="type && type === 'adviser'" colspan="3" ) MENSUAL
+                th( ng-if-end="" colspan="3" ) ANUAL
+            tr
+                th Producto
+                th Real
+                th Meta Mensual
+                th Diferencia
+                th Real Acumulado
+                th Meta Acumulada
+                th Diferencia
+        tbody
+            tr( ng-repeat="info in data['goals-contracts']" )
+                td {{ info.producto }}
+                td {{ info.real }}
+                td {{ info.metaMensual }}
+                td {{ info.diferencia }}
+                td {{ info.realAcum }}
+                td {{ info.metaAcum }}
+                td {{ info.diferenciaAcum }}
+            tr( ng-if="data['goals-contracts'].length === 0" )
+                td( colspan="7" )
+
+                    // No results
+                    .no-results
+                        +noResults("no-results")( msg!="<strong>No se encontraron</strong> resultados con esta<br />búsqueda. Vuelve a intentar con otro dato." )

@@ -1,0 +1,9 @@
+ul#pasosLoader.col-md-12.col-xs-12
+    li(class="unoLoader" ng-class="{active: medicalCtrl.pestCotiza}" ng-click="medicalCtrl.btnVolver()")
+        div(class="{{medicalCtrl.trianguloAzul}}")
+        | Cotiza 
+    li( class="dosLoader" ng-class="{active: medicalCtrl.pestEmision}")
+        div(class="{{medicalCtrl.trianguloBorde}}")
+        | Emisi&oacuten 
+    li(ng-class="{active: medicalCtrl.pestEntrega}")
+        | Entrega 

@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "text": "Nombre del prospecto",
+        "reference": "name"
+    },
+    {
+        "id": 1,
+        "text": "Tipo de prospecto",
+        "reference": "type"
+    },
+    {
+        "id": 1,
+        "text": "Medio de contacto",
+        "reference": "media"
+    }
+]

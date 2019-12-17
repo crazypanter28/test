@@ -1,0 +1,37 @@
+div.content-panel.tranfers.text-center(ng-if="PymeCtrl.stepForm.stepE")
+    .row(style="background-color: #32CD32; color: #FFFFFF;")
+        h3.tit(ng-hide="PymeCtrl.cmd.paymentType.type.id === '8' || PymeCtrl.cmd.paymentType.type.id === '2'" style="font-size: 16px; font-weight: bold;") La operación fue realizada con éxito
+        h3.tit(ng-show="PymeCtrl.cmd.paymentType.type.id === '8' || PymeCtrl.cmd.paymentType.type.id === '2'" style="font-size: 16px; font-weight: bold;") Emisión exitosa, favor de confirmar el cargo con tu banco para garantizar cobertura
+    .row
+        h3.tit(style="font-size: 14px; font-weight: bold;") Tu póliza se ha generado correctamente con el No. 
+            span(style="font-size: 17px;") {{PymeCtrl.numPoliza}}
+    .row(style="padding-top:20px;")
+        .col-sm-4
+            img(src="img/logos/mapfre.svg" style="width: 170px; height: 100px")
+        .col-sm-4(style="padding-top: 14px;")
+            .row
+                p(style="font-size: 16px;") Domicilio a Asegurar:
+            .row
+                p(style="font-size: 16px;  font-weight: bold; text-transform: uppercase;") {{PymeCtrl.cmd.emission.streetType.type.text}} {{PymeCtrl.emission.riskStreet}} # {{PymeCtrl.emission.riskNumberExt}} int. {{PymeCtrl.emission.riskInterior}}, Col. {{PymeCtrl.emission.riskNeighborhood}}
+            .row
+                p(style="font-size: 20px; font-weight: bold;") Prima Total: {{PymeCtrl.primatotalImpresion || PymeCtrl.cotizacionSeleccionada.prima | currency}}
+        .col-sm-4
+    .row(style="padding-top:40px;")
+        p(style="font-size: 18px;") {{PymeCtrl.jsonQuotation.paymentMethod}}
+    .row(ng-if="PymeCtrl.jsonQuotation.followingPayments" style="padding-top:15px;")
+        p(style="font-size: 18px;") {{PymeCtrl.jsonQuotation.followingPayments}}
+    .row(style="padding-top:15px; font-size: 16px;")
+        .col-sm-2
+        p.col-sm-2.text-right Forma de Pago:
+        p.col-sm-4 {{PymeCtrl.cmd.paymentType.type.text}}
+        p.col-sm-2.text-left {{PymeCtrl.emission.payment.accountNumber || PymeCtrl.emission.payment.clabe}}
+        .col-sm-2
+    .row(style="padding-top:40px;")
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important; white-space: normal;" class="btn-primary btn" ng-click="PymeCtrl.printPolicy()") Imprimir póliza
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal;" class="btn-primary btn" ng-click="PymeCtrl.imprimirCondiciones()") Consultar condiciones generales
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal; " class="btn-primary btn" ng-click="onClicSendEmailNotificationCompraSeguro()") Enviar correo a cliente
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal;" class="btn-primary btn" ng-click="PymeCtrl.endEmission()" ) Finalizar

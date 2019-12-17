@@ -1,0 +1,52 @@
+include /views/mixins/info-result
+include /app/advisers/goals/page-instructions
+
+// Report
+.common-page.goals-report-page    
+    
+    //- .content-spinner( ng-show="reportLargeAndShort.modal" )
+    //-     .spinner    
+      
+    form( name="form" novalidate )
+
+        // Data
+        .panel.panel-default.panel-static
+            .panel-heading
+                .panel-title
+                    span Reporte de Cortos y Largos
+            .panel-body
+                .content
+                                                                                                                                                  
+                    div.search-cortos-Largo-left
+                        div.icon-left
+                        div.input-right                     
+                            input(type="text" placeholder="Buscar en contenido" ng-model="fieldSearch").form-control                    
+                    div.search-cortos-Largo-right
+                        button(ng-click="reportLargeAndShort.exportData()").btn.btn-primary Exportar
+                            img( src="img/icons/excel.svg" width="16px" style="margin-left:5px;" )
+
+                    .goals-report-page                                                
+                        table#idTablaResultados.table.is-scrollable
+                            thead
+                                tr
+                                    th Número contrato
+                                    th Nombre del Cliente
+                                    th Efectivo de Hoy
+                            tbody
+                                tr( ng-if = "reportLargeAndShort.modal")
+                                    td( colspan="3")
+                                        .content-spinner
+                                            .spinner
+                                tr( ng-repeat = "reg in filtered = (reportLargeAndShort.listRegister | filter:fieldSearch) track by $index" )
+                                    td(ng-bind-html="reg.contractNumber | remarkText:fieldSearch")
+                                    td(ng-bind-html="reg.clientName | remarkText:fieldSearch" style="text-align:left;")
+                                    td(ng-bind-html="reg.cashToday | currency:'$'  | remarkText:fieldSearch" style="text-align:right;")
+                                tr(ng-if="filtered.length < 1 && reportLargeAndShort.listRegister.length > 0 ? true : false ")
+                                    td(colspan="3")
+                                        // Registers No Found
+                                        +noGeneralResults( 'No existen', ' registros con el criterio de busqueda.' )  
+                                tr(ng-if="(reportLargeAndShort.listRegister.length > 0 ? false : true) && !reportLargeAndShort.modal"  )                            
+                                    td(colspan="3")
+                                        // No results
+                                        +noGeneralResults( 'No Existen', ' Registros.' )
+                            

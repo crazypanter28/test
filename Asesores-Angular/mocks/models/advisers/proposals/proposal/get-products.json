@@ -1,0 +1,33 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":[
+      {
+         "idClassification":1,
+         "description":"Crédito"
+      },
+      {
+         "idClassification":2,
+         "description":"Seguros"
+      },
+      {
+         "idClassification":3,
+         "description":"Fiduciario"
+      },
+      {
+         "idClassification":4,
+         "description":"Arrendamiento"
+      },
+      {
+         "idClassification":5,
+         "description":"Previsión Social"
+      }
+   ]
+}

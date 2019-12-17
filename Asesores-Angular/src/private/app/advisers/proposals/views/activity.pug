@@ -1,0 +1,70 @@
+include /views/mixins/info-result
+.activity
+    .section
+        .title-section Actividad de registro mensual
+        .row
+            .col-xs-3
+                label Periodo de actividad
+                input.form-control.month(
+                    type="text"
+                    uib-datepicker-popup="MMMM yyyy"
+                    ng-model="ctrl.date"
+                    is-open="ctrl.openedCalendar"
+                    datepicker-options="ctrl.dateOptions"
+                    ng-click="ctrl.openedCalendar = true"
+                    show-button-bar="false",
+                    ng-change="ctrl.getInfoTabs()"
+                )
+                i.icon.calendar-on
+            .col-xs-5
+                label Centro financiero
+                .form-control(act-dropdown ng-model="ctrl.dropdownOptions" selected="ctrl.dropdownSelected" on-change="ctrl.getInfoTabs")
+        .row.no-margins( ng-hide="ctrl.showSpinner" )
+            .container-tabs
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab1' )" ng-class="{ 'active': ctrl.tabActive === 'tab1'}")
+                    .number {{ctrl.dataInfoTabs.totalLogins || 0}}
+                    .name Login
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab2' )" ng-class="{ 'active': ctrl.tabActive === 'tab2'}")
+                    .number {{ctrl.dataInfoTabs.totalProposalReports || 0}}
+                    .name Reporte de Propuesta
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab3' )" ng-class="{ 'active': ctrl.tabActive === 'tab3'}")
+                    .number {{ctrl.dataInfoTabs.totalTrackingAndProposalReports || 0}}
+                    .name Reporte de propuesta con seguimiento
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab4' )" ng-class="{ 'active': ctrl.tabActive === 'tab4'}")
+                    .number {{ctrl.dataInfoTabs.totalClientQueries || 0}}
+                    .name Consulta de cliente
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab5' )" ng-class="{ 'active': ctrl.tabActive === 'tab5'}")
+                    .number {{ctrl.dataInfoTabs.totalTrackingReports || 0}}
+                    .name Reporte de Seguimiento
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab6' )" ng-class="{ 'active': ctrl.tabActive === 'tab6'}")
+                    .number {{ctrl.dataInfoTabs.totalFundSell || 0}}
+                    .name Venta de fondos inversión
+                .tabs( ng-click=" ctrl.getMoreInfoTab( 'tab7' )" ng-class="{ 'active': ctrl.tabActive === 'tab7'}")
+                    .number {{ctrl.dataInfoTabs.totalTransferCash || 0}}
+                    .name Transferencia de efectivo
+            .summary-activity( ng-if="ctrl.showTable" )
+                div( ng-if="ctrl.dataRowTableActivity" )
+                    table#table-result( ng-table="ctrl.tableParams" )
+                        thead
+                            tr
+                                th Empleado
+                                th Actividad
+                                th Cede
+                                th Fecha
+                                th Parámetros
+                        tbody
+                            tr( ng-repeat="row in $data" )
+                                td {{row.user}}  
+                                td {{row.component}} 
+                                td {{row.financialCenter}} 
+                                td {{row.recordDate | date : 'yyyy-MM-dd hh:mm:ss a' }} 
+                                td {{row.params}}
+                    
+                    .no-results( ng-if="ctrl.dataRowTableActivity.length===0" )
+                        img( src="img/bg/binnacle-empty-state.svg" )
+                        p #[strong No] hay actividad.
+                    
+                    button.btn.btn-primary.btn-excel(ng-click="ctrl.generaExcel()") Generar excel
+            
+            .container-total-activity
+                span Total de registros: {{ (ctrl.dataInfoTabs.totalRecords || 0) }}

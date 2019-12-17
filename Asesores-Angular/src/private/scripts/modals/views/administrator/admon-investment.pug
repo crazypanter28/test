@@ -1,0 +1,44 @@
+include /views/mixins/radio-button
+
+.title-modal {{ctrl.title}}
+
+form(name="$form" )
+    .container-modal
+        .row
+            .form-group.col-xs-12
+                label Selecciona lo que deseas agregar
+                div
+                    +radioButton( 'Fondo' )(
+                        ngChecked="ctrl.type === 'fund'"
+                        ngClick="ctrl.setType('fund')"
+                    )
+
+                    //-+radioButton( 'Clasificación' )(
+                        ngChecked="ctrl.type === 'clacification'"
+                        ngClick="ctrl.setType('clacification')"
+                        )
+
+        div.form-investment( ng-if="ctrl.type === 'fund'" )
+            .row
+                .form-group.col-xs-6
+                    label Clasificación #[span.require *]
+                    div.form-control( act-dropdown="" ng-model="ctrl.clasification" selected="ctrl.fund.clasification" )
+
+                .form-group.col-xs-6
+                    label Nombre del fondo #[span.require *]
+                    input.form-control( placeholder='---' ng-model="ctrl.fund.name" required="true")
+            .row
+                .form-group.col-xs-12
+                    label Descripción #[span.require *]
+                    textarea.form-control( rows="4" placeholder='Ingresa una descripción' ng-model="ctrl.fund.description" required="true")
+
+        div( ng-if="ctrl.type === 'clacification'" )
+            .row
+                .form-group.col-xs-12
+                    label Nombre de clasificación #[span.require *]
+                    input.form-control( placeholder='---' ng-model="ctrl.fund.name" required="true")
+
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+        button.btn.btn-primary( title="GENERAR" ng-disabled="!ctrl.type || $form.$invalid" ng-click="ctrl.done()") GUARDAR

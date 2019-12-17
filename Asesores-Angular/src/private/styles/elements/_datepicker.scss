@@ -1,0 +1,138 @@
+.uib-datepicker{
+
+    [uib-monthpicker], [uib-yearpicker] {
+        table {
+            tr {
+                th {
+                    button {
+                        &:active {
+                            background: #517cbd;
+                            box-shadow: initial;
+                        }
+                        &:hover {
+                            color: white;
+                            background: #517cbd;
+                        }
+                    }
+                }
+                td {
+                    button{
+                        &.active {
+                            border-radius: 10px;
+                            color: white;
+                            &:hover {
+                                background: #517cbd;
+                            }
+
+                        }
+                        &:active {
+                            box-shadow: initial;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    table{
+        font-family: $font-family-base;
+        width: 100%;
+
+        thead{
+            tr{
+
+                &:nth-child(2){
+                    th{
+                        border-bottom: 1px solid $blue4;
+                        color: $blue4;
+                        padding-top: 17px;
+                    }
+                }
+
+                &:first-child{
+                    th{
+                        button{
+                            padding: 17px 0 33px 0px;
+                        }
+                    }
+                    button,
+                    i{
+                        border-radius: 0;
+                        background: $blue4;
+                        color: white;
+                    }
+
+                    i{
+
+                        &.glyphicon-chevron-right:before{
+                            content: '\e258';
+                        }
+                        &.glyphicon-chevron-left:before{
+                            content: '\e257';
+                        }
+
+                    }
+
+                    .uib-title {
+                        font-size: 16px;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+
+        tbody{
+            color: $tertiary-color;
+
+            td button{
+                width: 25px;
+                height: 25px;
+                padding: 4px;
+                font-size: 14px;
+                font-family: $font-family-base;
+                padding: 0 !important;
+                margin-top: 14px;
+
+                &.btn-default[disabled],
+                .text-muted{
+                    background: transparent;
+                    color: #D2CDCD;
+                }
+            }
+        }
+
+        tr{
+
+            th{
+
+                button{
+                    border: 0;
+                }
+            }
+
+            td{
+
+                button{
+                    border: 0;
+
+                    // &:hover{
+                    //     background: transparent;
+                    //     color: $tertiary-color;
+                    // }
+
+                    &.active{
+                        border-radius: 50%;
+                        background: $blue4;
+                        color: white;
+
+                        .text-info{
+                            color: white;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

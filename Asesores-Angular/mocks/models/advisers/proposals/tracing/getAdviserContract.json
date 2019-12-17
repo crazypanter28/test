@@ -1,0 +1,22 @@
+{
+   "response":{
+      "status":1,
+      "messages":[
+         {
+            "type":"N",
+            "criticality":"INFO",
+            "code":"AC000",
+            "description":"OK"
+         }
+      ],
+      "result":{
+         "idSponsor":1108,
+         "numContrato":990217,
+         "origen":"CB",
+         "nombreCliente":"ALFREDO PALOMARES TORRES",
+         "fechaNacimiento":"19330618",
+         "edad":84,
+         "valid":true
+      }
+   }
+}

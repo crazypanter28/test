@@ -1,0 +1,30 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+div(style="margin-bottom:10px; height:40px;")
+    div.input-icon
+    div                     
+        input(type="text" placeholder="Buscar en contenido" ng-model="news.contenido").form-control.search-notification-input
+
+table.table.primary-table
+    thead
+        tr(style="display: flex;")
+            th(style="width:30%") Fecha
+            th(style="width:70%") Noticias    
+    tbody(style="display:block; overflow-y:auto; min-height:20px; max-height:400px;")
+        tr(ng-repeat = "row in filtered = (news.data | filter:news.filter(news.contenido))  track by $index" style="display: flex; cursor:pointer;" ng-click="news.linkTo(row)")
+            td(style="width:30%; text-align:center;")
+                ng-bind-html(ng-bind-html="row.publishedDate | date:'yyyy-MM-dd HH:mm' | remarkText:news.contenido ")
+            td(style="width:70%")
+                ng-bind-html(ng-bind-html="row.title | remarkText:news.contenido")  
+        tr(ng-if="filtered.length < 1 && news.data.length > 0 ? true : false " style="display: flex;")
+            td(colspan="2" style="width:100%; text-align:center;")
+                // Registers No Found
+                +noGeneralResults( 'No existen', ' noticias con el criterio de busqueda.' )  
+        tr(ng-if="news.data.length < 1 ? true : false " style="display: flex;")                              
+            td(colspan="2" style="width:100%; text-align:center;")
+                // No results
+                +noGeneralResults( 'No cuentas', ' con noticias en estos momentos.' )         
+            
+div(style="text-align:center; padding-bottom:15px;" class="button-info")
+    +btnSubmit( 'Aceptar', 'button-info info' )(ngClick="news.close()")

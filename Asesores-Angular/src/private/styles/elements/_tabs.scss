@@ -1,0 +1,44 @@
+//
+// _tabs.scss
+//
+// It reflects the styles for the tabs
+//
+
+/**
+ * -------------------------
+ * @info Tabs navigation
+ * -------------------------
+*/
+.nav-tabs {
+	font-size: 0;
+	&, li {@include remove-list-style;}
+	li {
+		@include in-block; float: none;
+		a {display: block; margin-right: 0; border: 0; border-radius: 0; font-size: 12px; line-height: 12px;}
+	}
+
+	// Types
+	&.main-tabs {
+		border-bottom: 1px solid #0f3f88;
+		margin-bottom: 15px;
+
+		li {
+			margin-bottom: -1px;
+			a {padding: 2px 15px 5px 15px; border-bottom: 4px solid transparent; font-size: 16px; line-height: 16px; text-decoration: none; text-transform: uppercase; font-weight: 600; color: rgba(#051c48, .5);}
+
+			// States
+			&.active a {border: 0; border-bottom: 4px solid #f9be00; color: #051c48;}
+
+		}
+	}
+}
+
+/**
+ * -------------------------
+ * @info Tab content
+ * -------------------------
+*/
+.tab-content {
+	// padding: 15px 0 5px 0;
+	.panel {margin-bottom: 0;}
+}

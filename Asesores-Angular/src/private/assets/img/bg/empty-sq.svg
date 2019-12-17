@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="49px" viewBox="0 0 57 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>face_sad</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="57" height="49" rx="3"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="empty_states_dashboard" transform="translate(-641.000000, -807.000000)">
+            <g id="face_sad" transform="translate(641.000000, 807.000000)">
+                <g id="Rectangle-10" opacity="0.5">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#517CBD" stroke-width="1" x="0.5" y="0.5" width="56" height="48" rx="3"></rect>
+                </g>
+                <path d="M28.6583415,36.8746359 C36.1853604,36.8746359 43.1571429,45.2961353 43.1571429,37.7471076 C43.1571429,30.19808 37.0552885,24.0783839 29.5282696,24.0783839 C22.0012508,24.0783839 15.8993964,30.19808 15.8993964,37.7471076 C15.8993964,45.2961353 21.1313227,36.8746359 28.6583415,36.8746359 Z" id="Oval-12" fill="#517CBD" opacity="0.501754982" transform="translate(29.528270, 32.484227) rotate(180.000000) translate(-29.528270, -32.484227) "></path>
+                <ellipse id="Oval-5" fill="#517CBD" opacity="0.501754982" cx="19.8539326" cy="15.7888889" rx="1.92134831" ry="1.91602564"></ellipse>
+                <ellipse id="Oval-5-Copy" fill="#517CBD" opacity="0.501754982" cx="39.0674157" cy="15.7888889" rx="1.92134831" ry="1.91602564"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

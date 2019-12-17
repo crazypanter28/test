@@ -1,0 +1,328 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":[
+      {
+         "idFund":48,
+         "name":"ACTIREN",
+         "description":"Fondo de Inversión de liquidez inmediata con rendimientos superiores a chequera.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":49,
+         "name":"ACTIG+",
+         "description":"Fondo de Renta Fija a un año que ofrece flujos mensuales fijos mediante la inversión primordialmente en instrumentos corporativos, asegurando el pago de un cupón mensual fijo.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":50,
+         "name":"ACTIGOB",
+         "description":"Fondo de Inversión defensivo, invertido al 100% en papeles gubernamentales de corto y mediano plazo con baja volatilidad y rendimientos estables.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":51,
+         "name":"AGOB+",
+         "description":"Fondo de inversión invertido al 100% en papeles gubernamentales primordialmente de tasa real, perfil mediano y largo plazo.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":52,
+         "name":"ACTIMED",
+         "description":"Fondo de inversión balanceado (papeles gubernamentales  y corporativos) que tenderá a pagar rendimientos similares o por encima de la tasa de Cetes.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":53,
+         "name":"ALTERNA",
+         "description":"Fondo dinámico que invierte en cualquier clase de activo de deuda y derivados, buscando pagar un premio sobre la tasa de Cetes. Expectativa de rendimiento en un periodo de un año.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":54,
+         "name":"MAXIMO",
+         "description":"Fondo en instrumentos de deuda corporativa y cuasi-gubernamental. Instrumentos de deuda a tasa real y fija de corto plazo (1.5 a 3.5 años).",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":55,
+         "name":"ORION",
+         "description":"Fondo que invierte en deuda emitida en diferentes países alrededor del mundo, complementándose con ETF'S y TRAC'S referenciados a instrumentos de deuda.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":56,
+         "name":"I+UDF",
+         "description":"Fondo que invierte en deuda emitida en diferentes países alrededor del mundo, complementándose con ETF'S y TRAC'S referenciados a instrumentos de deuda.",
+         "fundType":"SI en Instrumentos de Deuda y Cobertura",
+         "idFundType":2
+      },
+      {
+         "idFund":57,
+         "name":"ACTIPT5",
+         "description":"Fondo Patrimonio Asegurado. Fondo de inversión conservador que ofrece la ventaja de asegurar tu inversión y duplicarla en caso de fallecimiento hasta 5MDP sin costo.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":58,
+         "name":"ACTICOBER",
+         "description":"Fondo que invierte en bonos gubernamentales y corporativos mexicanos con tasa revisable y vencimientos de corto plazo denominados en dólares.",
+         "fundType":"SI en Instrumentos de deuda en Dólares- Cobertura",
+         "idFundType":3
+      },
+      {
+         "idFund":59,
+         "name":"ACTIPLUS",
+         "description":"Fondo que invierte en bonos gubernamentales y corporativos latinoamericanos denominados en dólares.",
+         "fundType":"SI en Instrumentos de deuda en Dólares- Cobertura",
+         "idFundType":3
+      },
+      {
+         "idFund":60,
+         "name":"SCOTIAG",
+         "description":"Fondo que invierte en instrumentos de deuda de corto plazo, constituido por una cartera 100% gubernamental.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":61,
+         "name":"SUR GOB",
+         "description":"Fondo de inversión en instrumentos de Deuda 100% Gubernamental de mediano plazo.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":62,
+         "name":"NAFFP28F3",
+         "description":"El fondo tiene como objetivo invertir en valores de deuda gubernamentales y bancarios y de acuerdo con su liquidez y horizonte de inversión, teniendo como referencia el índice MEX_CETES 28D.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":63,
+         "name":"NAFM-EX",
+         "description":"El fondo tiene como objetivo invertir exclusivamente en valores de deuda gubernamentales, y tendrá como referencia la TIIE28.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":64,
+         "name":"NAFMEX7 X2",
+         "description":"El fondo tiene como objetivo invertir exclusivamente en valores de deuda gubernamentales, y de acuerdo con su liquidez y horizonte de inversión, tendrá como referencia el índice MEX CETES 7D.",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":65,
+         "name":"NAFCDVI",
+         "description":"El fondo tiene como objetivo invertir principalmente en Certificados Bursátiles Fiduciarios CEDEVIS (Certificados de Vivienda Infonavit).",
+         "fundType":"SI en Instrumentos de Deuda",
+         "idFundType":1
+      },
+      {
+         "idFund":66,
+         "name":"TEMGBIA",
+         "description":"Fondo de Inversión de Deuda que invierte principalmente en el Fondo Templeton Global Bond Fund, operafo por Franklin Mutual Advisers LLC.",
+         "fundType":"SI en Instrumentos de Deuda y Cobertura",
+         "idFundType":2
+      },
+      {
+         "idFund":67,
+         "name":"GBMDOL",
+         "description":"Busca un rendimiento competitivo a corto plazo respecto de una inversión en dólares norteamericanos, con el fin de buscar protección contra la depreciación del peso con respecto al dólar",
+         "fundType":"SI en Instrumentos de Deuda y Cobertura",
+         "idFundType":2
+      },
+      {
+         "idFund":68,
+         "name":"ACTIPT14",
+         "description":"Fondo Talento Global, con un enfoque en acciones de empresas globales con crecimiento de ingresos y márgenes.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":69,
+         "name":"I+GLOVB",
+         "description":"Acceso a acciones de todo el mundo mediante un solo instrumento, directamente en México, con un manejo activo y diversificación total, a través de fondos internacionales.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":70,
+         "name":"FRANUSA",
+         "description":"Fondo de inversión de Renta Variable que invierte en principalmente en el Fondo Franklin Mutual Becon Fund, Operado por Franklin Mutual Advisers LLC.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":71,
+         "name":"SURASIA",
+         "description":"Fondo que invierte en un portafolio diversificado de emisoras de las Bolsas de los países de Asia, con excepción de Japón y Australia.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":72,
+         "name":"JPMASIA",
+         "description":"Busca invertir en compañías en la región Asia Pacífico (Excluyendo Japón)  que según el manejador están sub valuadas o en un buen momento.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":73,
+         "name":"NAFINDX",
+         "description":"Su objetivo es obtener un perfil similar al del IPC, invirtiendo en acciones de empresas que formen parte la muestra del índice.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":74,
+         "name":"ACTIVAR",
+         "description":"Fondo de renta variable indizado al IPC de la Bolsa Mexicana de Valores.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":75,
+         "name":"ACTICRECE",
+         "description":"Fondo accionario agresivo cuyo objetivo es invertir en un portafolio de empresas con importante subvaluación y con mayor potencial de crecimiento.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":76,
+         "name":"ACTIPAT",
+         "description":"Fondo manejo activo que sobre o sub pondera las emisoras AAA pertenecientes al IPC.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":77,
+         "name":"OPTIMO",
+         "description":"Fondo que invierte en acciones de empresas pequeñas y medianas del mercado bursátil mexicano.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":78,
+         "name":"MAYA",
+         "description":"Fondo de renta variable que invierte en mejores ideas de inversión de Actinver (favoritas).",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":79,
+         "name":"QUETZAL",
+         "description":"Fondo de renta variable que invierte en las mejores ideas de inversión del departamento de análisis de Actinver.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":80,
+         "name":"ACTI500",
+         "description":"Fondo accionario que replica al referente principal de las bolsas de los EUA, el índice Standard & Poor's 500 (S&P500) a través de trackers listados en el SIC de la BMV.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":81,
+         "name":"ACTIUS",
+         "description":"Fondo de renta variable que invierte en distintos sectores de la economía americana a través de trackers listados en el SIC de la BMV.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":82,
+         "name":"ACTINEM",
+         "description":"Fondo de inversión de renta variable que invierte en un portafolio diversificado en países emergentes a través de trackers y acciones listadas en el SIC de la BMV.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":83,
+         "name":"AXES EDM",
+         "description":"Fondo de inversión de Renta Variable Bolsa Europea.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":84,
+         "name":"OPORT1",
+         "description":"Fondo que participa del crecimiento del IPyC brindando una protección del capital invertido en un horizonte de inversión a dos años.",
+         "fundType":"SI de Renta Variable en Acciones",
+         "idFundType":4
+      },
+      {
+         "idFund":85,
+         "name":"ACTINMO",
+         "description":"Fondo de renta Variable que invierte en Fibras y Acciones de empresas del sector inmobiliario listadas en la Bolsa Mexicana de Valores.",
+         "fundType":"SI de Renta Variable- Alternativos",
+         "idFundType":5
+      },
+      {
+         "idFund":86,
+         "name":"ACTCOMM",
+         "description":"Fondo de Renta Variable que ofrece una exposición a una amplia gama de materias primas a través de trackers listados en el SIC de la BMV.",
+         "fundType":"SI de Renta Variable- Alternativos",
+         "idFundType":5
+      },
+      {
+         "idFund":87,
+         "name":"ACTINTK",
+         "description":"Fondo de retorno absoluto que buscará obtener rendimientos positivos en el largo plazo, independientemente de la dirección de los mercados.",
+         "fundType":"SI de Renta Variable- Alternativos",
+         "idFundType":5
+      },
+      {
+         "idFund":88,
+         "name":"ACTIVCR",
+         "description":"Fondo de Fondos dirigido a clientes con una visión de largo plazo. Su principal objetivo es el crecimiento del capital buscando pagar entre 3 a 5 puntos porcentuales por arriba de Cetes.",
+         "fundType":"Fondos Multi Activos Actinver",
+         "idFundType":6
+      },
+      {
+         "idFund":89,
+         "name":"ACTIVPA",
+         "description":"Fondo de fondos que busca la apreciación moderada del capital y rendimientos esperados de 2 puntos porcentuales por arriba de inflación.",
+         "fundType":"Fondos Multi Activos Actinver",
+         "idFundType":6
+      },
+      {
+         "idFund":90,
+         "name":"ACTIVCO",
+         "description":"Fondo de fondos que busca una inversión diversificada con un énfasis en la seguridad y protección de su capital , con rendimientos ligeramente por arriba de la inflación, manteniendo el poder adquisitivo de su dinero.",
+         "fundType":"Fondos Multi Activos Actinver",
+         "idFundType":6
+      },
+      {
+         "idFund":91,
+         "name":"ABSOLUTO",
+         "description":"Fondo de fondos que busca la apreciación moderada del capital y rendimientos esperados de 2 puntos porcentuales por arriba de inflación.",
+         "fundType":"Fondos Multi Activos Actinver",
+         "idFundType":6
+      },
+      {
+         "idFund":92,
+         "name":"EVEREST",
+         "description":"Fondo de Fondos dirigido a clientes con una visión de largo plazo. Su principal objetivo es el crecimiento del capital buscando pagar entre 3 a 5 puntos porcentuales por arriba de Cetes.",
+         "fundType":"Fondos Multi Activos Actinver",
+         "idFundType":6
+      }
+   ]
+}

@@ -1,0 +1,52 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-add-activity
+    form(name="$newActivityForm")
+        div.modal-header
+            img.icon(
+                src="img/icons/calendar/ico_cerrar.svg",
+                alt="",
+                align="right"
+                ng-click="activity.close()"
+            )
+            h4 {{ activity.title }}
+
+        div.modal-body
+            div.content
+                div.form-group
+                    div.row
+                        div.col-xs-6
+                            act-datetime( ng-model="activity.temporaryTime" title="Tiempo de actividad" required )
+                        div.col-xs-6
+                            dates-range-picker(
+                                    date="activity.temporaryDate"
+                                    options="options"
+                                    label="Fecha"
+                                    placeholder="dd/mm/aaaa"
+                                    ng-required="true"
+                                    is-single="true"
+                                )
+                    div.row    
+                        div.col-xs-12(style="margin-bottom:30px")
+                            label
+                                | Asistentes
+                            input.form-control(type="text" multiple ng-model="activity.temporaryAssistants" ng-pattern="activity.multipleEmailRegex")
+
+                    +textArea( 'Notas', 'Agregar Notas', true )(ngModel="activity.newActivity.description")
+                    div.row
+                        div.col-xs-6
+                            label(style="margin-bottom:0px")
+                                | Asunto
+                                span.require *
+                            input.form-control( type="text" name="asunto" maxlength="50" ng-model="activity.newActivity.subject" ng-required="true" ng-pattern="/^[^\\,\/]*$/" style="height:35px")
+                        div.col-xs-6
+                            label(style="margin-bottom:0px")
+                                | Lugar
+                                span.require *
+                            input.form-control( type="text" name="name" maxlength="50" ng-model="activity.newActivity.location" ng-required="true" ng-pattern="/^[^\\,\/]*$/" style="height:35px")
+
+        div.modal-footer
+            +btnSubmit( 'cancelar')(ngClick="activity.close()")
+            +btnSubmit( 'guardar', 'save','$newActivityForm.$invalid')(ngClick="activity.submitActivity()")

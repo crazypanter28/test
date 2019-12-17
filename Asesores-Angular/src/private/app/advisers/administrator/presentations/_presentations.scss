@@ -1,0 +1,141 @@
+.presentations{
+
+    .controls-tabs {
+        border-bottom: 1px solid #00bebe;
+        overflow: hidden;
+
+
+        .item-before, .item-next {
+            background: #051c48;
+            color: white;
+            display: table;
+            float: left;
+            font-size: 8px;
+            height: 39px;
+            line-height: 12px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 32px;
+
+
+            span {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+
+
+        .item-before {
+            margin-right: 5px;
+        }
+
+
+        .item-next {
+            margin-left: 5px;
+        }
+
+
+        .list-tabs {
+            margin: 0;
+            padding: 0;
+
+
+            &.with-controls {
+
+                &.two-controls {
+                    .item-tabs {
+                        width: calc( (100% - 99px) / 5);
+                    }
+                }
+
+
+                .item-tabs {
+                    width: calc( (100% - 62px) / 5 );
+                }
+            }
+
+
+            .item-tabs {
+                border: 1px solid #d2cfcd;
+                display: flex;
+                float: left;
+                list-style-type: none;
+                margin-bottom: 6px;
+                margin-right: 5px;
+                padding: 10px 5px;
+                text-align: center;
+                width: calc( (100% - 25px) / 5);
+
+
+
+                span {
+                    color: #051c48;
+                    display: block;
+                    opacity: 0.5;
+                    text-transform: uppercase;
+                }
+
+
+                &:nth-child( 1n + 5) {
+                    margin-right: 0;
+                }
+
+
+                &.active {
+                    border-color: #00bebe;
+                    border-bottom-width: 7px;
+                    margin-bottom: 0;
+
+
+                    span {
+                        opacity: 1;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .ng-table {
+        margin-top: 10px;
+        tbody {
+
+
+            tr {
+
+
+                td {
+
+
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .no-results {
+        margin-top: 40px;
+        padding: 10px;
+        text-align: center;
+
+
+        p {
+            color: #b4b4b4;
+            font-size: 25px;
+            margin: 20px auto 0 auto;
+            width: 400px;
+        }
+
+
+        .link {
+            color: #3d89f7;
+            font-size: 24px;
+            margin-top: 15px;
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+include /views/mixins/radio-button
+
+// Binnacle page
+.goals-page
+
+    h3.primary-title Prospectos
+    div.content-panel
+
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs( ng-if="!($state.is( 'prospects.id' ) || $state.is( 'prospects.reactivate' ))")
+                li( ui-sref="prospects.myProfile" ui-sref-active="active")
+                    a( href="javascript:void(0);" ) Mi perfil
+                li( ui-sref="prospects.team" ui-sref-active="active" ng-show="false")
+                    a( href="javascript:void(0);" ) Mi equipo
+                li( ui-sref="prospects.report" ui-sref-active="active")
+                    a( href="javascript:void(0);" ) Reportes    
+
+            // Tab content
+            .tab-content
+                div( ui-view="" )

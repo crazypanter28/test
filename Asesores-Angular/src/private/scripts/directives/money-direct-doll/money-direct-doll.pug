@@ -1,0 +1,391 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /scripts/directives/money-direct-doll/doll-direct
+
+
+div.doll
+    div.row.margin-0.header
+        button.btn.col-xs-6.buy(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('buy')"
+            ng-class = "{'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('sell')"
+            ng-class = "{'active' : doll.tab === 'sell'}"
+        )
+            span vender
+
+    div.row.margin-0.body.empty.init( ng-show="doll.stepA")
+        div.empty-container
+            div.empty-center
+                img(src="img/icons/doll/icon_money.svg")
+                p.station-description Selecciona la operación que deseas realizar
+
+    // Spinner
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    // Confirmation
+    div.row.margin-0.confirm.body( ng-if="doll.confirmModel" )
+        +moneyDirectDollConfirmation
+
+    // Success
+    div.row.margin-0.confirm.body( ng-if="doll.captureModel"  )
+        +moneyDirectDollCapture( true )
+
+    div( ng-if="doll.stepB" )
+        // Form
+        .money-market-process.body(ng-class="{'sell': doll.tab === 'sell','buy': doll.tab === 'buy'} ")
+            form( name="form" novalidate )
+                .row
+                    .col-xs-6
+                        label Tipo de Operacion
+                            span *
+                        div( act-dropdown
+                            ng-model="doll.operationType"
+                            selected="doll.operationTypeV"
+                            on-change="doll.getType"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='doll.operationTypeV'
+                            ng-required='true'
+                        )
+
+                    .col-xs-6
+                        label Tipo de Instumento:
+                            span.require *
+                        div( act-dropdown
+                            ng-model="doll.titleType"
+                            selected="doll.instrumentType"
+                            name="media"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='doll.instrumentType'
+                            ng-required='true'
+                        )
+
+                .row
+                    .col-xs-6
+                        div.form-group.act-input
+                            label Liquidación:
+                                span.require *
+                            div( act-dropdown
+                                ng-model="doll.settlementType"
+                                selected="doll.settlement"
+                                name="media"
+                            )
+                            input(
+                                type='hidden',
+                                ng-model='doll.settlement'
+                                ng-required='true'
+                            )
+                    .col-xs-6(ng-if="doll.settlement")
+                        label Plazo:
+                            span.require *
+                        input.form-control( type="text", placeholder="Plazo"
+                            ng-model="doll.term"
+                            ng-blur = "doll.getBands(doll.operationTypeV)"
+                            ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            required="true"
+                        )
+                div.empty-container(ng-if="!doll.operationType || !doll.instrumentType || !doll.settlement || !doll.term")
+                    div.empty-center
+                        br
+                        strong
+                        img(src="img/icons/doll/icon_money01.svg" style="margin-top: 114px;")
+
+                div.empty-container(ng-if=" doll.settlement && doll.term && !doll.instrument.issuer && doll.operationTypeV.id !== '1'")
+                    div.empty-center.text-center(ng-if='$root.bands.length !== 0')
+                        br
+                        strong Seleccione una Emisora
+                        img(src="img/icons/doll/icon_money01.svg" style="margin-top: 114px;")
+                    div.empty-center(ng-if='$root.bands.length === 0')
+                        br
+                        strong No existen Emisoras con ese plazo
+                        img(src="img/icons/doll/icon_money01.svg" style="margin-top: 114px;")
+
+                .row(ng-if="doll.instrument.issuer && doll.operationTypeV.id === '2'")
+                    .col-xs-3
+                        label Emisora:
+                    .col-xs-12
+                        strong   {{ doll.instrument.issuer + '' + doll.instrument.serie}}
+                .row(ng-if="doll.instrument.maturityDays && doll.operationTypeV.id === '2'")
+                    .col-xs-3
+                        label DXV:
+                    .col-xs-12
+                        strong
+                            | {{ doll.instrument.maturityDays }}
+                            ng-pluralize( count="doll.instrument.maturityDays" when="{'1': ' día', 'other': ' días'}" )
+
+                .row(ng-if="doll.operationTypeV.id === '1' && doll.settlement && doll.term")
+                    .col-xs-6
+                        label Emisora:
+                            span.require
+                        input.form-control( type="text", placeholder="Emisora"
+                            ng-model="doll.issuerReporto"
+                        )
+                    .col-xs-6
+                        label Serie:
+                            span.require
+                        input.form-control( type="text", placeholder="Serie"
+                            ng-model="doll.serieReporto"
+                        )
+
+                div(ng-if="doll.instrument.issuer || doll.operationTypeV.id === '1' && doll.settlement && doll.term")
+                    .row
+                        .col-xs-6
+                            act-datetime( ng-model="doll.operationTimeNumber" title="Hora de instrucción" type="HH" required="true" )
+
+                        .col-xs-6
+                            div.form-group.act-input
+                                label Moneda:
+                                    span.require *
+                                div( act-dropdown
+                                    ng-model="doll.Currency"
+                                    selected="doll.currencyTypeDesc"
+                                    name="media"
+                                )
+                                input(
+                                    type='hidden',
+                                    ng-model='doll.currencyTypeDesc'
+                                    ng-required='true'
+                                )
+                    .row
+                        .col-xs-6
+                            div.form-group.act-input
+                                label Mesa:
+                                    span.require *
+                                input( type="text",
+                                    placeholder="Mesa"
+                                    ng-model="doll.table"
+                                    required="true"
+                                )
+
+                    div.col-xs-8.padding-0.type
+                        label( ng-if="doll.tab === 'buy'" )
+                            | Comprar por
+                            span *
+                        label( ng-if="doll.tab === 'sell'" )
+                            | Vender por
+                            span *
+                        div.row.margin-0(ng-if="doll.operationTypeV.id === '2' || doll.serieReporto  && doll.issuerReporto")
+                            +radioButton( 'Títulos', 'doll.cmd.type' )(
+                                id='titles'
+                                ngClick = "doll.changeOperationType(doll.cmd.type)"
+                            )
+                            span.float-right
+                                input.form-control( type="text", placeholder="Títulos"
+                                    ng-required="doll.cmd.type === 'titles'"
+                                    ng-show="doll.cmd.type === 'titles'"
+                                    ng-change ='doll.isValidoTitulo()'
+                                    ng-model="doll.titlesQty"
+                                    onkeypress='return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)'
+                                    ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                                )
+                                div( ng-show="doll.cmd.type === 'titles'" )
+
+                        div.row.margin-0( ng-if="doll.operationTypeV.id === '1'" )
+                            span
+                                +radioButton( 'Importe', 'doll.cmd.type' )(
+                                    id='import'
+                                    ngClick = "doll.changeOperationType(doll.cmd.type)"
+                                )
+                            span.float-right
+                                div( ng-show="doll.cmd.type === 'import'" )
+                                input.form-control(type="text", placeholder="Importe"
+                                    ng-required="doll.cmd.type === 'import'"
+                                    ng-show = "doll.cmd.type === 'import'"
+                                    ng-model ="doll.amount"
+                                    onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                                    ng-currency
+                                )
+
+
+                    .row
+                        .col-xs-12
+                            br
+                            hr
+                    //.row
+                        .col-xs-3
+                            label Distribuida
+                        .col-xs-9
+                            input(type='checkbox', ng-click='doll.distributedOrder()' ng-model="doll.isDistribuida")
+                        .row
+                            .col-xs-12
+                                label#msgTitulos(style="color:red") {{doll.msgTitulos}}
+                        .row(ng-if="doll.isDistribuida")
+                            .col-xs-3
+                                label Total distribuidos:
+                            .col-xs-9
+                                strong {{doll.totalTitles  }}
+                        .row
+                            .col-xs-12
+                                br
+                                hr
+                    .row
+                        .col-xs-12
+                            strong Cliente
+                        .col-xs-12(ng-if="!doll.rate && !doll.discountRate && !doll.price &&!doll.surtaxRate")
+                            label(style="color:red") Se debe ingresar al menos un campo del Cliente
+                        .col-xs-6
+                            label Rendiemiento:
+                                span.require
+                            input.form-control( type="text", placeholder="Rendiemiento"
+                                ng-model="doll.rate"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                        .col-xs-6
+                            label Tasa Descuento:
+                                span.require
+                            input.form-control( type="text", placeholder="Tasa Descuento"
+                                ng-model="doll.discountRate"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                        .col-xs-6
+                            label Precio:
+                                span.require
+                            input.form-control( type="text", placeholder="Precio"
+                                ng-model="doll.price"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                        .col-xs-6
+                            label Sobretasa:
+                                span.require
+                            input.form-control( type="text", placeholder="Sobretasa"
+                                ng-model="doll.surtaxRate"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                    .row
+                        .col-xs-12
+                            br
+                            hr
+                    .row
+                        .col-xs-12
+                            strong Asesor
+                        .col-xs-12.col-xs-12(ng-if="!doll.adviserRate && !doll.adviserDiscountRate && !doll.adviserPrice &&!doll.adviserSurtaxRate")
+                            label(style="color:red") Se debe ingresar al menos un campo del Asesor
+                        .col-xs-6
+                            label Rendiemiento:
+                                span.require
+                            input.form-control( type="text", placeholder="Rendiemiento"
+                                ng-model="doll.adviserRate"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                        .col-xs-6
+                            label Tasa Descuento:
+                                span.require
+                            input.form-control( type="text", placeholder="Tasa Descuento"
+                                ng-model="doll.adviserDiscountRate"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                        .col-xs-6
+                            label Precio:
+                                span.require
+                            input.form-control( type="text", placeholder="Precio"
+                                ng-model="doll.adviserPrice"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                        .col-xs-6
+                            label Sobretasa:
+                                span.require
+                            input.form-control( type="text", placeholder="Sobretasa"
+                                ng-model="doll.adviserSurtaxRate"
+                                ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            )
+                hr
+
+
+            .binnacle-form(ng-show="!doll.contractType" ng-if="doll.instrument.issuer || doll.operationTypeV.id === '1' && doll.settlement && doll.term")
+                div.media.row.margin-0
+                    div.col-xs-6.padding-0
+                        label Tipo de medio
+                            span *
+                        div( act-dropdown
+                                ng-model="doll.Media"
+                                selected="doll.cmd.media.type"
+                                name="media"
+                                change = "doll.onChangeTypeMedio(lastValue, newValue)"
+                            )
+                        input(
+                                type='hidden',
+                                ng-model='doll.cmd.media.type'
+                                ng-required='true'
+                            )
+                    div.col-xs-6.padding-0(ng-if="doll.tipoMedio.showMsg")
+                        label(style="color: #ff0000; text-align:center; padding-top: 10px;" ) * {{doll.tipoMedio.msg}}
+
+
+                    div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                        +input( 'Teléfono', 'phone', 'Teléfono', true )(
+                            name = 'formPhone2'
+                            ngRequire='true',
+                            onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                            model='doll.cmd.binnacle.phone',
+                            message='El campo solo acepta números',
+                            pattern='doll.pattern.numeric',
+                            maxlength= '6'
+                        )
+                div
+                    .row.margin-0
+                        div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                            act-datetime( ng-model="doll.cmd.binnacle.time" title="Hora de instrucción" type="HH" required="true" )
+
+                        div.col-xs-6.padding-0
+                            div.form-group.has-icon
+                                label(for="date") Fecha de instrucción
+                                    span.require *
+                                div(style="position:relative")
+                                    +inputDate( "doll.cmd.binnacle.date", 'binnacle-date' )(
+                                        ngMouseOpen = 'popup1.opened'
+                                        datepickerOptions = "{showWeeks : false, formatMonth : 'MMM',yearColumns : 3 , maxDate: $root.getTodayDate }"
+                                    )
+
+
+                        div.col-xs-12.padding-0
+                            div.form-group.act-input
+                                label( for="comments") Comentarios
+                                    span.require
+                                input.form-control( type="text" id="comments" max-length="250" style="width:100%;" ng-model="doll.cmd.binnacle.comments")
+
+                    .row.margin-0
+                        div.col-xs-12.padding-0.buttons
+                            +btnWithIcon(
+                                'Operar',
+                                'btn-primary',
+                                '( doll.tipoMedio.showMsg || !doll.cmd.media.type || (!doll.adviserRate && !doll.adviserDiscountRate && !doll.adviserPrice &&!doll.adviserSurtaxRate) || (!doll.rate && !doll.discountRate && !doll.price &&!doll.surtaxRate) || form.$invalid )',
+                                'img/icons/doll/ico_aceptar_on.svg'
+                            )(ngClick="doll.confirm()", ngBlur="doll.isValidoInfoCliente()")
+                            +btnWithIcon(
+                                'Limpiar',
+                                'btn-primary',
+                                null,
+                                ''
+                            )(ngClick="doll.cleanModels()" style="margin-right: 10px;")
+
+
+            .binnacle-form(ng-show="doll.contractType")
+                .row.margin-0
+                    div.col-xs-12.padding-0.buttons
+                        +btnWithIcon(
+                            'Operar',
+                            'btn-primary',
+                            '((!doll.adviserRate && !doll.adviserDiscountRate && !doll.adviserPrice &&!doll.adviserSurtaxRate) || (!doll.rate && !doll.discountRate && !doll.price &&!doll.surtaxRate) || form.$invalid )',
+                            'img/icons/doll/ico_aceptar_on.svg'
+                        )(ngClick="doll.confirm()", ngBlur="doll.isValidoInfoCliente()")
+                        +btnWithIcon(
+                            'Limpiar',
+                            'btn-primary',
+                            null,
+                            ''
+                        )(ngClick="doll.cleanModels()" style="margin-right: 10px;")
+
+
+
+
+

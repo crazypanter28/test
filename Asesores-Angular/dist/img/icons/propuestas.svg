@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="18px" viewBox="0 0 19 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>PROPUESTAS_ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="4" y="16" width="9" height="1"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="9" height="1" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PROPUESTAS_ICON" transform="translate(1.000000, 1.000000)">
+            <g id="Group-2-Copy" stroke="#0F3F88">
+                <polyline id="Path-2-Copy-4" points="16.6980328 6.99273723 16.6980328 0 0 0"></polyline>
+            </g>
+            <g id="Group-2-Copy-3" transform="translate(8.500000, 9.500000) scale(-1, -1) translate(-8.500000, -9.500000) translate(0.000000, 6.000000)" stroke="#0F3F88">
+                <polyline id="Path-2-Copy-4" points="16.6980328 6.99273723 16.6980328 0 0 0"></polyline>
+            </g>
+            <polyline id="Path-3" stroke="#0F3F88" points="4 10.4954493 6.92096316 5.43894199 9.48301968 8.70141326 13.4011666 2"></polyline>
+            <ellipse id="Oval-2" stroke="#0F3F88" fill="#0F3F88" cx="13" cy="3" rx="1" ry="1"></ellipse>
+            <ellipse id="Oval-2-Copy-2" stroke="#0F3F88" fill="#0F3F88" cx="4" cy="10" rx="1" ry="1"></ellipse>
+            <ellipse id="Oval-2-Copy-3" fill="#0F3F88" cx="6.79980469" cy="5" rx="1" ry="1"></ellipse>
+            <circle id="Oval-2-Copy-4" fill="#0F3F88" cx="9.79980469" cy="9" r="1"></circle>
+            <use id="Rectangle-2-Copy" stroke="#0F3F88" mask="url(#mask-2)" stroke-width="2" fill="#D8D8D8" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,47 @@
+include /views/mixins/tables
+include /views/mixins/info-result
+
+div.container-table-investment
+    table.table-investment( ng-class="{ 'funds': !type, 'instruments': type }" )
+        thead
+            tr
+                +thCaret( 'Emisora', 'issuer' )
+                +thCaret( 'Títulos', 'finalPosition' )
+                +thCaret( 'Costo', 'virtualCost' )
+                +thCaret( 'Precio actual', 'weightedLastPrice' )
+                +thCaret( 'Valor Actual', 'valuationLastPrice' )
+                +thCaret( '$ plus/minusvalía', 'capitalGain' )
+                +thCaret( '% plus/minusvalía', 'accumulatedVariance' )
+        tbody
+            +trLoading( 154, 'loading' )( colspan='10' )
+            tr( ng-if="!loading" )
+                td(colspan="11")
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( ngBindHTML="nodata" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            div(ng-if="!type")
+                                h5.inner-title.done Valores disponibles para venta
+                                +tableInvstment( 'orders.available' )
+
+                                h5.inner-title.warning Entregados en garantía
+                                +tableInvstment( 'orders.slopes' )
+
+                                h5.inner-title.info Recibidos en garantía
+                                +tableInvstment( 'orders.blocked' )
+
+                            div(ng-if="type")
+                                table
+                                    tr(id="illuminate-capital-td-selected-sell" ng-click="ChangeDoll(order)" ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                        td( ng-bind="order.issuer" )
+                                        td( ng-bind="order.finalPosition" )
+                                        td( ng-bind="order.virtualCost| currency" )
+                                        td(ng-if="$root.itemPortfolioBank.instrumentDesc.operationType === order.issuer") {{$root.lasPriceActualicedBank | currency}}
+                                        td(ng-if="$root.itemPortfolioBank.instrumentDesc.operationType !== order.issuer") {{order.weightedLastPrice | currency}}
+                                        td( ng-bind="order.valuationLastPrice | currency" )
+                                        td( ng-bind="order.capitalGain | currency" )
+                                        td
+                                            | {{ order.accumulatedVariance | limitTo:4 }}%

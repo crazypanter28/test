@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82" height="50" viewBox="0 0 82 50">
+    <defs>
+        <rect id="a" width="64.518" height="48.981" rx="2.4"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd" opacity=".5">
+        <g stroke="#517CBD" stroke-linecap="round" stroke-width=".75">
+            <path d="M77.627 22.042v3.251M81.545 26.103h-3.588M76.907 26.103h-3.588M77.627 26.652v3.252"/>
+        </g>
+        <g transform="translate(.028 .671)">
+            <use fill="#517CBD" xlink:href="#a"/>
+            <rect width="64.018" height="48.481" x=".25" y=".25" stroke="#59617E" stroke-width=".5" rx="2.4"/>
+            <rect width="52.133" height="39.424" x="6.457" y="5.629" fill="#F8F8F8" rx="2.4"/>
+            <g transform="rotate(-20 45.186 -31.23)">
+                <path fill="#517CBD" d="M10.595 28.857c4.152 3.738 3.802 11.86 7.562 7.683 3.76-4.176 3.444-10.592-.708-14.33-4.151-3.738-10.565-3.383-14.326.793-3.76 4.177 3.32 2.116 7.472 5.854z"/>
+                <ellipse cx="25.774" cy="13.286" fill="#FFF" stroke="#517CBD" stroke-width=".5" rx="6.457" ry="6.495"/>
+                <ellipse cx="25.559" cy="13.07" fill="#517CBD" rx="1.937" ry="1.948"/>
+                <ellipse cx="6.508" cy="6.632" fill="#FFF" stroke="#517CBD" stroke-width=".5" rx="6.457" ry="6.495"/>
+                <ellipse cx="6.293" cy="6.415" fill="#517CBD" rx="1.937" ry="1.948"/>
+            </g>
+        </g>
+    </g>
+</svg>

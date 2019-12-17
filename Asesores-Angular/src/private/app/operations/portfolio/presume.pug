@@ -1,0 +1,53 @@
+include /views/mixins/info-result
+include /views/mixins/selected-client-info
+
+// Account main info
+.account-main-info
+    +sClientTopInfo(30)
+
+.empty-balance.display-as-table( ng-if="presume.portfolio_totals === 0" )
+    +noResults('no-balance')
+
+// Resume chart
+.resume-chart()
+    .visual
+        .chart-wrapper
+            donut-chart( ng-if="presume.chart_info" model="presume.chart_info" )
+        .total-value
+            | Valor total
+            span {{ presume.portfolio_totals | currency }}
+
+    .details
+        table.table
+            thead
+                tr
+                    th
+                    th M.N.
+                    th DLLS
+                    th EUR
+                    th %
+            tbody
+                tr( ng-repeat="topic in presume.portfolioTable" ng-if="topic.name" )
+                    td
+                        .bullet( class="{{ topic.abbr | lowercase }}" )
+                        | {{ topic.name  }}
+                    td
+                        | {{ topic.mn | currency }}
+                    td
+                        | {{ topic.dlls | currency }}
+                    td
+                        | {{ topic.eur | currency }}
+                    td
+                        | {{ topic.percent | number:2  }}%
+
+                    tr.total
+                        td
+                        td {{presume.totlaMXN | currency}}
+                        td {{presume.totalDLL | currency}}
+                        td {{presume.totalEUR | currency}}
+                        td 100%
+                        td
+        .note
+            | * Tipo de cambio Spot de valuación a Moneda  Nacional. Dólar:  {{presume.exchangeRateDLL | currency }}
+            br
+            | * Tipo de cambio Spot de valuación a Moneda  Nacional. Euro: {{presume.exchangeRateEUR | currency }}

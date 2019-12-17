@@ -1,0 +1,17 @@
+.economic
+    .section-title
+        span Entorno económico
+
+    .content
+
+        .preview
+            scrollable(always-visible="true")
+                div.bind-html(ng-bind-html="economic.html")
+
+
+        .editor
+            text-angular(ng-model="economic.htmlVariable" ta-toolbar="economic.taOptions")
+
+        .buttons
+            button.btn.btn-default( ng-click="economic.clearEditor()" ng-disabled="economic.htmlVariable.length === 0") Limpiar
+            button.btn.btn-primary( ng-click="economic.setTextEconomic()" ng-disabled="economic.htmlVariable.length === 0") Guardar

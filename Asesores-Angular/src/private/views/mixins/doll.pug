@@ -1,0 +1,858 @@
+
+mixin dollBinnacle()
+    - var submit = ( typeof attributes.submit !== 'undefined') ? attributes.submit : 'OPERAR';
+    
+     // Binnacle form
+    .binnacle-form
+        div.media.row.margin-0
+            div.col-xs-6.padding-0
+                label Tipo de medio
+                    span *
+                div( act-dropdown
+                    ng-model="doll.Media"
+                    selected="doll.cmd.media.type"
+                    name="media"
+                    change = "doll.onChangeTypeMedio(lastValue, newValue)"
+                )
+                input(
+                    type='hidden',
+                    ng-model='doll.cmd.media.type'
+                    ng-required='true'
+                )
+            div.col-xs-6.padding-0(ng-if="doll.tipoMedio.showMsg")
+                 label(style="color: #ff0000; text-align:center;" ) * {{doll.tipoMedio.msg}}
+            div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                +input( 'Teléfono', 'phone', 'Ext', true )(
+                    name = 'formPhone2'
+                    ngRequire='true',
+                    onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                    model='doll.cmd.binnacle.phone',
+                    message='El campo solo acepta números',
+                    pattern='doll.pattern.numeric',
+                    maxlength= '6'
+                )
+        div
+
+            hr
+            .row.margin-0
+                div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                    act-datetime( ng-model="doll.cmd.binnacle.time" title="Hora de instrucción" type="HH" required="true" )
+
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Fecha de instrucción
+                            span.require *
+                        div(style="position:relative")
+                            +inputDate( "doll.cmd.binnacle.date", 'binnacle-date' )(
+                                ngMouseOpen = 'popup1.opened'
+                                datepickerOptions = "{showWeeks : false, formatMonth : 'MMM',yearColumns : 3 , maxDate: $root.getTodayDate }"
+                            )
+
+            .row.margin-0
+                div.col-xs-12.padding-0
+                    div.form-group.act-input
+                        label( for="comments") Comentarios
+                            span.require
+                        input.form-control( type="text" id="comments" ng-model="doll.cmd.binnacle.comments" max-length="250" style="width:100%;")
+
+            .row.margin-0
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                        submit,
+                        'btn-primary',
+                        'form.$invalid || !doll.cmd.media.type || (doll.dollDescription.fund.titlesQty - doll.cmd.sell.typeValue ) < 0 || doll.tipoMedio.showMsg',
+                        'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                        'Limpiar',
+                        'btn-primary',
+                        null,
+                        'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")
+
+mixin dollBinnacleLumina()
+    - var submit = ( typeof attributes.submit !== 'undefined') ? attributes.submit : 'OPERAR';
+
+        // Binnacle form
+    .binnacle-form
+        div.media.row.margin-0(ng-show="!iscuentapropia")
+            div.col-xs-6.padding-0
+                label Tipo de medio
+                    span *
+                div( act-dropdown
+                ng-model="doll.Media"
+                selected="doll.cmd.media.type"
+                name="media"
+                change = "doll.onChangeTypeMedio(lastValue, newValue)"
+                )
+                input(
+                type='hidden',
+                ng-model='doll.cmd.media.type'
+                ng-required='true'
+                )
+            div.col-xs-6.padding-0(ng-if="doll.tipoMedio.showMsg")
+                label(style="color: #ff0000; text-align:center;" ) * {{doll.tipoMedio.msg}}
+
+            div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                +input( 'Teléfono', 'phone', 'Ext', true )(
+                name = 'formPhone2'
+                ngRequire='true',
+                onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                model='doll.cmd.binnacle.phone',
+                message='El campo solo acepta números',
+                pattern='doll.pattern.numeric',
+                maxlength= '6'
+                )
+        div
+
+            hr(ng-show="!iscuentapropia")
+            .row.margin-0(ng-show="!iscuentapropia")
+                div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                    act-datetime( ng-model="doll.cmd.binnacle.time" title="Hora de instrucción" type="HH" required="true" )
+
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Fecha de instrucción
+                            span.require *
+                        div(style="position:relative")
+                            +inputDate( "doll.cmd.binnacle.date", 'binnacle-date' )(
+                            ngMouseOpen = 'popup1.opened'
+                            datepickerOptions = "{showWeeks : false, formatMonth : 'MMM',yearColumns : 3 , maxDate: $root.getTodayDate }"
+                            )
+
+            .row.margin-0(ng-show="!iscuentapropia")
+                div.col-xs-12.padding-0
+                    div.form-group.act-input
+                        label( for="comments") Comentarios
+                            span.require
+                        input.form-control( type="text" id="comments" ng-model="doll.cmd.binnacle.comments" max-length="250" style="width:100%;")
+
+            .row.margin-0
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                    submit,
+                    'btn-primary',
+                    'form.$invalid || !doll.cmd.media.type || doll.tipoMedio.showMsg',
+                    'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                    'Limpiar',
+                    'btn-primary',
+                    null,
+                    'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")
+
+
+mixin dollRules( _model )
+    - var title = _model === 'buy' ? 'Comprar':'Vender';
+    - var rules = _model === 'buy' ? 'rulesBuy': 'rulesSell';
+    div.col-xs-8.padding-0.type
+        label=title + ' por'
+            span *
+        div.row.margin-0( ng-show = "doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'TITULOS'")
+            +radioButton( 'Títulos', 'doll.cmd.type' )(
+                id='titles'
+            )
+            span.float-right
+                span(
+                    ng-show="doll.cmd.type === 'import'"
+                    ng-bind="doll.cmd."+ _model +".typeValue"
+                )
+
+                input.form-control( type="text", placeholder="Títulos"
+                    ng-required="true"
+                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                    ng-show="doll.cmd.type === 'titles'"
+                    ng-model="doll.cmd."+ _model +".typeValue"
+                    ng-change = "changeSettlement( '" + _model +"')"
+                )
+        div.row.margin-0( ng-show = "!(doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'TITULOS')")
+            span
+                label.act-radio-custom Títulos
+                span(
+                    ng-show="doll.cmd.type === 'import'"
+                    ng-bind="doll.cmd."+ _model +".typeValue"
+                )
+        div.row.margin-0( ng-show = "!(doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'IMPORTE')")
+            label.act-radio-custom Importe
+            span.float-right
+                span(
+                    ng-show="doll.cmd.type === 'titles'"
+                    ng-bind="doll.cmd."+ _model +".typeValue2 |  currency"
+                )
+
+        div.row.margin-0( ng-show = "doll."+ rules + ".registrationType === 'AMBOS' || doll."+ rules + ".registrationType === 'IMPORTE'")
+            span
+                +radioButton( 'Importe', 'doll.cmd.type' )(
+                    id='import'
+                )
+            span.float-right
+                span(
+                    ng-show="doll.cmd.type === 'titles'"
+                    ng-bind="doll.cmd."+ _model +".typeValue2 |  currency "
+                )
+
+                input.form-control(type="text", placeholder="Importe"
+                    ng-required="true"
+                    ng-show = "doll.cmd.type === 'import'"
+                    ng-model ="doll.cmd."+ _model +".typeValue2"
+                    ng-change = "changeSettlement2( '" + _model +"' )"
+                    onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                    ng-currency
+                )
+    div.col-xs-4.padding-0.date
+        label Fecha de liquidación
+            b( ng-bind="doll.cmd.dates.settlementDate | date:'dd/MM/yyyy'")
+
+
+mixin dollConfirmation( _model, _finally )
+    h5
+        if _finally
+            img( ng-if="doll.cmd.evtentType === 'buy'" src="img/icons/doll/confirmation-buy.svg")
+            img( ng-if="doll.cmd.evtentType !== 'buy'" src="img/icons/doll/confirmation-sell.svg")
+            br
+            | Confirmación de Orden de {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+
+        else
+            | Verifica tu orden de {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+    div.confirm-container
+        div.row.margin-0()
+            div.col-xs-6 Contrato:
+            div.col-xs-6 {{ contract }}
+        div.row.margin-0(ng-if="doll.cmd.BankSelected.bankAccounts.beneficiaryName")
+            div.col-xs-6 A nombre de:
+            div.col-xs-6 {{ doll.cmd.BankSelected.bankAccounts.beneficiaryName }}
+        div.row.margin-0()
+            div.col-xs-6 Movimiento:
+            div.col-xs-6 {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+        div.row.margin-0()
+            div.col-xs-6 Emisora:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind="doll." + _model + ".issuerTitlesSold.issuerName" )
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind="doll." + _model + ".issuerTitlesSold.issuerName" )
+        div.row.margin-0()
+            div.col-xs-6 Serie:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind="doll." + _model + ".issuerTitlesSold.serie" )
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind="doll." + _model + ".issuerTitlesSold.serie" )
+        div.row.margin-0()
+            div.col-xs-6 Precio:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.price | currency:'$'")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.price | currency:'$'")
+        div.row.margin-0()
+            div.col-xs-6 Títulos:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.titlesQty")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.titlesQty")
+        div.row.margin-0()
+            div.col-xs-6 Comisión:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.sellFee")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.sellFee")
+        div.row.margin-0()
+            div.col-xs-6 IVA:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.vat")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.vat")
+        div.row.margin-0()
+            div.col-xs-6 Ejecución de la orden:
+            div.col-xs-6 {{ doll.cmd.dates.operationDate | date:'dd/MM/yyyy'}}
+        div.row.margin-0()
+            div.col-xs-6 Liquidación de la orden:
+            div.col-xs-6 {{ doll.cmd.dates.settlementDate | date:'dd/MM/yyyy'}}
+
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+        div.row.margin-0()
+            div.col-xs-6 Total:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.amount | currency:'$'" )
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll." + _model + ".issuerTitlesSold.amount | currency:'$'" )
+    div.col-xs-12.padding-0.buttons
+        if _finally
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finally()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin moneyDollConfirmation( _finish )
+    h5
+        if _finish
+            img( src="img/icons/doll/confirmation-buy.svg" )
+            br
+            | Confirmación de Orden de COMPRA
+        else
+            | Verifica tu orden de COMPRA 
+
+    div.confirm-container
+        div.row.margin-0( ng-if="doll.captureModel.orderReference" )
+            div.col-xs-6 Folio de la operación:
+            div.col-xs-6 {{ doll.captureModel.orderReference }}
+        div.row.margin-0
+            div.col-xs-6 Instrumento:
+            div.col-xs-6 {{ doll.transaction.sinstrument.description | split:' ':1 }}
+        div.row.margin-0
+            div.col-xs-6 Tipo inversión:
+            div.col-xs-6 REPORTO
+        div.row.margin-0
+            div.col-xs-6 Plazo:
+            div.col-xs-6
+                | {{ doll.term }}
+                ng-pluralize( count="doll.transaction.sinstrument.minTerm" when="{'1': ' día', 'other': ' días'}" )
+        //div.row.margin-0
+            div.col-xs-6 Tasa:
+            div.col-xs-6 {{ doll.transaction.sinstrument.maxRate }}%
+        div.row.margin-0
+            div.col-xs-6 Tasa:
+            div.col-xs-6 {{ doll.optimumRate }}
+        div.row.margin-0
+            div.col-xs-6 Importe:
+            div.col-xs-6 {{ doll.transaction.invest.amount | currency }}
+
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+        div.row.margin-0
+            div.col-xs-6 Total:
+            div.col-xs-6 {{ doll.transaction.invest.amount | currency }}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin binnacleResume()
+
+    div.col-xs-6 Medio de instrucción:
+    div.col-xs-6 {{ doll.cmd.media.type.text }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'Teléfono'" )
+        div.col-xs-5 Teléfono:
+        div.col-xs-7 {{ doll.cmd.binnacle.phone }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'Teléfono'" )
+        div.col-xs-5 Hora:
+        div.col-xs-7 {{ doll.cmd.binnacle.time }}
+    div.row.margin-0
+        div.col-xs-5 Fecha:
+        div.col-xs-7 {{ doll.cmd.binnacle.date | date: "dd/MM/yyyy" }}
+    div.row.margin-0(ng-if="doll.cmd.binnacle.comments")
+        div.col-xs-5 Comentarios: 
+        div.col-xs-7
+            div.dollScroll( scrollable always-visible="true") {{ doll.cmd.binnacle.comments }}
+
+
+
+mixin confirmCapitalDoll( _model, _finish )
+    h5
+        if _finish
+            img( ng-if="doll.cmd.evtentType === 'buy'" src="img/icons/doll/confirmation-buy.svg")
+            img( ng-if="doll.cmd.evtentType !== 'buy'" src="img/icons/doll/confirmation-sell.svg")
+            br
+            | Confirmación de Orden de {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+
+        else
+            | Verifica tu orden de {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }} 
+    div.confirm-container
+        div.row.margin-0( ng-if="doll.captureModel.operationDateTime")
+            div.col-xs-6 Folio:
+            div.col-xs-6 {{ doll.captureModel.operationDateTime }}
+        div.row.margin-0()
+            div.col-xs-6 Contrato:
+            div.col-xs-6 {{ contract }}
+        div.row.margin-0()
+            div.col-xs-6 Tipo de orden:
+            div.col-xs-6 {{ doll.cmd.order.value.description }}
+        div.row.margin-0(ng-if="doll.cmd.station.issuer.issuerSerie")
+            div.col-xs-6 Emisora:
+            div.col-xs-6 {{ doll.cmd.station.issuer.issuerSerie }}
+        div.row.margin-0(ng-if="!doll.cmd.station.issuer.issuerSerie")
+            div.col-xs-6 Emisora:
+            div.col-xs-6 {{ doll.cmd.station.issuer.issuerName + doll.cmd.station.issuer.serie  }}
+        div.row.margin-0
+            div.col-xs-6 Precio:
+            div.col-xs-6(ng-if="doll.cmd.order.value.shortKey.trim() !== 'MC' ") {{doll.cmd.priceStation}}
+            div.col-xs-6(ng-if="doll.cmd.order.value.shortKey.trim() === 'MC' ") 0.00
+        //div.row.margin-0(ng-if="doll.cmd.priceStation")
+            div.col-xs-6 Precio:
+            div.col-xs-6(ng-if="doll.cmd.order.value.shortKey.trim() === 'MC' ") 0.00
+            div.col-xs-6(ng-if="doll.cmd.order.value.shortKey.trim() !== 'MC' ") {{ doll.cmd.priceStation }}
+        //div.row.margin-0(ng-if="doll.cmd.order.model.maxPrice")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{ doll.cmd.order.model.maxPrice}} 
+        div.row.margin-0(ng-if="doll.cmd.order.model.floorPrice")
+            div.col-xs-6 Precio piso:
+            div.col-xs-6 {{doll.cmd.order.model.floorPrice}}
+        div.row.margin-0(ng-if="doll.cmd.order.model.floorPrice")
+            div.col-xs-6 Precio techo:
+            div.col-xs-6 {{doll.cmd.order.model.ceilingPrice}}
+        div.row.margin-0(ng-if="doll.cmd.order.model.floorPricePercentage")
+            div.col-xs-6 % Salida piso :
+            div.col-xs-6 {{doll.cmd.order.model.floorPricePercentage}} %
+        div.row.margin-0(ng-if="doll.cmd.order.model.ceilingPricePercentage")
+            div.col-xs-6 % Salida techo:
+            div.col-xs-6 {{doll.cmd.order.model.ceilingPricePercentage}} %
+        div.row.margin-0()
+            div.col-xs-6 Títulos:
+            div.col-xs-6 {{ doll.cmd.order.model.titles }}
+        div.row.margin-0(ng-if="doll.cmd.order.model.term")
+            div.col-xs-6 Plazo:
+            div.col-xs-6 {{ doll.cmd.order.model.term }}
+        div.row.margin-0( ng-if="doll.confirmationModel.operationFeeAmount")
+            div.col-xs-6 Comisión:
+            div.col-xs-6 {{ doll.confirmationModel.stockMarketOrderQuotation.orderQuotation.operationFeeAmount }}
+        div.row.margin-0( ng-if="doll.confirmationModel.vat")
+            div.col-xs-6 IVA:
+            div.col-xs-6 {{ doll.confirmationModel.stockMarketOrderQuotation.orderQuotation.vat }}
+        div.row.margin-0(ng-if="doll.cmd.orderValidity.text")
+            div.col-xs-6 Tipo de vigencia:
+            div.col-xs-6 {{ doll.cmd.orderValidity.text }}
+        div.row.margin-0( ng-if="doll.cmd.order.options.time")
+            div.col-xs-6 Válido hasta las:
+            div.col-xs-6 {{ doll.cmd.order.options.time }}:00
+        div.row.margin-0.media
+            +binnacleResume()
+        hr
+        div.row.margin-0(ng-if="doll.confirmationModel.operationAmount && doll.cmd.order.value.shortKey.trim() !='MC'")
+            div.col-xs-6 Total:
+            div.col-xs-6 {{ doll.confirmationModel.operationAmount | currency : '$'}}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin confirmCapitalLuminaDoll( _model, _finish )
+    h5
+        if _finish
+            img( ng-if="doll.cmd.evtentType === 'buy'" src="img/icons/doll/confirmation-buy.svg")
+            img( ng-if="doll.cmd.evtentType !== 'buy'" src="img/icons/doll/confirmation-sell.svg")
+            br
+            | Confirmación de Orden de {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+
+        else
+            | Verifica tu orden de {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}  
+    div.confirm-container
+        div.row.margin-0( ng-if="doll.captureModel.res.outCMEquityOrderRegistration.orderDetail.orderID")
+            div.col-xs-6 Folio:
+            div.col-xs-6 {{ doll.captureModel.res.outCMEquityOrderRegistration.orderDetail.orderID}}
+        div.row.margin-0()
+            div.col-xs-6 Contrato:
+            div.col-xs-6 {{ contract }}
+        div.row.margin-0()
+            div.col-xs-6 Tipo de orden:
+            div.col-xs-6 {{ doll.cmd.order.value.description }}
+        div.row.margin-0(ng-if="doll.cmd.station.issuer.issuerSerie")
+            div.col-xs-6 Emisora:
+            div.col-xs-6 {{ doll.cmd.station.issuer.issuerSerie }}
+        div.row.margin-0(ng-if="!doll.cmd.station.issuer.issuerSerie")
+            div.col-xs-6 Emisora:
+            div.col-xs-6 {{ doll.cmd.station.issuer.issuerName + doll.cmd.station.issuer.serie  }}
+        div.row.margin-0(ng-if="doll.cmd.priceStation")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{ doll.cmd.order.value.shortKey.trim() === 'MC' ? '0.00' : doll.cmd.priceStation }}
+        div.row.margin-0(ng-if="doll.cmd.order.model.maxPrice")
+            div.col-xs-6 Precio:
+            div.col-xs-6 {{ doll.cmd.order.model.maxPrice}}
+        div.row.margin-0()
+            div.col-xs-6 Títulos:
+            div.col-xs-6 {{ doll.cmd.order.model.titles }}
+        div.row.margin-0(ng-if="doll.cmd.order.model.term")
+            div.col-xs-6 Plazo:
+            div.col-xs-6 {{ doll.cmd.order.model.term }}
+        //- div.row.margin-0( ng-if="doll.confirmationModel.outCMEquityOrderRegistration.orderDetail.fee")
+        //-     div.col-xs-6 Comisión:
+        //-     div.col-xs-6 {{ doll.confirmationModel.outCMEquityOrderRegistration.orderDetail.fee }}
+        //- div.row.margin-0( ng-if="doll.confirmationModel.outCMEquityOrderRegistration.orderDetail.tax")
+        //-     div.col-xs-6 IVA:
+        //-     div.col-xs-6 {{ doll.confirmationModel.outCMEquityOrderRegistration.orderDetail.tax }}
+        div.row.margin-0( ng-if="doll.cmd.order.options.type === 'tEspecifico'")
+            div.col-xs-6 Válido hasta las:
+            div.col-xs-6 {{ doll.cmd.order.options.time }}:00
+        div.row.margin-0.media
+            +binnacleResume()
+        hr
+        div.row.margin-0(ng-if="doll.confirmationModel.outCMEquityOrderRegistration.orderDetail.totalAmount && doll.cmd.order.value.shortKey.trim() === 'LP'")
+            div.col-xs-6 Total:
+            div.col-xs-6 {{ doll.confirmationModel.outCMEquityOrderRegistration.orderDetail.totalAmount | currency : '$'}}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin moneyBankDollConfirmation( _finish )
+    h5
+        if _finish
+            img( src="img/icons/doll/confirmation-buy.svg" )
+            br
+            | Confirmación de Orden de COMPRA
+        else
+            | Verifica tu orden de COMPRA 
+
+    div.confirm-container
+        div.row.margin-0( ng-if="doll.captureModel.orderReference" )
+            div.col-xs-6 Folio de la operación:
+            div.col-xs-6 {{ doll.captureModel.orderReference }}
+        div.row.margin-0
+            div.col-xs-6 Tipo de instrumento:
+            div.col-xs-6 {{ instrument.instrumentID }}
+        div.row.margin-0( ng-if="doll.cmd.type === 'titles'" )
+            div.col-xs-6 Títulos:
+            div.col-xs-6 {{ doll.titles }}
+        div.row.margin-0( ng-if="doll.cmd.type === 'import'" )
+            div.col-xs-6 Importe:
+            div.col-xs-6 {{ doll.import }}
+        div.row.margin-0
+            div.col-xs-6 Fecha de liquidación:
+            div.col-xs-6 {{ doll.settlement_date | date:"dd/MM/yyyy" }}
+        div.row.margin-0
+            div.col-xs-6 Interés corrido:
+            div.col-xs-6 {{ doll.emission[ 0 ].accruedInterest }}
+        div.row.margin-0
+            div.col-xs-6 Días por vencer:
+            div.col-xs-6
+                | {{ doll.emission[ 0 ].maturityPeriod }}
+                ng-pluralize( count="doll.emission[ 0 ].maturityPeriod" when="{'1': ' día', 'other': ' días'}" )
+        div.row.margin-0
+            div.col-xs-6 Tasa mínima:
+            div.col-xs-6 {{ doll.money_calc.tasaMin }}
+        div.row.margin-0
+            div.col-xs-6 Tasa máxima:
+            div.col-xs-6 {{ doll.money_calc.tasaMax }}
+        div.row.margin-0
+            div.col-xs-6 Tasa/Sobretasa:
+            div.col-xs-6 {{ doll.money_calc.tasaSobre }}
+        div.row.margin-0
+            div.col-xs-6 Precio limpio:
+            div.col-xs-6 {{ doll.money_calc.precioLimpio }}
+        div.row.margin-0
+            div.col-xs-6 Precio sucio:
+            div.col-xs-6 {{ doll.money_calc.precioSucio }}
+
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+        div.row.margin-0
+            div.col-xs-6 Total:
+            div.col-xs-6 {{ doll.transaction.invest.amount | currency }}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin fundDollConfirmation( _finish )
+    h5
+        if _finish
+            img( src="img/icons/doll/confirmation-buy.svg" )
+            br
+            | Confirmación de Orden de COMPRA
+        else
+            | Verifica tu orden de COMPRA 
+
+    div.confirm-container
+        div.row.margin-0( ng-if="doll.captureModel.orderReference" )
+            div.col-xs-6 Folio de la operación:
+            div.col-xs-6 {{ doll.captureModel.orderReference }}
+        div.row.margin-0
+            div.col-xs-6 Instrumento:
+            div.col-xs-6 {{ doll.transaction.sinstrument.description | split:' ':1 }}
+        div.row.margin-0
+            div.col-xs-6 Tipo inversión:
+            div.col-xs-6 REPORTO
+        div.row.margin-0
+            div.col-xs-6 Plazo:
+            div.col-xs-6
+                | {{ doll.transaction.sinstrument.minTerm }}
+                ng-pluralize( count="doll.transaction.sinstrument.minTerm" when="{'1': 'día', 'other': 'días'}" )
+        div.row.margin-0
+            div.col-xs-6 Tasa:
+            div.col-xs-6 {{ doll.transaction.sinstrument.maxRate }}%
+        div.row.margin-0
+            div.col-xs-6 Fecha vencimiento:
+            div.col-xs-6 {{ doll.transaction.sinstrument.dueDate | date:"dd/MM/yyyy" }}
+        div.row.margin-0
+            div.col-xs-6 Importe:
+            div.col-xs-6 {{ doll.transaction.invest.amount | currency }}
+
+        div.row.margin-0.media
+            +binnacleResume()
+
+        hr
+        div.row.margin-0
+            div.col-xs-6 Total:
+            div.col-xs-6 {{ doll.transaction.invest.amount | currency }}
+
+    div.col-xs-12.padding-0.buttons
+        if _finish
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin dollBinnacleFunBank()
+    - var submit = ( typeof attributes.submit !== 'undefined') ? attributes.submit : 'OPERAR';
+    // Binnacle form
+    .binnacle-form
+        div.media.row.margin-0
+            div.col-xs-6.padding-0
+                label Tipo de medio
+                    span *
+                div( act-dropdown
+                    ng-model="doll.Media"
+                    selected="doll.cmd.media.type"
+                    name="media"
+                    change = "doll.onChangeTypeMedio(lastValue, newValue)"
+                )
+                input(
+                    type='hidden',
+                    ng-model='doll.cmd.media.type'
+                    ng-required='true'
+                )
+            div.col-xs-6.padding-0(ng-if="doll.tipoMedio.showMsg")
+                 label(style="color: #ff0000; text-align:center;" ) * {{doll.tipoMedio.msg}}
+                 
+            div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                act-datetime( ng-model="doll.cmd.binnacle.time" title="Hora de instrucción" type="HH" required="true" )
+        div
+            div.col-xs-6.padding-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+                +input( 'Extensión', 'phone', 'Extensión', true )(
+                    name = 'formPhone2'
+                    ngRequire='true',
+                    onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 0'
+                    model='doll.cmd.binnacle.phone',
+                    message='El campo solo acepta números',
+                    pattern='doll.pattern.numeric',
+                    ngMaxLength='6',
+                )
+        div
+
+
+            //.row.margin-0
+                div.col-xs-6.padding-0
+                    div.form-group.has-icon
+                        label(for="date") Fecha de instrucción
+                            span.require *
+                        div(style="position:relative")
+                            +inputDate( "doll.cmd.binnacle.date", 'binnacle-date' )(
+                                ngMouseOpen = 'popup1.opened'
+                                datepickerOptions = "{showWeeks : false,formatMonth : 'MMM',yearColumns : 3 }"
+                                
+                            )
+
+            .row.margin-0
+                div.col-xs-12.padding-0
+                    div.form-group.act-input
+                        label( for="comments") Comentarios
+                            span.require
+                        input.form-control( type="text" id="comments" ng-model="doll.cmd.binnacle.comments" max-length="250" style="width:100%;")
+
+            .row.margin-0
+                div.col-xs-12.padding-0.buttons
+                    +btnWithIcon(
+                        submit,
+                        'btn-primary',
+                        'form.$invalid || doll.tipoMedio.showMsg ',
+                        'img/icons/doll/ico_aceptar_on.svg'
+                    )(ngClick="doll.confirm()")
+                    +btnWithIcon(
+                        'Limpiar',
+                        'btn-primary',
+                        null,
+                        'img/icons/doll/ico_limpiar_on.svg'
+                    )(ngClick="doll.cleanModels()")
+
+mixin dollConfirmationFundBank( _model, _finally )
+    h5
+        if _finally
+            | Confirmación de Orden de  {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+        else
+            img( ng-if="doll.cmd.evtentType === 'buy'" src="img/icons/doll/confirmation-buy.svg")
+            img( ng-if="doll.cmd.evtentType !== 'buy'" src="img/icons/doll/confirmation-sell.svg")
+            br
+            | Verifica tu orden de  {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }} 
+
+
+    div.confirm-container
+        div.row.margin-0()
+            div.col-xs-6 Contrato:
+            div.col-xs-6 {{ contract.contractNumber }}
+        div.row.margin-0(ng-if="doll.cmd.BankSelected.bankAccounts.beneficiaryName")
+            div.col-xs-6 A nombre de:
+            div.col-xs-6 {{ doll.cmd.BankSelected.bankAccounts.beneficiaryName }}
+        div.row.margin-0()
+            div.col-xs-6 Movimiento:
+            div.col-xs-6 {{ doll.cmd.evtentType === 'buy' ? 'Compra': 'Venta' }}
+        div.row.margin-0()
+            div.col-xs-6 Emisora:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind="doll.stationName" )
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind="doll.stationName" )
+        div.row.margin-0(ng-if ="doll.cmd.evtentType === 'buy'")
+            div.col-xs-6 Serie:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind="doll.serie" )
+        div.row.margin-0()
+            div.col-xs-6 Precio:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll.currentCash | currency:'$' : 6 ")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll.fund.sell.currentPrice  | currency:'$' : 6 ")
+        div.row.margin-0( ng-if="doll.cmd.type == 'titles'")
+            div.col-xs-6 Títulos:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll.cmd.buy.typeValue")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll.cmd.sell.typeValue")
+        div.row.margin-0( ng-if="doll.cmd.type !== 'titles'")
+            div.col-xs-6 Importe:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll.cmd.buy.typeValue2 | currency:'$'")
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll.cmd.sell.typeValue2 | currency:'$'")  
+        div.row.margin-0( ng-if="")
+            div.col-xs-6 Tipo de orden:
+            div.col-xs-6
+        div.row.margin-0(ng-if="!doll.anticipedSellCheck && doll.cmd.evtentType !== 'buy'")
+            div.col-xs-6 Fecha de ejecución:
+            div.col-xs-6 {{ doll.cmd.operationDate.text}}
+        div.row.margin-0(ng-if="doll.anticipedSellCheck || !doll.cmd.operationDate.text")
+            div.col-xs-6 Fecha de ejecución:
+            div.col-xs-6 {{doll.orderDate | date:'dd/MM/yyyy'}}
+        div.row.margin-0
+            div.col-xs-6 Fecha Liquidación:
+            div.col-xs-6 {{ fechaLiquidacion | date:'dd/MM/yyyy'}}
+        div.row.margin-0.media
+            +binnacleResumeFundBank()
+
+        hr
+        div.row.margin-0()
+            div.col-xs-6 Total:
+            div.col-xs-6( ng-if ="doll.cmd.evtentType === 'buy'" ng-bind ="doll.cmd.importRules | currency:'$'" )
+            div.col-xs-6( ng-if ="doll.cmd.evtentType !== 'buy'" ng-bind ="doll.cmd.importRules | currency:'$'" )
+    div.col-xs-12.padding-0.buttons
+        if _finally
+            +btnWithIcon(
+                'Finalizar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.finish()" )
+        else
+            +btnWithIcon(
+                'enviar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_aceptar_on.svg'
+            )( ngClick="doll.capture()" )
+            +btnWithIcon(
+                'Modificar',
+                'btn-primary',
+                null,
+                'img/icons/doll/ico_limpiar_on.svg'
+            )( ngClick="doll.modify()" )
+
+mixin binnacleResumeFundBank()
+
+    div.col-xs-6 Medio de instrucción:
+    div.col-xs-6 {{ doll.cmd.media.type.text }}
+    //div.row.margin-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+        div.col-xs-5 Extensión:
+        div.col-xs-7 {{ doll.cmd.binnacle.phone }}
+    div.row.margin-0( ng-if="doll.cmd.media.type.text === 'TELEFONO'" )
+        div.col-xs-5 Hora:
+        div.col-xs-7 {{ doll.cmd.binnacle.time }}
+    div.row.margin-0
+        div.col-xs-5 Fecha de captura:
+        div.col-xs-7 {{ $root.getTodayDate | date: "dd/MM/yyyy" }}
+    div.row.margin-0(ng-if="doll.cmd.binnacle.comments")
+        div.col-xs-5 Comentarios:
+        div.col-xs-7
+            div.dollScroll( scrollable always-visible="true") {{ doll.cmd.binnacle.comments }}

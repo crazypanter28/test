@@ -1,0 +1,97 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":[
+      {
+         "idIssuer":21,
+         "issuerName":"AC",
+         "serie":"*",
+         "issuerSerie":"AC *"
+      },
+      {
+         "idIssuer":22,
+         "issuerName":"ALSEA",
+         "serie":"*",
+         "issuerSerie":"ALSEA *"
+      },
+      {
+         "idIssuer":26,
+         "issuerName":"CEMEX",
+         "serie":"CPO",
+         "issuerSerie":"CEMEX CPO"
+      },
+      {
+         "idIssuer":27,
+         "issuerName":"GMEXICO",
+         "serie":"B",
+         "issuerSerie":"GMEXICO B"
+      },
+      {
+         "idIssuer":33,
+         "issuerName":"FINN",
+         "serie":"13",
+         "issuerSerie":"FINN 13"
+      },
+      {
+         "idIssuer":37,
+         "issuerName":"GRUMA",
+         "serie":"B",
+         "issuerSerie":"GRUMA B"
+      },
+      {
+         "idIssuer":38,
+         "issuerName":"LIVEPOL",
+         "serie":"C-1",
+         "issuerSerie":"LIVEPOL C-1"
+      },
+      {
+         "idIssuer":39,
+         "issuerName":"SORIANA",
+         "serie":"B",
+         "issuerSerie":"SORIANA B"
+      },
+      {
+         "idIssuer":40,
+         "issuerName":"Q",
+         "serie":"*",
+         "issuerSerie":"Q *"
+      },
+      {
+         "idIssuer":41,
+         "issuerName":"GFREGIO",
+         "serie":"O",
+         "issuerSerie":"GFREGIO O"
+      },
+      {
+         "idIssuer":42,
+         "issuerName":"GFNORTE",
+         "serie":"O",
+         "issuerSerie":"GFNORTE O"
+      },
+      {
+         "idIssuer":43,
+         "issuerName":"CADU",
+         "serie":"A",
+         "issuerSerie":"CADU A"
+      },
+      {
+         "idIssuer":44,
+         "issuerName":"VINTE",
+         "serie":"*",
+         "issuerSerie":"VINTE *"
+      },
+      {
+         "idIssuer":45,
+         "issuerName":"ALFA",
+         "serie":"A",
+         "issuerSerie":"ALFA A"
+      }
+   ]
+}

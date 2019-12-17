@@ -1,0 +1,23 @@
+div.activity-rectangle
+    div.row.margin-0
+        label Contacto :
+        span {{ ngModel.contactType }}
+    div.row.margin-0
+        label Fecha:
+        span {{ ngModel.date }}
+    div.row.margin-0
+        label Horario:
+        span {{ ngModel.schedule }}
+    div.row.margin-0
+        label Nota:
+        span {{ ngModel.notes }}
+    div.row.margin-0
+        label Etapa:
+        span {{ ngModel.stage }}
+    div.buttons(ng-if="!(hiddeTool == true) ")
+        div( ng-click="edit()" )
+            i.edit-prospect
+        div( ng-click="complete()")
+            i.complete-prospect
+        div( ng-click="close()")
+            i.close-prospect

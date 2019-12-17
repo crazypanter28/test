@@ -1,0 +1,78 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"b72a611c‐9551‐4033‐abe1‐1213f074e6fc",
+            "messages":[{
+                "responseSystemCode":"ACACBCWS0096",
+                "responseMessage":"NO HAY NINGUN ERROR",
+                "responseType":"N",
+                "responseCategory":"INFO"
+            }],
+            "naΆveErrorCode":null
+        },
+        "date":1493874000000,
+        "Άme":57002000,
+        "clientID":"NBURSANET",
+        "sessionID":null,
+        "responseSystem":"A2K",
+        "operationName":"DepositWithdrawalOrderDetailQuery",
+        "operationVersion":"1_0",
+        "ipaddress":"10.10.1.58"
+    },
+    "outDepositWithdrawalOrderDetailQuery":{
+        "movementInfo":{
+            "promoter":264,
+            "accountName":"JOSE EMILIANO VILLALON REYES",
+            "movementKey":360,
+            "movementDescription":"RET, TRASPASO ENTRE CONTRATOS",
+            "liquidationDescription":"MAÑANA",
+            "netAmount":1.0,
+            "operationDate":1493874000000,
+            "keyBank":"194"
+        },
+        "bankingInfo":{
+            "bankKeyDescription":"ACTINVER BANCO CTA: 70000997",
+            "issuerName":"100",
+            "depositOrWithdrawalStatus":{
+                "status":"11",
+                "description":"AFECTACION CLIENTES AUTORIZADA"
+            },
+            "checkNumber":0,
+            "observations":"Traspaso Cto 3108381 a Cta 7156391",
+            "promotion":{
+                "userName":"BUSCTRAL",
+                "terminal":"DL006A"
+            }
+        },
+        "instructionInfo":{
+            "Άme":56993000,
+            "instructionNumber":0,
+            "instructionTypeDescription":"PERMANENTE",
+            "authorizationKeyDescription":"NO AUTORIZADA",
+            "beneficiaryTypeDescription":"TITULAR",
+            "beneficiaryName":"",
+            "address":"",
+            "bankCheckingAccountDescription":""
+        },
+        "generalInfo":{
+            "branchName":"100",
+            "checkAccount":"",
+            "voucherStatusDescription":"RECIBO NO SOLICITADO",
+            "liquidationDate":1493874000000,
+            "movementDate":1493874000000,
+            "amount":1.0,
+            "exchangeRate":1.0,
+            "currencyTypeDesc":"M.N."
+        },
+        "fiscalInfo":{
+            "currencyTypeDesc":"M.N.",
+            "fiscalIDNumber":"",
+            "vat":0.0,
+            "cancel":{
+                "userName":"",
+                "terminal":""
+            }
+        }
+    }
+}

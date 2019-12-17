@@ -1,0 +1,94 @@
+{
+    "status":1,"messages":[{
+        "type":"","criticality":"","code":"E00A","description":"Obtencion de contratos correcto."
+    }],
+    "contracts":[{
+        "idContrato":50001576,
+        "status":"1",
+        "aliasContrato":"Con alias",
+        "empresa":"Casa",
+        "cuentaEje":"0.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"ASESORADO",
+        "total":"0.0",
+        "numCteAnt":0
+    },{
+        "idContrato":50001585,
+        "status":"1",
+        "aliasContrato":"Sin Alias",
+        "empresa":"Casa",
+        "cuentaEje":"500000.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"ASESORADO",
+        "total":"500000.0",
+        "numCteAnt":0
+    },{
+        "idContrato":50001594,
+        "status":"1",
+        "aliasContrato":"contratito1",
+        "empresa":"Casa",
+        "cuentaEje":"0.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"NO ASESORADO",
+        "total":"0.0",
+        "numCteAnt":0
+    },{
+        "idContrato":50001601,
+        "status":"1",
+        "aliasContrato":"cb2.2",
+        "empresa":"Casa",
+        "cuentaEje":"0.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"NO ASESORADO",
+        "total":"0.0",
+        "numCteAnt":0
+    },{
+        "idContrato":50001665,
+        "status":"1",
+        "aliasContrato":"Sin Alias",
+        "empresa":"Casa",
+        "cuentaEje":"0.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"ASESORADO",
+        "total":"0.0",
+        "numCteAnt":0
+    },{
+        "idContrato":50001950,
+        "status":"2",
+        "aliasContrato":"cb3.3",
+        "empresa":"Casa",
+        "cuentaEje":"0.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"NO ASESORADO",
+        "total":"0.0",
+        "numCteAnt":0
+    },{
+        "idContrato":7613185,
+        "status":"1",
+        "aliasContrato":"Sin Alias",
+        "empresa":"Banco",
+        "cuentaEje":"100.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"","total":"100.0","numCteAnt":0
+    },{
+        "idContrato":7613193,
+        "status":"1",
+        "aliasContrato":"Sin Alias",
+        "empresa":"Banco",
+        "cuentaEje":"0.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"",
+        "total":"0.0",
+        "numCteAnt":0
+    },{
+        "idContrato":7625692,
+        "status":"1",
+        "aliasContrato":"Sin Alias",
+        "empresa":"Banco",
+        "cuentaEje":"509570.0",
+        "cuentaInversiones":"0.0",
+        "tipoServicio":"NO ASESORADO",
+        "total":"509570.0",
+        "numCteAnt":0
+    }]
+}

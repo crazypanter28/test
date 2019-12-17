@@ -1,0 +1,49 @@
+@mixin pointBackground( $color) {
+
+    &:before{
+        background: $color;
+    }
+
+}
+
+label.point{
+    color: #767676;
+    margin-bottom: 0;
+
+    &:before{
+        content: "";
+        border-radius: 50%;
+        background: $gray3;
+        display: inline-block;
+        margin-right: 5px;
+        width: 10px;
+        height: 10px;
+
+    }
+
+
+    &.blue{
+         @include pointBackground( $blue8 );
+    }
+
+    &.yellow{
+         @include pointBackground( $yellow );
+    }
+
+
+    &.green,
+    &.AP{
+         @include pointBackground( #7ed321 );
+    }
+
+    &.red,
+    &.AV{
+         @include pointBackground( #ff001f );
+    }
+
+    &.orange,
+    &.FCV{
+         @include pointBackground( #ffd13a );
+    }
+
+}

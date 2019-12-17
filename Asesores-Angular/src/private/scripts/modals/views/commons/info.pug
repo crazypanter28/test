@@ -1,0 +1,14 @@
+include /views/mixins/buttons
+include /views/mixins/buttons
+
+
+img(
+    src="img/icons/information.svg",
+    alt="",
+    width="45",
+    height="45"
+)
+p(ng-bind-html="done.message")
+
+div.buttons
+    +btnSubmit( 'Aceptar', 'info' )(ngClick="done.done()")

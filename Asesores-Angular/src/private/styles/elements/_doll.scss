@@ -1,0 +1,616 @@
+.doll, .money-bank-doll{
+
+    .header{
+        > button{
+            box-shadow: inherit;
+            height: 40px;
+            text-align: center;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-family: 'Proxima Bold';
+            border-radius: 0;
+            outline: 0 !important;
+            border-bottom: none;
+
+            &.active{
+                border-bottom: 4px solid;
+            }
+
+            &.buy{
+                background: rgba($secondary-color, .5);
+                color: #f9a812;
+                border-bottom-color: $secondary-color;
+            }
+            &.sell{
+                background: rgba($blue8, .5);
+                color: #02b0b0;
+                border-bottom-color: $blue8;
+
+            }
+        }
+    }
+
+    .body{
+        background: #fefae5;
+        border: 1px solid $secondary-color;
+        border-top: 0;
+        min-height: 465px;
+        padding: 0 10px;
+
+        label {font-size: 12px;}
+
+        input{
+            background: white;
+        }
+
+        .anticiped-sell{
+            padding: 5px;
+            padding-top: 10px;
+
+            label{
+                font-size: 12px !important;
+            }
+        }
+
+        &.sell{
+            border-color: $blue8;
+            background-color: rgba(0, 190, 190, 0.1);
+            .purchasing-rules{
+                background-color: rgba(0, 190, 190, 0.1);
+            }
+
+            .informacion-doll{
+                margin-bottom: 8px;
+
+                .price{
+                    label{
+                        width: 100%;
+                    }
+                    div{
+                        border-radius: 2px;
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .order-execute{
+                .dates{
+                    p{
+                        font-size: 12px;
+                        text-align: left;
+                    }
+                }
+            }
+
+            hr{
+                border-color:$blue8;
+            }
+        }
+
+
+        &.confirm{
+            padding: 20px 15px;
+
+            h5{
+                font-size: 14px;
+                text-align: center;
+                margin: 0;
+                margin-bottom: 15px;
+
+                img{
+                    margin-bottom: 7px;
+                }
+            }
+
+            &.sell{
+                h5{
+                    color: #02b0b0;
+                }
+                .confirm-container{
+                    background: rgba(0, 190, 190, 0.2);
+                }
+            }
+
+            &.buy{
+                h5{
+                    color: #f6b209;
+                }
+                .confirm-container{
+                   
+                   background: rgba(249, 190, 0, 0.06);
+                    hr{
+                        border-color: #f6b209;
+                    }
+                }
+
+            }
+
+            .confirm-container{
+                padding: 13px 15px 18px 15px;
+
+
+                hr{
+                    border-color :$blue8;
+                }
+
+                .col-xs-6,
+                .col-xs-5,
+                .col-xs-7{
+                    color: $tertiary-color;
+                    font-size: 11px;
+                    line-height: 16px;
+                    padding: 0;
+
+                    &:last-child{
+                        font-family: "Proxima SemiBold";
+                    }
+                }
+
+                .col-xs-7{
+                    font-family: "Proxima SemiBold";
+                }
+
+                > .row:last-child{
+                    padding-top: 12px;
+                    .col-xs-6{
+                        font-size: 14px;
+                        font-family: 'Proxima Bold';
+                    }
+                }
+
+                .media{
+
+                    div.row{
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+
+        &.empty{
+            background-color:  #FEFAE5;
+
+            div.empty-container{
+                height: inherit;
+                display: table;
+                position: absolute;
+                width: calc( 100% - 35px );
+
+                div.empty-center{
+                    display: table-cell;
+                    padding-top: 40px;
+                    text-align: center;
+                    vertical-align: top;
+
+                    img{
+                        height: 210px;
+                        margin-bottom: 15px;
+                    }
+
+                    p{
+                        color: $blue4;
+                        font-size: 18px;
+                        line-height: 18px;
+                        margin-bottom: 0;
+
+                        &.label{
+                            display: block;
+                            font-size: 12px;
+                            margin-top: 75px;
+                            white-space: inherit;
+                        }
+                    }
+
+                    .station-description{
+                        font-family: 'Proxima SemiBold';
+                        text-transform: uppercase;
+                    }
+
+                }
+            }
+
+            &.init{
+                background-color: #FEFAE5;
+                div.empty-container{
+
+                    div.empty-center{
+                        padding-top: 90px;
+
+                        img{
+                            height: inherit;
+                        }
+                        .station-description{
+                            padding: 0 30px;
+                            text-transform: inherit;
+                        }
+                    }
+                }
+            }
+        }
+
+        .informacion-doll{
+            margin-top: 8px;
+
+            div{
+                padding: 0;
+            }
+
+            .search{
+                .form-group{
+                    width: 122px;
+                }
+            }
+            .price{
+
+                label{
+                    margin-bottom: 2px;
+                }
+            }
+
+        }
+
+        .purchasing-label{
+            background: rgba(60,134,246, 0.3);
+            color: $form-control-color;
+            font-size: 12px;
+            line-height: 20px;
+            max-height: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            padding: 6px 15px;
+            text-align: center;
+
+            p{
+                margin-bottom: 0;
+            }
+
+        }
+        .act-radio-custom{
+            padding-left: 15px;
+
+            span{
+                background: white;
+                border-width: 2px;
+                height: 10px;
+                margin-top: 4px;
+                margin-left: 0px;
+                width: 10px;
+
+                &:before{
+                    height: 4px;
+                    margin: 1px;
+                    width: 4px;
+                }
+            }
+        }
+
+        .purchasing-rules{
+            background:#FEFAE5;
+            margin: 0 -10px;
+            margin-bottom: 10px;
+            // max-height: 84px;
+            // overflow: hidden;
+            padding: 10px;
+
+            input[type="text"]{
+                display: inline-block;
+                width: 100px;
+            }
+
+            .accounts-bank{
+                label{
+                    font-size: 12px;
+                }
+                > label{
+                    margin-bottom: 0;
+                }
+
+                .account-data{
+                    margin-top: 5px;
+                    p{
+                        font-size: 10px;
+                        color: #898989;
+                        line-height: 11px;
+                        margin-bottom: 0;
+                    }
+
+                }
+            }
+
+            .type{
+
+                > label{
+                    font-size: 12px;
+                }
+
+                label{
+                    margin-bottom: 2px;
+                    margin-right: 2px;
+                }
+
+                input[type="text"]{
+                    text-align: right;
+                    background: white;
+                    width: 103px;
+                }
+
+            }
+
+            .date{
+                text-align: center;
+
+                label{
+                    font-size: 12px;
+                    line-height: 12px;
+                    padding-top: 15px;
+
+                    b{
+                        display: block;
+                        font-family: 'Proxima Bold';
+                    }
+                }
+            }
+        }
+
+        // .binnale-data{
+        //     input.form-control + i,
+        //     input.form-control + div + i,{
+        //         svg{
+        //             width: 10px;
+        //             height: 10px;
+        //         }
+        //     }
+        // }
+
+        .order-execute{
+
+            label{
+                font-size: 10px;
+                line-height: 10px;
+                margin: 2px;
+                text-align: center;
+            }
+            p{
+                font-size: 10px;
+                font-family: 'Proxima SemiBold';
+                text-align: center;
+                margin-bottom: 0;
+            }
+
+            div.col-xs-3{
+                padding: 0 3px;
+
+            }
+        }
+
+        .act-dropdown{
+            width: 122px;
+
+            button{
+                border-left: 1px solid $gray;
+                border-top: 1px solid $gray;
+                border-right:   1px solid $gray;
+                padding:  1px 0;
+                height: 17px;
+            }
+        }
+
+        .media{
+            overflow: inherit;
+
+            > div > label{
+                font-size: 10px;
+                margin-bottom: 2px;
+            }
+        }
+
+        .buttons{
+            margin-top: 15px;
+            margin-bottom: 25px;
+            text-align: right;
+
+            button{
+                float: right;
+
+                &:first-child{
+                    margin-left: 5px;
+                }
+
+                font-size: 10px;
+                height: 20px;
+                padding: 0;
+                width: 80px;
+            }
+        }
+
+        hr{
+            margin: 7px 0;
+            border-color: $secondary-color;
+        }
+
+        .form-group.has-icon i{
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        input.form-control{
+            border-left: 1px solid $gray;
+            border-top: 1px solid $gray;
+            border-right:   1px solid $gray;
+            font-size: 12px;
+            height: 20px;
+            padding: 0 5px;
+            width: 122px;
+
+            + i,
+            + div + i{
+                margin-right: 5px;
+                margin-top: 2px;
+
+                svg{
+                    height: 12px;
+                    width: 12px;
+                }
+            }
+        }
+
+        .form-group{
+            margin-bottom: 5px;
+
+            label{
+                font-size: 12px;
+                margin-bottom: 2px;
+            }
+        }
+    }
+
+    // Binnacle form
+    .binnacle-form {
+        hr {margin: 5px 0 11px 0;}
+        label {font-size: 12px !important;}
+        .row {padding-bottom: 8px;}
+        .ow-hidden {overflow: hidden;}
+        .form-group {margin-bottom: 0;}
+        .act-dropdown button {
+            height: 19px !important; padding: 0px 20px 0 5px !important; font-size: 12px !important; line-height: 20px !important;
+            .glyphicon {margin-top: 1px;}
+
+            // States
+            &:active {@include box-shadow(none);}
+        }
+        .media {margin-bottom: 0;}
+    }
+
+}
+
+
+/** Doll-capitals **/
+.doll.capitals{
+    .body{
+        min-height: 490px;
+        // overflow: hidden;
+        &.sell{
+            background: rgba(0,190,190,0.1);
+        }
+
+        &.buy{
+            background: #fefae5;
+        }
+
+        input{
+            background: white;
+            width: 100% !important;
+        }
+    }
+
+    select{
+        background: white;
+        font-size: 12px;
+        height: 20px;
+        margin-top: 2px;
+        padding: 3px 5px;
+    }
+
+    .purchasing-rules{
+        padding:  10px 15px;
+
+        &.sell{
+            background: rgba(0,190,190,0.1);
+        }
+
+        &.buy{
+            background: #fefae5;
+        }
+
+        .model-doll{
+            margin-top: 20px;
+
+            .col-xs-4{
+                padding-left: 0;
+                padding-right: 10px;
+
+                &:first-child,
+                &:nth-child(4){
+                    padding-left: 0;
+                }
+
+                &:nth-child(3){
+                    padding-left: 10px;
+                    padding-right: 0;
+                }
+
+                input{
+                    background: white;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+    .order-options{
+
+        .act-radio-custom{
+            margin-right: 6px;
+        }
+    }
+
+    .specific-time{
+        .form-inline{
+            display: inline;
+
+            input{
+                width: 72px;
+            }
+        }
+    }
+
+    .purchasing-label{
+        padding: 6px  0 !important;
+
+        b{
+            font-family: 'Proxima SemiBold';
+        }
+    }
+}
+/** end Doll-capitals **/
+
+// Bank doll
+.table-report-bank {
+    .no-data {text-align: center !important;}
+}
+.money-bank-doll {
+    .header {
+        .btn {
+            cursor: default !important;
+            &.selected {cursor: pointer !important;}
+            &.active {cursor: default;}
+        }
+    }
+    .act-radio-custom {display: inline-block !important;}
+    .date {
+        &, label {text-align: center !important;}
+    }    
+    .money-bank-doll-form .money-market-process {
+        padding: 10px 0 !important;
+        .purchasing-rules .float-right > div {margin: 5px 0; text-align: right;}
+    }
+}
+
+.dollScroll{
+    .nano>.nano-content{max-height: 100px; padding-right: 10px; }
+}
+.dollScrollTable{
+    .nano>.nano-content{max-height: 710px; padding-right: 10px; }
+}
+.labellumina{
+    color: #4A4A4A;
+    font-size: 12px;
+    padding-left: 0px;
+}
+.dollScrollDetail{
+    .nano>.nano-content{max-height: 180px; padding-right: 10px; }
+}
+.dollScrollDetailOtherAcounts{
+    .nano>.nano-content{max-height: 320px; padding-right: 10px; }
+}

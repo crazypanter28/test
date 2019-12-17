@@ -1,0 +1,22 @@
+{
+   "response":{
+      "status":1,
+      "messages":[
+         {
+            "type":"N",
+            "criticality":"INFO",
+            "code":"AC000",
+            "description":"OK"
+         }
+      ],
+      "result":{
+         "idSponsor":732,
+         "numContrato":244596,
+         "origen":"CB",
+         "nombreCliente":"CAMILO MAURICIO SADA GOMEZ",
+         "fechaNacimiento":"19460420",
+         "edad":71,
+         "valid":true
+      }
+   }
+}

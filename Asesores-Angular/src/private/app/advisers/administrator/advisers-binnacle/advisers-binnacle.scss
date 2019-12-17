@@ -1,0 +1,98 @@
+.advisers_binnacle {
+
+
+    .container-section-date-range {
+        margin: 20px 22px;
+
+
+        .date-range {
+            display: inline-block;
+            margin-right: 10px;
+            width: 250px;
+        }
+    }
+
+
+    .container-section-query-messages {
+        margin: 20px 22px;
+
+
+        label {
+            margin-bottom: 0;
+        }
+
+
+        .container-select {
+            display: inline-block;
+            width: 200px;
+        }
+    }
+
+    .container-view-message {
+        margin: 0;
+        padding: 20px;
+
+
+        .views, .info-message {
+            border: 1px solid #517cbd;
+            min-height: 235px;
+            padding: 0;
+            width: calc( 50% - 5px );
+
+
+            .title {
+                background: #517cbd;
+                color: white;
+                padding: 6px 18px;
+            }
+        }
+
+
+        .info-message {
+            margin-right: 10px;
+
+
+            .content-view-message {
+
+
+                .field {
+                    overflow: hidden;
+                    padding: 5px 0;
+
+
+                    .field-name {
+                        color: #0f3f88;
+                        float: left;
+                        font-weight: bold;
+                        text-align: right;
+                        width: 150px;
+                    }
+
+
+                    .field-value {
+                        color: #6f91c9;
+                        float: right;
+                        width: calc( 100% - 160px );
+                    }
+                }
+            }
+        }
+
+
+        .views {
+
+
+            .list-view {
+                margin: 0;
+
+
+                .item-view {
+                    color: #6f91c9;
+                    line-height: 14px;
+                    margin: 10px 0;
+                    padding: 0 9px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+.derivatives {
+
+    .ng-table {
+
+        thead {
+            background: #8caee1;
+        }
+    }
+
+
+    .csv {
+        margin-top: 20px;
+        .sub-title {
+            background: #00bebe;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        .textarea {
+            width: 100%;
+            height: 100px;
+            resize: none;
+            padding: 10px;
+        }
+    }
+
+    .buttons {
+        text-align: right;
+        .btn {
+            margin: 5px;
+        }
+    }
+}

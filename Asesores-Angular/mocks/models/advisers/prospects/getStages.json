@@ -1,0 +1,33 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idStage": 1,
+		"description": "Identificación de Prospecto"
+	}, {
+		"idStage": 2,
+		"description": "Contacto establecido"
+	}, {
+		"idStage": 3,
+		"description": "Entrevista"
+	}, {
+		"idStage": 7,
+		"description": "Propuesta"
+	},{
+		"idStage": 4,
+		"description": "Cierre"
+	}, {
+		"idStage": 5,
+		"description": "Fondeo de contrato de inversión"
+	}, {
+		"idStage": 6,
+		"description": "Baja de Prospecto"
+	}
+
+]
+}

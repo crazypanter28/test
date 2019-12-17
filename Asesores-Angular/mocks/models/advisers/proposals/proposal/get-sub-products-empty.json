@@ -1,0 +1,14 @@
+{
+   "status":2,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"No se encontraron productos"
+      }
+   ],
+   "result":[
+
+   ]
+}

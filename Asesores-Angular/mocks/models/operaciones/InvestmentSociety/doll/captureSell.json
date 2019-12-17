@@ -1,0 +1,64 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"ecd14ae5-66ed-4057-951d-4037186ee94e",
+            "messages":[
+                {
+                    "responseSystemCode":"ACACBCWS0096",
+                    "responseMessage":"NO HAY NINGUN ERROR",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1493787600000,
+        "time":60759000,
+        "clientID":"NBURSANET",
+        "sessionID":"",
+        "responseSystem":"A2K",
+        "operationName":"FundOrderRegistration",
+        "operationVersion":"1_1",
+        "ipaddress":""
+    },
+    "outFundOrderRegistration":{
+        "fundOrderResult":{
+            "firstOrderReference":"8132288" ,
+            "secondOrderRefere47nce":"0",
+            "retirementReference":"0",
+            "clabe":"0",
+            "issuerSeller":{
+                "fundType":"1",
+                "issuerName":"ACTIREN",
+                "serie":"B-1",
+                "movementType":"1",
+                "operationDate":1493787600000,
+                "settlementDate":1493787600000,
+                "price":"7.142944",
+                "titlesQty":10,
+                "amount":71.43,
+                "sellFee":"0",
+                "vat":0.0,
+                "registrationType":"IMPORTE",
+                "netAmount":71.43,
+                "operationDateTime":1493826758000
+            },
+            "issuerBuyer":{
+                "fundType":"0",
+                "issuerName":" ",
+                "serie":"",
+                "operationDate":null,
+                "settlementDate":null,
+                "price":"0",
+                "titlesQty":0,
+                "amount":0.0,
+                "sellFee":"0",
+                "vat":0.0,
+                "registrationType":"",
+                "netAmount":0.0,
+                "operationDateTime":1493826758000
+            }
+        }
+    }
+}

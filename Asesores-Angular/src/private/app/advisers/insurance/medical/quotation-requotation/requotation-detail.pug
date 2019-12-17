@@ -1,0 +1,268 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+.content-panel(ng-if= "medicalCtrl.steps.recotizacion")
+    .row
+        .col-xs-12
+            #accordionDetalleCotizacion.accordion
+                .card
+                    #headDetalleCotizacion.card-header
+                        .row(style="cursor : pointer;")
+                            .collapsed(type='button', data-toggle='collapse', data-target='#collapseDetalleCotizacion', aria-expanded='false', aria-controls='collapseDetalleCotizacion')
+                                .col-xs-12.centradoMedicalVertical
+                                    .col-xs-5.centradoMedicalVertical
+                                        h3.margenes10px Detalle de Cotización
+                                    .col-xs-6
+                                        h4.margenes10px {{medicalCtrl.jsonCotizacion.quotationNumber}}
+                                    .col-xs-1(class = "text-right ")
+                                        i(class= "fa fa-sort-desc")
+                    #collapseDetalleCotizacion.collapse(aria-labelledby='headDetalleCotizacion', data-parent='#accordionDetalleCotizacion'
+                        ng-class="{in: medicalCtrl.collapseInClassRequotationDetail}")
+                        .card-body
+                          table#tablaOfertaComercial(ng-focus="medicalCtrl.collapseInClassRequotationDetail")
+                            thead
+                              tr
+                                td(colspan="3" class=" formatoLetrasContenidoTabla col-md-6 padding bordersMedical") Formas de pago
+                                td(
+                                    class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-repeat="paq in medicalCtrl.paquetes") {{paq.nom_paquete}}
+                            tbody(class="colorTableDetail")
+                              tr
+                                td#contado(colspan="3" class="col-md-6 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 0}"
+                                    )
+                                    .formatoLetrasTituloTabla {{medicalCtrl.formasPago[0].pagoDesc}}
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[0].pagos[0].montos"
+                                    id="monto_{{medicalCtrl.formasPago[0].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 0, $index, 0)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[0][$index][0]}"
+                                    ) {{mont.monto | currency}}
+                              tr
+                                td#semestral(colspan="2" rowspan="2" class="col-md-4 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 1}"
+                                    )
+                                    .formatoLetrasTituloTabla {{medicalCtrl.formasPago[1].pagoDesc}}
+                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 1}"
+                                    ) {{medicalCtrl.formasPago[1].pagos[0].numPagos}} Pago de
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[1].pagos[0].montos"
+                                    id="monto_{{medicalCtrl.formasPago[1].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 1, $index, 0)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[1][$index][0] || medicalCtrl.cajasMontos[1][$index][1]}"
+                                    ) {{mont.monto | currency}}
+                              tr
+                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 1}"
+                                    ) {{medicalCtrl.formasPago[1].pagos[1].numPagos}} Pago de
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[1].pagos[1].montos"
+                                    id="monto_{{medicalCtrl.formasPago[1].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 1, $index, 1)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[1][$index][0] || medicalCtrl.cajasMontos[1][$index][1]}"
+                                    ) {{mont.monto | currency}}
+                              tr
+                                td#trimestral(colspan="2" rowspan="2" class="col-md-4 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 2}"
+                                    )
+                                    .formatoLetrasTituloTabla {{medicalCtrl.formasPago[2].pagoDesc}}
+                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 2}"
+                                    ) {{medicalCtrl.formasPago[2].pagos[0].numPagos}} Pago de
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[2].pagos[0].montos"
+                                    id="monto_{{medicalCtrl.formasPago[2].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 2, $index, 0)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[2][$index][0] || medicalCtrl.cajasMontos[2][$index][1]}"
+                                    ) {{mont.monto | currency}}
+                              tr
+                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 2}"
+                                    ) {{medicalCtrl.formasPago[2].pagos[1].numPagos}} Pagos de
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[2].pagos[1].montos"
+                                    id="monto_{{medicalCtrl.formasPago[2].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 2, $index, 1)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[2][$index][0] || medicalCtrl.cajasMontos[2][$index][1]}"
+                                    ) {{mont.monto | currency}}
+                              tr
+                                td#mensual(colspan="2" rowspan="2" class="col-md-4 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 3}"
+                                    )
+                                    .formatoLetrasTituloTabla {{medicalCtrl.formasPago[3].pagoDesc}}
+                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 3}"
+                                    ) {{medicalCtrl.formasPago[3].pagos[0].numPagos}} Pago de
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[3].pagos[0].montos"
+                                    id="monto_{{medicalCtrl.formasPago[3].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 3, $index, 0)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[3][$index][0] || medicalCtrl.cajasMontos[3][$index][1]}"
+                                    ) {{mont.monto | currency}}
+                              tr
+                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedical"
+                                    ng-class="{colorTableSelected:medicalCtrl.indexFormaPago === 3}"
+                                    ) {{medicalCtrl.formasPago[3].pagos[1].numPagos}} Pagos de
+                                td.formatoLetrasContenidoTabla.text-center.col-md-2.padding.bordersMedical.cursorPointer(
+                                    ng-repeat="mont in medicalCtrl.formasPago[3].pagos[1].montos"
+                                    id="monto_{{medicalCtrl.formasPago[3].pagoID}}_{{mont.cod_paquete}}"
+                                    ng-click="medicalCtrl.colorTablaMontos($event, 3, $index, 1)"
+                                    ng-class="{colorTableSelected: medicalCtrl.cajasMontos[3][$index][0] || medicalCtrl.cajasMontos[3][$index][1]}"
+                                    ) {{mont.monto | currency}}
+                        div
+                            a(ng-dblclick="medicalCtrl.toggleCoberturaText === 'OCULTAR' ? medicalCtrl.toggleCoberturaText = 'MOSTRAR': medicalCtrl.toggleCoberturaText = 'OCULTAR'" ng-click="medicalCtrl.toggleCoberturaText === 'OCULTAR' ? medicalCtrl.toggleCoberturaText = 'MOSTRAR': medicalCtrl.toggleCoberturaText = 'OCULTAR'" class="btn btn-link" data-toggle="collapse" data-target="#divCoberturas" aria-expanded="false" aria-controls="divCoberturas")
+                                span {{medicalCtrl.toggleCoberturaText}} coberturas
+                        #divCoberturas.collapse.in
+                            .card.card-body
+                                .row
+                                    .col-xs-12
+                                        table(style="border-bottom:0px;")
+                                            tr
+                                                td.formatoLetrasContenidoTabla.text-center.col-md-3.padding.bordersMedicalNoBottom 
+                                                td.formatoLetrasContenidoTabla.text-center.col-md-3.padding.bordersMedicalNoBottom.colorFondoMedical Límite máximo
+                                                td(class="formatoLetrasContenidoTabla text-center col-md-2 padding bordersMedicalNoBottom colorTableSelected1 negritas"
+                                                    ng-repeat="paq in medicalCtrl.paquetes") {{paq.nom_paquete}}
+                                div                
+                                .row
+                                    .col-xs-12
+                                        #accordionCoberturaElemental.accordion
+                                            .card
+                                                #headCoberturaElemental.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseCoberturaElemental', aria-expanded='false', aria-controls='collapseCoberturaElemental')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse1}"  ng-dblclick="medicalCtrl.toggleColapse(0);medicalCtrl.colapse1 = medicalCtrl.colapse1 ? false : true" ng-click="medicalCtrl.toggleColapse(0);medicalCtrl.colapse1 = medicalCtrl.colapse1 ? false : true" style="margin-top:0px")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[0].grupo_desc}}
+                                                                i(class= "margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[0], 'fa-sort-up': medicalCtrl.flechasCollapse[0],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[0],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[0]}")
+                                                #collapseCoberturaElemental.collapse(aria-labelledby='headCoberturaElemental', data-parent='#accordionCoberturaElemental')
+                                                    .card-body     
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-01-elemental
+                                .row
+                                    .col-xs-12
+                                        #accordionTuRecuperacion.accordion
+                                            .card
+                                                #headTuRecuperacion.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseTuRecuperacion', aria-expanded='false', aria-controls='collapseTuRecuperacion')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse2}" ng-dblclick="medicalCtrl.toggleColapse(1);medicalCtrl.colapse2 = medicalCtrl.colapse2 ? false : true" ng-click="medicalCtrl.toggleColapse(1);medicalCtrl.colapse2 = medicalCtrl.colapse2 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[1].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[1],'fa-sort-up': medicalCtrl.flechasCollapse[1],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[1],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[1]}")
+                                                #collapseTuRecuperacion.collapse(aria-labelledby='headTuRecuperacion', data-parent='#accordionTuRecuperacion')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-02-recovery
+                                .row
+                                    .col-xs-12
+                                        #accordionTuRecuperacionPlus.accordion
+                                            .card
+                                                #headTuRecuperacionPlus.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseTuRecuperacionPlus', aria-expanded='false', aria-controls='collapseTuRecuperacionPlus')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse3}" ng-dblclick="medicalCtrl.toggleColapse(2);medicalCtrl.colapse3 = medicalCtrl.colapse3 ? false : true" ng-click="medicalCtrl.toggleColapse(2);medicalCtrl.colapse3 = medicalCtrl.colapse3 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[2].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[2],'fa-sort-up': medicalCtrl.flechasCollapse[2],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[2],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[2]}")
+                                                #collapseTuRecuperacionPlus.collapse(aria-labelledby='headTuRecuperacionPlus', data-parent='#accordionTuRecuperacionPlus')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-03-recovery-plus
+                                .row
+                                    .col-xs-12
+                                        #accordionAtencionAlter.accordion
+                                            .card
+                                                #headAtencionAlter.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseAtencionAlter', aria-expanded='false', aria-controls='collapseAtencionAlter')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse4}" ng-dblclick="medicalCtrl.toggleColapse(3);medicalCtrl.colapse4 = medicalCtrl.colapse4 ? false : true" ng-click="medicalCtrl.toggleColapse(3);medicalCtrl.colapse4 = medicalCtrl.colapse4 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[3].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[3],'fa-sort-up': medicalCtrl.flechasCollapse[3],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[3],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[3]}")
+                                                #collapseAtencionAlter.collapse(aria-labelledby='headAtencionAlter', data-parent='#accordionAtencionAlter')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-04-alternative
+                                .row
+                                    .col-xs-12
+                                        #accordionDondeVayas.accordion
+                                            .card
+                                                #headDondeVayas.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseDondeVayas', aria-expanded='false', aria-controls='collapseDondeVayas')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse5}" ng-dblclick="medicalCtrl.toggleColapse(4);medicalCtrl.colapse5 = medicalCtrl.colapse5 ? false : true" ng-click="medicalCtrl.toggleColapse(4);medicalCtrl.colapse5 = medicalCtrl.colapse5 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[4].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[4],'fa-sort-up': medicalCtrl.flechasCollapse[4],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[4],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[4]}")
+                                                #collapseDondeVayas.collapse(aria-labelledby='headDondeVayas', data-parent='#accordionDondeVayas')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-05-wherever-you-go
+                                .row(ng-if="medicalCtrl.grupos[5]")
+                                    .col-xs-12
+                                        #accordionTuProteccion.accordion
+                                            .card
+                                                #headTuProteccion.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseTuProteccion', aria-expanded='false', aria-controls='collapseTuProteccion')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse6}" ng-dblclick="medicalCtrl.toggleColapse(5);medicalCtrl.colapse6 = medicalCtrl.colapse6 ? false : true" ng-click="medicalCtrl.toggleColapse(5);medicalCtrl.colapse6 = medicalCtrl.colapse6 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[5].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[5],'fa-sort-up': medicalCtrl.flechasCollapse[5],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[5],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[5]}")
+                                                #collapseTuProteccion.collapse(aria-labelledby='headTuProteccion', data-parent='#accordionTuProteccion')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-06-protection
+                                .row(ng-if="medicalCtrl.grupos[6]")
+                                    .col-xs-12
+                                        #accordionTuSoporteAsis.accordion
+                                            .card
+                                                #headTuSoporteAsis.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseTuSoporteAsis', aria-expanded='false', aria-controls='collapseTuSoporteAsis')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse7}" ng-dblclick="medicalCtrl.toggleColapse(6);medicalCtrl.colapse7 = medicalCtrl.colapse7 ? false : true" ng-click="medicalCtrl.toggleColapse(6);medicalCtrl.colapse7 = medicalCtrl.colapse7 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[6].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[6],'fa-sort-up': medicalCtrl.flechasCollapse[6],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[6],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[6]}")
+                                                #collapseTuSoporteAsis.collapse(aria-labelledby='headTuSoporteAsis', data-parent='#accordionTuSoporteAsis')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-07-assistance-support
+                                .row(ng-if="medicalCtrl.grupos[7]")
+                                    .col-xs-12
+                                        #accordionTuEscudo.accordion
+                                            .card
+                                                #headTuEscudo.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseTuEscudo', aria-expanded='false', aria-controls='collapseTuEscudo')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse8}" ng-dblclick="medicalCtrl.toggleColapse(7);medicalCtrl.colapse8 = medicalCtrl.colapse8 ? false : true" ng-click="medicalCtrl.toggleColapse(7);medicalCtrl.colapse8 = medicalCtrl.colapse8 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[7].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[7],'fa-sort-up': medicalCtrl.flechasCollapse[7],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[7],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[7]}")
+                                                #collapseTuEscudo.collapse(aria-labelledby='headTuEscudo', data-parent='#accordionTuEscudo')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-08-shield
+                                .row(ng-if="medicalCtrl.grupos[8]")
+                                    .col-xs-12
+                                        #accordionDiasSeguros.accordion
+                                            .card
+                                                #headDiasSeguros.card-header
+                                                    .row
+                                                        .collapsed(type='button', data-toggle='collapse', data-target='#collapseDiasSeguros', aria-expanded='false', aria-controls='collapseDiasSeguros')
+                                                            div(class="{{medicalCtrl.colorCollapsables}} displaySpaceBetween" ng-class="{colorCollapsablesSelected:medicalCtrl.colapse9}" ng-dblclick="medicalCtrl.toggleColapse(8);medicalCtrl.colapse9 = medicalCtrl.colapse9 ? false : true" ng-click="medicalCtrl.toggleColapse(8);medicalCtrl.colapse9 = medicalCtrl.colapse9 ? false : true")
+                                                                h4.margenes10px.display-inline-block {{medicalCtrl.grupos[8].grupo_desc}}
+                                                                i(class= " margenMedicalDerecha fa" ng-class="{'fa-sort-desc': !medicalCtrl.flechasCollapse[8],'fa-sort-up': medicalCtrl.flechasCollapse[8],'margenMedicalInferior' : !medicalCtrl.flechasCollapse[8],'margenMedicalSuperior' : medicalCtrl.flechasCollapse[8]}")
+                                                #collapseDiasSeguros.collapse(aria-labelledby='headDiasSeguros', data-parent='#accordionDiasSeguros')
+                                                    .card-body
+                                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-detail-09-safety-days
+                                .row
+                                    include /app/advisers/insurance/medical/quotation-requotation/requotation-summary                                          
+                                    .row
+                                        .col-xs-12.text-center
+                                            +btnWithIcon( 'Recotizar', 'btn-primary btn-space', 'medicalCtrl.recotizacionDisabled')(ngClick="medicalCtrl.goRecotizacion();")   
+                                        
+                                    .row
+                                        .col-xs-3
+                                        .col-xs-7
+                                            .form-group.col-lg-10.pf.margenMedicalSuperior.margenMedicalInferior
+                                                label.col-md-4.control-label
+                                                    p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo electrónico
+                                                .col-md-8
+                                                    input(type="input" name="emailUser" placeholder="correo@email.com"
+                                                        ng-model="medicalCtrl.email"
+                                                        ng-pattern="/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/"
+                                                        required maxlength="50" style="text-transform: uppercase;").form-control                                         
+                                        .col-xs-5 
+                                    .row
+                                        .col-xs-12.text-center
+                                            +btnWithIcon( 'Enviar Email', 'btn-primary btn-space', 'medicalCtrl.emailDisabled || !medicalCtrl.email')(ngClick="sendEmail('cotizacion')")   
+                                            +btnWithIcon( 'Contratar', 'btn-primary btn-space')(ngClick="medicalCtrl.goEmision()")   
+                                            +btnWithIcon( 'Cancelar', 'btn-primary btn-space')(ngClick="medicalCtrl.goRegresarMain()")                                            
+

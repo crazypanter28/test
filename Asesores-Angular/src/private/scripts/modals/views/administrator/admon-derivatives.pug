@@ -1,0 +1,18 @@
+include /views/mixins/radio-button
+
+
+.title-modal {{'nuevo derivado'}}
+form( name="$form" novalidate)
+    .container-modal
+
+        .row
+            .form-group.col-xs-6
+                label Nombre de Derivado3 #[span.require *]
+                input.form-control(type="text" ng-model="ctrl.fav.name" uib-typeahead="state for state in ctrl.states | filter:$viewValue | limitTo:8" required="true")
+            .form-group.col-xs-6
+                label Serie #[span.require *]
+                input.form-control( placeholder='---' ng-model="ctrl.fav.serie" required="true")
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+        button.btn.btn-primary( title="GENERAR" ng-disabled="$form.$invalid" ng-click="ctrl.done()") GUARDAR

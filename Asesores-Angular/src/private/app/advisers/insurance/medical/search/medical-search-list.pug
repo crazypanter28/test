@@ -1,0 +1,59 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+.content-panel(ng-if= "medicalCtrl.steps.search")
+    .row
+        .col-xs-8.col-xs-offset-2
+            .row
+                .col-xs-4
+                    img.img-responsive( src="img/bg/seguros-medicos.jpg" )
+                .col-xs-8
+                    h4 Seguro de Gastos Médicos. Protección Médica A Tu Medida
+                    p( style="font-size: 13px; font-weight: bold;") Cotizaciones vigentes por usuario
+    .row
+        .col-xs-4
+            input(type="text"
+                id="seaarch"
+                name="search" placeholder="Buscar"
+                ng-model="medicalCtrl.searchQuotation").form-control.upperCaseInput
+    .row
+        .col-xs-12
+            table.table.table-striped
+                thead
+                    tr
+                        th
+                            h4 Cotización
+                        th
+                            h4 Nombre de cliente
+                        th
+                            h4 Fecha de cotización
+                        th
+                            h4 Vigencia
+                        th
+                            h4 Prima
+                        th
+
+                tbody
+                    tr(dir-paginate="q in medicalCtrl.responseAvailableQuotation | filter: medicalCtrl.searchQuotation | itemsPerPage : '4'")
+                        th.text-center
+                            h5 {{q.idCotizacion}}
+                        th.text-center
+                            h5 {{q.nombreCompleto}}
+                        th.text-center
+                            h5 {{q.fechaCotizacion}}
+                        th.text-center
+                            h5 {{q.vigenciaCotizacion}}
+                        th.text-center
+                            h5 {{q.monto | currency: '$':'2'}}
+                        th
+                            +btnWithIcon( 'Emitir', 'btn-primary btn-space')(ngClick="medicalCtrl.emitFromQuotation(q)")
+        .col-xs-8.col-xs-offset-2
+            div.text-center
+                dir-pagination-controls(boundary-links='true', template-url='/scripts/paginator/paginator.html')
+    .row
+        .col-xs-3
+        .col-xs-1
+        .col-xs-7
+            +btnWithIcon( 'Cotizar', 'btn-primary btn-space')(ngClick="medicalCtrl.goDatosRiesgo()")
+            //- +btnWithIcon( 'Emitir', 'btn-primary btn-space')(ngClick="medicalCtrl.goEmision()")

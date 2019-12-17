@@ -1,0 +1,50 @@
+mixin thCaret( text, model)
+    th( ng-click="sortType = '"+ model +"'; sortReverse = !sortReverse;"
+        ng-if!=attributes.ngIf
+        ng-show!=attributes.ngShow
+        class!=attributes.class
+        rowspan = '2'
+    )
+        span
+            | #{text}
+            i( class="fa" aria-hidden="true",
+                ng-class="{ 'fa-caret-down' : sortType === '"+ model +"' && sortReverse || sortType !== '"+ model +"' , 'fa-caret-up' : sortType === '"+ model +"' && !sortReverse}"
+            )
+mixin thCaretGral( text, model )
+    th( ng-click="aux.sortType = '"+ model +"'; aux.sortReverse = !aux.sortReverse;"
+        ng-if!=attributes.ngIf
+        ng-show!=attributes.ngShow
+        class!=attributes.class
+    )
+        span
+            | #{text}
+            i( class="fa" aria-hidden="true",
+                ng-class="{ 'fa-caret-down' : aux.sortType === '"+ model +"' && aux.sortReverse || aux.sortType !== '"+ model +"' , 'fa-caret-up' : aux.sortType === '"+ model +"' && !aux.sortReverse}"
+            )
+
+mixin thGral()
+    th( ng-if!=attributes.ngIf
+        ng-show!=attributes.ngShow
+        class!=attributes.class
+    )
+        span
+
+mixin trLoading( _height, _model )
+    tr(style="height: "+ _height+"px;" ng-show=_model)
+        td.content-spinner(
+            colspan!=attributes.colspan
+        )
+            .spinner
+
+mixin tableInvstment( _model )
+    table
+        tr( id="illuminate-capital-td-selected-sell" style="cursor:pointer;" ng-repeat="order in " + _model + " | orderBy:sortType:sortReverse"  ng-click="ChangeDoll(order)" )
+            td( ng-bind="order.issuer +' '+ order.serie" )
+            td( ng-if="type" ng-bind="order.finalPosition" )
+            td( ng-if="!type" ng-bind="order.finalPosition" )
+            td( ng-bind="order.virtualCost| number" )
+            td( ng-bind="order.weightedLastPrice | currency" )
+            td( ng-bind="order.valuationLastPrice | currency" )
+            td( ng-bind="order.capitalGain | currency" )
+            td {{order.accumulatedVariance | limitTo:4}}
+                i.fa( ng-class="{'fa-arrow-circle-up': order.accumulatedVariance > 0, 'fa-arrow-circle-down': order.accumulatedVariance  < 0, 'fa-minus-circle':  order.accumulatedVariance  === 0 }" )

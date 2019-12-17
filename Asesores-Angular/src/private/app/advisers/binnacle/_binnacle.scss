@@ -1,0 +1,519 @@
+//
+// _binnacle.scss
+//
+// It reflects styles for binnacle page
+//
+
+/**
+ * -------------------------
+ * @section Binnacle page
+ * -------------------------
+*/
+.binnacle-page, .common-page {
+    .form-group {
+        margin-bottom: 15px;
+        .act-radio-custom {
+            height: 18px; margin-right: 25px; padding-left: 25px; line-height: 20px;
+            .css-label {margin-left: 0;}
+        }
+    }
+    .note {font-size: 12px; color: #0072bc;}
+
+    // Loader wraper
+    .loader-wrapper {
+        position: relative; height: 160px; margin-bottom: 3px;
+        .spinner {font-size: 14px;}
+    }
+
+    // No results
+    .no-results {
+        padding: 30px; border: 0px solid #d2cfcd; text-align: center; font-size: 25px; line-height: 31px; font-weight: 400; color: #b4b4b4; @include remove-child-margin-bottom;
+        img {width: 180px; margin-bottom: 30px;}
+        strong {font-weight: 600;}
+
+        // Types
+        &.no-binnacle {padding: 10px; border: 0;}
+    }
+
+    // Panel
+    .tab-content {
+        padding-bottom: 0;
+        > div {@include remove-child-margin-bottom;}
+    }
+    .panel {margin-bottom: 20px; border: 0; @include box-shadow(none);}
+    .panel-default .panel-default {margin: 0 -21px;}
+    .panel-default > .panel-heading {
+        position: relative; padding: 0; background-color: #0f3f88; @include rounded(0); border: 0; color: $white;
+        .panel-title {
+            font-family: "Proxima Semibold"; font-weight: 400;
+            > a, > span {display: block; padding: 4px 50px 3px 15px; font-size: 15px; line-height: 19px; text-decoration: none;}
+        }
+        .direction-arrow, .status {position: absolute; @include vertical-middle; right: 15px;}
+        .direction-arrow {font-size: 22px;}
+        .status {
+            width: 12px; height: 12px; @include rounded(12px); background: $primary-color;
+
+            //Types
+            &.expired {background-color: rgb(250, 89, 109);}
+            &.soon {background-color: rgb(255, 186, 57);}
+            &.all {background-color: #00be66}
+        }
+    }
+    .panel-default + .back {
+        margin-top: 15px; text-align: right;
+        .btn {min-width: 120px;}
+    }
+    .panel-body {
+        padding: 20px; border: 1px solid #195dc4; border-top: 0px; @include remove-child-margin-bottom;
+
+        .panel-default:last-child {margin-bottom: -21px;}
+        .panel-default > .panel-heading {background-color: #1750a7;}
+    }
+
+    // List
+    table {
+        margin-bottom: 10px; border: 1px solid #d2cfcd; line-height: 14px; font-weight: 600;
+        th, td {vertical-align: middle !important; text-align: center;}
+        thead th {height: 40px; background: #1750a7; border-bottom: 0 !important; font-family: "Proxima Semibold"; font-size: 13px; line-height: 17px; font-weight: 400; color: $white;}
+        tbody td {border: none; font-size: 12px; line-height: 14px; color: #767676;}
+        tr:nth-child(even) td {background-color: rgba(#00bebe, .11);}
+        .rating {font-size: 14px; font-weight: 700;}
+        .status {   
+            @include in-block; width: 10px; height: 10px; @include rounded(10px);
+
+            // Types
+            &.success {background-color: #00be66;}
+            &.error {background-color: #F00;}
+        }
+        .felicitaciones {
+            @include in-block; width: 22px; cursor: pointer;
+            background: url("../img/icons/mail-gray.svg") no-repeat;
+            background-size: 13px; text-indent: -9999em;
+            &:hover {background-image: url("../img/icons/mensaje_info.svg");}                        
+        }
+        .view-detail2 {
+            @include in-block; width: 22px; height: 11px; cursor: pointer;
+            background: url("../img/icons/view-more-disabled.svg") no-repeat;
+            background-size: 22px 11px; text-indent: -9999em;
+
+            &:hover {background-image: url("../img/icons/view-more.svg");}
+        }
+        .view-details {
+            @include in-block; width: 22px; height: 11px; cursor: pointer;
+            background: url("../img/icons/prospects/icon_reactivar.svg") no-repeat;
+            background-size: 22px 11px; text-indent: -9999em;
+
+            // Sta;tes
+            &:hover {background-image: url("../img/icons/prospects/icon_reactivarActive.svg");}
+        }
+    }
+
+    // Detailed info
+    .detailed-info {
+        font-family: "Proxima Light"; font-size: 14px; color: #767676;
+        label {display: block; margin: 0; font-family: "Proxima Regular";  color: #4a4a4a;}
+        .row {margin-bottom: 20px;}
+    }
+
+    .operative-binnacle-bank, .operative-binnacle-stock-exchange {
+        .date-range {
+            margin-bottom: 30px;
+        }
+        .to-print {
+            float: right;
+            margin-top: -20px;
+        }
+    }
+
+    // Search field
+    .common-block-search .search-field {
+        margin-bottom: 20px;
+        label {display: block; margin-bottom: 3px;}
+        .form-control {height: 30px; padding: 0 40px 0 0;}
+    }
+}
+
+/**
+ * -------------------------
+ * @section Search list block
+ * -------------------------
+*/
+.search-list-block {
+    @include remove-child-margin-bottom;
+    table {margin-bottom: 0;}
+    .ng-table-pager {margin-top: 15px; overflow: hidden;}
+
+    // Pagination
+    ul.pagination {
+        display: block; margin: 0; float: right;
+        li {
+
+            // States
+            &:hover a {background-color: transparent;}
+            &.active a {background: #0f3f88; border-color: #0f3f88; color: $white;}
+
+            // Childs
+            &:first-child, &:last-child {
+                a {text-align: center; border-color: transparent; font-family: "FontAwesome"; font-size: 22px; line-height: 17px;}
+            }
+            &:first-child a {
+                padding-left: 0; padding-right: 8px;
+
+                // Content
+                &:before {content: "\f104";display: block;}
+            }
+            &:last-child a {
+                padding-left: 8px; padding-right: 0; border-left-color: #0f3f88;
+
+                // Content
+                &:before {content: "\f105"; display: block;}
+            }
+        }
+        a {display: block; height: 20px; padding: 0 6px; border-color: #0f3f88; @include rounded(0); font-size: 12px; line-height: 20px; color: #1a5dc4;}
+    }
+
+    // Note
+    .note {
+        position: absolute; margin-top: -20px; margin-bottom: 0;
+
+        // Types
+        &.no-pager {position: relative; margin-top: 0;}
+
+    }
+}
+
+/**
+ * -------------------------
+ * @section Binnacle search
+ * -------------------------
+*/
+.binnacle-search {
+    > div {
+        margin: 0 !important;
+        .act-input {margin-left: 30px;}
+    }
+    .act-dropdown button span {text-transform: initial;}
+    .nano-content {max-height: 200px;}
+}
+
+/**
+ * -------------------------
+ * @section Search results
+ * -------------------------
+*/
+.binnacle-search-results {
+    margin-top: 20px;
+    th, td {
+
+        // Childs
+        &:nth-child(1) {width: 210px;}
+        &:nth-child(2), &:nth-child(3) {width: 160px;}
+        &:nth-child(4), &:nth-child(5) {width: 140px;}
+    }
+    .results > tbody > tr > td {
+        padding: 0; border-top: none;
+        .table {margin: 0; border: none;}
+        .nano-content {max-height: 900px;}
+    }
+}
+
+/**
+ * -------------------------
+ * @section Birthdays
+ * -------------------------
+*/
+.binnacle-birthdays {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    uib-accordion {@include remove-child-margin-bottom;}
+    .panel {margin-bottom: 0;}
+    .panel-body {padding-top: 15px;}
+
+    // Filters
+    .filters {
+        img, label {@include in-block; vertical-align: middle;}
+        img {margin-top: -3px; margin-right: 15px;}
+    }
+
+    // Table
+    .table {
+        border: 1px solid #517cbd !important; border-collapse: separate; font-weight: 400;
+        th, td {
+            padding-left: 25px; padding-right: 0; text-align: left;
+
+            // Childs
+            &.view-more {padding-left: 12px; padding-right: 12px; text-align: center;}
+        }
+        thead {
+            tr th {height: 30px; background-color: #517cbd;}
+        }
+        tbody {
+            tr.highlight td {background-color: rgba(#00bebe, .11) !important;}
+            td {padding: 5px 0 3px 25px; background: #FFF !important; border: none !important; border-top: 1px solid #e9f2ff !important; color: #517cbd;}
+
+            // No results
+            .no-results {
+                padding: 10px 10px 20px 10px; font-size: 18px;
+                p {margin-bottom: 5px;}
+                img {width: 40px;}
+            }
+
+            // No data row
+            .no-data-row span {display: block; width: 15px; height: 1px; background: rgba(#517cbd, .5); text-indent: -9999em;}
+
+            // Childs
+            tr td[rowspan] {border-right: 1px solid #e9f2ff !important;}
+            tr:first-child td {border-top: none !important}
+            .date {
+                vertical-align: top !important; font-size: 16px; line-height: 20px; font-weight: 300; color: #517cbd;
+                strong {font-weight: 600;}
+            }
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @section Goals report
+ * -------------------------
+*/
+.reports-filter {@include remove-child-margin-bottom;}
+.goals-report {
+    margin-top: 20px;
+
+    // Adviser info
+    .adviser-info {
+        margin: -20px -20px 20px -20px; padding: 16px 20px; background: rgba(#517cbd, .11); border-bottom: 1px solid rgba(#195dc4, .11); font-size: 15px; line-height: 17px; color: #0f3f88;
+        strong {font-family: "Proxima Bold"; font-weight: 400;}
+    }
+
+    // Chart wrapper
+    .chart-wrapper {
+        position: relative; height: 445px; padding: 15px 5px 0 20px;
+        .chart {position: relative; height: 420px !important; background: $white;}
+        .spinner {font-size: 16px;}
+        .custom-chart-tp {@include transform(translate(-50%, 0));}
+    }
+
+    // Legend
+    .legend {
+        margin-top: 10px; margin-bottom: 20px !important;
+        &, li {@include remove-list-style;}
+        li {
+            position: relative; margin: 7px 50px 0 85px; padding-left: 18px; font-size: 11px; line-height: 13px; color: #767676;
+            strong {display: block; font-family: "Proxima Semibold"; font-size: 10px; line-height: 12px; font-weight: 400; color: #4a4a4a;}
+            em {font-style: normal;}
+
+            // Content
+            &:after {content: ""; display: block; position: absolute; top: 0px; left: 0; width: 10px; height: 10px; background: #00bebe; @include rounded(10px);}
+
+            // Types
+            &.current:after {background: #0f3f88;}
+        }
+        + p {margin-bottom: 20px;}
+    }
+
+    // Back
+    + .back {
+        margin-top: -5px; text-align: right;
+        .btn {min-width: 120px;}
+    }
+}
+
+.trace-client{
+    margin-top: 20px;
+    textarea {height: 60px; font-size: 14px; line-height: 16px; resize: none;}
+    .options, .comments {margin-bottom: -1px; padding: 20px 0; border-top: 1px solid rgba(210, 207, 205, 0.5); border-bottom: 1px solid rgba(210, 207, 205, 0.5);}
+    .options {
+        label {margin-bottom: 0;}
+        .act-radio-custom {
+            height: 18px; margin-top: 6px; margin-right: 25px; padding-left: 25px !important; line-height: 20px;
+            span {margin-left: 0;}
+        }
+    }
+}
+.binnacle-tracing{
+    > div > label{
+        display: block;
+    }
+
+    ul{
+        width: 750px;
+        @include remove-list-style;
+        margin: 0 auto 20px auto;
+        overflow: hidden;
+
+
+        li{
+            list-style: none;
+            float: left;
+            padding: 0 90px;
+            position: relative;
+            width: 33.3334%;
+            text-align: center;
+
+            p{
+                color: $gray3;
+                margin-top: 5px;
+                margin-bottom: 0;
+            }
+
+            &.active, &:hover {
+                p {
+                    color: $tertiary-color;
+                    font-family: 'Proxima SemiBold';
+                }
+
+                i{
+                    &.icon-catalog-1 {
+                        background: url('../img/icons/ico_telefonico_on.svg') center;
+                    }
+
+                    &.icon-catalog-3 {
+                        background: url('../img/icons/ico_mail_on.svg') center;
+                    }
+
+                    &.icon-catalog-2 {
+                        background: url('../img/icons/ico_contacto_on.svg') center;
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+
+                &:after,
+                &:before{
+                    background: rgba( $gray3 , 0.5);
+                    content: "";
+                    display: block;
+                    height: 36px;
+                    position: absolute;
+                    @include vertical-middle;
+                    width: 1px;
+                }
+
+                &:after {
+                    right: 0;
+                }
+
+                &:before {
+                    left: 0;
+                }
+
+            }
+
+            i{
+                width: 50px;
+                height: 50px;
+                @include in-block;
+                margin-left: 0;
+
+                &.icon-catalog-1 {
+                    background: url('../img/icons/ico_telefonico_off.svg') center;
+                }
+
+                &.icon-catalog-3 {
+                    background: url('../img/icons/ico_mail_off.svg') center;
+                }
+
+                &.icon-catalog-2 {
+                    background: url('../img/icons/ico_contacto_off.svg') center;
+                }
+            }
+        }
+    }
+
+    hr{
+        margin: 10px 0;
+        border-color: rgba($gray3, 0.5);
+    }
+
+    .act-radio-custom{
+        padding-left: 35px;
+    }
+
+    .buttons{
+        margin-top: 20px;
+        text-align: right;
+        font-size: 0;
+
+        button, .btn {
+            width: 120px;
+            margin-left: 10px;
+        }
+
+        .cancel{
+            background: transparent;
+            border: 1px solid $tertiary-color;
+            color: $tertiary-color;
+        }
+    }
+}
+
+.binnacle-column-estrategia{
+    width: 70px !important;
+    div{
+        width: 70px !important;
+    }    
+}
+.binnacle-column-estrategia-estatus{
+    width: 130px !important;
+    div{
+        width: 130px !important;
+    }    
+}
+
+.div-principal{
+    //background-color:yellow;
+    width:100%;
+    height:50px;
+    padding:5px;
+    overflow:hidden;
+    display: -webkit-inline-box;
+}
+
+.div-content{
+    display:-webkit-inline-box;
+    width: calc(100% - 60px);
+    float: left;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.div-secundario{
+    text-align:center;
+    width:37px;
+    color : $blue7;
+    font-weight: bold;
+    //height:40px;
+    //background-color:red;
+    border: 2px solid $blue7;
+    margin:2px;
+    line-height: 16px;
+    font-size: 10px;
+}
+
+.div-left{
+    position: relative;
+    float: left;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.div-right{
+    position: relative;
+    float: right;
+    width: 20px;
+    margin-left: 10px;
+}
+
+.div-content-menu{
+    display: -webkit-inline-box;
+    position: relative;
+}
+
+.div-select-month{
+    background: $blue7;
+    color: white;
+}
+

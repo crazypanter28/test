@@ -1,0 +1,56 @@
+include /views/mixins/info-result
+
+// Soon
+.panel.panel-default( ng-init="outline.showOutlineInfo( 'soon' )" )
+    .panel-heading
+        .panel-title
+            span Clientes por vencer
+            .status.soon
+    .panel-body
+
+        // Spinner
+        .loader-wrapper( ng-if="!outline.soon" )
+
+        // No results
+        .no-results( ng-if="outline.soon.length === 0" )
+            +noResults("no-data")
+
+        // Search list
+        search-list( ng-if="outline.soon.length > 0" typeoperation="soon" employee="{{ binnacle.sadviser.employeeID }}" info="outline.soon" tmpl="binnacle-outline.html" settings="{ count: 5 }" cb="outline.outlineClient" )
+
+// Expired
+.panel.panel-default( ng-if="outline.soon" ng-init="outline.showOutlineInfo( 'expired' )" )
+    .panel-heading
+        .panel-title
+            span Clientes vencidos
+            .status.expired
+    .panel-body
+
+        // Spinner
+        .loader-wrapper( ng-if="!outline.expired" )
+
+        // No results
+        .no-results( ng-if="outline.expired.length === 0" )
+            +noResults("no-data")
+
+        // Search list
+        search-list( ng-if="outline.expired.length > 0" typeoperation="expired" employee="{{ binnacle.sadviser.employeeID }}" info="outline.expired" tmpl="binnacle-outline.html" settings="{ count: 5 }" cb="outline.outlineClient" )
+
+
+// All
+.panel.panel-default(  ng-init="outline.getInfo()" )
+    .panel-heading
+        .panel-title
+            span Reperfilamiento a petición del Cliente
+            .status.all
+    .panel-body
+
+        // Spinner
+        .loader-wrapper( ng-if="!outline.all" )
+
+        // No results
+        .no-results( ng-if="outline.all.length === 0" )
+            +noResults("no-data")
+
+        // Search list
+        search-list( ng-if="outline.all.length > 0" typeoperation="all" employee="{{ binnacle.sadviser.employeeID }}" info="outline.all" tmpl="binnacle-outline.html" settings="{ count: 20 }" cb="outline.outlineClient" )

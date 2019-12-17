@@ -1,0 +1,33 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-detail-stations
+    div.modal-header
+        img.icon(
+        src="img/icons/calendar/ico_cerrar.svg",
+        alt="",
+        align="right"
+        ng-click="inv.close()"
+        )
+
+        h4 {{ inv.info.issuer }} {{ inv.info.serie}}
+
+
+    div.modal-body
+        table.detail-stations
+            thead
+                tr
+                    th Pos. Inicial
+                    th Liq. 24Hrs
+                    th Liq. 48Hrs
+                    th Liq. +72Hrs
+                    th Disp. venta
+            tbody
+                tr
+                    td {{ inv.info.finalPosition }}
+                    td {{ inv.info.settlementPosition24H }}
+                    td {{ inv.info.settlementPosition48H }}
+                    td {{ inv.info.settlementPosMoreThan72H }}
+                    td {{ inv.info.saleAvailableTitles }}
+

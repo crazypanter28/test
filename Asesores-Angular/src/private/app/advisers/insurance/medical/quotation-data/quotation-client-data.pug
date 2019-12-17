@@ -1,0 +1,181 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+div.tranfers
+    form(name="formDatosCliente" novalidate)
+        div.tranfers
+            .row(style="height:28px")
+                p(class="text-right paddingRight180px" ng-if="medicalCtrl.mensajeN === 'true'")  * Recuerda que la letra Ñ sera sustituida por una N
+            .row
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Parentesco
+                    .col-md-8(ng-if="medicalCtrl.dependientes.length >=1 && !medicalCtrl.isClienteBanco")
+                        div( act-dropdown
+                                ng-model="medicalCtrl.ListMedicalParentescos"
+                                selected="medicalCtrl.dataParentescoList.type"
+                                name="parentesco"
+                                change="medicalCtrl.onChangeListParentesco(lastValue, newValue)"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='medicalCtrl.dataParentescoList.type'
+                            ng-required='true'
+                        )
+                    .col-md-8(ng-if="medicalCtrl.dependientes.length < 1 || medicalCtrl.isClienteBanco")
+                        input(type="text" id="parentesco" 
+                        name="parentesco" 
+                        ng-model="medicalCtrl.dataParentescoList.type.text" ng-disabled="true").form-control.upperCaseInput.disabled
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                    .col-md-8
+                        input(type="text" id="nombres" name="nombres" placeholder="Nombre(s)" ng-model="medicalCtrl.nombresCliente"
+                            value=""
+                            
+                            ng-disabled="medicalCtrl.isClienteBanco || (medicalCtrl.clienteEsTitularAsegurado==='1' && medicalCtrl.dependientes.length === 0)"
+                            minlength="3" maxlength="80"
+                            ng-keypress="medicalCtrl.charrepeatText($event,'nombres');medicalCtrl.soloText($event,true);"
+                            ng-keyup ="medicalCtrl.cambiaN($event);"
+                            ng-blur="medicalCtrl.onChangeNombre();medicalCtrl.mensajeN = 'false';"
+                            ng-focus="medicalCtrl.mensajeN = 'true';"
+                            required
+                            ).form-control.upperCaseInput.required
+            .row
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                    .col-md-8
+                        input(type="text" id="apePaterno" name="apePaterno" placeholder="Apellido paterno" ng-model="medicalCtrl.primerApellidoCliente"
+                            value=""
+                            ng-disabled="medicalCtrl.isClienteBanco || (medicalCtrl.clienteEsTitularAsegurado==='1' && medicalCtrl.dependientes.length === 0)"
+                            minlength="3" maxlength="80"
+                            ng-keypress="medicalCtrl.charrepeatText($event,'apePaterno');medicalCtrl.soloText($event,true);"
+                            ng-blur="medicalCtrl.onChangeNombre()"
+                            ).form-control.upperCaseInput.required
+                            
+                            
+                .form-group.col-lg-5
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                    .col-md-8
+                        input(type="text" id="apeMaterno" name="apeMaterno" placeholder="Apellido materno" ng-model="medicalCtrl.segundoApellidoCliente"
+                        value=""
+                            ng-disabled="medicalCtrl.isClienteBanco || (medicalCtrl.clienteEsTitularAsegurado==='1' && medicalCtrl.dependientes.length === 0)"
+                            minlength="3" maxlength="80"
+                            ng-keypress="medicalCtrl.charrepeatText($event,'apeMaterno');medicalCtrl.soloText($event,true);"
+                            ng-blur="medicalCtrl.onChangeNombre()"
+                            ).form-control.upperCaseInput.required
+            .row
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de nacimiento
+                    .col-md-8
+                        .content-dates-range-picker
+                            .field
+                                input.form-control(date-range-picker  type="text"
+                                    ng-model="medicalCtrl.fechaNacimientoCliente"
+                                    placeholder="dd/mm/aaaa"
+                                    options='medicalCtrl.optionsdpx'
+                                    ng-pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/"
+                                    ng-blur="medicalCtrl.onChangeNombre()"
+                                    ng-disabled="medicalCtrl.isClienteBanco || (medicalCtrl.clienteEsTitularAsegurado==='1' && medicalCtrl.dependientes.length === 0)"
+                                    required
+                                    )
+                                span.icon-calendar
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Edad
+                    .col-md-8
+                        input(type="text" id="edad" name="edad" placeholder="Edad" ng-model="medicalCtrl.edadCliente"
+                            minlength="1" maxlength="3"
+                            required
+                            disabled
+                            ).form-control.required.disabled
+            .row
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") RFC
+                    .col-md-8
+                        input(type="text" id="rfcUser" name="rfcUser" placeholder="ABCD123456" onkeyup="this.value = this.value.toUpperCase();"
+                            ng-model="medicalCtrl.rfcCliente"
+                            disabled
+                            maxlength="13" minlength="10"
+                            ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                            ng-keypress="medicalCtrl.forceKeyPressUppercase($event)"
+                            required
+                            ).form-control.required.upperCaseInput
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Sexo
+                    label.act-radio-custom
+                        input( type="radio" name="sexo" value="Masculino" ng-model="medicalCtrl.sexoCliente")
+                        span.css-label
+                        | Masculino
+                    label.act-radio-custom
+                        input( type="radio" name="sexo" value="Femenino" ng-model="medicalCtrl.sexoCliente")
+                        span.css-label
+                        | Femenino
+            .row
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;" ng-show='medicalCtrl.edadCliente >= 18') Ocupaci&oacuten
+                    .col-md-8
+                        div( act-dropdown
+                                ng-model="medicalCtrl.ListOcupacion"
+                                ng-show='medicalCtrl.edadCliente >= 18'
+                                selected="medicalCtrl.dataOcupacionList.type"
+                                name="ocupacion"
+                                change="medicalCtrl.onChangeListOcupacion(lastValue, newValue)"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='medicalCtrl.dataOcupacionList.type'
+                            ng-required='false'
+                        )
+                .form-group.col-lg-5.pf
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") ¿Practica alg&uacuten deporte?
+                    .col-md-8
+                        div( act-dropdown
+                                ng-model="medicalCtrl.ListMedicalDeportes"
+                                selected="medicalCtrl.dataDeporteList.type"
+                                name="deporte"
+                                change="medicalCtrl.onChangeListDeporte(lastValue, newValue)"
+                        )
+                        input(
+                            type='hidden',
+                            ng-model='medicalCtrl.dataDeporteList.type'
+                            ng-required='false'
+                        )
+            .row
+                div.row.text-center
+                    .col-md-12
+                        +btnWithIcon( '{{medicalCtrl.buttonNameClientData}}', 'btn-primary btn-space', 'formDatosCliente.$invalid')(ngClick="medicalCtrl.agregarFamiliar()")
+                        +btnWithIcon( '{{medicalCtrl.buttonNameCleanData}}', 'btn-primary btn-space')(ngClick="medicalCtrl.limpiarDependiente()")
+        div.tranfers.margenes                    
+            div.stages-table( ng-if="!medicalCtrl.loadingStage")
+                table( ng-table='medicalCtrl.configTable' )
+                    thead
+                        tr
+                            th Parentesco
+                            th Nombre
+                            th Edad
+                            th Sexo
+                            th Ocupaci&oacuten
+                            th Deporte
+                            th Edición
+                    tbody
+                        tr( ng-repeat="row in medicalCtrl.dependientes")
+                            td.text-center {{row.relationship | uppercase}}
+                            td.text-center {{row.name | uppercase}} {{row.lastName | uppercase}} {{row.secondLastName | uppercase}}
+                            td.text-center {{row.age}}
+                            td.text-center {{row.genderDesc | uppercase}} 
+                            td.text-center {{row.jobDescription | uppercase}}
+                            td.text-center {{row.sport  | uppercase}}
+                            td.margenes20px.displaySpaceBetween 
+                                img.cursorPointer.borderTrash(src="img/icons/basura.png" ng-click="medicalCtrl.borrarDependientes($index)")
+                                img.cursorPointer.borderEdit(src="img/icons/lapiz.png" ng-click="medicalCtrl.editarDependientes($index)")
+                    //- , 'formDatosCliente.$invalid'
+                    

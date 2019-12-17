@@ -1,0 +1,21 @@
+[uib-typeahead-popup].dropdown-menu{
+    border-radius: 0;
+    background: white;
+    padding: 0;
+    min-width: 100px;
+
+    li{
+        color: $gray2;
+        font-size: 14px;
+        border-bottom: 1px solid $gray;
+
+        a{
+            padding: 5px 15px;
+        }
+
+        &.active a{
+            background: rgba($yellow,0.5);
+            color: $gray2;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+div.content-panel.tranfers(ng-if="carsCtrl.stepForm.stepB")
+    div.row(ng-if="carsCtrl.mostrarDatos")
+        .col-xs-1
+            div
+                p( style="font-size: 13px; font-weight: bold;") {{carsCtrl.contract}}
+        .col-xs-4
+                div
+                    p( style="font-size: 13px; font-weight: bold;") Nombre del Cliente:&nbsp;&nbsp;&nbsp;
+                        span( style="font-size: 13px;") {{carsCtrl.nombreCliente}}
+        .col-xs-4
+                div
+
+                    p( style="font-size: 13px; font-weight: bold;") Número de cliente único:&nbsp;&nbsp;&nbsp;
+                        span( style="font-size: 13px;") {{carsCtrl.datosCliente.clientNumber}}       
+    div.row
+        .col-xs-1
+        .col-xs-3                          
+            img( src="img/bg/seguros.jpg" )
+        .col-xs-6 
+            h4 Seguros de Autos
+            p( style="font-size: 13px; font-weight: bold;") Contrata la mejor protección de auto de forma rápida y segura
+            ul
+                li( style="font-size: 13px; font-weight: bold;") Seguros mas completos y al mejor precio
+                li( style="font-size: 13px; font-weight: bold;") Mayor variedad dependiendo de tus necesidades
+                li( style="font-size: 13px; font-weight: bold;") Cotiza tu seguro de auto de manera sencilla
+            button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="carsCtrl.pagina1()") Regresar
+            button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="carsCtrl.valCotizar()") Cotizar
+            //li( style="font-size: 13px; font-weight: bold; color: #ff0000") Para cotizar por valor factura comunícate al área de Seguros

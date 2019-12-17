@@ -1,0 +1,68 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"30410eb8-0f59-4400-aea9-3b63e90a884e",
+            "messages":[
+                {
+                    "responseSystemCode":"ACABC0000005",
+                    "responseMessage":"OK",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"ACSAP0000011",
+                    "responseMessage":"Servicio de Consulta de Cuenta Bancaria y TDC ejecutado exitosamente",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"ACCAT001",
+                    "responseMessage":"Success",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1491541200000,
+        "time":77835000,
+        "clientID":"NBURSANET",
+        "sessionID":"",
+        "responseSystem":"BUS CENTRAL",
+        "operationName":"DestinationAccountQuery",
+        "operationVersion":"1_0",
+        "ipaddress":"10.10.115.71"
+    },
+    "outDestinationAccountQuery":{
+        "outA2KBankAccountsQuery":{
+            "bankAccountsList":[]
+        },
+        "outFIXBankAccountsQuery":{
+            "destinyAccountList":[]
+        },
+        "outBankAccountsQuery":[
+            {
+                "accountNumber":"072180006591204762",
+                "settlementInstructionID":"***",
+                "accountType":"CLABE",
+                "bankName":"BANORTE/IXE",
+                "destinationAccount":"8733",
+                "clientID":"95417762",
+                "contractNumber":"7625692",
+                "companyID":1,
+                "alias":"Cuenta Corona",
+                "destinationAccountType":2,
+                "bankID":"40072",
+                "maxAmount":5000.0,
+                "beneficiaryMail":"rcorona@actinver.com.mx",
+                "countryCodeNumber":"52",
+                "phoneNumber":"",
+                "accountStatus":"49",
+                "beneficiaryName":"Raul Corona",
+                "registerKey":"542003",
+                "availabilityDate":null
+            }
+        ]
+    }
+}

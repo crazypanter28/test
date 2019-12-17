@@ -1,0 +1,36 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+// Tracing
+.common-page.tracing-page
+
+    form( name="form" novalidate )
+
+        // Data
+        .panel.panel-default.panel-static
+            .panel-heading
+                .panel-title
+                    span Datos de propuesta
+            .panel-body
+                .content
+
+                    // Tracing form
+                    tracing-form( model="tracing" form-type="'seguimiento'" )
+
+        // Products list
+        div( ng-if="tracing.form.scontract" )
+
+            // Products
+            products( model="tracing.form" )
+
+            // Adviser form
+            adviser-form( model="tracing" )
+
+            // Form actions
+            .form-actions
+                a.btn.btn-default.cancel( ng-click="tracing.resetForm()" ) CANCELAR
+                +btnSubmit(
+                    'GENERAR SEGUIMIENTO',
+                    'btn-primary',
+                    null
+                )( ngClick="tracing.validateForm( form )" )

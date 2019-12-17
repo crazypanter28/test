@@ -1,0 +1,52 @@
+{
+    "result":[
+        {
+            "contrato":3087386,
+            "fechaOperacion":1446789600000,
+            "cliente":"MAYRA CALDERON LARA",
+            "movimiento":"COM",
+            "emisora":"AMX",
+            "serie":"L",
+            "titulos":200,
+            "importe":2802.0,
+            "asesor":"BURSANET",
+            "centroFinanciero":"DF CORPORATIVO",
+            "horaCreacion":11100,
+            "extension":23132,
+            "capturado":"ORDAZ DE LA FUENTE MAURICO",
+            "solicitud":"TELEFONO"
+        },
+        {
+            "contrato":239307,
+            "fechaOperacion":1446703200000,
+            "cliente":"ACTINVER CASA DE BOLSA CTA PROPIA (CONTROL DE REBA",
+            "movimiento":"VEN",
+            "emisora":"ACTIMED",
+            "serie":"B­1",
+            "titulos":100,
+            "importe":395.29,
+            "asesor":"SOC. DE INVERSION",
+            "centroFinanciero":"DF CORPORATIVO",
+            "horaCreacion":170200,
+            "extension":0,
+            "capturado":"ORDAZ DE LA FUENTE MAURICO",
+            "solicitud":"CORREO"
+        },
+        {
+            "contrato":55,
+            "fechaOperacion":1446789600000,
+            "cliente":"MARIA DOLORES ARGUERO DE VILLAR",
+            "movimiento":"VEN",
+            "emisora":"ACTIREN",
+            "serie":"B­3",
+            "titulos":50,
+            "importe":381.54,
+            "asesor":"MIGUEL MERCENARIO OTERO",
+            "centroFinanciero":"GTO LEON CERRO GORDO CB",
+            "horaCreacion":130000,
+            "extension":15200,
+            "capturado":"ORDAZ DE LA FUENTE MAURICO",
+            "solicitud":"TELEFONO"
+        }
+    ]
+}

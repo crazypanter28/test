@@ -1,0 +1,21 @@
+.general-no-results{
+    display: table;
+    height: 220px;
+    width: 100%;
+
+    .container-no-results{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+
+        p{
+            color: #b4b4b4;
+            font-family: 'Proxima Regular';
+            font-size: 26px;
+            line-height: 26px;
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 350px;
+        }
+    }
+}

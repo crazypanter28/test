@@ -1,0 +1,174 @@
+.page-details-performance {
+    .simulators {
+        .title {
+            text-align: center;
+            color: #0f3f88;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .gray {
+            color: #8c8f98;
+        }
+
+        .green {
+            color: #3cad6d;
+        }
+
+        .blue {
+            color: #6c94db;
+        }
+
+        .margin-bottom-10 {
+            margin-bottom: 10px;
+        }
+
+        .you-strategy {
+            .text {
+                color: #898989;
+            }
+            .value{
+                color: #0f3f88;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .resume{
+        border: 1px solid $blue4;
+        color: $tertiary-color;
+        font-family: 'Proxima SemiBold';
+        height: 40px;
+        padding: 5px;
+        width: 180px;
+        font-size: 11px;
+        line-height: 12px;
+        margin-bottom: 15px;
+
+        .col-xs-6{
+            padding: 0 5px;
+        }
+
+        label{
+            font-family: 'Proxima Regular';
+            font-size: 10px;
+            line-height: 10px;
+            margin-bottom: 4px;
+        }
+    }
+
+    .chart-number{
+        font-family: 'Proxima Light';
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .category-name{
+        color: $tertiary-color;
+        margin-top: 5px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    #chartjs-tooltip2{
+    	background: white;
+    	border-radius: 3px;
+    	border: solid 1px #59617e;
+    	height: 124px;
+    	position: absolute;
+    	width: 260px;
+    	z-index: 9999;
+    	display: none;
+        pointer-events: none;
+
+
+    	.title{
+    		font-family: 'Proxima Bold';
+    		color: #767676;
+    		margin-bottom: 0;
+    		margin-top: 8px;
+    		text-align: left;
+    		line-height: 16px;
+
+    		em{
+    			font-size: 12px;
+    			font-family: 'Proxima Regular';
+    		}
+
+    		.percentage{
+    			color: #08a25a;
+    			font-size: 16px;
+    		}
+    	}
+
+    	.description{
+    		font-size: 12px;
+    		color: #0f3f88;
+    		font-family: 'Proxima SemiBold';
+
+    		label{
+    			font-family: 'Proxima Regular';
+    			font-size: 11px;
+    			display: block;
+    			margin-bottom: 0;
+    		}
+    	}
+
+    	.row{
+    		.col-xs-6{
+    			padding-left: 7px;
+    			padding-right: 7px;
+
+    			// padding-left: 5px;
+    			// padding-right: 5px;
+    		}
+    	}
+    }
+
+    .view-details{
+        border-bottom: 2px solid;
+        color: #3c86f6;
+        padding: 1px 11px;
+        width: 120px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .bullet{
+        border-radius: 50%;
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        margin-right: 10px;
+    }
+
+    .container-point{
+        span{
+            color: #767676;
+            font-family: 'Proxima Bold';
+        }
+    }
+
+    .wrapper-chart{
+        padding-top: 10px;
+
+        .container-point{
+            width: 33%;
+            overflow: hidden;
+            float: left;
+        }
+
+        .chart-description{
+            max-height: 330px;
+            overflow: hidden;
+        }
+    }
+
+    #donut-chart{
+        border-right: 1px solid;
+        color: #979797;
+    	position: relative;
+    	padding: 0px;
+    }
+}

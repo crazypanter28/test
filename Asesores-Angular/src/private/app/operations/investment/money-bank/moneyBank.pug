@@ -1,0 +1,28 @@
+include /views/mixins/buttons
+include /views/mixins/selected-client-info
+
+div(ng-if="viewMarketsByVisible[1]")
+    // Reporto
+    .reporto-bank
+        div.my-movements 
+            uib-tabset( active="activeTab" )
+                uib-tab( index="0" heading='INSTRUMENTOS' ng-click="moneyBank.updateInstruments()" )
+                    div( table-portfolio-inv-bank="" bands-direct="moneyBank.bandsDirect" selected ="moneyBank.selectedInstrument" contract="{{ investment.contract.contractNumber }}" type="1" update="moneyBank.updateInstruments" nodata="Este contrato <strong>no cuenta</strong> con posición en este instrumento." tabseleccion = 'moneyBank.tabSelect' )
+                uib-tab( index='1' heading='ÓRDENES' ng-click="moneyBank.updateOrders()" )
+                    div( act-table-orders-bank="" contract="{{ investment.contract.contractNumber }}" type="2" update="moneyBank.updateOrders" )
+                uib-tab( index='2', heading='Histórico' ng-click="moneyBank.clean()" )
+                    div( act-table-orders-bank="" type="2" origin="history" contract="{{ investment.contract.contractNumber }}" holder="{{ operations.sclient.data.name + ' ' + operations.sclient.data.lastName + ' ' + operations.sclient.data.secondLastName }}" clean="moneyBank.clean" )  
+
+        .panel-wrapper( ng-init="moneyBank.type = 'reporto'; moneyBank.tabSelect = 2")
+            div.sub-menu-buttons.row.margin-0
+                ul.nav.nav-tabs
+                    li.uib-tab.nav-item( ng-click="moneyBank.selected(2)" ng-class="{'active': moneyBank.tabSelect === 2}")
+                        a.nav-link( href="" ng-click="select($event)" ) REPORTO
+                    li.uib-tab.nav-item( ng-click="moneyBank.selected(1)" ng-class="{'active': moneyBank.tabSelect === 1}")
+                        a.nav-link( href="" ng-click="select($event)" ) DIRECTO
+                    li.uib-tab.nav-item( ng-click="moneyBank.selected(3)" ng-class="{'active': moneyBank.tabSelect === 3}")
+                        a.nav-link( href="" ng-click="select($event)" ) SUBASTAS
+
+            div.row.margin-0.reporto-wrapper
+                div.table-report-bank.col-md-8( act-table-reporto-bank bands-direct = "moneyBank.bandsDirect" contract="{{ investment.contract.contractNumber }}" instrument="moneyBank.selectedInstrument" tab="moneyBank.tabSelect" )
+                div.col-md-4( act-money-bank-doll type="moneyBank.type" contract="investment.contract" instrument="moneyBank.selectedInstrument" )

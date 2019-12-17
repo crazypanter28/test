@@ -1,0 +1,22 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"contract":"5959950",
+		"name": "Pedro Perez",
+		"type": "NR",
+		"phone": "5566989526",
+		"mail": "ngarcia@actinver.com.mx",
+		"company": "actinver",
+		"investmentAmount": 8500000.00,
+		"closeDate": "2016-09-02",
+		"refersName": "",
+		"refersDescription": "Walk in",
+		"clientNumber": ""
+	}
+}

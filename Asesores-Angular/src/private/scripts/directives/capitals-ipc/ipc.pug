@@ -1,0 +1,21 @@
+div.ipc
+    div.commission
+        img( src="img/icons/icn-comision.svg")
+        span.name COMISIÓN:
+        span.value( ng-bind = "ipc.amount1 " )
+    div.ipc-socket(ng-if="ipc.ipcFact.index")
+        img( src="img/icons/icn-ipc.svg")
+        span.name IPC:
+        span.value( ng-bind = "ipc.ipcFact.index" )
+        span.percentage (  {{ ipc.ipcFact.percentage }}% )
+        i.fa(
+            ng-class="{'fa-arrow-circle-up': ipc.ipcFact.percentage > 0, 'fa-arrow-circle-down': ipc.ipcFact.percentage < 0, 'fa-minus-circle': ipc.ipcFact.percentage === 0 }"
+        )
+    div.ipc-socket(ng-if="!ipc.ipcFact.index")
+        img( src="img/icons/icn-ipc.svg")
+        span.name IPC:
+        span.value( ng-bind = "ipc.ipcFact.index" )
+        span.percentage (  {{ ipc.lastIpc }}% )
+        i.fa(
+            ng-class="{'fa-arrow-circle-up': ipc.ipcFact.percentage > 0, 'fa-arrow-circle-down': ipc.ipcFact.percentage < 0, 'fa-minus-circle': ipc.ipcFact.percentage === 0 }"
+        )

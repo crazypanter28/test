@@ -1,0 +1,52 @@
+.administrator-page
+    h3.primary-title Operaciones Pendientes
+    div.content-panel
+        .content
+            .row
+            .margin-l-top(ng-repeat='po in porCtrl.result')
+                .row.row-pending-operation
+                    .col-md-2.padding-m
+                        i.fa.icon-resultresultresult
+                            img( ng-if="po.message.estatus === 'ERROR' || po.message.estatus ==='Error'" src="img/icons/error.svg" alt="error" height="18")
+                            img( ng-if="po.message.estatus === 'EXITO' || po.message.estatus === 'Éxito' || po.message.estatus === 'ÉXITO'" src="img/icons/done.svg" alt="done" height="18")
+                        |                 Estatus: {{po.message.estatus}}
+                    .col-md-2.padding-m
+                        i.fa.fa-sticky-note-o.icon-color-result(aria-hidden='true')
+                        |                 Folio: {{po.operationID}}
+                    .col-md-6.padding-m
+                        i.fa.fa-info-circle.icon-color-result(aria-hidden='true')
+                        |                 Tipo de operación: {{po.message.tipoOperacion}}
+                    .col-md-2.padding-m.text-center(ng-class="{'more-information':!po.show,'less-information':po.show}", ng-click='porCtrl.showDetail(po.key)')
+                        | {{po.text || porCtrl.result.text}} 
+                        i.fa(ng-class="{'fa-angle-down':!po.show,'fa-angle-up':po.show}", aria-hidden='true')
+                .row.row-pending-operation.padding-m(ng-if='porCtrl.result.show || po.show')
+                    .col-md-4(ng-if='po.message')
+                        .col-md-3.text-center
+                            i.fa.fa-commenting-o.icon-detail.icon-color-result(aria-hidden='true')
+                        .col-md-9
+                            div
+                                strong Mensaje:
+                            div
+                                | {{po.message.message || po.message}}
+                    .col-md-4(ng-if='po.requestReference')
+                        .col-md-3.text-center
+                            i.fa.fa-cog.icon-detail.icon-color-result(aria-hidden='true')
+                        .col-md-9
+                            div
+                                strong Autorizaciones:
+                            div
+                                | {{po.requestReference}}
+                    .col-md-4(ng-if='po.typeOperation')
+                        .col-md-3.text-center
+                            i.fa.fa-list-alt.icon-detail.icon-color-result(aria-hidden='true')
+                        .col-md-9
+                            div
+                                strong Acción:
+                            div
+                                | {{porCtrl.typeOperation}}
+            <br>
+            <br>
+            .col-md-4
+                button.btn.btn-primary(ng-click="porCtrl.Change()")
+                    i.fa.fa-angle-left(aria-hidden='true')
+                    |  Regresar

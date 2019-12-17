@@ -1,0 +1,109 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/doll
+
+
+div.col-xs-3.doll.float-right
+    div.row.margin-0.header
+        button.btn.col-xs-6.buy(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('buy')"
+            ng-class = "{'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-disabled="doll.confirmationModel"
+            ng-click="doll.changeTab('sell')"
+            ng-class = "{'active' : doll.tab === 'sell'}"
+        )
+            span vender
+    
+    //- div.row
+    //-     label doll : {{doll}} tipo :{{tipooperacion}} contrato : {{contract}}
+
+    div.row.margin-0.body.empty.init( ng-show="!doll.newState && !doll.tab")
+            div.empty-container
+                div.empty-center
+                    img(src="img/icons/doll/icon_money.svg" )
+                    p.station-description Selecciona la operación que deseas realizar
+                    
+    // Spinner
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    div.row.margin-0.body.confirm( ng-if="doll.confirmationModel && !doll.captureModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +dollConfirmation( 'confirmationModel' )
+    div.row.margin-0.body.confirm( ng-if="doll.captureModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell'}" )
+        +dollConfirmation( 'captureModel', true )
+    div.row.margin-0.body.sell( ng-if="doll.tab === 'sell'" )
+        form(name="form" )
+            div.row.margin-0.informacion-doll
+                label Operación venta
+
+            hr
+            +dollBinnacle()
+
+    div.row.margin-0.body( ng-if="doll.tab === 'buy' ")
+        form(name="form" novalidate)
+            div.col-xs-4.padding-left-0
+                div.form-group.has-icon
+                    label(for="date") Fecha operación
+                        span.require *
+                    div(style="position:relative")
+                        +inputDate( "accounts.cmd.transfer.binnacle.date", 'binnacle-date' )(
+                            ngMouseOpen = 'popup2.opened'
+                            datepickerOptions = "{showWeeks : false,formatMonth : 'MMM',yearColumns : 3 , maxDate: $root.getTodayDate}"
+                        )
+            div.row.margin-0.informacion-doll
+                div.col-xs-12
+                    +input( 'Liquidación', 'liquidacion', 'Liquidación', true )(
+                            name = 'liquidacion'
+                            ngRequire='true',
+                            model='doll.liquidacion',
+                            message='El campo solo acepta números',
+                            pattern='/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/',
+                            maxlength='6'
+                        )
+            div.row.margin-0.informacion-doll
+                div.col-xs-12
+                    +input( 'Plazo', 'plazo', 'Plazo', true )(
+                            name = 'plazo'
+                            ngRequire='true',
+                            model='doll.plazo',
+                            message='El campo solo acepta números',
+                            pattern='doll.pattern.numeric',
+                            maxlength='6'
+                        )
+            div.row.margin-0.informacion-doll
+                div.col-xs-12
+                    +input( 'Instrumento', 'instrumento', 'Instrumento', true )(
+                            name = 'instrumento'
+                            ngRequire='true',
+                            model='doll.instrumento',
+                            message='El campo solo acepta números',
+                            pattern='doll.pattern.numeric',
+                            maxlength='6'
+                        )
+            div.row.margin-0.informacion-doll
+                div.col-xs-12
+                    +input( 'Importte', 'importe', 'Importe', true )(
+                            name = 'importe'
+                            ngRequire='true',
+                            model='doll.importe',
+                            message='El campo solo acepta números',
+                            pattern='doll.pattern.numeric',
+                            maxlength='6'
+                        )
+            div.row.margin-0.informacion-doll
+                div.col-xs-12
+                    +input( 'Cantidad', 'cantidad', 'Cantidad', true )(
+                            name = 'cantidad'
+                            ngRequire='true',
+                            model='doll.cantidad',
+                            message='El campo solo acepta números',
+                            pattern='doll.pattern.numeric',
+                            maxlength='6'
+                        )
+            hr
+            +dollBinnacle()

@@ -1,0 +1,182 @@
+//
+// _forms.scss
+//
+// It reflects the styles for the forms.
+//
+
+/**
+ * -------------------------
+ * @info Form group
+ * -------------------------
+*/
+.form-group {
+    position: relative; margin-bottom: 30px;
+
+    label{
+        margin-bottom: 5px;
+    }
+
+    // Types
+    &.has-icon {
+        .input-wrapper {
+            position: relative;
+            text-align: left;
+        }
+        i {
+            position: absolute; @include vertical-middle();
+            right: 8px;
+            font-size: $font-size-base + 2;
+            color: $tertiary-color;
+            min-width:20px;
+            min-height:20px;
+        }
+        input {
+            height: 35px;
+            padding: 6px 55px 6px 10px;
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @info Label
+ * -------------------------
+*/
+label {
+    margin-bottom: 10px; font-size: 14px; line-height: 18px; font-weight: 400; color: #4a4a4a;
+    span {
+        color: #F46C5F;
+        margin-left: 5px;
+    }
+    em {font-size: 12px; font-style: normal;}
+
+    // Tip
+    .tip {
+        img {margin-left: 5px; vertical-align: super;}
+    }
+}
+
+/**
+ * -------------------------
+ * @info Typeahead
+ * -------------------------
+*/
+.has-typeahead {
+    .dropdown-menu {
+        width: 100%; margin: 0; padding: 0; border-color: #0f3f88; @include rounded(0);
+        li {
+            border-bottom: 1px solid #d2cfcd;
+            a {padding: 5px 15px; color: #4A4A4A;}
+            a, strong {font-family: "Proxima Regular"; font-weight:400;}
+            strong {color: $primary-color;}
+
+            // States
+            &.active a {background: rgba(#f5f047, .5);}
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @info Form control
+ * -------------------------
+*/
+.form-control {
+    background-color: $form-control-bg; border: 0;
+    display: block;
+    height: 40px;
+    padding: 10px 10px 10px 4px;
+    width: 100%;
+    border-bottom: 2px solid $tertiary-color;
+    @include rounded(0px); font-family: $input-font-family; font-size: ($font-size-base - 2); font-weight: 400; line-height: $line-height-base;
+    color: $form-control-color;
+
+    // Placeholder
+    @include placeholder( $gray4 );
+    &.placeholder {color: $form-control-placeholder-color;}
+
+
+    &[readonly]{
+        background: transparent;
+    }
+    // Inset box shadow
+    @include box-shadow(none);
+
+    // Transitions
+    @include transition((border-color .35s ease-in-out, box-shadow .35s ease-in-out));
+
+    // Customize the :focus state
+    @include form-control-focus();
+
+    &:focus{
+        border-color: $primary-color !important;
+
+        + i{
+            color: $primary-color !important;
+
+            path{
+                fill: $tertiary-color !important;
+            }
+        }
+    }
+
+    // &:not([value=""]):not(:focus):invalid,
+    &.ng-empty{
+        border-color: $gray3;
+
+        + div + i,
+        + i{
+            color: $gray3;
+
+            path{
+                fill: $gray3;
+            }
+        }
+    }
+
+    + i,
+    + div + i {
+
+
+        path{
+            fill: $tertiary-color;
+        }
+    }
+    // Disabled and read-only inputs
+    &[disabled],
+    fieldset[disabled] & {cursor: not-allowed; background-color: $form-control-disabled-color; opacity: 1;}
+
+
+    &.ng-invalid-pattern,
+    &.ng-not-empty.ng-invalid{
+        border-color: $form-error-color !important;
+    }
+
+    + .message {
+        color: $form-error-color !important;
+        display: block;
+        font-size: $font-size-base - 4;
+        font-weight: 300;
+        position: absolute;
+
+        b {
+            font-weight: 400;
+            font-style: italic
+        }
+    }
+}
+
+
+
+/**
+ * -------------------------
+ * @textarea
+ * -------------------------
+*/
+textarea{
+    &.form-control{
+        border-top: 1px solid $gray;
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+    }
+}

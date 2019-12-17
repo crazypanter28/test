@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="20px" viewBox="0 0 17 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>SIMULADORES_ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.000743750001 0.000210526316 16.5661813 0.000210526316 16.5661813 19.8481053 0.000743750001 19.8481053 0.000743750001 0.000210526316"></polygon>
+        <rect id="path-3" x="3" y="4" width="11" height="3"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="11" height="3" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SIMULADORES_ICON">
+            <g id="Page-1">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <path d="M16.1008063,-0.000315789473 L5.70211875,-0.000315789473 L3.06818125,-0.000315789473 L2.60280625,-0.000315789473 L2.60280625,0.752315789 L2.60280625,0.901789474 L15.6364938,0.901789474 L15.6364938,6.01547368 L15.6333063,6.01547368 L15.6333063,14.2838947 L15.6333063,18.926 L14.4188688,18.926 L8.37855625,18.926 C8.37855625,18.926 8.33924375,18.926 8.28505625,18.9270526 C8.23299375,18.926 8.19580625,18.926 8.19580625,18.926 L2.12574375,18.926 L0.91024375,18.926 L0.91024375,14.2838947 L0.91024375,9.74073684 L0.000743750001,9.74073684 L0.000743750001,14.2838947 L0.000743750001,19.3870526 C0.000743750001,19.6649474 0.18243125,19.8481053 0.45443125,19.8481053 L2.12574375,19.8481053 L7.89193125,19.8481053 L8.65055625,19.8481053 L14.4188688,19.8481053 L16.0880563,19.8481053 C16.3611188,19.8481053 16.5438688,19.6649474 16.5438688,19.3870526 L16.5438688,14.2838947 L16.5438688,9.08494737 L16.5438688,8.69757895 C16.5544938,8.65757895 16.5661813,8.61757895 16.5661813,8.57126316 L16.5661813,0.752315789 L16.5661813,0.451263158 C16.5661813,0.180736842 16.3813063,-0.000315789473 16.1008063,-0.000315789473" id="Fill-1" fill="#103D81" mask="url(#mask-2)"></path>
+            </g>
+            <ellipse id="Oval-2-Copy-9" fill="#0F3F88" cx="6" cy="11" rx="1" ry="1"></ellipse>
+            <ellipse id="Oval-2-Copy-10" fill="#0F3F88" cx="6" cy="15" rx="1" ry="1"></ellipse>
+            <ellipse id="Oval-2-Copy-11" fill="#0F3F88" cx="11" cy="11" rx="1" ry="1"></ellipse>
+            <ellipse id="Oval-2-Copy-12" fill="#0F3F88" cx="11" cy="15" rx="1" ry="1"></ellipse>
+            <use id="Rectangle-Copy-4" stroke="#0F3F88" mask="url(#mask-4)" stroke-width="1.6" xlink:href="#path-3"></use>
+        </g>
+    </g>
+</svg>

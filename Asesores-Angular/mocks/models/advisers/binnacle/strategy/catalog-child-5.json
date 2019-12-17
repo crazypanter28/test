@@ -1,0 +1,22 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idActivity": 20,
+		"description": "Seguimiento",
+		"descriptionCode": "MOTIVO"
+	}, {
+		"idActivity": 21,
+		"description": "Asesoria Integral",
+		"descriptionCode": "MOTIVO"
+	}, {
+		"idActivity": 22,
+		"description": "Captura/Confirmacion de ordenes",
+		"descriptionCode": "MOTIVO"
+	}]
+}

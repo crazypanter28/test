@@ -1,0 +1,23 @@
+include /views/mixins/radio-button
+
+.title-modal {{ctrl.title}}
+
+form( name="$form" novalidate)
+    .container-modal
+
+        .row
+            .form-group.col-xs-6
+                label Número de empleado #[span.require *]
+                input.form-control( placeholder='---' ng-model="ctrl.profile.number"
+                    required="true"
+                )
+            .form-group.col-xs-6
+                label Perfil #[span.require *]
+                input.form-control(type="text" ng-model="ctrl.profile.type"
+                    uib-typeahead="state.description for state in ctrl.listTabs | filter:$viewValue | limitTo:8"
+                    required="true"
+                )
+
+    .buttons
+        button.btn.btn-default( type="button" title="CANCELAR" ng-disabled="false" ng-click="ctrl.close()") CANCELAR
+        button.btn.btn-primary( title="GENERAR" ng-disabled="$form.$invalid" ng-click="ctrl.done()") GUARDAR

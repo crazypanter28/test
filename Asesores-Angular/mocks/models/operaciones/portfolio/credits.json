@@ -1,0 +1,43 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"97fbe324-c895-42b0-ba8e-237f8f1a1b3f",
+         "messages":[
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1494219600000,
+      "time":71278000,
+      "clientID":"NBURSANET",
+      "sessionID":null,
+      "responseSystem":"A2K",
+      "operationName":"BrokerageHousePortfolioQuery",
+      "operationVersion":"1_1",
+      "ipaddress":null
+   },
+   "outCreditPortfolioQuery":{
+      "credits": [
+         {
+            "type": "Arrendamiento",
+            "amount": 150.00,
+            "term": "20/02/2020",
+            "guarantees": "Garantías",
+            "debt": 18800.50
+         },
+         {
+            "type": "Seguro AF",
+            "amount": 35800,
+            "term": "10/30/2019",
+            "guarantees": "Garantías",
+            "debt": 3500.50
+         }
+      ]
+   }
+}

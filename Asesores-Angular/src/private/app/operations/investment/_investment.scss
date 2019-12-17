@@ -1,0 +1,372 @@
+.bands-table-direct {
+    th i {padding-left: 5px;}
+    th, td {padding: 0px 13px 0 8px;}
+    tbody tr td {background: none;}
+    > tbody > tr > td {
+        position: relative; padding: 0;
+        div {float: none; text-align: left;}
+    }
+    table {
+        width: 100%;
+        tbody > tr:hover > td {background: rgba(210, 207, 205, 0.5);}
+    }
+    th:nth-child(1), td:nth-child(1) {width: 180px; text-align: left;}
+    th:nth-child(2), td:nth-child(2) {width: 130px; text-align: left;}
+    th:nth-child(3), td:nth-child(3) {width: 70px; text-align: right;}
+    th:nth-child(4), td:nth-child(4) {width: 130px; text-align: right;}
+    th:nth-child(5), td:nth-child(5) {text-align: right;}
+    .nano-content {max-height: 325px; outline: none;}
+}
+
+/* Search account */
+.search-account {
+    .defaultF {padding: 0;}
+    .defaultF {
+        height: 23px; font-family: "Proxima Regular"; text-transform: inherit;
+        .form-control {height: 25px; margin-bottom: 0;}
+
+        // States
+        &:active, &.active {@include box-shadow(none);}
+    }
+    .btn {margin-top: 0 !important;}
+}
+
+.investment-table{
+    width: 100%;
+    thead{
+        background: $blue10;
+        tr{
+            height: 30px;
+        }
+        th{
+            color: $tertiary-color;
+            font-size: 10px;
+            font-family: 'Proxima SemiBold';
+            line-height: 10px;
+            text-transform: uppercase;
+            text-align: center;
+            padding-right: 21px;
+        }
+    }
+    tbody{
+        font-size: 10px;
+
+        tr:hover{
+            td{
+                background: rgba(#d2cfcd, 0.5);
+            }
+        }
+
+        td{
+            color: $gray2;
+
+            i.fa-plus-circle{
+                color: $blue4;
+            }
+
+            i{
+                margin-left: 2px;
+            }
+        }
+
+        a{
+            color: white;
+        }
+    }
+
+    &.capitals{
+        tbody{
+            overflow: auto;
+            height: 500px;
+        }
+    }
+}
+
+.reporto-table {
+    width: 100%;
+    thead,tbody{
+        display:block;
+    }
+
+    thead {
+        background: $blue10;
+        tr {
+            height: 30px;
+        }
+        th {
+            color: $tertiary-color;
+            font-size: 10px;
+            font-family: 'Proxima SemiBold';
+            line-height: 10px;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100px;
+        }
+    }
+
+    tbody {
+        font-size: 10px;
+        height: 495px;
+        overflow-y:auto;
+        width: 100%;
+        tr:hover {
+            td {
+                background: rgba(#d2cfcd, 0.5);
+            }
+        }
+        td{
+            width: 100px;
+        }
+    }
+}
+
+.capitals-bank {
+    width: 100%;
+    thead,tbody{
+        display:block;
+    }
+
+    thead {
+        background: $blue10;
+        tr {
+            height: 30px;
+        }
+        th {
+            color: $tertiary-color;
+            font-size: 10px;
+            font-family: 'Proxima SemiBold';
+            line-height: 10px;
+            text-transform: uppercase;
+            text-align: center;
+            width: 150px;
+        }
+    }
+
+    tbody {
+        font-size: 10px;
+        height: 602px;
+        overflow-y:auto;
+        width: 100%;
+        tr:hover {
+            td {
+                background: rgba(#d2cfcd, 0.5);
+            }
+        }
+        td{
+            width: 150px;
+        }
+    }
+
+    .columnExpand{
+        width: 10px;
+    }
+}
+
+/* Reporto */
+.reporto {
+    .body {min-height: 485px;}
+    .reporto-wrapper {position: relative;}
+    // .btn.buy {cursor: default;}
+
+    // Bands table
+    .bands-table {
+        th i {padding-left: 5px;}
+        th, td {padding: 0px 13px 0 8px;}
+        tbody tr td {background: none;}
+        > tbody > tr > td {
+            position: relative; padding: 0;
+            div {float: none; text-align: left;}
+        }
+        table {
+            width: 100%;
+            tbody > tr:hover > td {background: rgba(210, 207, 205, 0.5);}
+        }
+        th:nth-child(1), td:nth-child(1) {width: 156px; text-align: left;}
+        th:nth-child(2), td:nth-child(2) {width: 130px; text-align: left;}
+        th:nth-child(3), td:nth-child(3) {width: 84px; text-align: right;}
+        th:nth-child(4), td:nth-child(4) {width: 82px; text-align: right;}
+        th:nth-child(5), td:nth-child(5) {text-align: right;}
+        .nano-content {max-height: 485px; outline: none;}
+    }
+
+    .bands-table {
+        th i {padding-left: 5px;}
+        th, td {padding: 0px 13px 0 8px;}
+        tbody tr td {background: none;}
+        > tbody > tr > td {
+            position: relative; padding: 0;
+            div {float: none; text-align: left;}
+        }
+        table {
+            width: 100%;
+            tbody > tr:hover > td {background: rgba(210, 207, 205, 0.5);}
+        }
+        th:nth-child(1), td:nth-child(1) {width: 156px; text-align: left;}
+        th:nth-child(2), td:nth-child(2) {width: 130px; text-align: left;}
+        th:nth-child(3), td:nth-child(3) {width: 84px; text-align: right;}
+        th:nth-child(4), td:nth-child(4) {width: 82px; text-align: right;}
+        th:nth-child(5), td:nth-child(5) {text-align: right;}
+        .nano-content {max-height: 485px; outline: none;}
+    }
+
+
+
+
+    // Money market process
+    .money-market-process {
+        padding: 10px !important;
+        &, label {font-size: 12px !important; line-height: 14px !important;}
+        form {@include remove-child-margin-bottom;}
+        label {
+            display: block; margin-bottom: 2px;
+            text-align: left;
+        }
+        form > div {margin-bottom: 15px;}
+        p {margin-bottom: 0;}
+        ul, li {@include remove-list-style;}
+        strong {font-size: 13px; line-height: 15px;}
+        .cash-info {
+            margin-top: -5px; padding: 9px 8px 7px 8px; background: rgba(#3c86f6, .3); @include rounded(2px);
+            img {margin-left: 5px; vertical-align: top;}
+        }
+        .other-info {
+            span {@include in-block; width: 40px; margin-right: 10px;}
+            li {margin: 3px 0;}
+        }
+        .amount-invest {
+            margin: 0 -10px 15px -10px; padding: 10px; background-color: rgba(0, 190, 190, 0.1); text-align: center;
+            .form-group {margin-bottom: 10px; text-align: left;}
+            .form-control {background: $white;}
+        }
+        .buttons {margin-bottom: 10px !important;}
+    }
+
+    // My movements
+    .my-movements {
+        th, td {padding: 0px 8px;}
+        th {
+            height: 40px; vertical-align: middle;
+            span {width: auto;}
+        }
+
+        // // Orders
+        // .orders {
+        //     th, td {
+        //         &:nth-child(1) {width: 80px; text-align: left;}
+        //         &:nth-child(2) {width: 110px; text-align: left;}
+        //         &:nth-child(3) {width: 100px; text-align: left;}
+        //         &:nth-child(4) {width: 100px; text-align: left;}
+        //         &:nth-child(5) {width: 100px; text-align: left;}
+        //         &:nth-child(6) {width: 100px; text-align: right;}
+        //         &:nth-child(7) {width: 100px; text-align: right;}
+        //         &:nth-child(8) {width: 110px; text-align: right;}
+        //         &:nth-child(9) {width: 110px; text-align: right;}
+        //         &:nth-child(10) {text-align: center;}
+        //     }
+        // }
+    }
+}
+
+.reporto-bank{
+    .body {min-height: 485px;}
+    .reporto-wrapper {position: relative;}
+    // .btn.buy {cursor: default;}
+
+    // Bands table
+    .bands-table {
+        th i {padding-left: 5px;}
+        th, td {padding: 0px 13px 0 8px;}
+        tbody tr td {background: none;}
+        > tbody > tr > td {
+            position: relative; padding: 0;
+            div {float: none; text-align: left;}
+        }
+        table {
+            width: 100%;
+            tbody > tr:hover > td {background: rgba(210, 207, 205, 0.5);}
+        }
+        th:nth-child(1), td:nth-child(1) {width: 180px; text-align: left;}
+        th:nth-child(2), td:nth-child(2) {width: 130px; text-align: left;}
+        th:nth-child(3), td:nth-child(3) {width: 109px; text-align: right;}
+        th:nth-child(4), td:nth-child(4) {width: 106px; text-align: right;}
+        th:nth-child(5), td:nth-child(5) {text-align: right;}
+        .nano-content {max-height: 485px; outline: none;}
+    }
+
+    .bands-table {
+        th i {padding-left: 5px;}
+        th, td {padding: 0px 13px 0 8px;}
+        tbody tr td {background: none;}
+        > tbody > tr > td {
+            position: relative; padding: 0;
+            div {float: none; text-align: left;}
+        }
+        table {
+            width: 100%;
+            tbody > tr:hover > td {background: rgba(210, 207, 205, 0.5);}
+        }
+        th:nth-child(1), td:nth-child(1) {width: 180px; text-align: left;}
+        th:nth-child(2), td:nth-child(2) {width: 130px; text-align: center;}
+        th:nth-child(3), td:nth-child(3) {width: 109px; text-align: center;}
+        th:nth-child(4), td:nth-child(4) {width: 106px; text-align: right;}
+        th:nth-child(5), td:nth-child(5) {text-align: right;}
+        .nano-content {max-height: 485px; outline: none;}
+    }
+
+
+
+
+    // Money market process
+    .money-market-process {
+        padding: 10px !important;
+        &, label {font-size: 12px !important; line-height: 14px !important;}
+        form {@include remove-child-margin-bottom;}
+        label {
+            display: block; margin-bottom: 2px;
+            text-align: left;
+        }
+        form > div {margin-bottom: 15px;}
+        p {margin-bottom: 0;}
+        ul, li {@include remove-list-style;}
+        strong {font-size: 13px; line-height: 15px;}
+        .cash-info {
+            margin-top: -5px; padding: 9px 8px 7px 8px; background: rgba(#3c86f6, .3); @include rounded(2px);
+            img {margin-left: 5px; vertical-align: top;}
+        }
+        .other-info {
+            span {@include in-block; width: 40px; margin-right: 10px;}
+            li {margin: 3px 0;}
+        }
+        .amount-invest {
+            margin: 0 -10px 15px -10px; padding: 10px; background-color: rgba(0, 190, 190, 0.1); text-align: center;
+            .form-group {margin-bottom: 10px; text-align: left;}
+            .form-control {background: $white;}
+        }
+        .buttons {margin-bottom: 10px !important;}
+    }
+
+    // My movements
+    .my-movements {
+        th, td {padding: 0px 8px;}
+        th {
+            height: 40px; vertical-align: middle;
+            span {width: auto;}
+        }
+
+        // // Orders
+        // .orders {
+        //     th, td {
+        //         &:nth-child(1) {width: 80px; text-align: left;}
+        //         &:nth-child(2) {width: 110px; text-align: left;}
+        //         &:nth-child(3) {width: 100px; text-align: left;}
+        //         &:nth-child(4) {width: 100px; text-align: left;}
+        //         &:nth-child(5) {width: 100px; text-align: left;}
+        //         &:nth-child(6) {width: 100px; text-align: right;}
+        //         &:nth-child(7) {width: 100px; text-align: right;}
+        //         &:nth-child(8) {width: 110px; text-align: right;}
+        //         &:nth-child(9) {width: 110px; text-align: right;}
+        //         &:nth-child(10) {text-align: center;}
+        //     }
+        // }
+    }
+}

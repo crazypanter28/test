@@ -1,0 +1,23 @@
+include /views/mixins/info-result
+div
+    div.loading-info( ng-if="!lastNewsWidget.info.finish" )
+        +loaderMini()
+    div( ng-if="lastNewsWidget.info.finish" )
+        .display-as-table
+            .wrapper
+                .container-info
+
+                    div(ng-if="lastNewsWidget.info.success")
+                        div(class="tool-seccion-news")
+                            span(ng-class="{'underlineOpcion' : lastNewsWidget.opcionListarNoticias == 1, 'cursor-pointer':true }" ng-click="lastNewsWidget.changeOpcion(1)") ULTIMAS 10 NOTICIAS
+                            span(class="pipe-separation") | 
+                            span(ng-class="{'underlineOpcion' : lastNewsWidget.opcionListarNoticias == 0, 'cursor-pointer':true}" ng-click="lastNewsWidget.changeOpcion(0)") TODAS 
+                            span(class="pipe-separation" ) | 
+                            span(class="cursor-pointer" ng-click="lastNewsWidget.verListadoNews()") VER LISTADO
+                        .marquee( angular-marquee scroll="true" duration="20000")
+                            ul
+                                li( ng-repeat="note in lastNewsWidget.noticiasFilter" )
+                                    a( href="{{note.uri}}" target="_blank" ) {{note.title}} {{ note.publishedDate | date:'HH:mm'}}
+
+                    div( ng-if="!lastNewsWidget.info.success" )
+                        +resourceCrashed( { type: 'sm', imgSize: 'mini' } )

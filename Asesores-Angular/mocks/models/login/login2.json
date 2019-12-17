@@ -1,0 +1,9 @@
+{
+   "status": 1,
+   "description": "Login successful",
+   "user":    {
+      "name": "Mauro Juarez",
+      "mail": "ngarcia@actinver.com.mx",
+      "employeeID": "599"
+   }
+}

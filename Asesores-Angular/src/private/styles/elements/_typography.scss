@@ -1,0 +1,37 @@
+//
+// _typography.scss
+//
+// It reflects the styles for the typography
+//
+
+// Font face fonts
+$font-face-fonts: true;
+
+@if $font-face-fonts == true {
+
+	/**
+	 * -------------------------
+	 * @info  Set Font Face Fonts
+	 * -------------------------
+	*/
+	@include font-face("FontAwesome", "fontawesome", 400);
+	@include font-face("Proxima Light", "ProximaNova-Light", 300);
+	@include font-face("Proxima Regular", "ProximaNova-Regular", 400);
+	@include font-face("Proxima Semibold", "ProximaNova-Semibold", 600);
+	@include font-face("Proxima Bold", "ProximaNova-Bold", 700);
+}
+
+/**
+ * -------------------------
+ * @info Headings
+ * -------------------------
+*/
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-family: $headings-font-family;}
+h1, h2, h3, .h1, .h2, .h3 {font-weight: 700;}
+
+/**
+ * -------------------------
+ * @info Miscellaneous
+ * -------------------------
+*/
+.truncate {@include truncate;}

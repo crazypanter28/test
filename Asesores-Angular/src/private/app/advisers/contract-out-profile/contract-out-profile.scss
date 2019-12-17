@@ -1,0 +1,86 @@
+
+.scroll::-webkit-scrollbar{
+    width: 12px;
+    height: 14px;    
+}
+.scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+.scroll::-webkit-scrollbar-thumb {
+	background: $blue4;
+    border-right: 1px solid $blue4;
+    border-left: 1px solid $blue4;
+    border-bottom: 1px solid $blue4;
+}
+
+.scroll::-webkit-scrollbar-button:horizontal:decrement {
+    height: 13px;
+    background-image: url("../img/icons/arrow-left.svg");
+    background-size: 10px 14px;
+    background-repeat: no-repeat; 
+    background-position: center;  
+}
+
+  
+.scroll::-webkit-scrollbar-button:horizontal:increment {
+    height: 13px;
+    background-image: url("../img/icons/arrow-right.svg");
+    background-size: 10px 14px;
+    background-repeat: no-repeat; 
+    background-position: center;  
+}
+.contract-out-profile-title{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 3px;
+    color:red;
+}
+.contract-out-profile-foot{
+    color:red;
+    font-weight: bold;
+}
+
+.contract-out-profile-option{
+    padding-left: 15px;
+}
+.contract-out-profile-option-suboption{
+    padding-left: 20px;
+}
+
+.modal-div-contract-out-profile{
+    text-align: justify;
+    margin-bottom: 19px;
+   // max-height: 335px;
+    margin-right: -8px;
+    overflow-y: auto;    
+    >div{
+        padding-bottom: 5px;
+        margin-right: 0px;
+    }
+}
+
+.modal-center-contract-out-profile{
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    display: grid !important;
+    div{
+        margin:auto;
+        div{
+            margin:auto;
+        }
+    }
+}
+
+.center-modal-outProfile{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}

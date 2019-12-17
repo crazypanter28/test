@@ -1,0 +1,39 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+.common-page.tracing-page
+
+    form( name="form" novalidate )
+
+        .panel.panel-default.panel-static
+
+            .panel-heading
+                .panel-title
+                    span Datos de propuesta
+            .panel-body
+                .content
+                    tracing-form( model="propTracing.tracing" form-type="'propSeguimiento'" )
+                    div( ng-if="propTracing.tracing.form.scontract" )
+                        .form-row.form-row-title
+                            .item.fields-list
+                                .field-name Selecciona el tipo de portafolio
+                        proposal-form(  edit="true" obj="Object.keys" model="propTracing.brief" idx="0" contract="propTracing.tracing.form.scontract")
+        
+        div(ng-if="(propTracing.brief.form.portfolio[0].type && propTracing.brief.form.portfolio[0].type === 'model') || propTracing.brief.form.portfolio[0].client_type")
+            uib-accordion
+                .panel.panel-default( uib-accordion-group='' is-open="propTracing.tracing_portfolio" )
+                    uib-accordion-heading
+                        span Agregar otro Portafolio
+                        i.direction-arrow.fa(ng-class="{ 'fa-angle-up': propTracing.tracing_portfolio, 'fa-angle-down': !propTracing.tracing_portfolio }")
+                    .content
+                        proposal-form( edit="true" obj="Object.keys" model="propTracing.brief" idx="1" )
+
+        div(ng-if="(propTracing.brief.form.portfolio[0].type && propTracing.brief.form.portfolio[0].type === 'model') || propTracing.brief.form.portfolio[0].client_type")
+            products( model="propTracing" )
+            adviser-form( model="propTracing.adviser" )
+            
+        
+        div( ng-if="propTracing.brief.form.portfolio[0].type === 'model' || (propTracing.brief.form.portfolio[0].type === 'manual' && propTracing.brief.form.portfolio[0].client_type)" )
+            .form-actions
+                a.btn.btn-default.cancel( ng-click="propTracing.resetForm()" ) CANCELAR
+                +btnSubmit('GENERAR PROPUESTA','btn-primary',null)(ngClick="propTracing.validateForm( form )")

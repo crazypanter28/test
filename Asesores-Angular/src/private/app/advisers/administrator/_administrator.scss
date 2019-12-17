@@ -1,0 +1,226 @@
+@import './factsheets/factsheets.scss';
+@import './group/group.scss';
+@import './eeuu/eeuu.scss';
+@import './mexico/mexico.scss';
+@import './economic/economic.scss';
+@import './legal/legal.scss';
+@import './investment/investment.scss';
+@import './favorites/favorites.scss';
+@import './employee/employee.scss';
+@import './profiles/profiles.scss';
+@import './advisers-binnacle/advisers-binnacle.scss';
+@import './messages/messages.scss';
+@import './presentations/_presentations.scss';
+@import './derivatives/derivatives.scss';
+
+.administrator-page {
+
+
+    .container-administrator {
+        border: 2px solid #00bebe;
+        overflow: hidden;
+
+
+        .administrator-list-tabs {
+            border-right: 2px solid #00bebe;
+            float: left;
+            width: 125px;
+
+
+            .list-tabs {
+                margin: 0;
+                padding: 0;
+
+
+                .item-tabs {
+                    border-bottom: 1px solid #00bebe;
+                    color: #1d74cf;
+                    cursor: pointer;
+                    display: table;
+                    font-size: 12px;
+                    height: 50px;
+                    line-height: 16px;
+                    list-style-type: none;
+                    padding: 9px;
+                    position: relative;
+                    width: 100%;
+
+
+                    span {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+
+
+                    &.active {
+                        background: #00bebe;
+                        color: white;
+                        width: calc( 100% + 3px );
+                        border-right: 1px solid white;
+
+
+                        &:before {
+                            border-bottom: 11px solid transparent;
+                            border-left: 11px solid white;
+                            border-top: 11px solid transparent;
+                            content: "";
+                            display: block;
+                            height: 0;
+                            margin-top: -11px;
+                            position: absolute;
+                            right: -12px;
+                            top: 50%;
+                            width: 0;
+                        }
+
+
+                        &:after {
+                            border-bottom: 10px solid transparent;
+                            border-left: 10px solid #00bebe;
+                            border-top: 10px solid transparent;
+                            content: "";
+                            display: block;
+                            height: 0;
+                            margin-top: -10px;
+                            position: absolute;
+                            right: -10px;
+                            top: 50%;
+                            width: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .administrator-content-tabs {
+            float: left;
+            width: calc( 100% - 125px );
+
+
+            .section-title {
+                background: #00bebe;
+                color: white;
+                font-weight: 600;
+                padding: 8px 22px;
+
+
+                .add-white {
+                    float: right;
+                    margin-top: -3px;
+                }
+            }
+
+
+            .content {
+                padding: 20px;
+            }
+
+
+            .form-group {
+                margin-bottom: 15px;
+
+                label {
+                    margin-bottom: 5px;
+
+
+                    .require {
+                        font-weight: 600;
+                    }
+                }
+
+
+                .help-block {
+                    font-size: 11px;
+                    margin: 0;
+                }
+
+            }
+
+
+            .static {
+                position: static;
+            }
+
+
+            .relative {
+                position: relative;
+            }
+
+
+            .absolute {
+                position: absolute;
+            }
+
+
+            textarea {
+                resize: none;
+            }
+
+
+            .btn-primary {
+
+
+                &.outline {
+                    background: white;
+                    border: 1px solid #1750a7;
+                    color: #1750a7;
+                }
+
+
+                &[disabled] {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+
+    .list-tabs-cube {
+        border-bottom: 1px solid #00bebe;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+
+
+        .item-tabs {
+            list-style-type: none;
+            display: inline-block;
+            border: 1px solid #d2cfcd;
+            margin-right: 10px;
+            width: calc( (100% - 40px) / 5 );
+            float: left;
+            text-align: center;
+            padding: 10px;
+
+            i {
+                display: inline-block;
+            }
+
+
+            span {
+                display: block;
+                text-transform: uppercase;
+                color: #051c48;
+                opacity: 0.5;
+            }
+
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+
+            &.active {
+                border-color: #00bebe;
+                border-bottom-width: 7px;
+
+
+                span {
+                    opacity: 1;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

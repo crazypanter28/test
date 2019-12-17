@@ -1,0 +1,49 @@
+div.content-panel.tranfers.text-center(ng-if="lifeCtrl.actualPage === 6")
+    .row(style="padding-bottom:20px;")
+        h3.tit SEGURO DE VIDA
+    .row(style="padding-bottom:20px;")
+        p(style="font-size: 16px; font-weight: bold;") Tu póliza se ha emitido exitosamente
+    .row.form-group
+        .col-sm-4
+            img(src="img/logos/mapfre.svg" style="width: 170px; height: 100px")
+        .col-sm-2.col-xs-6.text-right
+            p(style="font-size: 15px; font-weight: bold;") Póliza No:    
+            p(style="font-size: 15px; font-weight: bold;") Titular:
+            p(style="font-size: 15px; font-weight: bold;") Fecha de Emisión:
+            p(style="font-size: 15px; font-weight: bold;") Prima Total:
+            p(style="font-size: 14px;") e-mail para envío:                
+        .col-sm-6.col-xs-6.text-left
+            p(style="font-size: 15px; font-weight: bold;") {{lifeCtrl.numeroPoliza}}
+            p(style="font-size: 15px; font-weight: bold; text-transform: uppercase;") {{lifeCtrl.nombreAsegurado + " " + lifeCtrl.apePaternoAsegurado + " " + lifeCtrl.apeMaternoAsegurado}}
+            p(style="font-size: 15px; font-weight: bold;") {{lifeCtrl.fechaVigencia}}
+            p(style="font-size: 15px; font-weight: bold;") {{lifeCtrl.totalSum | currency: '$' : 2}}
+            p(style="font-size: 14px;") {{lifeCtrl.emailUser}}
+    .row(style="padding-bottom:10px;")
+        .col-sm-2
+        p.col-sm-2.text-right Forma de pago:
+        p.col-sm-4 {{lifeCtrl.cmd.paymentType.type.text}}
+        p.col-sm-2.text-left {{lifeCtrl.account || lifeCtrl.clabeInter}}
+        .col-sm-2
+    .row(style="padding-bottom:15px;")
+        p(style="font-size: 15px; font-weight: bold;") Haz elegido la mejor póliza para ti
+    .row(style="width:90%; margin-left: auto; margin-right: auto;")
+        p * ES IMPORTANTE QUE EL ASEGURADO FIRME AMBAS SOLICITUDES (CLIENTE Y ASEGURADORA) Y HAGA ENTREGA UNICAMENTE DE LA SOLICITUD DE LA ASEGURADORA A SU ASESOR FINANCIERO.
+        br
+        p * ES IMPORTANTE QUE EL ASEGURADO, GUARDE LA COPIA DEL CLIENTE EN UN LUGAR SEGURO.
+    .row(style="padding-left:30px; padding-top:20px;")
+        .row
+            .col-md-4(style="padding-bottom:10px;")
+                button(style="height: 50px !important; width: 220px !important; white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.imprimirSolicitudLife()") Imprimir Solicitud Cliente
+            .col-md-4(style="padding-bottom:10px;")
+                button(style="height: 50px !important; width: 220px !important; white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.imprimirSolicitudLife()") Imprimir Solicitud Aseguradora
+            .col-md-4(style="padding-bottom:10px;")
+                button(style="height: 50px !important; width: 220px !important; white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.ServiceEmailLifePolizaLista()") Enviar Correo al Cliente
+        .row
+            .col-md-4(style="padding-bottom:10px;")
+                button(style="height: 50px !important; width: 220px !important; white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.imprimirPolizaLife(lifeCtrl.numeroPoliza)") Imprimir Póliza Cliente
+            .col-md-4(style="padding-bottom:10px;")
+                button(style="height: 50px !important; width: 220px !important; white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.imprimirPolizaLife(lifeCtrl.numeroPoliza)") Imprimir Póliza Aseguradora
+            .col-md-4(style="padding-bottom:10px;")
+                button(style="height: 50px !important; width: 220px !important; white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.imprimirCondiciones()") Imprimir Cond. Generales
+        .row
+            button(style="height: 50px !important; width: 220px !important;white-space: normal;" class="btn-primary btn" ng-click="lifeCtrl.regresoMain()") Finalizar

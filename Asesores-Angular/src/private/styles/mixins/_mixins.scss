@@ -1,0 +1,461 @@
+//
+// _mixins.scss
+//
+// Mixins used in entire site
+//
+
+// Clear
+@mixin clear(){
+    &:after,
+    &:before{
+        clear: both;
+        content: '';
+        display: block;
+    }
+}
+
+// Display inline block
+@mixin in-block(){
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+
+// Vertical align middle
+@mixin vertical-middle(){
+  top: 50%; @include transform(translateY(-50%));
+}
+
+// Horizontal / Vertical align middle
+@mixin centered(){
+  top: 50%; left: 50%; @include transform((translateX(-50%) translateY(-50%)));
+}
+// Remove list style
+@mixin remove-list-style(){
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+// Text decoration behavior
+@mixin text-decoration-hover(){
+  text-decoration: none;
+
+  // States
+  &:hover {text-decoration: underline;}
+}
+
+// Font face
+@mixin font-face($font-name: "MyFont", $font-file: "my_font", $font-weight: 400, $font-style: normal, $font-path: "../fonts") {
+  @font-face {
+    font-family: $font-name;
+    src: url("#{$font-path}/#{$font-file}.ttf") format("truetype"),
+         url('#{$font-path}/#{$font-file}.woff') format('woff'),
+         url('#{$font-path}/#{$font-file}.woff2') format('woff2');
+    font-style: $font-style;
+    font-weight: $font-weight;
+  }
+}
+
+// Smoothing
+@mixin smoothing(){
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+// Blur
+@mixin blur($blur: 3px, $blur_path: "../img/bg/blur.svg#blur"){
+  filter: blur($blur);
+  -webkit-filter: blur($blur);
+  -moz-filter: blur($blur);
+  -o-filter: blur($blur);
+  -ms-filter: blur($blur);
+  filter: url($blur_path);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='$blur');
+}
+
+// Opacity
+@mixin opacity($opacity: 1){
+  opacity: $opacity;
+  filter: alpha(opacity=$opacity * 100);
+}
+
+// Hyphens
+@mixin hyphens($string){
+  -webkit-hyphens: $string;
+  -moz-hyphens: $string;
+  -ms-hyphens: $string;
+  hyphens: $string;
+}
+
+// Border radius
+@mixin rounded($radius: 2px){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// Box shadow
+@mixin box-shadow($shadow){
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+// Gradients
+@mixin linear-gradient($top-color: $top-linear-common-bg, $bottom-color: $bottom-linear-common-bg) {
+  background: $top-color;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from($top_color), to($bottom-color));
+  background: -webkit-linear-gradient($top-color, $bottom-color);
+  background: -moz-linear-gradient($top-color, $bottom-color);
+  background: -ms-linear-gradient($top-color, $bottom-color);
+  background: -o-linear-gradient($top-color, $bottom-color);
+  background: linear-gradient($top-color, $bottom-color);
+}
+
+// Horizontal linear gradient
+@mixin horizontal-linear-gradient($top-color: $top-linear-common-bg, $bottom-color: $bottom-linear-common-bg) {
+  background: $top-color;
+  background: -webkit-gradient(linear, left, from($top_color), to($bottom-color));
+  background: -webkit-linear-gradient(left, $top-color, $bottom-color);
+  background: -moz-linear-gradient(right, $top-color, $bottom-color);
+  background: -ms-linear-gradient(right, $top-color, $bottom-color);
+  background: -o-linear-gradient(right, $top-color, $bottom-color);
+  background: linear-gradient(to right, $top-color, $bottom-color);
+}
+
+// Box sizing
+@mixin box-sizing($string){
+  -webkit-box-sizing: $string;
+  -moz-box-sizing: $string;
+  box-sizing: $string;
+}
+
+// Transform
+// @include transform((scale(1.3)));
+@mixin transform($string){
+  -webkit-transform: $string;
+  -moz-transform: $string;
+  -ms-transform: $string;
+  -o-transform: $string;
+  transform: $string;
+}
+
+// Transform
+// @include transform-style(preserve-3d);
+@mixin transform-style($string){
+  -webkit-transform-style: $string;
+  -moz-transform-style: $string;
+  transform-style: $string;
+}
+
+// Transform-origin
+// @include transform-origin((-200% 50%));
+@mixin transform-origin($string){
+  -webkit-transform-origin: $string;
+  -moz-transform-origin: $string;
+  -ms-transform-origin: $string;
+  -o-transform-origin: $string;
+  transform-origin: $string;
+}
+
+// Perspective
+// @include perspective(1300px);
+@mixin perspective($factor: 0){
+  -webkit-perspective: $factor;
+  perspective: $factor;
+}
+
+// Scale
+// @include scale(1.2);
+@mixin scale($factor: 0){
+  @include transform((scale($factor)))
+}
+
+// Rotate
+// @include rotate(7deg);
+@mixin rotate($deg: 0){
+  @include transform((rotate($deg)))
+}
+
+// Transitions
+// @include transition(all .3s);
+@mixin transition($transition){
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+// Transition delay
+// @include transition-delay(.3s);
+@mixin transition-delay($delay){
+  -webkit-transition-delay: $delay;
+  -moz-transition-delay: $delay;
+  transition-delay: $delay;
+}
+
+// Transition-transform
+// @include transition-transform((1s, opacity 1s));
+@mixin transition-transform($transition){
+  -webkit-transition: -webkit-transform $transition;
+  -moz-transition: -moz-transform $transition;
+  -ms-transition: -o-transform $transition;
+  -o-transition: -o-transform $transition;
+  transition: transform $transition;
+}
+
+// Appearance
+// @include appearance(none);
+@mixin appearance($string){
+  -webkit-appearance: $string;
+  -moz-appearance: $string;
+  appearance: $string;
+}
+
+// Keyframes
+@mixin keyframe($animation_name){
+  @-webkit-keyframes #{$animation_name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animation_name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animation_name} {
+    @content;
+  }
+
+  @keyframes #{$animation_name} {
+    @content;
+  }
+}
+
+// Animation
+@mixin animation($animation, $duration, $delay, $easing, $infinite: false){
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: $animation;
+  -webkit-animation-fill-mode: forwards; /* This prevents the animation from restarting! */
+  @if $infinite == true {
+    -webkit-animation-iteration-count: infinite;
+  }
+  -webkit-animation-timing-function: $easing;
+
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-name: $animation;
+  -moz-animation-fill-mode: forwards; /* This prevents the animation from restarting! */
+  @if $infinite == true {
+    -moz-animation-iteration-count: infinite;
+  }
+  -moz-animation-timing-function: $easing;
+
+  -ms-animation-delay: $delay;
+  -ms-animation-duration: $duration;
+  -ms-animation-name: $animation;
+  -ms-animation-fill-mode: forwards; /* This prevents the animation from restarting! */
+  @if $infinite == true {
+    -ms-animation-iteration-count: infinite;
+  }
+  -ms-animation-timing-function: $easing;
+
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $animation;
+  animation-fill-mode: forwards; /* This prevents the animation from restarting! */
+  @if $infinite == true {
+    animation-iteration-count: infinite;
+  }
+  animation-timing-function:$easing;
+}
+
+// Simple SCSS mixin to create CSS triangles
+// Example: @include css-triangle("up", 10px, #FFF);
+// See: https://gist.github.com/patocallaghan/2963271
+@mixin css-triangle($direction: "down", $size: 20px, $color: $triangle-common-bg){
+  width: 0; height: 0;
+  border-left: $size solid #{setTriangleColor($direction, "left", $color)};
+  border-right: $size solid #{setTriangleColor($direction, "right", $color)};
+  border-bottom: $size solid #{setTriangleColor($direction, "bottom", $color)};
+  border-top: $size solid #{setTriangleColor($direction, "top", $color)};
+}
+
+// Utility function to return the relevant colour depending on what type of arrow it is
+@function setTriangleColor($direction, $side, $color){
+
+  @if $direction == "left" and $side == "right" or $direction == "right" and $side == "left" or $direction == "down" and $side == "top" or $direction == "up" and $side == "bottom" {
+    @return $color
+  } @else {
+    @return "transparent";
+  }
+
+}
+
+// Responsive breackpoint
+// @include breakpoint($xs){ ... }
+// See: https://medium.com/developing-with-sass/refactoring-my-simple-sass-breakpoint-mixin-71205dd6badd
+@mixin breakpoint($map) {
+  $query: "";
+  @if map-has-key($map, min) { $query: append($query, "(min-width: #{map-get($map, min)})") }
+  @if map-has-key($map, min) and map-has-key($map, max) { $query: append($query, "and") }
+  @if map-has-key($map, max) { $query: append($query, "(max-width: #{map-get($map, max)})") }
+
+  // Chec if responsive support is enabled
+  @if $responsive == true {
+    @media screen and #{$query} { @content; }
+  }
+}
+
+// Retina display
+// @include image-2x("logo2x.png", 100px, 25px);
+// See: https://signalvnoise.com/posts/3271-easy-retina-ready-images-using-scss
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+
+    // On retina, use image that's scaled by 2
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+// Make columns for grid system
+@mixin make-grid($num-cols: $num-columns){
+  @for $x from 1 through $num-cols {
+    $width: percentage( $x / $num-cols);
+    .col-#{$x} {width: $width;}
+  }
+}
+
+// Remove margin top for specified elements
+@mixin remove-child-margin-top($all-children: true){
+@if $all-children == true {
+    > *:last-child {margin-top: 0;}
+    > .page {margin-bottom: 0;}
+  } @else {
+    > h1:first-child,
+    > h2:first-child,
+    > h3:first-child,
+    > h4:first-child,
+    > h5:first-child,
+    > h6:first-child,
+    > p:first-child,
+    > ul:first-child,
+    > ol:first-child,
+    > li:first-child,
+    > div:first-child,
+    > blockquote:first-child,
+    > .form-group:first-child,
+    > .form-control:first-child,
+    > .alert:first-child,
+    > .page:first-child,
+    > .page > .container > *:first-child {margin-top: 0;}
+    > .page {margin-bottom: 0;}
+  }
+}
+
+// Remove margin bottom for specified elements
+@mixin remove-child-margin-bottom($all-children: true){
+  @if $all-children == true {
+    > *:last-child {margin-bottom: 0;}
+    > .page {margin-top: 0;}
+  } @else {
+    > h1:last-child,
+    > h2:last-child,
+    > h3:last-child,
+    > h4:last-child,
+    > h5:last-child,
+    > h6:last-child,
+    > p:last-child,
+    > ul:last-child,
+    > ol:last-child,
+    > li:last-child,
+    > div:last-child,
+    > blockquote:last-child,
+    > .form-group:last-child,
+    > .form-control:last-child,
+    > .alert:last-child,
+    > .page:last-child,
+    > .page > .container > *:last-child {margin-bottom: 0;}
+    > .page {margin-top: 0;}
+  }
+}
+
+// Buttons
+// Button sizes
+@mixin button-size($padding, $font-size) {
+  padding: $padding; font-size: $font-size; line-height: $font-size;
+}
+
+// Buttons variants
+@mixin button-variant($button) {
+  background: map-get($button, bg);
+  &, i {color: map-get($button, color);}
+
+  // States
+  &:hover, &:focus {color: map-get($button, hover-color); background: map-get($button, hover-bg); border-color: map-get($button, hover-border);}
+
+  // Active
+  &:active, &.active,
+  &:active:hover, &.active:hover,
+  &:active:focus, &.active:focus {background-image: none; color: map-get($button, active-color); background: map-get($button, active-bg); border-color: map-get($button, active-border);}
+
+  // Disabled
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed; @include opacity(.65); @include box-shadow(none);
+
+    &, &:hover, &:active, &.active  {
+      @include opacity(1); color: map-get($button, disabled-color); background: map-get($button, disabled-bg); border-color: map-get($button, disabled-border);
+    }
+  }
+}
+
+// Forms
+// User select
+// For selecting text on the page
+@mixin user-select($select) {
+  -webkit-user-select: $select;
+  -moz-user-select: $select;
+  -ms-user-select: $select;
+  user-select: $select;
+}
+
+// Form control focus state
+@mixin form-control-focus($color: $form-control-border-focus, $shadow: true) {
+  $color-rgba: rgba($color, .6);
+  &:focus {
+    /*border-color: $color;*/ outline: 0;
+
+    @if $shadow == true {
+      @include box-shadow(none);
+    }
+  }
+}
+
+// Placeholder text
+@mixin placeholder($color: $form-control-placeholder-color) {
+  &::-moz-placeholder {color: $color; opacity: 1;}
+  &:-ms-input-placeholder {color: $color;}
+  &::-webkit-input-placeholder {color: $color;}
+}
+
+// Alerts
+@mixin alert-variant($background, $border, $text-color, $highlight-color) {
+  background-color: $background; border-color: $border; color: $text-color;
+  a, span {color: $highlight-color;}
+}
+
+// Truncate text
+@mixin truncate(){
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+// Project custom mixins
+// Add custom mixins for a particular project

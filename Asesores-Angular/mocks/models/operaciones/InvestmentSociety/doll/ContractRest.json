@@ -1,0 +1,26 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 2,
+			"transactionID": "2adb99f4-9b78-4600-bd9d-f4deac149f88",
+			"messages": [{
+				"responseSystemCode": "SIACBCST0117",
+				"responseMessage": "No existen Instrucciones Autorizadas",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1494824400000,
+		"time": 80832000,
+		"clientID": "NBURSANET",
+		"sessionID": null,
+		"responseSystem": "A2K",
+		"operationName": "A2KBankAccountsQuery",
+		"operationVersion": "1_0",
+		"ipaddress": "10.10.30.35"
+	},
+	"outA2KBankAccountsQuery": {
+		"bankAccountsList": []
+	}
+}

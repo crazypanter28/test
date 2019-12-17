@@ -1,0 +1,42 @@
+include /views/mixins/buttons
+
+a
+    img(
+        src="img/icons/mensaje_done.svg",
+        alt="",
+        width="64"
+    )
+
+div.modal-div-lumina
+    .row
+        .col-md-5.negritas Folío:
+        .col-md-7  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.orderid}}
+    .row
+        .col-md-5.negritas Folío Externo:
+        .col-md-7  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.foreignorderid}}
+    .row
+        .col-md-5.negritas Id Mensaje:
+        .col-md-7  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.messageid}}    
+    .row    
+        .col-md-5.negritas Fecha de Notificación:
+        .col-md-7  {{ lumina.data.outAdviserNotificationRegistration.registryDateTime | date:'dd-MM-yyyy HH:mm:ss'}}
+    .row
+        .col-md-5.negritas Estatus Inicial:
+        .col-md-7  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.orderstatusfrom}}
+    .row
+        .col-md-5.negritas Estatus Final:
+        .col-md-7 {{lumina.data.outAdviserNotificationRegistration.message.orderevent.orderstatusto}}
+    .row
+        .col-md-5.negritas Tipo de Producto:
+        .col-md-7  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.producttype}}
+    .row
+        .col-md-12.negritas Motivo:
+        .col-md-12  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.motive}}
+    .row
+        .col-md-12.negritas Comentario:
+        .col-md-12  {{lumina.data.outAdviserNotificationRegistration.message.orderevent.comments}}
+
+
+
+div.buttons
+    +btnSubmit( 'Aceptar', 'success' )(ngClick="lumina.done(lumina.data.outAdviserNotificationRegistration.adviserNotificationID)")

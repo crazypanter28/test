@@ -1,0 +1,93 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "80289945-3c60-4c37-9e6d-f60fbab36cd4",
+			"messages": [{
+				"responseSystemCode": "ACCAT001",
+				"responseMessage": "Success",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1493874000000,
+		"time": 61140000,
+		"clientID": "NBURSANET",
+		"sessionID": null,
+		"responseSystem": "A2K",
+		"operationName": "OrderTypeCatalog",
+		"operationVersion": "1_0",
+		"ipaddress": "10.10.1.58"
+	},
+	"outOrderTypeCatalog": {
+		"orderTypeCatalogData": {
+			"orderType": [{
+				"areaKey": 1,
+				"key": "1",
+				"shortKey": "HC",
+				"description": "AL CIERRE"
+			}, {
+				"areaKey": 1,
+				"key": "2",
+				"shortKey": "LP",
+				"description": "LIMITADA POR PRECIO"
+			}, {
+				"areaKey": 1,
+				"key": "3",
+				"shortKey": "MC",
+				"description": "A MERCADO"
+			}, {
+				"areaKey": 1,
+				"key": "6",
+				"shortKey": "VO",
+				"description": "VOLUMEN OCULTO"
+			}, {
+				"areaKey": 1,
+				"key": "7",
+				"shortKey": "MA",
+				"description": "MPL ACTIVA"
+			}, {
+				"areaKey": 1,
+				"key": "8",
+				"shortKey": "MP",
+				"description": "MPL PASIVA"
+			}, {
+				"areaKey": 1,
+				"key": "11",
+				"shortKey": "LO",
+				"description": "MPL VOL OCULTO"
+			}, {
+				"areaKey": 1,
+				"key": "12",
+				"shortKey": "PR",
+				"description": "MERCADO CON PROTECCION"
+			}, {
+				"areaKey": 1,
+				"key": "13",
+				"shortKey": "PD",
+				"description": "PROMEDIO DEL DIA"
+			}, {
+				"areaKey": 1,
+				"key": "14",
+				"shortKey": "MO",
+				"description": "MPL SNT OPUESTO"
+			}, {
+				"areaKey": 1,
+				"key": "16",
+				"shortKey": "DC",
+				"description": "DESPUES DEL CIERRE"
+			}, {
+				"areaKey": 1,
+				"key": "17",
+				"shortKey": "EV",
+				"description": "EXCEPCION VW"
+			}, {
+				"areaKey": 1,
+				"key": "18",
+				"shortKey": "ET",
+				"description": "EXCEPCION TW"
+			}]
+		}
+	}
+}

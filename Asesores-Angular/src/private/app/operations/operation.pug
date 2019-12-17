@@ -1,0 +1,78 @@
+include /views/mixins/radio-button
+include /views/mixins/buttons
+
+h3.primary-title Operaciones
+
+div.content-panel.tranfers
+    ul.act-nav-tabs
+
+        li( ui-sref-active="active" )
+            a( ui-sref="account" ) Cuenta
+
+        li( ng-class="{disabled: !operations.sclient.data, active: $state.includes('portfolio.detail')}" )
+            a( ng-click="operations.getSelectedClient('portfolio.detail')" ) Portafolio
+
+        li
+            a(style="color: white;") _
+
+        li
+            a(style="color: white;") _
+
+
+    div.row.margin-0
+        div( ui-view="" )
+
+// Page instructions
+.page-instructions( ng-show="operations.show_instructions" )
+    .panel.panel-default
+        .panel-heading( ng-hide="operations.sclient.data" )
+            | Instrucciones de operación
+        .panel-body
+
+            // Steps
+            .steps( ng-hide="operations.sclient.data" )
+                p Debes confirmar con tu cliente en todas las operaciones solicitadas:
+                .row
+                    .col-xs-6
+                        p 1. Número de contrato
+                        p 2. Nombre completo de tu cliente
+                        p 3. Operación solicitada
+                    .col-xs-6
+                        p 4. # de Títulos y/o Monto de la operación y/o "Valor Mercado"
+                        p 5. Emisora: Nombre y/o Clave de la Emisora
+                        p 6. Fecha: Si se solicita la operación en una fecha posterior
+                p Tu bitácora de operación deberá incluir:
+                    strong  Extensión, fecha y hora.
+
+            // Process
+            .process
+                h2 Llamadas con clientes
+                .row
+                    .col-xs-6
+                        .details
+                            h3 ¿Qué debemos hacer?
+                            ul
+                                li Consulta el perfil del cliente
+                                li Considera lo siguiente para emitir sugerencias:
+                                    ul
+                                        li Plazo
+                                        li Periodo de liquidación
+                                        li Riesgo
+                                        li Volatilidad
+                    .col-xs-6
+                        .details
+                            h3.forbidden Está prohibido
+                            ul
+                                li Utilizar el celular o whatsapp
+                                li Garantizar rendimientos
+                                li Utilizar frases como:
+                                    ul
+                                        li Te recomiendo...
+                                        li Yo creo que...
+                                        li Yo esperaría que...
+                                li Ingresar datos incorrectos en la bitácora de operaciones, ya que podrías ser sancionado.
+                p
+                    strong Recuerda:
+                    |  Los contratos
+                    strong  discrecionales,
+                    |  requieren de una instrucción de operación de manera obligatoria en cualquier emisión de Grupo Financiero Actinver.

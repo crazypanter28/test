@@ -1,0 +1,16 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idMessage": 10148,
+		"message": "Prueba",
+		"creationDate": "10/07/2017 16:32:38",
+		"expirationDate": "11/07/2017",
+		"destinations": ""
+	}]
+}

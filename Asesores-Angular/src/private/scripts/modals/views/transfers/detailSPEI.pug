@@ -1,0 +1,51 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="detail.close()"
+        )
+        h4 DETALLE DEL MOVIMIENTO 
+
+    div.modal-body
+        div.content.dollScrollDetailOtherAcounts
+            //div.row.margin-0
+                p.col-xs-6 FECHA:
+                p.col-xs-6 {{ detail.info.postingDateTime | date : 'yyyy-MM-dd hh:mm:ss a'}}  
+            //div.row.margin-0
+                p.col-xs-6 FECHA PAGO:
+                p.col-xs-6 {{ detail.info.paymentDate | date : 'yyyy-MM-dd'}}                     
+            div.row.margin-0
+                p.col-xs-3 
+                    b BANCO ORIGEN:
+                p.col-xs-6 {{ detail.info.sourceBank.bankName }}
+            div.row.margin-0
+                p.col-xs-3 
+                    b BANCO DESTINO:
+                p.col-xs-6 {{ detail.info.destinationBank.bankName }}
+            div.row.margin-0
+                p.col-xs-3
+                    b NO.REFERENCIA:
+                p.col-xs-6 {{ detail.info.operationReference }}  
+            div.row.margin-0
+                p.col-xs-3 
+                    b CLABE:
+                p.col-xs-6 {{ detail.info.clabe }} 
+            div.row.margin-0
+                p.col-xs-3 
+                    b MONTO:
+                p.col-xs-6 {{ detail.info.amount | currency:'$' }}                       
+            div.row.margin-0
+                p.col-xs-3
+                    b DESCRIPCION:
+                p.col-xs-6 {{ detail.info.movementDescription }} 
+    br
+    br                
+
+                
+

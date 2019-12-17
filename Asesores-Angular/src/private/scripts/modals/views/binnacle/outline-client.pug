@@ -1,0 +1,53 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+.binnacle-modal.modal-outline-client
+    form( name="form" novalidate )
+        div.modal-header
+            img.icon( src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="outline.close()" )
+            h4 REPERFILAMIENTO
+
+        div.modal-body
+
+            // Spinner
+            .loader-wrapper( ng-if="outline.sent_type" )
+                .spinner
+
+            // Type
+            div( ng-if="!outline.sent_type" )
+
+                // Choose outline
+                .choose-outline
+                    input( type="hidden" name="employee" ng-model="outline.form.employee" )
+                    input( type="hidden" name="contrato" ng-model="outline.form.contrato" )
+                    input( type="hidden" name="tipoOrigen" ng-model="outline.form.tipoOrigen" )
+                    input( type="hidden" name="typeServicio" ng-model="outline.form.typeServicio" )
+                    input( type="hidden" name="tipoPersona" ng-model="outline.form.tipoPersona" )
+                    input( type="hidden" name="typeoperation" ng-model="outline.form.typeoperation" )
+                    label Tipo de reperfilamiento
+                    .form-group
+                        label.act-radio-custom( for="confirm" )
+                            input( type="radio" id="confirm" name="type" value="confirm" ng-model="outline.form.type" ng-required="true" )
+                            span.css-label
+                            | Confirmación del perfil actual
+                        label.act-radio-custom( for="update" )
+                            input( type="radio" id="update" name="type" value="update" ng-model="outline.form.type" ng-required="true" )
+                            span.css-label
+                            | Actualización del perfil
+                        label.act-radio-custom( ng-if="outline.form.typeoperation !== 'all' " for="not-found" )
+                            input( type="radio" id="not-found" name="type" value="not-found" ng-model="outline.form.type" ng-required="true" )
+                            span.css-label
+                            | Cliente no localizable
+                       
+                div(ng-if="outline.form.typeoperation === 'all' " style="margin-top:40px; color: #0f3f88; text-align:center; font-weight:bold; font-size:16px;")
+                    span Tipo de perfil actual 
+                    span {{outline.form.investmentProfile.description}}
+                // Note
+                .note
+                    .icon !
+                    | Cuando selecciones alguna opción, te redirigirá a
+                    span  Practicas de Venta.
+
+        div.modal-footer
+            div( ng-if="!outline.sent_type" )
+                +btnSubmit( 'CONTINUAR', 'save', '!form.$valid' )( ngClick="outline.sendType( outline.form )" )

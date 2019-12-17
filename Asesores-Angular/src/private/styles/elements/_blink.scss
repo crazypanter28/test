@@ -1,0 +1,84 @@
+.blink-container{
+	text-align: left !important;
+	width: 90%;
+
+	.blink-me {
+				
+		text-align: left !important;
+		width: 100%;
+		//transition-delay: 0.7s;
+
+		&.red{
+			animation: blinker 1s linear infinite;
+			background-color: #e91c1c;
+			color: white;
+			-webkit-transition: background-color 300ms linear;
+			-moz-transition: background-color 300ms linear;
+			-o-transition: background-color 300ms linear;
+			-ms-transition: background-color 300ms linear;
+			transition: background-color 300ms linear;
+			
+		}
+
+		&.green{
+			animation: blinker 1s linear infinite;
+			background-color: #7ED321;
+			color: white;
+			-webkit-transition: background-color 300ms linear;
+			-moz-transition: background-color 300ms linear;
+			-o-transition: background-color 300ms linear;
+			-ms-transition: background-color 300ms linear;
+			transition: background-color 300ms linear;
+			
+		}
+	}
+}
+
+.refresh-prices-red {
+	text-align: left !important;
+	width: 100%;
+	animation: blinker 2s linear infinite;
+	background-color: #e91c1c;
+	color: white;
+	// -webkit-transition: background-color 1000ms linear;
+	// -moz-transition: background-color 1000ms linear;
+	// -o-transition: background-color 1000ms linear;
+	// -ms-transition: background-color 1000ms linear;
+	// transition: background-color 1000ms linear;
+}
+.refresh-prices-green {
+	text-align: left !important;
+	width: 100%;
+	animation: blinker 2s linear infinite;
+	background-color: #7ED321;	
+	color: white;
+	// -webkit-transition: background-color 1000ms linear;
+	// -moz-transition: background-color 1000ms linear;
+	// -o-transition: background-color 1000ms linear;
+	// -ms-transition: background-color 1000ms linear;
+	// transition: background-color 1000ms linear;
+}
+
+@keyframes blinker {
+	50% {
+	  background:  transparent;
+	}
+}
+
+@-o-keyframes blinker {
+	50% {
+	  background:  transparent;
+	}
+}
+
+@-moz-keyframes blinker {
+	50% {
+	  background:  transparent;
+	}
+}
+
+@-webkit-keyframes blinker {
+  50% {
+	  background:  transparent;
+  }
+}

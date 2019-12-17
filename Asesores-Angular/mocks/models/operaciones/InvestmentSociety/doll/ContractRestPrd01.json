@@ -1,0 +1,45 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "3a9dacd0-1ff3-45a3-a224-7f131b38698e",
+			"messages": [{
+				"responseSystemCode": "ACACBCWS0096",
+				"responseMessage": "NO HAY NINGUN ERROR",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1495083600000,
+		"time": 61772000,
+		"clientID": "NBURSANET",
+		"sessionID ": "",
+		"responseSystem": "BUS CENTRAL",
+		"operationName": "DestinationAccountQuery",
+		"operationVersion": "1_0",
+		"ipaddress": "192.168.4.51"
+	},
+	"outDestinationAccountQuery": {
+		"outA2KBankAccountsQuery": {
+			"bankAccountsList": [{
+				"bankAccounts": {
+					"destinationAccountType": 1,
+					"bankName": "SANTANDER",
+					"beneficiaryName": "RICARDO LIRA RAMIREZ REYES",
+					"beneficiaryLastName": "",
+					"email": "kmenez@visionconsulting.com.mx",
+					"taxRegime": "",
+					"destChannelAccount": "",
+					"clabe": "014180566545932067",
+					"alias": "",
+					"maxAmount": 0.0
+				}
+			}]
+		},
+		"outFIXBankAccountsQuery": {
+			"destinyAccountList": []
+		},
+		"outBankAccountsQuery": []
+	}
+}

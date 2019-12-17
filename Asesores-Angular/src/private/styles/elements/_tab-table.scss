@@ -1,0 +1,165 @@
+tab-table {
+    .container-tab-table {
+        position: relative;
+
+
+        .button-back-tab, .button-next-tab {
+            background: #051c48;
+            color: white;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 5px;
+            position: absolute;
+            top: 1px;
+
+
+            .text {
+                display: inline-block;
+                font-size: 9px;
+                line-height: 11px;
+                text-transform: uppercase;
+                vertical-align: middle;
+                width: 25px;
+            }
+
+
+            .icon {
+                font-size: 10px;
+            }
+        }
+
+
+        .button-back-tab {
+            left: 1px;
+        }
+
+
+        .button-next-tab {
+            right: 1px;
+        }
+
+
+        .note-tabs {
+            color: #0072bc;
+            display: inline-block;
+            font-size: 12px;
+            margin-top: 10px;
+
+
+            .text-button-next-tab {
+                text-transform: uppercase;
+            }
+        }
+
+
+        .pagination {
+            float: right;
+            margin: 10px 20px 10px 10px;
+
+
+            .list-pagination  {
+                border: 1px solid #051c48;
+                color: #051c48;
+                display: inline-block;
+                height: 20px;
+                text-align: center;
+                width: 20px;
+
+
+                &.active {
+                    background: #051c48;
+                    color: white;
+                }
+            }
+
+
+            .back-pagination, .next-pagination {
+                background: transparent;
+                border: none;
+                color: #051c48;
+                font-size: 15px;
+                margin: 0 6px;
+                vertical-align: middle;
+
+
+                &:disabled {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+
+        table {
+            border: 1px solid #d2cfcd;
+            width: 100%;
+
+
+            th, td {
+                font-weight: 600;
+                padding: 0 10px;
+                vertical-align: middle;
+
+
+                &.text-center {
+                    text-align: center;
+                }
+
+
+                &.text-left {
+                    text-align: left;
+                }
+
+
+                &.text-right {
+                    text-align: right;
+                }
+            }
+
+
+            thead {
+
+
+                th {
+                    background: #1750a7;
+                    color: white;
+                    font-family: "Proxima Semibold";
+                    font-size: 13px;
+                    font-weight: 400;
+                    height: 40px;
+                    text-align: left;
+
+
+                    .icon {
+                        margin-left: 3px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+
+            tbody {
+
+
+                tr {
+
+
+                    td {
+                        color: #767676;
+                        font-size: 12px;
+                        height: 30px;
+                        text-align: left;
+                    }
+
+
+                    &:nth-child(even) {
+
+
+                        td {
+                            background-color: rgba(#00bebe, .11);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

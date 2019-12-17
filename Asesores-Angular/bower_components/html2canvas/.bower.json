@@ -1,0 +1,18 @@
+{
+  "name": "html2canvas",
+  "description": "Screenshots with JavaScript",
+  "main": "build/html2canvas.js",
+  "ignore": [
+    "tests",
+    ".travis.yml"
+  ],
+  "_release": "129487780d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "129487780dab32be1f9262d346c8a74ca7f48cbe"
+  },
+  "_source": "https://grm.actinver.com.mx/rlazo/canvas.git",
+  "_target": "*",
+  "_originalSource": "https://grm.actinver.com.mx/rlazo/canvas.git"
+}

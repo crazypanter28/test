@@ -1,0 +1,26 @@
+mixin btnSubmit(text, style_class, disabled)
+    button.btn(
+        class=style_class, 
+        ng-disabled=disabled
+        ng-click!=attributes.ngClick
+        ui-sref!=attributes.uiSref
+        type!=attributes.type
+    )=text
+
+mixin btnWithIcon(text, style_class, disabled,iconUrl)
+    button.btn(
+        class=style_class, 
+        ng-disabled=disabled
+        ng-click!=attributes.ngClick
+        type!=attributes.type
+    )
+        img(src=iconUrl, alt="")
+        | #{text}
+
+mixin btnIcon(style_class, iconUrl)
+    button.btn(
+        class=style_class, 
+        ng-click!=attributes.ngClick
+        type!=attributes.type
+    )
+        img(src=iconUrl, alt="")

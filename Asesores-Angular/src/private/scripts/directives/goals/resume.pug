@@ -1,0 +1,160 @@
+include /views/mixins/input
+include /views/mixins/info-result
+
+div
+
+    // Form row
+    .form-row
+        .item.field
+            .form-group
+                dates-range-picker(
+                    date="datepicker.datepicker_opts.initDate"
+                    label="Datos del reporte a la fecha de:"
+                    placeholder="dd/mm/aaaa"
+                    options='datepicker.datepicker_opts'
+                    ng-required="true"
+                    on-change="resume.updateReport"
+                )
+        .item.field( ng-if="!search.search_form_sent && !search.report_empty" )
+            label Tipos de búsqueda
+            div( act-dropdown
+                ng-model="resume.filter_types"
+                selected="resume.selected_filter_type"
+                on-change="resume.getFilter"
+            )
+        .item.field( ng-if="!search.search_form_sent && !search.report_empty" )
+            +input( 'Filtro' )(
+                model='resume.search'
+                ngChange="resume.getSearchInfo()"
+            )
+
+    // Search results
+    .search-results
+
+        // Spinner
+        .loader-wrapper( ng-if="search.search_form_sent" )
+
+        // No results
+        .no-results( ng-if="!search.search_form_sent && search.report_empty" )
+            +noResults("no-results")( msg!="<strong>No se encontraron</strong> resultados con esta búsqueda." )
+
+        // Results
+        div( ng-if="!search.search_form_sent && !search.report_empty && !resume.filtered_report_empty" table-column-position="" )
+
+            // Table results
+            table.table.goals-table.resume-table
+                thead
+                    tr.scroll-row-top
+                        th Nombre Asesor
+                        th Var. Fecha Mes
+                        th Meta Mes
+                        th % Cumplim. Mes
+                        th Créditos Mes
+                        th Créditos Meta Mes
+                        th Créditos Alcance Mes
+                        th Seguros Nuevos Mes
+                        th Seguros Meta Mes
+                        th Seguros Alcance Mes
+                        th Var. Contratos Netos Mes
+                        th Var. Contratos Netos Meta Mes
+                        th Var. Contratos Netos Alcance Mes
+                        th Contratos nuevos &gt; $200 mil Mes
+                        th Contratos nuevos &gt; $500 mil Mes
+                        th Pos. Fin a la fecha Anual
+                        th Variacion Anual Total
+                        th Info
+                tbody( ng-repeat-start="( center, info ) in resume.centers" )
+                    tr.centers.scroll-row( ng-click="info.show_childs = !info.show_childs;" )
+                        td
+                            | {{ info[0].centroFinanciero }}
+                            span.glyphicon( ng-class="{ 'glyphicon-chevron-right': !info.show_childs, 'glyphicon-chevron-down': info.show_childs }" )
+
+                        td( ng-if-start="info.length === 1" ) {{ info[0].variacionFecha | currency }}
+                        td {{ info[0].meta | currency }}
+                        td {{ info[0].porcentajeCumplimiento | number:2 }}%
+                        td {{ info[0].creditos }}
+                        td {{ info[0].creditosMeta }}
+                        td {{ info[0].creditosAlcance / info.length | number:2  }}%
+                        td {{ info[0].seguros }}
+                        td {{ info[0].segurosMeta }}
+                        td {{ info[0].segurosAlcance / info.length | number:2  }}%
+                        td {{ info[0].contratosNetos }}
+                        td {{ info[0].contratosNetosMeta }}
+                        td {{ info[0].contratosNetosAlcance / info.length | number:2 }}%
+                        td {{ info[0].contratosNuevos200 }}
+                        td {{ info[0].contratosNuevos500 }}
+                        td {{ info[0].posicionFinalAcumAnual | currency }}
+                        td( ng-if-end="" ) {{ info[0].variacionAcumAnual | currency }}
+
+                        td( ng-if-start="info.length > 1" ) {{ info | sumByColumn:'variacionFecha' | currency }}
+                        td {{ info | sumByColumn:'meta' | currency }}
+                        td {{ ( info | sumByColumn:'variacionFecha' ) * 100 / ( info | sumByColumn:'meta' ) | number:2 }}%
+                        td {{ info | sumByColumn:'creditos' }}
+                        td {{ info | sumByColumn:'creditosMeta' }}
+                        td {{ ( info | sumByColumn:'creditosAlcance' ) / info.length | number:2  }}%
+                        td {{ info | sumByColumn:'seguros' }}
+                        td {{ info | sumByColumn:'segurosMeta' }}
+                        td {{ ( info | sumByColumn:'segurosAlcance' ) / info.length | number:2  }}%
+                        td {{ info | sumByColumn:'contratosNetos' }}
+                        td {{ info | sumByColumn:'contratosNetosMeta' }}
+                        td {{ ( info | sumByColumn:'contratosNetosAlcance' ) / info.length | number:2  }}%
+                        td {{ info | sumByColumn:'contratosNuevos200' }}
+                        td {{ info | sumByColumn:'contratosNuevos500' }}
+                        td {{ info | sumByColumn:'posicionFinalAcumAnual' | currency }}
+                        td( ng-if-end="" ) {{ info | sumByColumn:'variacionAcumAnual' | currency }}
+
+                        td
+                            a.view-details( ng-click="resume.getCenterGoals( type, info[0].idCF ); $event.stopPropagation();" )
+
+                tbody( ng-if="info.show_childs" ng-repeat-end="", ng-repeat="item in info" )
+                    tr.scroll-row
+                        td( title="{{ item.nombreAsesor }}" )
+                            a( ng-click="resume.getAdviserGoals( item.idEmployee, item.nombreAsesor )" ) {{ item.nombreAsesor }}
+                        td {{ item.variacionFecha | currency }}
+                        td {{ item.meta | currency }}
+                        td {{ item.porcentajeCumplimiento | number:2 }}%
+                        td {{ item.creditos }}
+                        td {{ item.creditosMeta }}
+                        td {{ item.creditosAlcance | number:2 }}%
+                        td {{ item.seguros }}
+                        td {{ item.segurosMeta }}
+                        td {{ item.segurosAlcance | number:2 }}%
+                        td {{ item.contratosNetos }}
+                        td {{ item.contratosNetosMeta }}
+                        td {{ item.contratosNetosAlcance | number:2 }}%
+                        td {{ item.contratosNuevos200 }}
+                        td {{ item.contratosNuevos500 }}
+                        td {{ item.posicionFinalAcumAnual | currency }}
+                        td {{ item.variacionAcumAnual | currency }}
+                        td &nbsp;
+
+                tbody( ng-if="obj.keys( resume.centers ).length > 0" )
+                    tr.scroll-row.totals
+                        td TOTALES:
+                        td {{ resume.totals.variacionFecha | currency }}
+                        td {{ resume.totals.meta | currency }}
+                        td {{ resume.totals.porcentajeCumplimiento | number:2 }}%
+                        td {{ resume.totals.creditos }}
+                        td {{ resume.totals.creditosMeta }}
+                        td {{ resume.totals.creditosAlcance | number:2 }}%
+                        td {{ resume.totals.seguros }}
+                        td {{ resume.totals.segurosMeta }}
+                        td {{ resume.totals.segurosAlcance | number:2 }}%
+                        td {{ resume.totals.contratosNetos }}
+                        td {{ resume.totals.contratosNetosMeta }}
+                        td {{ resume.totals.contratosNetosAlcance | number:2 }}%
+                        td {{ resume.totals.contratosNuevos200 }}
+                        td {{ resume.totals.contratosNuevos500 }}
+                        td {{ resume.totals.posicionFinalAcumAnual | currency }}
+                        td {{ resume.totals.variacionAcumAnual | currency }}
+                        td &nbsp;
+
+        // Table results
+        table.table( ng-if="resume.filtered_report_empty" )
+            tbody
+                tr
+                    td( colspan="18" )
+
+                        // No results
+                        .no-results
+                            +noResults("no-results")( msg!="<strong>No se encontraron</strong> resultados con esta<br />búsqueda. Vuelve a intentar con otro dato." )

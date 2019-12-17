@@ -1,0 +1,14 @@
+{
+  "status": 1,
+  "messages": [
+    {
+      "type": null,
+      "criticality": null,
+      "code": null,
+      "description": "OPERACIÓN EXITOSA"
+    }
+  ],
+  "result": {
+    "restrictionsString": "{\n  \"name\" : \"asesores\",\n  \"componentDTO\" : [ \"asesores.ReportesMenu.ReporteClienteUnico.\", \"asesores.BitacorasMenu.\", \"asesores.BitacorasMenu.Bitacora.\", \"asesores.BitacorasMenu.Bitacoraoperativa.\", \"asesores.ReportesMenu.\", \"asesores.PresentacionesMenu.PresentacionInstitucional.\", \"asesores.PresentacionesMenu.PlanRetiro.\", \"asesores.PresentacionesMenu.PrevisionSocial.\", \"asesores.BitacorasMenu.Bitacora.Bitacora.\", \"asesores.BitacorasMenu.Bitacora.ReporteMetas.\", \"asesores.BitacorasMenu.Bitacoraoperativa.Banco.\", \"asesores.BitacorasMenu.Bitacoraoperativa.CasaBolsa.\", \"asesores.ReportesMenu.Propuesta.\", \"asesores.ReportesMenu.Seguimiento.\", \"asesores.ReportesMenu.PropuestaSeguimiento.\", \"asesores.SiuladoresMenu.SimuladorValor.\", \"asesores.SiuladoresMenu.SimuladorPrendario.\", \"asesores.AdministradorMenu.Factsheets.\", \"asesores.AdministradorMenu.EstadosUnidos.\", \"asesores.AdministradorMenu.Mexico.\", \"asesores.AdministradorMenu.EntornoEconomico.\", \"asesores.AdministradorMenu.AvisoLegal.\", \"asesores.AdministradorMenu.FondosInversion.\", \"asesores.AdministradorMenu.Favoritos.\", \"asesores.AdministradorMenu.Perfiles.\", \"asesores.ReportesMenu.RegistroActividad.\", \"asesores.ProspectosMenu.\", \"asesores.AdministradorMenu.Presentations.\", \"asesores.ProspectosMenu.Prospectos.\", \"asesores.ProspectosMenu.Estadisticas.\", \"asesores.ProspectosMenu.AltaProspecto.\", \"asesores.AdministradorMenu.BitacoraAsesores.\" ]\n}"
+  }
+}

@@ -1,0 +1,78 @@
+include /views/mixins/info-result
+
+div
+
+    // Spinner
+    .loader-wrapper( ng-if="!contractInfo" )
+        .spinner
+
+    // Contract info
+    .contract-info( ng-init="pdetail.getContractTopicInfo( contract )" ng-if="contractInfo" ng-repeat="(index, contract) in contractInfo" )
+        uib-accordion
+            .panel.panel-default( uib-accordion-group='' is-open="status.open" )
+                uib-accordion-heading
+                    span
+                        strong No. contrato:
+                        |  {{ sclient.contracts_list[index].contractNumber }}
+                    i.direction-arrow.fa( ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}" )
+                .panel-body
+
+                    // Empty balance
+                    .empty-balance.display-as-table( ng-if="pdetail.contracts_totals.valuation === 0 && pdetail.contracts_totals.appreciation === 0" )
+                        +noResults('no-balance-singular')
+
+                    // Contract topics
+                    .contract-topics( ng-if="pdetail.contracts_totals.valuation !== 0 || pdetail.contracts_totals.appreciation !== 0" )
+                        ul( uib-accordion )
+                            
+                            li( ng-repeat="topic in topics" ng-if="topic.name && pdetail.contract_info[index][0][topic.nom]" class="{{ topic.abbr | lowercase }}" uib-accordion-group='' is-open="innerstatus.open" )
+                                uib-accordion-heading
+                                    .topic-resume.display-as-table
+                                        .type
+                                            .bullet
+                                        .name {{ topic.name }}
+                                        .current-value {{ pdetail.contract_info[index][0][topic.nom] | sumByColumn: 'valuation' | currency }}
+                                        .plus {{ pdetail.contract_info[index][0][topic.nom] | sumByColumn: 'appreciation' | currency }}
+                                        .arrow
+                                            i.direction-arrow.fa( ng-class="{'fa-angle-up': innerstatus.open, 'fa-angle-down': !innerstatus.open}" )
+                                .panel-body( ng-init="currency_info = pdetail.getTopicInfoCurrency( ( pdetail.contract_info[index][0][topic.nom] ) )" )
+                                    .info-by-currency
+                                        div( ng-repeat="(currency, info) in currency_info" )
+                                            portfolio-details-currency( title="{{currency}}" info-resume="info" )
+                            span( ng-init="fundTypes = pdetail.getFundTypes( pdetail.contract_info[index][0][undefined] )")
+                            
+                            
+                            li( ng-repeat="(name, info) in fundTypes" ng-if="pdetail.contract_info[index][0][undefined]" class="{{ pdetail.topicsbank[name] }}" uib-accordion-group='' is-open="innerstatus.open" )
+                                uib-accordion-heading
+                                    .topic-resume.display-as-table
+                                        .type
+                                            .bullet
+                                        .name {{ name }}
+                                        .current-value {{ info  | sumByColumnProp : 'valuationMXN' | currency }}
+                                        .arrow
+                                            i.direction-arrow.fa( ng-class="{'fa-angle-up': innerstatus.open, 'fa-angle-down': !innerstatus.open}" )
+                                .panel-body
+                                    .info-by-currency
+                                        div
+                                            portfolio-details-bank( title="{{name}}" info-resume="info" )
+
+                        // Contract totals
+                        .contract-totals(ng-if="!pdetail.contract_info[index][0][undefined]")
+                            .display-as-table
+                                .item TOTAL:
+                                .current-value {{ pdetail.contract_totals[index][0] | currency }}
+                                .plus {{ pdetail.contract_totals[index][1] | currency }}
+                                div
+                        .contract-totals(ng-if="pdetail.contract_info[index][0][undefined]")
+                            .display-as-table
+                                .item TOTAL:
+                                .current-value {{ pdetail.contract_info[index][0][undefined]| sumByColumnProp : 'valuationMXN' | currency }}
+                                div
+
+    // Contracts totals
+    .contracts-totals( ng-if="contractInfo && showTotals" )
+        .display-as-table
+            .item TOTAL DE CUENTAS
+            .current-value {{ pdetail.contracts_totals.valuation | currency }}
+            .plus {{ pdetail.contracts_totals.appreciation | currency }}
+            .value

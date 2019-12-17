@@ -1,0 +1,27 @@
+include /views/mixins/radio-button
+
+// Proposals page
+.proposals-page
+
+    h3.primary-title Propuestas
+    .content-panel
+
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs
+                li( permission="['asesores.ReportesMenu.Propuesta.']" ui-sref-active="active" )
+                    a( ui-sref="proposals.proposal" ) PROPUESTA
+                li(permission="['asesores.ReportesMenu.Seguimiento.']"  ui-sref-active="active" )
+                    a( ui-sref="proposals.tracing" ) SEGUIMIENTO
+                li( permission="['asesores.ReportesMenu.PropuestaSeguimiento.']" ui-sref-active="active" )
+                    a( ui-sref="proposals.proposal-tracing" ) PROPUESTA SEGUIMIENTO
+                li( permission="['asesores.ReportesMenu.ReporteClienteUnico.']" ui-sref-active="active" )
+                    a( ui-sref="proposals.tracing-client" ) SEGUIMIENTO POR CLIENTE ÚNICO
+                li( permission="['asesores.ReportesMenu.RegistroActividad.']" ui-sref-active="active" )
+                    a( ui-sref="proposals.activity" ) REGISTRO DE ACTIVIDAD
+
+            // Tab content
+            .tab-content
+                div( ui-view="" )

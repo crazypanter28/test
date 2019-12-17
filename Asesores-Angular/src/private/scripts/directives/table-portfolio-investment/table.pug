@@ -1,0 +1,157 @@
+include /views/mixins/tables
+include /views/mixins/info-result
+
+div
+    .empty-balance.display-as-table( ng-if="orders.length === 0" )
+        +noResults('no-balance-singular')
+    div(ng-repeat="topic in orders"
+        style="font-size: 10px; font-family: 'Proxima Regular', sans-serif; text-transform: uppercase; max-height: 244px; overflow:  auto;")
+        table.table.table-responsive(style="margin-bottom: 0px;")
+            tr
+                th(ng-if="topic.title.length > 0" ng-click="$root.showDetails(topic)") {{topic.title}}
+                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !topic.show, 'fa-minus-circle': topic.show}" style="margin-left: 14px; color: #517cbd;")
+                th(ng-if="topic.title.length === 0" ng-click="$root.showDetails(topic)") Disp p v
+                    i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !topic.show, 'fa-minus-circle': topic.show}" style="margin-left: 14px; color: #517cbd;")
+
+            tr(ng-if="topic.show")
+                td
+                    div
+                        table.table
+                            thead(style="background: #e9f2ff; color: #0f3f88;")
+                                tr                                    
+                                    th( ng-click="sortType = 'issuer'; sortReverse = !sortReverse;")
+                                        span
+                                            | Emisora
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'issuer' && sortReverse || sortType !== 'issuer' , 'fa-caret-up' : sortType === 'issuer' && !sortReverse}" )                                    
+                                    th( ng-click="sortType = 'finalPosition'; sortReverse = !sortReverse;")
+                                        span(ng-if="type")
+                                            | Títulos
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'finalPosition' && sortReverse || sortType !== 'finalPosition' , 'fa-caret-up' : sortType === 'finalPosition' && !sortReverse}" )
+                                        span(ng-if="!type")
+                                            | Posición 
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'finalPosition' && sortReverse || sortType !== 'finalPosition' , 'fa-caret-up' : sortType === 'finalPosition' && !sortReverse}" )
+                                    th
+                                    th( ng-click="sortType = 'virtualCost'; sortReverse = !sortReverse;")
+                                        span
+                                            | Costo
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'virtualCost' && sortReverse || sortType !== 'virtualCost' , 'fa-caret-up' : sortType === 'virtualCost' && !sortReverse}" )
+                                    th( ng-click="sortType = 'weightedLastPrice'; sortReverse = !sortReverse;")
+                                        span
+                                            | Precio actual
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'weightedLastPrice' && sortReverse || sortType !== 'weightedLastPrice' , 'fa-caret-up' : sortType === 'weightedLastPrice' && !sortReverse}" )
+                                    th( ng-click="sortType = 'valuationLastPrice'; sortReverse = !sortReverse;")
+                                        span
+                                            | Valor Actual
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'valuationLastPrice' && sortReverse || sortType !== 'valuationLastPrice' , 'fa-caret-up' : sortType === 'valuationLastPrice' && !sortReverse}" )
+                                    th( ng-click="sortType = 'appreciation'; sortReverse = !sortReverse;")
+                                        span
+                                            | $ plus/minusvalía
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'appreciation' && sortReverse || sortType !== 'appreciation' , 'fa-caret-up' : sortType === 'appreciation' && !sortReverse}" )
+                                    th( ng-click="sortType = 'appreciationPercentage'; sortReverse = !sortReverse;")
+                                        span
+                                            | % plus/minusvalía
+                                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'appreciationPercentage' && sortReverse || sortType !== 'appreciationPercentage' , 'fa-caret-up' : sortType === 'appreciationPercentage' && !sortReverse}" )
+
+                            tbody(style="color: #767676;")
+                                tr( id="illuminate-capital-td-selected-sell" style="cursor:pointer;" ng-if="orders.length !== 0"  ng-repeat="order in topic.portfolio | orderBy:sortType:sortReverse" ng-class="{'portfolio-emisora-suspendida':order.suspendedIndicator === '1'}" )
+                                    td.text-left(ng-click="showInfoEmisora(order)") {{order.issuer +' '+ order.serie}}
+                                    td.text-left(ng-click="showInfoEmisora(order)")  {{order.finalPosition | number}}
+                                    td.text-center.view-more( ng-click="viewMoreTitles( order )")
+                                        i.fa.fa-plus-circle
+                                    td.text-left(ng-click="showInfoEmisora(order)")  {{order.virtualCost | number}}
+                                    //td.text-left(ng-if="$root.itemPortfolio.issuerName === order.issuer && $root.lastPriceStock")
+                                        div.blink-container( ng-blink=""
+                                            currency = '$'
+                                            ng-model="$root.lastPriceStock "
+                                        )
+                                    //td.text-left(ng-if="$root.itemPortfolio.issuerName !== order.issuer") {{order.weightedLastPrice | currency}}
+                                    td.text-left(ng-click="showInfoEmisora(order)")  {{order.weightedLastPrice | currency}}
+                                    //td.text-left(ng-show="type === 'MC'" ng-if="$root.itemPortfolio.issuerName === order.issuer && $root.lastPriceBIVA")
+                                        div.blink-container( ng-blink=""
+                                            currency = '$'
+                                            ng-model="$root.lastPriceBIVA"
+                                        )
+                                    //td.text-left(ng-show="type === 'MC'" ng-if="$root.itemPortfolio.issuerName !== order.issuer") $ 0
+                                    td.text-left(ng-click="showInfoEmisora(order)")  {{order.valuationLastPrice | currency}}
+                                    td.text-left(ng-click="showInfoEmisora(order)") {{order.capitalGain | currency}}
+                                    td.text-right(ng-click="showInfoEmisora(order)") {{order.accumulatedVariance | limitTo:4}}
+                                        i.fa( ng-class="{'fa-arrow-circle-up': order.accumulatedVariance > 0, 'fa-arrow-circle-down': order.accumulatedVariance  < 0, 'fa-minus-circle':  order.accumulatedVariance  === 0 }" )
+
+
+
+    //div.container-table-investment(style="overflow-x: auto; max-height: 230px;")
+        table.table-investment.portfolio
+            thead()
+                tr
+                    th( ng-click="sortType = 'issuer'; sortReverse = !sortReverse;")
+                        span
+                            | Emisora
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'issuer' && sortReverse || sortType !== 'issuer' , 'fa-caret-up' : sortType === 'issuer' && !sortReverse}" )
+                    th( ng-click="sortType = 'finalPosition'; sortReverse = !sortReverse;")
+                        span(ng-if="type")
+                            | Títulos
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'finalPosition' && sortReverse || sortType !== 'finalPosition' , 'fa-caret-up' : sortType === 'finalPosition' && !sortReverse}" )
+                        span(ng-if="!type")
+                            | Posición
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'finalPosition' && sortReverse || sortType !== 'finalPosition' , 'fa-caret-up' : sortType === 'finalPosition' && !sortReverse}" )
+                    th( ng-click="sortType = 'virtualCost'; sortReverse = !sortReverse;")
+                        span
+                            | Costo
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'virtualCost' && sortReverse || sortType !== 'virtualCost' , 'fa-caret-up' : sortType === 'virtualCost' && !sortReverse}" )
+                    th( ng-click="sortType = 'weightedLastPrice'; sortReverse = !sortReverse;")
+                        span
+                            | Precio actual
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'weightedLastPrice' && sortReverse || sortType !== 'weightedLastPrice' , 'fa-caret-up' : sortType === 'weightedLastPrice' && !sortReverse}" )
+                    th( ng-click="sortType = 'valuationLastPrice'; sortReverse = !sortReverse;")
+                        span
+                            | Valor Actual
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'valuationLastPrice' && sortReverse || sortType !== 'valuationLastPrice' , 'fa-caret-up' : sortType === 'valuationLastPrice' && !sortReverse}" )
+                    th( ng-click="sortType = 'appreciation'; sortReverse = !sortReverse;")
+                        span
+                            | $ plus/minusvalía
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'appreciation' && sortReverse || sortType !== 'appreciation' , 'fa-caret-up' : sortType === 'appreciation' && !sortReverse}" )
+                    th( ng-click="sortType = 'appreciationPercentage'; sortReverse = !sortReverse;")
+                        span
+                            | % plus/minusvalía
+                            i( class="fa" aria-hidden="true", ng-class="{ 'fa-caret-down' : sortType === 'appreciationPercentage' && sortReverse || sortType !== 'appreciationPercentage' , 'fa-caret-up' : sortType === 'appreciationPercentage' && !sortReverse}" )
+
+
+            tbody()
+                tr( id="illuminate-capital-td-selected-sell" style="cursor:pointer;" ng-if="orders.length !== 0" ng-click="ChangeDoll(order)" ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                    td.text-left {{order.issuer +' '+ order.serie}}
+                    td.text-left(ng-if="type === 'MC'") {{order.finalPositionTitles | number}}
+                    td.text-left(ng-if="type !== 'MC' ") {{order.finalPosition | number}}
+                    td.text-left {{order.virtualCost | number}}
+                    td.text-left(ng-if="$root.itemPortfolio.issuerName === order.issuer") {{$root.lasPriceActualiced | currency}}
+                    td.text-left(ng-if="$root.itemPortfolio.issuerName !== order.issuer") {{order.weightedLastPrice | currency}}
+                    td.text-left {{order.valuationLastPrice | currency}}
+                    td.text-left {{order.capitalGain | currency}}
+                    td.text-right {{order.accumulatedVariance | limitTo:4}}
+                        i.fa( ng-class="{'fa-arrow-circle-up': order.accumulatedVariance > 0, 'fa-arrow-circle-down': order.accumulatedVariance  < 0, 'fa-minus-circle':  order.accumulatedVariance  === 0 }" )
+                tr( ng-if="orders.length === 0 && !loading" )
+                    td.text-center.no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( ngBindHTML="nodata" )
+
+                //td(colspan="11")
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( ngBindHTML="nodata" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            div(ng-repeat="order in orders")
+                                h5.inner-title.info {{order.title}}
+                                +tableInvstment( 'order.ordersValue' )
+
+                            div
+                                table.table
+                                    tr( ng-click="ChangeDoll(order)" ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                        td( ng-bind="order.issuer +' '+ order.serie" )
+                                        td( ng-if="type" ng-bind="order.finalPosition" )
+                                        td( ng-if="!type" ng-bind="order.finalPosition" )
+                                        td( ng-bind="order.virtualCost | number" )
+                                        td( ng-bind="order.weightedLastPrice | currency" )
+                                        td( ng-bind="order.valuationLastPrice | currency" )
+                                        td( ng-bind="order.capitalGain | currency" )
+                                        td {{order.accumulatedVariance | limitTo:4}}
+                                            i.fa( ng-class="{'fa-arrow-circle-up': order.accumulatedVariance > 0, 'fa-arrow-circle-down': order.accumulatedVariance  < 0, 'fa-minus-circle':  order.accumulatedVariance  === 0 }" )

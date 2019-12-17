@@ -1,0 +1,37 @@
+div
+    table.table
+        thead
+            tr
+                th.text-left( ng-click="details.sortBy('issuerName')" )
+                    | EMISORA
+                    i.fa( ng-class="{reverse: details.propertyName === 'issuerName' && details.reverse}" )
+
+                th( ng-click="details.sortBy('priceMXN.price')" )
+                    | PREICIO MXN
+                    i.fa( ng-class="{reverse: details.propertyName === 'priceMXN.price' && details.reverse}" )
+
+                th( ng-click="details.sortBy('priceUSD.price')" )
+                    | PRECIO USD
+                    i.fa( ng-class="{reverse: details.propertyName === 'priceUSD.price' && details.reverse}" )
+
+                th( ng-click="details.sortBy('valuationMXN.valuation')" )
+                    | VALUACIÓN MXN
+                    i.fa( ng-class="{reverse: details.propertyName === 'valuationMXN.valuation' && details.reverse}" )
+
+                th( ng-click="details.sortBy('valuationUSD.valuation')" )
+                    | VALUACIÓN USD
+                    i.fa( ng-class="{reverse: details.propertyName === 'valuationUSD.valuation' && details.reverse}" )
+
+        tbody
+            tr( ng-repeat="info in infoResume | orderBy:details.propertyName:details.reverse" )
+                td.text-left {{ info.issuerName }} {{ info.serie }}
+                td {{ info.priceMXN.price | currency }}
+                td {{ info.priceUSD.price ? info.priceUSD.price : 0 | currency }}
+                td {{ info.valuationMXN.valuation ? info.valuationMXN.valuation : 0 | currency }}
+                td {{  info.valuationUSD.valuation ? info.valuationUSD.valuation : 0| currency }}
+
+            tr.subtotal
+                td( colspan="3" ) SUBTOTAL:
+                td
+                    strong {{ infoResume | sumByColumnProp : 'valuationMXN' | currency }}
+                td &nbsp;

@@ -1,0 +1,37 @@
+include /views/mixins/info-result
+include /views/mixins/selected-client-info
+
+// Portfolio detail wrapper
+.portfolio-detail-wrapper
+
+    // Account main info
+    .account-main-info.portfolio-detail
+        .wrapper
+            +sClientTopInfo(30)
+        //.wrapper
+            div.contracts-list
+                strong Contratos:
+                ul
+                    li( ng-repeat="contract in operations.sclient.contracts_list" ) {{ contract.contractNumber }}
+
+    // Contracts details
+    .contracts-details
+        .panel.panel-default
+            .panel-heading
+                .panel-title
+                    span Detalle de contratos
+            .panel-body
+                portfolio-details( sclient="operations.sclient" topics="portfolio.topics" contract_info="pdetail.contracts.common" show-totals="true" )
+
+// ASSET
+//-
+    .asset-detail-wrapper
+
+        // Contracts details
+        .contracts-details
+            .panel.panel-default
+                .panel-heading
+                    .panel-title
+                        span Contratos ASSET
+                .panel-body
+                    portfolio-details( sclient="operations.sclient" topics="portfolio.topics" contract_info="pdetail.contracts.asset" )

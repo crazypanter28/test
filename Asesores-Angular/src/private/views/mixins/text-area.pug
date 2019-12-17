@@ -1,0 +1,20 @@
+mixin textArea( label, placeholder, require, msg )
+
+    - var id  = label.replace(' ', '').toLowerCase();
+    - var type = type ? type : 'text'
+
+    div.form-group.act-input
+        +headerInput( id,label, require )
+        textarea.form-control( type=type placeholder=placeholder id=id ng-required=require
+            ng-model!=attributes.ngModel
+        )
+        if msg
+            div.message
+                b #{msg}
+                
+
+
+mixin headerInput( id, label, require )
+    label( for=id )=label
+        if require
+            span.require *

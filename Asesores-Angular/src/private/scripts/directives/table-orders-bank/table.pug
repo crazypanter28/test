@@ -1,0 +1,140 @@
+include /views/mixins/tables
+include /views/mixins/info-result
+
+div.container-table-investment
+    div.panel-body(ng-if="origin === 'history'")
+        .content
+            .form-row(style='margin-bottom:-1em')
+                .item.field
+                    .form-group
+                        <dates-range-picker label="Periodo de búsqueda" placeholder="dd/mm/aaaa - dd/mm/aaaa" on-change="update" ></dates-range-picker>
+    table.table-investment.orders(ng-if="origin !== 'history'")
+        thead
+            tr(ng-if="type !== '2'")
+                +thCaretGral( 'Folio', 'orderReference' )
+                +thCaretGral( 'Movimiento', 'operationDescription' )
+                +thCaretGral( 'Fondo', 'slateKey' )
+                +thCaretGral( 'serie', 'serie' )
+                +thCaretGral( 'Importe Pagado', 'amountPaid.amount| currency:$' )
+                +thCaretGral( 'St.Op.', 'status' )
+                +thCaretGral( 'Importe Liquidado', 'operatingAmount.amount | currency:$' )
+                +thCaretGral( 'ST.liq', ' settlementStatus' )
+                th.text-center
+                    span Más info.
+                th
+                    i( class="fa fa-trash" aria-hidden="true")
+            tr(ng-if="type === '2'")
+                +thCaretGral( 'Folio', 'operationID' )
+                +thCaretGral( 'Instrumento', 'issuerName' )
+                +thCaretGral( 'Titúlos Solicitados', 'securities' )
+                +thCaretGral( 'Importe', 'amount' )
+                +thCaretGral( 'Estatus', 'movementStatus' )
+                +thCaretGral( 'Tasa', 'rate' )
+                +thCaretGral( 'Tipo', 'movementConcept' )
+                //th.text-center
+                    span Más info.
+                th
+                    i( class="fa fa-trash" aria-hidden="true")
+        tbody
+            +trLoading( 108, 'loading' )( colspan='11' )
+            tr( ng-if="!loading" )
+                td( colspan="11" )
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No cuentas</strong> con órdenes para mostrar" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            table(ng-if="type !== '2'")
+                                tr( ng-repeat="order in orders | orderBy: aux.sortType: aux.sortReverse" )
+                                    td( ng-bind="order.orderReference" )
+                                    td( ng-bind="order.operationDescription" )
+                                    td( ng-bind="order.slateKey" )
+                                    td( ng-bind="order.serie" )
+                                    td( ng-bind="order.amountPaid.amount| currency:'$'" )
+                                    td( ng-bind="order.status" )
+                                    td( ng-bind="order.operatingAmount.amount | currency:'$'" )
+                                    td( ng-bind="order.settlementStatus" )
+                                    td.text-center( ng-click="viewMore( order )" )
+                                        img(src="img/icons/ico_mas_info.svg", alt="ver más" )
+                                    td(ng-click="delete(order)")
+                                        i(ng-show="order.settlementStatus !== 'A' && order.settlementStatus !== 'C'" class="fa fa-trash" aria-hidden="true")
+
+                            table(ng-if="type === '2'")
+                                tr( ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                    td( ng-bind="order.operationID" )
+                                    td( ng-bind="order.issuerName" )
+                                    td( ng-bind="order.securities" )
+                                    td( ng-bind="order.amount" )
+                                    td( ng-bind="order.movementStatus" )
+                                    td( ng-bind="order.rate" )
+                                    td( ng-bind="order.movementConcept" )
+                                    //td.text-center( ng-click="viewMore( order )" )
+                                        img(src="img/icons/ico_mas_info.svg", alt="ver más" )
+                                    td( ng-click="delete(order)")
+                                        i(ng-show="order.orderCancelationFlag" class="fa fa-trash" aria-hidden="true")
+
+    table.table-investment.orders.download(ng-if="origin === 'history'")
+        thead
+            tr(ng-if="type !== '2'")
+                +thCaretGral( 'Folio', 'orderReference' )
+                +thCaretGral( 'Movimiento', 'operationDescription' )
+                +thCaretGral( 'Fondo', 'slateKey' )
+                +thCaretGral( 'serie', 'serie' )
+                +thCaretGral( 'Importe Pagado', 'amountPaid.amount| currency:$' )
+                +thCaretGral( 'St.Op.', 'status' )
+                +thCaretGral( 'Importe Liquidado', 'operatingAmount.amount | currency:$' )
+                +thCaretGral( 'ST.liq', ' settlementStatus' )
+
+            tr(ng-if="type === '2'")
+                +thCaretGral( 'Folio', 'operationID' )
+                +thCaretGral( 'Instrumento', 'issuerName' )
+                +thCaretGral( 'Titúlos', 'securities' )
+                +thCaretGral( 'Importe', 'amount' )
+                +thCaretGral( 'Estatus', 'movementStatus')
+                +thCaretGral( 'Tasa', 'rate' )
+                +thCaretGral( 'Tipo', 'movementConcept' )
+                +thGral()
+
+        tbody
+            +trLoading( 108, 'loading' )( colspan='11' )
+            tr( ng-if="!loading" )
+                td( colspan="11" )
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No cuentas</strong> con órdenes para mostrar" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            table(ng-if="type !== '2'")
+                                tr( ng-repeat="order in orders | orderBy: aux.sortType: aux.sortReverse" )
+                                    td( ng-bind="order.orderReference" )
+                                    td( ng-bind="order.operationDescription" )
+                                    td( ng-bind="order.slateKey" )
+                                    td( ng-bind="order.serie" )
+                                    td( ng-bind="order.amountPaid.amount| currency:'$'" )
+                                    td( ng-bind="order.status" )
+                                    td( ng-bind="order.operatingAmount.amount | currency:'$'" )
+                                    td( ng-bind="order.settlementStatus" )
+
+                            table(ng-if="type === '2'")
+                                tr( ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                    td( ng-bind="order.operationID" )
+                                    td( ng-bind="order.issuerName" )
+                                    td( ng-bind="order.securities" )
+                                    td( ng-bind="order.amount" )
+                                    td( ng-bind="order.movementStatus" )
+                                    td( ng-bind="order.rate" )
+                                    td( ng-bind="order.movementConcept" )
+                                    td
+                                        span( ng-if="order.movementConcept == 'REPORTO' && order.securities > 0" )
+                                            img.icon(
+                                                src="img/icons/descargar.svg",
+                                                alt="Descargar/Enviar",
+                                                align="center"
+                                                width="14"
+                                                height="14"
+                                                ng-click="viewLetter(order.operationID, order.operationDateTime, holder)"
+                                            )

@@ -1,0 +1,40 @@
+.datetime-picker{
+    padding: 0;
+
+    .arrow:after{
+        border-bottom-color: $blue4 !important;
+    }
+
+
+
+    .popover-content{
+        padding: 0;
+    }
+
+    .container-picker{
+        font-family: $font-family-base;
+        background: $blue4;
+        font-size: 12px;
+        color: white;
+        height: 82px;
+        padding-top: 18px;
+        width: 234px;
+
+        select{
+            color: $tertiary-color;
+            display: block;
+            width: 93px;
+            height: 30px;
+        }
+    }
+}
+
+
+.datetime.has-icon{
+    i{
+        width: 20px;
+        height: 20px;
+        bottom: 0;
+        // top: initial !important;
+    }
+}

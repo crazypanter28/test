@@ -1,0 +1,28 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":{
+      "name":"GARCIA CAZARIEGO NADIA ALINE",
+      "contractsNumberJanuary":-1,
+      "contractsNumber":0,
+      "increasingAccumulatedContracts":-1466022.975984,
+      "increasedMonthContracts":182374.573439,
+      "increaseMoney":-626670.25,
+      "increaseCapitals":177164.269255,
+      "totalGrowthMonth":-267131.407306,
+      "creditsNumber":0,
+      "accumulatedCreditsNumber":0,
+      "assetTarget":2500000,
+      "contractsTarget":2,
+      "creditsTarget":1,
+      "level":0,
+      "childs":null
+   }
+}

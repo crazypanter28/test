@@ -1,0 +1,61 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result": 1 ,
+            "transactionID":"1b543efb-0754-4113-b378-900b2719c81d",
+            "messages":[
+                {
+                    "responseSystemCode":"ACACBCWS0096",
+                    "responseMessage":"NO HAY NINGUN ERROR",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1493787600000,
+        "time":60506000,
+        "clientID":"NBURSANET",
+        "sessionID":"",
+        "responseSystem":"A2K",
+        "operationName":"FundOrderQuotation",
+        "operationVersion":"1_1",
+        "ipaddress":""
+    },
+    "outFundOrderQuotation":{
+        "fundOrderResult":{
+            "clabe":"0",
+            "issuerBuyer":{
+                "fundType":"1",
+                "issuerName":"ACTIREN ",
+                "serie":"B-1",
+                "movementType":"1",
+                "operationDate":1493787600000,
+                "settlementDate":1493787600000,
+                "price":"7.142944",
+                "titlesQty":10,
+                "amount":71.43,
+                "sellFee":"0",
+                "vat":0.0,
+                "registrationType":"TITULOS",
+                "netAmount":71.43,
+                "operationDateTime":1493826506000
+            },
+            "issuerSeller":{
+                "fundType":"0",
+                "issuerName":" ",
+                "serie":"",
+                "operationDate":1493787600000,
+                "settlementDate":1493787600000,
+                "price":"0",
+                "titlesQty":0,
+                "amount":0.0,
+                "sellFee":"0",
+                "vat":0.0,
+                "registrationType":"",
+                "netAmount":0.0,
+                "operationDateTime":1493826506000
+            }
+        }
+    }
+}

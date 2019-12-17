@@ -1,0 +1,82 @@
+include /views/mixins/input
+div(ng-if="viewMarketsByVisible[2]")
+    div.container-ipc-capitals
+        div(  capitals-ipc contract="{{investment.contractS}}" )
+
+    .row.margin-0
+        div.col-xs-6.padding-0
+            div.form-group.has-icon
+                label(for="date") Fecha de consulta de ordenes
+                    span.require *
+                div(style="position:relative")
+                    +inputDate( "fechaordenes", 'binnacle-date' )(
+                    ngMouseOpen = 'popup1.opened'
+                    datepickerOptions = "{showWeeks : false, formatMonth : 'MMM',yearColumns : 3 }"
+                    )
+
+    div.my-movements
+        uib-tabset(active='activeTab')
+            uib-tab(index='0', ng-click="capitalsLumina.updateFunds()")
+                uib-tab-heading
+                    | Portafolio
+                    span( uib-tooltip-html="'Presenta las acciones adquiridas.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                div( table-portfolio-inv-lumina=""
+                    contract="{{ investment.contract.contractNumber }}"
+                    update="capitalsLumina.updateFunds"
+                    selected = "capitalsLumina.dollSelected"
+                    type="MC"
+                )
+            uib-tab(index='1', ng-click="capitalsLumina.updateOrders()" )
+                uib-tab-heading
+                    | órdenes
+                    span( uib-tooltip-html="'Presenta las instrucciones de compra y venta con su estatus actual'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                div( act-table-orders-lumina=""
+                    contract="{{ investment.contract.contractNumber }}"
+                    update="capitalsLumina.updateOrders"
+                    selected = "capitalsLumina.dollSelected"
+                    type="MC",
+                    fechaordenes ="fechaordenes"
+                )
+
+    .panel-wrapper( ng-init="capitalsLumina.tabSelect = 'ipc'")
+        div.sub-menu-buttons.row.margin-0
+            ul.nav.nav-tabs.capitals
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('ipc')" ng-class="{'active': capitalsLumina.tabSelect === 'ipc'}")
+                    a.nav-link IPC
+                        span( uib-tooltip-html="'Emisoras que integran el Índice de Precios y Cotizaciones de la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('bmv')" ng-class="{'active': capitalsLumina.tabSelect === 'bmv'}")
+                    a.nav-link BMV
+                        span( uib-tooltip-html="'Monitor de empresas mexicanas que cotizan en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('sic')" ng-class="{'active': capitalsLumina.tabSelect === 'sic'}")
+                    a.nav-link SIC
+                        span( uib-tooltip-html="'Monitor de empresas internacionales que cotiza en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('trackInt')" ng-class="{'active': capitalsLumina.tabSelect === 'trackInt'}")
+                    a.nav-link TRACK INT
+                        span( uib-tooltip-html="'Monitor de títulos referenciados a instrumentos de deuda que replican el comportamiento del portafolio al que está referido.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('trackDeuda')" ng-class="{'active': capitalsLumina.tabSelect === 'trackDeuda'}")
+                    a.nav-link TRACK NAC
+                        span( uib-tooltip-html="'Monitor de títulos referenciados a instrumentos de deuda que replican el comportamiento del portafolio al que está referido.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('plusBursatiles')" ng-class="{'active': capitalsLumina.tabSelect === 'plusBursatiles'}")
+                    a.nav-link 10 +
+                        span( uib-tooltip-html="'Monitor de empresas más negociadas en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('minusBursatiles')" ng-class="{'active': capitalsLumina.tabSelect === 'minusBursatiles'}")
+                    a.nav-link 10 -
+                        span( uib-tooltip-html="'Monitor de empresas menos negociadas en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+                li.uib-tab.nav-item( ng-click="capitalsLumina.selected('all')" ng-class="{'active': capitalsLumina.tabSelect === 'all'}")
+                    a.nav-link Todas
+                        span( uib-tooltip-html="'Muestra todas las emisoras disponibles.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+        div.row.margin-0(style="position:relative; min-height:530px;")
+            div.col-md-8( act-table-stations-lumina=""
+                contract = '{{ investment.contract.contractNumber}}',
+                ids='capitalsLumina.categorySelected'
+                selected = "capitalsLumina.dollSelected"
+                columns-expand = "capitalsLumina.columnsExpand"
+            )
+            div.col-md-4( act-capitals-lumina-doll=""
+                contract = '{{ investment.contract.contractNumber}}',
+                station = "capitalsLumina.dollSelected"
+                ids='capitalsLumina.categorySelected'
+                iscuentapropia = 'investment.iscuentapropia'
+            )
+

@@ -1,0 +1,59 @@
+include /views/mixins/tables
+include /views/mixins/info-result
+
+div.container-table-investment(style="overflow-x: auto;" )
+    table.table-investment.stop-loss( ng-class="{'trailing': type, 'stop': !type}" )
+        thead
+            tr
+                +thCaret( 'Emisora', 'subOrders.operationDate' )
+                +thCaret( 'Títulos', 'subOrders.movementDescription' )
+                +thCaret( 'Folio', 'issuer.issuerName' )
+
+                +thCaret( 'Precio Salida', 'subOrders.amountTitles' )(
+                    ngIf = 'type'
+                )
+                +thCaret( 'Precio Máximo', 'subOrders.amountTitles' )(
+                    ngIf = 'type'
+                )
+                +thCaret( 'Salida Piso', 'subOrders.amountTitles' )(
+                    ngIf = 'type'
+                )
+                +thCaret( 'Salida Techo', 'subOrders.amountTitles' )(
+                    ngIf = 'type'
+                )
+
+                +thCaret( 'Precio Piso', 'subOrders.amountTitles' )(
+                    ngIf = '!type'
+                )
+                +thCaret( 'Precio Techo', 'subOrders.price' )(
+                    ngIf = '!type'
+                )
+
+                +thCaret( 'Vigencia', 'subOrders.titlesAssigned' )
+                th.text-center
+                    i( class="fa fa-trash-o" aria-hidden="true")
+        tbody
+            +trLoading( 108, 'loading' )( colspan='11' )
+            tr( ng-if="!loading" )
+                td( colspan="11" )
+
+                    // No results
+                    .no-data( ng-if="orders.length === 0 && !loading" )
+                        +noResults( 'common-msg' )( msg!="<strong>No</strong> cuentas con información para mostrar" )
+
+                    div( ng-if="orders.length !== 0" )
+                        div( scrollable always-visible="true" )
+                            table
+                                tr( ng-repeat="order in orders | orderBy:sortType:sortReverse" )
+                                    td( ng-bind="order.issuer.issuerName + order.issuer.serie" )
+                                    td( ng-bind="order.share.titlesQty| number:0" )
+                                    td( ng-bind="order.share.operationReference" )
+
+                                    td( ng-bind="order.share.maxPrice | currency:'$'" )
+                                    td( ng-bind="order.share.outPrice | currency:'$'" )
+                                    td( ng-bind="order.share.outPercentage + '%'" ng-if="type")
+                                    td( ng-bind="order.share.higherPercentage + '%'" ng-if="type")
+
+                                    td( ng-bind="order.share.effectiveDate | date:'dd-MM-yyyy'" )
+                                    td.text-center( ng-click="delete(order)")
+                                        i( class="fa fa-trash-o" aria-hidden="true")

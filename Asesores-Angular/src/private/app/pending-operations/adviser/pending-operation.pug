@@ -1,0 +1,18 @@
+.administrator-page
+    h3.primary-title Operaciones Pendientes
+    div.content-panel
+        .content
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs
+                li( ui-sref-active="active" )
+                    a( ui-sref="received" ) RECIBIDAS
+                li( ui-sref-active="active" permission="['asesores.OperacionesPendientesMenu.Asesor.']")
+                    a( ui-sref="sent" ) ENVIADAS
+
+
+            // Tab content
+            .tab-content
+                div( ui-view="" )

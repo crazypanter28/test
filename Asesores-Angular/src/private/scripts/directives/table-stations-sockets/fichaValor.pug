@@ -1,0 +1,16 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-ficha-valor
+    div.modal-header
+        img.icon(
+        src="img/icons/calendar/ico_cerrar.svg",
+        alt="",
+        align="right"
+        ng-click="inv.close()"
+        )
+        h4 {{inv.info.issuer.issuerName  +  " " + inv.info.issuer.serie}}
+
+    div.modal-body
+        iframe.iframe-ficha-valor(src="{{inv.info.url}}")

@@ -1,0 +1,113 @@
+include /views/mixins/input
+include /views/mixins/info-result
+.advisers_binnacle
+    .section-title Generar bitácora
+
+    .container-section-date-range
+        .date-range
+            dates-range-picker( label="Fechas para generar bitácora" placeholder="dd/mm/aaaa - dd/mm/aaaa" date="ctrl.rangeDate")
+
+        button.btn.btn-primary( title="GENERAR" ng-disabled="!ctrl.rangeDate.startDate" ng-click="ctrl.getxlsx()") GENERAR
+
+    .section-title Consulta de mensajes
+
+    div.row(style="padding: 10px 0px 5px 20px;")
+        div.col-xs-5
+            dates-range-picker(
+                    date="ctrl.search.startDate"
+                    options="options"
+                    label="Fecha Inicial"
+                    placeholder="dd/mm/aaaa"
+                    ng-required="true"
+                    is-single="true"
+                )
+        div.col-xs-5
+            dates-range-picker(
+                    date="ctrl.search.endDate"
+                    options="options"
+                    label="Fecha Final"
+                    placeholder="dd/mm/aaaa"
+                    ng-required="true"
+                    is-single="true"
+                )
+        div.col-xs-2(style="padding-top:13px; text-align:'center'")
+            button.btn.btn-primary.outline( type="button" title="Buscar" ng-disabled="false" ng-click="ctrl.getSearchMessagesByDates()") Filtrar
+
+    div(style="padding: 10px 18px 0px 18px;")
+        div.search-cortos-Largo-left(style="width:100%;")
+            div.icon-left
+            div.input-right                     
+                input(type="text" placeholder="Buscar en contenido" ng-model="ctrl.fieldSearch").form-control
+                                                                
+        table.table.primary-table
+            thead
+                tr
+                    th(style="width: 120px;") Usuario
+                    th Titulo
+                    th(style="width: 150px; text-align:center;") Creado
+                    th(style="width: 100px; text-align:center;") Expiración
+            tbody
+                tr( ng-if = "ctrl.modal")
+                    td(colspan="4")
+                        .content-spinner
+                            .spinner
+                tr( ng-repeat = "reg in filtered = (ctrl.optionsDropdowm | filter:ctrl.filter(ctrl.fieldSearch) | orderBy :'-creationDate') track by $index" style="text-align:left; cursor:pointer;" ng-click="ctrl.changeOptionSelectedDropdowm(reg)" )
+                    td(ng-bind-html="reg.userCode | remarkText:ctrl.fieldSearch" style="width: 120px;")
+                    td(ng-bind-html="reg.message | remarkText:ctrl.fieldSearch" )
+                    td(ng-bind-html="reg.creationDate | date:'yyyy-MM-dd HH:mm' | remarkText:ctrl.fieldSearch" style="width: 100px; text-align:center;")
+                    td(ng-bind-html="reg.expirationDate | remarkText:ctrl.fieldSearch" style="width: 100px; text-align:center;")
+            tfoot                    
+                tr(ng-if="filtered.length < 1 && ctrl.optionsDropdowm.length > 0 ? true : false ")
+                    td(colspan="4")
+                        // Registers No Found
+                        +noGeneralResults( 'No existen', ' registros con el criterio de busqueda.' )  
+                tr(ng-if="(ctrl.optionsDropdowm.length > 0 ? false : true) && !ctrl.modal"  )                            
+                   td(colspan="4")
+                        // No results
+                        +noGeneralResults( 'No Existen', ' Registros.' )
+                
+
+    
+    //.container-section-query-messages
+        div
+            label Tipo de mensaje
+        .container-select
+            div( act-dropdown="" ng-model="ctrl.optionsDropdowm" on-change="ctrl.changeOptionSelectedDropdowm" )
+
+
+
+
+
+    .row.container-view-message( ng-show="ctrl.message" )
+        .col-xs-6.info-message
+            .title Información del mensaje
+            .content-view-message
+                .field
+                    .field-name Nombre del mensaje:
+                    .field-value {{ ctrl.message.message}}
+                .field
+                    .field-name Contenido:
+                    .field-value {{ ctrl.message.descriptionMessage }}
+                .field
+                    .field-name Destinatarios:
+                    .field-value {{ ctrl.message.destinations }}
+                .field
+                    .field-name Fecha de creación:
+                    .field-value {{ ctrl.message.creationDate | date:'dd/MM/yyyy' }}
+                .field
+                    .field-name Fecha de expiración:
+                    .field-value {{ ctrl.message.expirationDate | date:'dd/MM/yyyy' }}
+                .field(ng-if="ctrl.message.fileContent != null")
+                    .field-name Archivo adjunto:
+                    .field-value(style="cursor:pointer;" ng-click="ctrl.downloadFile(ctrl.message)") 
+                        img(src="img/icons/descargar.svg" style="width:16px; padding-right:3px;" ) 
+                        span Descargar
+
+        .col-xs-6.views
+            .title Usuarios que leyeron el mensaje
+            .row.list-view
+                .col-xs-6.item-view( ng-repeat=" reader in ctrl.message.readers" ) {{reader.name}}
+                //- .col-xs-6
+                //-     div.item-view Nadia García Hernández
+                //-     div.item-view Talía Prado Cardenas
+                //-     div.item-view Victor Tapía Morales

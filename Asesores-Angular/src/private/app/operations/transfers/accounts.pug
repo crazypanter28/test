@@ -1,0 +1,214 @@
+include /views/mixins/buttons
+include /views/mixins/input
+include /views/mixins/selected-client-info
+include /views/mixins/info-result
+
+// Account main info
+.account-main-info
+    +sClientTopInfo(30)
+
+div.row.margin-0.search-account
+    label Número de contrato a operar
+    br
+    div.dropdown-search( act-dropdown ng-model="contractso" selected="accounts.cmd.contract")
+    +btnSubmit(
+        'OPERAR',
+        'btn-primary',
+        '!accounts.cmd.contract'
+    )(ngClick="accounts.loadContract()")
+
+div.row.margin-0
+    div.row.content-spinner(ng-show="transferLoading")
+        div.spinner
+    div.row.no-data(ng-show="!transferLoading && loadAccountsTransferNull")
+        +noResults('no-data')
+    div( ng-if="accounts.dataContract && !transferLoading && !loadAccountsTransferNull" )
+        h4.contract-description.row.margin-0
+            .col-xs-3.padding-left-0
+                span Número de contrato a operar:
+                span {{ $ctrl.contract }}
+            .col-xs-4.padding-left-0
+                span Titular del contrato:
+                span {{operations.sclient.data.name + ' ' + operations.sclient.data.lastName + ' ' + operations.sclient.data.secondLastName }}
+            .col-xs-3.padding-left-0
+                span Efectivo disponible:
+                span {{ accounts.dataContract | currency }}
+
+
+
+        div.transfers
+            form(
+                name="form"
+                ng-submit="accounts.makeTransfer()",
+                novalidate,
+                autocomplete="none",
+                if="form"
+            )
+                div.title {{accounts.title}}
+                div.subtitle Datos de la transacción
+                div.row.margin-0
+                    div.col-xs-4.padding-left-0
+                        label Cuenta destino
+                            span.require *
+                        br
+                        div(
+                            act-dropdown ng-model="accounts.accounts"
+                            selected="accounts.cmd.transfer.account"
+                        )
+                    div.col-xs-4.padding-left-0
+                        +input( 'Importe', 'importe', 'Importe', true )(
+                            name = 'formImport'
+                            ngRequire='true',
+                            model='accounts.cmd.transfer.import',
+                            message='El importe debe ser mayor a 0',
+                            format = 'currency'
+                            autocomplete="off"
+                            pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                            maxlength='10'
+                        )
+                    div.col-xs-4.padding-left-0
+                        +input( 'Concepto', 'concepto', 'Compra de acciones', true )(
+                            name = 'formConcepto'
+                            ngRequire='true',
+                            model='accounts.cmd.transfer.concepto',
+                            pattern='accounts.pattern.alphanumeric'
+                            maxlength='60'
+                            message='Solo se aceptan números y letras'
+                            autocomplete="off"
+                        )
+                div.subtitle Medios
+                div.row.margin-0
+                    div.col-xs-4.padding-left-0
+                        label Tipo de medio
+                            span *
+                        br
+                        div( act-dropdown
+                            ng-model="$ctrl.Media"
+                            selected="accounts.cmd.transfer.media"
+                            name="media"
+                            style="margin-bottom:20px;"
+                        )
+                    div.col-xs-4.padding-left-0(ng-if="accounts.cmd.transfer.media.id === '1'")
+                        +input( 'Número de teléfono', 'phone', 'Teléfono', true )(
+                            name = 'formPhone2'
+                            ngRequire='true',
+                            model='accounts.cmd.transfer.binnacle.phone',
+                            message='El campo solo acepta números',
+                            autocomplete="off"
+                            pattern='accounts.pattern.numeric'
+                            maxlength='6'
+                        )
+                    div.col-xs-4.padding-left-0(ng-if="accounts.cmd.transfer.media.id === '1'")
+                        act-datetime( ng-model="accounts.cmd.transfer.binnacle.time" title="Hora de instrucción" type="HH")
+                hr
+                div.row.margin-0( ng-if="!accounts.cmd.transfer.media")
+                    +btnSubmit(
+                        'continuar',
+                        'btn-primary save-transfer',
+                        '!accounts.cmd.transfer.media || !accounts.cmd.transfer.account || !accounts.cmd.transfer.import || form.$invalid'
+                    )
+                div.row.margin-0( ng-if="accounts.cmd.transfer.media")
+
+                    div.col-xs-4.padding-left-0
+                        div.form-group.has-icon
+                            label(for="date") Fecha de instrucción
+                                span.require *
+                            div(style="position:relative")
+                                +inputDate( "accounts.cmd.transfer.binnacle.date", 'binnacle-date' )(
+                                    ngMouseOpen = 'popup1.opened'
+                                    datepickerOptions = "{showWeeks : false,formatMonth : 'MMM',yearColumns : 3 , maxDate: $root.getTodayDate}"
+                                )
+
+                    div.col-xs-6.padding-left-0
+                        div.form-group.act-input
+                            label( for="observation") Comentarios:
+                                span.require
+                            textarea.form-control( id="observation" max-length="250" ng-required="true")
+
+                    div.container-button
+                        +btnSubmit(
+                            'continuar',
+                            'btn-primary save-transfer',
+                            '!accounts.cmd.transfer.media || !accounts.cmd.transfer.account || form.$invalid'
+                        )
+
+        div.my-transactions.dashboard-info  
+            div.content-table.widget
+                div.title(ng-click="accounts.loadTransactions()") Movimientos CTA 
+                div.title.text-center(style="margin-left: 152px;" ng-click="accounts.loadSPEI()" ng-if='accounts.viewSPEITag') Movimientos SPEI
+                table.small-list( class="table" show-filter="false" ng-if='accounts.viewTransactions && !accounts.viewSPEI')
+                    thead
+                        tr
+                            th( title) Folio
+                            th( title) Descripción
+                            //- th( title) Emisora
+                            //- th( title) TÍTULOS de la orden
+                            //- th( title) Precio de la orden
+                            //- th( title) TÍTULOS asignados
+                            //- th( title) Precio asignado
+                            th( title) Importe
+                            th( title) Tipo de Mov.
+                            th( title).text-center Más info.
+                    tbody( ng-if="!spinnerTransfers" )
+                        td(colspan="10" style="padding:0;")
+                            div(scrollable always-visible="true")
+                                table(style='width:100%')
+                                    tr( ng-repeat="trans in accounts.transfers" ng-if="trans.movements.movementType != '' && (trans.issuer.issuerName === null || trans.issuer.issuerName === '' )" )
+                                        td {{ trans.movements.transactionReference }}
+                                        td(ng-if="trans.issuer.issuerName === null") {{ trans.movements.movementConcept }}
+                                        td(ng-if="trans.issuer.issuerName === ''") {{ trans.movements.movementDescription }}
+                                        //- td
+                                        //- td
+                                        //- td
+                                        //- td
+                                        //- td
+                                        td {{ trans.movements.netAmount | currency:'$'}}
+                                        td {{ trans.movements.movementType == 'D' ? 'CARGO' : trans.movements.movementType == 'C' ? 'ABONO' : trans.movements.movementType  }}
+                                        td.text-center
+                                            img(src="img/icons/ico_mas_info.svg", alt="ver más" ng-click="accounts.viewMoreDetail(trans)")
+
+                    tr.no-results(style="height: 122px;" ng-show="!spinnerTransfers && accounts.transfers.length === 0")
+                        td( colspan="10" )
+                            img(src="img/icons/calendar/icon_agregar.svg", alt="" width="60" height="60")
+                            div
+                                b No cuentas
+                                |  con Transacciones
+                    tr(style="height: 155px;" ng-show="spinnerTransfers")
+                        td.content-spinner( colspan="10" )
+                            .spinner
+                table.small-list( class="table" show-filter="false" ng-if='accounts.viewSPEI && !accounts.viewTransactions')
+                    thead
+                        tr
+                            th( title)  FECHA 
+                            th( title)  BANCO ORIGEN 
+                            th( title)  BANCO DESTINO
+                            th( title)  NO.REFERENCIA
+                            th( title)  MONTO
+                            th( title).text-center Más info.
+                    tbody( ng-if="!spinnerTransfers" )
+                        td(colspan="10" style="padding:0;")
+                            div(scrollable always-visible="true")
+                                table(style='width:100%')
+                                    tr( ng-repeat="transSPEI in accounts.transfersSPEI"  )
+                                        td {{ transSPEI.postingDateTime | date : 'yyyy-MM-dd hh:mm:ss a'}}
+                                        td {{ transSPEI.sourceBank.bankName}}
+                                        td {{ transSPEI.destinationBank.bankName }}
+                                        td {{ transSPEI.operationReference }}
+                                        td {{ transSPEI.amount | currency:'$' }}                                       
+                                        td.text-center                                               
+                                            img(src="img/icons/ico_mas_info.svg", alt="ver más" ng-click="accounts.viewMoreDetailSPEI(transSPEI)")
+
+                    tr.no-results(style="height: 122px;" ng-show="!spinnerTransfers && accounts.transfersSPEI.length === 0")
+                        td( colspan="10" )
+                            img(src="img/icons/calendar/icon_agregar.svg", alt="" width="60" height="60")
+                            div
+                                b No cuentas
+                                |  con Transacciones
+                    tr(style="height: 155px;" ng-show="spinnerTransfers")
+                        td.content-spinner( colspan="10" )
+                            .spinner                            
+        div.row.margin-0.caution(ng-show="$ctrl.contract")
+            | Recuerda que estás operando con el contrato
+            b   {{ $ctrl.contract.text }}
+            | ,  para cambiar de contrato hazlo desde la pestaña
+            b  “Cuenta”.

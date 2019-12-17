@@ -1,0 +1,149 @@
+include /views/mixins/input
+include /views/mixins/text-area
+include /views/mixins/buttons
+
+div.modal-confirm-transfer
+    div.modal-header
+        img.icon(
+            src="img/icons/calendar/ico_cerrar.svg",
+            alt="",
+            align="right"
+            ng-click="detail.close()"
+        )
+        h4 DETALLE DE LA ORDEN
+
+    div.modal-body
+        //p {{detail.info}}
+        //div.table-title
+            div.col-xs-4
+                p Fecha de registro
+                p {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.movementInfo.operationDate | date :'dd/MM/yyyy'}}
+            div.col-xs-4
+                p Hora de registro
+                p {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.movementInfo.operationDate | date :'hh:mm:ss'}}
+        //div.row.margin-0(ng-repeat='t in detailContract.cotitulares' )
+                div.dollScrollDetail.col-xs-12(scrollable always-visible="true") 
+        div.content.dollScrollDetailOtherAcounts(ng-repeat='detail in detail.info' ) 
+            div.dollScrollDetailOtherAcounts(scrollable always-visible="true" )
+                div.row.margin-0(ng-if="detail.movements.transactionReference")
+                    p.col-xs-6 Transacción:
+                    p.col-xs-6 {{ detail.movements.transactionReference}}  
+                div.row.margin-0(ng-if="detail.issuer.issuerName")
+                    p.col-xs-6 Emisora:
+                    p.col-xs-6 {{ detail.issuer.issuerName}}
+                div.row.margin-0(ng-if="detail.movements.amountTitles")
+                    p.col-xs-6 Titulos:
+                    p.col-xs-6 {{ detail.movements.amountTitles}}    
+                div.row.margin-0(ng-if="detail.movements.claimDate")
+                    p.col-xs-6 Fecha de Reclamación:
+                    p.col-xs-6 {{ detail.movements.claimDate | date :'dd/MM/yyyy'}}  
+                div.row.margin-0(ng-if="detail.movements.claimReference")
+                    p.col-xs-6 Folio de la Reclamación:
+                    p.col-xs-6 {{ detail.movements.claimReference}}                                               
+                div.row.margin-0(ng-if="detail.movements.claimStatus")
+                    p.col-xs-6 Estado de la reclamación:
+                    p.col-xs-6 {{ detail.movements.claimStatus}}  
+                div.row.margin-0(ng-if="detail.movements.clearedBalance")
+                    p.col-xs-6 Saldo de la cuenta despues del movimiento:
+                    p.col-xs-6 {{ detail.movements.clearedBalance | currency }}  
+                div.row.margin-0(ng-if="detail.movements.commissionAmount")
+                    p.col-xs-6 Comisión:
+                    p.col-xs-6 {{ detail.movements.commissionAmount}}  
+                div.row.margin-0(ng-if="detail.movements.currency")
+                    p.col-xs-6 Moneda:
+                    p.col-xs-6 {{ detail.movements.currency}}
+                div.row.margin-0(ng-if="detail.movements.incomeTax")
+                    p.col-xs-6 Monto del I.S.R:
+                    p.col-xs-6 {{ detail.movements.incomeTax}}    
+                div.row.margin-0(ng-if="detail.movements.interestRate")
+                    p.col-xs-6 interestRate:
+                    p.col-xs-6 {{ detail.movements.interestRate}}  
+                div.row.margin-0(ng-if="detail.movements.liquidationDate")
+                    p.col-xs-6 Liquidación:
+                    p.col-xs-6 {{ detail.movements.liquidationDate |  date :'dd/MM/yyyy'}}
+                div.row.margin-0(ng-if="detail.movements.liquidationTime")
+                    p.col-xs-6 Tiempo Liquidación:
+                    p.col-xs-6 {{ detail.movements.liquidationTime | date :'hh:mm:ss' }}
+                div.row.margin-0(ng-if="detail.movements.marketType")
+                    p.col-xs-6 marketType:
+                    p.col-xs-6 {{ detail.movements.marketType}}                
+                div.row.margin-0(ng-if="detail.movements.movementConcept")
+                    p.col-xs-6 Concepto del Movimiento:
+                    p.col-xs-6 {{ detail.movements.movementConcept}}
+                div.row.margin-0(ng-if="detail.movements.movementDescription")
+                    p.col-xs-6 Descripción:
+                    p.col-xs-6 {{ detail.movements.movementDescription}} 
+                div.row.margin-0(ng-if="detail.movements.movementStatus")
+                    p.col-xs-6 Estado del movimiento:
+                    p.col-xs-6 {{ detail.movements.movementStatus}}                  
+                div.row.margin-0(ng-if="detail.movements.movementType")
+                    p.col-xs-6 Tipo de movimiento: 
+                    p.col-xs-6 {{ detail.movements.movementType == 'D' ? 'CARGO' : detail.movements.movementType == 'C' ? 'ABONO' : detail.movements.movementType  }}
+                div.row.margin-0(ng-if="detail.movements.netAmount")
+                    p.col-xs-6 Monto:
+                    p.col-xs-6 {{ detail.movements.netAmount}} 
+                div.row.margin-0(ng-if="detail.movements.operationDate")
+                    p.col-xs-6 Fecha de operación:
+                    p.col-xs-6 {{ detail.movements.operationDate |  date :'dd/MM/yyyy' }}
+                div.row.margin-0(ng-if="detail.movements.operationReference")
+                    p.col-xs-6 Folio:
+                    p.col-xs-6 {{ detail.movements.operationReference}}
+                div.row.margin-0(ng-if="detail.movements.operationTime")
+                    p.col-xs-6 operationTime:
+                    p.col-xs-6 {{ detail.movements.operationTime | date :'hh:mm:ss' }}
+                //div.row.margin-0(ng-if="detail.movements.price")
+                    p.col-xs-6 Precio:
+                    p.col-xs-6 {{ detail.movements.price}}
+                div.row.margin-0(ng-if="detail.movements.term")
+                    p.col-xs-6 Plazo:
+                    p.col-xs-6 {{ detail.movements.term}}
+                div.row.margin-0(ng-if="detail.movements.transactionReference")
+                    p.col-xs-6 transactionReference:
+                    p.col-xs-6 {{ detail.movements.transactionReference}}
+                div.row.margin-0(ng-if="detail.movements.transactionStatusID")
+                    p.col-xs-6 transactionStatusID:
+                    p.col-xs-6 {{ detail.movements.transactionStatusID}}
+                div.row.margin-0(ng-if="detail.movements.vat")
+                    p.col-xs-6 IVA:
+                    p.col-xs-6 {{ detail.movements.vat}}
+                
+
+
+
+
+
+        //div.content
+            div.row.margin-0
+                p.col-xs-6 Importe:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.generalInfo.amount | currency}}
+            div.row.margin-0
+                p.col-xs-6 Fecha de liquidación:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.generalInfo.liquidationDate |  date :'dd/MM/yyyy'}}
+            div.row.margin-0(ng-if="detail.info.data.outDepositWithdrawalOrderDetailQuery.instructionInfo.beneficiaryName")
+                p.col-xs-6 Beneficiario:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.instructionInfo.beneficiaryName}}
+            div.row.margin-0(ng-if="detail.info.data.outDepositWithdrawalOrderDetailQuery.instructionInfo.bankCheckingAccountDescription")
+                p.col-xs-6 Institución:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.instructionInfo.bankCheckingAccountDescription}}
+            div.row.margin-0(ng-if="detail.info.data.outDepositWithdrawalOrderDetailQuery.generalInfo.checkAccount")
+                p.col-xs-6 Cuenta:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.generalInfo.checkAccount}}
+            div.row.margin-0
+                p.col-xs-6 Tipo de cambio:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.generalInfo.exchangeRate }}
+            div.row.margin-0
+                p.col-xs-6 Moneda:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.generalInfo.currencyTypeDesc }}
+            div.row.margin-0
+                p.col-xs-6 Movimiento:
+                p.col-xs-6 Retiro
+            div.row.margin-0
+                p.col-xs-6 Descripción:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.bankingInfo.observations }}
+            div.row.margin-0
+                p.col-xs-6 Nombre:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.movementInfo.accountName}}
+            div.row.margin-0
+                p.col-xs-6 Fecha:
+                p.col-xs-6 {{ detail.info.data.outDepositWithdrawalOrderDetailQuery.movementInfo.operationDate |  date :'dd/MM/yyyy'}}
+

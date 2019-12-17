@@ -1,0 +1,87 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+.content-panel(ng-if = "medicalCtrl.steps.entrega")
+    .row 
+        h2 EMISIÓN
+        .row
+            .col-xs-12
+                h3 Datos Póliza
+        .row
+            .col-xs-12
+                h5.bgColorEntrega.padding.paddingLeftRight Número de trámite: {{medicalCtrl.emission.numeroTramite}}
+        hr 
+        .row
+            .col-xs-12
+                h4 Asegurados:
+            .col-xs-12.margenes20px
+                table
+                    thead
+                        th.formatoLetrasTituloTabla Nombre
+                        th.formatoLetrasTituloTabla Parentesco
+                        th.formatoLetrasTituloTabla Sexo
+                        th.formatoLetrasTituloTabla Edad
+                    tbody
+                        tr
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable.upperCaseInput {{medicalCtrl.jsonEmision.policyholderData.name | filter:uppercase}}
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable {{medicalCtrl.jsonEmision.policyholderData.relationship | filter:uppercase}}
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable {{medicalCtrl.jsonEmision.policyholderData.genderDesc | filter:uppercase}}
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable {{medicalCtrl.jsonEmision.policyholderData.age}}
+                        tr(ng-repeat="dependientes in medicalCtrl.jsonEmision.dependentDataList.dependentData")
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable.upperCaseInput {{dependientes.name | filter:uppercase}}
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable {{dependientes.relationship | filter:uppercase}}
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable {{dependientes.genderDesc | filter:uppercase}}
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntregaTable {{dependientes.age}}
+        hr
+        .row
+            .col-xs-12
+                h4 Paquete
+            .col-xs-12.margenes10px
+                .col-xs-2
+                .col-xs-4.text-center
+                    p Vigencia desde: {{medicalCtrl.jsonEmision.packageData.insurancePolicyDate | date:dd/MM/yyyy}}
+                .col-xs-4.text-center
+                    p Hasta: {{medicalCtrl.jsonEmision.packageData.policyMaturityDate | date:dd/MM/yyyy}}
+            .col-xs-12.margenes10px
+                .col-xs-2
+                .col-xs-4.text-center
+                    p Plan Contratado: {{medicalCtrl.jsonEmision.packageData.planType}}
+                .col-xs-4.text-center
+                    p Paquete: {{medicalCtrl.jsonEmision.packageData.package}}
+            .col-xs-3
+            .col-xs-6
+                table.margenes20px
+                    thead
+                        tr
+                            th.formatoLetrasTituloTabla Coberturas 
+                    tbody
+                        tr(ng-repeat="coverList in medicalCtrl.jsonEmision.packageData.coverageDataList.coverageData") 
+                            td.text-center.formatoLetrasContenidoTabla.bordersMedicalEntrega {{coverList.description}}
+        hr
+        .row
+            .col-xs-12
+                h4 Datos de Pago 
+            .col-xs-12.margenes10px
+                p Forma de pago: {{medicalCtrl.jsonEmision.packageData.paymentMethod}} ${{medicalCtrl.jsonEmision.packageData.totalPremium}}
+            .col-xs-12.margenes10px
+                p Pago: ${{medicalCtrl.jsonEmision.packageData.amount}}
+            .col-xs-12.margenes10px(ng-if="medicalCtrl.jsonEmision.packageData.numberOfPayments > 1")
+                p Pagos subsecuentes: {{medicalCtrl.jsonEmision.packageData.numberOfPayments - 1}} pago{{medicalCtrl.jsonEmision.packageData.numberOfPayments > 2 ? 's' : ''}} de ${{medicalCtrl.jsonEmision.packageData.subpayment}}
+        hr
+        .row
+            .col-xs-3
+            .col-xs-7
+                .form-group.col-lg-10.pf.margenMedicalSuperior.margenMedicalInferior
+                    label.col-md-4.control-label
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo electrónico
+                    .col-md-8
+                        input(type="input" name="emailUser" placeholder="correo@email.com"
+                            ng-model="medicalCtrl.email"
+                            ng-pattern="/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/"
+                            required maxlength="50" style="text-transform: uppercase;").form-control                                         
+            .col-xs-5 
+        .row
+            .col-xs-12.text-center
+                +btnWithIcon( 'ENVIAR CORREO A CLIENTE', 'btn-primary btn-space', '!medicalCtrl.email')(ngClick="sendEmailEmission()") 
+                +btnWithIcon( 'FINALIZAR', 'btn-primary btn-space')(ngClick="medicalCtrl.goRegresarMain()")     
+

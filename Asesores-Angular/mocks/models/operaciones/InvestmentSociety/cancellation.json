@@ -1,0 +1,39 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"64ca92f2-037a-4506-ad9d-c57e3797c466",
+            "messages":[
+                {
+                    "responseSystemCode":"SICBW0412",
+                    "responseMessage":"Se ha realizado la cancelacion",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1493787600000,
+        "time":61421000,
+        "clientID":"NBURSANET",
+        "sessionID":null,
+        "responseSystem":"A2K",
+        "operationName":"FundOrderCancelation",
+        "operationVersion":"1_0",
+        "ipaddress":null
+    },
+    "outFundOrderCancelation":{
+        "fundOrderCancelation":{
+            "order":{
+                "operationReference":898597,
+                "movementType":"VENTA",
+                "titlesAmount":1.0
+            },
+            "issuer":{
+                "issuerName":"ACTIGOB",
+                "serie":"E ",
+                "coupon":0
+            }
+        }
+    }
+}

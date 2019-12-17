@@ -1,0 +1,27 @@
+/**
+ * -------------------------
+ * @section Primary title
+ * -------------------------
+*/
+.primary-title {
+    font-family: "Proxima Semibold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-top: 0;
+    color: $header-bg;
+}
+
+/**
+ * -------------------------
+ * @section Block title
+ * -------------------------
+*/
+.block-title {margin-bottom: 5px; font-size: 14px; line-height: 18px; color: #4a4a4a;}
+
+/**
+ * -------------------------
+ * @section Agent title
+ * -------------------------
+*/
+.agent-title {margin-top: 5px; margin-bottom: 5px; font-size: 15px; line-height: 18px; color: $header-bg;}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="9px" viewBox="0 0 9 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_cerrar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="DASHBOARD" transform="translate(-1043.000000, -328.000000)" stroke-width="1.152" stroke="#FA596D">
+            <g id="CALENDARIO" transform="translate(557.000000, 185.000000)">
+                <g id="CALENDARIO-Copy">
+                    <g id="actividad01" transform="translate(238.000000, 138.000000)">
+                        <g id="icon_cerrar" transform="translate(249.000000, 6.000000)">
+                            <g id="Group">
+                                <path d="M0,0 L7,7" id="Shape"></path>
+                                <path d="M0,7 L7,0" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

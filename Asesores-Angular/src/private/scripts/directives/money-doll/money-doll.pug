@@ -1,0 +1,137 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/doll
+
+div.doll
+    div.row.margin-0.header
+        button.btn.col-xs-12.buy.active
+            span Comprar
+
+    // Intro
+    div.row.margin-0.body.empty.init( ng-show="!instrument" )
+            div.empty-container
+                div.empty-center
+                    img(src="img/icons/doll/icon_money.svg" )
+                    p.station-description Selecciona el instrumento que deseas comprar
+                    p.label Puedes dar clic directamente sobre el tipo de
+                        b  INSTRUMENTO
+                        |   para agilizar tu compra
+
+    // Spinner
+    div.row.margin-0.body.buy( ng-if="doll.loading" )
+        .spinner
+
+    // Doll
+    div( ng-if="instrument && !doll.loading" )
+
+        // Form
+        .money-market-process.body.buy( ng-if="instrument && !doll.confirmationModel" )
+            form( name="form" novalidate )
+
+                // Selected instrument
+                .selected-instrument
+                    label Tipo de instrumento:
+                    | {{ instrument.description | split:' ':1 }}
+
+                // Cash info
+                .cash-info
+                    p Efectivo:
+                        strong  {{ doll.currentCash | currency }}
+                        img( src="img/icons/inner-tabs-doubt-active.svg" alt="Duda" uib-tooltip-html="'Es el dinero disponible para realizar una compra, calculado al la fecha de liquidación de la operación'" tooltip-placement="right" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+                // Other info
+                .other-info
+                    ul
+                        li
+                            span(style="width: 64px;") Tasa max:
+                            strong
+                                | {{instrument.maxRate}} %
+                        li
+                            span(style="width: 64px;") Tasa min:
+                            strong
+                                | {{instrument.minRate}} %
+                        li
+                            span(style="width: 64px;") Plazo max:
+                            strong
+                                | {{ instrument.maxTerm }}
+                                ng-pluralize( count="instrument.maxTerm" when="{'1': ' día', 'other': ' días'}" )
+                        li
+                            span(style="width: 64px;") Plazo min:
+                            strong
+                                | {{ instrument.minTerm }}
+                                ng-pluralize( count="instrument.minTerm" when="{'1': ' día', 'other': ' días'}" )
+
+                        li
+                            span Rango:
+                            strong {{ instrument.minNetAmount | currency }} - {{ instrument.maxNetAmount | currency }}
+
+                // Aount to invest
+                .row
+                    .col-xs-6
+                        div.form-group.act-input
+                            label( for="invest" )
+                                | Importe a invertir
+                                span.require *
+                            input.form-control( type="text" id="invest"
+                            name="invest"
+                            ng-model="doll.invest"
+                            ng-required="true"
+                            required="required"
+                            ng-change="doll.calculateInterest()"
+                            onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                            ng-currency
+                            )
+                    //.col-xs-6
+                        label Fecha de vencimiento
+                        strong {{ instrument.dueDate | date:"dd/MM/yyyy" }}
+                    .col-xs-6
+                        label
+                            | Plazo
+                            span.require *
+                        input.form-control( type="text"  ng-model="doll.term"  ng-required="true" ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/" )
+
+                .row
+                    .col-xs-12.text-center
+                        label Intereses ganados
+                        strong {{ doll.interestCattle | currency }}
+                .row
+                    .col-xs-6
+                        label
+                            | Tasa
+                            span.require *
+                        input.form-control( type="text"  ng-model="doll.optimumRate"  ng-required="true" ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/" )
+
+                    .col-xs-6(ng-if="doll.optimumRate > instrument.maxRate")
+                        label
+                            | Folio
+                            span.require
+                        input.form-control( type="text"  ng-model="doll.operationReference"   ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/" )
+
+                // Binnacle
+                div(ng-if="!doll.contractType")
+                    +dollBinnacle(submit='ACEPTAR')
+
+                .row.margin-0(ng-if="doll.contractType")
+                    div.col-xs-12.padding-0.buttons
+                        +btnWithIcon(
+                        'ACEPTAR',
+                        'btn-primary',
+                        'form.$invalid',
+                        'img/icons/doll/ico_aceptar_on.svg'
+                        )(ngClick="doll.confirm()")
+                        +btnWithIcon(
+                        'Limpiar',
+                        'btn-primary',
+                        null,
+                        'img/icons/doll/ico_limpiar_on.svg'
+                        )(ngClick="doll.cleanModels()")
+
+
+        // Confirmation
+        div.row.margin-0.confirm.body.buy( ng-if="doll.confirmationModel && !doll.captureModel" )
+            +moneyDollConfirmation()
+
+        // Success
+        div.row.margin-0.confirm.body.buy( ng-if="doll.captureModel" )
+            +moneyDollConfirmation( true )

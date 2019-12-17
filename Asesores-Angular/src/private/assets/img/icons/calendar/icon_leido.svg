@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="8px" viewBox="0 0 10 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_completar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DASHBOARD-Copy-21" transform="translate(-1035.000000, -226.000000)" fill-rule="nonzero" fill="#898989">
+            <g id="CALENDARIO" transform="translate(557.000000, 185.000000)">
+                <g id="CALENDARIO-Copy">
+                    <path d="M487.618447,41.0008584 C487.522666,41.0087171 487.433715,41.0768017 487.384027,41.1180597 C485.458893,43.132253 483.276676,45.6394739 481.350492,47.6706706 L478.570935,45.5441519 C478.42189,45.4301656 478.182582,45.4620825 478.068606,45.6111292 C477.95463,45.760158 477.986538,45.9994722 478.135583,46.1134585 L481.171886,48.4353364 C481.31045,48.5400174 481.526737,48.5222104 481.646308,48.3962574 C483.640602,46.3097465 485.922774,43.6753224 487.897519,41.6092262 C487.999468,41.5068492 488.029323,41.3395311 487.969081,41.2082021 C487.908838,41.0768732 487.762554,40.9903743 487.618447,41.0008584 Z" id="icon_completar"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

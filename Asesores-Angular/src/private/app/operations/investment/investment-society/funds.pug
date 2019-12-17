@@ -1,0 +1,55 @@
+div.my-movements
+    uib-tabset(active='activeTab')
+        uib-tab(index='0', heading='Fondos' ng-click="funds.updateFunds()")
+            div( table-portfolio-inv=""
+                contract="{{ investment.contract.contractNumber }}"
+                update="funds.updateFunds"
+                selected = "funds.dollSelected"
+            )
+        uib-tab(index='1', heading='órdenes' ng-click="funds.updateOrders()" )
+            div( act-table-orders=""
+                contract="{{ investment.contract.contractNumber }}"
+                update="funds.updateOrders"
+            )
+        uib-tab(index='2', heading='Historico' ng-click="funds.clean()" )
+            div( act-table-orders=""
+                contract="{{ investment.contract.contractNumber }}"
+                clean="funds.clean"
+                origin="history"
+            )
+
+.panel-wrapper( ng-init="funds.tabSelect = 1")
+    div.sub-menu-buttons.row.margin-0
+        ul.nav.nav-tabs
+            li.uib-tab.nav-item( ng-click="funds.selected(1)" ng-class="{'active': funds.tabSelect === 1}")
+                a.nav-link( href="" ng-click="select($event)" ) deuda
+                    span( uib-tooltip-html="'Emisoras que integran el índice de Precios y Cotizaciones de la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+            li.uib-tab.nav-item( ng-click="funds.selected(2)" ng-class="{'active': funds.tabSelect === 2}")
+                a.nav-link( href="" ng-click="select($event)" ) renta variable
+                    span( uib-tooltip-html="'Emisoras que integran el índice de Precios y Cotizaciones de la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+            li.uib-tab.nav-item( ng-click="funds.selected(3)" ng-class="{'active': funds.tabSelect === 3}")
+                a.nav-link( href="" ng-click="select($event)" ) cobertura
+                    span( uib-tooltip-html="'Emisoras que integran el índice de Precios y Cotizaciones de la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+            li.uib-tab.nav-item( ng-click="funds.selected(4)" ng-class="{'active': funds.tabSelect === 4}")
+                a.nav-link( href="" ng-click="select($event)" ) Fondos de fondos
+                    span( uib-tooltip-html="'Emisoras que integran el índice de Precios y Cotizaciones de la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+    div.row.margin-0(style="position:relative;")
+        div.col-md-8( act-table-stations
+            contract = '{{ investment.contract.contractNumber}}',
+            id='{{ funds.tabSelect }}'
+            selected = "funds.dollSelected"
+            columns-expand = "funds.columnsExpand"
+        )
+
+        div.col-md-4( act-doll
+            station="funds.dollSelected"
+            contract = '{{ investment.contract.contractNumber}}',
+            id="funds.tabSelect"
+            columns-expand = "funds.columnsExpand"
+        )
+
+

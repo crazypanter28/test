@@ -1,0 +1,21 @@
+include /views/mixins/radio-button
+
+// Binnacle page
+.simulators-page
+
+    h3.primary-title Simuladores
+    div.content-panel
+
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs( ng-if="!$state.is('simulators.details')")
+                li( ui-sref="simulators.performance" ui-sref-active="active")
+                    a( href="javascript:void(0);" ) RENDIMIENTO HISTÓRICO
+                li( ui-sref="simulators.credit" ui-sref-active="active" ng-show="false")
+                    a( href="javascript:void(0);" ) CRÉDITO
+
+            // Tab content
+            .tab-content
+                div( ui-view="" )

@@ -1,0 +1,126 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/info-result
+include /views/mixins/selected-client-info
+
+// Contract search
+div
+    div.row
+        .col-md-3
+            div.input-group
+                span.input-group-addon(style="background-color: #ffff; border: 1px solid #ffff;" ng-hide="account.client || account.person.companyName || account.person.fiscalIDNumber || account.person.name || account.person.lastName || account.person.surName")
+                    i.fa.fa-user-circle
+                input(class="form-control" placeholder="Contrato" ng-model="account.contract" ng-keypress="($event.which === 13) ? account.submitSearch() : 0"  ng-maxlength="10" ng-hide="account.client || account.person.companyName || account.person.fiscalIDNumber || account.person.name || account.person.lastName || account.person.surName" ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/")
+        .col-md-3
+            input(class="form-control" placeholder="Cliente Unico" ng-model="account.client"  ng-keypress="($event.which === 13) ? account.submitSearch() : 0" ng-maxlength="10" ng-hide="account.contract || account.person.companyName || account.person.fiscalIDNumber || account.person.name || account.person.lastName || account.person.surName" ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/")
+    div.row
+
+        .col-md-3
+            div.input-group
+                span.input-group-addon(style="background-color: #ffff; border: 1px solid #ffff;" ng-hide="account.client || account.contract || account.person.companyName || account.person.fiscalIDNumber")
+                    i.fa.fa-user-o
+                input(class="form-control" placeholder="Nombre / Razón Social" ng-model="account.person.name" ng-keypress="($event.which === 13) ? account.submitSearch() : 0" ng-hide="account.client || account.contract || account.person.companyName || account.person.fiscalIDNumber")
+        .col-md-3                          
+            input(class="form-control" placeholder="RFC" ng-model="account.person.fiscalIDNumber" ng-keypress="($event.which === 13) ? account.submitSearch() : 0" ng-hide="account.client || account.contract || account.person.name || account.person.lastName || account.person.surName || account.person.companyName ")       
+    div.row
+        .col-md-12
+            button(style="margin: 10px 30px;" class="btn-primary btn" ng-click="account.submitSearch()") BUSCAR
+            button(class="btn-primary btn" ng-click="account.cleanForm()") LIMPIAR
+
+// Contract search results
+.contract-search-results( ng-if="account.contracts_search.sent || operations.sclient.data" )
+
+    // Spinner
+    //.spinner( ng-if="account.contracts_search.sent && !account.contracts_search.finish" )
+
+    // Results
+    .results( ng-if="operations.sclient.data" )
+        .panel-wrapper
+            .panel-heading.account-main-info
+                +sClientTopInfo()
+            .panel-body.scroll(style="min-width: 100%; overflow-x:auto; padding: 0px 5px 0px 5px;")
+                table.table(style="table-layout:auto;")
+                    thead
+                        tr
+                            th.column-operations-portfolio CONTRATOS
+                            th.text-center.column-operations-portfolio(ng-repeat="column in account.portfolioTable")
+                                i.fa.fa-circle( aria-hidden="true" style="color:{{ column.color }};")
+                                | {{column.name}}
+                    tbody
+                        tr( ng-repeat="contract in operations.sclient.contracts_list" id="illuminate-capital-td-selected-sell")
+                            td.column-operations-portfolio
+                                i.fa.fa-circle( aria-hidden="true" style="color:{{ account.chart_line_colors[$index] }}; padding-right: 10px;" )
+                                b(ng-click="account.showDetail(contract)" uib-tooltip-html="'Clic para ver más detalle del contrato'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp") {{ contract.contractNumber }}
+                                div(ng-if="contract.totalBalance !== undefined") {{ contract.totalBalance | currency }}
+                                div(ng-if="!(contract.totalBalance !== undefined)") No disponible
+                            td.column-operations-portfolio(ng-click="account.contractSelection(contract, 'SI' )" )
+                                a.hidden-md.hidden-lg.hidden-md Fondos de Deuda&nbsp
+                                span(uib-tooltip-html="'Clic para ver Fondos de Deuda'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp") 
+                                    | {{contract.portfolio.totalSD | currency}}
+                            td.column-operations-portfolio(ng-click="account.contractSelection(contract, 'SI')")
+                                a.hidden-md.hidden-lg.hidden-md Fondos de Renta Variable&nbsp
+                                span(uib-tooltip-html="'Clic para ver Fondos de Renta Variable'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp") 
+                                    | {{contract.portfolio.totalSI | currency}}
+                            td.column-operations-portfolio(ng-click="account.contractSelection(contract, 'SI')")
+                                a.hidden-md.hidden-lg.hidden-md Fondos de Cobertura&nbsp
+                                span(uib-tooltip-html="'Clic para ver Fondos de Cobertura'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp") 
+                                    | {{contract.portfolio.totalSC | currency}}
+                            td.column-operations-portfolio(ng-click="account.contractSelection(contract, 'MD')")
+                                a.hidden-md.hidden-lg.hidden-md Mercado de Dinero&nbsp
+                                span(uib-tooltip-html="'Clic para ver Mercado de Dinero'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp") 
+                                    | {{contract.portfolio.totalMD | currency}}
+                            td.column-operations-portfolio(ng-click="account.contractSelection(contract, 'MC')")
+                                a.hidden-md.hidden-lg.hidden-md Mercado de Capitales&nbsp
+                                span(uib-tooltip-html="'Clic para ver Mercado de Capitales'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp") 
+                                    | {{contract.portfolio.totalMC | currency}}
+                            td.column-operations-portfolio
+                                a.hidden-md.hidden-lg.hidden-md Pendientes por Liquidar&nbsp
+                                | {{contract.portfolio.totalSettlementOperations | currency}}
+                            td.column-operations-portfolio
+                                a.hidden-md.hidden-lg.hidden-md Efectivo en tránsito&nbsp
+                                | {{contract.portfolio.blockedBalance | currency}}
+                            td.column-operations-portfolio
+                                a.hidden-md.hidden-lg.hidden-md Cedes y Pagarés&nbsp
+                                | {{contract.portfolio.totalIP | currency}}
+                            td.column-operations-portfolio
+                                a.hidden-md.hidden-lg.hidden-md Valores en Garantía&nbsp
+                                | {{contract.portfolio.totalVG | currency}}
+                            td.column-operations-portfolio(ng-click="operations.getSelectedClient('transfers', contract)")
+                                a.hidden-md.hidden-lg.hidden-md Efectivo&nbsp
+                                span(uib-tooltip-html="'Clic para ver Efectivo'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp")
+                                .row
+                                    p.text-left(style="font-size: 12px;")
+                                        strong MX&nbsp
+                                        | {{contract.portfolio.totalCashMXN | currency}}
+                                .row
+                                    p.text-left(style="font-size: 12px;")
+                                        strong USD&nbsp
+                                        | {{contract.portfolio.totalCashDLLS | currency}}
+                                .row
+                                    p.text-left(style="font-size: 12px;")
+                                        strong EUR&nbsp
+                                        | {{contract.portfolio.totalCashEUR | currency }}
+                //.contracts-list
+                    h3 CONTRATO
+                    ul
+                        li( ng-repeat="contract in operations.sclient.contracts_list" )
+                            .bullet( style="background-color: {{ account.chart_line_colors[$index] }}" )                            
+                            b(ng-click="account.showDetail(contract)") {{ contract.contractNumber }}
+                            b jshdjkdhas
+                            span(ng-if="contract.totalBalance !== undefined") {{ contract.totalBalance | currency }}
+                            span(ng-if="!(contract.totalBalance !== undefined)") No disponible
+
+
+        div.row
+            .col-md-6
+                .col-md-12
+                    donut-chart( ng-if="account.chart_info" model="account.chart_info" )
+                    h3.text-center(style="margin-top: 14px;") Valor total
+                        p {{ account.portfolio_totals | currency }}
+            .col-md-6
+                h3.text-center Histórico de saldos {{account.checked_all_contracts}}
+                .empty-balance.display-as-table( ng-if="!operations.sclient.balance && operations.sclient.checked_all_contracts" )
+                    +noResults('no-historical')
+                .wrapper( ng-if="operations.sclient.balance" )
+                    line-chart( model="operations.sclient" color="account.colors_chart" )
+

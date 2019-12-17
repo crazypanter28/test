@@ -1,0 +1,15 @@
+extends views/layout/app
+
+
+include views/mixins/buttons
+include views/mixins/input
+include views/mixins/nav
+
+
+
+block content
+    // General wrapper
+    #general-wrapper
+        div( ui-view )
+        
+    include /views/elements/footer

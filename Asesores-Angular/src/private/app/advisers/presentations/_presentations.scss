@@ -1,0 +1,27 @@
+.presentations-page{
+
+    .list-title{
+        border-bottom: 1px dotted;
+        border-color: rgba($tertiary-color, 0.7);
+        color: $tertiary-color;
+        margin: 0;
+        text-transform: capitalize;
+        width: 290px;
+    }
+
+    ul.list-presentations {
+        list-style-image: url('../img/icons/bullet.svg');
+        margin-top: 5px;
+        padding-left: 20px;
+
+        li{
+            margin-bottom: 6px;
+
+            a{
+                color: $blue7;
+                font-size: 14px;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

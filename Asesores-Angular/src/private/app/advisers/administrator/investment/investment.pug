@@ -1,0 +1,37 @@
+include /views/mixins/info-result
+
+
+.investment-seccion
+    .section-title
+        span Fondos de inversión
+        i.add-white( ng-click="invest.showModalCreateInvestment()" )
+
+    .content
+        table( ng-table='invest.configTable')
+            thead
+                tr
+                    th.text-center Fondo
+                    th.text-center Clasificación
+                    th.text-center Descripción
+                    th.text-center Editar
+                    th.text-center Eliminar
+            tbody
+                tr( ng-show="invest.loadingInvest")
+                    td( colspan="5")
+                        .content-spinner
+                            .spinner
+                tr( ng-show="!invest.loadingInvest" ng-repeat="row in $data")
+                    td.text-center {{row.name}}
+                    td.text-center {{row.clasification.description}}
+                    td.text-center {{row.description}}
+                    td.text-center #[i.edit( ng-click="invest.showModalEditInvestment( row )" )]
+                    td.text-center #[i.remove( ng-click="invest.showModalRemoveInvestment( row.idFund )" )]
+
+        div( ng-if="invest.errorLoadginInvest" )
+            +noGeneralResults( '', 'Se Encontró Un Error Favor De Intentarlo Más Tarde, Comuníquese Con Su Help desk' )
+
+
+        .no-results( ng-show="invest.configTable.data.length === 0 && !invest.errorLoadginInvest && !invest.loadingInvest" )
+            img( src="img/bg/binnacle-empty-state.svg" )
+            p Actualmente #[b NO] hay grupos.
+            .link( ng-click="invest.showModalCreateInvestment()" ) Puedes agregar uno

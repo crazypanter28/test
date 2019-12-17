@@ -1,0 +1,351 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+div.content-panel.tranfers(ng-if="housesCtrl.stepForm.stepB")
+    form(name="form" novalidate)
+        .row(style="padding-bottom:20px;")
+            img(src="img/logos/mapfre.svg" style="float:left; position: relative; left: 15px; width: 95px; height: 60px")
+            h4.text-center.tit(style="position: relative; left: -45px; padding-bottom:20px; padding-top:20px;") Ingresa los datos para realizar la cotización
+        .row
+            div(ng-if="housesCtrl.personType === '1'")
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Nombre(s)
+                    .col-md-8
+                        input(type="text" id="nombres" name="nombres" placeholder="Nombre(s)" minlength="3" maxlength="80" value=""
+                            ng-model="housesCtrl.nombres"
+                            ng-disabled="housesCtrl.validatePerson"
+                            ng-keypress="housesCtrl.charrepeatText($event,'nombres'); housesCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Paterno
+                    .col-md-8
+                        input(type="text" id="apePaterno" name="apePaterno" placeholder="Apellido paterno" minlength="3" maxlength="80" value=""
+                            ng-model="housesCtrl.apePaterno"
+                            ng-disabled="housesCtrl.validatePerson"
+                            ng-keypress="housesCtrl.charrepeatText($event,'apePaterno'); housesCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required        
+                .form-group.col-sm-6.col-lg-4
+                    label.col-md-4
+                        p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Apellido Materno
+                    .col-md-8
+                        input(type="text" id="apeMaterno" name="apeMaterno" placeholder="Apellido materno" minlength="3" maxlength="80" value=""
+                            ng-model="housesCtrl.apeMaterno"
+                            ng-disabled="housesCtrl.validatePerson"
+                            ng-keypress="housesCtrl.charrepeatText($event,'apeMaterno'); housesCtrl.soloText($event,true)"
+                            required).form-control.upperCaseInput.required
+                .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4(ng-if="housesCtrl.personType === '2'")
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Razón Social
+                .col-md-8
+                    input(type="text" id="companyName" name="companyName" placeholder="Nombre" minlength="3" maxlength="80" value=""
+                        ng-model="housesCtrl.nombreCliente"
+                        ng-disabled="housesCtrl.validatePerson"
+                        ng-keypress="housesCtrl.charrepeatText($event,'companyName'); housesCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4(ng-if="housesCtrl.personType === '1' && !housesCtrl.validatePerson")
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") G&eacute;nero
+                .col-md-8
+                    label.act-radio-custom(for="masculino" style="font-size: 13px;")
+                        input(type="radio" name="sexo" id="masculino" value="masculino" ng-model="housesCtrl.sexo")
+                        span.css-label
+                        | Masculino
+                    label.act-radio-custom(for="femenino" style="font-size: 13px;")
+                        input(type="radio" name="sexo" id="femenino" value="femenino" ng-model="housesCtrl.sexo")
+                        span.css-label
+                        | Femenino
+            .clearfix.visible-sm
+            .form-group.col-sm-6.col-lg-4(ng-if="!housesCtrl.validatePerson")
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") RFC
+                .col-md-8
+                    input(type="text" id="rfcUser" name="rfcUser" placeholder="ABCD123456" onkeyup="this.value = this.value.toUpperCase();"
+                        ng-model="housesCtrl.fiscalIDNumber"
+                        ng-disabled="housesCtrl.disabledRFC"
+                        maxlength="13" minlength="10"
+                        ng-pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((([A-Z]|[a-z]|[0-9]){3}))?$/"
+                        ng-keypress="housesCtrl.forceKeyPressUppercase($event)" required).form-control.required.upperCaseInput
+            .form-group.col-sm-6.col-lg-4(ng-if="housesCtrl.personType === '1' && !housesCtrl.validatePerson")
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de nacimiento
+                .col-md-8
+                    dates-range-picker(
+                        date="housesCtrl.fechaNacimiento"
+                        placeholder="dd/mm/aaaa"
+                        options='housesCtrl.optionsdpx'
+                        is-single="true" required)
+            .form-group.col-sm-6.col-lg-4(ng-if="housesCtrl.personType === '2' && !housesCtrl.validatePerson")
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Fecha de Constitución
+                .col-md-8
+                    dates-range-picker(
+                        date="housesCtrl.fechaNacimiento"
+                        placeholder="dd/mm/aaaa"
+                        options='housesCtrl.optionsdpxPM'
+                        is-single="true" required)
+            .clearfix.visible-lg
+            .clearfix.visible-sm
+            .form-group.col-sm-6.col-lg-4(ng-if="!housesCtrl.validatePerson")
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Teléfono
+                .col-md-8
+                    input(type="tel" id="phoneUser" name="phoneUser" placeholder="telefono" ng-model="housesCtrl.phoneUser"
+                        minlength="7" 
+                        maxlength="10"
+                        ng-keypress="housesCtrl.charrepeat($event,housesCtrl.phoneUser); housesCtrl.numberSecuential($event,'phoneUser');"
+                        ng-keyup="housesCtrl.justNumeric('phoneUser')"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Correo electrónico
+                .col-md-8
+                    input(type="email" name="emailUser" placeholder="correo@email.com" ng-model="housesCtrl.emailUser"
+                        maxlength="50" style="text-transform: uppercase;" required).form-control
+        .row.text-center(style="padding-bottom:15px; padding-top:20px;")
+            h4.tit I. Datos generales del Inmueble
+        .row
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Calle
+                .col-md-8
+                    input(type="text" id="calle" name="calle" placeholder="calle"
+                        ng-model="housesCtrl.calle"
+                        value=""
+                        minlength="3" maxlength="80"
+                        ng-keypress="housesCtrl.charrepeatTextTres($event,'calle'); housesCtrl.soloTextAndNum($event,true)"
+                        required).form-control.upperCaseInput.required
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Estado
+                .col-md-8
+                    select(name="listEntityFederativeHouse"
+                        ng-model="housesCtrl.cmd.dataHouseEntityRisk.type"
+                        ng-options="x.text for x in housesCtrl.ListEntityFederativeHouse"
+                        ng-change="housesCtrl.onChangeListEntity()" required).form-control
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Población
+                .col-md-8
+                    select(name="listMunicipalityHouse"
+                        ng-model="housesCtrl.cmd.dataHouseMunicipalityRisk.type"
+                        ng-options="x.text for x in housesCtrl.ListMunicipalityHouse"
+                        ng-change="housesCtrl.onChangeListMunicipality()" required).form-control
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Código postal
+                .col-md-8
+                    select(name="listPostalCodeHouse"
+                        ng-model="housesCtrl.cmd.dataHousePostalCodeRisk.type"
+                        ng-options="x.text for x in housesCtrl.ListPostalCodeHouse"
+                        required).form-control
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Forma de pago
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.ListPaymentMethods"
+                        selected="housesCtrl.cmd.kindPaid.type"
+                        name="ListPaymentMethods")
+                    input(type='hidden'
+                        ng-model='housesCtrl.cmd.kindPaid.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Moneda
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.ListCurrency"
+                        selected="housesCtrl.cmd.currency.type"
+                        name="ListCurrency"
+                        change="housesCtrl.getJsonCoberturasService(newValue)")
+                    input(type='hidden'
+                        ng-model='housesCtrl.cmd.currency.type'
+                        ng-required='true')
+        .row.text-center(style="padding-bottom:15px; padding-top:20px;")
+            h4.tit II. Condiciones del asegurado
+        .row
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de riesgo
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.listRiskType"
+                        selected="housesCtrl.cmd.kindRisk.type"
+                        name="listRiskType"
+                        change="housesCtrl.onChangeTipoDeRiesgo(newValue)")
+                    input(                        type='hidden',
+                        ng-model='housesCtrl.cmd.kindRisk.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Muros Macizos
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.listStructure"
+                        selected="housesCtrl.cmd.kindStructure.type"
+                        name="listStructure"
+                        change="housesCtrl.getCatalogRoof(lastValue, newValue)")
+                    input(type='hidden'
+                        ng-model='housesCtrl.cmd.kindStructure.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Tipo de techos
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.listRoof"
+                        selected="housesCtrl.cmd.kindRoof.type"
+                        name="listRoof")
+                    input(type='hidden'
+                        ng-model='housesCtrl.cmd.kindRoof.type'
+                        ng-required='true')
+            .clearfix.visible-lg
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Medidas seg contra robos
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.ListSecurityMeasurements"
+                        selected="housesCtrl.cmd.securityActions.type"
+                        name="ListSecurityMeasurements")
+                    input(type='hidden'
+                        ng-model='housesCtrl.cmd.securityActions.type'
+                        ng-required='true')
+            .form-group.col-sm-6.col-lg-4
+                label.col-md-4
+                    p(ng-class="housesCtrl.txtClass" style="font-size: 13px; font-weight: bold; padding-top:8px;") Colindancia fincada
+                .col-md-8
+                    div(act-dropdown
+                        ng-model="housesCtrl.ListBorderWall"
+                        selected="housesCtrl.cmd.borderWall.type"
+                        name="ListBorderWall")
+                    input(type='hidden'
+                        ng-model='housesCtrl.cmd.borderWall.type'
+                        ng-required='true')
+    .row.text-center
+        h4.tit III. Coberturas
+    .row
+        div.content-panel
+            .row
+                .col-lg-2.col-sm-1.col-xs-1.text-center
+                .col-lg-4.col-sm-5.col-xs-11
+                    h4.text-left.tit Cobertura
+                .col-sm-2
+                    h4.text-left.tit Mínimo
+                .col-sm-2
+                    h4.text-left.tit Suma Asegurada
+                .col-sm-2
+                    h4.text-left.tit Máximo
+            div(ng-repeat='(key, val) in housesCtrl.jsonCoberturas.coberturas')
+                .row(id="{{key}}")
+                    .col-lg-2.col-sm-1.col-xs-1.text-center(style="margin-top: 10px; margin-bottom: 10px")
+                        input(id="{{key}}1" type='checkbox' ng-show="val.checked != undefined"
+                        ng-disabled="val.obligatorio" ng-checked="val.checked"
+                        ng-model="val.checked" ng-click="housesCtrl.eventClickCheckbox($event)")
+                    .col-lg-4.col-sm-5.col-xs-11
+                        h5.text.tit(id="{{key}}2") {{val.texto}}
+                    .col-sm-2(style="margin-top: 10px; margin-bottom: 10px")
+                        text.tit(id="{{key}}3") {{housesCtrl.getCantidadLimite(val.limiteMinimo)}}
+                    .col-sm-2
+                        text.tit
+                            input(id="{{key}}4" type='text' ng-model="val.monto"
+                                ng-change="housesCtrl.realizaOperaciones()"
+                                placeholder="{{val.monto}}"
+                                ng-class="{outOfRange: (val.monto !== 'AMPARADO' && (val.monto < val.limiteMinimo || val.monto > val.limiteMaximo)) || (val.checked && (val.monto === undefined || val.monto === ''))}"
+                                ng-currency ng-disabled="val.monto === 'AMPARADO' || val.montoDisabled"
+                                
+                                ).form-control.upperCaseInput
+                            div(role='alert')
+                                span.error(ng-show='form.input.$error.required')
+                                    | Se requiere
+                    .col-sm-2(style="margin-top: 10px; margin-bottom: 10px")
+                        text.tit(id="{{key}}5" style="text-align: right") {{housesCtrl.getCantidadLimite(val.limiteMaximo)}}
+                div(ng-repeat='(en, sal) in val.coberturasIntegrantes' ng-show="val.checked")
+                    .row(id="{{en}}")
+                        .col-lg-2.col-sm-1.col-xs-1.text-center(style="padding-left:30px; margin-top: 10px; margin-bottom: 10px")
+                            input(id="{{en}}1" type='checkbox' ng-show="sal.checked != undefined"
+                            ng-disabled="sal.obligatorio"  ng-checked="sal.checked"
+                            ng-model="sal.checked" ng-click="housesCtrl.eventClickCheckbox($event)")
+                        .col-lg-4.col-sm-5.col-xs-11(style="padding-left:30px; margin-top: 10px; margin-bottom: 10px")
+                            text.tit(id="{{en}}2") {{sal.texto}}
+                        .col-sm-2(style="margin-top: 10px; margin-bottom: 10px")
+                            text.tit(id="{{en}}3") {{housesCtrl.getCantidadLimite(sal.limiteMinimo)}}
+                        .col-sm-2
+                            text.tit
+                                input(id="{{en}}4" type='text' ng-model="sal.monto"
+                                    ng-change="housesCtrl.realizaOperaciones()"
+                                    placeholder="{{sal.monto}}"
+                                    ng-class="{outOfRange: (sal.monto !== 'AMPARADO' && (sal.monto < sal.limiteMinimo || sal.monto > sal.limiteMaximo)) || (sal.checked && (sal.monto === undefined || sal.monto === ''))}"
+                                    ng-currency ng-disabled="sal.monto === 'AMPARADO' || sal.montoDisabled"
+                                    
+                                    ).form-control.upperCaseInput
+                        .col-sm-2(style="margin-top: 10px; margin-bottom: 10px")
+                            text.tit(id="{{en}}5" style="text-align: right") {{housesCtrl.getCantidadLimite(sal.limiteMaximo)}}
+                    div(ng-repeat='(ek, sv) in sal.coberturasIntegrantes' ng-show="sal.checked")
+                        .row(id="{{ek}}")
+                            .col-lg-2.col-sm-1.col-xs-1.text-center(style="padding-left:45px; margin-top: 10px; margin-bottom: 10px")
+                                input(id="{{ek}}1" type='checkbox' ng-show="sv.checked != undefined"
+                                ng-disabled="sv.obligatorio"  ng-checked="sv.checked" 
+                                ng-model="sv.checked" ng-click="housesCtrl.eventClickCheckbox($event)")
+                            .col-lg-4.col-sm-5.col-xs-11(style="padding-left:45px; margin-top: 10px; margin-bottom: 10px")
+                                text.tit(id="{{ek}}2") {{sv.texto}}
+                            .col-sm-2(style="margin-top: 10px; margin-bottom: 10px")
+                                text.tit(id="{{ek}}3") {{housesCtrl.getCantidadLimite(sv.limiteMinimo)}}
+                            .col-sm-2
+                                text.tit 
+                                    input(id="{{ek}}4" type='text' ng-model="sv.monto"
+                                        ng-change="housesCtrl.realizaOperaciones()"
+                                        placeholder="{{sv.monto}}"
+                                        ng-class="{outOfRange: (sv.monto !== 'AMPARADO' && (sv.monto < sv.limiteMinimo || sv.monto > sv.limiteMaximo)) || (sv.checked && (sv.monto === undefined || sv.monto === ''))}"
+                                        ng-currency ng-disabled="sv.monto === 'AMPARADO' || sv.montoDisabled"
+                                        
+                                        ).form-control.upperCaseInput
+                            .col-sm-2(style="margin-top: 10px; margin-bottom: 10px")
+                                text.tit(id="{{ek}}5" style="text-align: right") {{housesCtrl.getCantidadLimite(sv.limiteMaximo)}}
+        div.text-center
+            +btnWithIcon('Cotizar', 'btn-primary btn-space', 'form.$invalid || housesCtrl.validarTabla() || housesCtrl.cargandoCotizacion')(ngClick="housesCtrl.validarDatosACotizar()")                
+            div.content-panel                    
+                .row
+                    h5.tit Cantidad a pagar
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;") Prima neta:
+                    .col-xs-6
+                        p.text-left {{housesCtrl.datosCotizacion.primaNeta | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Derechos de póliza:
+                    .col-xs-6
+                        p.text-left {{housesCtrl.datosCotizacion.derechosPoliza | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Recargos:
+                    .col-xs-6
+                        p.text-left {{housesCtrl.datosCotizacion.recargos | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  I.V.A:
+                    .col-xs-6
+                        p.text-left {{housesCtrl.datosCotizacion.iva | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Prima total:
+                    .col-xs-6
+                        p.text-left {{housesCtrl.datosCotizacion.primaTotal | currency}}
+                .row
+                    .col-xs-6
+                        p.text-right(style="font-size: 13px; font-weight: bold;")  Número de cotización:
+                    .col-xs-6
+                        p.text-left {{housesCtrl.datosCotizacion.numeroCotizacion}}
+            div
+                .col-sm-3
+                    button(style="margin: 10px 10px;" class="btn-primary btn" ng-click="housesCtrl.regresarPaginaCotizacion()") REGRESAR
+                .col-sm-6
+                    button(style="margin: 10px 10px;" class="btn-primary btn" ng-click="onClicSendEmailNotificationCotizationHogar()" ng-disabled="!housesCtrl.datosCotizacion.numeroCotizacion") ENVIAR POR CORREO A CLIENTE
+                .col-sm-3
+                    button(style="margin: 10px 10px;" class="btn-primary btn" ng-click="housesCtrl.pagina3()" ng-disabled="!housesCtrl.datosCotizacion.numeroCotizacion") CONTRATAR

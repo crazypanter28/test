@@ -1,0 +1,10 @@
+ul.nav.nav-tabs.panel-tabs
+    li( role="presentation" ui-sref-active="active")
+        a( ui-sref="transfers.myAccounts"  ) A cuentas Actinver
+    li( role="presentation" ui-sref-active="active")
+        a( ui-sref="transfers.otherAccounts" ) A otras cuentas
+
+div.container-transfer
+    .operation-section-help( uib-tooltip-html="'Información relacionada para realizar transferencias entre los contractos del cliente'" tooltip-placement="left" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+        img( src="img/icons/blue-doubt.svg" alt="Acerca" )
+    div( ui-view="")

@@ -1,0 +1,9 @@
+div
+    span.date {{ today | date: 'fullDate' }} | {{ today | date:'h:mm a'  }}
+    //span.session Tu sesión caduca en
+        b {{time}} min
+        i.reload(ng-click="updateReloj()")
+
+
+    //script( type="text/ng-template" id="stackedModal.html" )
+        h2 {{time}}

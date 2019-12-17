@@ -1,0 +1,221 @@
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/dollBank
+
+mixin moneyBankDoll()
+
+    div.money-bank-doll-form
+
+        // Form
+        .money-market-process
+            form( name="form" novalidate )
+
+                // Selected instrument
+                .col-xs-12( ng-if="doll.tab !== 'sell'"  )
+                    label Poder de Compra: &nbsp;
+                        strong {{ doll.contractBalance |  currency: '$' : 2 }}
+
+                .col-xs-12
+                    label Tipo de instrumento: &nbsp;
+                        strong {{ doll.sinstrument.instrumentDesc || doll.sinstrument.bondType || doll.sinstrument.auctionID}}
+
+                // Rules
+                div.purchasing-rules.row
+                    div.col-xs-8.padding-0.type
+                        label( ng-if="doll.tab === 'buy'" )
+                            | Comprar por
+                            span *
+                        label( ng-if="doll.tab === 'sell'" )
+                            | Vender por
+                            span *
+                        div.row.margin-0(ng-if="type === 'directo'")
+                            +radioButton( 'Títulos', 'doll.cmd.type' )(
+                                id='titles'
+                                ngClick = "doll.changeOperationType(doll.cmd.type)"
+                            )
+                            span.float-right
+                                input.form-control( type="text", placeholder="Títulos"
+                                    ng-required="doll.cmd.type === 'titles'"
+                                    ng-show="doll.cmd.type === 'titles'"
+                                    ng-model="doll.titles"
+                                    onkeypress='return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)'
+                                    ng-pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+                                    ng-blur="doll.getValuesbyImport()"
+                                )
+                                div(ng-if="type !== 'reporto' && doll.cmd.type !== 'titles'") {{ doll.money_calc.titles }}
+
+                        div.row.margin-0
+                            span
+                                +radioButton( 'Importe', 'doll.cmd.type' )(
+                                    id='import'
+                                    ngClick = "doll.changeOperationType(doll.cmd.type)"
+                                )
+                            span.float-right
+                                div( ng-show="doll.cmd.type === 'import'" )
+                                input.form-control(type="text", placeholder="Importe"
+                                    ng-required="doll.cmd.type === 'import'"
+                                    ng-show = "doll.cmd.type === 'import'"
+                                    ng-model ="doll.import"
+                                    onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode == 46)"
+                                    ng-blur="doll.getValuesbyImport()"
+                                    ng-currency
+                                )
+                                div( ng-show="doll.cmd.type === 'titles'" ) {{ doll.money_calc.amount | currency }}
+                        
+                        div.row.margin-0(style="padding-top:5px;" ng-if="type === 'directo' "  )
+                            .col-xs-6(style="text-align:center; font-weight:bold;")
+                                span Generación Bruta:
+                            .col-xs-6(style="text-align:right; font-weight:bold; padding-right: 0px;")
+                                span(ng-class ="{'text-red': doll.directSection.pAndL < 0, 'text-green': doll.directSection.pAndL >0 }") {{  doll.directSection.pAndL | currency }}
+                        
+                        div.row.margin-0(style="padding-top:5px;" ng-if="type === 'directo' && ((doll.sinstrument.exchangeRate !== null && doll.sinstrument.exchangeRate !== 1) || (doll.sinstrument.selectedInstrument.exchangeRate !== null && doll.sinstrument.selectedInstrument.exchangeRate !== 1)  ) "  )
+                            .col-xs-8(style="text-align:center; font-weight:bold;")
+                                span Tipo de Cambio: 
+                            .col-xs-4(style="text-align:right; font-weight:bold; padding-right: 0px;")
+                                span(ng-if="doll.tab === 'buy'") {{ doll.sinstrument.exchangeRate | currency }}
+                                span(ng-if="doll.tab === 'sell'") {{ doll.sinstrument.selectedInstrument.exchangeRate | currency }}
+                        
+                    div.row.margin-0(style=" text-align:center;" ng-if="type === 'directo' && doll.tab === 'buy' "  )
+                        .col-xs-12(style="text-align:center; padding-top:15px; font-weight:bold;" ng-if="doll.cmd.type === 'titles' && doll.money_calc.amount > doll.contractBalance.availableBalance || doll.cmd.type === 'import' && doll.import > doll.contractBalance.availableBalance ")
+                            label(style='color:red' )
+                                b No debe exceder el monto del poder de compra
+                            input(type="text" ng-model="doll.montoAproxTemporalCalc" ng-show='false' ng-required="true" )
+                                
+
+
+                    div(ng-if="type === 'subastas'")
+                        .col-md-6
+                            label Tipo de precio
+                                span *
+                            div( act-dropdown
+                                ng-model="doll.auctionPriceList"
+                                selected="doll.cmd.auctionPrice.type"
+                                name="media"
+
+                            )
+                            input(
+                                type='hidden',
+                                ng-model='doll.cmd.auctionPrice.type'
+                                ng-required='true'
+                            )
+                        .col-md-6
+                            label Precio:
+                            label
+                                strong {{doll.cmd.auctionPrice.type.price}}
+
+
+                // Rules
+                .purchasing-rules.row(ng-if="type !== 'subastas'")
+                    div.row(ng-if="type === 'directo'")
+                        .col-xs-12
+                            strong {{doll.sinstrument.term || doll.sinstrument.selectedInstrument.term}}
+                    div.row
+                        .col-xs-6
+                            div.form-group.act-input
+                                label( for="Yield" )
+                                    | Tasa
+                                    span.require *
+                                input.form-control(ng-blur="doll.getValues('Yield', doll.money_calc.originPrice)" type="number" id="yield" name="yield" ng-model="doll.money_calc.originPrice" ng-pattern="/^[+-]?[0-9]{1,9}(?:\.[0-9]{1,8})?$/")
+                        .col-xs-6(ng-if="type === 'directo'")
+                            div.form-group.act-input
+                                label( for="residualDirty" )
+                                    | Precio sucio
+                                    span.require *
+                                input.form-control(ng-blur="doll.getValues('Residual Dirty', doll.money_calc.dirtyPrice )" type="number" id="residualDirty" name="residualDirty" ng-model="doll.money_calc.dirtyPrice" ng-pattern="/^[+-]?[0-9]{1,9}(?:\.[0-9]{1,8})?$/")
+                        .col-xs-6(ng-if="type === 'reporto'")
+                            div.form-group.act-input
+                                label( for="period" )
+                                    | Plazo
+                                    span.require *
+                                input.form-control( type="text" id="period" name="period" ng-model="doll.sinstrument.period")
+
+
+                // Binnacle
+                hr
+                div(ng-if="!doll.contractType")
+                    +dollBinnacleBank( submit='ACEPTAR' )
+
+                .row.margin-0(ng-if="doll.contractType")
+                    div.col-xs-12.padding-0.buttons
+                        +btnWithIcon(
+                        'ACEPTAR',
+                        'btn-primary',
+                        'form.$invalid',
+                        'img/icons/doll/ico_aceptar_on.svg'
+                        )(ngClick="doll.confirm()")
+                        +btnWithIcon(
+                        'Limpiar',
+                        'btn-primary',
+                        null,
+                        'img/icons/doll/ico_limpiar_on.svg'
+                        )(ngClick="doll.cleanModels()")
+
+
+
+div.doll.money-bank-doll
+    div.row.margin-0.header
+        button.btn.buy(
+            ng-disabled="doll.confirmationModel"
+            ng-class = "{'selected': instrument, 'col-xs-6': type === 'directo', 'col-xs-12': type === 'reporto' || type === 'subastas', 'active' : doll.tab === 'buy'}"
+        )
+            span comprar
+        button.btn.col-xs-6.sell(
+            ng-if="type === 'directo'"
+            ng-disabled="doll.confirmationModel"
+            ng-class = "{'selected': instrument, 'active' : doll.tab === 'sell'}"
+        )
+            span vender
+
+
+    // Intro    
+    div.row.margin-0.body.empty.init( ng-show="!instrument" )
+        div.empty-container
+            div.empty-center
+                img(src="img/icons/doll/icon_money.svg" )
+                p.station-description Selecciona la operación que deseas realizar
+                p.label Puedes dar clic directamente sobre el
+                    b  INSTRUMENTO
+                    |   para agilizar tu compra o venta                        
+
+    // Doll
+    //div( ng-show="instrument && type === 'reporto'" )
+
+        // Spinner
+        div.row.margin-0.body.buy( ng-if="doll.loading" )
+            .spinner
+
+        // Form
+        div.row.margin-0.body.buy( ng-if="!doll.loading && !doll.confirmModel && !doll.capturedModel && doll.tab === 'buy'" )
+            +moneyBankDoll()
+
+        // Confirmation
+        div.row.margin-0.confirm.body.buy( ng-if="!doll.loading && doll.confirmModel" )
+            +moneyBankDollConfirmation()
+
+        // Success
+        div.row.margin-0.confirm.body.buy( ng-if="!doll.loading && doll.capturedModel" )
+            +moneyBankDollConfirmation( true )            
+
+    //div( ng-show="instrument && type === 'directo'" )
+    div
+
+        // Spinner
+        div.row.margin-0.body.buy( ng-if="doll.loading" )
+            .spinner
+
+        // Form
+        div.row.margin-0.body.sell( ng-if="!doll.loading && !doll.confirmModel && !doll.capturedModel && doll.tab === 'sell' " )
+            +moneyBankDoll()
+
+        // Form
+        div.row.margin-0.body.buy( ng-if="!doll.loading && !doll.confirmModel && !doll.capturedModel && doll.tab === 'buy' " )
+            +moneyBankDoll()
+
+        // Confirmation
+        div.row.margin-0.confirm.body( ng-if="!doll.loading && doll.confirmModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell' }" )
+            +moneyBankDollConfirmation()
+
+        // Success
+        div.row.margin-0.confirm.body( ng-if="!doll.loading && doll.capturedModel" ng-class="{ 'buy': doll.tab === 'buy', 'sell': doll.tab === 'sell' }" )
+            +moneyBankDollConfirmation( true )               

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="56px" viewBox="0 0 57 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>play_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8046875">
+        <g id="ayuda00-copy-4" transform="translate(-892.000000, -1005.000000)" fill-rule="nonzero">
+            <g id="VIDEOS" transform="translate(788.000000, 207.000000)">
+                <g id="VIDEO-1-Copy-5" transform="translate(0.000000, 23.000000)">
+                    <g transform="translate(15.000000, 722.000000)" id="play_icon">
+                        <g transform="translate(88.237548, 52.200000)">
+                            <path d="M28.8122605,0.81 C13.3256705,0.81 0.810344828,13.32 0.810344828,28.8 C0.810344828,44.28 13.4157088,56.79 28.8122605,56.79 C44.2088123,56.79 56.8141762,44.19 56.8141762,28.8 C56.8141762,13.41 44.2988506,0.81 28.8122605,0.81 Z" id="Shape-Copy-2" fill="#051C48"></path>
+                            <path d="M38.8965517,27.18 L21.8793103,18.63 C20.7088123,18 19.2681992,18.9 19.2681992,20.25 L19.2681992,37.26 C19.2681992,38.61 20.7088123,39.51 21.8793103,38.88 L38.8965517,30.33 C40.2471264,29.79 40.2471264,27.81 38.8965517,27.18 Z" id="Shape-Copy" fill="#E9F2FF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

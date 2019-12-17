@@ -1,0 +1,34 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":2,
+            "transactionID":"5d4a2b45-56d1-47ea-b842-77af02ce722a",
+            "messages":[
+                {
+                    "responseSystemCode":"KMPRE0000001",
+                    "responseMessage":"Exito",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                },
+                {
+                    "responseSystemCode":"CAACBCDL0091",
+                    "responseMessage":"Contrato no corresponde a Cliente Único",
+                    "responseType":"N",
+                    "responseCategory":"FATAL"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1491541200000,
+        "time":78023000,
+        "clientID":"NBURSANET",
+        "sessionID":null,
+        "responseSystem":"A2K",
+        "operationName":"TransferRequest",
+        "operationVersion":"2_0",
+        "ipaddress":"10.10.115.71"
+    },
+    "outTransferRequest":{
+        "transferResult":null
+    }
+}

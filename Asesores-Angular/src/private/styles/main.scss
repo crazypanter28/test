@@ -1,0 +1,44 @@
+//
+// main.scss
+//
+// It reflects the styles for the front-end project
+//
+
+// Import SASS global settings
+@import "config";
+
+/* Binnacle */
+@import '../app/advisers/binnacle/_binnacle';
+@import '../app/advisers/simulators/_simulators';
+@import '../app/advisers/prospects/_prospects';
+@import '../app/advisers/presentations/_presentations';
+@import '../app/advisers/help/_help';
+
+/* Proposals */
+@import '../app/advisers/proposals/_proposals';
+
+/* Administrator */
+@import '../app/advisers/administrator/_administrator';
+
+/* Operations */
+@import '../app/operations/_operation';
+@import '../app/operations/account/_account';
+@import '../app/operations/transfers/_transfers';
+@import '../app/operations/investment/_investment';
+@import '../app/operations/investment/capitals/_capitals';
+@import '../app/operations/portfolio/_portfolio';
+
+/* Goals */
+@import '../app/advisers/goals/_goals';
+
+/* Pending Operations */
+@import '../app/pending-operations/_result-pending-operations';
+
+/*Notificacion*/
+@import '../app/advisers/notification/_notification';
+
+/*Insurance*/
+@import '../app/advisers/insurance/_insurance';
+
+/*contratos fuera de perfil*/
+@import '../app/advisers/contract-out-profile/contract-out-profile';

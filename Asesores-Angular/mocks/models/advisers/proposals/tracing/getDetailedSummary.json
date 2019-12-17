@@ -1,0 +1,21 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"cashPesos": 157.6,
+		"cashDollars": 0,
+		"cashEuros": 0,
+		"fixedTermDeposit": 0,
+		"debtFund": 535611.26,
+		"rentFund": 207744.12,
+		"coverFund": 0,
+		"moneyMarket": 0,
+		"capitalMarket": 0,
+		"portfolioValue": 743512.98
+	}
+}

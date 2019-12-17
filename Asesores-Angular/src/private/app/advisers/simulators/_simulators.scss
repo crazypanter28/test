@@ -1,0 +1,57 @@
+.header-input{
+    span{
+        color: $tertiary-color;
+        display: inline-block;
+        vertical-align: text-bottom;
+
+        &.number{
+            border-radius: 50%;
+            border: 1px solid $tertiary-color;
+            font-size: 12px;
+            margin-right: 6px;
+            padding-top: 2px;
+            width: 22px;
+            height: 22px;
+            text-align: center;
+        }
+
+        &.text{
+            font-size: 20px;
+        }
+    }
+
+
+    + .form-group{
+        height: 28px;
+        margin-left: 30px;
+
+        label{
+            margin-bottom: 0;
+        }
+
+        input{
+            width: 240px;
+        }
+    }
+}
+
+.simulators-page{
+
+    .note{
+        background: #e9f2ff;
+        color: $blue7;
+        font-size: 14px;
+        margin-bottom: 12px;
+        padding: 10px 20px;
+
+        h3{
+            font-size: 14px;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@import './credit/_credit';
+@import './performance/_performance';
+@import './performance/_details';

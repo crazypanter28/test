@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>ENTRADA</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DASHBOARD-Copy-2" transform="translate(-257.000000, -433.000000)">
+            <g id="ENTRADAS-Y-SALIDAS" transform="translate(53.000000, 360.000000)">
+                <g id="BANCO" transform="translate(5.000000, 42.000000)">
+                    <g id="ENTRADA" transform="translate(199.000000, 31.000000)">
+                        <ellipse id="Oval-8-Copy-24" fill="#FA596D" transform="translate(8.000000, 8.000000) rotate(180.000000) translate(-8.000000, -8.000000) " cx="8" cy="8" rx="8" ry="8"></ellipse>
+                        <path d="M8.09905623,3.00000161 C7.97035623,3.00497938 7.82160423,3.05729936 7.72778823,3.14444598 L4.66764429,5.98888889 C4.49227029,6.18163545 4.4198743,6.55123525 4.62264429,6.76666625 C4.82235429,6.97886169 5.20967828,6.97255058 5.41018028,6.76115514 L7.55903824,4.76115622 L7.55903824,12.066667 C7.55903824,12.361209 7.80081423,12.6 8.09905623,12.6 C8.39729822,12.6 8.63907422,12.361209 8.63907422,12.066667 L8.63907422,4.76115622 L10.7879322,6.76115514 C10.9725222,6.94314615 11.3734716,6.97678169 11.5754676,6.76666625 C11.7774456,6.55660414 11.7129156,6.17372435 11.5304496,5.98888889 L8.47032422,3.14444598 C8.36560022,3.04711269 8.24273222,2.99968161 8.09905623,3.00000161 L8.09905623,3.00000161 Z" id="Shape-Copy-4" fill="#FFFFFF" fill-rule="nonzero" transform="translate(8.100000, 7.800000) rotate(180.000000) translate(-8.100000, -7.800000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

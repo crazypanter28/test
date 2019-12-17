@@ -1,0 +1,231 @@
+//
+// _general.scss
+//
+// It reflects the general styles
+//
+
+/**
+ * -------------------------
+ * @info Generals
+ * -------------------------
+*/
+body {
+	background: #fafafa;
+	color: #000;
+	font-family: $font-family-base;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+// General wrapper
+#general-wrapper {
+	padding-bottom: 105px;
+	&, > div.ng-scope {width: 100%; min-height: 100%;
+		// height: 100%;
+	}
+	#content {
+		//padding-top: 167px;
+	}
+}
+
+html{
+	height: 100%
+}
+
+body{
+	min-height: 100%;
+	position: relative;
+}
+
+a{
+	&:active,
+	&:focus,
+	&:hover{
+		text-decoration: none !important;
+		outline: inherit;
+	}
+}
+
+/**
+ * -------------------------
+ * @info Grid
+ * -------------------------
+*/
+/*.container {width: 1054px;}*/
+
+*{
+	box-sizing: border-box;
+	outline: none;
+}
+/**
+ * -------------------------
+ * @info Display as table
+ * -------------------------
+*/
+.table-wrapper {padding-left: 0; padding-right: 0;}
+.display-as-table {
+	display: table; width: 100%; float: none; margin: 0;
+	> div {display: table-cell; vertical-align: middle; float: none;}
+}
+
+/**
+ * -------------------------
+ * @info Charts
+ * -------------------------
+*/
+.donut-chart-wrapper {
+	position: relative;
+	.chart-number {display: block; position: absolute; @include centered(); z-index: 300; padding-top: 4px; font-size: 50px; font-family: "Proxima Semibold"; color: #7ed321;}
+
+	.content-spinner{
+		height: 100%;
+		background: white;
+		min-height: 190px;
+		width: 100%;
+		z-index: 222;
+
+		.spinner{
+			font-size: 12px;
+		}
+	}
+}
+
+.text-left {
+    text-align: left
+}
+
+.padding-0{
+	padding: 0 !important;
+}
+
+.padding-left-0{
+	padding-left: 0
+}
+
+.padding-left-10{
+	padding-left: 10px;
+}
+
+.padding-right-0{
+	padding-right: 0
+}
+
+.padding-right-10{
+	padding-right: 10px;
+}
+
+.margin-0{
+	margin: 0;
+}
+
+
+.nano{
+	> .nano-content{
+	    max-height: 440px;
+	    position: relative;
+	}
+
+	> .nano-pane{
+		margin-right: 2px;
+		width: 5px;
+
+		& > .nano-slider{
+            background: $blue4;
+        }
+	}
+}
+
+
+.secondary-title{
+    margin-bottom: 5px;
+}
+
+
+*[ng-click]{
+    cursor: pointer;
+}
+
+input + div[uib-datepicker-popup-wrap]{
+	ul{
+		padding-top: 0;
+		width: 230px;
+	}
+}
+
+a[ui-sref]{
+	cursor: pointer;
+}
+
+.float-right {
+    float: right;
+}
+
+
+
+i{
+	margin-left: 2px;
+
+	&.fa-arrow-circle-up{
+		color: #7ED321;
+	}
+
+	&.fa-arrow-circle-down{
+		color: #FA596D;
+	}
+}
+
+
+.mask-directive{
+	background: white;
+	font-family: "Proxima Regular", sans-serif;
+	font-size: 14px;
+	height: 19px;
+	margin-top:-24px;
+	overflow: hidden;
+	padding-left: 4px;
+	position:absolute;
+	width: 240px;
+	color: #b4b4b4;
+}
+
+//loading-bar
+#loading-bar {
+	pointer-events: all;
+	z-index: 99999;
+	border: none;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	cursor: wait;
+	position: fixed;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+#loading-bar-spinner {
+	display: block;
+	position: fixed;
+	z-index: 9999999;
+	top: 40%;
+	left: 50%;
+  }
+  
+  #loading-bar-spinner .spinner-icon {
+	width: 200px;
+	height: 200px;
+	position: relative;
+	top:-50%;
+	left:-50%;
+	border:  solid 10px transparent;
+	border-top-color:  #337ab7;
+	border-left-color: #337ab7;
+	border-radius: 50%;
+  
+	-webkit-animation: loading-bar-spinner 400ms linear infinite;
+	-moz-animation:    loading-bar-spinner 400ms linear infinite;
+	-ms-animation:     loading-bar-spinner 400ms linear infinite;
+	-o-animation:      loading-bar-spinner 400ms linear infinite;
+	animation:         loading-bar-spinner 400ms linear infinite;
+  }

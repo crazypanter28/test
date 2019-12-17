@@ -1,0 +1,227 @@
+.help-page{
+
+    .col-xs-9{
+        width: 74%;
+    }
+    .col-xs-3{
+        width: 26%;
+    }
+}
+
+.help-header{
+    border-bottom: 1px solid $blue7;
+    i,
+    h4{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    i{
+        margin-top: -3px;
+    }
+
+    h4{
+        font-size: 16px;
+        color: $blue7;
+        margin: 0;
+    }
+}
+
+
+.help-body{
+
+    .nano{
+        height: 520px;
+        margin-bottom: 30px;
+
+        .nano-content{
+            max-height: 100%;
+        }
+    }
+
+    uib-accordion{
+
+        div[role="tabpanel"]{
+            border: 1px solid #e9f2ff;
+            border-top: 0;
+            color: $blue4;
+        }
+
+        > div[role="tablist"]{
+            margin-bottom: 0;
+            padding-right: 10px;
+        }
+        img{
+            max-width: 100%;
+        }
+
+        div[uib-accordion-group]{
+            box-shadow: none;
+        }
+
+        .panel-heading{
+            border-bottom: 1px solid #e9f2ff;
+            padding-bottom: 2px;
+            padding-right: 10px;
+
+            &[aria-selected="true"]{
+                border-bottom: 2px solid #195dc4;
+            }
+        }
+        .panel-title{
+            position: relative;
+            font-size: 14px;
+
+            span[uib-accordion-header]{
+                color: #4a4a4a;
+                font-family: "Proxima Regular";
+            }
+
+            i{
+                color: $blue7;
+                font-weight: 700;
+                right: 0;
+                position: absolute;
+            }
+        }
+    }
+
+    .comments{
+        border: 1px solid rgba($blue7,0.5);
+        border-top: 2px solid $blue7;
+        height: 315px;
+        padding: 20px;
+
+        .img-comment,
+        .text{
+            display: inline-block;
+            margin-bottom: 20px;
+            vertical-align: middle;
+        }
+
+        .text{
+            padding-left: 40px;
+            text-align: center;
+            width: 320px;
+
+            .small-text{
+                color: #3c86f6;
+                font-size: 14px;
+            }
+            .big-text{
+                color: $blue4;
+                font-size: 22px;
+                font-family: 'Proxima SemiBold';
+            }
+        }
+
+        textarea{
+            height: 110px;
+            margin-bottom: 10px;
+        }
+
+        .note{
+            color: #0072bc;
+            font-size: 12px;
+            line-height: 12px;
+            padding-left: 0;
+        }
+        .buttons{
+            text-align: right;
+            padding-right: 0;
+
+            button{
+                padding: 0;
+                height: 30px;
+                width: 120px;
+            }
+        }
+    }
+
+}
+
+
+.help-body-right{
+    height: 865px;
+    overflow: hidden;
+    border: 1px solid $blue7;
+    text-align: center;
+
+    .vertical-justify{
+        .message{
+            color: #b4b4b4;
+            font-size: 26px;
+            line-height: 26px;
+
+            img{
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+
+    .container-videos{
+        padding-top:  15px;
+
+        .nano-content{
+            max-height: 860px;
+            padding: 0 15px;
+            padding-bottom: 10px;
+
+
+            .item-video{
+                margin-bottom: 25px;
+
+                .img{
+                    height: 160px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    position: relative;
+
+                    &:hover{
+
+                        &:before{
+                            background: url('img/icons/help/icon_play_hover.svg');
+                        }
+                    }
+
+                    &:before{
+                        background: white;
+                        bottom: 0;
+                        content: "";
+                        height: 56px;
+                        left: 0;
+                        margin: auto;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 56px;
+                        background: url('img/icons/help/icon_play.svg');
+
+                    }
+
+
+                }
+
+                .text{
+                    color: $blue7;
+                    font-family: 'Proxima SemiBold';
+                    font-size: 12px;
+                    line-height: 12px;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+.vertical-justify{
+    display: table;
+    height: 100%;
+
+    .message{
+        display: table-cell;
+        vertical-align: middle;
+    }
+}

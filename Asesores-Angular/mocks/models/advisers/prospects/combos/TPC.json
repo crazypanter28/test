@@ -1,0 +1,22 @@
+{
+	"status" : 1,
+	"messages" : [ {
+		"type" : null,
+		"criticality" : null,
+		"code" : null,
+		"description" : "OPERACIÓN EXITOSA"
+	} ],
+	"result" : [ {
+		"idActivity" : 1,
+		"description" : "Telefónico",
+		"descriptionCode" : "TIPO DE CONTACTO"
+	}, {
+		"idActivity" : 2,
+		"description" : "Personal",
+		"descriptionCode" : "TIPO DE CONTACTO"
+	}, {
+		"idActivity" : 3,
+		"description" : "Correo",
+		"descriptionCode" : "TIPO DE CONTACTO"
+	} ]
+}

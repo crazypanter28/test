@@ -1,0 +1,185 @@
+include /views/mixins/input
+include /views/mixins/point
+include /views/mixins/radio-button
+include /views/mixins/info-result
+
+div.adviser-user.row.margin-0( ng-if="myProfile.sectionForAdmin")
+    div
+        .col-xs-5
+            strong Nombre:
+            span {{ myProfile.adviserDetails.name }}
+        .col-xs-7.padding-left-0
+            strong MONTO ESTIMADO DE INVERSIÓN:
+            span {{ myProfile.adviserDetails.ammount | currency : '$'}}
+div.pane-wrapper.prospects-myProfile(ng-show="false")
+    div.pane-title Resumen a la fecha
+    div.pane-body
+        div.row.margin-0.title-graphics
+            h4.col-xs-8 TOTAL DE PROSPECTOS CONTACTADOS AL DÍA DE HOY:
+                b  {{ myProfile.customersContacted }}
+            div.col-xs-2
+                +point( "PROSPECTOS", "{{myProfile.totalProspects}}" )(class="blue")
+            div.col-xs-2
+                +point( "CLIENTES", "{{myProfile.remainingProspects}}" )(class="yellow")
+        div.row.margin-0.graphics
+            div.col-xs-3
+                div.row.margin-0
+                    div.container-graphic
+                        donut-chart( model="myProfile.details1" )
+                p.row Dinero
+            div.col-xs-3
+                div.row.margin-0
+                    div.container-graphic
+                        donut-chart( model="myProfile.details2" )
+                p.row Fondos
+            div.col-xs-3
+                div.row.margin-0
+                    div.container-graphic
+                        donut-chart( model="myProfile.details3" )
+                p.row Crédito
+            div.col-xs-3
+                div.row.margin-0
+                    div.container-graphic
+                        donut-chart( model="myProfile.details4" )
+                p.row Seguros
+
+div.pane-wrapper
+    div.pane-title Etapas
+    div.pane-body.container-stages
+        div.row.search.margin-0
+            div.col-xs-3.padding-left-0(ng-show="false")
+                label Tipo de busqueda
+                .container-select
+                    div( act-dropdown="" ng-model="prospect.options" selected="myProfile.optionSelected" )
+            div.col-xs-3.padding-left-0( ng-if="myProfile.optionSelected")
+                +inputWithIcon(
+                    label= 'Busqueda del prospecto',
+                    name= 'search',
+                    placeholder='{{myProfile.optionSelected.text}}'
+                    ngRequire='true',
+                    model='myProfile.fieldSearch',
+                    autocomplete="off"
+                    faIcon="fa fa-search"
+                    ngChange = 'myProfile.filterStage()'
+                )
+        div.stages
+            //- ( ng-if="myProfile.configTable")
+            div.row.margin-0.stages-header
+                div.stage( ng-repeat="stage in myProfile.stages" ng-click="myProfile.changeStage( stage )" ng-class="{'active': myProfile.typeStage === 'stage{{stage.idStage}}' }" )
+                    div.title {{ stage.idStage ===  7 ?  'Posibilidades' : (stage.idStage ===  8 ? 'Prospectos' : (stage.idStage ===  9 ? 'Aperturas': (stage.idStage ===  10 ? 'Bajas': ''))) }}
+                    div.counter {{ myProfile.stagesCat[ 'stage'+stage.idStage ].length }} {{ stage.idStage ===  7 ?  'Posibilidades' : (stage.idStage ===  8 ? 'Prospectos' : (stage.idStage ===  9 ? 'Aperturas': (stage.idStage ===  10 ? 'Bajas': ''))) }}
+                    div.price
+                        //span( ng-bind="myProfile.stagesTable.removeAmount | currency:'$'"  ng-if=" stage.idStage === 6 " )
+                        //span( ng-bind="myProfile.stagesTable.closeAmount | currency:'$'"  ng-if=" stage.idStage ===  4 " )
+                        //span( ng-bind="myProfile.stagesTable.contactAmount | currency:'$'"  ng-if=" stage.idStage ===  2  " )
+                        span(   ng-if=" stage.idStage ===  7 " )
+                        span(   ng-if=" stage.idStage === 8 " )
+                        span(   ng-if=" stage.idStage === 9  " )
+                        span(   ng-if=" stage.idStage === 10  " )
+
+
+                //- div.stage( ng-click="myProfile.changeStage('stage7')" ng-class="{'active': myProfile.typeStage === 'stage7' }" )
+                //-     div.title Baja de prospectos
+                //-     div.counter 10 prospectos
+
+            div.stages-body( class="{{myProfile.typeStage}}")           
+                div.stages-table( ng-if="!myProfile.loadingStage")
+                    table( ng-table='myProfile.configTable' )
+                        thead
+                            tr
+                                th Nombre
+                                th Estrategia
+                                th Teléfono
+                                th(ng-if="!myProfile.sectionForAdmin && myProfile.typeStage !== 'stage10'") Detalle
+                                th(ng-if="myProfile.typeStage === 'stage7'" style="text-align: center;") Contactado
+                                th(ng-if="myProfile.typeStage === 'stage10'" style="text-align: center;") Fecha Baja
+                                th(ng-if="myProfile.typeStage === 'stage10'" style="text-align: center;") Origen Baja
+                        tbody
+                            tr( ng-repeat="row in $data")
+                                td {{row.nameOpportunity}}
+                                td {{row.strategy}}
+                                td {{row.phone}}
+                                td(ng-if="myProfile.typeStage !== 'stage10'" ui-sref="prospects.id({id:row.idOpportunity})" )
+                                    i.eye  
+                                td.text-center(ng-if="myProfile.typeStage === 'stage7'") 
+                                   div(ng-if='row.contacted')
+                                    i.contacted
+                                   div(ng-if='!row.contacted')   
+                                    a( ng-click="myProfile.contactedClient(row)" target="_blank") --
+                                td(ng-if="myProfile.typeStage === 'stage10'" style="text-align: center;") {{row.lowDate | date:'dd/MM/yyyy'}}           
+                                td(ng-if="myProfile.typeStage === 'stage10'" style="text-align: center;") {{row.lowComment}}    
+                            tr( ng-if="$data == null || $data.length === 0" )
+                                td( colspan="7" )
+                                    // No results
+                                    +noGeneralResults( 'No cuentas', ' con prospectos en esta etapa.' )
+
+            div.stages-footer
+                button.btn.btn-add.btn-primary(ng-if="!myProfile.sectionForAdmin" ng-click="myProfile.addOpportunity()")
+                    i.fa.fa-plus
+                    | AGREGAR OPORTUNIDA
+
+
+uib-accordion.pane-wrapper-accordion
+    div(uib-accordion-group='' is-open="status.open" ng-show="false")
+        uib-accordion-heading
+            | Reportes
+            i.direction-arrow.fa(ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}")
+        div.panel-subtitle Acumulado
+        div.prospects-filters.row.margin-0
+            div.col-xs-6.combos
+                label Selecciona el periodo del acumulado:
+                br
+                +radioButton( 'Mes', 'myProfile.reportType' )(
+                    id='mes'
+                )
+                +radioButton( 'Semestre', 'myProfile.reportType' )(
+                    id='Semestre'
+                )
+
+                .form-group.has-icon
+                        input.form-control.month(
+                            type="text"
+                            uib-datepicker-popup="MMMM yyyy"
+                            ng-click="openedCalendar = true"
+                            is-open="openedCalendar"
+                            ng-model="myProfile.reportDate"
+                            datepicker-options="myProfile.dateOptions"
+                            show-button-bar="false",
+                            ng-change="myProfile.getReport()"
+                        )
+                        i.icon.calendar-on
+
+
+            div.col-xs-6.total(ng-if="myProfile.reportDate && !myProfile.loadingReports")
+                    h5 Acumulado del mes de
+                        b   {{ myProfile.reportDate | date:'MMMM yyyy'}}
+                    p {{ myProfile.prospectsReport.accumulated | currency:'$'}}
+        div.panel-subtitle.row.margin-0(ng-if="myProfile.reportDate") Tabla de reportes
+        div.prospects-table-reports.row.margin-0
+            div.content-spinner( ng-show="myProfile.loadingReports" )
+                .spinner
+
+            div(ng-if="myProfile.reportDate && !myProfile.loadingReports")
+                div.row.margin-0.prospects-table-reports-header
+                    div.date(ng-repeat ="date in myProfile.prospectsReport.calendar " ng-click="myProfile.changeDate( date )" ng-class="{'active':  date.date ===  myProfile.selectedReport.date }") {{date.date}}
+
+                div.row.margin-0.prospects-table-reports-body
+                    .col-xs-2.descriptions
+                        p Productos
+                        p Prospectos
+                        p Monto de inversión
+                        p Prospectos Cerrados
+                        hr
+                        p.total Total cierre de inversión
+                    .col-xs-10.values
+                        .report-rectangle( ng-repeat="detail in myProfile.selectedReport.result ")
+                            .report-rectangle-title {{detail.description}}
+                            .report-rectangle-number {{detail.prospects}}
+                            .report-rectangle-price {{detail.ammount | currency:'$' }}
+                            .report-rectangle-close {{detail.closeProspects}}
+                            .report-rectangle-total {{detail.total | currency:'$'}}
+
+
+div.buttons-admin( ng-if="myProfile.sectionForAdmin")
+    button.btn.btn-primary( ui-sref="prospects.team" ) Regresar
+    button.btn.btn-primary( ng-click="myProfile.downloadPDF()") Generar PDF

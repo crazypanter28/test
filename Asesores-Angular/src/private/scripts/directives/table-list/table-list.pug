@@ -1,0 +1,26 @@
+include /views/mixins/info-result
+div
+    div( ng-show="tableInfo.data.validate === 'no-results'" )
+        ng-include( ng-if="emptyTable" src="emptyTable" )
+
+    div( ng-show="tableInfo.total() > 0" )
+        table.table.small-list( ng-table='tableInfo' class="{{tableType}}" )
+            tr( ng-repeat='user in $data' )
+                td( width="65" data-title="'Contrato'" )
+                    strong( ng-show="user.contract" ) {{ user.contract }}
+                    strong( ng-show="user.numSolContrato" ) {{ user.numSolContrato }}
+                td( data-title="'Nombre'" title="" )
+                    div.truncate( ng-show="user.contract" title="{{ user.name }}" ) {{ user.name }}
+                    div.truncate( ng-show="user.numSolContrato" title="{{ user.cliente.value.nombre }}" ) {{ user.cliente.value.nombre }}
+                td( width="35" )
+                    //para ouline desde el dashboard
+                    a.view-more( ng-if="origin === 'outline'" ng-click="outlineClient(user)" )
+                        i.fa.fa-angle-right( aria-hidden="true" )
+                    //para Schedule
+                    a.view-more( ng-if="origin === 'schedule'" ng-show="user.contract" ui-sref="binnacle.commercial.strategy.id( { id: user.contract, sponsor: user.idSponsor, clasificacion: user.clasification } )" )
+                        i.fa.fa-angle-right( aria-hidden="true" )                    
+                    a.view-more( ng-if="origin === 'schedule'" ng-show="user.numSolContrato" ui-sref="binnacle.commercial.strategy.id( { id: user.numSolContrato, sponsor: user.idSponsor, clasificacion: user.clasification } )" )
+                        i.fa.fa-angle-right( aria-hidden="true" )
+
+    div( ng-show="tableInfo.data.validate === 'error'" )
+        ng-include( ng-if="resourceCrashed" src="resourceCrashed" )

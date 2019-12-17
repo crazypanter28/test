@@ -1,0 +1,99 @@
+
+include /views/mixins/buttons
+include /views/mixins/input
+//- include /views/mixins/addActivity
+include /views/mixins/radio-button
+include /views/mixins/checkbox
+
+div.disabled-modal( ng-if="add.disabledModal")
+
+div.modal-detail-stations
+    form(name="$form" )
+        div.modal-header
+            img.icon(
+                src="img/icons/calendar/ico_cerrar.svg",
+                alt="",
+                align="right"
+                ng-click="add.close()"
+            )
+            h4 {{add.title}}
+
+        div.modal-body.row.margin-0
+            .content.propects-add-activities
+                .row.margin-0
+                    .col-xs-4.padding-left-0
+                        label Estrategia
+                            span *
+                        .container-select
+                            div.dropdown-search(ng-disabled = "add.isUpdateOp" act-dropdown ng-model="add.strategy" selected="add.opportunity.strategy", on-change="add.changeStrategy")
+
+                    .col-xs-4.padding-left-0(ng-if ="add.isReactivation")
+                        +input( "Número de cliente" , true )(
+                            init="add.oldValueContract = add.opportunity.clientNumber"
+                            name = 'prospectNumberContract',
+                            ngRequire='true',
+                            model='add.opportunity.clientNumber',
+                            message='El campo solo acepta números',
+                            masks = 'masks',
+                            ngBlur = "add.oldValueContract != add.opportunity.clientNumber && add.lostFocusClient()",
+                            ngReadonly="add.readonlyNoClient"                            
+                        )              
+                    
+                    
+                    .col-xs-4.padding-left-0
+                        +input( 'Nombre de la Oportunidad', 'nombreoportunidad', 'Nombre de la Oportunidad', true )(
+                            name = 'opportunityName',
+                            ngRequire='true',
+                            model='add.opportunity.clientName',
+                            message='El campo es requerido',
+                            ngReadonly="add.readonly"
+                        )
+
+                    .col-xs-4.padding-left-0(ng-if ="add.isNewOpportunity")
+                        label Segmento
+                            span *
+                        .container-select
+                            div.dropdown-search( act-dropdown ng-model="add.segment" selected="add.opportunity.segment")    
+
+                    .col-xs-4.padding-left-0
+                        +input( 'Teléfono', 'phone', 'Teléfono', true )(
+                            name = 'phone',
+                            model='add.opportunity.phone',
+                            mask="9999999999",
+                            ngRequire='true',
+                            message='El campo es requerido'
+                        )
+
+                    .col-xs-4.padding-left-0
+                        +input( 'Correo', 'email', 'Correo', true, "email" )(
+                            name = 'email',
+                            model='add.opportunity.email',
+                            ngRequire='true',
+                            message='El campo es requerido'
+                        )
+
+                    .col-xs-4.padding-left-0(ng-if="add.isUpdateOp && add.stageBlockade != 10")
+                        label Etapa
+                            span *
+                        .container-select
+                            div.dropdown-search(ng-disabled = "add.stageBlockade == 9" act-dropdown ng-model="add.stageList" selected="add.opportunity.stage", on-change="add.changeStage")
+
+                    .col-xs-4.padding-left-0(ng-if="add.activeLowMotive")
+                        label Origen de Baja
+                            span *
+                        .container-select
+                            div.dropdown-search(act-dropdown ng-model="add.lowMotive.optionMotive" selected="add.opportunity.lowMotive")                       
+
+                    .col-xs-4.padding-left-0
+                        +input( 'Fecha de alta', 'fechaAlta', 'Fecha de alta', true )(
+                            name = 'fechaAlta',
+                            ngRequire='true',
+                            model='add.date',
+                            message='El campo es requerido',
+                            ngReadonly="true"
+                        )
+                    
+        .modal-footer(ng-show="!add.addActivity")
+            +btnSubmit( 'cancelar')(ngClick="add.close()")
+            +btnSubmit( 'guardar', 'save', '($form.$invalid)')(ngClick="add.done()")
+            

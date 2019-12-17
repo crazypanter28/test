@@ -1,0 +1,46 @@
+include /views/mixins/input
+include /views/mixins/buttons
+
+.binnacle-modal.modal-outline-client
+    form( name="form" novalidate )        
+        div.modal-header    
+            img.icon( src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="login.close()" )
+            
+
+        div.modal-body {{info}}             
+            form(ng-disabled="login.spinner", name="form", id="form", novalidate class="css-form" ng-submit="login.sendType(credentials)" autocomplete="none" )
+                .text-center
+                    img( src="img/logos/actinver-login.svg" alt="Actinver")
+                
+                +inputWithIcon(
+                    name= 'formUser',
+                    label= 'Usuario',
+                    placeholder= 'Ingresa tu usuario',
+                    require= 'true',
+                    model= 'credentials.user',
+                    type= false,
+                    icon_class= 'user',
+                    tooltip= null,
+                    //pattern= '/^[a-zA-Z]+$/',
+                    message='El campo de usuario no acepta números o caracteres'
+                )
+
+                +inputWithIcon(
+                    name= 'formPassword',
+                    label= 'Contraseña',
+                    placeholder= 'Ingresa tu contraseña',
+
+                    require= 'true',
+                    model= 'credentials.password',
+                    type= 'password',
+                    icon_class= 'passwd',
+                    tooltip= 'Recuerda que tu usuario y contraseña son los mismos que utilizas para accesar a tu equipo de cómputo.',
+                    pattern= '',
+                    message='',
+                    
+                    keyup="$event.keyCode == 13 && login.sendType(credentials)"
+                )
+         
+        div.modal-footer        
+           div(  ) {{info2}}
+                +btnSubmit( 'CONTINUAR', 'save', '!form.$valid')( ngClick="login.sendType( credentials )" )

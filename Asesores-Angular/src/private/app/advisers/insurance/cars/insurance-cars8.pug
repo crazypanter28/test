@@ -1,0 +1,33 @@
+div.content-panel.tranfers.text-center(ng-if="carsCtrl.stepForm.stepH")
+    div.step-form(style="font-size: 13px; font-weight: bold;")
+        .row(style="background-color: #32CD32; color: #FFFFFF;")
+            h3.tit(ng-show="carsCtrl.formaPagoUser === 'sinDom'" style="font-size: 16px; font-weight: bold;") La operación fue realizada con éxito
+            h3.tit(ng-hide="carsCtrl.formaPagoUser === 'sinDom'" style="font-size: 16px; font-weight: bold;") Emisión exitosa, favor de confirmar el cargo con tu banco para garantizar cobertura
+        .row
+            h3.tit(style="font-size: 14px; font-weight: bold;") Tu póliza se ha generado correctamente con el No.
+                span(style="font-size: 17px;")  {{ carsCtrl.poliza }}
+        div(ng-if="carsCtrl.InstitucionText !== ''")
+            .row(style="padding-top: 20px;")
+                p.col-sm-6(ng-class="carsCtrl.txtClass") Institución:
+                p.col-sm-6.text-left {{ carsCtrl.InstitucionText }}
+            .row
+                p.col-sm-6(ng-class="carsCtrl.txtClass") Cuenta:
+                p.col-sm-6.text-left {{ carsCtrl.NumeroTarjeta }}
+        .row(style="padding-top: 20px;")
+            p.col-sm-6(ng-class="carsCtrl.txtClass" style="font-size: 14px;") Prima Total:
+            p.col-sm-6.text-left(style="font-size: 14px;") {{ carsCtrl.PrimaTotal | currency:'$' }} Anual
+        .row    
+            p.col-sm-6(ng-class="carsCtrl.txtClass") 1er. Recibo:
+            p.col-sm-6.text-left {{carsCtrl.PrimaTotalRecibo | currency:'$' }}
+        .row(ng-if="carsCtrl.Recibossubcuentes !== 0")  
+            p.col-sm-6(ng-class="carsCtrl.txtClass") {{ carsCtrl.Recibossubcuentes }} Recibos subsecuentes de:
+            p.col-sm-6.text-left {{ carsCtrl.PrimaTotalReciboSubcuentes | currency:'$' }}
+    .row(style="padding-top:20px;")
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal;" class="btn-primary btn" ng-click="carsCtrl.imprimirPoliza()") Imprimir póliza
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal;" class="btn-primary btn" ng-click="carsCtrl.imprimirCondiciones()") Consultar condiciones generales
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal;" class="btn-primary btn" ng-click="onClicSendEmailNotificationCompraSeguro()") Enviar correo a cliente
+        .col-md-3
+            button(style="height: 50px !important; width: 215px !important;white-space: normal;" class="btn-primary btn" ng-click="carsCtrl.reinicia()" ) Finalizar

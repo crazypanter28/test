@@ -1,0 +1,30 @@
+include /views/mixins/radio-button
+
+// Goals page
+.goals-page
+
+    h3.primary-title Reporte de Metas
+    .content-panel
+
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs
+                li( ui-sref-active="active" permission="['asesores.CumplimientoMetaMenu.ReporteMeta.']" )
+                    a( ui-sref="goals.report" ) REPORTE DE METAS
+                li( ui-sref-active="active" permission="['asesores.CumplimientoMetaMenu.ReporteSupervisor.']" )
+                    a( ui-sref="goals.supervisor" ) REPORTE DE SUPERVISOR
+                li( ui-sref-active="active" permission="['asesores.CumplimientoMetaMenu.ReportePersonalizado.']" )
+                    a( ui-sref="goals.custom" ) REPORTE PERSONALIZADO
+                li( ui-sref-active="active" permission="['asesores.CumplimientoMetaMenu.ReporteGestion.']" )
+                    a( ui-sref="goals.manager" ) REPORTE GESTIÓN
+                li( ui-sref-active="active" permission="['asesores.CumplimientoMetaMenu.ReporteCortosLargos.']")
+                    a( ui-sref="goals.reportLargeAndShort" ) CORTOS Y LARGOS
+                li( ui-sref-active="active" permission="['asesores.CumplimientoMetaMenu.EstadosCuentaAsesor.']")
+                    a( ui-sref="goals.accountStatus" ) MI ESTADO DE CUENTA    
+
+
+            // Tab content
+            .tab-content
+                div( ui-view="" )

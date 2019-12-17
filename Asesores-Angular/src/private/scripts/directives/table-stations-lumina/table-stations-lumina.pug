@@ -1,0 +1,56 @@
+include /views/mixins/icons
+include /views/mixins/tables
+include /views/mixins/input
+include /views/mixins/radio-button
+include /views/mixins/buttons
+
+div
+    table.capitals-bank
+        thead
+            tr
+                +thCaret( 'Emisora', 'issuer.issuerSerie' )
+                +thCaret( 'Bolsa', 'station.feed' )
+                +thCaret( 'ÚLTIMO PRECIO', 'lastPrice' )
+                +thCaret( '% VAR.', 'priceVar' )
+                +thCaret( 'PRECIO COMPRA', 'tradeBuyPrice')(class="illuminate-capital-th-buy")
+                +thCaret( 'VOL. COMPRA', 'tradeBuy')(class="illuminate-capital-th-buy")
+                +thCaret( 'PRECIO VENTA', 'tradeSellPrice' )(class="illuminate-capital-th-sell")
+                +thCaret( 'VOL. VENTA', 'tradeSell' )(class="illuminate-capital-th-sell")
+                +thCaret( 'HORA', 'tradeDateTime' )( ngShow = 'columnsExpand', class="columnsExpand")
+                +thCaret( 'PRECIO MÁXIMO', 'maxPrice' )( ngShow = 'columnsExpand', class="columnsExpand")
+                +thCaret( 'PRECIO MÍNIMO', 'minPrice' )( ngShow = 'columnsExpand', class="columnsExpand")
+                +thCaret( 'PRECIO PROMEDIO', 'averagePrice' )( ngShow = 'columnsExpand', class="columnsExpand")
+                th MÁS INFO.
+                th.text-center.columnExpand
+                    a(href='javascript:void(0);', ng-click='columnsExpand = true;', ng-hide='columnsExpand')
+                        i.fa.fa-caret-right.fa-lg
+                    a(href='javascript:void(0);', ng-click='columnsExpand = false;', ng-show='columnsExpand')
+                        i.fa.fa-caret-left.fa-lg
+
+        tbody( ng-show="loading" )
+            +trLoading( 150, 'loading')( colspan='13' )
+        tbody( ng-hide="loading" )
+            tr(  class-focus="tr-selection" tabindex="{{$index}}"
+            ng-repeat = "station in stations | orderBy:sortType:sortReverse track by $index"  id="illuminate-capital-td-selected-buy"
+            ng-class="{'tr-selection': station.indice === socket.indiceSeleccionado }"
+            )
+                td( ng-class="{ 'capitals-biva': station.feed === 'BIVA' }" ng-click="socket.ChangeDoll(station,'buy')"  ng-bind="station.issuer.issuerSerie")
+                td( ng-class="{ 'capitals-biva': station.feed === 'BIVA' }" ng-click="socket.ChangeDoll(station,'buy')"  ng-bind="station.feed")
+                td( ng-click="socket.ChangeDoll(station,'buy')" )
+                    div(id="{{station.idIssuerSerie + 'lastPrice'}}" ) $ {{ station.lastPrice | currency: "" : 3 }}                    
+                td(ng-click="socket.ChangeDoll(station,'buy')" )
+                    div {{ station.priceVar | currency : '' : 2 }}%
+                        i.fa( ng-class="{'fa-arrow-circle-up': station.priceVar > 0, 'fa-arrow-circle-down': station.priceVar < 0, 'fa-minus-circle': station.priceVar === 0 }")
+                td( ng-click="socket.ChangeDoll(station,'sell')"  class="illuminate-capital-td-buy" )
+                    div(id="{{station.idIssuerSerie + 'tradeBuyPrice'}}" ) $ {{ station.tradeBuyPrice | currency: "" : 3 }}                    
+                td( ng-click="socket.ChangeDoll(station,'sell')" ng-bind="station.tradeBuy" class="illuminate-capital-td-buy" )
+                td( ng-click="socket.ChangeDoll(station,'buy')" id="illuminate-capital-td-selected-sell" class="illuminate-capital-td-sell" )
+                    div(id="{{station.idIssuerSerie + 'tradeSellPrice'}}" )  $ {{ station.tradeSellPrice | currency: "" : 3 }}                   
+                td( ng-click="socket.ChangeDoll(station,'buy')" ng-bind="station.tradeSell" id="illuminate-capital-td-selected-sell" class="illuminate-capital-td-sell" )
+                td.columnsExpand(  ng-bind="station.tradeDateTime | date : 'hh:mm:ss' " ng-show="columnsExpand" )
+                td.columnsExpand(  ng-bind="station.maxPrice | currency : '$' : 3 " ng-show="columnsExpand" )
+                td.columnsExpand(  ng-bind="station.minPrice | currency : '$' : 3 " ng-show="columnsExpand" )
+                td.columnsExpand(  ng-bind="station.averagePrice | currency : '$' : 3 " ng-show="columnsExpand" )
+                td.text-center.view-more( ng-click="socket.viewMore( station )")
+                    i.fa.fa-plus-circle
+                td(ng-show="columnsExpand")

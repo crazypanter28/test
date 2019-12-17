@@ -1,0 +1,25 @@
+{
+   "status": 1,
+   "list":[
+       {
+           "id": 1,
+           "text": "Teléfono"
+       },
+       {
+           "id": 2,
+           "text": "Carta"
+       },
+       {
+           "id": 3,
+           "text": "Mail"
+       },
+       {
+           "id": 4,
+           "text": "Medio electrónico"
+       },
+       {
+           "id": 5,
+           "text": "Saldos desinvertidos"
+       }
+   ]
+}

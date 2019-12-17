@@ -1,0 +1,45 @@
+include /views/mixins/info-result
+
+
+.presentations
+    .section-title
+        span Presentaciones
+        i.add-white( ng-click="pres.showModalCreateFactsheet()" )
+
+    .content
+        div( ng-if="!pres.errorLoadingProducts && pres.products ")
+            div.controls-tabs
+                div.item-before( ng-click="pres.beforeTab()" ng-if="pres.groupSelectedTab !== 0" )
+                    span Menos
+                ul.list-tabs( ng-class="{ 'with-controls': (pres.products.length > 5), 'two-controls': (pres.groupSelectedTab !== 0 && (((pres.groupSelectedTab + 1) * 5) < pres.products.length))}" )
+                    li.item-tabs( ng-repeat="it in pres.products | limitTo: 5 : (pres.groupSelectedTab * 5)" ng-click="pres.changeTab( it.idPresentationType );" ng-class="{'active': pres.selectedTab === it.idPresentationType}")
+                        span {{ it.description }}
+                div.item-next( ng-click="pres.nextTab()" ng-if="(((pres.groupSelectedTab + 1) * 5) < pres.products.length)" )
+                    span Mas info
+
+            div( ng-if="!pres.loadingProducts" )
+                .content-spinner( ng-show="pres.loadingSubProducts" )
+                    .spinner
+                div(ng-if="pres.subProducts.length > 0 && !pres.loadingSubProducts")
+
+                    div( ng-repeat="item in pres.subProducts" )
+                        h5 {{ item.presentations[ 0 ].descriptionSubType || 'Otros' }}
+
+                        table.ng-table
+                            thead
+                                tr
+                                    th.text-center Nombre de presentación
+                                    th.text-center Editar
+                                    th.text-center Eliminar
+                            tbody
+                                tr( ng-repeat="row in item.presentations")
+                                    td.text-center {{ row.name}} {{ $data.length }}
+                                    td.text-center #[i.edit( ng-click="pres.showModalEditFactsheet( row )" )]
+                                    td.text-center #[i.remove( ng-click="pres.showModalRemoveFactsheet( row.idPresentation )" )]
+
+                        br
+
+                .no-results( ng-if="pres.subProducts.length === 0" )
+                    img( src="img/bg/binnacle-empty-state.svg" )
+                    p Actualmente #[b NO] hay presentaciones en esta categoría.
+                    .link( ng-click="pres.showModalCreateFactsheet()" ) Puedes agregar una

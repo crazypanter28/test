@@ -1,0 +1,41 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result": 1
+        }
+    },
+    "outTelephoneTypeCatalog":[
+        {
+            "PhoneTypeID": 1,
+            "PhoneTypeName": "CELULAR"
+        },
+        {
+            "PhoneTypeID": 2,
+            "PhoneTypeName": "CASA"
+        },
+        {
+            "PhoneTypeID": 3,
+            "PhoneTypeName": "OFICINA"
+        },
+        {
+            "PhoneTypeID": 4,
+            "PhoneTypeName": "FAX"
+        },
+        {
+            "PhoneTypeID": 5,
+            "PhoneTypeName": "OFICINA 2"
+        },
+        {
+            "PhoneTypeID": 6,
+            "PhoneTypeName": "IDENTIFICADOR"
+        },
+        {
+            "PhoneTypeID": 7,
+            "PhoneTypeName": "NEXTEL"
+        },
+        {
+            "PhoneTypeID": 8,
+            "PhoneTypeName": "NO REGISTRA"
+        }
+    ]
+}

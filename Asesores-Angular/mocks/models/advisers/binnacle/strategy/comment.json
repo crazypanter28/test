@@ -1,0 +1,12 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"No se pudo realizar el registro debido a que el numero de contactos por dia (10% del total) ya fue alcanzado."
+      }
+   ],
+   "result":null
+}

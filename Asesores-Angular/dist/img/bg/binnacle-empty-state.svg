@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="81" viewBox="0 0 157 81">
+    <defs>
+        <rect id="a" width="106.538" height="80.066" rx="4.8"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd" opacity=".5">
+        <g stroke="#517CBD" stroke-linecap="round" stroke-width="1.5">
+            <path d="M149.735 34.352v5.332M156.186 41.011h-5.908M148.548 41.011h-5.907M149.735 41.912v5.333"/>
+        </g>
+        <g stroke="#517CBD" stroke-linecap="round" stroke-width="1.05">
+            <path d="M5.846 10.546v3.649M10.454 15.103h-4.22M4.999 15.103H.779M5.846 15.72v3.647"/>
+        </g>
+        <g transform="translate(20.528 .6)">
+            <use fill="#517CBD" xlink:href="#a"/>
+            <rect width="105.538" height="79.066" x=".5" y=".5" stroke="#59617E" rx="4.8"/>
+            <rect width="86.086" height="64.443" x="10.661" y="9.201" fill="#F8F8F8" rx="4.8"/>
+            <g transform="rotate(-20 74.29 -51.94)">
+                <path fill="#517CBD" d="M19.487 48.791c8.91 2.388 14.51 14.498 16.888 5.625 2.378-8.873-2.918-18.002-11.828-20.39-8.91-2.387-18.062 2.87-20.44 11.744-2.377 8.873 6.469.634 15.38 3.021z"/>
+                <ellipse cx="42.56" cy="21.718" fill="#FFF" stroke="#517CBD" rx="10.661" ry="10.617"/>
+                <ellipse cx="44.636" cy="14.713" fill="#517CBD" rx="3.198" ry="3.185"/>
+                <ellipse cx="10.747" cy="10.841" fill="#FFF" stroke="#517CBD" rx="10.661" ry="10.617"/>
+                <ellipse cx="12.823" cy="3.836" fill="#517CBD" rx="3.198" ry="3.185"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,40 @@
+div
+    uib-tabset( justified="true" )
+
+        // Strategy items
+        uib-tab( ng-repeat="( name, obj ) in model" heading="{{ name }}" index="$index" select="onSelect()" )
+
+            table.table.sm-table.funds.is-scrollable
+                thead
+                    tr
+                        th Subgrupo
+                        th Producto
+                        th Porcentaje
+                        th Monto
+                        th Descripción
+                tbody
+                    tr
+                        td( colspan="6" )
+
+                            // Results
+                            div( ng-if="show_info" )
+                                div( scrollable always-visible="true" )
+                                    table.table
+                                        tbody
+
+                                            tr( ng-repeat-start="data in obj.info" )
+                                                td( rowspan="{{ data.productLimits.length }}" ) {{ data.subGroup.name }}
+                                                td {{ data.productLimits[0].product.issuer.name }}
+                                                td {{ data.productLimits[0].percentage }}%
+                                                td {{ ( amount * data.productLimits[0].percentage ) / 100 | currency }}
+                                                td
+                                                    span( ng-repeat="issuer in issuers | filter:data.productLimits[0].product.issuer.name:true | limitTo: 1" )
+                                                        | {{ issuer.description }}
+
+                                            tr( ng-repeat-end="" ng-repeat="item in data.productLimits.slice(1)" ng-class="{ 'child': item }"  )
+                                                td {{ item.product.issuer.name }}
+                                                td {{ item.percentage }}%
+                                                td {{ ( amount * item.percentage ) / 100 | currency }}
+                                                td
+                                                    span( ng-repeat="issuer in issuers | filter:item.product.issuer.name:true | limitTo: 1" )
+                                                        | {{ issuer.description }}

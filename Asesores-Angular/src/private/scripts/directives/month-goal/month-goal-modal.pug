@@ -1,0 +1,46 @@
+#month-goal-details
+    .close-modal( ng-click="monthGoalModal.close_modal()" )
+    .modal-title DETALLE DE META MENSUAL (CAPTACIÓN)
+    .info-wrapper
+        table.table
+            tbody
+                tr
+                    td {{monthGoalModal.modal_info.col1.title}}
+                    td
+                        div.money DINERO
+                    td
+                        div.funds FONDOS
+                    td
+                        div.insurance SEGUROS
+                    td
+                        div.credit CRÉDITO
+                tr
+                    td META
+                    td
+                        div.money {{ monthGoalModal.infoModal.cash.goal | currency : "$" }}
+                    td
+                        div.funds {{ monthGoalModal.infoModal.funds.goal | currency : "$" }}
+                    td
+                        div.insurance {{ monthGoalModal.infoModal.insurance.goal | currency : "$" }}
+                    td
+                        div.credit {{ monthGoalModal.infoModal.credit.goal | currency : "$" }}
+                tr
+                    td %
+                    td
+                        div.money {{ monthGoalModal.infoModal.cash.percentage | currency:'' }} %
+                    td
+                        div.funds {{ monthGoalModal.infoModal.funds.percentage | currency:'' }} %
+                    td
+                        div.insurance {{ monthGoalModal.infoModal.insurance.percentage | currency:'' }} %
+                    td
+                        div.credit {{ monthGoalModal.infoModal.credit.percentage | currency:'' }} %
+                tr
+                    td A LA FECHA
+                    td
+                        div {{ monthGoalModal.infoModal.cash.accumulated | currency:"$"}}
+                    td
+                        div {{ monthGoalModal.infoModal.funds.accumulated | currency:"$"}}
+                    td
+                        div {{ monthGoalModal.infoModal.insurance.accumulated | currency:"$"}}
+                    td
+                        div {{ monthGoalModal.infoModal.credit.accumulated | currency:"$"}}

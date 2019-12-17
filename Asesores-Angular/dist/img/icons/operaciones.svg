@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Operaciones_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="KIT:-HEADER-E-ICONOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Operaciones_icon">
+            <g id="Group" transform="translate(2.000000, 0.000000)">
+                <text id="$-copy-2" font-family="ProximaNova-Regular, Proxima Nova" font-size="11" font-weight="normal" fill="#0F3F88">
+                    <tspan x="4.83164751" y="13.8571429">$</tspan>
+                </text>
+                <g id="Group-2" stroke="#0F3F88">
+                    <polyline id="Path-2-Copy-6" points="3.39484696 7.16130444 0 3.7907107 3.47896338 0.476190476"></polyline>
+                    <polyline id="Path-2-Copy-4" points="16.1358017 10.4692736 16.1358017 3.80952381 2.19717891e-13 3.80952381"></polyline>
+                </g>
+                <g id="Group-2" transform="translate(8.213801, 14.761905) scale(-1, -1) translate(-8.213801, -14.761905) translate(0.000000, 9.523810)" stroke="#0F3F88">
+                    <polyline id="Path-2-Copy-6" points="3.39484696 7.16130444 0 3.7907107 3.47896338 0.476190476"></polyline>
+                    <polyline id="Path-2-Copy-4" points="16.1358017 10.4692736 16.1358017 3.80952381 2.19717891e-13 3.80952381"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,60 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"d29c7fb1-21cb-4f42-a097-c28bfa09d3bf",
+         "messages":[
+            {
+               "responseSystemCode":"ACTIB001",
+               "responseMessage":"EXITO",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            },
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            },
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1493874000000,
+      "time":59639000,
+      "clientID":"NBURSANET",
+      "sessionID":null,
+      "responseSystem":"BUS CENTRAL",
+      "operationName":"A2KContractBalance",
+      "operationVersion":"1_0",
+      "ipaddress":"10.10.1.58"
+   },
+   "outA2KContractBalance":{
+      "client":{
+         "contractNumber":"3000228"
+      },
+      "balance":{
+         "cashSettlement":[
+            {
+               "settlementKey":1,
+               "currency":"1",
+               "cashAmount":0.0
+            }
+         ],
+         "buyingPowerData":{
+            "currentCash":3.14,
+            "cash24":19081.94,
+            "cash48":19081.94,
+            "cash72":19081.94,
+            "cash96":19081.94,
+            "exception":0,
+            "currency":"1"
+         }
+      }
+   }
+}

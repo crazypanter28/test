@@ -1,0 +1,34 @@
+{
+	"outCommonHeader": {
+		"result": {
+			"result": 1,
+			"transactionID": "c9acd658-a8d9-4b17-b999-02550b0a36f8",
+			"messages": [{
+				"responseSystemCode": "CAPRR0016",
+				"responseMessage": "1 pages produced in report number 8",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}, {
+				"responseSystemCode": "CAPRR0016",
+				"responseMessage": "1 pages produced in report number 9",
+				"responseType": "N",
+				"responseCategory": "INFO"
+			}],
+			"nativeErrorCode": null
+		},
+		"date": 1493960400000,
+		"time": 65208000,
+		"clientID": "NBURSANET",
+		"sessionID": "",
+		"responseSystem": "A2K",
+		"operationName": "StockMarketOrderRegistration",
+		"operationVersion": "1_0",
+		"ipaddress": ""
+	},
+	"outStockMarketOrderRegistration": {
+		"cmorder": [{
+			"operationReference": "482249",
+			"operationDateTime": 1494004008000
+		}]
+	}
+}

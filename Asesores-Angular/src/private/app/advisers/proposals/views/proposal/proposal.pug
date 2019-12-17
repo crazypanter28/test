@@ -1,0 +1,42 @@
+include /views/mixins/buttons
+
+// Proposal
+.common-page.proposal-page
+
+    form( name="form" novalidate )
+
+        // Data
+        .panel.panel-default.panel-static
+            .panel-heading
+                .panel-title
+                    span Datos de propuesta
+            .panel-body
+                .content
+
+                    // Proposal form
+                    proposal-form( obj="Object.keys" model="proposal" idx="0" )
+
+        // Other portfolio
+        uib-accordion( ng-if="proposal.form.portfolio[0].profile_type || proposal.form.portfolio[0].client_type" )
+            .panel.panel-default( uib-accordion-group='' is-open="proposal.other_portfolio" )
+                uib-accordion-heading
+                    span Agregar otro Portafolio
+                    i.direction-arrow.fa( ng-class="{ 'fa-angle-up': proposal.other_portfolio, 'fa-angle-down': !proposal.other_portfolio }" )
+                .content
+
+                    // Proposal form
+                    proposal-form( obj="Object.keys" model="proposal" idx="1" )
+
+        // Products list
+        div( ng-if="proposal.form.portfolio[0].profile_type || proposal.form.portfolio[0].client_type" )
+
+            // Products
+            products( model="proposal.form" )
+
+             // Adviser form
+            adviser-form( model="proposal" )
+
+            // Form actions
+            .form-actions
+                a.btn.btn-default.cancel( ng-click="proposal.resetForm()" ) CANCELAR
+                +btnSubmit( 'GENERAR PROPUESTA','btn-primary',null)(ngClick="proposal.validateForm( form )")

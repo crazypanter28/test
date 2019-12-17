@@ -1,0 +1,29 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":[
+      {
+         "idProduct":3,
+         "name":"Seguro Vida Inversion"
+      },
+      {
+         "idProduct":5,
+         "name":"Seguro de Gastos medicos"
+      },
+      {
+         "idProduct":7,
+         "name":"Seguro de auto"
+      },
+      {
+         "idProduct":14,
+         "name":"Seguros 2017"
+      }
+   ]
+}

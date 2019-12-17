@@ -1,0 +1,28 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":2,
+         "transactionID":"49158824-1f32-4917-99ac-94f1813e6dc0",
+         "messages":[
+            {
+               "responseSystemCode":"MDACBCMD0110",
+               "responseMessage":"ERROR : Efectivo disponible menor al importe",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1493874000000,
+      "time":58712000,
+      "clientID":"NBURSANET",
+      "sessionID":null,
+      "responseSystem":"A2K",
+      "operationName":"BondMarketOrderQuotation",
+      "operationVersion":"1_0",
+      "ipaddress":"192.168.4.51"
+   },
+   "outBondMarketOrderQuotation":{
+      "bondOrderQuotation":null
+   }
+}

@@ -1,0 +1,81 @@
+include /views/mixins/info-result
+.activity
+    .section
+        .title-section REPORTE ESPECIAL DEL USUARIO: {{ rep.name }}
+        .row
+            .col-xs-3
+                label Periodo de actividad
+                input.form-control.month(
+                    type="text"
+                    uib-datepicker-popup="MMMM yyyy"
+                    ng-model="rep.date"
+                    is-open="rep.openedCalendar"
+                    datepicker-options="rep.dateOptions"
+                    ng-click="rep.openedCalendar = true"
+                    show-button-bar="false",
+                    ng-change="rep.getInfoTabs()"
+                )
+                i.icon.calendar-on
+        .row
+           table.table.table-responsive
+                                      tr
+                                        th(colspan="6" style="width: 652px; font-size: 18px;") {{'Filtros de Búsqueda'}}
+                                        th(ng-click="rep.activfilters()")
+                                            i.fa( aria-hidden='true' ng-class="{'fa-plus-circle': !rep.activeFilters, 'fa-minus-circle': rep.activeFilters}" )
+     
+        .row(ng-show="rep.activeFilters") 
+            .col-xs-2
+                label Filtrar por # Empleado
+                                input.form-control( type="text" ng-model="search.idEmployee" )
+            .col-xs-2
+                label Filtrar por Nombre
+                                input.form-control( type="text" ng-model="search.name" )
+            .col-xs-2
+                label Filtrar por CF
+                                input.form-control( type="text" ng-model="search.financialCenter" )
+            .col-xs-2
+                label Filtrar por Divisíon
+                                input.form-control( type="text" ng-model="search.divisionalAddress")
+        .row 
+            div 
+               table#idTablaResultadosReport.table.goals-table.sm-head
+                                thead
+                                    tr.prev-headerReport
+
+                                        th( ng-if-start="!modal" colspan="4" )
+                                        th( ng-if="!modal" colspan="3" style="text-align: center; color: white; background: #7C9DCD;" ) AVANCE TOTAL PERIODO ACTUAL
+                                        th( ng-if-end="" colspan="6" style="text-align: center; color: #0f3f88; background: #B9CAE5;" ) EFECTIVIDAD ACUMULADO
+                                    tr(style="background: #1750a7; color: white;")
+                                        th # Empleado
+                                        th Nombre 
+                                        th Centro Financiero
+                                        th División
+                                        th Psb
+                                        th Pros
+                                        th Apert / Incr
+                                        th Psb
+                                        th Pros
+                                        th % EFECT(1)
+                                        th Apert / Incr
+                                        th % EFECT(2)
+                                        th % EFECT TOTAL
+                                tbody
+                                    tr( ng-repeat="info in rep.listReport | filter:search:strict" )
+                                        td(style="text-align: left;") {{ info.idEmployee }}
+                                        td(style="text-align: left; text-decoration: underline; color:blue;" ng-click= "rep.getDetailReport(info, 1)") <p>{{ info.name }}</p> 
+                                        td(style="text-align: left; text-decoration: underline; color:blue;" ng-click= "rep.getDetailReport(info, 2)") <p>{{ info.financialCenter }}</p> 
+                                        td(style="text-align: left;") {{ info.divisionalAddress }} 
+                                        td(style="text-align: center;") {{ info.psbPA }} 
+                                        td(style="text-align: center;") {{ info.prosPA }} 
+                                        td(style="text-align: center;") {{ info.apertPA }}  
+                                        td(style="text-align: center;") {{ info.psbAC }} 
+                                        td(style="text-align: center;") {{ info.prosAC }} 
+                                        td(style="text-align: center;") {{ info.efect1 }}% 
+                                        td(style="text-align: center;") {{ info.apertAC }} 
+                                        td(style="text-align: center;") {{ info.efect2 }}%
+                                        td(style="text-align: center;") {{ info.efectTotal }}%    
+        .row
+            div(style="float: right;") 
+                button(ng-click="rep.report()" style="background: #0f3f88; color: white;").btn.btn-primary Exportar
+                            img( src="img/icons/excel.svg" width="16px" style="margin-left:5px;" )                                                                                            
+                                          

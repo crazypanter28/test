@@ -1,0 +1,44 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"e4b97ce0-ecbc-4be3-8a82-916d5b694228",
+         "messages":[
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1493874000000,
+      "time":58792000,
+      "clientID":"NBURSANET",
+      "sessionID":null,
+      "responseSystem":"A2K",
+      "operationName":"BondMarketOrderRegistration",
+      "operationVersion":"1_0",
+      "ipaddress":"192.168.4.51"
+   },
+   "outBondMarketOrderRegistration":{
+      "bondOrder":{
+         "validationFlag":true,
+         "orderReference":"11673085",
+         "instrumentType":1,
+         "issuerName":"",
+         "operationType":1,
+         "rate":2.5,
+         "term":1,
+         "price":0.0,
+         "titlesQty":0,
+         "netAmount":10000.0,
+         "settlementType":0,
+         "operationDate":1493874000000,
+         "operationTime":58792000,
+         "settlementDate":1493874000000,
+         "expirationDate":1493960400000
+      }
+   }
+}

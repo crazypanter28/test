@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="22px" viewBox="0 0 28 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_completar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Letter-Copy-6" transform="translate(-490.000000, -425.000000)" stroke="#29D787" fill-rule="nonzero" fill="#29D787">
+            <path d="M516.488933,426.002275 C516.235113,426.0231 515.999392,426.203525 515.867718,426.312859 C510.766104,431.650481 504.983217,438.294629 499.87882,443.67731 L492.512982,438.042025 C492.118011,437.739961 491.483842,437.824541 491.181806,438.219515 C490.87977,438.614442 490.964326,439.248626 491.359296,439.550691 L499.405513,445.703678 C499.77271,445.981084 500.34587,445.933895 500.662734,445.600119 C505.947622,440.070855 511.995391,433.089618 517.228475,427.614452 C517.498639,427.343153 517.577757,426.899759 517.418116,426.551737 C517.258469,426.203714 516.870817,425.974492 516.488933,426.002275 Z" id="icon_completar"></path>
+        </g>
+    </g>
+</svg>

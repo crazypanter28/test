@@ -1,0 +1,46 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": {
+		"name": "Maria Sangri",
+		"phone": "54130922",
+		"mail": "msangri@appcasa.com.mx",
+		"investmentAmount": 500000.00,
+        "stage":{
+            "idStage": 4,
+            "total" : 1200000,
+            "date": "30/08/2016"
+        },
+		"closeDate": "30/08/2016",
+		"previousActivities" : [ {
+			"idActivityStage" : 6,
+			"date" : "2016-07-19",
+			"contactType" : "Personal",
+			"schedule" : "06:00 - 07:00",
+			"notes" : "A finalizar",
+			"stage" : "Identificación de Prospecto",
+			"status" : "AP",
+			"outlookId" : null,
+			"subject" : null,
+			"location" : null
+		} ],
+		"scheduledActivities" : [ {
+			"idActivityStage" : 5,
+			"date" : "2016-07-19",
+			"contactType" : "Telefónico",
+			"schedule" : "12:00 - 12:30",
+			"notes" : "Segundo intento",
+			"stage" : "Identificación de Prospecto",
+			"status" : "AV",
+			"outlookId" : null,
+			"subject" : null,
+			"location" : null
+		} ],
+		"expired": true
+	}
+}

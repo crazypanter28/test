@@ -1,0 +1,20 @@
+div
+    // Add products
+    uib-accordion
+        .panel.panel-default( uib-accordion-group="" is-open="list.add_products" )
+            uib-accordion-heading
+                span Agregar Productos
+                i.direction-arrow.fa( ng-class="{ 'fa-angle-up': list.add_products, 'fa-angle-down': !list.add_products }" )
+            .content
+                ul.products-list
+                    li( ng-repeat="product in list.products_list" ng-init="model.products[ product.idClassification ] = {}; pidx = $index" )
+                        label.act-checkbox-custom( for="{{ product.description }}" )
+                            input( type="checkbox" id="{{ product.description }}" value="{{ product.idClassification }}" ng-model="model.products[ product.idClassification ].value" ng-change="list.getSubproducts( pidx, product.idClassification )" )
+                            span.css-label
+                            | {{ product.description }}
+                        ul( ng-show="model.products[ product.idClassification ].value" )
+                            li( ng-repeat="subproduct in list.products_list[ pidx ].subproducts" )
+                                label.act-checkbox-custom( for="{{ subproduct.name }}" )
+                                    input( type="checkbox" id="{{ subproduct.name }}" value="{{ subproduct.idProduct }}" ng-model="model.products[ product.idClassification ].subproducts[ subproduct.idProduct ]" )
+                                    span.css-label
+                                    | {{ subproduct.name }}

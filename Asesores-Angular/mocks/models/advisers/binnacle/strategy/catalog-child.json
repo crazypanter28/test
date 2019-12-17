@@ -1,0 +1,23 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":[
+      {
+         "idActivity":4,
+         "description":"Contacto Exitoso",
+         "descriptionCode":"RESULTADO DE CONTACTO"
+      },
+      {
+         "idActivity":5,
+         "description":"No se Localizó",
+         "descriptionCode":"RESULTADO DE CONTACTO"
+      }
+   ]
+}

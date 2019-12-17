@@ -1,0 +1,46 @@
+include /views/mixins/buttons
+
+a
+    img(
+        src="img/icons/error.svg",
+        alt="",
+        width="64"
+    )
+
+div.modal-div-contract-out-profile
+    .row
+        .col-md-12.contract-out-profile-title
+            span Atención: Contrato Fuera de Perfil        
+    .row
+        .col-md-12
+            span El contrato consultado se encuentra fuera de Perfil, es de suma importancia regularizar el contrato, previo a cualquier operación de compra, para evitar ser notificado por el incumplimiento en mantener los contratos alineados a la estrategia de acuerdo a su perfil.
+
+    .row
+        .col-md-12
+            span Cuentas con un periodo de 60 días para regularizar el contrato, tomando en consideración lo siguiente:        
+    .row            
+        .col-md-12 
+            div.contract-out-profile-option 
+                span a) Rebalanceo de Portafolio de Inversión
+            div.contract-out-profile-option
+                span b) Reperfilamiento del cliente
+            div.contract-out-profile-option
+                span c) Cambio de contrato a cliente No Asesorado(Bursanet)
+            div.contract-out-profile-option
+                span d) Clasificación de Cliente Sofisticado(Solo si cumple con lo siguiente):
+                div.contract-out-profile-option-suboption 
+                    span * Ingresos Anuales Brutos en los últimos 2 años de 1 Millón de UDLS
+                div.contract-out-profile-option-suboption
+                    span * Inversiones en valores en una o varias entidades financieras por un monto mayor o igual a 3 millones de UDLS
+            div.contract-out-profile-option
+                span e) Clasificación  de Clientes Institucional e Institucional Fiduciario:
+                div.contract-out-profile-option-suboption
+                    span * Formato 1-AS-036, aplicables a Emisoras con valores inscritos en el Registro, así como P.M. que conformen parte del mismo grupo empresarial
+                div.contract-out-profile-option-suboption
+                    span * Formato 1-AS-35, exclusivo para clientes fiduciarios, de acuerdo a su objetivo y fines solicitan la exclusión de la Disposiciones Vigentes
+    .row
+        .col-md-12.contract-out-profile-foot
+            span El desconocimiento de las politicas y procedimientos no te exime de las sanciones aplicables por el incumplimiento de estas.
+  
+div.buttons
+    +btnSubmit( 'Aceptar', 'success' )(ngClick="outProfile.done()")

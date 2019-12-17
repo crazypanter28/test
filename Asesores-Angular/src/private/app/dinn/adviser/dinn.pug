@@ -1,0 +1,21 @@
+include /views/mixins/radio-button
+
+//Dinn page
+.dinn-page
+
+    h3.primary-title DINN
+    .content-panel
+        
+        // Tabs wrapper
+        .tabs-wrapper
+
+            // Navigation tabs
+            ul.nav-tabs.main-tabs
+                li( ui-sref="dinn.show" ui-sref-active="active" permission="['asesores.OperacionesDinnMenu.ConsultaCitas.']")
+                    a( href="javascript:void(0);" ) Citas
+                li(  ui-sref-active="active" permission="['asesores.OperacionesDinnMenu.ConsultaCitas.']")
+                    a( href="javascript:void(0);" ) Información Citas
+                
+            // Tab content
+            .tab-content
+                div( ui-view="" )

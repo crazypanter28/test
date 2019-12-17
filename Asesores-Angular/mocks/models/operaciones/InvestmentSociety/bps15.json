@@ -1,0 +1,43 @@
+{
+    "outCommonHeader":{
+        "result":{
+            "result":1,
+            "transactionID":"ebaed583-8444-4771-bce0-7847268e51be",
+            "messages":[
+                {
+                    "responseSystemCode":"ACACBCWS0096",
+                    "responseMessage":"NO HAY NINGUN ERROR",
+                    "responseType":"N",
+                    "responseCategory":"INFO"
+                }
+            ],
+            "nativeErrorCode":null
+        },
+        "date":1493787600000,
+        "time":58324000,
+        "clientID":"NBURSANET",
+        "sessionID":"",
+        "responseSystem":"A2K",
+        "operationName":"FundOperationDataQuery",
+        "operationVersion":"1_1",
+        "ipaddress":"10.10.1.58"
+    },
+    "outFundOperationDataQuery":{
+        "fundOperationData":[
+            {
+                "movementType":"COMPRA",
+                "operationType":"DIARIA",
+                "days":0,
+                "settlementType":"HOY",
+                "registrationType":"AMBOS"
+            },
+            {
+                "movementType":"VENTA",
+                "operationType":"DIARIA",
+                "days":0,
+                "settlementType":"HOY",
+                "registrationType":"TITULOS"
+            }
+        ]
+    }
+}

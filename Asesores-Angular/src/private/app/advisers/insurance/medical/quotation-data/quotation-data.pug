@@ -1,0 +1,35 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+div(ng-if= "medicalCtrl.steps.cotizacion || medicalCtrl.steps.emision")
+    .row
+        .col-xs-12
+            h2 Cotizador de Accidentes y Enfermedades
+    .row
+        .col-xs-12.margenes
+            include /app/advisers/insurance/medical/quotation-data/loader
+.content-panel(ng-if="medicalCtrl.steps.cotizacion")
+    .row
+        .col-xs-12
+            #accordionDatosRiesgo.accordion
+                .card
+                    #headDatosRiesgo.card-header
+                        .row(style="cursor : pointer;")
+                            .collapsed(type='button', data-toggle='collapse', data-target='#collapseDatosRiesgo', aria-expanded='false', aria-controls='collapseDatosRiesgo')
+                                .col-xs-12.centradoMedicalVertical
+                                    .col-xs-11.centradoMedicalVertical
+                                        h3.margenes10px Datos del riesgo
+                                    .col-xs-1(class = "text-right margenMedical{{medicalCtrl.margenInferior}}")
+                                        i(class= "fa fa-sort-desc")
+                    #collapseDatosRiesgo.collapse(aria-labelledby='headDatosRiesgo', data-parent='#accordionDatosRiesgo'
+                        ng-class="{in: medicalCtrl.collapseInClassDatosRiesgo}"
+                        )
+                        .card-body
+                            include /app/advisers/insurance/medical/quotation-data/quotation-risk-data
+    
+
+                    
+                        
+                        
+

@@ -1,0 +1,52 @@
+include /views/mixins/buttons
+div.content-panel.tranfers(ng-if="carsCtrl.stepForm.stepD")
+    form(name="form")
+        .row
+            .col-md-12(style="padding-bottom:10px;") 
+                h3.text-center.tit
+                    span Selecciona tipo de Pago y Coberturas
+        .row
+            .col-md-4.text-left(style="padding-bottom:20px;") 
+                img(src="img/logos/mapfre.svg" style="width: 85px;height: 50px")
+        .row
+            .col-md-12
+                .form-group.col-lg-6
+                    .col-md-7
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Seleccionar Tipo de Cobertura
+                    .col-md-5.text-left
+                        select(ng-model="carsCtrl.typeCobertura" required).form-control
+                                    option(value="" selected="" disabled="") Selecciona una opción
+                                    option(value="AMPLIO PLUS") AMPLIO PLUS
+                                    option(value="AMPLIO") AMPLIO
+                                    option(value="LIMITADO") LIMITADO
+                                    option(value="RC") RESPONSABILIDAD CIVIL
+                .form-group.col-lg-6.text-left
+                    .col-md-7
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Selecciona Forma de Pago
+                    .col-md-5.text-left
+                        select(ng-model="carsCtrl.formaPago" required).form-control
+                                    option(value="" selected="" disabled="") Selecciona una opción
+                                    option(value=1) CONTADO
+                                    option(value=2) SEMESTRAL
+                                    option(value=3) TRIMESTRAL
+                                    option(value=4) MENSUAL
+        .row
+            .form-group.col-lg-9
+                    .col-md-5
+                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Coberturas Opcionales
+                    .col-md-7.text-left
+
+                        input(type="checkbox" name="workIn" ng-model="carsCtrl.autoSustituto").gob
+                        span( style="font-size: 13px; font-weight: bold; padding-top:8px;") &nbsp;Auto Sustituto
+                        p
+                        input(type="checkbox" name="workIn" ng-model="carsCtrl.garantiaSobreRuedas").gob
+                        span( style="font-size: 13px; font-weight: bold; padding-top:8px;") &nbsp;Garantía sobre Ruedas
+                        p
+                        input(type="checkbox" name="workIn" ng-model="carsCtrl.catastrofica").gob
+                        span( style="font-size: 13px; font-weight: bold; padding-top:8px;") &nbsp;RF Catastrófica por muerte Accidental
+            .form-group.col-lg-3.text-left
+        .row
+            div.row.text-center
+                .col-md-12
+                    button(class="btn-primary btn" ng-click="carsCtrl.cotizar()" ) REGRESAR
+                    +btnWithIcon( 'CONTINUAR', 'btn-primary btn-space btn', 'form.$invalid')(ngClick="carsCtrl.cotizarDosB()")

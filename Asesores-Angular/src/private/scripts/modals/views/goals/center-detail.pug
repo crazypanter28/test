@@ -1,0 +1,32 @@
+include /views/mixins/buttons
+include /views/mixins/info-result
+
+// Common page
+.common-page.goals-modal.modal-center-info
+
+        div.modal-header
+            img.icon( ng-if="center.report_info" src="img/icons/calendar/ico_cerrar.svg", alt="Cerrar", align="right" ng-click="center.close()" )
+            h4 REPORTE DE CENTRO FINANCIERO
+
+        div.modal-body
+
+            // Spinner
+            .loader-wrapper( ng-if="center.get_info" )
+                .spinner
+
+            // No results
+            .no-results( ng-if="!center.get_info && center.report_empty" )
+                +noResults("no-results")( msg!="No se encontró <strong>información relacionada</strong>." )
+
+            // Results
+            .center-details-results( ng-if="!center.get_info && !center.report_empty")
+
+                // Goals totals
+                goals-totals( data="center.report_info" modal="true" )
+
+                // Goals products
+                goals-products( data="center.report_info" )
+
+        div.modal-footer
+            div( ng-if="center.report_info" )
+                +btnSubmit( 'CERRAR', 'save' )( ngClick="center.close()" )

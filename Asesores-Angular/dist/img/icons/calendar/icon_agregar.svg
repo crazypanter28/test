@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>agregar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DASHBOARD" transform="translate(-1035.000000, -301.000000)" stroke="#517CBD">
+            <g id="CALENDARIO" transform="translate(557.000000, 185.000000)">
+                <g id="CALENDARIO-Copy">
+                    <g id="BOTON--Copy" transform="translate(293.000000, 110.000000)">
+                        <g id="agregar" transform="translate(178.000000, 0.000000)">
+                            <g id="Group-Copy-4" transform="translate(14.000000, 13.500000) rotate(-45.000000) translate(-14.000000, -13.500000) translate(5.000000, 4.000000)">
+                                <path d="M6.08902527,6.93021228 L11.3390253,12.2502123" id="Shape" stroke-width="0.825" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M6.08902527,12.2502123 L11.3390253,6.93021228" id="Shape" stroke-width="0.825" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <ellipse id="Oval-5" stroke-width="0.6" transform="translate(9.000000, 9.431526) rotate(-45.000000) translate(-9.000000, -9.431526) " cx="9" cy="9.43152596" rx="6.1875" ry="6.27"></ellipse>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

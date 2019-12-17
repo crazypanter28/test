@@ -1,0 +1,659 @@
+.base-table{
+    border:1px solid gray;
+    text-align: center;
+    width: 100%;
+
+    th,
+    td{
+        text-align: center;
+    }
+
+    thead{
+        background: $primary-color;
+        color: white;
+    }
+}
+
+
+/**
+Generic table for investment
+**/
+.table-investment{
+    background: $blue10;
+    //height: 100%;
+    width: 100%;
+
+    .text-center{
+        text-align: center !important;
+    }
+
+    tr{
+        th{
+            padding: 6px 8px;
+            &:first-child{
+                padding-left: 8px;
+            }
+        }
+
+        td {
+            padding: 2px 8px;
+        }
+    }
+
+    td[colspan]{
+        vertical-align: top;
+    }
+
+    .inner-title{
+        font-size: 10px;
+        line-height: 12px;
+        text-align: left;
+        padding: 3px 8px;
+        margin: 0;
+
+        &.done{
+            background: #dbf7bf;
+            color: #7ed321;
+        }
+
+        &.warning{
+            background: #f5f047;
+            color: #f9be00;
+        }
+
+        &.info{
+            background: #00f3e4;
+            color: #02b0b0;
+        }
+    }
+
+    .nano > .nano-content{
+        min-height: 154px;
+        max-height: 156px;
+    }
+
+    table{
+        width: 100%;
+
+        td{
+            &:first-child{
+                padding-left: 8px;
+                text-align: left;
+            }
+        }
+    }
+
+    // No data
+    .no-data {
+        padding: 20px 20px 30px 20px; text-align: center !important; text-transform: none; font-size: 25px; line-height: 27px;
+        img {width: 141px;}
+    }
+
+    .spinner{
+        font-size: 12px;
+    }
+
+    tr{
+        th,
+        td{
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        th{
+            color: $tertiary-color;
+            font-size: 10px;
+            line-height: 11px;
+            // padding: 2px 0;
+            position: relative;
+
+            span{
+                display: inline-block;
+                position: relative;
+                // width: 64%;
+                padding-right: 12px;
+            }
+
+            i{
+                font-size: 12px;
+                position: absolute;
+                right: 0;
+                margin-top: -1px;
+                @include vertical-middle;
+            }
+
+
+            &:last-child{
+                i{
+                    margin: 0;
+                    position: inherit;
+                    transform: inherit;
+                }
+            }
+        }
+
+        td{
+            color: $gray2;
+            font-size: 10px;
+        }
+
+    }
+
+    tbody{
+        background: white;
+    }
+
+}
+
+/**
+Table orders in investment
+**/
+.table-investment.stop-loss{
+    thead {
+        tr{
+            max-height: 40px;
+        }
+    }
+    > tbody > tr > td {
+        height: 156px; padding: 0;
+    }
+
+    &.stop{
+        tr{
+            th,
+            td{
+                &:first-child,
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5),
+                &:nth-child(6){
+                    width: 16%;
+                }
+
+
+            }
+        }
+    }
+
+    &.trailing{
+        tr{
+            th,
+            td{
+                &:first-child,
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5),
+                &:nth-child(6),
+                &:nth-child(7),
+                &:nth-child(8){
+                    width: 12%;
+                }
+
+
+            }
+        }
+    }
+}
+/**
+Table portfolio in investment
+**/
+.table-investment.portfolio{
+    thead , tbody {display: block;}
+    thead{
+        color: #0f3f88;
+        font-size: 10px;
+        text-transform: uppercase;
+        background: #e9f2ff;
+        font-family: 'Proxima Regular',sans-serif;
+    }
+
+    thead tr th {
+        width: 145px;
+    }
+
+    tbody{
+        color: #767676;
+        font-size: 10px;
+        height: 140px;
+        overflow-y: auto;
+    }
+
+    > tbody > tr > td { width: 145px; }
+}
+
+
+
+/**
+Table orders in investment
+**/
+.table-investment.orders{
+
+    thead {
+        tr{
+            max-height: 80px;
+        }
+    }
+
+    > tbody > tr > td {height: 156px; padding: 0;}
+
+    tr{
+        th {padding: 6px 8px;}
+        td {padding: 2px 8px;}
+
+        th,
+        td{
+
+            &:first-child{
+                width: 80px;
+            }
+
+            &:nth-child(2){
+                width: 120px;
+            }
+
+            &:nth-child(3){
+                width: 100px;
+            }
+            &:nth-child(4),
+            &:nth-child(5),
+            &:nth-child(6),
+            &:nth-child(7){
+                width: 90px;
+            }
+
+            &:nth-child(8),
+            &:nth-child(9),
+            &:nth-child(10){
+                width: 90px;
+            }
+        }
+    }
+
+
+    &.stop-loss{
+
+    }
+}
+
+
+.table-investment.orders.download {
+    tr {
+        th, td {
+            &:nth-child(8) {
+                width: 20px;
+            }
+        }
+    }
+}
+
+
+/**
+Table funds in investment
+**/
+/*.table-investment.funds{
+
+    tr{
+        th,
+        td{
+
+            &:first-child{
+                width: 80px;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(4){
+                width: 94px;
+            }
+
+            &:nth-child(5){
+                width: 100px;
+            }
+
+            &:nth-child(6){
+                width: 120px;
+            }
+
+            &:nth-child(7){
+                width: 120px;
+            }
+            &:nth-child(8){
+                width: 130px;
+            }
+
+
+        }
+    }
+}*/
+
+
+
+
+/**
+Table stations in investment
+**/
+table.detail-stations{
+    width: 100%;
+
+    tr{
+        border: 1px solid $gray;
+        text-align: center;
+        th{
+            background: $blue4;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        td{
+            padding: 6px 0;
+            font-size: 12px;
+            color: $tertiary-color;
+        }
+    }
+}
+
+/**
+table instruments for investment
+**/
+.table-investment.instruments {
+    tr {cursor: default;}
+    th, td {
+        &:nth-child(1) {width: 150px; text-align: left;}
+        &:nth-child(2) {width: 150px; text-align: left;}
+        &:nth-child(3) {width: 150px; text-align: left;}
+        &:nth-child(4) {width: 150px; text-align: left;}
+        &:nth-child(5) {width: 150px; text-align: left;}
+        &:nth-child(6) {width: 150px; text-align: left;}
+        &:nth-child(7) {width: 150px; text-align: left;}
+    }
+}
+
+
+
+table.ng-table{
+    font-family: "Proxima SemiBold";
+    width: 100%;
+
+    thead{
+        
+        tr:first-child{
+            height: 40px;
+            background: $primary-color;
+
+            th{
+                color: white;
+                line-height: 14px;
+                // font-size: 14px;
+                padding: 0px 15px;
+                vertical-align: middle;
+
+                &:first-child{
+                    width: 200px;
+                }
+            }
+        }
+        tr:nth-child(2){
+            height: 40px;           
+            th{
+                line-height: 14px;
+                padding: 0px 15px;
+                background: white !important;
+                vertical-align: middle;
+                input {
+                    text-align: center;
+                    margin-bottom: 10px;
+                   
+                }
+                select{                   
+                    text-align: center;
+                    margin-bottom: 10px;                    
+                }
+
+            }
+        }
+    }
+
+    tbody{
+        border: 1px solid $gray;
+        border-top: 0;
+
+        tr{
+            height: 25px;
+            &:nth-child(2n){
+                background: rgba(0, 190, 190, 0.11)
+            }
+
+            td{
+                font-size: 12px;
+                color: $gray2;
+                padding: 0px 20px;
+            }
+        }
+    }
+
+    + div[ng-table-pagination]{
+        .ng-table-pager{
+            @include clear();
+        }
+        .ng-table-counts{
+            display: none;
+        }
+
+        ul.pagination{
+            float: right;
+
+            li{
+                text-align: center;
+
+                &:first-child{
+                    a{
+                        border: 0;
+                        font-family: "FontAwesome";
+
+                        &:before{
+                            content: "\f104";
+                            display: block;
+                        }
+                    }
+                }
+
+                &.active{
+                    a{
+                        background: $tertiary-color;
+                        color: white;
+                    }
+                }
+
+                &:last-child{
+                    a{
+                        border-right: 0;
+                        border-top: 0;
+                        border-bottom: 0;
+                        font-family: "FontAwesome";
+
+
+                        &:before{
+                            content: "\f105";
+                            display: block;
+                        }
+                    }
+                }
+
+                a{
+                    color: $tertiary-color;
+                    border: 1px solid $tertiary-color;
+                    height: 20px;
+                    padding: 0 5px;
+                    overflow: hidden;
+
+                }
+            }
+        }
+    }
+}
+
+
+
+/**
+Table orders in investment founds
+**/
+.table-investment.orders-founds{
+    width: 100%;
+        tr{
+            
+            td,
+            th {
+               padding: 2px 2px;
+               text-align: left;
+               min-width: 100px;
+
+            }
+    
+        }
+        
+    }
+
+.table-investment.orders-founds-bank{
+    width: 100%;
+    tr{
+
+        td,
+        th {
+            padding: 2px 2px;
+            text-align: left;
+
+
+        }
+
+    }
+
+}
+
+/*.illuminate-capital-th-buy{
+    background-color: rgba(249,190,0,0.5);
+    color: #f9a812;
+    border-bottom-color: #f9be00;
+   } */
+.illuminate-capital-td-buy{
+    background-color:#FCFFE3;
+    color: #767676 !important;
+  }
+#illuminate-capital-td-selected-buy:hover {
+    background-color:rgba(249,190,0,0.5);
+    color: #767676 !important;
+  }
+
+/*.illuminate-capital-th-sell{
+    background-color: rgba(0,190,190,0.5);
+    color: #02b0b0;
+    border-bottom-color: #00bebe;
+  }*/
+.illuminate-capital-td-sell{
+    background-color:#E5F9F9;
+    color: #767676 !important;
+  }
+#illuminate-capital-td-selected-sell:hover {    
+    background-color: #D6EAF8;
+    color: #767676 !important;
+  }
+
+.capitals-biva{
+    background-color: #0D47A1;
+    color: #FFFFFF !important;
+}
+
+.stripedEx {
+    color:white;
+    background-color:#adc9f1;
+}
+
+.primary-table {
+    font-family: "Proxima SemiBold";
+    thead {
+        tr {
+            th {
+                //text-align: center;
+                background: $primary-color;
+                color: $white;
+                border: 1px solid $primary-color;
+                padding: 4px;
+            }
+        }
+    }
+    tbody {
+        border: 1px solid #d2cfcd;
+        tr {
+            background: $white;
+            line-height: 18px;
+            &:hover td {
+                //background: $green;
+                background: rgba($secondary-color, .35);
+            }
+            td {
+                font-size: 12px;
+                color: $gray2;
+                padding: 4px;
+            }
+            ;
+            &:nth-child(2n+1) {
+                background-color: rgba(#00bebe, .11);
+            }
+            ;
+        }
+    }
+    tfoot {
+        border: 1px solid #d2cfcd;
+        padding: 4px;
+    }
+}
+
+
+.primary-table{
+    font-family: "Proxima SemiBold";
+    thead {
+        tr {
+            th {            
+                //text-align: center;
+                background: $primary-color;
+                color: $white;
+                border: 1px solid $primary-color;  
+                padding: 4px;                   
+            }
+        }
+    }
+    tbody {
+        border: 1px solid #d2cfcd;            
+        tr {
+            background: $white; 
+            line-height: 18px;
+            &:hover td{
+                //background: $green;
+                background: rgba($secondary-color, .35);
+            }   
+            td {               
+                font-size: 12px;
+                color:$gray2;  
+                padding: 4px;              
+            };
+            &:nth-child(2n+1) {
+                background-color: rgba(#00bebe, .11);
+            };  
+        }        
+    }
+    tfoot{
+        border: 1px solid #d2cfcd; 
+        padding: 4px;
+    }
+}
+.tr-selection {
+    td {
+        background: rgba($secondary-color, .65);
+        color: black !important;
+
+    }
+    zoom: 1.3;
+}

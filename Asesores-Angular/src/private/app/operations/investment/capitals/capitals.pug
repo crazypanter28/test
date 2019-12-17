@@ -1,0 +1,91 @@
+div.my-movements
+    uib-tabset(active='activeTab')
+        uib-tab(index='0', ng-click="capitals.updateFunds()")
+            uib-tab-heading
+                | Portafolio
+                span( uib-tooltip-html="'Presenta las acciones adquiridas.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            div( table-portfolio-inv=""
+                contract="{{ investment.contract.contractNumber }}"
+                update="capitals.updateFunds"
+                selected = "capitals.dollSelected"
+                type="MC"
+            )
+        uib-tab(index='1', ng-click="capitals.updateOrders()" )
+            uib-tab-heading
+                | órdenes
+                span( uib-tooltip-html="'Presenta las instrucciones de compra y venta con su estatus actual'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            div( act-table-orders=""
+                contract="{{ investment.contract.contractNumber }}"
+                update="capitals.updateOrders"
+                type="MC"
+            )
+
+        uib-tab(index='2', heading='STOP LOSS' ng-click="capitals.stopLoss()")
+            div( table-stop-loss
+                contract="{{ investment.contract.contractNumber }}"
+                update="capitals.stopLoss"
+            )
+        uib-tab(index='3', heading='Trailing stop' ng-click="capitals.trailingStop()")
+            div( table-stop-loss
+                contract="{{ investment.contract.contractNumber }}"
+                update="capitals.trailingStop",
+                type = 'TS'
+            )
+        uib-tab(index='4', ng-click="capitals.clean()" )
+            uib-tab-heading
+                | Historico
+                span( uib-tooltip-html="'Presenta el historico de las instrucciones de compra y venta con su estatus actual'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            div( act-table-orders=""
+                contract="{{ investment.contract.contractNumber }}"
+                clean="capitals.clean"
+                type="MC"
+                origin="history"
+            )
+
+
+
+div.container-ipc-capitals
+    div(  capitals-ipc contract="{{::investment.contractS}}" )
+
+.panel-wrapper( ng-init="capitals.tabSelect = 'ipc'")
+    div.sub-menu-buttons.row.margin-0
+        ul.nav.nav-tabs.capitals
+            li.uib-tab.nav-item( ng-click="capitals.selected('ipc')" ng-class="{'active': capitals.tabSelect === 'ipc'}")
+                a.nav-link IPC
+                    span( uib-tooltip-html="'Emisoras que integran el Índice de Precios y Cotizaciones de la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('bmv')" ng-class="{'active': capitals.tabSelect === 'bmv'}")
+                a.nav-link BMV/BIVA
+                    span( uib-tooltip-html="'Monitor de empresas mexicanas que cotizan en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('sic')" ng-class="{'active': capitals.tabSelect === 'sic'}")
+                a.nav-link SIC
+                    span( uib-tooltip-html="'Monitor de empresas internacionales que cotiza en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('trackInt')" ng-class="{'active': capitals.tabSelect === 'trackInt'}")
+                a.nav-link TRACK INT
+                    span( uib-tooltip-html="'Monitor de títulos referenciados a instrumentos de deuda que replican el comportamiento del portafolio al que está referido.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('trackNac')" ng-class="{'active': capitals.tabSelect === 'trackNac'}")
+                a.nav-link TRACK NAC
+                    span( uib-tooltip-html="'Monitor de títulos referenciados a instrumentos de deuda que replican el comportamiento del portafolio al que está referido.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('plusBursatiles')" ng-class="{'active': capitals.tabSelect === 'plusBursatiles'}")
+                a.nav-link 10 +
+                    span( uib-tooltip-html="'Monitor de empresas más negociadas en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('minusBursatiles')" ng-class="{'active': capitals.tabSelect === 'minusBursatiles'}")
+                a.nav-link 10 -
+                    span( uib-tooltip-html="'Monitor de empresas menos negociadas en la BMV.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+            li.uib-tab.nav-item( ng-click="capitals.selected('all')" ng-class="{'active': capitals.tabSelect === 'all'}")
+                a.nav-link Todas
+                    span( uib-tooltip-html="'Muestra todas las emisoras disponibles.'" tooltip-trigger="'mouseenter outsideClick'" tooltip-class="common-tooltip operations-common-tp" )
+
+    div.row.margin-0(style="position:relative; min-height:530px;")
+        div.col-md-8( act-table-stations-socket=""
+            contract = '{{ investment.contract.contractNumber}}',
+            ids='capitals.categorySelected'
+            selected = "capitals.dollSelected"
+            columns-expand = "capitals.columnsExpand"
+        )
+        div.col-md-4( act-capitals-doll=""
+            contract = '{{ investment.contract.contractNumber}}',
+            station = "capitals.dollSelected"
+            ids='capitals.categorySelected'
+        )
+
+

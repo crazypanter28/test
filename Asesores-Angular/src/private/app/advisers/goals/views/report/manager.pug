@@ -1,0 +1,32 @@
+include /views/mixins/info-result
+include /app/advisers/goals/page-instructions
+
+// Report
+.common-page.goals-report-page
+
+    form( name="form" novalidate )
+
+        // Data
+        .panel.panel-default.panel-static
+            .panel-heading
+                .panel-title
+                    span Reporte de gestión
+            .panel-body
+                .content
+
+                    // Form row
+                    .form-row
+                        .item.field
+                            .form-group
+                                dates-range-picker(
+                                    date="goals.datepicker_opts.initDate"
+                                    label="Fecha a generar"
+                                    placeholder="dd/mm/aaaa"
+                                    options='goals.datepicker_opts'
+                                    ng-required="true"
+                                    on-change="manager.getReportInfo"
+                                )
+                    .form-row
+                        iframe#frame( width='100%', height='450px', frameborder='0')
+
+

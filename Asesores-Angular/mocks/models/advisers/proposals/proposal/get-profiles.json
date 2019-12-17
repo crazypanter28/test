@@ -1,0 +1,88 @@
+{
+   "status":1,
+   "messages":[
+      {
+         "type":null,
+         "criticality":null,
+         "code":null,
+         "description":"OPERACIÓN EXITOSA"
+      }
+   ],
+   "result":{
+      "outCommonHeader":{
+         "result":{
+            "result":1,
+            "transactionID":"8866e8b5-79ad-4d16-babd-2807c973ca65",
+            "messages":[
+               {
+                  "responseSystemCode":"ACCAT001",
+                  "responseMessage":"Success",
+                  "responseType":"N",
+                  "responseCategory":"INFO"
+               }
+            ],
+            "nativeErrorCode":null
+         },
+         "date":1499144400000,
+         "time":68787000,
+         "clientID":"PROMOTORES",
+         "sessionID":"",
+         "responseSystem":"PRACTICAS DE VENTA",
+         "operationName":"ClientProfileCatalog",
+         "operationVersion":"1_0",
+         "ipaddress":"10.10.1.58"
+      },
+      "outClientProfileCatalog":{
+         "profileList":[
+            {
+               "key":"-1",
+               "name":"Perfil 0",
+               "description":"El perfil 0 no cuenta con una estrategia de inversión debido a que falta el resultado del cuestionario para determinar el perfil del inversionista, por lo que en apego a las Disposiciones aplicables expedidas por la Comisión Nacional Bancaria y de Valores únicamente se pueden adquirir valores gubernamentales o valores de captación bancaria y valores estructurados con garantía de capital, vencimiento menor a un año y calificación AAA o instrumentos de deuda con vencimiento menor a un año y calificación AAA o sociedades de inversión cuyos instrumentos de inversión sean los mencionados anteriormente o bien sociedades de inversión de deuda de corto y mediano plazo.",
+               "statusList":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            {
+               "key":"1",
+               "name":"Perfil 1",
+               "description":"El perfil 1 se caracteriza por una estrategia de inversión que busca obtener rendimientos arriba a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores, asumiendo un nivel de volatilidad bajo y con un horizonte de inversión de mediano a largo plazo.",
+               "statusList":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            {
+               "key":"2",
+               "name":"Perfil 2",
+               "description":"El perfil 2 se caracteriza por una estrategia de inversión que busca obtener rendimientos mayores a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores, asumiendo un nivel de volatilidad media y con un horizonte de inversión de largo plazo.",
+               "statusList":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            },
+            {
+               "key":"3",
+               "name":"Perfil 3",
+               "description":"El perfil 3 se caracteriza por una estrategia de inversión que busca obtener rendimientos superiores a la tasa general de referencia (cetes) o al índice nacional de precios al consumidor (inflación) mediante la diversificación en valores con alto potencial de crecimiento, asumiendo un nivel de volatilidad alto y con un horizonte de inversión de largo plazo.",
+               "statusList":{
+                  "key":"1",
+                  "name":"ACTIVO",
+                  "description":"ACTIVO"
+               },
+               "rate":0.0,
+               "visibilityFlag":false
+            }
+         ]
+      }
+   }
+}

@@ -1,0 +1,265 @@
+//
+// _goals.scss
+//
+// It reflects styles for goals page
+//
+
+/**
+ * -------------------------
+ * @section Goals page
+ * -------------------------
+*/
+.goals-page {
+    position: relative;
+    .panel-static .panel-body {padding-top: 20px !important; padding-bottom: 0 !important;}
+    > * .panel-group .panel-body {
+        padding-bottom: 0;
+        table {margin-bottom: 20px;}
+    }
+    .content-panel {padding-bottom: 0;}
+
+
+    // Form
+    form {
+        label {display: block; margin-bottom: 3px;}
+        .act-dropdown, .form-control {width: 240px;}
+        .defaultF {
+            height: 23px; font-family: "Proxima Regular"; text-transform: inherit;
+
+            // States
+            &:active, &.active {@include box-shadow(none);}
+        }
+        .act-dropdown button, .form-control {
+            font-family: "Proxima Regular"; font-size: 14px;
+            span {text-transform: initial;}
+        }
+        .nano-content {max-height: 180px;}
+
+        // Form row
+        .form-row {
+            margin-bottom: 20px; font-size: 0;
+
+            // Group
+            .form-group {margin-bottom: 0; font-size: 0;}
+            input.form-control {height: 25px; padding: 0; font-size: 14px;}
+
+            // Item
+            > .item {
+                @include in-block; margin-right: 30px; vertical-align: top; font-size: 14px;
+                .single-item {margin-top: 25px;}
+
+                // Type
+                &.field {width: 240px;}
+                &.action {margin-left: -15px;}
+
+                // Childs
+                &:last-child {margin-right: 0;}
+            }
+        }
+
+        // Childs
+        > *:last-child > div {padding-top: 0; border-top: 0;}
+        .results:last-child > div {padding-bottom: 3px; border-bottom: 0;}
+    }
+
+    // Table
+    div[ table-column-position ]{margin-bottom: 20px; overflow: auto; padding-left: 249px; position: relative; width: 100%; max-height: 500px; @include remove-child-margin-bottom;}
+
+    // No results
+    .search-results table {margin-bottom: 20px;}
+    .no-results, .table .no-results {
+        background: $white;
+        .info {@include remove-child-margin-bottom;}
+    }
+
+    // Date range picker
+    .daterangepicker {
+        width: 300px; z-index: 800; font-size: 14px;
+        .calendar-table > table {width: 290px;}
+
+        // Single
+        &.single {
+            thead tr th {
+                height: 30px;
+                select {width: 100px !important;}
+
+                // Childs
+                &:first-child {padding-left: 0;}
+                &:last-child {padding-right: 0;}
+            }
+            tbody tr td {padding: 5px; font-size: 14px;}
+            .calendar .calendar-table {
+                padding-bottom: 5px !important;
+                table {margin-bottom: 0 !important;}
+                .table-condensed tbody tr td:hover:before, .table-condensed tbody tr td.active:before {@include centered;}
+            }
+        }
+    }
+}
+
+/**
+ * -------------------------
+ * @section Goals table
+ * -------------------------
+*/
+.goals-report-page .goals-table th {padding: 8px 7px;}
+table.table {
+
+    // Goals table
+    &.sm-head {
+        th {font-size: 11px;}
+        td {border-bottom: 1px solid #CCC;}
+    }
+    &.goals-table {
+        margin-bottom: 20px; border: none;
+        a {text-decoration: underline;}
+        b {font-family: "Proxima Bold"; font-weight: 400; color: #333;}
+        + p.note {margin-top: -10px;}
+        thead {
+            tr {
+                th {
+                    border-top: none;
+
+                    // Childs
+                    &:first-child {text-align: left;}
+                }
+
+                // Types
+                &.scroll-row-top {
+
+                    // Childs
+                    th:first-child {text-align: left; position: absolute; left: 0; width: 250px; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; line-height: 90px; white-space: nowrap; overflow: hidden; color: $white; height: 101px;}
+                }
+                &.prev-header {
+                    th {border-top: 1px solid $white; font-size: 13px;}
+                    th[colspan="1"] {background: none; border-left-color: $white;}
+                    th:nth-child(2) {background: rgba(#517cbd, .75);}
+                    th:nth-child(3) {background: rgba(#517cbd, .4); color: #0f3f88;}
+                }
+                &.prev-headerReport {
+                    th {border-top: 1px solid $white; font-size: 13px;}
+                    th[colspan="4"] {background: none; border-left-color: $white;}
+                    th:nth-child(2) {background: rgba(#517cbd, .75);}
+                    th:nth-child(3) {background: rgba(#517cbd, .4); color: #0f3f88;}
+                }
+                &.prev-headerReportDetail {
+                    th {border-top: 1px solid $white; font-size: 13px;}
+                    th[colspan="2"] {background: none; border-left-color: $white;}
+                    th:nth-child(2) {background: rgba(#517cbd, .75);}
+                    th:nth-child(3) {background: rgba(#517cbd, .4); color: #0f3f88;}
+                }
+            }
+        }
+        tbody {
+            border: 1px solid #d2cfcd;
+            tr {
+                td {
+                    background: $white; font-size: 11px;
+                    span {padding-left: 5px;}
+                    &.no-data {background-color: #777 !important;}
+
+                    // Childs
+                    &:first-child {text-align: left;}
+                }
+
+                // Childs
+                &:nth-child(even) td {background-color: rgba(#00bebe, .11);}
+            }
+
+            // Types
+            .scroll-row td:first-child {border-right: 1px solid #DDD; text-align: left; position: absolute; left: 0; width: 250px; border-bottom: 1px solid #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+            .centers td {background: #e3f8f8;}
+        }
+        .totals td {padding: 12px 10px 10px 10px; font-size: 14px; background: #828da3 !important; color: $white;}
+    }
+    &.resume-table {
+        th {font-size: 13px !important;}
+    }
+}
+
+/**
+ * -------------------------
+ * @section Page instructions
+ * -------------------------
+*/
+.page-instructions {
+    color: #39393a;
+
+    // Panel
+    .panel {margin-bottom: 20px;}
+    .panel-body {
+        position: relative; padding: 20px;
+
+        // Content
+        &:after {content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: .1; background: url("../img/bg/operations-instructions.jpg") no-repeat center center; background-size: cover; @include blur(2px);}
+    }
+}
+
+/**
+ * -------------------------
+ * @section for Search
+ * -------------------------
+*/
+.search-cortos-Largo-left{
+    float:left;
+    padding-bottom: 10px;
+    line-height: 40px;
+    width: calc(100% - 200px);
+    .icon-left{
+        width: 40px;
+        float:left;
+        background-image: url("../img/icons/icon-search.svg");
+        background-size: 30px 26px;
+        background-repeat: no-repeat; 
+        height: 40px;
+        background-position: center;    
+        border-bottom: 2px solid $gray3;
+    }
+    .input-right{
+        width:calc(100% - 40px);
+        float:right;
+        input{
+            width:100%;
+        }
+    }
+}
+.search-cortos-Largo-right{
+    float:right;
+    width: 200px;  
+    text-align: right; 
+}
+
+.scroll::-webkit-scrollbar{
+    width: 12px;
+    height: 14px;    
+}
+.scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+.scroll::-webkit-scrollbar-thumb {
+	background: $blue4;
+    border-right: 1px solid $blue4;
+    border-left: 1px solid $blue4;
+    border-bottom: 1px solid $blue4;
+}
+
+.scroll::-webkit-scrollbar-button:horizontal:decrement {
+    height: 13px;
+    background-image: url("../img/icons/arrow-left.svg");
+    background-size: 10px 14px;
+    background-repeat: no-repeat; 
+    background-position: center;  
+}
+
+  
+.scroll::-webkit-scrollbar-button:horizontal:increment {
+    height: 13px;
+    background-image: url("../img/icons/arrow-right.svg");
+    background-size: 10px 14px;
+    background-repeat: no-repeat; 
+    background-position: center;  
+}
+.column-operations-portfolio{
+    min-width:110px;
+    vertical-align: middle !important;    
+}

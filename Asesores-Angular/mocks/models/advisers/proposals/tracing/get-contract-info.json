@@ -1,0 +1,22 @@
+{
+   "response":{
+      "status":1,
+      "messages":[
+         {
+            "type":"N",
+            "criticality":"INFO",
+            "code":"AC000",
+            "description":"OK"
+         }
+      ],
+      "result":{
+         "idSponsor":732,
+         "numContrato":334025,
+         "origen":"CB",
+         "nombreCliente":"MARIA DEL SOCORRO FRANCO ESPINOSA",
+         "fechaNacimiento":"19510929",
+         "edad":66,
+         "valid":true
+      }
+   }
+}

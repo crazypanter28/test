@@ -1,0 +1,20 @@
+include /views/mixins/info-result
+div
+    .spinner( ng-if="!socialFeedWidget.posts.finish" )
+    div( ng-if="socialFeedWidget.posts.finish" )
+        .wt-header
+            h2.title RED SOCIAL ACTINVER
+        .wt-content
+            div( ng-if="socialFeedWidget.posts.success" )
+                ul( scrollable="" always-visible="true" )
+                    li( ng-repeat="post in socialFeedWidget.posts.data" )
+                        a( href="javascript:void(0);" )
+                            img( ng-src="{{post.avatar}}" class="user-img" )
+                            .name {{post.first_name}} {{post.last_name}}
+                            .date
+                                span {{post.date}} <em>{{post.time}}</em>
+                            .post-content
+                                p {{post.msg}}
+
+            div( ng-if="!socialFeedWidget.posts.success" )
+                +resourceCrashed()

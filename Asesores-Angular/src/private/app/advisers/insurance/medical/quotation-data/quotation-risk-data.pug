@@ -1,0 +1,125 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+div.tranfers
+    //- form(name="form" novalidate)
+    div.tranfers
+
+        .row
+          .col-xs-1
+          .col-xs-5
+            p(style='font-size: 13px; color: #333;') (*) Datos Obligatorios
+        .row
+          .col-xs-1
+          .col-xs-1
+            p(style='font-size: 13px; font-weight: bold; line-height: 66px; text-align: center;') * Ramo:
+          .col-xs-3
+            // img src="img/logos/ramo_288.png" style="width: 72px"
+            
+        //- .row
+        //-   .form-group.col-xs-12.pf
+        //-     .col-md-12.text-center.margenes
+        //-       p Exceso Empresarial
+        //-       label(class="checkedMedical" for="Empresarial" )
+        //-         input( type="checkbox" name="isPerfilador" id="Empresarial" class="checkboxMedical" ng-model="medicalCtrl.isPerfilador" )
+        //-         div.boxMedical
+
+        .form-group.col-md-12
+                        .col-md-4.text-right
+                        .col-md-4(ng-if="medicalCtrl.numeroCliente !== '' && medicalCtrl.contrato !== '' && medicalCtrl.tipoPersona==='1'")
+                            .row
+                                .form-group.col-lg-12.pf
+                                    label.col-md-4.control-label
+                                        p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") ¿El titular es el mismo que el cliente?
+                                    .col-md-8
+                                        label.act-radio-custom( for="si" )
+                                            input( type="radio" name="clienteEsTitularAsegurado" id="si" value="1" ng-model="medicalCtrl.clienteEsTitularAsegurado" ng-click="medicalCtrl.agregarTitularAsegurado()"  ng-disabled="medicalCtrl.dependientes.length!==0")
+                                            span.css-label
+                                            | Sí
+                                        label.act-radio-custom( for="no" )
+                                            input( type="radio" name="clienteEsTitularAsegurado" id="no" value="2" ng-model="medicalCtrl.clienteEsTitularAsegurado" ng-click="medicalCtrl.limpiarDependiente()" ng-disabled="medicalCtrl.dependientes.length!==0")
+                                            span.css-label
+                                            | No
+        
+                                        
+        .row
+            .form-group.col-xs-12.pf.centradoMedical
+              .col-md-4.text-center.margenes
+                label.col-md-4.control-label
+                    p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Número de asegurados
+                .col-md-8
+                    div( act-dropdown
+                            ng-model="medicalCtrl.ListNumAsegurados"
+                            selected="medicalCtrl.dataNumAseguradosList.type"
+                            name="ocupacion"
+                            change="medicalCtrl.onChangeNumAsegurados(lastValue, newValue)"
+                    )
+                    input(
+                        type='hidden',
+                        ng-model='medicalCtrl.dataNumAseguradosList.type'
+                        ng-required='true'
+                    )
+        //- .row
+        //-   .col-md-1
+        //-   .col-md-10
+        //-     .form-group(style='background: rgb(250,250,250); display: inline-block;', ng-if="medicalCtrl.isPerfilador && medicalCtrl.isPersonalizada")
+        //-       .col-md-12(style='margin-top: 15px;')
+        //-         .col-md-5.text-left
+        //-           p.text-right(style='font-size: 13px; font-weight: bold; padding-top:8px;') &iquest;Cu&aacute;ntas veces viajas por placer al a&ntilde;o?
+        //-         .col-md-7
+        //-           div(act-dropdown='', ng-model='medicalCtrl.ListYears', selected='medicalCtrl.cmd.dataTravelToYear.type', name='listYears', change='onChangeListMarks(lastValue, newValue)')
+        //-           input(type='hidden', ng-model='medicalCtrl.cmd.dataTravelToYear.type', ng-required='true')
+        //-       .col-md-12
+        //-         .col-md-5.text-left
+        //-           p.text-right(style='font-size: 13px; font-weight: bold; padding-top:8px;') &iquest;Buscas cobertura familiar?
+        //-         .col-md-7
+        //-           div(act-dropdown='', ng-model='ListYears', selected='medicalCtrl.cmd.dataCarsYears.type', name='listYears', change='onChangeListMarks(lastValue, newValue)')
+        //-           input(type='hidden', ng-model='medicalCtrl.cmd.dataCarsYears.type', ng-required='true')
+        //-       .col-md-12
+        //-         .col-md-5.text-left
+        //-           p.text-right(style='font-size: 13px; font-weight: bold; padding-top:8px;') Estoy dispuesto a pagar mensualmente por mi seguro hasta:
+        //-         .col-md-7
+        //-           div(act-dropdown='', ng-model='ListYears', selected='medicalCtrl.cmd.dataCarsYears.type', name='listYears', change='onChangeListMarks(lastValue, newValue)')
+        //-           input(type='hidden', ng-model='medicalCtrl.cmd.dataCarsYears.type', ng-required='true')
+        //-     .form-group.col-lg-12.text-left
+        //-       .col-md-6.text-left
+        //-         p.text-right(style='font-size: 13px; font-weight: bold; padding-top:8px;') * N&uacute;mero de Asegurados
+        //-       .col-md-3
+        //-         div(act-dropdown='', ng-model='ListYears', selected='medicalCtrl.cmd.dataCarsYears.type', name='listYears', change='onChangeListMarks(lastValue, newValue)')
+        //-         input(type='hidden', ng-model='medicalCtrl.cmd.dataCarsYears.type', ng-required='true')
+
+
+        .row(ng-if="medicalCtrl.showCollapseDatosCliente")
+            .col-xs-12.bordersBoxes
+                #accordionDatosCliente.accordion
+                    .card
+                        #headDatosCliente.card-header
+                            .row(style="cursor : pointer;")
+                                .collapsed(type='button', data-toggle='collapse', data-target='#collapseDatosCliente', aria-expanded='false', aria-controls='collapseDatosCliente')
+                                    .col-xs-12( ng-click="medicalCtrl.collDatosCliente($event)")
+                                        h3 Datos Cliente
+                        #collapseDatosCliente.collapse(aria-labelledby='headDatosCliente', data-parent='#accordionDatosCliente'
+                            ng-class="{in: medicalCtrl.collapseInClassDatosCliente}")
+                            .card-body
+                                include /app/advisers/insurance/medical/quotation-data/quotation-client-data
+
+        .row(ng-if="medicalCtrl.showCollapseDatosCliente")
+            .col-xs-12.bordersBoxes
+                #accordionEstadoContratacion.accordion
+                    .card
+                        #headEstadoContratacion.card-header
+                            .row(style="cursor : pointer;")
+                                .col-xs-12
+                                    .collapsed(type='button', data-toggle='collapse', data-target='#collapseEstadoContratacion', aria-expanded='false', aria-controls='collapseEstadoContratacion')
+                                        h3 Estado de Contratación
+                        #collapseEstadoContratacion.collapse(aria-labelledby='headEstadoContratacion', data-parent='#accordionEstadoContratacion'
+                            ng-class="{in: medicalCtrl.collapseInClassDatosCliente}")
+                            .card-body
+                                include /app/advisers/insurance/medical/quotation-data/quotation-entity
+                                .row
+                                    .col-xs-4
+                                    .col-xs-4
+                                        +btnWithIcon( 'Regresar', 'btn-primary btn-space')(ngClick="medicalCtrl.goRegresarMain()")
+                                        +btnWithIcon( 'Cotizar', 'btn-primary btn-space','!medicalCtrl.cmd.municipio || medicalCtrl.cotizarDisabled')(ngClick="medicalCtrl.validaAseg()")
+                                    .col-xs-4 

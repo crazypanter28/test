@@ -1,0 +1,29 @@
+include /views/mixins/info-result
+div
+    .spinner( ng-if="!monthGoalWidget.details.finish" )
+    div( ng-if="monthGoalWidget.details.success" )
+        .wt-header
+            h2.title META MENSUAL
+            h3.subtitle (CAPTACIÓN)
+        .wt-content
+
+            // Details
+            .details
+                ul
+                    li Meta mensual <strong>{{monthGoalWidget.details.data.amount | currency}}</strong>
+                    li Crecimiento <strong>{{monthGoalWidget.details.data.grow | currency}}</strong>
+                    li Por captar <strong>{{monthGoalWidget.details.data.goal_left | currency}}</strong>
+
+            // Info
+            .info
+                .percent( uib-tooltip-template="'month-goal-tooltip'" tooltip-placement="bottom" tooltip-trigger="'click outsideClick'" tooltip-class="dashboard-tooltip month-goal-tp" )
+                    div( ng-style="{ width: monthGoalWidget.details.data.percentage + '%' }" )
+                    strong( ng-style="{ left: monthGoalWidget.details.data.label_pos + 'px' }" ) {{monthGoalWidget.details.data.percentage}}%
+
+            script( type="text/ng-template" id="month-goal-tooltip" )
+                .more-info
+                    column-bar-chart( model="monthGoalWidget.details.data" )
+                a( href="javascript:void(0);" ng-click="monthGoalWidget.openMonthGoalDetails()" ) VER DETALLE
+
+    div( ng-if="monthGoalWidget.details.finish && !monthGoalWidget.details.success" )
+        +resourceCrashed()

@@ -1,0 +1,156 @@
+include /views/mixins/radio-button
+include /views/mixins/buttons
+include /views/mixins/checkbox
+include /views/mixins/input
+
+div.tracing-client
+    div.text
+        label Seleccione la opción deseada:
+    div.radius
+        +radioButton( 'Número de contrato' )(
+            ngChecked="ctrl.type === 'contract'"
+            ngClick="ctrl.setType('contract')"
+        )
+
+        +radioButton( 'Cliente único' )(
+            ngChecked="ctrl.type === 'client'"
+            ngClick="ctrl.setType('client')"
+        )
+    div.row.form(ng-if="ctrl.type === 'contract'")
+        div.col-xs-4.field-inptut        
+            div(act-dropdown ng-model="ctrl.optionTypeContract" selected="ctrl.optionSelected" )
+    form(name="formBusqueda")
+        div.row.form
+            div.col-xs-4.field-inptut
+                input.form-control( type="text" 
+                                    name="input"
+                                    ng-model="ctrl.input" 
+                                    placeholder="{{ctrl.placeholderInput}}" 
+                                    maxlength="10"  
+                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+                                    ng-keyup="$event.keyCode == 13 && ctrl.input && ctrl.getContract()"
+                                    ng-pattern="/^[0-9]+$/"
+                                    ng-required="true"
+                                    )
+            div.col-xs-4.field-button
+                button.btn.btn-primary( ng-disabled="formBusqueda.$invalid"  ng-click="ctrl.getContract()" )
+                    i.fa.fa-search
+                    | Buscar
+    div.text
+        a Ayuda
+            i.question
+                div.tooltip-box Los reportes por cliente único por su complejidad pueden tardar unos minutos en generarse, por favor espere un momento.
+
+    div.container-data-client( ng-if="ctrl.listContracts.length > 0")
+        label Datos del cliente
+        div.content-data-cliente
+            div.info-client(style="font-size:x-small")
+                div.data.name-client( title="{{ ctrl.clientName }}" ) #[strong Nombre del cliente:] #[span {{ ctrl.clientName }}]
+                div.data #[strong Cliente único: ] #[span {{ ctrl.clientId }}]
+                div.data #[strong Casa de bolsa] #[span {{ctrl.detailClient.brokerHouseValue | currency}}]
+                div.data #[strong Banco] #[span {{ctrl.detailClient.bankValue | currency}}]
+                div.data #[strong Total] #[span {{ctrl.detailClient.totalValue | currency}}]
+            div.container-table-contract
+                table.ng-table
+                    thead
+                        tr
+                            th Contrato
+                            th Empresa
+                            th Alias
+                            th Saldo en efectivo
+                            th Saldo en inversiones
+                            th Total
+                            th Detalle
+                    tbody
+                        tr( ng-repeat="contract in ctrl.listContracts" )
+                            td {{ contract.contractNumber }}
+                            td {{ contract.companyName }}
+                            td {{ contract.alias }}
+                            td {{ contract.mainAccount.amount | currency }}
+                            td {{ contract.investmentsAccount.amount | currency }}
+                            td {{ contract.totalBalance  | currency }}
+                            td #[i.eye( ng-click="ctrl.viewSummaryContract( contract )" )]
+                div.container-note
+                    div.note * Para #[strong VER EL DETALLE] y #[strong GENERAR UN REPORTE] de cada contrato, da click en el ícono de la columna #[strong Detalle].
+                    button.btn.btn-primary( ng-if="ctrl.listContracts.length > 1" ng-click="ctrl.detailGeneral()" ) Detalle general
+
+                div.summary-contract( ng-if="ctrl.listSummaryContracts.listContracts.length > 0" ng-class="{'summary-general': ctrl.listSummaryContracts.listContracts.length > 1}" )
+                    div.description( ng-if="ctrl.listSummaryContracts.listContracts.length === 1" )
+                        |  Resumen del contrato:
+                        strong  {{ctrl.listSummaryContracts.listContracts[0].contractNumber}}
+                    div.description( ng-if="ctrl.listSummaryContracts.listContracts.length > 1" ) #[strong Resumen general]                    
+                    table.table-contract
+                        thead
+                            tr
+                                th Instrumentos 
+                                th Monto                                
+                        tbody(ng-repeat="contract in ctrl.listSummaryContracts.listContracts" )
+                                tr.contract
+                                    td No. de contrato:  {{contract.contractNumber}}  
+                                    td 
+                                tr.title
+                                    td Efectivo
+                                    td {{ (contract.data.cashPesos + contract.data.cashDollars + contract.data.cashEuros) | currency }}
+                                tr.subtitle
+                                    td Pesos
+                                    td {{contract.data.cashPesos | currency}}
+                                tr.subtitle
+                                    td Dólares
+                                    td {{contract.data.cashDollars | currency}}
+                                tr.subtitle
+                                    td Euros
+                                    td {{contract.data.cashEuros | currency}}
+                                tr.title.divider
+                                    td Depósitos a plazo fijo
+                                    td {{contract.data.fixedTermDeposit | currency}}
+                                tr.title
+                                    td Fondos
+                                    td {{ (contract.data.debtFund + contract.data.rentFund + contract.data.coverFund) | currency }}
+                                tr.subtitle
+                                    td Inversión deuda
+                                    td {{contract.data.debtFund | currency}}
+                                tr.subtitle
+                                    td Renta variable
+                                    td {{contract.data.rentFund | currency}}
+                                tr.subtitle
+                                    td Cobertura
+                                    td {{contract.data.coverFund | currency}}
+                                tr.title.divider
+                                    td Mercado de dinero
+                                    td {{contract.data.moneyMarket | currency}}
+                                tr.title
+                                    td Mercado de capitales
+                                    td {{contract.data.capitalMarket | currency}}
+                        tfoot
+                            tr.footer
+                                td Valor total del portafolio
+                                td {{ctrl.listSummaryContracts.portfolioValue | currency}}
+                    div.more-table
+                        +checkbox( 'Ver su posición', 'ctrl.positionContract', 'position', 'false')(change='ctrl.changePositionContract()')
+
+                        div( ng-if="ctrl.positionContract && !ctrl.showSpinner")
+                            div
+                                div.text-position #[strong Posición]
+                                table.table-position
+                                    thead
+                                        tr
+                                            th Emisora
+                                            th Contrato
+                                            th Posición
+                                            th Precio
+                                            th Valuación
+                                    tbody( ng-repeat="( key, value ) in ctrl.listPositionContracts" )
+                                        tr.rows( ng-repeat="row in value.rows" )
+                                            td {{ $first ? row.issuer : '' }}
+                                            td {{ row.contractNumber }}
+                                            td {{ row.position }}
+                                            td {{ row.lastPrice | currency }}
+                                            td {{ row.valuation | currency }}
+                                        tr.divider
+                                            td
+                                            td Total
+                                            td {{ value.total.position }}
+                                            td
+                                            td {{ value.total.valuation | currency }}
+
+                        button.btn.btn-primary(ng-click="ctrl.generaReporte()") Generar reporte

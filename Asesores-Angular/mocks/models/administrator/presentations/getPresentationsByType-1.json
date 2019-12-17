@@ -1,0 +1,63 @@
+{
+	"status": 1,
+	"messages": [{
+		"type": null,
+		"criticality": null,
+		"code": null,
+		"description": "OPERACIÓN EXITOSA"
+	}],
+	"result": [{
+		"idPresentationSubType": null,
+		"presentations": [{
+			"idPresentation": 2,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Presentación Grupo Actinver"
+		}, {
+			"idPresentation": 3,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Presentación Grupo Actinver (ENG)"
+		}, {
+			"idPresentation": 4,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Inversión por Objetivos"
+		}, {
+			"idPresentation": 5,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Planes de Retiro"
+		}, {
+			"idPresentation": 6,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Previsión Social"
+		}, {
+			"idPresentation": 7,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Planes de Ahorro"
+		}, {
+			"idPresentation": 8,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Bursanet"
+		}, {
+			"idPresentation": 50,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Esquema Asesor"
+		}, {
+			"idPresentation": 51,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Esquema Ejecutivo de Cuenta"
+		}, {
+			"idPresentation": 52,
+			"idPresentationSubType": null,
+			"descriptionSubType": "",
+			"name": "Esquema Ejecutivo de Servicio"
+		}]
+	}]
+}

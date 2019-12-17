@@ -1,0 +1,54 @@
+extends /views/layout/app
+
+
+include /views/mixins/buttons
+include /views/mixins/input
+
+
+block styles
+    link(rel="stylesheet", href="styles/login.css")
+
+
+block content
+    section(ng-controller="loginCtrl as login")
+        .overlay(ng-show='login.spinner')
+        .login-page.login-wrapper(ng-class="{'blur': login.spinner}")
+            form(ng-disabled="login.spinner", name="form", id="form", novalidate class="css-form" ng-submit="login.login(credentials)" autocomplete="none" )
+                .text-center
+                    img( src="img/logos/actinver-login.svg" alt="Actinver")
+                    h2 Módulo de Asesoría
+                +inputWithIcon(
+                    name= 'formUser',
+                    label= 'Usuario',
+                    placeholder= 'Ingresa tu usuario',
+                    require= 'true',
+                    model= 'credentials.user',
+                    type= false,
+                    icon_class= 'user',
+                    tooltip= null,
+                    //pattern= '/^[a-zA-Z]+$/',
+                    message='El campo de usuario no acepta números o caracteres'
+                )
+
+                +inputWithIcon(
+                    name= 'formPassword',
+                    label= 'Contraseña',
+                    placeholder= 'Ingresa tu contraseña',
+
+                    require= 'true',
+                    model= 'credentials.password',
+                    type= 'password',
+                    icon_class= 'passwd',
+                    tooltip= 'Recuerda que tu usuario y contraseña son los mismos que utilizas para accesar a tu equipo de cómputo.',
+                    pattern= '',
+                    message=''
+                )
+                +btnSubmit(
+                    'ENTRAR',
+                    'btn-primary btn-block',
+                    'form.$invalid'
+                )
+                div.message.errorLogin(ng-if="login.service.error")
+                    div.franja
+                        span !
+                        b {{login.service.mensaje}}

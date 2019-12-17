@@ -1,0 +1,56 @@
+{
+   "outCommonHeader":{
+      "result":{
+         "result":1,
+         "transactionID":"9b64755f-26ba-459c-bcc2-a8270f83f7d0",
+         "messages":[
+            {
+               "responseSystemCode":"ACACBCWS0096",
+               "responseMessage":"NO HAY NINGUN ERROR",
+               "responseType":"N",
+               "responseCategory":"INFO"
+            }
+         ],
+         "nativeErrorCode":null
+      },
+      "date":1493874000000,
+      "time":59037000,
+      "clientID":"NBURSANET",
+      "sessionID":"",
+      "responseSystem":"A2K",
+      "operationName":"SecuritiesPortfolioQuery",
+      "operationVersion":"1_1",
+      "ipaddress":"192.168.4.51"
+   },
+   "outSecuritiesPortfolioQuery":{
+      "securitiesData":{
+         "security":[
+            {
+               "market":"MD",
+               "issuer":"GUBER",
+               "serie":"",
+               "initialPosition":10000,
+               "settlement24H":0,
+               "settlement48H":0,
+               "otherSettlements":0,
+               "finalPosition":10000,
+               "virtualCost":0.0,
+               "currencyTypeShortKey":"M.N.                          ",
+               "weightedFinalPosition":0,
+               "weightedLastPrice":0.0,
+               "accumulatedVariance":0.0,
+               "priceVariance":0.0,
+               "valuationLastPrice":10000.0,
+               "capitalGain":0.0,
+               "currencyTypeKey":"1",
+               "exchangeRate":1.0
+            }
+         ]
+      },
+      "cashData":{
+         "cash":[
+
+         ]
+      }
+   }
+}

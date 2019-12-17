@@ -1,0 +1,79 @@
+div.content-panel.tranfers(ng-if="carsCtrl.stepForm.stepDB" name= "cotizacion")
+  div.step-form
+    .row.col-sm-12 
+      h2.text-center.tit Este es el paquete que tenemos para ti
+    .row.text-center
+      .col-md-1.text-center
+      .col-md-6.text-center
+        table.tg(style='width: 90%')
+          colgroup
+            col(style='width: 50%')
+            col(style='width: 35%')
+            col(style='width: 15%')
+          tr
+            th.text-center
+              img(src="img/logos/mapfre.svg" style="width: 85px;height: 50px")
+            th.tg-6ia2(colspan='2')
+              span(style='font-weight:bold') {{carsCtrl.typeCobertura}}
+          tr
+            td.tg-mnge Coberturas *
+            td.tg-wp8o
+              span(style='font-weight:bold;color:rgb(203, 0, 0)') Límite de Responsabilidad
+            td.tg-852y Deducible
+          tr(ng-repeat="dato in carsCtrl.datosCotizacion.coverageList.coverageInformation" )
+            td.tg-9cx6(ng-if="dato.code === '4000'") DAÑOS MATERIALES
+            td.tg-9cx6(ng-if="dato.code === '4014'") DEVOLUCIÓN DE PRIMA Y DEDUCIBLE
+            td.tg-9cx6(ng-if="dato.code === '4010'") RESPONSABILIDAD CIVIL A TERCEROS EN SUS BIENES
+            td.tg-9cx6(ng-if="dato.code === '4011'") RESPONSABILIDAD CIVIL A TERCEROS EN SUS PERSONAS
+            td.tg-9cx6(ng-if="dato.code !== '4000' && dato.code !== '4014' && dato.code !== '4010' && dato.code !== '4011' ") {{dato.description}}
+            td.tg-mqa1(ng-if="(dato.code === '4000' || dato.code === '4001') && !carsCtrl.validaFormaFactura") VALOR COMERCIAL +10%
+            td.tg-mqa1(ng-if="dato.sumAssured === '1' ") AMPARADA
+            td.tg-mqa1(ng-if="((dato.code === '4000' || dato.code === '4001') && carsCtrl.validaFormaFactura) && dato.sumAssured !== '1'") {{dato.sumAssured | currency}}
+            td.tg-mqa1(ng-if="dato.code !== '4000' && dato.code !== '4001' && dato.sumAssured !== '1' ") {{dato.sumAssured | currency}}
+            td.tg-wp8o
+              span(style='font-weight:bold') {{dato.deductible}}%
+          tr
+            td.tg-zham
+              span(style='color:rgb(255, 255, 255)') Prima total Anual
+            td.tg-brb1(colspan='2')
+              span(style='color:rgb(255, 255, 255)') {{carsCtrl.datosCotizacion.insurancePaymentData.totalPayments | currency}}                        
+      .col-md-4
+        table.tg
+          tr
+            th.tg-s268
+              | Tipo de Veh&iacute;culo: 
+              span(style='font-weight:bold') {{carsCtrl.tipoVehiculo}}
+              br
+              | Marca del Veh&iacute;culo: 
+              span(style='font-weight:bold') {{carsCtrl.marcaVehiculo}}
+              br
+              | Modelo del Veh&iacute;culo: 
+              span(style='font-weight:bold') {{carsCtrl.modeloVehiculo}}
+              br
+              | Año del Veh&iacute;culo:
+              span(style='font-weight:bold') {{carsCtrl.anioVehiculo}}
+              br
+    .row(style="padding-top:50px;")
+      p.text-center( style="font-size: 28px; font-weight: bold; padding-top:8px;") Coberturas Opcionales
+    .row(style="padding-top:38px;")
+      .form-group.col-lg-10
+        .col-md-5
+        .col-md-7.text-left
+          input(type="checkbox" name="workIn" ng-model="carsCtrl.autoSustituto").gob
+          span( style="font-size: 13px; font-weight: bold; padding-top:8px;") &nbsp;Auto Sustituto
+          p
+          input(type="checkbox" name="workIn" ng-model="carsCtrl.garantiaSobreRuedas").gob
+          span( style="font-size: 13px; font-weight: bold; padding-top:8px;") &nbsp;Garantía sobre Ruedas
+          p
+          input(type="checkbox" name="workIn" ng-model="carsCtrl.catastrofica").gob
+          span( style="font-size: 13px; font-weight: bold; padding-top:8px;") &nbsp;RF Catastrófica por muerte Accidental
+      .form-group.col-lg-2.text-left
+    .row.text-center(style="padding-top:20px;")
+      button(class="btn-primary btn" ng-click="carsCtrl.cotizarDosB()") RECOTIZAR
+    .row.text-center(style="padding-top:30px;")
+      .col-md-4
+          button(style="height: 50px !important; width: 200px !important;white-space: normal; " class="btn-primary btn" ng-click="carsCtrl.valCotizar()") Regresar
+      .col-md-4
+          button(style="height: 50px !important; width: 200px !important;white-space: normal; " class="btn-primary btn" ng-click="onClicSendEmailNotificationCotization()") Enviar por correo a cliente
+      .col-md-4
+          button(style="height: 50px !important; width: 200px !important;white-space: normal;" class="btn-primary btn" ng-click="carsCtrl.cotizarTres()") Contratar

@@ -1,0 +1,14 @@
+include /views/mixins/buttons
+include /views/mixins/buttons
+
+
+img(
+    src="img/icons/warning.svg", 
+    alt="",
+    width="45",
+    height="45"
+)
+p {{ warning.message || '¿Estás seguro de eliminar la actividad?' }}
+div.buttons
+    +btnSubmit( 'Cancelar', 'btn-default cancel' )(ngClick="warning.close()")
+    +btnSubmit( 'Aceptar', 'success' )(ngClick="warning.done()")

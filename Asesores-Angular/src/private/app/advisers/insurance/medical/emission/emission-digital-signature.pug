@@ -1,0 +1,59 @@
+include /views/mixins/input
+include /views/mixins/buttons
+include /views/mixins/checkbox
+
+form(name="formEmitSignature" novalidate)
+    .panel-body
+        .row
+            .col-xs-12
+                h1.col-xs-12 Muy importante: debe leerse antes de firmar.
+                h3.col-xs-12 Firma Electrónica
+                p.col-xs-12.formatoLetrasContenidoTabla
+                    | Se previene al solicitante que conforme a los artículos 8 y 49 de la Ley Sobre el Contrato del Seguro, debe declarar todos los hechos importantes para la apreciación del riesgo que tenga referencia a esta solicitud, tal y como lo conozca o deba conocer en el momento de firmar esta solicitud, en la inteligencia de que la no declaración o la inexacta o falsa declaración de un hecho de los mencionados podrá originar la pérdida del derecho del asegurado o del beneficiario en su caso.
+                p.col-xs-12.formatoLetrasContenidoTabla
+                    | Enterado de lo anterior y para efecto de esta solicitud, declaro estar dispuesto, si fuera necesario, a presentar exámenes médicos que MAPFRE Tepeyac, S.A. estime convenientes por cuenta de éste. Autorizo a los médicos que me hayan asistido o examinado a los hospitales, sanatorios, laboratorios y clínicas a las que haya acudido para diagnóstico o tratamiento de cualquier accidente o enfermedad, así como a la compañía de seguros donde haya ingresado una solicitud, enfermedades y hábitos anteriores; información que podrá ser requerida en cualquier momento que MAPFRE Tepeyac, S.A. lo considere oportuno, inclusive después de mi fallecimiento. Para tal efecto, relevo a estas personas del secreto profesional del caso.
+                p.col-xs-12.formatoLetrasContenidoTabla
+                    span.negritas Declaración del agente: 
+                    | Manifiesto que he informado de forma amplia, clara y detallada sobre el alcance real de sus coberturas y forma de conservarlas o darlas por terminadas; así mismo asiento que los datos en esta solicitud son ciertos y lo he corroborado. 
+                .col-xs-12.centradoMedical.margenes
+                    .form-group.col-lg-5.pf.text-center
+                        label.col-md-4.control-label
+                            p.text-right( style="font-size: 13px; font-weight: bold; padding-top:8px;") Lugar*
+                        .col-md-8
+                            input(type="text" id="firmaLabel" name="firmaLabel" placeholder="Ciudad/Estado/Población" ng-model="medicalCtrl.firmaLabel"
+                                value=""
+                                minlength="3" maxlength="80"
+                                ng-keypress="medicalCtrl.charrepeatText($event,'apePaterno'); medicalCtrl.soloText($event,true)"
+                                ).form-control.upperCaseInput.required
+                p.col-xs-12.formatoLetrasContenidoTabla
+                    span.negritas Manifiesto que conozco y acepto lo establecido en el aviso de privacidad de MAPFRE Tepeyac S.A. 
+                p.col-xs-12.formatoLetrasContenidoTabla    
+                    | Declaro bajo protesta de decir verdad, que actúo a nombre y cuenta propia o con las facultades suficientes que mi representado(a) me ha otorgado y que los recursos utilizados en este acto comercial provienen de actividades licitas.
+        div(id="firmasJuntas")    
+            .row
+                .col-xs-12.text-center
+                    h5 Titular:
+                    canvas#canvasFirmaTitular(ng-mousedown="medicalCtrl.empezarDibujoTitular();"
+                    ng-mousemove="medicalCtrl.dibujarLineaTitular($event);"
+                    ng-mouseup="medicalCtrl.pararDibujarTitular();")
+            .row
+                .col-xs-12.text-center
+                    h5 Contratante:
+                    canvas#canvasFirmaContratante( ng-mousedown="medicalCtrl.empezarDibujoContratante();"
+                    ng-mousemove="medicalCtrl.dibujarLineaContratante($event);"
+                    ng-mouseup="medicalCtrl.pararDibujarContratante();")
+            .row
+                .col-xs-12.text-center
+                    h5 Agente:
+                    canvas#canvasFirmaAgente( ng-mousedown="medicalCtrl.empezarDibujoAgente();"
+                    ng-mousemove="medicalCtrl.dibujarLineaAgente($event);"
+                    ng-mouseup="medicalCtrl.pararDibujarAgente();")
+                
+        .row
+            .col-xs-12.text-center
+                +btnWithIcon( 'Limpiar firma Titular', 'btn-primary btn-space')(ngClick="medicalCtrl.limpiarFirmaTitular()")   
+                +btnWithIcon( 'Limpiar firma Contratante', 'btn-primary btn-space')(ngClick="medicalCtrl.limpiarFirmaContratante()")   
+                +btnWithIcon( 'Limpiar firma Agente', 'btn-primary btn-space')(ngClick="medicalCtrl.limpiarFirmaAgente()")   
+        .row
+            .col-xs-12.text-center
+                +btnWithIcon( 'Emitir', 'btn-primary btn-space', 'formEmitSignature.$invalid || medicalCtrl.emitirDisabled')(ngClick="medicalCtrl.goEntrega()") 

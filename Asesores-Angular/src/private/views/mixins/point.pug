@@ -1,0 +1,8 @@
+// class blue, yellow, green, red, orange moe info in _point.scss
+mixin point( _title, _number )
+    label.point(
+        class!=attributes.class
+        ng-class!=attributes.ngClass
+    )
+        b!=_number
+        |  #{_title}
